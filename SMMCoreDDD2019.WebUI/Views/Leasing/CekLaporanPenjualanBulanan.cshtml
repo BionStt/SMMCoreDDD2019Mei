@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "CekLaporanPenjualanBulanan";
+    Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<h2>Cek Laporan Penjualan Bulanan</h2>
+<h2>Periode Penjualan</h2>
+
+
+<div>
+    @using (Html.BeginForm("CekPjBulananDet", "LeasingCetak", FormMethod.Post))
+    {
+        <form asp-controller="LeasingCetak" asp-action="CekPjBulananDet" method="post">
+            <table style="border:double">
+                <tr style="border:double">Masukkan Periode Waktu</tr>
+                <tr style="border:double">
+                    <th style="border:double">Periode Awal:</th>
+                    <td style="border:double">
+
+                        <input type="text" id="datepicker1" name="tgl1" />
+                    </td>
+                </tr>
+                <tr style="border:double">
+                    <th style="border:double">Periode Akhir:</th>
+                    <td style="border:double">
+
+                        <input type="text" id="datepicker2" name="tgl2" />
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td style="border:double">
+                        <div class="form-group">
+                            <input type="submit" value="Tampilkan" class="btn-info" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <script>
+                $('#datepicker1').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    appendText: "(Tanggal-Bulan-Tahun)",
+                    dateFormat: "dd-mm-yy",
+                    yearRange: "c-100:c+10"
+
+                });
+                $('#datepicker2').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    appendText: "(Tanggal-Bulan-Tahun)",
+                    dateFormat: "dd-mm-yy",
+                    yearRange: "c-100:c+10"
+
+                });
+            </script>
+        </form>
+    }
+
+</div>
+
+
+
+

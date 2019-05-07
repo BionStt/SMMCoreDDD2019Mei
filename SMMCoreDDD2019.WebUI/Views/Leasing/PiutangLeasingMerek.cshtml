@@ -1,0 +1,204 @@
+﻿@model IEnumerable<SmmCoreDDD2019.Application.PenjualanDetails.Query.GetDataPiutangLeasingMerek.GetDataPiutangLeasingMerekLookUpModel>
+@{
+    ViewData["Title"] = "PiutangLeasingMerek";
+    Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<script language="javascript">
+    function printdiv(printpage) {
+        var headstr = "<html><head><title></title></head><body>";
+        var footstr = "</body>";
+        var newstr = document.all.item(printpage).innerHTML;
+        var oldstr = document.body.innerHTML;
+        document.body.innerHTML = headstr + newstr + footstr;
+        window.print();
+        document.body.innerHTML = oldstr;
+        return false;
+    }
+</script>
+<style>
+    .page {
+        width: 21cm;
+        min-height: 29.7cm;
+        padding: 2cm;
+        margin: 1cm auto;
+        border: 1px #D3D3D3 solid;
+        border-radius: 5px;
+        background: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+
+
+
+
+
+<div>
+    <form asp-controller="LeasingCetak" asp-action="PiutangLeasingMerek" method="post">
+        <table>
+            <tr>
+                <td>Data Yang Dicari</td>
+            </tr>
+            <tr>
+                <td>Nama Leasing</td>
+                <td><select name="KodeLeasing" id="KodeLeasing" asp-items="@ViewBag.leasing1"></select></td>
+            </tr>
+            <tr>
+                <td>Merek</td>
+                <td><select name="Merek1" id="Merek1" asp-items="@ViewBag.merek1a"></select></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Tampilkan" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div>
+    <input name="b_print" type="button" class="ipt" onClick="printdiv('div_print');" value=" Print ">
+</div>
+<div id="div_print">
+    <h2>Piutang Leasing berdasarkan Merek</h2>
+    <table style="border:double;width:auto" class="table table-bordered table-striped grid">
+        <thead style="border:double;width:auto">
+
+        </thead>
+        <tbody style="border:double;width:auto">
+            @{int i = 1;}
+            @if (Model == null) { }
+            else
+            {
+                foreach (var item in Model.GroupBy(x => x.Merek))
+                {
+                    <tr class="group-header">
+                        <td colspan="6">
+                            <span class="h3">@item.Key</span>
+                        </td>
+                    </tr>
+                    foreach (var aa in item.GroupBy(x => x.TanggalPenjualan))
+                    {
+                        <tr class="group-header">
+                            <td colspan="6">
+                                <span class="h3">@string.Format("{0:D}", aa.Key) </span>
+                            </td>
+                        </tr>
+                        foreach (var vv in aa)
+                        {
+                            <tr style="border:double;width:auto">
+                                <td style="border:solid">@i</td>
+
+                                <td style="border:solid">
+                                    @Html.DisplayFor(model => vv.NamaKonsumen)<br />
+                                    @Html.DisplayFor(modelItem => vv.NamaBPKB)<br />
+                                    @Html.DisplayFor(modelitem => vv.AlamatKonsumen)<br />
+                                    @Html.DisplayFor(modelitem => vv.KelurahanK).
+                                    @Html.DisplayFor(modelitem => vv.KecamatanK)<br />
+                                    @Html.DisplayFor(modelitem => vv.KotaK)<br />
+                                    @Html.DisplayFor(modelitem => vv.NoTelepon) /    @Html.DisplayFor(modelitem => vv.NoHandphone)
+
+                                </td>
+                                <td style="border:solid">
+                                    @Html.DisplayFor(modelItem => vv.Merek):
+                                    @Html.DisplayFor(modelItem => vv.NamaBarang)<br />
+                                    No.Rangka:<br />
+                                    @Html.DisplayFor(modelItem => vv.Nosin1)<br />
+                                    No.Mesin:<br />
+                                    @Html.DisplayFor(modelItem => vv.Noka1)<br />
+                                    @Html.DisplayFor(modelItem => vv.NamaLeasing):
+                                    @Html.DisplayFor(modelItem => vv.CabangLeasing)
+
+                                </td>
+                                <td style="border:solid">
+                                    <table>
+                                        <tr>
+
+                                            <th style="font-weight:normal">OTR:</th>
+                                            <td>@string.Format("{0:c}", vv.HargaOtr1)</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th style="font-weight:normal">Uang Muka</th>
+                                            <td>@string.Format("{0:c}", vv.UangMuka)</td>
+                                        </tr>
+                                        <tr>
+                                            <th style="font-weight:normal">Sub Lease</th>
+                                            <td>@string.Format("{0:c}", vv.JoinPromo1)</td>
+                                        </tr>
+                                        <tr>
+                                            <th style="font-weight:normal">Tagihan</th>
+                                            <td>@string.Format("{0:c}", vv.HargaTagihan)</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td style="border:solid">
+                                    <table>
+                                        <tr>
+                                            <th style="font-weight:normal"> Kios:</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr style="font-weight:normal">
+                                            <th style="font-weight:normal">Kategori Penjualan </th>
+                                            <td>@vv.KategoriPenjualan</td>
+                                        </tr>
+                                        <tr>
+                                            <th style="font-weight:normal">Supplier</th>
+                                            <td>@vv.NamaSupplier</td>
+                                        </tr>
+                                        <tr>
+                                            <th style="font-weight:normal">No Buku</th>
+                                            <td>@vv.NoBuku</td>
+                                        </tr>
+                                        <tr>
+                                            <th style="font-weight:normal">Keterangan</th>
+                                            <td>@vv.Keterangan</td>
+                                        </tr>
+                                        <tr>
+                                            <th style="font-weight:normal">Marketing</th>
+                                            <td>@vv.NamaSales</td>
+                                        </tr>
+                                        <tr>
+                                            <th style="font-weight:normal">Mediator</th>
+                                            <td>@vv.Mediator1</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td>Tgl PEncairan</td>
+                                            <td></td>
+                                        </tr>
+
+                                    </table>
+                                    <table>
+                                        <tr>
+                                            <td></td>
+                                            <td>No Kontrak</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                            </tr>
+                            i++;
+                        }
+
+                    }
+                }
+
+            }
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+    <p>Printed by:@UserManager.GetUserName(User) @DateTime.Now</p>
+
+</div>
+
+

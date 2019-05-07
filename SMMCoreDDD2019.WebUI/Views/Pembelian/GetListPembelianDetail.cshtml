@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewData["Title"] = "GetListPembelianDetail";
+  // Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h1>GetListPembelianDetail</h1>*@
+<form asp-controller="Pembelian" method="post" asp-action="GetListPembelianDetail2">
+    <div class="form-group">
+        <div class="col-md-10">
+            <div class="form-group">
+                <label class="control-label">Data Pembelian</label>
+                <select id="DataPmb1" name="DataPmb1" class="form-control" asp-items="ViewBag.DataPembelian1"></select>
+
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="form-group">
+                <input id="btnSearch" type="submit" class="btn btn-primary" value="Tampilkan" />
+
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+
+@*<div id="GetListPembelianDetail2"></div>*@
+
+<script>
+    //$('#btnSearch').on('click', function (e) {
+    //    var filters = {
+    //        id: $('#DataPmb1').val()
+
+    //    };
+
+    //    GetDataPembelian(filters);
+
+    //});
+    //$(function () {
+    //    GetDataPembelian();
+    //});
+
+
+    //function GetDataPembelian(filters) {
+    //    $.ajax({
+    //        url: '/Pembelian/GetListPembelianDetail2',
+    //        type: 'POST',
+    //        cache: false,
+    //        async: true,
+    //        dataType: "html",
+    //        data: filters
+    //    })
+    //        .done(function (result) {
+    //            $('#GetListPembelianDetail2').html(result);
+    //        }).fail(function (xhr) {
+    //            console.log('error : ' + xhr.status + ' - '
+    //                + xhr.statusText + ' - ' + xhr.responseText);
+    //        });
+    //}
+
+    //showing modal form
+    //window.showModal = showModal;
+    //function showModal(url) {
+    //    $.get(url)
+    //        .done(function (response) {
+
+    //            $('.modal-body').html(response);
+
+    //            $('#modal-default').modal({
+    //                backdrop: 'static',
+    //                keyboard: false,
+    //                focus: true
+    //            });
+
+    //        });
+    //}
+
+    //$('#btnSearch').click(function () {
+    //    var id = $(this).data('DataPmb1');
+    //    var url = "/Pembelian/GetListPembelianDetail2/" + id;
+
+    //    showModal(url);
+    //});
+
+
+</script>

@@ -1,0 +1,313 @@
+﻿@model SmmCoreDDD2019.Application.PenjualanDetails.Query.GetDataDetailLeasingCetak.GetDataDetailLeasingCetakLookUpModel
+@{
+    ViewData["Title"] = "PenagihanL";
+    Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+
+<style>
+    .page {
+        width: 21cm;
+        min-height: 29.7cm;
+        padding: 2cm;
+        margin: 1cm auto;
+        border: 1px #D3D3D3 solid;
+        border-radius: 5px;
+        background: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<script language="javascript">
+    function printdiv(printpage) {
+        var headstr = "<html><head><title></title></head><body>";
+        var footstr = "</body>";
+        var newstr = document.all.item(printpage).innerHTML;
+        var oldstr = document.body.innerHTML;
+        document.body.innerHTML = headstr + newstr + footstr;
+        window.print();
+        document.body.innerHTML = oldstr;
+        return false;
+    }
+</script>
+
+<div class="hidden-print">
+    <p></p>
+    <input name="b_print" type="button" class="ipt" onClick="printdiv('div_print');" value=" Print ">
+    <a asp-action="Index2">Back to List</a>
+</div>
+
+
+
+
+<div id="div_print">
+
+    <p style="text-align:center;font-weight:bold"><u>KWITANSI</u></p>
+    <table align="center" style="width:100%;table-layout:fixed">
+        <colgroup>
+            <col style="width:100px;white-space:nowrap;height:500px" />
+            <col style="width:1000px" />
+        </colgroup>
+        <tr>
+            <td style="vertical-align:middle;white-space:nowrap;line-height:1;transform:rotate(-90deg);text-align:center;border-right:solid;font-size:smaller;font-family:'Times New Roman'" width="100" height="100">
+                <p>       @ViewData["NamaP"]<br /></p>
+                <p class="normal" style="overflow-wrap:normal">  @ViewData["AlamatP"]<br /></p>
+                <p>  @ViewData["KotaP"]<br /></p>
+                <p>@ViewData["TelpP"]<br /></p>
+            </td>
+            <td style="vertical-align:top">
+                <br />
+                Sudah Terima Dari :  @Html.DisplayFor(model => model.NamaLeasing) QQ @Html.DisplayFor(model => model.NamaBPKB)<br />
+                Banyaknya Uang:
+                <label style="font-weight:normal" id="TerbilangUM"></label><br>
+
+                Untuk Pembayaran : Pelunasan Harga 01(satu) Unit Sepeda motor @Html.DisplayFor(model => model.Merek) Type @Html.DisplayFor(model => model.NamaBarang)
+                warna @Html.DisplayFor(model => model.Warna) No.Rangka : @Html.DisplayFor(model => model.Noka1)@Html.DisplayFor(model => model.NoRangka)
+                No.Mesin : @Html.DisplayFor(model => model.Nosin1)@Html.DisplayFor(model => model.NoMesin)<br />
+                <table style="width:100%">
+                    <tr></tr>
+                    <colgroup>
+                        <col style="width:20%" />
+                        <col style="width:10%" />
+                        <col style="width:35%" />
+                        <col style="width:35%" />
+                    </colgroup>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>@ViewData["KotaP"],@DateTime.Now.ToString("dd MMMM yyyy")</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    Perincian:
+                                </tr>
+                                <tr>
+                                    <th>OTR:</th>
+                                    <td>@String.Format("{0:c}", Model.HargaOtr1)</td>
+                                </tr>
+                                <tr style="border-bottom:double">
+                                    <th>DP:</th>
+                                    <td> @String.Format("{0:c}", Model.UangMuka)</td>
+                                </tr>
+                                <tr>
+                                    <th>Sisa:</th>
+                                    <td>@String.Format("{0:c}", Model.HargaTagihan)</td>
+                                </tr>
+                            </table>
+                            <br />
+                            <br /><br /><br />
+                            <input readonly nama="Um3" id="Um3" value="@String.Format("{0:c}",Model.HargaTagihan)" />
+                        </td>
+                        <td></td>
+                        <td>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+
+                        </td>
+                        <td>
+                            Hormat Kami
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br /><br />
+                            (_____<u>@ViewData["ContakCs"]</u>_____)
+                        </td>
+                    </tr>
+                </table>
+                <br /><br /><br />
+                <p style="font-size:small">Pembayaran dengan Cheque/BG dianggap Sah Bila telah diuangkan.</p>
+            </td>
+        </tr>
+    </table>
+    <p style="text-align:center;font-family:'Times New Roman';border-bottom-style:solid;border-bottom-width:1px;font-size:30px"></p>
+    <p style="text-align:center;font-weight:bold"><u>KWITANSI</u></p>
+    <table align="center" style="width:100%;table-layout:fixed">
+        <colgroup>
+            <col style="width:100px;white-space:nowrap;height:500px" />
+            <col style="width:1000px" />
+        </colgroup>
+        <tr>
+            <td style="vertical-align:middle;white-space:nowrap;line-height:1;transform:rotate(-90deg);text-align:center;border-right:solid;font-size:smaller;font-family:'Times New Roman'" width="100" height="100">
+                <p>       @ViewData["NamaP"]<br /></p>
+                <p class="normal" style="overflow-wrap:normal">  @ViewData["AlamatP"]<br /></p>
+                <p>  @ViewData["KotaP"]<br /></p>
+                <p>@ViewData["TelpP"]<br /></p>
+            </td>
+            <td style="vertical-align:top">
+                <br />
+                Sudah Terima Dari :  @Html.DisplayFor(model => model.NamaLeasing) QQ @Html.DisplayFor(model => model.NamaBPKB)<br />
+                Banyaknya Uang:
+                <label style="font-weight:normal" id="TerbilangUM2"></label><br>
+
+                Untuk Pembayaran : Program Advanced Benefit 01(satu) Unit Sepeda motor @Html.DisplayFor(model => model.Merek) Type @Html.DisplayFor(model => model.NamaBarang)
+                warna @Html.DisplayFor(model => model.Warna) No.Rangka : @Html.DisplayFor(model => model.Noka1)@Html.DisplayFor(model => model.NoRangka)
+                No.Mesin : @Html.DisplayFor(model => model.Nosin1)@Html.DisplayFor(model => model.NoMesin)<br />
+                <table style="width:100%">
+                    <tr></tr>
+                    <colgroup>
+                        <col style="width:20%" />
+                        <col style="width:10%" />
+                        <col style="width:35%" />
+                        <col style="width:35%" />
+                    </colgroup>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>@ViewData["KotaP"],@DateTime.Now.ToString("dd MMMM yyyy")</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br /><br /><br /><br /><br /><br />
+                            <input readonly nama="Um3a" id="Um3a" value="@string.Format("{0:c}",Model.JoinPromo1)" />
+                        </td>
+                        <td></td>
+                        <td>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+
+                        </td>
+                        <td>
+                            Hormat Kami
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br /><br />
+                            (_____<u>@ViewData["ContakCs"]</u>_____)
+                        </td>
+                    </tr>
+                </table>
+                <br /><br /><br />
+                <p style="font-size:small">Pembayaran dengan Cheque/BG dianggap Sah Bila telah diuangkan.</p>
+            </td>
+        </tr>
+    </table>
+    <p style="text-align:center;font-family:'Times New Roman';border-bottom-style:solid;border-bottom-width:1px;font-size:30px"></p>
+</div>
+
+
+
+
+
+
+<script>
+
+    var Terbilang = (function (idx) {
+        var testangka1 = idx;
+        bilangan = String(testangka1);
+        var hasil = $('#terbilang');
+        var angka = new Array('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+        var kata = new Array('', 'Satu', 'Dua', 'Tiga', 'Empat', 'Lima', 'Enam', 'Tujuh', 'Delapan', 'Sembilan');
+        var tingkat = new Array('', 'Ribu', 'Juta', 'Milyar', 'Triliun');
+        var panjang_bilangan = bilangan.length;
+
+        /* pengujian panjang bilangan
+        if (panjang_bilangan > 15) {
+            kaLimat = "Diluar Batas";
+
+            hasil.val(kaLimat);
+            hasil.change();
+
+        } */
+
+        /* mengambil angka-angka yang ada dalam bilangan, dimasukkan ke dalam array */
+        for (i = 1; i <= panjang_bilangan; i++) {
+            angka[i] = bilangan.substr(-(i), 1);
+        }
+
+        i = 1;
+        j = 0;
+        kaLimat = "";
+
+
+        /* mulai proses iterasi terhadap array angka */
+        while (i <= panjang_bilangan) {
+
+            subkaLimat = "";
+            kata1 = "";
+            kata2 = "";
+            kata3 = "";
+
+            /* untuk Ratusan */
+            if (angka[i + 2] != "0") {
+                if (angka[i + 2] == "1") {
+                    kata1 = "Seratus";
+                } else {
+                    kata1 = kata[angka[i + 2]] + " Ratus";
+                }
+            }
+
+            /* untuk Puluhan atau Belasan */
+            if (angka[i + 1] != "0") {
+                if (angka[i + 1] == "1") {
+                    if (angka[i] == "0") {
+                        kata2 = "Sepuluh";
+                    } else if (angka[i] == "1") {
+                        kata2 = "Sebelas";
+                    } else {
+                        kata2 = kata[angka[i]] + " Belas";
+                    }
+                } else {
+                    kata2 = kata[angka[i + 1]] + " Puluh";
+                }
+            }
+
+            /* untuk Satuan */
+            if (angka[i] != "0") {
+                if (angka[i + 1] != "1") {
+                    kata3 = kata[angka[i]];
+                }
+            }
+
+            /* pengujian angka apakah tidak nol semua, lalu ditambahkan tingkat */
+            if ((angka[i] != "0") || (angka[i + 1] != "0") || (angka[i + 2] != "0")) {
+                subkaLimat = kata1 + " " + kata2 + " " + kata3 + " " + tingkat[j] + " ";
+            }
+
+            /* gabungkan variabe sub kaLimat (untuk Satu blok 3 angka) ke variabel kaLimat */
+            kaLimat = subkaLimat + kaLimat;
+            i = i + 3;
+            j = j + 1;
+
+        }
+
+        /* mengganti Satu Ribu jadi Seribu jika diperlukan */
+        if ((angka[5] == "0") && (angka[6] == "0")) {
+            kaLimat = kaLimat.replace("Satu Ribu", "Seribu");
+        }
+
+        return kaLimat + "Rupiah";
+    });
+    $(document).ready(function ()
+    {
+           var bnm = Terbilang(@Html.DisplayFor(model => model.HargaTagihan));
+           $('#TerbilangUM').text(bnm);
+
+          var bnm2 = Terbilang(@Html.DisplayFor(model => model.JoinPromo1));
+            $('#TerbilangUM2').text(bnm2);
+
+           var bnm3 = Terbilang(@Html.DisplayFor(model => model.DiskonKredit1));
+            $('#TerbilangUM3').text(bnm3);
+
+
+
+     });
+
+</script>

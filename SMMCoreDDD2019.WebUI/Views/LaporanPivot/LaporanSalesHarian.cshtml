@@ -1,0 +1,182 @@
+﻿@model IEnumerable<SmmCoreDDD2019.Application.Penjualans.Query.GetDataPenjualanHarian.GetDataPenjualanHarianLookUpModel>
+@{
+    ViewData["Title"] = "LaporanSalesHarian";
+    Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<h2>LaporanSalesHarian</h2>
+
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<script language="javascript">
+    function printdiv(printpage) {
+        var headstr = "<html><head><title></title></head><body>";
+        var footstr = "</body>";
+        var newstr = document.all.item(printpage).innerHTML;
+        var oldstr = document.body.innerHTML;
+        document.body.innerHTML = headstr + newstr + footstr;
+        window.print();
+        document.body.innerHTML = oldstr;
+        return false;
+    }
+</script>
+<style>
+    .page {
+        width: 21cm;
+        min-height: 29.7cm;
+        padding: 2cm;
+        margin: 1cm auto;
+        border: 1px #D3D3D3 solid;
+        border-radius: 5px;
+        background: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+
+
+
+<div class="hidden-print">
+    <p></p>
+    @*<a style="color:green;text-decoration:none;" href="javascript:window.print()">
+            <span style="color:green;text-decoration:none;">
+                <img height="12" src="https://ecs7.tokopedia.net/img/print.png" alt="Print" />&nbsp;Cetak
+            </span>
+            <span style="display:inline-block; width:25px ;"></span>
+        </a>*@
+    <input name="b_print" type="button" class="ipt" onClick="printdiv('div_print');" value=" Print ">
+    <a asp-action="IsiTglLapHarian">Back to List</a>
+</div>
+
+<div id="div_print">
+    <h2>Lap Sales Harian</h2>
+    <table style="border:double;width:auto" class="table table-bordered table-striped grid">
+        <thead style="border:double;width:auto">
+
+        </thead>
+
+        <tbody style="border:double;width:auto">
+            @{int i = 1;}
+            @foreach (var item in Model)
+            {
+                <tr style="border:double;width:auto">
+                    <td style="border:solid">@i</td>
+
+                    <td style="border:solid">
+                        Nama K :@Html.DisplayFor(modelItem => item.NamaKonsumen)<br />
+                        Nama BPKB :@Html.DisplayFor(modelItem => item.NamaBPKB)<br />
+                        @Html.DisplayFor(modelItem => item.AlamatKonsumen)
+                        Kel. @Html.DisplayFor(modelItem => item.Kelurahan) Kec.@Html.DisplayFor(modelItem => item.Kecamatan)
+                        Kota.   @Html.DisplayFor(modelItem => item.Kota) <br />
+                        Telp.   @Html.DisplayFor(modelItem => item.Telepon) HP   @Html.DisplayFor(modelItem => item.Handphone)<br />
+                        @Html.DisplayFor(modelItem => item.NoBuku)<br />
+                        Sales:@Html.DisplayFor(modelItem => item.NamaSales)<br />
+                        @Html.DisplayFor(modelItem => item.KategoryPenjualan)<br />
+                        @Html.DisplayFor(modelItem => item.NamaLeasing)<br />
+                        @Html.DisplayFor(modelItem => item.CabangLeasing)<br />
+                        Tanggal Kirim : @string.Format("{0:d}", item.TanggalPenjualan)
+
+                    </td>
+                    <td style="border:solid">
+                        @Html.DisplayFor(modelItem => item.Merek)<br />
+                        @Html.DisplayFor(modelItem => item.NamaBarang)<br />
+                        No.Rangka:<br />
+                        @Html.DisplayFor(modelItem => item.NoMesin)<br />
+                        No.Mesin:<br />
+                        @Html.DisplayFor(modelItem => item.NoRangka)
+
+                    </td>
+                    <td style="border:solid">
+                        <table>
+                            <tr>
+
+                                <th style="font-weight:normal">OTR:</th>
+                                <td>@string.Format("{0:c}", item.OTR)</td>
+                            </tr>
+                            <tr style="border-bottom:double">
+                                <th style="font-weight:normal">Diskon Tunai:</th>
+                                <td>@string.Format("{0:c}", item.DiscTunai)</td>
+                            </tr>
+                            <tr>
+                                <th style="font-weight:normal">Dibayar:</th>
+                                <td>@string.Format("{0:c}", item.OTRByr)</td>
+                            </tr>
+                            <tr>
+                                <th style="font-weight:normal">SPF:</th>
+                                <td>@string.Format("{0:c}", item.SPFF)</td>
+                            </tr>
+                            <tr>
+                                <th style="font-weight:normal">Sell OUT</th>
+                                <td>@string.Format("{0:c}", item.SellOutt)</td>
+                            </tr>
+                            <tr>
+                                <th style="font-weight:normal">Denda Wilayah</th>
+                                <td>@string.Format("{0:c}", item.DenWil)</td>
+                            </tr>
+                            <tr>
+                                <th style="font-weight:normal">Promosi</th>
+                                <td>@string.Format("{0:c}", item.Promosi1)</td>
+                            </tr>
+                        </table>
+                    </td>
+
+                    <td style="border:solid">
+                        <table>
+                            <tr>
+                                <th style="font-weight:normal">Uang Muka</th>
+                                <td>@string.Format("{0:c}", item.DP)</td>
+                            </tr>
+                            <tr style="border-bottom:double">
+                                <th style="font-weight:normal">Diskon Kredit</th>
+                                <td>@string.Format("{0:c}", item.DiscDP)</td>
+                            </tr>
+                            <tr>
+                                <th style="font-weight:normal">DP Bayar</th>
+                                <td>@string.Format("{0:c}", item.DPByr)</td>
+                            </tr>
+                            <tr>
+                                <th style="font-weight:normal">Subsidi</th>
+                                <td>@string.Format("{0:c}", item.SubK)</td>
+                            </tr>
+                            <tr>
+                                <th style="font-weight:normal">Komisi</th>
+                                <td>@string.Format("{0:c}", item.Komisii)</td>
+                            </tr>
+                            <tr>
+                                <th style="font-weight:normal">DP Bersih</th>
+                                <td>@string.Format("{0:c}", item.DPByr)</td>
+                            </tr>
+                        </table>
+                    </td>
+
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    @if (item.tglLunasLeasing == null)
+                                    {
+                                        @Html.Label("Belum Lunas")
+
+                                    }
+                                    else
+                                    {
+                                        @string.Format("{0:d}", item.tglLunasLeasing)
+                                    }
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+
+                </tr>
+                i++;
+            }
+        </tbody>
+
+    </table>
+
+</div>
+<div>
+    <p>Printed by:@UserManager.GetUserName(User) @DateTime.Now</p>
+</div>

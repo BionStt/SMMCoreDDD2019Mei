@@ -1,0 +1,687 @@
+﻿@model SmmCoreDDD2019.Application.DataPegawaiDataPribadiInput.Command.CreateDataPegawaiDataPribadiInput.CreateDataPegawaiDataPribadiInputCommand
+
+@{
+ //   ViewData["Title"] = "CreateDataPegawai";
+    Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="CreateDataPegawai">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            @*<div hidden class="form-group">
+            <label asp-for="IDPegawai" class="control-label"></label>
+            <input asp-for="IDPegawai" class="form-control" />
+            <span asp-validation-for="IDPegawai" class="text-danger"></span>
+        </div>*@
+            @*<div hidden class="form-group">
+            <label asp-for="TglInput" class="control-label"></label>
+            <input asp-for="TglInput" class="form-control" />
+            <span asp-validation-for="TglInput" class="text-danger"></span>
+        </div>*@
+            <div hidden class="form-group">
+                <label asp-for="TglMulaiKerja" class="control-label"></label>
+                <input asp-for="TglMulaiKerja" class="form-control" />
+                <span asp-validation-for="TglMulaiKerja" class="text-danger"></span>
+            </div>
+            <div hidden class="form-group">
+                <label asp-for="TglBerhentiKerja" class="control-label"></label>
+                <input asp-for="TglBerhentiKerja" class="form-control" />
+                <span asp-validation-for="TglBerhentiKerja" class="text-danger"></span>
+            </div>
+            <div hidden class="form-group">
+                <label asp-for="Aktif" class="control-label"></label>
+                <input asp-for="Aktif" class="form-control" />
+                <span asp-validation-for="Aktif" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label asp-for="NoKTP" class="control-label"></label>
+
+                        <input size="100" id="NoKtp1" asp-for="NoKTP" class="form-control" />
+                        <span asp-validation-for="NoKTP" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="NamaDepan" class="control-label"></label>
+
+                        <input asp-for="NamaDepan" class="form-control" />
+                        <span asp-validation-for="NamaDepan" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="NamaTengah" class="control-label"></label>
+
+                        <input asp-for="NamaTengah" class="form-control" />
+                        <span asp-validation-for="NamaTengah" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="NamaBelakang" class="control-label"></label>
+
+                        <input asp-for="NamaBelakang" class="form-control" />
+                        <span asp-validation-for="NamaBelakang" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="AlamatKTP" class="control-label"></label>
+
+                        <input asp-for="AlamatKTP" class="form-control" />
+                        <span asp-validation-for="AlamatKTP" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="KelurahanKTP" class="control-label"></label>
+
+                        <input asp-for="KelurahanKTP" class="form-control" />
+                        <span asp-validation-for="KelurahanKTP" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label asp-for="KecamatanKTP" class="control-label"></label>
+
+                        <input asp-for="KecamatanKTP" class="form-control" />
+                        <span asp-validation-for="KecamatanKTP" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="KotaKTP" class="control-label"></label>
+
+                        <input asp-for="KotaKTP" class="form-control" />
+                        <span asp-validation-for="KotaKTP" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="PropinsiKTP" class="control-label"></label>
+                        <input asp-for="PropinsiKTP" class="form-control" />
+                        <span asp-validation-for="PropinsiKTP" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="KodePosKTP" class="control-label"></label>
+
+                        <input id="KodePos1" asp-for="KodePosKTP" class="form-control" />
+                        <span asp-validation-for="KodePosKTP" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="AlamatRumah" class="control-label"></label>
+
+                        <input asp-for="AlamatRumah" class="form-control" />
+                        <span asp-validation-for="AlamatRumah" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="KelurahanRumah" class="control-label"></label>
+
+                        <input asp-for="KelurahanRumah" class="form-control" />
+                        <span asp-validation-for="KelurahanRumah" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="KecamatanRumah" class="control-label"></label>
+
+                        <input asp-for="KecamatanRumah" class="form-control" />
+                        <span asp-validation-for="KecamatanRumah" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="KotaRumah" class="control-label"></label>
+
+                        <input asp-for="KotaRumah" class="form-control" />
+                        <span asp-validation-for="KotaRumah" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="PropinsiRumah" class="control-label"></label>
+
+                        <input asp-for="PropinsiRumah" class="form-control" />
+                        <span asp-validation-for="PropinsiRumah" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="KodePos" class="control-label"></label>
+
+                        <input id="KodePos2" asp-for="KodePos" class="form-control" />
+                        <span asp-validation-for="KodePos" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Telp" class="control-label"></label>
+                        <input id="Telp1" asp-for="Telp" class="form-control" />
+                        <span asp-validation-for="Telp" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Handphone" class="control-label"></label>
+
+                        <input id="Hp1" asp-for="Handphone" class="form-control" />
+                        <span asp-validation-for="Handphone" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Handphone2" class="control-label"></label>
+
+                        <input id="Hp2" asp-for="Handphone2" class="form-control" />
+                        <span asp-validation-for="Handphone2" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label asp-for="Agama" class="control-label"></label>
+
+                        <select asp-for="Agama" class="form-control" asp-items="ViewBag.Agama1"></select>
+                        @*<input asp-for="Agama" class="form-control" />*@
+                        <span asp-validation-for="Agama" class="text-danger"></span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label asp-for="TempatLahir" class="control-label"></label>
+
+                        <input asp-for="TempatLahir" class="form-control" />
+                        <span asp-validation-for="TempatLahir" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="TanggalLahir" class="control-label"></label>
+
+                        <input type="text" id="datepicker1" asp-for="TanggalLahir" class="form-control" />
+                        <span asp-validation-for="TanggalLahir" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="JenisKelamin" class="control-label"></label>
+
+                        <select asp-for="JenisKelamin" class="form-control" asp-items="ViewBag.JenisKelamin1"></select>
+
+                        <span asp-validation-for="JenisKelamin" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="StatusKawin" class="control-label"></label>
+
+                        <select asp-for="StatusKawin" class="form-control" asp-items="ViewBag.StatusNikah"> </select>
+
+                        <span asp-validation-for="StatusKawin" class="text-danger"></span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label asp-for="GolonganDarah" class="control-label"></label>
+
+                        <input asp-for="GolonganDarah" class="form-control" />
+                        <span asp-validation-for="GolonganDarah" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="StatusTempatTinggal" class="control-label"></label>
+
+                        <select asp-for="StatusTempatTinggal" class="form-control" asp-items="ViewBag.StatusRumah"></select>
+
+                        <span asp-validation-for="StatusTempatTinggal" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label">    </label>
+
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+             
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <input type="submit" value="Create" class="btn btn-primary" />
+
+
+                    </div>
+                </div>
+               
+            </div>
+          
+        </form>
+    </div>
+
+</div>
+<hr />
+<hr />
+<script>
+    $('#Telp1').keypress(function (e) {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+
+        return false;
+    });
+    $('#Telp1').keydown(function (e) {
+        // return /[0-9]/.test(String.fromCharCode(e.which));
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+        return false;
+    });
+    $('#Hp2').keypress(function (e) {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+
+        return false;
+    });
+    $('#Hp2').keydown(function (e) {
+        // return /[0-9]/.test(String.fromCharCode(e.which));
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+        return false;
+    });
+    $('#Hp1').keypress(function (e) {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+
+        return false;
+    });
+    $('#Hp1').keydown(function (e) {
+        // return /[0-9]/.test(String.fromCharCode(e.which));
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+        return false;
+    });
+    $('#NoKtp1').keypress(function (e) {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+
+        return false;
+    });
+    $('#NoKtp1').keydown(function (e) {
+        // return /[0-9]/.test(String.fromCharCode(e.which));
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+        return false;
+    });
+    $('#KodePos1').keypress(function (e) {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+
+        return false;
+    });
+    $('#KodePos1').keydown(function (e) {
+        // return /[0-9]/.test(String.fromCharCode(e.which));
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+        return false;
+    }); $('#KodePos2').keypress(function (e) {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+
+        return false;
+    });
+    $('#KodePos2').keydown(function (e) {
+        // return /[0-9]/.test(String.fromCharCode(e.which));
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+        return false;
+    });
+    $('#datepicker1').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        appendText: "(Tanggal-Bulan-Tahun)",
+        dateFormat: "dd-mm-yy",
+        yearRange: "c-100:c+10"
+
+    });
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

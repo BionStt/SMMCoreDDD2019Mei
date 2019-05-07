@@ -1,0 +1,388 @@
+﻿@model SmmCoreDDD2019.Application.DataPegawaiFotos.Command.CreateDataPegawaiFoto.CreateDataPegawaiFotoCommand
+
+@{
+  //  ViewData["Title"] = "CreateDataPegawaiDtFoto";
+    Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form method="post" asp-action="CreateDataPegawaiDtFoto" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label asp-for="IDPegawai" class="control-label"></label>
+
+                        <select asp-items="ViewBag.NamaPekerja" asp-for="IDPegawai" class="form-control"></select>
+
+                        <span asp-validation-for="IDPegawai" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label asp-for="Foto" class="control-label"></label>
+
+                        @*<input asp-for="Foto" class="form-control" />*@
+                        <img alt="Image preview..." id="imagePreview" style="width: 400px; height: 300px;" class="fileupload-new thumbnail" src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image">
+                        <input hidden type="text" name="test1" id="test1" />
+                        <video hidden id="video" width="400" height="300"></video>
+                        <canvas hidden style="width: 400px; height: 300px;" id="imagePreviewC"></canvas>
+
+
+                        <span asp-validation-for="Foto" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+
+                        <span class="btn btn-white btn-file">
+                            <input style="height:auto" formmethod="post" onchange="ShowImagePreview(this);" type="file" name="KirimFoto1" class="form-control" id="KirimFoto1" accept="image/*;capture=camera" />
+                        </span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group">
+
+                        <label for="videoSource">Video source: </label>
+                        <select id="videoSource"></select><br />
+                        <label for="audioSource">Audio input source: </label><select id="audioSource"></select><br />
+                        <label hidden for="audioOutput">Audio output destination: </label><select hidden id="audioOutput"></select>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+
+
+                        <input type="button" class="btn btn-primary btn-sm" onclick="startCapture()" id="btnbtncameraupload" style="width:150px;" value="Start Capturing" />
+                        <input disabled type="button" class="btn btn-primary btn-sm" value="Take Snapshot" onclick="takeSnapshot()" id="takeSnapshotBtn" />
+                        <input disabled type="button" class="btn btn-primary btn-sm" value="Stop Capturing" onclick="stopCapture()" id="stopCaptureBtn" />
+
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="KodeBarcode" class="control-label"></label>
+
+                        <input asp-for="KodeBarcode" class="form-control" />
+                        <span asp-validation-for="KodeBarcode" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <script type="text/javascript">
+                //Image Upload Preview
+                function ShowImagePreview(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        //var canvas = document.getElementById('imagePreview');//dihilangkan bila image
+                        //var ctx = canvas.getContext("2d");//dihilangkan bila image
+                        reader.onload = function (e) {
+                            $('#imagePreview').prop('src', e.target.result); // diaktifkan bila image
+                            //var img = new Image();//dihilangkan bila image
+                            //img.src = e.target.result;//dihilangkan bila image
+                            //img.onload = function () {//dihilangkan bila image
+                            //    ctx.drawImage(img, 0, 0, 300, 200);//dihilangkan bila image
+                            //};//dihilangkan bila image
+                            var testb = document.getElementById('test1');
+                            testb.setAttribute('value', e.target.result);
+                        };
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                    //var testa = document.getElementById('imagePreview');
+                    //var testb = document.getElementById('test1');
+                    //testb.setAttribute('value', input.files[0]);
+                }
+
+                //var canvas = document.getElementById('imagePreview');
+                //canvas.onclick = function (e) {
+                //    var x = e.offsetX;
+                //    var y = e.offsetY;
+                //    ctx.beginPath();
+                //    ctx.fillStyle = 'black';
+                //    ctx.arc(x, y, 5, 0, Math.PI * 2);
+                //    ctx.fill();
+                //};
+
+                //Date of Birth datepicker
+                $(document).ready(function () {
+                    $('#txtDateofBirth').datepicker({
+                        changeMonth: true,
+                        changeYear: true,
+                        dateFormat: "dd-mm-yy",
+                        yearRange: "-100:+10"
+                    });
+                });
+
+                function startCapture() {
+                    var video = document.getElementById('video');
+                    video.hidden = false;
+
+                    var takeSnapshotBtn1 = document.getElementById("takeSnapshotBtn");
+                    takeSnapshotBtn1.disabled = false;
+
+                    var stopCaptureBtn1 = document.getElementById('stopCaptureBtn');
+                    stopCaptureBtn1.disabled = false;
+
+                    var btnbtncameraupload1 = document.getElementById('btnbtncameraupload');
+                    btnbtncameraupload1.disabled = true;
+                    //video.style.visibility = 'visible';
+                    //if (video.style.visibility === 'hidden') {
+                    //    video.style.visibility = 'visible';
+                    //} else {
+                    //    video.style.visibility = 'hidden';
+                    //}
+
+                    if ((video.paused == true) && (video.src == '')) {
+                        var getMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
+                        debugger;
+                        getMedia = getMedia.bind(navigator);
+                        getMedia({ video: true, audio: false },
+                            function (stream) {
+                                video.src = window.URL.createObjectURL(stream);
+                                self.localStream = stream;
+                            },
+                            function (error) {
+                                debugger;
+                            }
+                        );
+
+                        video.play();
+                    }
+                }
+
+                function dataURItoBlob(dataURI) {
+                    var arr = dataURI.split(','), mime = arr[0].match(/:(.*?);/)[1];
+                    return new Blob([atob(arr[1])], { type: mime });
+                }
+
+
+                function takeSnapshot() {
+                    {
+                        var video = document.getElementById('video');
+                        // var canvas = document.createElement('canvas1');
+                        var canvas = document.getElementById('imagePreviewC');
+                        canvas.width = video.width;
+                        canvas.height = video.height;
+                        var context = canvas.getContext('2d');
+                        context.drawImage(video, 0, 0, video.width, video.height);
+                        var picture = canvas.toDataURL();
+                        { 1 }
+                        // var url = canvas.toDataURL();
+
+                        var newImg = document.getElementById("imagePreview"); // create img tag
+                        newImg.src = picture;
+
+                        var testb = document.getElementById('test1');//testting
+                        testb.setAttribute('value', picture);
+
+                        var takeSnapshotBtn1 = document.getElementById("takeSnapshotBtn");
+                        takeSnapshotBtn1.disabled = true;
+
+                        var stopCaptureBtn1 = document.getElementById('stopCaptureBtn');
+                        stopCaptureBtn1.disabled = false;
+
+                    }
+                }
+
+
+                function stopCapture() {
+                    {
+                        var video = document.getElementById('video');
+                        video.hidden = true;
+                        //video.style.visibility = 'hidden';
+                        //if (video.style.visibility === 'visible') {
+                        //    video.style.visibility = 'hidden';
+                        //} else {
+                        //    video.style.visibility = 'visible';
+                        //}
+                        this.localStream.stop();
+                        video.src = "";
+
+                        var stopCaptureBtn1 = document.getElementById('stopCaptureBtn');
+                        stopCaptureBtn1.disabled = true;
+                    }
+                }
+
+
+                'use strict';
+                const videoElement = document.querySelector('video');
+                const audioInputSelect = document.querySelector('select#audioSource');
+                const audioOutputSelect = document.querySelector('select#audioOutput');
+                const videoSelect = document.querySelector('select#videoSource');
+                const selectors = [audioInputSelect, audioOutputSelect, videoSelect];
+
+                // audioOutputSelect.disabled = !('sinkId' in HTMLMediaElement.prototype);
+
+                function gotDevices(deviceInfos) {
+                    // Handles being called several times to update labels. Preserve values.
+                    const values = selectors.map(select => select.value);
+                    selectors.forEach(select => {
+                        while (select.firstChild) {
+                            select.removeChild(select.firstChild);
+                        }
+                    });
+                    for (let i = 0; i !== deviceInfos.length; ++i) {
+                        const deviceInfo = deviceInfos[i];
+                        const option = document.createElement('option');
+                        option.value = deviceInfo.deviceId;
+                        if (deviceInfo.kind === 'audioinput') {
+                            option.text = deviceInfo.label || `microphone ${audioInputSelect.length + 1}`;
+                            audioInputSelect.appendChild(option);
+                        } else if (deviceInfo.kind === 'audiooutput') {
+                            option.text = deviceInfo.label || `speaker ${audioOutputSelect.length + 1}`;
+                            audioOutputSelect.appendChild(option);
+                        } else if (deviceInfo.kind === 'videoinput') {
+                            option.text = deviceInfo.label || `camera ${videoSelect.length + 1}`;
+                            videoSelect.appendChild(option);
+                        } else {
+                            console.log('Some other kind of source/device: ', deviceInfo);
+                        }
+                    }
+                    selectors.forEach((select, selectorIndex) => {
+                        if (Array.prototype.slice.call(select.childNodes).some(n => n.value === values[selectorIndex])) {
+                            select.value = values[selectorIndex];
+                        }
+                    });
+                }
+
+                navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
+
+                // Attach audio output device to video element using device/sink ID.
+                function attachSinkId(element, sinkId) {
+                    if (typeof element.sinkId !== 'undefined') {
+                        element.setSinkId(sinkId)
+                            .then(() => {
+                                console.log(`Success, audio output device attached: ${sinkId}`);
+                            })
+                            .catch(error => {
+                                let errorMessage = error;
+                                if (error.name === 'SecurityError') {
+                                    errorMessage = `You need to use HTTPS for selecting audio output device: ${error}`;
+                                }
+                                console.error(errorMessage);
+                                // Jump back to first output device in the list as it's the default.
+                                audioOutputSelect.selectedIndex = 0;
+                            });
+                    } else {
+                        console.warn('Browser does not support output device selection.');
+                    }
+                }
+
+                function changeAudioDestination() {
+                    const audioDestination = audioOutputSelect.value;
+                    attachSinkId(videoElement, audioDestination);
+                }
+
+                function gotStream(stream) {
+                    window.stream = stream; // make stream available to console
+                    videoElement.srcObject = stream;
+                    // Refresh button list in case labels have become available
+                    return navigator.mediaDevices.enumerateDevices();
+                }
+
+                function handleError(error) {
+                    console.log('navigator.getUserMedia error: ', error);
+                }
+
+                function start() {
+                    if (window.stream) {
+                        window.stream.getTracks().forEach(track => {
+                            track.stop();
+                        });
+                    }
+                    const audioSource = audioInputSelect.value;
+                    const videoSource = videoSelect.value;
+                    const constraints = {
+                        audio: { deviceId: audioSource ? { exact: audioSource } : undefined },
+                        video: { deviceId: videoSource ? { exact: videoSource } : undefined }
+                    };
+                    navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
+                }
+
+                audioInputSelect.onchange = start;
+                audioOutputSelect.onchange = changeAudioDestination;
+
+                videoSelect.onchange = start;
+
+                // start();
+
+
+            </script>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+
+                        <input type="submit" value="Create" class="btn btn-primary" />
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+
+                    </div>
+                </div>
+            </div>
+         
+        </form>
+    </div>
+</div>
+<hr />
+<hr />
+<script>
+
+    var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+
+    if (isMobile.any()) {
+        var takeSnapshotBtn1 = document.getElementById("takeSnapshotBtn");
+        takeSnapshotBtn1.hidden = true;
+
+        var stopCaptureBtn1 = document.getElementById('stopCaptureBtn');
+        stopCaptureBtn1.hidden = true;
+
+        var btnbtncameraupload1 = document.getElementById('btnbtncameraupload');
+        btnbtncameraupload1.hidden = true;
+
+
+    }
+</script>

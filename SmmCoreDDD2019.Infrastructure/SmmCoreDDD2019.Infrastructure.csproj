@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IO.Ports" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmmCoreDDD2019.Application\SmmCoreDDD2019.Application.csproj" />
+    <ProjectReference Include="..\SmmCoreDDD2019.Common\SmmCoreDDD2019.Common.csproj" />
+  </ItemGroup>
+
+</Project>

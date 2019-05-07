@@ -1,0 +1,59 @@
+﻿
+CREATE TRIGGER Accounting.trg_AccountingDataAccount_DEL
+	ON Accounting.AccountingDataAccount
+	INSTEAD OF DELETE
+AS 
+BEGIN
+	SET NOCOUNT ON;
+
+	--Cannot function on more than 1 deleted record at a time
+	IF (SELECT COUNT(1) FROM Deleted) > 1
+	BEGIN
+		RAISERROR (N'This table does not support multiple inserts in one SQL statement', 18, 1)
+		RETURN
+	END
+
+	--Get properties of deleting node
+	DECLARE @DelID INT, @DelParentID INT
+		, @DelLeft INT, @DelRight INT
+		, @DelDepth INT
+
+	SELECT @DelID = NoUrutAccountId, @DelParentID = Parent
+		, @DelLeft = Lft, @DelRight = Rgt
+		, @DelDepth = Depth
+	FROM Deleted
+
+	--Ready to delete the node
+	DELETE FROM Accounting.AccountingDataAccount
+	WHERE NoUrutAccountId = @DelID
+
+	--If furthest right root node, no need to move any others
+	IF (@DelRight = (SELECT MAX(Rgt) FROM Accounting.AccountingDataAccount))
+		RETURN;
+
+	--Else, we have to shift nodes left & promote children
+	ELSE
+	BEGIN
+		--shift everything left 2
+		UPDATE Accounting.AccountingDataAccount
+		SET Lft = (CASE WHEN Lft > @DelRight THEN Lft - 2 ELSE Lft END)
+		  , Rgt = (CASE WHEN Rgt >= @DelRight THEN Rgt - 2 ELSE Rgt END)
+		WHERE Rgt >= @DelRight
+
+		--If leaf node, no need to move children.
+		--Else, shift nodes back (left) by 2, if they are "above / right" of the deleted node;
+		--then we need to "promote" children to next level up (or they'll be orphans!)
+		--Children will be placed in deleted node's "space", i.e. squeezed between its old neighbors.
+		IF (EXISTS (SELECT 1
+					FROM Accounting.AccountingDataAccount child
+					WHERE child.Parent = @DelID))
+		BEGIN
+			--set childrens' ParentID to old Parent, up Depth by 1, & subtract 1 from Positions
+			UPDATE Accounting.AccountingDataAccount
+			SET Parent = @DelParentID, Depth = @DelDepth
+				, Lft = Lft - 1, Rgt = Rgt - 1
+			WHERE Parent = @DelID
+		END
+	END
+END
+GO

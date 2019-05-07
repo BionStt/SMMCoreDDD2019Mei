@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "LaporanAkunBukuBesar";
+    Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<h2>Laporan Akun Buku Besar</h2>
+
+
+
+<form asp-action="LapAkunBukuBesarDetail">
+    <table class="table table-bordered table-striped grid">
+        <tr>
+            <th>Kode Akun - Nama Akun</th>
+            <th>Tindakan </th>
+        </tr>
+        <tr>
+
+            <td>
+                <select name="Akun1" asp-items="@ViewBag.Account1"></select>
+            </td>
+            <td>   <input type="submit" value="Tampilkan" class="btn btn-default" /></td>
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,69 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="Dapper" Version="1.60.6" />
+    <PackageReference Include="FluentValidation" Version="8.2.3" />
+    <PackageReference Include="MediatR" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AccountingDataAccountDB\Command\UpdateAccountingDataAccount\" />
+    <Folder Include="AccountingDataAccountDB\Command\DeleteAccountingDataAccount\" />
+    <Folder Include="AccountingDataBuktiTransaksiDB\Command\" />
+    <Folder Include="AccountingDataBuktiTransaksiDB\Query\" />
+    <Folder Include="AccountingDataJournalDB\Command\DeleteAccountingDataJournal\" />
+    <Folder Include="AccountingDataJournalDB\Command\UpdateAccountingDataJournal\" />
+    <Folder Include="AccountingDataJournalHeaderDB\Command\DeleteAccountingDataJournalHeader\" />
+    <Folder Include="AccountingDataJournalHeaderDB\Command\UpdateAccountingDataJournalHeader\" />
+    <Folder Include="AccountingDataKursDB\Query\" />
+    <Folder Include="AccountingDataMataUangDB\Query\" />
+    <Folder Include="AccountingDataPeriodeDB\Query\" />
+    <Folder Include="AccountingDataSaldoAwalDB\Query\" />
+    <Folder Include="BPKBDBs\Query\" />
+    <Folder Include="DataKontrakAngsuranDBs\Command\CreateDataKontrakAngsuran\" />
+    <Folder Include="DataKontrakAsuransiDBs\Query\" />
+    <Folder Include="DataKontrakKreditAngsuranDemoDBs\Command\UpdateDataKontrakKreditAngsuranDemo\" />
+    <Folder Include="DataKontrakKreditAngsuranDemoDBs\Query\" />
+    <Folder Include="DataPegawaiDataAbsensiDB\Command\" />
+    <Folder Include="DataPegawaiDataAbsensiDB\Query\" />
+    <Folder Include="DataPegawaiDataJabatans\Queries\" />
+    <Folder Include="DataPegawaiDataKeluargas\Queries\" />
+    <Folder Include="DataPegawaiDataOrmass\Queries\" />
+    <Folder Include="DataPegawaiDataPribadis\Queries\" />
+    <Folder Include="DataPegawaiDataRiwayatPekerjaans\Queries\" />
+    <Folder Include="DataPegawaiDataRiwayatPelatihans\Queries\" />
+    <Folder Include="DataPegawaiDataRiwayatPendidikans\Queries\" />
+    <Folder Include="DataPegawaiJenisAbsensiDB\Command\" />
+    <Folder Include="DataPegawaiJenisAbsensiDB\Query\" />
+    <Folder Include="DataPegawais\Queries\" />
+    <Folder Include="DataPerusahaanCabangs\Queries\" />
+    <Folder Include="DataSPKBaruDBs\Queries\" />
+    <Folder Include="DataSPKKendaraanDBs\Queries\" />
+    <Folder Include="DataSPKKreditDBs\Queries\" />
+    <Folder Include="MasterBidangPekerjaanDBs\Command\" />
+    <Folder Include="MasterBidangUsahaDBs\Command\" />
+    <Folder Include="MasterJenisJabatanDBs\Command\UpdateMasterJenisJabatanDB\" />
+    <Folder Include="MasterJenisJabatanDBs\Command\DeleteMasterJenisJabatanDB\" />
+    <Folder Include="MasterKategoriBayaranDbs\Command\" />
+    <Folder Include="MasterKategoriCaraPembayaranDB\Command\" />
+    <Folder Include="MasterKategoriPenjualanDbs\Command\" />
+    <Folder Include="MasterPerusahaanAsuransiDBs\Query\" />
+    <Folder Include="PembelianPODetails\Query\" />
+    <Folder Include="PenjualanPiutangDB\Query\" />
+    <Folder Include="PermohonanFakturDBs\Query\" />
+    <Folder Include="Reports\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmmCoreDDD2019.Domain\SmmCoreDDD2019.Domain.csproj" />
+    <ProjectReference Include="..\SmmCoreDDD2019.Persistence\SmmCoreDDD2019.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

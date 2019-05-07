@@ -1,0 +1,1984 @@
+﻿@model SmmCoreDDD2019.Application.DataKontrakKreditAngsuranDemoDBs.Command.CreateDataKontrakKreditAngsuranDemo.CreateDataKontrakKreditAngsuranDemoCommand
+
+@{
+  //  ViewData["Title"] = "CreateDataKontrakKreditAngsuranDemo";
+    Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="CreateDataKontrakKreditDemo">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div hidden class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label asp-for="NoUrutDataKontrakKredit" class="control-label"></label>
+
+                        <input asp-for="NoUrutDataKontrakKredit" class="form-control" />
+                        <span asp-validation-for="NoUrutDataKontrakKredit" class="text-danger"></span>
+
+                    </div>
+                </div>
+              
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="AngsuranDimuka" class="control-label"></label>
+
+                        <select asp-items="@ViewBag.AngsuranDimuka1" id="AngsuranDimk1a" asp-for="AngsuranDimuka" class="form-control">
+                            <option>Silahkan Pilih Data</option>
+                        </select>
+                        <span asp-validation-for="AngsuranDimuka" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="PolaAngsuran" class="control-label"></label>
+
+
+                        <select asp-items="@ViewBag.PolaAngsuran1" id="PolaAngsuran1a" asp-for="PolaAngsuran" class="form-control">
+                            <option>Silahkan Pilih Data</option>
+                        </select>
+                        <span asp-validation-for="PolaAngsuran" class="text-danger"></span>
+
+                    </div>
+                </div>
+              
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="HargaBarang" class="control-label"></label>
+
+                        <input value="0" id="HargaOtr1" asp-for="HargaBarang" class="form-control" />
+                      <span asp-validation-for="HargaBarang" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="UangMuka" class="control-label"></label>
+                        <input id="Um1" value="0" asp-for="UangMuka" class="form-control" />
+                        <span asp-validation-for="UangMuka" class="text-danger"></span>
+
+                    </div>
+                </div>
+               
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Asuransi" class="control-label"></label>
+
+                        <input id="asuransi1" value="0" asp-for="Asuransi" class="form-control" />
+                        <span asp-validation-for="Asuransi" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Administrasi" class="control-label"></label>
+
+                        <input id="adm1" value="0" asp-for="Administrasi" class="form-control" />
+                        <span asp-validation-for="Administrasi" class="text-danger"></span>
+
+                    </div>
+                </div>
+               
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="LamaKredit" class="control-label"></label>
+
+                        <input value="0" id="Tenor1" asp-for="LamaKredit" class="form-control" />
+                        <span asp-validation-for="LamaKredit" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="BungaEff" class="control-label"></label>
+
+                        <input id="BEfektif1" value="0" asp-for="BungaEff" class="form-control" />
+                        @*<span asp-validation-for="BungaEff" class="text-danger"></span>*@
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="form-group">
+               
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="BungaFlat" class="control-label"></label>
+
+                        <input readonly id="BFlat1" value="0" asp-for="BungaFlat" class="form-control" />
+                      
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="TanggalJatuhTempoBulanan" class="control-label"></label>
+
+                        <input value="5" id="tglAngsuranBlnan1" asp-for="TanggalJatuhTempoBulanan" class="form-control" />
+                        <span asp-validation-for="TanggalJatuhTempoBulanan" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="NilaiBunga" class="control-label"></label>
+
+                        <input readonly id="NilaiBunga1" value="0" asp-for="NilaiBunga" class="form-control" />
+                      
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="NilaiKontrak" class="control-label"></label>
+                       
+                            <input readonly id="NilaiKontrak1" value="0" asp-for="NilaiKontrak" class="form-control" />
+                           
+                     
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="AngsuranBulanan" class="control-label"></label>
+                      
+                            <input readonly id="AngsuranBln1" value="0" asp-for="AngsuranBulanan" class="form-control" />
+                          
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label  class="control-label">Pokok Hutang</label>
+
+                        <input readonly id="PokokHutang1a" value="0" class="form-control" />
+                     
+                    </div>
+                </div>
+                @*<div class="col-md-5">
+                    <div class="form-group">
+                        <label  class="control-label"></label>
+
+                        <input readonly value="0"  class="form-control" />
+                     
+                    </div>
+                </div>*@
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                    </div>
+                </div>
+            </div>
+        
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+        //$('#tglkontrak1').datepicker({
+        //    changeMonth: true,
+        //    changeYear: true,
+        //    appendText: "(Tanggal-Bulan-Tahun)",
+        //    dateFormat: "dd-mm-yy",
+        //    yearRange: "c-100:c+10"
+
+        //});  
+
+        $('#HargaOtr1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#HargaOtr1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#Um1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#Um1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#asuransi1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#asuransi1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#adm1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#adm1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#BFlat1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#BFlat1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#BEfektif1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#BEfektif1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#Tenor1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#Tenor1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#NilaiBunga1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#NilaiBunga1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#NilaiKontrak1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#NilaiKontrak1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#AngsuranBln1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#AngsuranBln1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#AdmAngsuran1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#AdmAngsuran1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+
+        $('#Angsuran1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#Angsuran1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+
+        $('#tglAngsuranBlnan1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#tglAngsuranBlnan1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+
+        $('#Tenor1').change(function () {
+            var HargaOtr1a = parseFloat($('#HargaOtr1').val());
+            var Um1a = parseFloat($('#Um1').val());
+            var asuransi1a = parseFloat($('#asuransi1').val());
+            var adm1a = parseFloat($('#adm1').val());
+            var BFlat1a = parseFloat($('#BFlat1').val());
+            var BEfektif1a = parseFloat($('#BEfektif1').val());
+            var Tenor1a = parseFloat($('#Tenor1').val());
+            var NilaiBunga1a = parseFloat($('#NilaiBunga1').val());
+            var NilaiKontrak1a = parseFloat($('#NilaiKontrak1').val());
+            var AngsuranBln1a = parseFloat($('#AngsuranBln1').val());
+            var AdmAngsuran1a = parseFloat($('#AdmAngsuran1').val());
+            var Angsuran1a = parseFloat($('#Angsuran1').val());
+            var rate1 = parseFloat((BEfektif1a) / 1200);
+            var hp1 = HargaOtr1a - Um1a + adm1a + asuransi1a;
+            var angs1 = 0;
+            var angs2 = 0;
+            var PolaAngsuranX = document.getElementById("PolaAngsuran1a").selectedIndex;
+            var PolaAngsuranY = document.getElementById("PolaAngsuran1a").options;
+
+            var AngsDimkX = document.getElementById("AngsuranDimk1a").selectedIndex;
+            var AngsDimkY = document.getElementById("AngsuranDimk1a").options;
+
+            var hprate1 = parseFloat(hp1 * rate1);
+            var rate2 = parseFloat(1 + rate1);
+          
+            $('#PokokHutang1a').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(hp1));
+            $('#PokokHutang1a').change();
+
+            if (PolaAngsuranY[PolaAngsuranX].value == 1)//bunga anuitas
+            {
+
+                if (AngsDimkY[AngsDimkX].value == 1)//angsuran dimuka y
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;2
+                    }
+                    else {
+                        //  angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                        // angs2 = Math.round(((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))).toFixed(0);
+                        //  angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a))))/1000)*1000;
+                        angs1 = ((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+                        angs2 = Math.round((((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs2));
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs2 * Tenor1a).toFixed(0);
+                    if (angs2 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+
+                    }
+                }
+                else//angsuran dimuka tidak
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;
+                    }
+                    else {
+
+                        angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs1));
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs1 * Tenor1a).toFixed(0);
+                    if (angs1 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+                    }
+                }
+
+            }
+            else//bunga flat
+            {
+                if (hp1 == 0 || rate1 == 0) {
+                    $('#AngsuranBln1').val(0);
+                    $('#AngsuranBln1').change();
+                    angs1 = 0;
+                }
+                else {
+
+                    // angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                    // angs1 = ((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a).toFixed(0);
+                    angs1 = Math.round(((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a));
+                    $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs1));
+                    $('#AngsuranBln1').change();
+                }
+                var jumlahKontrak = parseFloat(angs1 * Tenor1a);
+                if (angs1 == 0) {
+                    $('#NilaiBunga1').val(0);
+                    $('#NilaiBunga1').change();
+                    $('#NilaiKontrak1').val(0);
+                    $('#NilaiKontrak1').change();
+                    $('#BFlat1').val(0);
+                    $('#BFlat1').change();
+
+                }
+                else {
+                    var NIlaiBunga1 = (jumlahKontrak - hp1);
+                    $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                    $('#NilaiBunga1').change();
+
+                    $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                    $('#NilaiKontrak1').change();
+
+                    var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                    $('#BFlat1').val(flat1AA.toFixed(2));
+                    $('#BFlat1').change();
+
+                }
+
+            }
+
+
+
+        });
+
+        $('#BEfektif1').change(function () {
+            var HargaOtr1a = parseFloat($('#HargaOtr1').val());
+            var Um1a = parseFloat($('#Um1').val());
+            var asuransi1a = parseFloat($('#asuransi1').val());
+            var adm1a = parseFloat($('#adm1').val());
+            var BFlat1a = parseFloat($('#BFlat1').val());
+            var BEfektif1a = parseFloat($('#BEfektif1').val());
+            var Tenor1a = parseFloat($('#Tenor1').val());
+            var NilaiBunga1a = parseFloat($('#NilaiBunga1').val());
+            var NilaiKontrak1a = parseFloat($('#NilaiKontrak1').val());
+            var AngsuranBln1a = parseFloat($('#AngsuranBln1').val());
+            var AdmAngsuran1a = parseFloat($('#AdmAngsuran1').val());
+            var Angsuran1a = parseFloat($('#Angsuran1').val());
+            var rate1 = parseFloat((BEfektif1a) / 1200);
+            var hp1 = HargaOtr1a - Um1a + adm1a + asuransi1a;
+            var angs1 = 0;
+            var angs2 = 0;
+            var PolaAngsuranX = document.getElementById("PolaAngsuran1a").selectedIndex;
+            var PolaAngsuranY = document.getElementById("PolaAngsuran1a").options;
+
+            var AngsDimkX = document.getElementById("AngsuranDimk1a").selectedIndex;
+            var AngsDimkY = document.getElementById("AngsuranDimk1a").options;
+
+            var hprate1 = parseFloat(hp1 * rate1);
+            var rate2 = parseFloat(1 + rate1);
+
+            $('#PokokHutang1a').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(hp1));
+            $('#PokokHutang1a').change();
+
+            if (PolaAngsuranY[PolaAngsuranX].value == 1)//bunga anuitas
+            {
+
+                if (AngsDimkY[AngsDimkX].value == 1)//angsuran dimuka y
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;
+                    }
+                    else {
+                        //  angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                        // angs2 = Math.round(((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))).toFixed(0);
+                        //  angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a))))/1000)*1000;
+                        angs1 = ((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+                        angs2 = Math.round((((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs2));
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs2 * Tenor1a).toFixed(0);
+                    if (angs2 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+
+                    }
+                }
+                else//angsuran dimuka tidak
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;
+                    }
+                    else {
+
+                        angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs1));
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs1 * Tenor1a).toFixed(0);
+                    if (angs1 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+                    }
+                }
+
+            }
+            else//bunga flat
+            {
+                if (hp1 == 0 || rate1 == 0) {
+                    $('#AngsuranBln1').val(0);
+                    $('#AngsuranBln1').change();
+                    angs1 = 0;
+                }
+                else {
+
+                    // angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                    // angs1 = ((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a).toFixed(0);
+                    angs1 = Math.round(((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a));
+                    $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs1));
+                    $('#AngsuranBln1').change();
+                }
+                var jumlahKontrak = parseFloat(angs1 * Tenor1a);
+                if (angs1 == 0) {
+                    $('#NilaiBunga1').val(0);
+                    $('#NilaiBunga1').change();
+                    $('#NilaiKontrak1').val(0);
+                    $('#NilaiKontrak1').change();
+                    $('#BFlat1').val(0);
+                    $('#BFlat1').change();
+
+                }
+                else {
+                    var NIlaiBunga1 = (jumlahKontrak - hp1);
+                    $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                    $('#NilaiBunga1').change();
+
+                    $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                    $('#NilaiKontrak1').change();
+
+                    var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                    $('#BFlat1').val(flat1AA.toFixed(2));
+                    $('#BFlat1').change();
+
+                }
+
+            }
+
+
+
+        });
+        $('#adm1').change(function () {
+            var HargaOtr1a = parseFloat($('#HargaOtr1').val());
+            var Um1a = parseFloat($('#Um1').val());
+            var asuransi1a = parseFloat($('#asuransi1').val());
+            var adm1a = parseFloat($('#adm1').val());
+            var BFlat1a = parseFloat($('#BFlat1').val());
+            var BEfektif1a = parseFloat($('#BEfektif1').val());
+            var Tenor1a = parseFloat($('#Tenor1').val());
+            var NilaiBunga1a = parseFloat($('#NilaiBunga1').val());
+            var NilaiKontrak1a = parseFloat($('#NilaiKontrak1').val());
+            var AngsuranBln1a = parseFloat($('#AngsuranBln1').val());
+            var AdmAngsuran1a = parseFloat($('#AdmAngsuran1').val());
+            var Angsuran1a = parseFloat($('#Angsuran1').val());
+            var rate1 = parseFloat((BEfektif1a) / 1200);
+            var hp1 = HargaOtr1a - Um1a + adm1a + asuransi1a;
+            var angs1 = 0;
+            var angs2 = 0;
+            var PolaAngsuranX = document.getElementById("PolaAngsuran1a").selectedIndex;
+            var PolaAngsuranY = document.getElementById("PolaAngsuran1a").options;
+
+            var AngsDimkX = document.getElementById("AngsuranDimk1a").selectedIndex;
+            var AngsDimkY = document.getElementById("AngsuranDimk1a").options;
+
+            var hprate1 = parseFloat(hp1 * rate1);
+            var rate2 = parseFloat(1 + rate1);
+
+            $('#PokokHutang1a').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(hp1));
+            $('#PokokHutang1a').change();
+
+            if (PolaAngsuranY[PolaAngsuranX].value == 1)//bunga anuitas
+            {
+
+                if (AngsDimkY[AngsDimkX].value == 1)//angsuran dimuka y
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;
+                    }
+                    else {
+                        //  angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                        // angs2 = Math.round(((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))).toFixed(0);
+                        //  angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a))))/1000)*1000;
+                        angs1 = ((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+                        angs2 = Math.round((((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs2));
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs2 * Tenor1a).toFixed(0);
+                    if (angs2 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+                      
+                    }
+                }
+                else//angsuran dimuka tidak
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;
+                    }
+                    else {
+
+                        angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs1));
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs1 * Tenor1a).toFixed(0);
+                    if (angs1 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+                    }
+                }
+
+            }
+            else//bunga flat
+            {
+                if (hp1 == 0 || rate1 == 0) {
+                    $('#AngsuranBln1').val(0);
+                    $('#AngsuranBln1').change();
+                    angs1 = 0;
+                }
+                else {
+
+                    // angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                    // angs1 = ((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a).toFixed(0);
+                    angs1 = Math.round(((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a));
+                    $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs1));
+                    $('#AngsuranBln1').change();
+                }
+                var jumlahKontrak = parseFloat(angs1 * Tenor1a);
+                if (angs1 == 0) {
+                    $('#NilaiBunga1').val(0);
+                    $('#NilaiBunga1').change();
+                    $('#NilaiKontrak1').val(0);
+                    $('#NilaiKontrak1').change();
+                    $('#BFlat1').val(0);
+                    $('#BFlat1').change();
+
+                }
+                else {
+                    var NIlaiBunga1 = (jumlahKontrak - hp1);
+                    $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                    $('#NilaiBunga1').change();
+
+                    $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                    $('#NilaiKontrak1').change();
+
+                    var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                    $('#BFlat1').val(flat1AA.toFixed(2));
+                    $('#BFlat1').change();
+
+                }
+
+            }
+
+
+
+        });
+
+        $('#asuransi1').change(function () {
+            var HargaOtr1a = parseFloat($('#HargaOtr1').val());
+            var Um1a = parseFloat($('#Um1').val());
+            var asuransi1a = parseFloat($('#asuransi1').val());
+            var adm1a = parseFloat($('#adm1').val());
+            var BFlat1a = parseFloat($('#BFlat1').val());
+            var BEfektif1a = parseFloat($('#BEfektif1').val());
+            var Tenor1a = parseFloat($('#Tenor1').val());
+            var NilaiBunga1a = parseFloat($('#NilaiBunga1').val());
+            var NilaiKontrak1a = parseFloat($('#NilaiKontrak1').val());
+            var AngsuranBln1a = parseFloat($('#AngsuranBln1').val());
+            var AdmAngsuran1a = parseFloat($('#AdmAngsuran1').val());
+            var Angsuran1a = parseFloat($('#Angsuran1').val());
+            var rate1 = parseFloat((BEfektif1a) / 1200);
+            var hp1 = HargaOtr1a - Um1a + adm1a + asuransi1a;
+            var angs1 = 0;
+            var angs2 = 0;
+            var PolaAngsuranX = document.getElementById("PolaAngsuran1a").selectedIndex;
+            var PolaAngsuranY = document.getElementById("PolaAngsuran1a").options;
+
+            var AngsDimkX = document.getElementById("AngsuranDimk1a").selectedIndex;
+            var AngsDimkY = document.getElementById("AngsuranDimk1a").options;
+
+            var hprate1 = parseFloat(hp1 * rate1);
+            var rate2 = parseFloat(1 + rate1);
+
+            $('#PokokHutang1a').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(hp1));
+            $('#PokokHutang1a').change();
+
+            if (PolaAngsuranY[PolaAngsuranX].value == 1)//bunga anuitas
+            {
+
+                if (AngsDimkY[AngsDimkX].value == 1)//angsuran dimuka y
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;
+                    }
+                    else {
+                        //  angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                        // angs2 = Math.round(((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))).toFixed(0);
+                        //  angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a))))/1000)*1000;
+                        angs1 = ((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+                        angs2 = Math.round((((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs2));
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs2 * Tenor1a).toFixed(0);
+                    if (angs2 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+
+                    }
+                }
+                else//angsuran dimuka tidak
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;
+                    }
+                    else {
+
+                        angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(angs1);
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs1 * Tenor1a).toFixed(0);
+                    if (angs1 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+                    }
+                }
+
+            }
+            else//bunga flat
+            {
+                if (hp1 == 0 || rate1 == 0) {
+                    $('#AngsuranBln1').val(0);
+                    $('#AngsuranBln1').change();
+                    angs1 = 0;
+                }
+                else {
+
+                    // angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                    // angs1 = ((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a).toFixed(0);
+                    angs1 = Math.round(((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a));
+                    $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs1));
+                    $('#AngsuranBln1').change();
+                }
+                var jumlahKontrak = parseFloat(angs1 * Tenor1a);
+                if (angs1 == 0) {
+                    $('#NilaiBunga1').val(0);
+                    $('#NilaiBunga1').change();
+                    $('#NilaiKontrak1').val(0);
+                    $('#NilaiKontrak1').change();
+                    $('#BFlat1').val(0);
+                    $('#BFlat1').change();
+
+                }
+                else {
+                    var NIlaiBunga1 = (jumlahKontrak - hp1);
+                    $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                    $('#NilaiBunga1').change();
+
+                    $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                    $('#NilaiKontrak1').change();
+
+                    var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                    $('#BFlat1').val(flat1AA.toFixed(2));
+                    $('#BFlat1').change();
+
+                }
+
+            }
+
+
+
+        });
+
+        $('#Um1').change(function () {
+            var HargaOtr1a = parseFloat($('#HargaOtr1').val());
+            var Um1a = parseFloat($('#Um1').val());
+            var asuransi1a = parseFloat($('#asuransi1').val());
+            var adm1a = parseFloat($('#adm1').val());
+            var BFlat1a = parseFloat($('#BFlat1').val());
+            var BEfektif1a = parseFloat($('#BEfektif1').val());
+            var Tenor1a = parseFloat($('#Tenor1').val());
+            var NilaiBunga1a = parseFloat($('#NilaiBunga1').val());
+            var NilaiKontrak1a = parseFloat($('#NilaiKontrak1').val());
+            var AngsuranBln1a = parseFloat($('#AngsuranBln1').val());
+            var AdmAngsuran1a = parseFloat($('#AdmAngsuran1').val());
+            var Angsuran1a = parseFloat($('#Angsuran1').val());
+            var rate1 = parseFloat((BEfektif1a) / 1200);
+            var hp1 = HargaOtr1a - Um1a + adm1a + asuransi1a;
+            var angs1 = 0;
+            var angs2 = 0;
+            var PolaAngsuranX = document.getElementById("PolaAngsuran1a").selectedIndex;
+            var PolaAngsuranY = document.getElementById("PolaAngsuran1a").options;
+
+            var AngsDimkX = document.getElementById("AngsuranDimk1a").selectedIndex;
+            var AngsDimkY = document.getElementById("AngsuranDimk1a").options;
+
+            var hprate1 = parseFloat(hp1 * rate1);
+            var rate2 = parseFloat(1 + rate1);
+
+
+            $('#PokokHutang1a').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(hp1));
+            $('#PokokHutang1a').change();
+
+
+            if (PolaAngsuranY[PolaAngsuranX].value == 1)//bunga anuitas
+            {
+
+                if (AngsDimkY[AngsDimkX].value == 1)//angsuran dimuka y
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;
+                    }
+                    else {
+                        //  angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                        // angs2 = Math.round(((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))).toFixed(0);
+                        //  angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a))))/1000)*1000;
+                        angs1 = ((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+                        angs2 = Math.round((((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs2));
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs2 * Tenor1a).toFixed(0);
+                    if (angs2 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+
+                    }
+                }
+                else//angsuran dimuka tidak
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;
+                    }
+                    else {
+
+                        angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs1));
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs1 * Tenor1a).toFixed(0);
+                    if (angs1 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+                    }
+                }
+
+            }
+            else//bunga flat
+            {
+                if (hp1 == 0 || rate1 == 0) {
+                    $('#AngsuranBln1').val(0);
+                    $('#AngsuranBln1').change();
+                    angs1 = 0;
+                }
+                else {
+
+                    // angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                    // angs1 = ((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a).toFixed(0);
+                    angs1 = Math.round(((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a));
+                    $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs1));
+                    $('#AngsuranBln1').change();
+                }
+                var jumlahKontrak = parseFloat(angs1 * Tenor1a);
+                if (angs1 == 0) {
+                    $('#NilaiBunga1').val(0);
+                    $('#NilaiBunga1').change();
+                    $('#NilaiKontrak1').val(0);
+                    $('#NilaiKontrak1').change();
+                    $('#BFlat1').val(0);
+                    $('#BFlat1').change();
+
+                }
+                else {
+                    var NIlaiBunga1 = (jumlahKontrak - hp1);
+                    $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                    $('#NilaiBunga1').change();
+
+                    $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                    $('#NilaiKontrak1').change();
+
+                    var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                    $('#BFlat1').val(flat1AA.toFixed(2));
+                    $('#BFlat1').change();
+
+                }
+
+            }
+
+
+
+        });
+        $('#HargaOtr1').change(function () {
+            var HargaOtr1a = parseFloat($('#HargaOtr1').val());
+            var Um1a = parseFloat($('#Um1').val());
+            var asuransi1a = parseFloat($('#asuransi1').val());
+            var adm1a = parseFloat($('#adm1').val());
+            var BFlat1a = parseFloat($('#BFlat1').val());
+            var BEfektif1a = parseFloat($('#BEfektif1').val());
+            var Tenor1a = parseFloat($('#Tenor1').val());
+            var NilaiBunga1a = parseFloat($('#NilaiBunga1').val());
+            var NilaiKontrak1a = parseFloat($('#NilaiKontrak1').val());
+            var AngsuranBln1a = parseFloat($('#AngsuranBln1').val());
+            var AdmAngsuran1a = parseFloat($('#AdmAngsuran1').val());
+            var Angsuran1a = parseFloat($('#Angsuran1').val());
+            var rate1 = parseFloat((BEfektif1a) / 1200);
+            var hp1 = HargaOtr1a - Um1a + adm1a + asuransi1a;
+            var angs1 = 0;
+            var angs2 = 0;
+            var PolaAngsuranX = document.getElementById("PolaAngsuran1a").selectedIndex;
+            var PolaAngsuranY = document.getElementById("PolaAngsuran1a").options;
+
+            var AngsDimkX = document.getElementById("AngsuranDimk1a").selectedIndex;
+            var AngsDimkY = document.getElementById("AngsuranDimk1a").options;
+
+            var hprate1 = parseFloat(hp1 * rate1);
+            var rate2 = parseFloat(1 + rate1);
+
+            $('#PokokHutang1a').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(hp1));
+            $('#PokokHutang1a').change();
+
+            if (PolaAngsuranY[PolaAngsuranX].value == 1)//bunga anuitas
+            {
+
+                if (AngsDimkY[AngsDimkX].value == 1)//angsuran dimuka y
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;
+                    }
+                    else {
+                        //  angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                        // angs2 = Math.round(((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))).toFixed(0);
+                        //  angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a))))/1000)*1000;
+                        angs1 = ((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+                        angs2 = Math.round((((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs2));
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs2 * Tenor1a).toFixed(0);
+                    if (angs2 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+
+                    }
+                }
+                else//angsuran dimuka tidak
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;
+                    }
+                    else {
+
+                        angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs1));
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs1 * Tenor1a).toFixed(0);
+                    if (angs1 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+                    }
+                }
+
+            }
+            else//bunga flat
+            {
+                if (hp1 == 0 || rate1 == 0) {
+                    $('#AngsuranBln1').val(0);
+                    $('#AngsuranBln1').change();
+                    angs1 = 0;
+                }
+                else {
+
+                    // angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                    // angs1 = ((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a).toFixed(0);
+                    angs1 = Math.round(((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a));
+                    $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs1));
+                    $('#AngsuranBln1').change();
+                }
+                var jumlahKontrak = parseFloat(angs1 * Tenor1a);
+                if (angs1 == 0) {
+                    $('#NilaiBunga1').val(0);
+                    $('#NilaiBunga1').change();
+                    $('#NilaiKontrak1').val(0);
+                    $('#NilaiKontrak1').change();
+                    $('#BFlat1').val(0);
+                    $('#BFlat1').change();
+
+                }
+                else {
+                    var NIlaiBunga1 = (jumlahKontrak - hp1);
+                    $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                    $('#NilaiBunga1').change();
+
+                    $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                    $('#NilaiKontrak1').change();
+
+                    var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                    $('#BFlat1').val(flat1AA.toFixed(2));
+                    $('#BFlat1').change();
+
+                }
+
+            }
+
+
+
+        });
+
+        $('#AngsuranDimk1a').change(function () {
+            var HargaOtr1a = parseFloat($('#HargaOtr1').val());
+            var Um1a = parseFloat($('#Um1').val());
+            var asuransi1a = parseFloat($('#asuransi1').val());
+            var adm1a = parseFloat($('#adm1').val());
+            var BFlat1a = parseFloat($('#BFlat1').val());
+            var BEfektif1a = parseFloat($('#BEfektif1').val());
+            var Tenor1a = parseFloat($('#Tenor1').val());
+            var NilaiBunga1a = parseFloat($('#NilaiBunga1').val());
+            var NilaiKontrak1a = parseFloat($('#NilaiKontrak1').val());
+            var AngsuranBln1a = parseFloat($('#AngsuranBln1').val());
+            var AdmAngsuran1a = parseFloat($('#AdmAngsuran1').val());
+            var Angsuran1a = parseFloat($('#Angsuran1').val());
+            var rate1 = parseFloat((BEfektif1a) / 1200);
+            var hp1 = HargaOtr1a - Um1a + adm1a + asuransi1a;
+            var angs1 = 0;
+            var angs2 = 0;
+            var PolaAngsuranX = document.getElementById("PolaAngsuran1a").selectedIndex;
+            var PolaAngsuranY = document.getElementById("PolaAngsuran1a").options;
+
+            var AngsDimkX = document.getElementById("AngsuranDimk1a").selectedIndex;
+            var AngsDimkY = document.getElementById("AngsuranDimk1a").options;
+
+            var hprate1 = parseFloat(hp1 * rate1);
+            var rate2 = parseFloat(1 + rate1);
+
+            $('#PokokHutang1a').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(hp1));
+            $('#PokokHutang1a').change();
+
+            if (PolaAngsuranY[PolaAngsuranX].value == 1)//bunga anuitas
+            {
+
+                if (AngsDimkY[AngsDimkX].value == 1)//angsuran dimuka y
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;
+                    }
+                    else {
+                        //  angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                        // angs2 = Math.round(((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))).toFixed(0);
+
+                        //   angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+                        angs1 = ((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+                        angs2 = Math.round((((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs2));
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs2 * Tenor1a).toFixed(0);
+                    if (angs2 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+
+                    }
+                }
+                else//angsuran dimuka tidak
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;
+                    }
+                    else {
+
+                        angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs1));
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs1 * Tenor1a).toFixed(0);
+                    if (angs1 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+                    }
+                }
+
+            }
+            else//bunga flat
+            {
+                if (hp1 == 0 || rate1 == 0) {
+                    $('#AngsuranBln1').val(0);
+                    $('#AngsuranBln1').change();
+                    angs1 = 0;
+                }
+                else {
+
+                    // angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                    // angs1 = ((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a).toFixed(0);
+                    angs1 = Math.round(((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a));
+                    $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs1));
+                    $('#AngsuranBln1').change();
+                }
+                var jumlahKontrak = parseFloat(angs1 * Tenor1a);
+                if (angs1 == 0) {
+                    $('#NilaiBunga1').val(0);
+                    $('#NilaiBunga1').change();
+                    $('#NilaiKontrak1').val(0);
+                    $('#NilaiKontrak1').change();
+                    $('#BFlat1').val(0);
+                    $('#BFlat1').change();
+
+                }
+                else {
+                    var NIlaiBunga1 = (jumlahKontrak - hp1);
+                    $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                    $('#NilaiBunga1').change();
+
+                    $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                    $('#NilaiKontrak1').change();
+
+                    var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                    $('#BFlat1').val(flat1AA.toFixed(2));
+                    $('#BFlat1').change();
+
+                }
+
+            }
+
+
+        });
+
+
+
+        $('#PolaAngsuran1a').change(function () {
+            var HargaOtr1a = parseFloat($('#HargaOtr1').val());
+            var Um1a = parseFloat($('#Um1').val());
+            var asuransi1a = parseFloat($('#asuransi1').val());
+            var adm1a = parseFloat($('#adm1').val());
+            var BFlat1a = parseFloat($('#BFlat1').val());
+            var BEfektif1a = parseFloat($('#BEfektif1').val());
+            var Tenor1a = parseFloat($('#Tenor1').val());
+            var NilaiBunga1a = parseFloat($('#NilaiBunga1').val());
+            var NilaiKontrak1a = parseFloat($('#NilaiKontrak1').val());
+            var AngsuranBln1a = parseFloat($('#AngsuranBln1').val());
+            var AdmAngsuran1a = parseFloat($('#AdmAngsuran1').val());
+            var Angsuran1a = parseFloat($('#Angsuran1').val());
+            var rate1 = parseFloat((BEfektif1a) / 1200);
+            var hp1 = HargaOtr1a - Um1a + adm1a + asuransi1a;
+            var angs1 = 0;
+            var angs2 = 0;
+            var PolaAngsuranX = document.getElementById("PolaAngsuran1a").selectedIndex;
+            var PolaAngsuranY = document.getElementById("PolaAngsuran1a").options;
+
+            var AngsDimkX = document.getElementById("AngsuranDimk1a").selectedIndex;
+            var AngsDimkY = document.getElementById("AngsuranDimk1a").options;
+
+            var hprate1 = parseFloat(hp1 * rate1);
+            var rate2 = parseFloat(1 + rate1);
+
+            $('#PokokHutang1a').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(hp1));
+            $('#PokokHutang1a').change();
+
+            if (PolaAngsuranY[PolaAngsuranX].value == 1)//bunga anuitas
+            {
+
+                if (AngsDimkY[AngsDimkX].value == 1)//angsuran dimuka y
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;
+                    }
+                    else {
+                        //  angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                        // angs2 = Math.round(((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))).toFixed(0);
+                        //angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+                        angs1 = ((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+                        angs2 = Math.round((((hp1 - angs1) * rate1) / (1 - (1 / Math.pow(rate2, (Tenor1a - 1))))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs2));
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs2 * Tenor1a).toFixed(0);
+                    if (angs2 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+
+                    }
+                }
+                else//angsuran dimuka tidak
+                {
+                    if (hp1 == 0 || rate1 == 0) {
+                        $('#AngsuranBln1').val(0);
+                        $('#AngsuranBln1').change();
+                        angs1 = 0;
+                    }
+                    else {
+
+                        angs1 = Math.round((hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))) / 1000) * 1000;
+
+                        $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs1));
+                        $('#AngsuranBln1').change();
+                    }
+                    var jumlahKontrak = parseFloat(angs1 * Tenor1a).toFixed(0);
+                    if (angs1 == 0) {
+                        $('#NilaiBunga1').val(0);
+                        $('#NilaiBunga1').change();
+                        $('#NilaiKontrak1').val(0);
+                        $('#NilaiKontrak1').change();
+                        $('#BFlat1').val(0);
+                        $('#BFlat1').change();
+
+                    }
+                    else {
+                        var NIlaiBunga1 = (jumlahKontrak - hp1);
+                        $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                        $('#NilaiBunga1').change();
+
+                        $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                        $('#NilaiKontrak1').change();
+
+                        var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                        $('#BFlat1').val(flat1AA.toFixed(2));
+                        $('#BFlat1').change();
+
+                    }
+                }
+
+            }
+            else//bunga flat
+            {
+                if (hp1 == 0 || rate1 == 0) {
+                    $('#AngsuranBln1').val(0);
+                    $('#AngsuranBln1').change();
+                    angs1 = 0;
+                }
+                else {
+
+                    // angs1 = Math.round(hprate1 / (1 - (1 / Math.pow(rate2, Tenor1a)))).toFixed(0);
+                    // angs1 = ((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a).toFixed(0);
+                    angs1 = Math.round(((hp1 + (hp1 * BEfektif1a * Tenor1a / 1200)) / Tenor1a));
+                    $('#AngsuranBln1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angs1));
+                    $('#AngsuranBln1').change();
+                }
+                var jumlahKontrak = parseFloat(angs1 * Tenor1a);
+                if (angs1 == 0) {
+                    $('#NilaiBunga1').val(0);
+                    $('#NilaiBunga1').change();
+                    $('#NilaiKontrak1').val(0);
+                    $('#NilaiKontrak1').change();
+                    $('#BFlat1').val(0);
+                    $('#BFlat1').change();
+
+                }
+                else {
+                    var NIlaiBunga1 = (jumlahKontrak - hp1);
+                    $('#NilaiBunga1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(NIlaiBunga1));
+                    $('#NilaiBunga1').change();
+
+                    $('#NilaiKontrak1').val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(jumlahKontrak));
+                    $('#NilaiKontrak1').change();
+
+                    var flat1AA = ((NIlaiBunga1) / (((hp1)) * ((Tenor1a) / 12))) * 100;
+                    $('#BFlat1').val(flat1AA.toFixed(2));
+                    $('#BFlat1').change();
+
+                }
+
+            }
+
+
+        });
+
+
+
+    });
+</script>

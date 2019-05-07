@@ -1,0 +1,22 @@
+$("#Birthdate").datepicker
+            ({
+            dateFormat: "yy-mm-dd",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-100:+100",
+            onSelect: function (date)
+            {
+                var dob = new Date(date);
+                var today = new Date();
+
+                if (dob.getFullYear() + 18 < today.getFullYear())
+                {
+
+                }
+                else
+                {
+                    $("#Birthdate").val('');
+                    alert("User are not eligible for CreateAdminUser");
+                }
+            }
+        });

@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using SmmCoreDDD2019.Persistence;
+using System.Threading;
+namespace SmmCoreDDD2019.Application.AccountingDataJournalDB.Query.GetDataJournalByKodeHeader
+{
+    public class GetDataJournalByKodeHeaderQueryHandler : IRequestHandler<GetDataJournalByKodeHeaderQuery, GetDataJournalByKodeHeaderViewModel>
+    {
+        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly IMapper _mapper;
+
+        public GetDataJournalByKodeHeaderQueryHandler(SMMCoreDDD2019DbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+        public async Task<GetDataJournalByKodeHeaderViewModel> Handle(GetDataJournalByKodeHeaderQuery request, CancellationToken cancellationToken)
+        {
+            var aa = await (from a in _context.AccountingDataJournal 
+                            join b in _context.AccountingDataAccount on  a.NoUrutAccountId equals b.NoUrutAccountId.ToString()
+                            where a.NoUrutJournalH ==request.Id
+                           
+                            select new
+                            {
+                                NoUrutAccountId =b.NoUrutAccountId ,
+                                NoUrutJournalHeaderId = a.NoUrutJournalH,
+                                DataAkun = b.KodeAccount + " - " + b.Account,
+                                Debit1 = a.Debit,
+                                Kredit1 = a.Kredit,
+                                Ket1 = a.Keterangan
+                              
+                            }).ToListAsync(cancellationToken);
+            var model = new GetDataJournalByKodeHeaderViewModel
+            {
+                DataJournalByKodeHeaderDs = _mapper.Map<IEnumerable<GetDataJournalByKodeHeaderLookUpModel>>(aa)
+            };
+            return model;
+        }
+    }
+}

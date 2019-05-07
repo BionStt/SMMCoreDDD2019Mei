@@ -1,0 +1,55 @@
+﻿CREATE TRIGGER DataPerusahaan.trg_DataPerusahaanStrukturJabatan_INS
+	ON DataPerusahaan.DataPerusahaanStrukturJabatan
+	AFTER INSERT
+AS 
+BEGIN
+	SET NOCOUNT ON;
+
+	--Cannot function on more than 1 inserted record at a time
+	IF (SELECT COUNT(1) FROM Inserted) > 1
+	BEGIN
+		RAISERROR (N'This table does not support multiple inserts in one SQL statement', 18, 1)
+
+		DELETE FROM DataPerusahaan.DataPerusahaanStrukturJabatan
+		WHERE NoUrutStruktur IN (SELECT NoUrutStruktur FROM Inserted)
+
+		RETURN
+	END
+
+	--If Root node, simply place at the end (right) of all other Roots (i.e. max-right)
+	IF ((SELECT Parent FROM Inserted) IS NULL
+		OR (SELECT Parent FROM Inserted) = -1) -- root node
+	BEGIN
+		DECLARE @Left INT	
+
+		SELECT @Left = COALESCE(MAX(Rgt), 0) + 1
+		FROM DataPerusahaan.DataPerusahaanStrukturJabatan
+		
+		UPDATE DataPerusahaan.DataPerusahaanStrukturJabatan
+		SET Lft = @Left, Rgt = @Left + 1, Depth = 0
+		WHERE NoUrutStruktur = (SELECT NoUrutStruktur FROM Inserted)
+	END
+	--Else, shift ALL sub-trees over (right) by 2
+	--& place the newly Inserted at the tail-end (right) of its siblings
+	ELSE
+	BEGIN
+		DECLARE @ParentRight INT, @Depth INT
+
+		SELECT @ParentRight = Rgt, @Depth = Depth + 1
+		FROM DataPerusahaan.DataPerusahaanStrukturJabatan
+		WHERE NoUrutStruktur = (SELECT Parent FROM Inserted)
+
+		--SHIFT EVERYTHING ELSE OVER (right) 2
+		UPDATE DataPerusahaan.DataPerusahaanStrukturJabatan
+		SET Lft = CASE WHEN Lft > @ParentRight THEN Lft + 2 ELSE Lft END
+		  , Rgt = CASE WHEN Rgt >= @ParentRight THEN Rgt + 2 ELSE Rgt END
+		WHERE Rgt >= @ParentRight
+
+		--new record goes "below" (to the right of) its right-most sibling
+		UPDATE DataPerusahaan.DataPerusahaanStrukturJabatan
+		SET Lft = @ParentRight, Rgt = @ParentRight + 1
+		  , Depth = @Depth
+		WHERE NoUrutStruktur = (SELECT NoUrutStruktur FROM Inserted)
+	END
+END
+GO

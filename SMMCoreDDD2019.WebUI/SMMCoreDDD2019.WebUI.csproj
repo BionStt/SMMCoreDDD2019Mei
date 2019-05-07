@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\bower_components\**" />
+    <Content Remove="wwwroot\bower_components\**" />
+    <EmbeddedResource Remove="wwwroot\bower_components\**" />
+    <None Remove="wwwroot\bower_components\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="AdminLTE" Version="2.4.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.4.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="bootstrap" Version="4.3.1" />
+    <PackageReference Include="bootstrap-sass" Version="3.3.5" />
+    <PackageReference Include="Dapper" Version="1.60.6" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.2.2" />
+    <PackageReference Include="jQuery" Version="3.3.1" />
+    <PackageReference Include="jquery.mobile" Version="1.4.5" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="6.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="NSwag.AspNetCore" Version="12.1.0" />
+    <PackageReference Include="NSwag.MSBuild" Version="12.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="popper.js" Version="1.14.3" />
+    <PackageReference Include="Seq.Extensions.Logging" Version="4.0.1" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmmCoreDDD2019.CrossCutting.IoC\SmmCoreDDD2019.CrossCutting.IoC.csproj" />
+    <ProjectReference Include="..\SmmCoreDDD2019.Infrastructure\SmmCoreDDD2019.Infrastructure.csproj" />
+    <ProjectReference Include="..\SmmCoreDDD2019.Persistence\SmmCoreDDD2019.Persistence.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="ViewModel\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\upload\" />
+  </ItemGroup>
+
+</Project>

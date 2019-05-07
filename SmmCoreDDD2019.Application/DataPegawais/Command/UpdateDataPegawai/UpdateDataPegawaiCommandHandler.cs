@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+using System.Threading;
+using System.Threading.Tasks;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using SmmCoreDDD2019.Application.Exceptions;
+using SmmCoreDDD2019.Domain.Entities;
+using SmmCoreDDD2019.Persistence;
+
+namespace SmmCoreDDD2019.Application.DataPegawais.Command.UpdateDataPegawai
+{
+    public class UpdateDataPegawaiCommandHandler : IRequestHandler<UpdateDataPegawaiCommand, Unit>
+    {
+
+        private readonly SMMCoreDDD2019DbContext _context;
+
+        public UpdateDataPegawaiCommandHandler(SMMCoreDDD2019DbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<Unit> Handle(UpdateDataPegawaiCommand request, CancellationToken cancellationToken)
+        {
+            var entity = await _context.DataPegawai
+                .SingleAsync(c => c.IDPegawai == request.IDPegawai, cancellationToken);
+
+            if (entity == null)
+            {
+                throw new NotFoundException(nameof(DataPegawai), request.IDPegawai);
+            }
+
+            entity.IDPegawai = request.IDPegawai;
+            entity.TglInput = request.TglInput;
+            entity.TglMulaiKerja= request.TglMulaiKerja;
+            entity.TglBerhentiKerja= request.TglBerhentiKerja;
+            entity.Aktif= request.Aktif;
+          
+
+            _context.DataPegawai.Update(entity);
+
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return Unit.Value;
+
+
+
+            // throw new NotImplementedException();
+        }
+    }
+}

@@ -1,0 +1,59 @@
+﻿@model SmmCoreDDD2019.Application.AccountingDataJournalHeaderDB.Command.CreateAccountingDataJournalHeader.CreateAccountingDataJournalHeaderCommand
+@{
+    ViewData["Title"] = "CreateJournalHeader";
+    Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<h2>CreateJournalHeader</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateJournalHeader">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TangglInput" class="control-label"></label>
+                <input id="datepicker1" asp-for="TangglInput" class="form-control" />
+                <span asp-validation-for="TangglInput" class="text-danger"></span>
+            </div>
+            <script>
+                $('#datepicker1').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    appendText: "(Tanggal-Bulan-Tahun)",
+                    dateFormat: "dd-mm-yy",
+                    yearRange: "c-100:c+10"
+
+                });
+            </script>
+                @*<div class="form-group">
+                <label asp-for="No_Bukti_Jurnal" class="control-label"></label>
+                <input asp-for="No_Bukti_Jurnal" class="form-control" />
+                <span asp-validation-for="No_Bukti_Jurnal" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="NoIDTipeJournal" class="control-label"></label>
+              
+                <select asp-items="@ViewBag.TipeJournal1" asp-for="NoIDTipeJournal"  class="form-control"></select>
+             
+             
+            </div>
+            <div class="form-group">
+                <label asp-for="Keterangan" class="control-label"></label>
+                <input asp-for="Keterangan" class="form-control" />
+                <span asp-validation-for="Keterangan" class="text-danger"></span>
+            </div>
+
+            <div hidden class="form-group">
+                <label asp-for="UserInput" class="control-label"></label>
+                <input asp-for="UserInput" class="form-control" />
+                <span asp-validation-for="UserInput" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

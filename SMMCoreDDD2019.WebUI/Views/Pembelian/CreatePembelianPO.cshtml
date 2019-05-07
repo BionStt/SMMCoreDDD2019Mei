@@ -1,0 +1,75 @@
+﻿@model SmmCoreDDD2019.Application.PembelianPOs.Command.CreatePembelianPO.CreatePembelianPOCommand
+
+@{
+   // ViewData["Title"] = "CreatePembelianPO";
+    Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="CreatePembelianPO">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+
+                        <label asp-for="NoDealer" class="control-label"></label>
+
+                        <select asp-for="NoDealer" class="form-control" asp-items="ViewBag.NamaSupplier"></select>
+                        <span asp-validation-for="NoDealer" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label asp-for="Keterangan" class="control-label"></label>
+
+                        <input asp-for="Keterangan" class="form-control" />
+                        <span asp-validation-for="Keterangan" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div hidden class="form-group">
+
+                        <label asp-for="UserId" class="control-label"></label>
+
+                        <input asp-for="UserId" class="form-control" />
+                        <span asp-validation-for="UserId" class="text-danger"></span>
+
+                        <label asp-for="UserInput" class="control-label"></label>
+
+                        <input asp-for="UserInput" class="form-control" />
+                        <span asp-validation-for="UserInput" class="text-danger"></span>
+
+                        <label asp-for="PoAstra" class="control-label"></label>
+
+                        <input asp-for="PoAstra" class="form-control" />
+                        <span asp-validation-for="PoAstra" class="text-danger"></span>
+
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+  
+<hr />
+<hr />
+<script>
+
+
+</script>
+

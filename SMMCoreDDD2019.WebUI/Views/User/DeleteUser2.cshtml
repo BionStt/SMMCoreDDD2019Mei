@@ -1,0 +1,18 @@
+﻿@model string
+@using SmmCoreDDD2019.Common.Identity.ViewModel.Account
+
+@{
+    ViewData["Title"] = "DeleteUser2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="modal-body form-horizontal">
+    Are you want to delete @Model?
+    <form asp-action="DeleteUser2" role="form">
+        @*<input type="hidden" asp-for="NourutBpkb" />*@
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
+

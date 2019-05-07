@@ -1,0 +1,76 @@
+﻿CREATE PROCEDURE [dbo].[RebuildAccountTree]
+	@Parent INT = NULL
+	, @Position INT = 0
+	, @Depth INT = 0
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	--Starting depth; we will set this to the given Parent's Depth (or 0 if NULL)
+	--DECLARE @Depth INT
+	/*
+	SELECT @Depth = (CASE WHEN @ParentID IS NULL THEN 0 ELSE Depth END)
+		FROM nsm.Cat
+		WHERE (@ParentID IS NULL AND ParentID IS NULL)
+			OR ParentID = @ParentID
+	*/
+
+	--Cursor (loop) over child nodes of the given ParentID
+	DECLARE @Curff CURSOR 
+	SET @Curff = CURSOR READ_ONLY FAST_FORWARD FOR
+		SELECT NoUrutAccountId
+		FROM Accounting.AccountingDataAccount
+		WHERE (@Parent IS NULL AND Parent IS NULL)
+			OR Parent = @Parent
+		ORDER BY Lft
+
+	DECLARE @NoUrutAccountId INT
+	OPEN @Curff
+	FETCH NEXT FROM @Curff INTO @NoUrutAccountId
+
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		--Assumption: @Position starts at the CORRECT # from the given parent
+		SET @Position = @Position + 1
+
+		--@Depth gets incremented when you travel down from parent to child
+		SET @Depth = @Depth + 1
+
+		--Update this node's PLeft & Depth
+		ALTER TABLE Accounting.AccountingDataAccount DISABLE TRIGGER trg_AccountingDataAccount_UPD;
+
+		UPDATE Accounting.AccountingDataAccount SET Lft = @Position, Depth = @Depth
+		WHERE NoUrutAccountId = @NoUrutAccountId
+
+		ALTER TABLE Accounting.AccountingDataAccount ENABLE TRIGGER trg_AccountingDataAccount_UPD;
+
+		--Recursively re-number this node's children
+		RAISERROR ('Calling RebuildAccountTree %d, %d --at Depth=%d', 0, 1, @NoUrutAccountId, @Position, @Depth) WITH NOWAIT
+		
+		EXEC @Position = RebuildAccountTree @NoUrutAccountId, @Position, @Depth
+
+		--It returns the last PRight set on the sub-tree, so add +1 to get this node's PRight
+		SET @Position = @Position + 1
+
+		--@Depth gets decremented when you travel up from child to parent
+		SET @Depth = @Depth - 1
+
+		--Update this node's PRight as mentioned above
+		ALTER TABLE Accounting.AccountingDataAccount DISABLE TRIGGER trg_AccountingDataAccount_UPD;
+
+		UPDATE Accounting.AccountingDataAccount SET rgt = @Position
+		WHERE NoUrutAccountId = @NoUrutAccountId
+
+		ALTER TABLE Accounting.AccountingDataAccount ENABLE TRIGGER trg_AccountingDataAccount_UPD;
+
+		--continue looping
+		FETCH NEXT FROM @Curff INTO @NoUrutAccountId
+	END
+	CLOSE @Curff
+	DEALLOCATE @Curff
+
+	RAISERROR('RebuildAccountTree for %d returning %d --at Depth=%d', 0, 1, @Parent, @Position, @Depth) WITH NOWAIT
+
+	--Return PRight as set on this node, so that caller knows what it's new PRight should be
+	RETURN @Position
+END

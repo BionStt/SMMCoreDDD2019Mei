@@ -1,0 +1,154 @@
+﻿@model IEnumerable<SmmCoreDDD2019.Application.AccountingDataJournalDB.Query.GetLaporanLabaRugi.GetLaporanLabaRugiLookUpModel>
+@{
+    ViewData["Title"] = "LaporanLabaRugi";
+    Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<h2>LaporanLabaRugi</h2>
+
+
+<div>
+    <h1 style="text-align:center">Laporan Laba/Rugi</h1>
+    <h2 style="text-align:center">Periode @string.Format("{0:d}", ViewBag.Tgl1) s/d @string.Format("{0:d}", ViewBag.Tgl2)</h2>
+
+</div>
+<div>
+    <table class="table table-bordered table-striped grid">
+        <thead>
+            <tr>
+                <th>No.</th>
+                @*<th>@Html.DisplayNameFor(model => Model.KodeAccountParent)</th>
+                    <th>@Html.DisplayNameFor(model => Model.AccountParent)</th>
+                    <th>@Html.DisplayNameFor(model => Model.KodeAccount1)</th>
+                    <th>@Html.DisplayNameFor(model => Model.Account1a)</th>
+                    <th>@Html.DisplayNameFor(model => Model.Debit1)</th>
+                    <th>@Html.DisplayNameFor(model => Model.Kredit1)</th>
+                    <th>@Html.DisplayNameFor(model => Model.Saldo1)</th>*@
+                <th>Nama Akun</th>
+                @*<th>KodeAccountParent</th>
+                    <th>AccountParent</th>
+                    <th>KodeAccount1</th>
+                    <th>Account1a</th>*@
+                <th>Debit1</th>
+                <th>kredit1</th>
+                <th>Saldo1</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{Decimal? i = 0;
+                //  Decimal? Profit = 0;
+                Decimal? i2 = 0;
+            }
+
+            @foreach (var item1 in Model.GroupBy(x => x.KodeAkunInduk))
+            {
+
+                <tr class="group-header">
+                    <td colspan="6">
+                        <span class="h4">@item1.Key</span>
+                    </td>
+                </tr>
+                foreach (var item2 in item1.GroupBy(x => x.KodeAccountParent))
+                {
+
+                    <tr class="group-header">
+                        <td colspan="6" style="padding-left:23px;font-weight:bold">
+                            <span>@item2.Key</span>
+                        </td>
+                    </tr>
+                    foreach (var item3 in item2.GroupBy(x => x.nm))
+                    {
+
+                        @*<tr class="group-header">
+                                <td colspan="6" style="padding-left:23px;font-weight:bold">
+                                    <span>@item3.Key</span>
+                                </td>
+                            </tr>*@
+                        foreach (var item in item3)
+                        {
+
+                            //if (item.Saldo1 != 0) {
+                            <tr>
+                                <td></td>
+                                <td>@Html.DisplayFor(modelItem => item.nm)</td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.KodeAccountParent)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AccountParent)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.KodeAccount1)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Account1a)
+                                    </td>*@
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.Debit1)*@
+                                    @string.Format("{0:c}", item.Debit1)
+                                </td>
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.Kredit1)*@
+                                    @string.Format("{0:c}", item.Kredit1)
+                                </td>
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.Saldo1)*@
+                                    @string.Format("{0:c}", item.Saldo1)
+                                </td>
+                            </tr>
+                            i = i + item.Saldo1;
+                            i2 = i2 + (item.Saldo1 * item.normalPosInduk * -1);
+                            //}
+
+                        }
+
+
+
+                    }
+
+
+                }
+
+                <tr class="group-footer">
+                    @*  <td colspan="4" style="padding-left:100px;font-weight:bold"> *@
+                    <td colspan="4" style="padding-left:100px;font-weight:bold">
+                        <span>@item1.Key</span>
+                        @*<span class="label label-success">Total Unit: @item2.Count()</span>*@
+                        @*<span class="col-md-3">Departments: @group.Select(x => x.Department).Distinct().ToList().Count()</span>*@
+                        @*<span class="label label-primary">Avg Salary: @aa.Average(x => x.Salary).ToString("C")</span>*@
+                    </td>
+
+                    <td> @String.Format("{0:c}", i)</td>
+
+                </tr>
+                //   Profit = Profit + i;
+                i = 0;
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" style="padding-left:100px;font-weight:bold">
+                    <span>Laba Rugi Berjalan</span>
+                </td>
+                <td style="padding-left:100px;font-weight:bold">
+                    <span>@string.Format("{0:c}", i2)</span>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+<div>
+    <table class="table table-bordered table-striped grid">
+        <tr>
+            <td colspan="3">Dibuat Oleh</td>
+            <td colspan="3">Disetujui Oleh</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+

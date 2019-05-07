@@ -1,0 +1,101 @@
+﻿@model IEnumerable<SmmCoreDDD2019.Application.AccountingDataJournalDB.Query.GetDataJournalByKodeAkun.GetDataJournalByKodeAkunLookUpModel>
+@{
+    ViewData["Title"] = "LapAkunBukuBesarDetail";
+    Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<h2>Laporan Buku Besar</h2>
+
+<div>
+    <p>Akun : @ViewBag.Akun1</p>
+    <table class="table table-bordered table-striped grid" style="width:100%">
+        <caption style="text-align:center">Rincian Buku Besar</caption>
+        @{int i = 1;
+            Decimal? debit11 = 0;
+            decimal? kredit22 = 0;
+            decimal? saldo1 = 0;
+        }
+        @if (Model == null) { }
+        else
+        {
+            <tr>
+                <th>No.</th>
+                <th>Tanggal</th>
+                <th>No Bukti</th>
+                <td>Keterangan</td>
+                @*<th>Kode Akun - Akun</th>*@
+                <th>Debit</th>
+                <th>Kredit</th>
+                <th>Saldo</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                saldo1 = saldo1 + (item.Debit1 - item.Kredit1);
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        @string.Format("{0:d}", item.TanggalInput)
+                    </td>
+                    <td>@item.NoBuktiJurnal</td>
+                    <td>@item.Ket1</td>
+                    @*@if (item.Debit1 != 0 && item.Kredit1 == 0)
+                        {
+                            <td  >@item.KodeNamaAkun</td>}
+                        else
+                        {
+                            <td style="padding-left:43px">@item.KodeNamaAkun</td>}*@
+
+                    <td style="text-align:right">
+                        @string.Format("{0:c}", item.Debit1)
+                    </td>
+                    <td style="text-align:right">
+                        @string.Format("{0:c}", item.Kredit1)
+                    </td>
+                    <td>
+                        @string.Format("{0:c}", saldo1)
+                    </td>
+                </tr>
+                debit11 = debit11 + item.Debit1;
+                kredit22 = kredit22 + item.Kredit1;
+                i++;
+            }
+            <tr>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    @if (debit11 < kredit22)
+                    {
+                        <p style="color:red;text-align:center">Tidak Seimbang</p>
+                    }
+                    else if (debit11 > kredit22)
+                    { <p style="color:red;text-align:center">Tidak Seimbang</p> }
+                    else
+                    { <p style="text-align:center">Seimbang</p>}
+
+                </td>
+                <td style="text-align:right">   @string.Format("{0:c}", debit11)</td>
+                <td style="text-align:right">@string.Format("{0:c}", kredit22)</td>
+            </tr>
+
+        }
+
+    </table>
+</div>
+<div class="report-footer">
+    <div class="otorisasi">
+        <div class="otorisasi-left">
+            <div class="jabatan">Dibuat Oleh</div>
+            <div class="nama">Bion</div>
+        </div>
+        <div class="otorisasi-right">
+            <div class="jabatan">Disetujui Oleh</div>
+            <div class="nama">Bion</div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</div>
+
+
+

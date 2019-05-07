@@ -1,0 +1,368 @@
+﻿@model SmmCoreDDD2019.Application.DataPegawaiDataKeluargas.Command.CreateDataPegawaiDataKeluarga.CreateDataPegawaiDataKeluargaCommand
+
+@{
+  //  ViewData["Title"] = "CreateDataPegawaiDataKeluarga";
+    Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="CreateDataPegawaiDataKeluarga">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label asp-for="IDPegawai" class="control-label"></label>
+
+                    <select asp-items="ViewBag.NamaPekerja" asp-for="IDPegawai" class="form-control"></select>
+
+                    <span asp-validation-for="IDPegawai" class="text-danger"></span>
+
+
+
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+
+                    <label asp-for="NoKtp" class="control-label"></label>
+
+                    <input asp-for="NoKtp" class="form-control" />
+                    <span asp-validation-for="NoKtp" class="text-danger"></span>
+
+                </div>
+            </div>
+
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label asp-for="NamaK" class="control-label"></label>
+
+                    <input asp-for="NamaK" class="form-control" />
+                    <span asp-validation-for="NamaK" class="text-danger"></span>
+
+
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+
+                    <label asp-for="AlamatK" class="control-label"></label>
+
+                    <input asp-for="AlamatK" class="form-control" />
+                    <span asp-validation-for="AlamatK" class="text-danger"></span>
+
+
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="KelurahanK" class="control-label"></label>
+
+                        <input asp-for="KelurahanK" class="form-control" />
+                        <span asp-validation-for="KelurahanK" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="KecamatanK" class="control-label"></label>
+                        <input asp-for="KecamatanK" class="form-control" />
+                        <span asp-validation-for="KecamatanK" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="KotaK" class="control-label"></label>
+
+                        <input asp-for="KotaK" class="form-control" />
+                        <span asp-validation-for="KotaK" class="text-danger"></span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label asp-for="KodePosK" class="control-label"></label>
+
+                        <input asp-for="KodePosK" class="form-control" />
+                        <span asp-validation-for="KodePosK" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Telp" class="control-label"></label>
+
+                        <input id="Telp1" asp-for="Telp" class="form-control" />
+                        <span asp-validation-for="Telp" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Handphone" class="control-label"></label>
+                        <input id="Hp1" asp-for="Handphone" class="form-control" />
+                        <span asp-validation-for="Handphone" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="HubunganK" class="control-label"></label>
+
+
+                        <select asp-for="HubunganK" class="form-control" asp-items="ViewBag.HubunganKel"></select>
+                        <span asp-validation-for="HubunganK" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label asp-for="JenisKelamin" class="control-label"></label>
+                        <select asp-for="JenisKelamin" class="form-control" asp-items="ViewBag.JenisKelamin1"></select>
+
+                        <span asp-validation-for="JenisKelamin" class="text-danger"></span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label asp-for="TempatLahir" class="control-label"></label>
+
+                        <input asp-for="TempatLahir" class="form-control" />
+                        <span asp-validation-for="TempatLahir" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Tgllahir" class="control-label"></label>
+
+                        <input id="datepicker1" asp-for="Tgllahir" class="form-control" />
+                        <span asp-validation-for="Tgllahir" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="PendidikanTerakhir" class="control-label"></label>
+                        <select asp-items="@ViewBag.PendidikanT" asp-for="PendidikanTerakhir" class="form-control"></select>
+                        <span asp-validation-for="PendidikanTerakhir" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Agama" class="control-label"></label>
+
+                        <select asp-for="Agama" class="form-control" asp-items="ViewBag.Agama1"></select>
+
+                        <span asp-validation-for="Agama" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label asp-for="Pekerjaan" class="control-label"></label>
+
+                        <input asp-for="Pekerjaan" class="form-control" />
+                        <span asp-validation-for="Pekerjaan" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label asp-for="Keterangan" class="control-label"></label>
+
+                        <input asp-for="Keterangan" class="form-control" />
+                        <span asp-validation-for="Keterangan" class="text-danger"></span>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                       <label asp-for="EmergencyCall" class="control-label"></label>
+                       
+                            <select asp-for="EmergencyCall" class="form-control" asp-items="ViewBag.Darurat"></select>
+
+                            <span asp-validation-for="EmergencyCall" class="text-danger"></span>
+                       
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <a asp-area="" asp-controller="DataPegawai" asp-action="CreateDataPegawaiDtPekerjaan">Pindah Ke Bagian Data Pekerjaan </a>
+
+
+                    </div>
+                </div>
+            </div>
+         
+
+
+
+        </form>
+    </div>
+</div>
+<hr />
+<hr />
+<script>
+    $('#Telp1').keypress(function (e) {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+
+        return false;
+    });
+    $('#Telp1').keydown(function (e) {
+        // return /[0-9]/.test(String.fromCharCode(e.which));
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+        return false;
+    });
+    $('#Hp1').keypress(function (e) {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+
+        return false;
+    });
+    $('#Hp1').keydown(function (e) {
+        // return /[0-9]/.test(String.fromCharCode(e.which));
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+        return false;
+    });
+    $('#datepicker1').datepicker({
+        changeMonth: true,
+        changeYear: true,
+       // appendText: "(Tanggal-Bulan-Tahun)",
+        dateFormat: "dd-mm-yy",
+        yearRange: "c-100:c+10"
+
+    });
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
