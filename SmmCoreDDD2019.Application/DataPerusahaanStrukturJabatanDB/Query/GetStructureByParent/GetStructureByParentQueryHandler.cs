@@ -28,7 +28,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetSt
                             where (a.Parent == null)
                             select new
                             {
-                                NoUrutAccountId = a.NoUrutStruktur,
+                                NoUrutStruktur = a.NoUrutStruktur,
                                 DataAkun = "[" + a.KodeStruktur + "] - " + a.NamaStrukturJabatan 
 
 

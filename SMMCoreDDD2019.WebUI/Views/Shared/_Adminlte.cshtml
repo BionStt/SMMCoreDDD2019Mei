@@ -43,11 +43,30 @@
         <link href="~/content/default-responsive.css" rel="stylesheet" />
         <link href="~/content/ejthemes/responsive-css/ej.responsive.css" rel="stylesheet" />
         <link href="~/content/ejthemes/responsive-css/ejgrid.responsive.css" rel="stylesheet" />*@
-    
+
+    @*<link href="~/css/animate.css" rel="stylesheet" />
+    <link href="~/css/spinners.css" rel="stylesheet" />*@
+
     @Html.Partial("_AdminlteBasicStyles")
     @RenderSection("Styles", required: false)
 </head>
 <body class="hold-transition skin-blue fixed sidebar-mini">
+    @*<div class="preloader">
+            <div class="loader">
+                <div class="loader__figure"></div>
+                <p class="loader__label"></p>
+            </div>
+        </div>*@
+    @*<div class="spinner-grow text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-success" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>*@
+
     <div class="wrapper">
         @Html.Partial("_AdminlteMainHeader", appUser)
         <!-- Left side column. contains the logo and sidebar -->
