@@ -187,7 +187,7 @@ namespace SMMCoreDDD2019.WebUI
             // Add MediatR
             //services.AddMediatR(typeof(GetProductQueryHandler).GetTypeInfo().Assembly);
             services.AddMediatR(typeof(GetCustomersListQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR();
+          //  services.AddMediatR();
 
             // Add DbContext using SQL Server Provider
             services.AddDbContext<SMMCoreDDD2019DbContext>(options =>

@@ -8,7 +8,7 @@ namespace SmmCoreDDD2019.Domain.Entities
 {
     public class DataPerusahaanStrukturJabatan
     {
-        public int NoUrutStruktur { get; set; }
+        public int NoUrutStrukturID { get; set; }
         public int? Lft { get; set; }
         public int? Rgt { get; set; }
         public string Parent { get; set; }

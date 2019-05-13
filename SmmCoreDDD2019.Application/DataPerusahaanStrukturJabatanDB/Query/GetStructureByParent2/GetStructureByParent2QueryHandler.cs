@@ -29,7 +29,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetSt
                             orderby Child.KodeStruktur
                             select new
                             {
-                                NoUrutAccountId = Child.NoUrutStruktur,
+                                NoUrutStrukturID = Child.NoUrutStrukturID,
                                 DataAkun = "[" + Child.KodeStruktur + "] - " + Child.NamaStrukturJabatan 
 
                             }).ToListAsync(cancellationToken);

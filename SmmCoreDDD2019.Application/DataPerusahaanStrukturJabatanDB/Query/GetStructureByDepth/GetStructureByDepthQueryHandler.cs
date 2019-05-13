@@ -26,13 +26,13 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetSt
 
             var aa = await (from a in _context.DataPerusahaanStrukturJabatan
                       from b in _context.DataPerusahaanStrukturJabatan
-                      where a.Parent == b.NoUrutStruktur.ToString() && (a.Depth == 3)
+                      where a.Parent == b.NoUrutStrukturID.ToString() && (a.Depth == 3)
 
                       select new
                       {
-                          NoUrutAccountId = a.NoUrutStruktur,
-                          Account = b.NamaStrukturJabatan,
-                          KodeAccount = a.KodeStruktur,
+                          NoUrutStrukturID = a.NoUrutStrukturID,
+                          NamaStrukturJabatan = b.NamaStrukturJabatan,
+                          KodeStruktur = a.KodeStruktur,
                           DataAkun1 = "[" + a.KodeStruktur + "] - " + a.NamaStrukturJabatan ,
                           DataAkun2 = b.KodeStruktur + " - " + b.NamaStrukturJabatan 
                       }

@@ -11,7 +11,7 @@ BEGIN
 		RAISERROR (N'This table does not support multiple inserts in one SQL statement', 18, 1)
 
 		DELETE FROM DataPerusahaan.DataPerusahaanStrukturJabatan
-		WHERE NoUrutStruktur IN (SELECT NoUrutStruktur FROM Inserted)
+		WHERE NoUrutStrukturID IN (SELECT NoUrutStrukturID FROM Inserted)
 
 		RETURN
 	END
@@ -27,7 +27,7 @@ BEGIN
 		
 		UPDATE DataPerusahaan.DataPerusahaanStrukturJabatan
 		SET Lft = @Left, Rgt = @Left + 1, Depth = 0
-		WHERE NoUrutStruktur = (SELECT NoUrutStruktur FROM Inserted)
+		WHERE NoUrutStrukturID = (SELECT NoUrutStrukturID FROM Inserted)
 	END
 	--Else, shift ALL sub-trees over (right) by 2
 	--& place the newly Inserted at the tail-end (right) of its siblings
@@ -37,7 +37,7 @@ BEGIN
 
 		SELECT @ParentRight = Rgt, @Depth = Depth + 1
 		FROM DataPerusahaan.DataPerusahaanStrukturJabatan
-		WHERE NoUrutStruktur = (SELECT Parent FROM Inserted)
+		WHERE NoUrutStrukturID = (SELECT Parent FROM Inserted)
 
 		--SHIFT EVERYTHING ELSE OVER (right) 2
 		UPDATE DataPerusahaan.DataPerusahaanStrukturJabatan
@@ -49,7 +49,7 @@ BEGIN
 		UPDATE DataPerusahaan.DataPerusahaanStrukturJabatan
 		SET Lft = @ParentRight, Rgt = @ParentRight + 1
 		  , Depth = @Depth
-		WHERE NoUrutStruktur = (SELECT NoUrutStruktur FROM Inserted)
+		WHERE NoUrutStrukturID = (SELECT NoUrutStrukturID FROM Inserted)
 	END
 END
 GO

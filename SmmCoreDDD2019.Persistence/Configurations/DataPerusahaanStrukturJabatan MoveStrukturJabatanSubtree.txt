@@ -1,6 +1,6 @@
 ﻿
                             CREATE PROCEDURE [dbo].[MoveStrukturJabatanSubtree]
-	                            @NoUrutStruktur INT
+	                            @NoUrutStrukturID INT
 	                            , @NewParent INT
 	                            , @Debug BIT = 0
                             AS
@@ -20,25 +20,25 @@
 
 	                            --Cannot move a subtree under itself
 	                            ELSE IF @NewParent IN (
-		                            SELECT SubCat.NoUrutStruktur
+		                            SELECT SubCat.NoUrutStrukturID
 		                            FROM DataPerusahaan.DataPerusahaanStrukturJabatan Cat
 		                            JOIN DataPerusahaan.DataPerusahaanStrukturJabatan SubCat
 				                            ON SubCat.Lft BETWEEN Cat.Lft AND Cat.Rgt
-		                            WHERE Cat.NoUrutStruktur = @NoUrutStruktur)
+		                            WHERE Cat.NoUrutStrukturID = @NoUrutStrukturID)
 	                            BEGIN
 		                            RAISERROR (N'Cannot move subtree to a node within itself.', 18, 1);
 		                            RETURN;
 	                            END
 
 	                            --Cannot move subtree to a node that doesnt exist
-	                            ELSE IF NOT EXISTS (SELECT 1 FROM DataPerusahaan.DataPerusahaanStrukturJabatan WHERE NoUrutStruktur = @NewParent)
+	                            ELSE IF NOT EXISTS (SELECT 1 FROM DataPerusahaan.DataPerusahaanStrukturJabatan WHERE NoUrutStrukturID = @NewParent)
 	                            BEGIN
 		                            RAISERROR (N'Cannot move subtree to a node that doesn''t exist.', 18, 1);
 		                            RETURN;
 	                            END
 
 	                            --Cannot move subtree that doesnt exist
-	                            ELSE IF NOT EXISTS (SELECT 1 FROM DataPerusahaan.DataPerusahaanStrukturJabatan WHERE NoUrutStruktur = @NoUrutStruktur)
+	                            ELSE IF NOT EXISTS (SELECT 1 FROM DataPerusahaan.DataPerusahaanStrukturJabatan WHERE NoUrutStrukturID = @NoUrutStrukturID)
 	                            BEGIN
 		                            RAISERROR (N'Cannot move subtree that doesn''t exist.', 18, 1);
 		                            RETURN;
@@ -54,7 +54,7 @@
 	                            SELECT @OldParent = Parent,  @SubtreeSize = Rgt - Lft + 1
 		                            , @SubtreeOldLeft = Lft, @SubtreeOldRight = Rgt, @SubtreeOldDepth = Depth
 	                            FROM DataPerusahaan.DataPerusahaanStrukturJabatan
-	                            WHERE NoUrutStruktur = @NoUrutStruktur
+	                            WHERE NoUrutStrukturID = @NoUrutStrukturID
 
 	                            --Cannot move subtree to its own Parent, i.e. there's nothing to do b/c new parent is same as old
 	                            IF @OldParent = @NewParent
@@ -78,22 +78,22 @@
 	                            BEGIN
 		                            SELECT @NewParentRight = Rgt, @NewParentDepth = Depth
 		                            FROM DataPerusahaan.DataPerusahaanStrukturJabatan
-		                            WHERE NoUrutStruktur = @NewParent
+		                            WHERE NoUrutStrukturID = @NewParent
 	                            END
 
 	                            --Get new positions for use
-	                            SELECT NoUrutStruktur
+	                            SELECT NoUrutStrukturID
 		                            , Lft + @NewParentRight - @SubtreeOldLeft AS PLeft
 		                            , Rgt + @NewParentRight - @SubtreeOldLeft AS PRight
 		                            , Depth + (@NewParentDepth - @SubtreeOldDepth) + 1 AS Depth
 	                            INTO #MoveNodes
 	                            FROM DataPerusahaan.DataPerusahaanStrukturJabatan
-	                            WHERE NoUrutStruktur IN (
-		                            SELECT SubCat.NoUrutStruktur
+	                            WHERE NoUrutStrukturID IN (
+		                            SELECT SubCat.NoUrutStrukturID
 		                            FROM DataPerusahaan.DataPerusahaanStrukturJabatan Cat
 		                            JOIN DataPerusahaan.DataPerusahaanStrukturJabatan SubCat
 				                            ON SubCat.Lft BETWEEN Cat.Lft AND Cat.Rgt
-		                            WHERE Cat.NoUrutStruktur = @NoUrutStruktur
+		                            WHERE Cat.NoUrutStrukturID = @NoUrutStrukturID
 	                            )
 
 	                            IF (@Debug = 1)
@@ -111,12 +111,12 @@
 	                            SET Lft = #MoveNodes.PLeft, Rgt = #MoveNodes.PRight, Depth = #MoveNodes.Depth
 	                            FROM DataPerusahaan.DataPerusahaanStrukturJabatan
 	                            JOIN #MoveNodes
-			                            ON DataPerusahaan.DataPerusahaanStrukturJabatan.NoUrutStruktur = #MoveNodes.NoUrutStruktur
+			                            ON DataPerusahaan.DataPerusahaanStrukturJabatan.NoUrutStrukturID = #MoveNodes.NoUrutStrukturID
 
 	                            --Maintain the Adjacency-List part (set ParentID)
 	                            UPDATE DataPerusahaan.DataPerusahaanStrukturJabatan
 	                            SET Parent = (CASE WHEN @NewParent = -1 THEN NULL ELSE @NewParent END)
-	                            WHERE NoUrutStruktur = @NoUrutStruktur
+	                            WHERE NoUrutStrukturID = @NoUrutStrukturID
 
 	                            --Close gaps, i.e. after the Subtree is gone from its old Parent, said old parent node has no children;
 	                            --while nodes to the right & above now have inflated values, except where they include the newly moved subtree.

@@ -10,13 +10,13 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetSt
 {
     public class GetStructureByParentLookUpModel : IHaveCustomMapping
     {
-        public int NoUrutStruktur { get; set; }
+        public int NoUrutStrukturID { get; set; }
         public string DataAkun { get; set; }
 
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<DataPerusahaanStrukturJabatan, GetStructureByParentLookUpModel>()
-               .ForMember(cDTO => cDTO.NoUrutStruktur, opt => opt.MapFrom(c => c.NoUrutStruktur));
+               .ForMember(cDTO => cDTO.NoUrutStrukturID, opt => opt.MapFrom(c => c.NoUrutStrukturID));
             // .ForMember(cDTO => cDTO.KodeAccount, opt => opt.MapFrom(c => c.KodeAccount))
             //   .ForMember(cDTO => cDTO.Account, opt => opt.MapFrom(c => c.Account))
             //     .ForMember(cDTO => cDTO.NormalPos, opt => opt.MapFrom(c => c.NormalPos))

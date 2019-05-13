@@ -9,7 +9,7 @@ BEGIN
 	IF (EXISTS (SELECT 1
 		FROM Deleted
 		JOIN Inserted
-			ON Inserted.NoUrutStruktur = Deleted.NoUrutStruktur
+			ON Inserted.NoUrutStrukturID = Deleted.NoUrutStrukturID
 		WHERE Deleted.Parent <> Inserted.Parent
 			OR Deleted.Lft <> Inserted.Lft
 			OR Deleted.Rgt <> Inserted.Rgt
@@ -24,7 +24,7 @@ BEGIN
 	IF (EXISTS (SELECT 1
 		FROM Deleted
 		JOIN Inserted
-			ON Inserted.NoUrutStruktur = Deleted.NoUrutStruktur
+			ON Inserted.NoUrutStrukturID = Deleted.NoUrutStrukturID
 		WHERE Inserted.Parent IS NULL
 			OR Inserted.Lft IS NULL
 			OR Inserted.Rgt IS NULL
@@ -39,6 +39,6 @@ BEGIN
 	UPDATE DataPerusahaan.DataPerusahaanStrukturJabatan SET DataPerusahaan.DataPerusahaanStrukturJabatan.NamaStrukturJabatan = Inserted.NamaStrukturJabatan
 	FROM DataPerusahaan.DataPerusahaanStrukturJabatan
 	JOIN Inserted
-		ON Inserted.NoUrutStruktur = DataPerusahaan.DataPerusahaanStrukturJabatan.NoUrutStruktur
+		ON Inserted.NoUrutStrukturID = DataPerusahaan.DataPerusahaanStrukturJabatan.NoUrutStrukturID
 END
 GO

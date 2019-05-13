@@ -18,14 +18,14 @@ BEGIN
 		, @DelLeft INT, @DelRight INT
 		, @DelDepth INT
 
-	SELECT @DelID = NoUrutStruktur , @DelParentID = Parent
+	SELECT @DelID = NoUrutStrukturID , @DelParentID = Parent
 		, @DelLeft = Lft, @DelRight = Rgt
 		, @DelDepth = Depth
 	FROM Deleted
 
 	--Ready to delete the node
 	DELETE FROM DataPerusahaan.DataPerusahaanStrukturJabatan
-	WHERE NoUrutStruktur = @DelID
+	WHERE NoUrutStrukturID = @DelID
 
 	--If furthest right root node, no need to move any others
 	IF (@DelRight = (SELECT MAX(Rgt) FROM DataPerusahaan.DataPerusahaanStrukturJabatan))

@@ -9,7 +9,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Command.Cre
 {
     public class CreateDataPerusahaanStrukturJabatanCommand : IRequest
     {
-        public int NoUrutStruktur { get; set; }
+        public int NoUrutStrukturID { get; set; }
         //public int Lft { get; set; }
         //public int Rgt { get; set; }
         [Display(Name = "Parent")]

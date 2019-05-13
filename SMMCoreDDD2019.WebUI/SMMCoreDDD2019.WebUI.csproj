@@ -17,14 +17,15 @@
   <ItemGroup>
     <PackageReference Include="AdminLTE" Version="2.4.0" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.4.0" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.0" />
     <PackageReference Include="bootstrap" Version="4.3.1" />
     <PackageReference Include="bootstrap-sass" Version="3.3.5" />
     <PackageReference Include="Dapper" Version="1.60.6" />
-    <PackageReference Include="FluentValidation.AspNetCore" Version="8.2.2" />
-    <PackageReference Include="jQuery" Version="3.3.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.4.0" />
+    <PackageReference Include="jQuery" Version="3.4.1" />
     <PackageReference Include="jquery.mobile" Version="1.4.5" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="6.0.1" />
+    <PackageReference Include="MediatR" Version="7.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.4">
@@ -37,8 +38,8 @@
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
-    <PackageReference Include="NSwag.AspNetCore" Version="12.1.0" />
-    <PackageReference Include="NSwag.MSBuild" Version="12.1.0">
+    <PackageReference Include="NSwag.AspNetCore" Version="12.2.5" />
+    <PackageReference Include="NSwag.MSBuild" Version="12.2.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>

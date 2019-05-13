@@ -10,7 +10,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetSt
 {
     public class GetStructureByDepthLookUpModel : IHaveCustomMapping
     {
-        public int NoUrutStruktur { get; set; }
+        public int NoUrutStrukturID { get; set; }
         public string KodeStruktur { get; set; }
         public string NamaStrukturJabatan { get; set; }
         public string DataAkun1 { get; set; }
@@ -19,7 +19,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetSt
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<DataPerusahaanStrukturJabatan, GetStructureByDepthLookUpModel>()
-               .ForMember(cDTO => cDTO.NoUrutStruktur, opt => opt.MapFrom(c => c.NoUrutStruktur))
+               .ForMember(cDTO => cDTO.NoUrutStrukturID, opt => opt.MapFrom(c => c.NoUrutStrukturID))
                .ForMember(cDTO => cDTO.KodeStruktur, opt => opt.MapFrom(c => c.KodeStruktur))
                  .ForMember(cDTO => cDTO.NamaStrukturJabatan, opt => opt.MapFrom(c => c.NamaStrukturJabatan));
 

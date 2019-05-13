@@ -14,9 +14,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("DataPerusahaanStrukturJabatan", "DataPerusahaan");
       
-            builder.HasKey(e => e.NoUrutStruktur);
-            builder.Property(e => e.NoUrutStruktur).HasColumnName("NoUrutStruktur");
-            builder.Property(e => e.NoUrutStruktur).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
+            builder.HasKey(e => e.NoUrutStrukturID);
+            builder.Property(e => e.NoUrutStrukturID).HasColumnName("NoUrutStrukturID");
+            builder.Property(e => e.NoUrutStrukturID).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
 
             builder.Property(e => e.Lft).HasColumnName("Lft").ValueGeneratedOnAddOrUpdate();
             builder.Property(e => e.Rgt).HasColumnName("Rgt").ValueGeneratedOnAddOrUpdate();

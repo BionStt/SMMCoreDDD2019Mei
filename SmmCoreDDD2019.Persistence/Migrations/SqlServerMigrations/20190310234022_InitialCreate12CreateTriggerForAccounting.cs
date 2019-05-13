@@ -424,7 +424,7 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 		                                    RAISERROR (N'This table does not support multiple inserts in one SQL statement', 18, 1)
 
 		                                    DELETE FROM DataPerusahaan.DataPerusahaanStrukturJabatan
-		                                    WHERE NoUrutStruktur IN (SELECT NoUrutStruktur FROM Inserted)
+		                                    WHERE NoUrutStrukturID IN (SELECT NoUrutStrukturID FROM Inserted)
 
 		                                    RETURN
 	                                    END
@@ -440,7 +440,7 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 		
 		                                    UPDATE DataPerusahaan.DataPerusahaanStrukturJabatan
 		                                    SET Lft = @Left, Rgt = @Left + 1, Depth = 0
-		                                    WHERE NoUrutStruktur = (SELECT NoUrutStruktur FROM Inserted)
+		                                    WHERE NoUrutStrukturID = (SELECT NoUrutStrukturID FROM Inserted)
 	                                    END
 	                                    --Else, shift ALL sub-trees over (right) by 2
 	                                    --& place the newly Inserted at the tail-end (right) of its siblings
@@ -450,7 +450,7 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 
 		                                    SELECT @ParentRight = Rgt, @Depth = Depth + 1
 		                                    FROM DataPerusahaan.DataPerusahaanStrukturJabatan
-		                                    WHERE NoUrutStruktur = (SELECT Parent FROM Inserted)
+		                                    WHERE NoUrutStrukturID = (SELECT Parent FROM Inserted)
 
 		                                    --SHIFT EVERYTHING ELSE OVER (right) 2
 		                                    UPDATE DataPerusahaan.DataPerusahaanStrukturJabatan
@@ -465,7 +465,7 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                                             SET Lft = @ParentRight, Rgt = @ParentRight + 1
                                               , Depth = @Depth
 
-                                            WHERE NoUrutStruktur = (SELECT NoUrutStruktur FROM Inserted)
+                                            WHERE NoUrutStrukturID = (SELECT NoUrutStrukturID FROM Inserted)
 
                                         END
                                     END
@@ -487,7 +487,7 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 	                            IF (EXISTS (SELECT 1
 		                            FROM Deleted
 		                            JOIN Inserted
-			                            ON Inserted.NoUrutStruktur = Deleted.NoUrutStruktur
+			                            ON Inserted.NoUrutStrukturID = Deleted.NoUrutStrukturID
 		                            WHERE Deleted.Parent <> Inserted.Parent
 			                            OR Deleted.Lft <> Inserted.Lft
 			                            OR Deleted.Rgt <> Inserted.Rgt
@@ -502,7 +502,7 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 	                            IF (EXISTS (SELECT 1
 		                            FROM Deleted
 		                            JOIN Inserted
-			                            ON Inserted.NoUrutStruktur = Deleted.NoUrutStruktur
+			                            ON Inserted.NoUrutStrukturID = Deleted.NoUrutStrukturID
 		                            WHERE Inserted.Parent IS NULL
 			                            OR Inserted.Lft IS NULL
 			                            OR Inserted.Rgt IS NULL
@@ -522,7 +522,7 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 
                                 JOIN Inserted
 
-                                    ON Inserted.NoUrutStruktur = DataPerusahaan.DataPerusahaanStrukturJabatan.NoUrutStruktur
+                                    ON Inserted.NoUrutStrukturID = DataPerusahaan.DataPerusahaanStrukturJabatan.NoUrutStrukturID
                             END
                             
 
@@ -550,14 +550,14 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 		                                    , @DelLeft INT, @DelRight INT
 		                                    , @DelDepth INT
 
-	                                    SELECT @DelID = NoUrutStruktur , @DelParentID = Parent
+	                                    SELECT @DelID = NoUrutStrukturID , @DelParentID = Parent
 		                                    , @DelLeft = Lft, @DelRight = Rgt
 		                                    , @DelDepth = Depth
 	                                    FROM Deleted
 
 	                                    --Ready to delete the node
 	                                    DELETE FROM DataPerusahaan.DataPerusahaanStrukturJabatan
-	                                    WHERE NoUrutStruktur = @DelID
+	                                    WHERE NoUrutStrukturID = @DelID
 
 	                                    --If furthest right root node, no need to move any others
 	                                    IF (@DelRight = (SELECT MAX(Rgt) FROM DataPerusahaan.DataPerusahaanStrukturJabatan))
@@ -605,7 +605,7 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 
             
                             CREATE PROCEDURE [dbo].[MoveStrukturJabatanSubtree]
-	                            @NoUrutStruktur INT
+	                            @NoUrutStrukturID INT
 	                            , @NewParent INT
 	                            , @Debug BIT = 0
                             AS
@@ -625,25 +625,25 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 
 	                            --Cannot move a subtree under itself
 	                            ELSE IF @NewParent IN (
-		                            SELECT SubCat.NoUrutStruktur
+		                            SELECT SubCat.NoUrutStrukturID
 		                            FROM DataPerusahaan.DataPerusahaanStrukturJabatan Cat
 		                            JOIN DataPerusahaan.DataPerusahaanStrukturJabatan SubCat
 				                            ON SubCat.Lft BETWEEN Cat.Lft AND Cat.Rgt
-		                            WHERE Cat.NoUrutStruktur = @NoUrutStruktur)
+		                            WHERE Cat.NoUrutStrukturID = @NoUrutStrukturID)
 	                            BEGIN
 		                            RAISERROR (N'Cannot move subtree to a node within itself.', 18, 1);
 		                            RETURN;
 	                            END
 
 	                            --Cannot move subtree to a node that doesnt exist
-	                            ELSE IF NOT EXISTS (SELECT 1 FROM DataPerusahaan.DataPerusahaanStrukturJabatan WHERE NoUrutStruktur = @NewParent)
+	                            ELSE IF NOT EXISTS (SELECT 1 FROM DataPerusahaan.DataPerusahaanStrukturJabatan WHERE NoUrutStrukturID = @NewParent)
 	                            BEGIN
 		                            RAISERROR (N'Cannot move subtree to a node that doesn''t exist.', 18, 1);
 		                            RETURN;
 	                            END
 
 	                            --Cannot move subtree that doesnt exist
-	                            ELSE IF NOT EXISTS (SELECT 1 FROM DataPerusahaan.DataPerusahaanStrukturJabatan WHERE NoUrutStruktur = @NoUrutStruktur)
+	                            ELSE IF NOT EXISTS (SELECT 1 FROM DataPerusahaan.DataPerusahaanStrukturJabatan WHERE NoUrutStrukturID = @NoUrutStruktur)
 	                            BEGIN
 		                            RAISERROR (N'Cannot move subtree that doesn''t exist.', 18, 1);
 		                            RETURN;
@@ -659,7 +659,7 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 	                            SELECT @OldParent = Parent,  @SubtreeSize = Rgt - Lft + 1
 		                            , @SubtreeOldLeft = Lft, @SubtreeOldRight = Rgt, @SubtreeOldDepth = Depth
 	                            FROM DataPerusahaan.DataPerusahaanStrukturJabatan
-	                            WHERE NoUrutStruktur = @NoUrutStruktur
+	                            WHERE NoUrutStrukturID = @NoUrutStrukturID
 
 	                            --Cannot move subtree to its own Parent, i.e. there's nothing to do b/c new parent is same as old
 	                            IF @OldParent = @NewParent
@@ -683,22 +683,22 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 	                            BEGIN
 		                            SELECT @NewParentRight = Rgt, @NewParentDepth = Depth
 		                            FROM DataPerusahaan.DataPerusahaanStrukturJabatan
-		                            WHERE NoUrutStruktur = @NewParent
+		                            WHERE NoUrutStrukturID = @NewParent
 	                            END
 
 	                            --Get new positions for use
-	                            SELECT NoUrutStruktur
+	                            SELECT NoUrutStrukturID
 		                            , Lft + @NewParentRight - @SubtreeOldLeft AS PLeft
 		                            , Rgt + @NewParentRight - @SubtreeOldLeft AS PRight
 		                            , Depth + (@NewParentDepth - @SubtreeOldDepth) + 1 AS Depth
 	                            INTO #MoveNodes
 	                            FROM DataPerusahaan.DataPerusahaanStrukturJabatan
-	                            WHERE NoUrutStruktur IN (
-		                            SELECT SubCat.NoUrutStruktur
+	                            WHERE NoUrutStrukturID IN (
+		                            SELECT SubCat.NoUrutStrukturID
 		                            FROM DataPerusahaan.DataPerusahaanStrukturJabatan Cat
 		                            JOIN DataPerusahaan.DataPerusahaanStrukturJabatan SubCat
 				                            ON SubCat.Lft BETWEEN Cat.Lft AND Cat.Rgt
-		                            WHERE Cat.NoUrutStruktur = @NoUrutStruktur
+		                            WHERE Cat.NoUrutStrukturID = @NoUrutStrukturID
 	                            )
 
 	                            IF (@Debug = 1)
@@ -716,12 +716,12 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 	                            SET Lft = #MoveNodes.PLeft, Rgt = #MoveNodes.PRight, Depth = #MoveNodes.Depth
 	                            FROM DataPerusahaan.DataPerusahaanStrukturJabatan
 	                            JOIN #MoveNodes
-			                            ON DataPerusahaan.DataPerusahaanStrukturJabatan.NoUrutStruktur = #MoveNodes.NoUrutStruktur
+			                            ON DataPerusahaan.DataPerusahaanStrukturJabatan.NoUrutStrukturID = #MoveNodes.NoUrutStrukturID
 
 	                            --Maintain the Adjacency-List part (set ParentID)
 	                            UPDATE DataPerusahaan.DataPerusahaanStrukturJabatan
 	                            SET Parent = (CASE WHEN @NewParent = -1 THEN NULL ELSE @NewParent END)
-	                            WHERE NoUrutStruktur = @NoUrutStruktur
+	                            WHERE NoUrutStrukturID = @NoUrutStrukturID
 
 	                            --Close gaps, i.e. after the Subtree is gone from its old Parent, said old parent node has no children;
 	                            --while nodes to the right & above now have inflated values, except where they include the newly moved subtree.
@@ -762,15 +762,15 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 	                                    --Cursor (loop) over child nodes of the given ParentID
 	                                    DECLARE @Curff CURSOR 
 	                                    SET @Curff = CURSOR READ_ONLY FAST_FORWARD FOR
-		                                    SELECT NoUrutStruktur
+		                                    SELECT NoUrutStrukturID
 		                                    FROM DataPerusahaan.DataPerusahaanStrukturJabatan
 		                                    WHERE (@Parent IS NULL AND Parent IS NULL)
 			                                    OR Parent = @Parent
 		                                    ORDER BY Lft
 
-	                                    DECLARE @NoUrutStruktur INT
+	                                    DECLARE @NoUrutStrukturID INT
 	                                    OPEN @Curff
-	                                    FETCH NEXT FROM @Curff INTO @NoUrutStruktur
+	                                    FETCH NEXT FROM @Curff INTO @NoUrutStrukturID
 
 	                                    WHILE @@FETCH_STATUS = 0
 	                                    BEGIN
@@ -784,14 +784,14 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 		                                    ALTER TABLE DataPerusahaan.DataPerusahaanStrukturJabatan DISABLE TRIGGER trg_DataPerusahaanStrukturJabatan_UPD;
 
 		                                    UPDATE DataPerusahaan.DataPerusahaanStrukturJabatan SET Lft = @Position, Depth = @Depth
-		                                    WHERE NoUrutStruktur = @NoUrutStruktur
+		                                    WHERE NoUrutStrukturID = @NoUrutStrukturID
 
 		                                    ALTER TABLE DataPerusahaan.DataPerusahaanStrukturJabatan ENABLE TRIGGER trg_DataPerusahaanStrukturJabatan_UPD;
 
 		                                    --Recursively re-number this node's children
 		                                    RAISERROR ('Calling RebuildAccountTree %d, %d --at Depth=%d', 0, 1, @NoUrutStruktur, @Position, @Depth) WITH NOWAIT
 		
-		                                    EXEC @Position = RebuildStrukturJabatanTree @NoUrutStruktur, @Position, @Depth
+		                                    EXEC @Position = RebuildStrukturJabatanTree @NoUrutStrukturID, @Position, @Depth
 
 		                                    --It returns the last PRight set on the sub-tree, so add +1 to get this node's PRight
 		                                    SET @Position = @Position + 1
@@ -803,12 +803,12 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 		                                    ALTER TABLE DataPerusahaan.DataPerusahaanStrukturJabatan DISABLE TRIGGER trg_DataPerusahaanStrukturJabatan_UPD;
 
 		                                    UPDATE DataPerusahaan.DataPerusahaanStrukturJabatan SET rgt = @Position
-		                                    WHERE NoUrutStruktur = @NoUrutStruktur
+		                                    WHERE NoUrutStrukturID = @NoUrutStrukturID
 
 		                                    ALTER TABLE DataPerusahaan.DataPerusahaanStrukturJabatan ENABLE TRIGGER trg_DataPerusahaanStrukturJabatan_UPD;
 
 		                                    --continue looping
-		                                    FETCH NEXT FROM @Curff INTO @NoUrutStruktur
+		                                    FETCH NEXT FROM @Curff INTO @NoUrutStrukturID
 	                                    END
 	                                    CLOSE @Curff
 	                                    DEALLOCATE @Curff
