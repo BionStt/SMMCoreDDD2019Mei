@@ -1,0 +1,176 @@
+﻿@model SmmCoreDDD2019.Application.DataPegawaiDataOrmass.Command.CreateDataPegawaiDataOrmas.CreateDataPegawaiDataOrmasCommand
+
+@{
+    // ViewData["Title"] = "CreateDataPegawaiDtOrmas";
+   // Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="CreateDataPegawaiDtOrmas">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label asp-for="IDPegawai" class="control-label"></label></td>
+
+
+                    <select asp-for="IDPegawai" class="form-control" asp-items="ViewBag.NamaPekerja"> </select>
+                    <span asp-validation-for="IDPegawai" class="text-danger"></span>
+
+
+
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label asp-for="NamaOrmas" class="control-label"></label>
+
+                        <input asp-for="NamaOrmas" class="form-control" />
+                        <span asp-validation-for="NamaOrmas" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label asp-for="AlamatOrmas" class="control-label"></label>
+
+                        <input asp-for="AlamatOrmas" class="form-control" />
+                        <span asp-validation-for="AlamatOrmas" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="KotaOrmas" class="control-label"></label>
+
+                        <input asp-for="KotaOrmas" class="form-control" />
+                        <span asp-validation-for="KotaOrmas" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="TelpOrmas" class="control-label"></label>
+
+                        <input id="Telp1" asp-for="TelpOrmas" class="form-control" />
+                        <span asp-validation-for="TelpOrmas" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label asp-for="Jabatan" class="control-label"></label>
+
+                        <input asp-for="Jabatan" class="form-control" />
+                        <span asp-validation-for="Jabatan" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label asp-for="JenisKegiatan" class="control-label"></label>
+
+                        <input asp-for="JenisKegiatan" class="form-control" />
+                        <span asp-validation-for="JenisKegiatan" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <a asp-area="" asp-controller="DataPegawai" asp-action="CreateDataPegawaiDtFoto">Pindah Ke Bagian Data Foto </a>
+
+
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group">
+
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<hr />
+<hr />
+<script>
+    $('#Telp1').keypress(function (e) {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+
+        return false;
+    });
+    $('#Telp1').keydown(function (e) {
+        // return /[0-9]/.test(String.fromCharCode(e.which));
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+        return false;
+    });
+
+
+</script>
+

@@ -1,0 +1,762 @@
+﻿@model SmmCoreDDD2019.Application.DataSPKKreditDBs.Command.CreateDataSPKKreditDB.CreateDataSPKKreditDBCommand
+
+@{
+    // ViewData["Title"] = "CreateDataSPKKredit";
+    //Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="CreateDataSPKKredit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="NoUrutSPKBaru" class="control-label"></label>
+
+                        <select id="NamaPemesan" asp-items="ViewBag.NamaPemesan" asp-for="NoUrutSPKBaru" class="form-control"></select>
+                        <span asp-validation-for="NoUrutSPKBaru" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="OffTheRoad" class="control-label"></label>
+
+                        <input id="OffTheRoad1a" asp-for="OffTheRoad" class="form-control" />
+                        <span asp-validation-for="OffTheRoad" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+
+                        <label asp-for="BBN" class="control-label"></label>
+
+                        <input id="BBN1" asp-for="BBN" class="form-control" />
+                        <span asp-validation-for="BBN" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">Harga On The Road</label>
+                        <input id="OTR1" readonly class="form-control" />
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="DPPriceList" class="control-label"></label>
+
+                        <input id="DPPricelist1" value="0" asp-for="DPPriceList" class="form-control" />
+                        <span asp-validation-for="DPPriceList" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="DiskonDP" class="control-label"></label>
+
+                        <input value="0" id="DiskonDP1" asp-for="DiskonDP" class="form-control" />
+                        <span asp-validation-for="DiskonDP" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+
+                        <label class="control-label">DP Bayar</label>
+                        <input id="DPBayar1" readonly class="form-control" />
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="UangTandaJadiTunai" class="control-label"></label>
+
+                        <input value="0" id="UangTandajadiTunai1" asp-for="UangTandaJadiTunai" class="form-control" />
+                        <span asp-validation-for="UangTandaJadiTunai" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="UangTandaJadiKredit" class="control-label"></label>
+
+                        <input value="0" id="UangTandaJadiKredit1" asp-for="UangTandaJadiKredit" class="form-control" />
+                        <span asp-validation-for="UangTandaJadiKredit" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="DiskonTunai" class="control-label"></label>
+                        <input value="0" id="DiskonTunai1" asp-for="DiskonTunai" class="form-control" />
+                        <span asp-validation-for="DiskonTunai" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Promosi" class="control-label"></label>
+
+                        <input value="0" id="Promosi1" asp-for="Promosi" class="form-control" />
+                        <span asp-validation-for="Promosi" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="DendaWilayah" class="control-label"></label>
+
+                        <input value="0" id="DendaWilayah1" asp-for="DendaWilayah" class="form-control" />
+                        <span asp-validation-for="DendaWilayah" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="BiayaAdministrasiTunai" class="control-label"></label>
+
+                        <input value="0" id="BiayaAdministrasiTunai1" asp-for="BiayaAdministrasiTunai" class="form-control" />
+                        <span asp-validation-for="BiayaAdministrasiTunai" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label asp-for="BiayaAdministrasiKredit" class="control-label"></label>
+
+                        <input value="0" id="BiayaAdministrasiKredit1" asp-for="BiayaAdministrasiKredit" class="form-control" />
+                        <span asp-validation-for="BiayaAdministrasiKredit" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Komisi" class="control-label"></label>
+
+                        <input value="0" id="Komisi1" asp-for="Komisi" class="form-control" />
+                        <span asp-validation-for="Komisi" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <input type="submit" value="Create" class="btn btn-primary" />
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </form>
+    </div>
+</div>
+<hr />
+<hr />
+<script>
+    $(document).ready(function () {
+
+        $("#DPPricelist1").change(function () {
+            var um = $("#DPPricelist1").val();
+            var disc = $("#DiskonDP1").val();
+            var dpbyrr = $('#DPBayar1');
+            dpbyrr.val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format((um - disc)));
+            dpbyrr.change();
+
+
+        });
+        $("#DiskonDP1").change(function () {
+            var um = $("#DPPricelist1").val();
+            var disc = $("#DiskonDP1").val();
+            var dpbyrr = $('#DPBayar1');
+            dpbyrr.val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format((um - disc)));
+            dpbyrr.change();
+
+
+        });
+        $("#OffTheRoad1a").change(function () {
+            var off = $("#OffTheRoad1a").val();
+            var Bbn = $("#BBN1").val();
+            var otr = $('#OTR1');
+            otr.val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format((off - (-Bbn))));
+            otr.change();
+        });
+        $("#BBN1").change(function () {
+            var off = $("#OffTheRoad1a").val();
+            var Bbn = $("#BBN1").val();
+            var otr = $('#OTR1');
+            otr.val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format((off - (-Bbn))));
+            otr.change();
+        });
+
+
+        $("#NamaPemesan").change(function ()
+                   {
+                          $.ajax({
+                                 type: 'GET',
+                                  url: '@Url.Action("GetHargaKendaraan")',
+                                   datatype: JSON,
+                              data: { 'NoSPK': $("#NamaPemesan").val() },
+                                   success: function (data)
+                                   {
+                                       var aa = jQuery.parseJSON(data);
+                                       var hrg = aa.HargaOff;
+                                       var bbn1 = aa.BBN;
+                                       var otrr = hrg + bbn1;
+                                      // var NoRangka= aa.Noka;
+                                       //  var NoMesin = aa.Nosin;
+                                       if (aa != null)
+                                       {
+                                           var urlSegment = $('#OffTheRoad1a');
+                                           urlSegment.val(hrg);
+                                           urlSegment.change();
+
+                                           var urlSegment2 = $('#BBN1');
+                                           urlSegment2.val(bbn1);
+                                           urlSegment2.change();
+
+                                           var urlSegment3 = $('#OTR1');
+                                           urlSegment3.val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(otrr));
+                                           urlSegment3.change();
+                                       }
+
+
+                                       //var urlSegment3 = $('#Noka1');
+                                       //urlSegment3.val(NoRangka);
+                                       //urlSegment3.change();
+
+                                       //var urlSegment3 = $('#Nosin1');
+                                       //urlSegment3.val(NoMesin);
+                                       //urlSegment3.change();
+
+                                     //  alert($("#NoUrutTkend").val());
+                                      // alert(aa.Harga);
+
+                                    },
+                                       error: function (data)
+                                          {
+                                              alert(data);
+                                               alert('Data Kosong');
+                                          }
+                           });
+                   });
+
+
+
+
+        $('#OffTheRoad1a').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#OffTheRoad1a').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#BBN1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#BBN1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+
+        $('#DPPricelist1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#DPPricelist1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+
+        $('#DiskonDP1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#DiskonDP1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+
+        $('#UangTandajadiTunai1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#UangTandajadiTunai1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+
+        $('#UangTandaJadiKredit1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#UangTandaJadiKredit1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+
+        $('#DiskonTunai1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#DiskonTunai1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#Promosi1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#Promosi1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#DendaWilayah1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#DendaWilayah1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#BiayaAdministrasiTunai1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#BiayaAdministrasiTunai1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#BiayaAdministrasiKredit1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#BiayaAdministrasiKredit1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+        $('#Komisi1').keypress(function (e) {
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+
+            return false;
+        });
+        $('#Komisi1').keydown(function (e) {
+            // return /[0-9]/.test(String.fromCharCode(e.which));
+            var key = e.which || e.keyCode;
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+                // numbers
+                key >= 48 && key <= 57 ||
+                // Numeric keypad
+                key >= 96 && key <= 105 ||
+                // Backspace and Tab and Enter
+                key == 8 || key == 9 || key == 13 ||
+                // Home and End
+                key == 35 || key == 36 ||
+                // left and right arrows
+                key == 37 || key == 39 ||
+                // Del and Ins
+                key == 46 || key == 45)
+                return true;
+            return false;
+        });
+
+    });
+
+
+
+</script>

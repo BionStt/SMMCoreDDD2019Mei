@@ -58,7 +58,7 @@ namespace SmmCoreDDD2019.Common.Identity
                     UserName = "Bion",
                     Name = "Bion",
                     Email = "sutanto.gasali@gmail.com",
-                    PhoneNumber = "081338883878"
+                    PhoneNumber = "08111806368"
                 };
 
                 var result = await userManager.CreateAsync(user);
@@ -77,7 +77,7 @@ namespace SmmCoreDDD2019.Common.Identity
                     UserName = "Bion2",
                     Name = "Bion2",
                     Email = "sutanto.gasali@gmail.com",
-                    PhoneNumber = "081338883878"
+                    PhoneNumber = "08111806368"
                 };
 
                 var result = await userManager.CreateAsync(user);

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<SmmCoreDDD2019.Common.Identity.Models.AccountViewModels.UserRoleViewModel>
+
+@{
+    ViewData["Title"] = "Edit Role";
+    // Layout = "~/Views/Shared/_Layout.cshstml";
+    Layout = "";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <form asp-action="EditRole" role="form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input hidden name="id" value="@ViewBag.ApplicationUSerID" />
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label class="control-label">Name</label>
+                        <input value="@ViewBag.Name" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label class="control-label">Email</label>
+                        <input value="@ViewBag.Email" class="form-control" />
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label class=" control-label">UserName</label>
+                        <input value="@ViewBag.UserName" class="form-control" />
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class=" control-label">PhoneNumber </label>
+                        <input value="@ViewBag.PhoneNumber " class="form-control" />
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class=" control-label">Roles</label>
+
+                        <ul>
+                            @{
+                                foreach (var item in Model)
+                                {
+                                    <li>
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="Check_@item.CounterId" checked="@item.IsHaveAccess" />
+                                            <label for="Check_@item.CounterId">@item.RoleName</label>
+                                        </div>
+
+                                    </li>
+                                }
+
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="submit" value="Simpan" class="btn btn-default" />
+
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+
+
+
+</div>

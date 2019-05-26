@@ -25,6 +25,19 @@
                     <i class="fa fa-line-chart"></i> <span>@MainMenu.Dashboard.PageName</span>
                 </a>
             </li>
+
+            <li style="background-color:aqua" class="header">Accounting</li>
+            <li class="@Html.IsSelected(controller: MainMenu.AccountingDataAccount.ControllerName)">
+                <a href="@MainMenu.AccountingDataAccount.Path">
+                    <i class="fa fa-group"></i> <span>@MainMenu.AccountingDataAccount.PageName</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: MainMenu.AccountingDataJournal.ControllerName)">
+                <a href="@MainMenu.AccountingDataJournal.Path">
+                    <i class="fa fa-group"></i> <span>@MainMenu.AccountingDataJournal.PageName</span>
+                </a>
+            </li>
+
             <li style="background-color:aqua" class="header">Data Avalist</li>
             <li class="@Html.IsSelected(controller: MainMenu.DataAvalistDataKonsumen.ControllerName)">
                 <a href="@MainMenu.DataAvalistDataKonsumen.Path">

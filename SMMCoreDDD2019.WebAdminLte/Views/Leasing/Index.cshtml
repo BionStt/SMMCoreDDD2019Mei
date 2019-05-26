@@ -1,0 +1,70 @@
+﻿@model IEnumerable<SmmCoreDDD2019.Application.PenjualanDetails.Query.GetLeasingCetak.GetLeasingCetakLookUpModel>
+@{
+    ViewData["Title"] = "Index";
+   // Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    <div class="top-buffer"></div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Data Leasing</div>
+        <div class="panel-body">
+            <section>
+                <form>
+                    <table class="table table-striped table-bordered dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.NoUrutPenjualanDetail)</th>
+                                <th>@Html.DisplayNameFor(model => model.NamaKonsumen)</th>
+
+                                <th>Perintah</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td> @Html.DisplayFor(modelItem => item.NoUrutPenjualanDetail)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.NamaKonsumen)</td>
+
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Pilihan
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" asp-action="SIPBPKB" asp-route-id="@item.NoUrutPenjualanDetail">  SIPBPKB</a><br />
+                                                <a class="dropdown-item" asp-action="SIPBPKB2" asp-route-id="@item.NoUrutPenjualanDetail">  SIPBPKB2</a><br />
+                                                <a class="dropdown-item" asp-action="PenagihanL" asp-route-id="@item.NoUrutPenjualanDetail">  PenagihanL</a><br />
+                                                <a class="dropdown-item" asp-action="SjTunai" asp-route-id="@item.NoUrutPenjualanDetail">  SJTunai</a><br />
+                                                <a class="dropdown-item" asp-action="Sj1" asp-route-id="@item.NoUrutPenjualanDetail">  SJ1</a><br />
+                                                <a class="dropdown-item" asp-action="Sj2a" asp-route-id="@item.NoUrutPenjualanDetail">  Sj2</a><br />
+                                                <a class="dropdown-item" asp-action="Sj3" asp-route-id="@item.NoUrutPenjualanDetail">  Sj3</a><br />
+                                                <a class="dropdown-item" asp-action="Sj4" asp-route-id="@item.NoUrutPenjualanDetail">  Sj4</a><br />
+
+                                            </div>
+                                        </div>
+                                    </td>
+
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                    <div class="form-group">
+                        <div class="col-md-offset-0 col-md-10">
+
+
+                        </div>
+                    </div>
+                </form>
+
+            </section>
+        </div>
+    </div>
+</div>

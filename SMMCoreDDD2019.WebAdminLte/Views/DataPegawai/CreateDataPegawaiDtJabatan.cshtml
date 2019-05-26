@@ -1,0 +1,61 @@
+﻿@model SmmCoreDDD2019.Application.DataPegawaiDataJabatans.Commands.CreateDataPegawaiDataJabatan.CreateDataPegawaiDataJabatanCommand
+
+@{
+    //  ViewData["Title"] = "CreateDataPegawaiDtJabatan";
+   // Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-9">
+        <form asp-action="CreateDataPegawaiDtJabatan">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="IDPegawai" class="control-label"></label>
+
+
+                        <select asp-for="IDPegawai" class="form-control" asp-items="ViewBag.NamaPekerja"></select>
+                        <span asp-validation-for="IDPegawai" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="NoUrutJabatan" class="control-label"></label>
+
+
+                        <select asp-items="ViewBag.Jabatan" asp-for="NoUrutJabatan" class="form-control"></select>
+                        <span asp-validation-for="NoUrutJabatan" class="text-danger"></span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label asp-for="Keterangan" class="control-label"></label>
+
+                        <input asp-for="Keterangan" class="form-control" />
+                        <span asp-validation-for="Keterangan" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+
+
+
+        </form>
+    </div>
+</div>
+<hr />
+<hr />

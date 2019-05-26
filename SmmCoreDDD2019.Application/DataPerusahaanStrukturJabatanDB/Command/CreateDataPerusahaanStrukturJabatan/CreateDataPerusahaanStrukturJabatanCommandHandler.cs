@@ -27,11 +27,22 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Command.Cre
         }
         public async Task<Unit> Handle(CreateDataPerusahaanStrukturJabatanCommand request, CancellationToken cancellationToken)
         {
+            string NilaiParent;
+            if (request.Parent == "0")
+            {
+                NilaiParent = null;
+            }
+            else
+            {
+                NilaiParent = request.Parent;
+
+            };
             var entity = new DataPerusahaanStrukturJabatan
             {
-                KodeStruktur= request.KodeStruktur,
+                KodeStruktur = request.KodeStruktur,
                 NamaStrukturJabatan = request.NamaStrukturJabatan,
-                Parent = request.Parent
+                Parent = NilaiParent
+
 
             };
 

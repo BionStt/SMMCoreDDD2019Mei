@@ -1,0 +1,88 @@
+﻿@model SmmCoreDDD2019.Application.BPKBDBs.Command.CreateBPKBDB.CreateBPKBDBCommand
+
+@{
+    //  ViewData["Title"] = "CreateMohonBPKB";
+  //  Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="CreateMohonBPKB">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label asp-for="NoUrutFaktur" class="control-label"></label>
+
+                        <select asp-items="@ViewBag.NamaKonsumen1" asp-for="NoUrutFaktur" class="form-control"></select>
+                        <span asp-validation-for="NoUrutFaktur" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label asp-for="NoBpkb" class="control-label"></label>
+
+                        <input asp-for="NoBpkb" class="form-control" />
+                        <span asp-validation-for="NoBpkb" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label asp-for="TanggalTerimaBPKB" class="control-label"></label>
+
+                        <input id="TanggalTerimaBPKB1" asp-for="TanggalTerimaBPKB" class="form-control" />
+                        <span asp-validation-for="TanggalTerimaBPKB" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+
+                        <input type="submit" value="Create" class="btn btn-primary" />
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </form>
+    </div>
+</div>
+<hr />
+<hr />
+<script>
+    $('#TanggalTerimaBPKB1').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        appendText: "(Tanggal-Bulan-Tahun)",
+        dateFormat: "dd-mm-yy",
+        yearRange: "c-100:c+10"
+
+    });
+</script>

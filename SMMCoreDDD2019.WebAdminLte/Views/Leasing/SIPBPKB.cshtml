@@ -1,0 +1,147 @@
+﻿@model SmmCoreDDD2019.Application.PenjualanDetails.Query.GetDataDetailLeasingCetak.GetDataDetailLeasingCetakLookUpModel
+@{
+    ViewData["Title"] = "SIPBPKB";
+   // Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+
+<script language="javascript">
+    function printdiv(printpage) {
+        var headstr = "<html><head><title></title></head><body>";
+        var footstr = "</body>";
+        var newstr = document.all.item(printpage).innerHTML;
+        var oldstr = document.body.innerHTML;
+        document.body.innerHTML = headstr + newstr + footstr;
+        window.print();
+        document.body.innerHTML = oldstr;
+        return false;
+    }
+</script>
+
+
+<style>
+    .page {
+        width: 21cm;
+        min-height: 29.7cm;
+        padding: 1cm;
+        margin: 1cm auto;
+        margin-left: 2cm;
+        border: 1px #D3D3D3 solid;
+        border-radius: 5px;
+        background: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        /*font-size:medium;*/
+    }
+</style>
+
+<div class="hidden-print">
+    <p></p>
+
+    <input name="b_print" type="button" class="ipt" onClick="printdiv('div_print');" value=" Print ">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<div id="div_print">
+    <div class="row" style="text-align:center;border-bottom:solid;font-family:'Times New Roman';line-height:1">
+        <center><p>@ViewData["NamaP"]</p></center>
+        <center>  <p>PUSAT PENJUALAN KREDIT & TUNAI KENDARAAN MOTOR</p>    </center>
+        <center>        <p>@ViewData["AlamatP"]</p>    </center>
+        <center>        <p> @ViewData["KecP"] - @ViewData["KotaP"]</p>    </center>
+        <center> <p>@ViewData["TelpP"]</p></center>
+
+    </div>
+    <div>
+        @ViewData["KotaP"],@DateTime.Now.ToString("dd MMMM yyyy")<br />
+        Kepada Yth,
+        @Html.DisplayFor(model => model.NamaLeasing)<br />
+        Cabang  @Html.DisplayFor(model => model.CabangLeasing)<br />
+        Di-Tempat
+    </div>
+    <div class="row" style="text-align:center;font-family:'Times New Roman'">
+        <u> HAL: PERNYATAAN PENYERAHAN BPKB DAN FAKTUR</u>
+    </div>
+    <div>
+        Dengan Hormat,<br />
+        Sehubungan dengan adanya pembelian 1(satu) unit sepeda motor:<br />
+        <table>
+            <tr>
+                <th>
+                    Nama Konsumen   :
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.NamaKonsumen)
+                </td>
+            </tr>
+            <tr>
+                <th>Atas Nama BPKB  : </th>
+                <td>@Html.DisplayFor(model => model.NamaBPKB)</td>
+            </tr>
+            <tr>
+                <th> Alamat Konsumen :</th>
+                <td>
+                    @Html.DisplayFor(model => model.AlamatKonsumen)<br />
+                    Kel.@Html.DisplayFor(model => model.KelurahanK) Kec.  @Html.DisplayFor(model => model.KecamatanK)<br />
+                    Kota @Html.DisplayFor(model => model.KotaK) Kode Pos @Html.DisplayFor(model => model.KodePosK)<br />
+                    Telp.@Html.DisplayFor(model => model.NoTelepon) HP.@Html.DisplayFor(model => model.NoHandphone)<br />
+                    @*No.KTP. @Html.DisplayFor(model => model.NoKTP)*@
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Merek/Nama Barang:
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Merek) / @Html.DisplayFor(model => model.NamaBarang)
+                </td>
+            </tr>
+            <tr>
+                <th>Warna / Tahun</th>
+                <td>@Html.DisplayFor(model => model.Warna) /   </td>
+            </tr>
+            <tr>
+                <th>
+                    No.Rangka:
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Noka1)@Html.DisplayFor(model => model.NoRangka)
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    No.Mesin :
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Nosin1)@Html.DisplayFor(model => model.NoMesin)
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <div>
+        <table class="row">
+            <tr>
+                <td>
+                    Bersama ini kami menyatakan BPKB dan Faktur untuk data kendaraan tersebut diatas masih dalam pengurusan
+                    di POLDA dan kami akan menyerahkan segera kepada @Html.DisplayFor(model => model.NamaLeasing) Selambatnya 4(empat) bulan sejak pernyataan ini dibuat.<br />
+                </td>
+
+            </tr>
+            <tr>
+                <td>Demikian Surat ini kami buat, terima kasih atas kerjsama dan bantuannya.</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    Hormat Kami,<br /><br /><br /><br><br /><br />
+                    (_____<u>@ViewData["ContakCs"]</u>_____)
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+<p>Printed by:@UserManager.GetUserName(User) @DateTime.Now</p>

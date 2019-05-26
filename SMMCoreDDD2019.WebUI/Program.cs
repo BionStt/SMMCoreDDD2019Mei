@@ -41,8 +41,10 @@ namespace SMMCoreDDD2019.WebUI
                    var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
                     var functional = services.GetRequiredService<IFunctional>();
                   //  var functional2 = services.GetRequiredService<INetcoreService>();
-                    context.Database.Migrate();
-                    contextIdentity.Database.Migrate();
+
+                    //2 perintah code dibawah ini supaya otomatis migrate database
+                   // context.Database.Migrate();
+                   // contextIdentity.Database.Migrate();
 
                     SMMCoreDDD2019Initializer.Initialize(context);
                    //  AppIdentityDbInitializar.Initialize(contextIdentity, userManager, roleManager).Wait();

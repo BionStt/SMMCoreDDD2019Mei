@@ -1,0 +1,84 @@
+﻿@model SmmCoreDDD2019.Application.MasterBarangDBs.Commands.UpdateMasterBarangDBs.UpdateMasterBarangDBCommand
+
+@{
+    ViewData["Title"] = "EditMasterBarang";
+   // Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<h2>EditMasterBarang</h2>
+
+<h4>UpdateMasterBarangDBCommand</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditMasterBarang">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NoUrutTypeKendaraan" class="control-label"></label>
+                <input asp-for="NoUrutTypeKendaraan" class="form-control" />
+                <span asp-validation-for="NoUrutTypeKendaraan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeKendaraan" class="control-label"></label>
+                <input asp-for="TypeKendaraan" class="form-control" />
+                <span asp-validation-for="TypeKendaraan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NamaBarang" class="control-label"></label>
+                <input asp-for="NamaBarang" class="form-control" />
+                <span asp-validation-for="NamaBarang" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Harga" class="control-label"></label>
+                <input asp-for="Harga" class="form-control" />
+                <span asp-validation-for="Harga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BBN" class="control-label"></label>
+                <input asp-for="BBN" class="form-control" />
+                <span asp-validation-for="BBN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Merek" class="control-label"></label>
+                <input asp-for="Merek" class="form-control" />
+                <span asp-validation-for="Merek" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cc" class="control-label"></label>
+                <input asp-for="Cc" class="form-control" />
+                <span asp-validation-for="Cc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomorRangka" class="control-label"></label>
+                <input asp-for="NomorRangka" class="form-control" />
+                <span asp-validation-for="NomorRangka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomorMesin" class="control-label"></label>
+                <input asp-for="NomorMesin" class="form-control" />
+                <span asp-validation-for="NomorMesin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tahun" class="control-label"></label>
+                <input asp-for="Tahun" class="form-control" />
+                <span asp-validation-for="Tahun" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tipe" class="control-label"></label>
+                <input asp-for="Tipe" class="form-control" />
+                <span asp-validation-for="Tipe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aktif" class="control-label"></label>
+                <input asp-for="Aktif" class="form-control" />
+                <span asp-validation-for="Aktif" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

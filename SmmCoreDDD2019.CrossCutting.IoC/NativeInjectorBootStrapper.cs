@@ -31,7 +31,7 @@ namespace SmmCoreDDD2019.CrossCutting.IoC
             // ASP.NET HttpContext dependency
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddTransient<INumberSequence, SmmCoreDDD2019.Common.Services.NumberSequence>();
+           // services.AddTransient<INumberSequence, SmmCoreDDD2019.Common.Services.NumberSequence>();
             services.AddTransient<IRoles, Roles>();
             services.AddTransient<IFunctional, Functional>();
 

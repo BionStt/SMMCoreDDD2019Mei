@@ -1,0 +1,17 @@
+﻿@using SMMCoreDDD2019.WebAdminLte
+@using SMMCoreDDD2019.WebAdminLte.Models
+@using SmmCoreDDD2019.Common.Identity.Models.ManageViewModels
+@using SmmCoreDDD2019.Common.Identity.Models.AccountViewModels
+@using SmmCoreDDD2019.Common.Identity.Models
+@using SmmCoreDDD2019.Common.Identity
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Authorization
+@using SMMCoreDDD2019.WebAdminLte.Services.Profile
+
+@using SmmCoreDDD2019.Common.Pages
+@using SmmCoreDDD2019.Infrastructure
+@using SmmCoreDDD2019.Common.Helpers
+@*@inject IAuthorizationService AuthorizationService*@
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

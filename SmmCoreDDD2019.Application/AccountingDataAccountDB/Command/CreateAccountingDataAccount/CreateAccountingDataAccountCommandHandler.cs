@@ -29,6 +29,17 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Command.CreateAccou
         }
         public async Task<Unit> Handle(CreateAccountingDataAccountCommand request, CancellationToken cancellationToken)
         {
+            string NilaiParent;
+            if (request.Parent == "0")
+            {
+                NilaiParent = null;
+            }
+            else
+            {
+                NilaiParent = request.Parent;
+
+            };
+
             var entity = new AccountingDataAccount
             {
                 KodeAccount = request.KodeAccount,
@@ -36,8 +47,8 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Command.CreateAccou
                 NormalPos = request.NormalPos,
                 Kelompok = request.Kelompok,
                 MataUangID= request.MataUangID,
-                Parent = request.Parent
-
+              //  Parent = request.Parent
+              Parent= NilaiParent
             };
 
             _context.AccountingDataAccount.Add(entity);

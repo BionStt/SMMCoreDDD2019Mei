@@ -4,9 +4,10 @@ UPDATE-DATABASE -CONTEXT SMMCoreDDD2019DbContext
 
 Remove-Migration -Context SMMCoreDDD2019DbContext 
 
+di webui folder 
+dotnet ef database update -c AppIdentityDbContext -p ..\SmmCoreDDD2019.Common\SmmCoreDDD2019.Common.csproj -s .\SMMCoreDDD2019.WebUI.csproj
 
 You can rollback to any migration by using:
-
 
 Update-Database -Migration 20190307003447_InitialCreate11 -Context SMMCoreDDD2019DbContext 
 
@@ -17,6 +18,7 @@ jgn lupa ganti nama initialcreate nya
 
 2. Open a command prompt in the Web folder and execute the following commands:
 
+diweb folder ya
 dotnet restore
 dotnet ef database update -c catalogcontext -p ../Infrastructure/Infrastructure.csproj -s Web.csproj
 dotnet ef database update -c appidentitydbcontext -p ../Infrastructure/Infrastructure.csproj -s Web.csproj

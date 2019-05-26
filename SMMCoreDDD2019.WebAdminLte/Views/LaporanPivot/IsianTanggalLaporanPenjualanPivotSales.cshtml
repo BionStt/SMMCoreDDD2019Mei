@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "IsianTanggalLaporanPenjualanPivotSales";
+   // Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+
+
+<h2>Isi Periode Laporan Penjualan Pivot Sales Bulanan</h2>
+
+
+<div>
+    @using (Html.BeginForm("LaporanPenjualanPivotSales", "LaporanPivot", FormMethod.Post))
+    {
+
+        <table style="border:double">
+            <tr style="border:double">Masukkan Periode Waktu</tr>
+            <tr style="border:double">
+                <th style="border:double">Periode Awal:</th>
+                <td style="border:double">
+
+                    <input type="text" id="datepicker1" name="PeriodeAwal" />
+                </td>
+            </tr>
+            <tr style="border:double">
+                <th style="border:double">Periode Akhir:</th>
+                <td style="border:double">
+
+                    <input type="text" id="datepicker2" name="PeriodeAkhir" />
+                </td>
+            </tr>
+            <tr>
+                <th>Sales Force</th>
+                <td>
+
+                    <select name="NoUrutSales" class="form-control" asp-items="ViewBag.NoUrutSales"></select>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td style="border:double">
+                    <div class="form-group">
+                        <input type="submit" value="Tampilkan" class="btn-info" />
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+
+        <script>
+                $('#datepicker1').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    appendText: "(Tanggal-Bulan-Tahun)",
+                    dateFormat: "dd-mm-yy",
+                    yearRange: "c-100:c+10"
+
+                });
+                $('#datepicker2').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    appendText: "(Tanggal-Bulan-Tahun)",
+                    dateFormat: "dd-mm-yy",
+                    yearRange: "c-100:c+10"
+
+                });
+        </script>
+
+    }
+
+</div>

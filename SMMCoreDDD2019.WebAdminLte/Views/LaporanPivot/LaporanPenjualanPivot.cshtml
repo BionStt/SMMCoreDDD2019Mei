@@ -1,0 +1,102 @@
+﻿@model IEnumerable<SmmCoreDDD2019.Application.Penjualans.Query.GetLaporanPenjualanPivot.GetLaporanPenjualanPivotLookUpModel>
+@{
+    ViewData["Title"] = "LaporanPenjualanPivot";
+    Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<h2>LaporanPenjualanPivot</h2>
+
+<script language="javascript">
+    function printdiv(printpage) {
+        var headstr = "<html><head><title></title></head><body>";
+        var footstr = "</body>";
+        var newstr = document.all.item(printpage).innerHTML;
+        var oldstr = document.body.innerHTML;
+        document.body.innerHTML = headstr + newstr + footstr;
+        window.print();
+        document.body.innerHTML = oldstr;
+        return false;
+    }
+</script>
+<style>
+    .page {
+        width: 21cm;
+        min-height: 29.7cm;
+        padding: 2cm;
+        margin: 1cm auto;
+        border: 1px #D3D3D3 solid;
+        border-radius: 5px;
+        background: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<div>
+    <p></p>
+    @*<a style="color:green;text-decoration:none;" href="javascript:window.print()">
+            <span style="color:green;text-decoration:none;">
+                <img height="12" src="https://ecs7.tokopedia.net/img/print.png" alt="Print" />&nbsp;Cetak
+            </span>
+
+            <span style="display:inline-block; width:25px ;"></span>
+        </a>*@
+
+    <input name="b_print" type="button" class="ipt" onClick="printdiv('div_print');" value=" Print ">
+    <a asp-action="IsiTglLapPJPivot">Back to List</a>
+</div>
+
+<div id="div_print">
+    <h4>Laporan Penjualan Berdasarkan Leasing Merek</h4>
+    <table style="border:double" width="100%">
+        <thead>
+            <tr style="border:double">
+                <th>Nama Leasing</th>
+                <th>HONDA</th>
+                <th>YAMAHA</th>
+                <th>SUZUKI</th>
+                <th>KAWASAKI</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int i = 0;
+                int honda = 0;
+                int ymh = 0;
+                int szk = 0;
+                int kwsk = 0;
+            }
+            @foreach (var item in Model)
+            {
+                <tr style="border:double">
+                    <td>@item.NamaLeasing</td>
+                    <td>@item.HONDA</td>
+                    <td>@item.YAMAHA</td>
+                    <td>@item.SUZUKI</td>
+                    <td>@item.KAWASAKI</td>
+                    <td>@item.TtlRow</td>
+                </tr>
+                honda = honda + item.HONDA;
+                ymh = ymh + item.YAMAHA;
+                szk = szk + item.SUZUKI;
+                kwsk = kwsk + item.KAWASAKI;
+                i = i + item.TtlRow;
+            }
+
+
+        </tbody>
+        <tfoot>
+            <tr style="border:double">
+                <td>Total</td>
+                <td>@honda</td>
+                <td>@ymh</td>
+                <td>@szk</td>
+                <td>@kwsk</td>
+                <td>@i</td>
+
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<div>
+    <p>Printed by:@UserManager.GetUserName(User) @DateTime.Now</p>
+</div>

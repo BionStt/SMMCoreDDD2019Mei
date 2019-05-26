@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "LaporanNeraca2Tanggal";
+   // Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<h2>Isian Periode Laporan Neraca</h2>
+
+
+<div>
+    @using (Html.BeginForm("LaporanNeraca2", "Accounting", FormMethod.Post))
+    {
+
+        <table style="border:double">
+            <tr style="border:double">Masukkan Periode Waktu</tr>
+            <tr style="border:double">
+                <th style="border:double">Periode Awal:</th>
+                <td style="border:double">
+
+                    <input name="Tgl1" type="text" id="datepicker1" />
+                </td>
+            </tr>
+            <tr style="border:double">
+                <th style="border:double">Periode Akhir:</th>
+                <td style="border:double">
+
+                    <input name="Tgl2" type="text" id="datepicker2" />
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td style="border:double">
+                    <div class="form-group">
+                        <input type="submit" value="Tampilkan" class="btn-info" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <script>
+                $('#datepicker1').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    appendText: "(Tanggal-Bulan-Tahun)",
+                    dateFormat: "dd-mm-yy",
+                    yearRange: "c-100:c+10"
+
+                });
+                $('#datepicker2').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    appendText: "(Tanggal-Bulan-Tahun)",
+                    dateFormat: "dd-mm-yy",
+                    yearRange: "c-100:c+10"
+
+                });
+        </script>
+
+    }
+
+</div>

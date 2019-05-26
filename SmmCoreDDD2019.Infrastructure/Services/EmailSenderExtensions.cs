@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
+
 
 namespace SmmCoreDDD2019.Infrastructure.Services
 {
@@ -15,5 +15,6 @@ namespace SmmCoreDDD2019.Infrastructure.Services
             return emailSender.SendEmailAsync(email, "Confirm your email",
                 $"Please confirm your account by clicking this link: <a href='{HtmlEncoder.Default.Encode(link)}'>link</a>");
         }
+
     }
 }

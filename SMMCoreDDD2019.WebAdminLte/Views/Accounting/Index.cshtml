@@ -1,0 +1,117 @@
+﻿@model IEnumerable<SmmCoreDDD2019.Application.AccountingDataAccountDB.Query.GetAllDataAccountOrderByKodeAccount.GetAllDataAccountOrderByKodeAccountLookUpModel>
+@{
+    ViewData["Title"] = "Index";
+   // Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<h2>Index</h2>
+<table class="table table-bordered table-striped grid">
+    <thead>
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Lft)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rgt)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Parent)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Depth)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.KodeAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NormalPos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kelompok)
+            </th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Lft)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rgt)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Parent)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Depth)
+                    </td>*@
+                <td style="font-weight:bold">
+                    @Html.DisplayFor(modelItem => item.KodeAccount)
+                </td>
+                @if (item.Depth * 20 + 3 == 23)
+                {
+                    <td style="padding-left:23px;font-weight:bold">
+
+                        @Html.DisplayFor(modelItem => item.Account)
+                    </td>
+                }
+                else if (item.Depth * 20 + 3 == 43)
+                {
+                    <td style="padding-left:43px;font-weight:bold">
+
+                        @Html.DisplayFor(modelItem => item.Account)
+                    </td>
+                }
+                else if (item.Depth * 20 + 3 == 63)
+                {
+                    <td style="padding-left:63px;font-weight:bold">
+
+                        @Html.DisplayFor(modelItem => item.Account)
+                    </td>
+                }
+                else if (item.Depth * 20 + 3 == 83)
+                {
+                    <td style="padding-left:83px">
+
+                        @Html.DisplayFor(modelItem => item.Account)
+                    </td>
+                }
+                else if (item.Depth * 20 + 3 == 3)
+                {
+                    <td style="padding-left:3px;font-weight:bold">
+
+                        @Html.DisplayFor(modelItem => item.Account)
+                    </td>
+                }
+
+
+
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.NormalPos)*@
+                    @if (Int32.Parse(item.NormalPos) == 1)
+                    {<p>Debit</p> }
+                    else
+                    { <p>Kredit</p>}
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Kelompok)*@
+                    @if (item.Kelompok == "N")
+                    {<p>Neraca</p> }
+                    else
+                    {<p>Laba/Rugi</p>}
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.NoUrutAccountId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.NoUrutAccountId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.NoUrutAccountId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
