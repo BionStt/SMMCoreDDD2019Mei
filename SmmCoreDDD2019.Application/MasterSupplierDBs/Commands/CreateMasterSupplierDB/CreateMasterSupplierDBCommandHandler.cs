@@ -6,17 +6,17 @@ using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 
 
 namespace SmmCoreDDD2019.Application.MasterSupplierDBs.Commands.CreateMasterSupplierDB
 {
     public class CreateMasterSupplierDBCommandHandler : IRequestHandler<CreateMasterSupplierDBCommand>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
-        public CreateMasterSupplierDBCommandHandler(SMMCoreDDD2019DbContext context, 
+        public CreateMasterSupplierDBCommandHandler(ISMMCoreDDD2019DbContext context, 
             INotificationService notificationService,
                 IMediator mediator)
         {
@@ -49,9 +49,9 @@ namespace SmmCoreDDD2019.Application.MasterSupplierDBs.Commands.CreateMasterSupp
 
             };
 
-            _context.Add(entity);
+            _context.MasterSupplierDB.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new CreateMasterSupplierDBCreated { MasterSupplierID = entity.IDSupplier.ToString()});
+            await _mediator.Publish(new CreateMasterSupplierDBCreated { MasterSupplierID = entity.IDSupplier.ToString()},cancellationToken);
             return Unit.Value;
 
             //throw new System.NotImplementedException();

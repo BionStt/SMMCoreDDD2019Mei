@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Threading;
-
 using MediatR;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 
 namespace SmmCoreDDD2019.Application.DataSPKLeasingDBs.Command.CreateDataSPKLeasingDB
 {
     public class CreateDataSPKLeasingDBCommandHandler:IRequestHandler<CreateDataSPKLeasingDBCommand, Unit>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
         public CreateDataSPKLeasingDBCommandHandler(
-            SMMCoreDDD2019DbContext context,
+            ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
             IMediator mediator)
         {
@@ -56,7 +54,7 @@ namespace SmmCoreDDD2019.Application.DataSPKLeasingDBs.Command.CreateDataSPKLeas
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new DataSPKLeasingDBCreated { DataSPKLeasingDBID = entity.NoUrut.ToString() });
+            await _mediator.Publish(new DataSPKLeasingDBCreated { DataSPKLeasingDBID = entity.NoUrut.ToString() },cancellationToken);
 
             return Unit.Value;
             // throw new NotImplementedException();

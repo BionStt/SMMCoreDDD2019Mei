@@ -7,7 +7,8 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
+
 
 namespace SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPelatihans.Command.UpdateDataPegawaiDataRiwayatPelatihan
 {

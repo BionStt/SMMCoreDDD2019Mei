@@ -9,16 +9,16 @@ using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 
 namespace SmmCoreDDD2019.Application.StokUnits.Command.CreateStokUnit
 {
     public class CreateStokUnitCommandHandler : IRequestHandler<CreateStokUnitCommand>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
-        public CreateStokUnitCommandHandler(SMMCoreDDD2019DbContext context,
+        public CreateStokUnitCommandHandler(ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
                 IMediator mediator)
         {
@@ -48,10 +48,10 @@ namespace SmmCoreDDD2019.Application.StokUnits.Command.CreateStokUnit
 
 
               };
-            _context.Add(entity);
+            _context.StokUnit.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
      
-            await _mediator.Publish(new StokUnitCreated { StokUnitID = entity.NoUrutSo.ToString() });
+            await _mediator.Publish(new StokUnitCreated { StokUnitID = entity.NoUrutSo.ToString() },cancellationToken);
             return Unit.Value;
         }
     }

@@ -9,16 +9,16 @@ using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 
 namespace SmmCoreDDD2019.Application.PermohonanFakturDBs.Command.CreatePermohonanFaktur
 {
     public class CreatePermohonanFakturCommandHandler : IRequestHandler<CreatePermohonanFakturCommand>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
-        public CreatePermohonanFakturCommandHandler(SMMCoreDDD2019DbContext context,
+        public CreatePermohonanFakturCommandHandler(ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
                 IMediator mediator)
         {
@@ -53,9 +53,9 @@ namespace SmmCoreDDD2019.Application.PermohonanFakturDBs.Command.CreatePermohona
 
             };
 
-            _context.Add(entity);
+            _context.PermohonanFakturDB.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new PermohonanFakturCreated { PermohonanFakturID = entity.NoUrutFaktur.ToString() });
+            await _mediator.Publish(new PermohonanFakturCreated { PermohonanFakturID = entity.NoUrutFaktur.ToString() },cancellationToken);
             return Unit.Value;
         }
     }

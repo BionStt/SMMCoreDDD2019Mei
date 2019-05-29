@@ -4,10 +4,12 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using SmmCoreDDD2019.Domain.Entities;
 using SmmCoreDDD2019.Persistence.Configurations;
+using SmmCoreDDD2019.Application.Interfaces;
+using System.Threading.Tasks;
 
 namespace SmmCoreDDD2019.Persistence
 {
-    public class SMMCoreDDD2019DbContext : DbContext
+    public class SMMCoreDDD2019DbContext : DbContext, ISMMCoreDDD2019DbContext
     {
         public SMMCoreDDD2019DbContext(DbContextOptions<SMMCoreDDD2019DbContext> options)
             : base(options)
@@ -76,11 +78,10 @@ namespace SmmCoreDDD2019.Persistence
              public DbSet<AccountingDataPeriode> AccountingDataPeriode { get;set;}
              public DbSet<AccountingDataSaldoAwal> AccountingDataSaldoAwal { get;set;}
              public DbSet<AccountingTipeJournal> AccountingTipeJournal { get;set;}
-       
 
+      
 
-
-                protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
               {
                     //base.OnModelCreating(modelBuilder);
                     //new UserMap(modelBuilder.Entity<User>());

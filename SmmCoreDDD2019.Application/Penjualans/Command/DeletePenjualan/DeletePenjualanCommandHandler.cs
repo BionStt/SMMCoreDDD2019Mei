@@ -9,14 +9,15 @@ using System.Threading;
 using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
+
 namespace SmmCoreDDD2019.Application.Penjualans.Command.DeletePenjualan
 {
     public class DeletePenjualanCommandHandler : IRequestHandler<DeletePenjualanCommand>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
 
-        public DeletePenjualanCommandHandler(SMMCoreDDD2019DbContext context)
+        public DeletePenjualanCommandHandler(ISMMCoreDDD2019DbContext context)
         {
             _context = context;
         }

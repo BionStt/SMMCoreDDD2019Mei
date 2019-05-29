@@ -3,25 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Threading;
-
 using MediatR;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 
 
 namespace SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.CreateDataSPKBaruDB
 {
     public class CreateDataSPKBaruDBCommandHandler : IRequestHandler<CreateDataSPKBaruDBCommand, Unit>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
         public CreateDataSPKBaruDBCommandHandler(
-            SMMCoreDDD2019DbContext context,
+            ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
             IMediator mediator)
         {
@@ -54,7 +52,7 @@ namespace SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.CreateDataSPKBaruDB
 
             await _context.SaveChangesAsync(cancellationToken);
 
-           await _mediator.Publish(new DataSPKBaruDBCreated { DataSPKBaruDBID = entity.NoUrutSPKBaru.ToString() });
+           await _mediator.Publish(new DataSPKBaruDBCreated { DataSPKBaruDBID = entity.NoUrutSPKBaru.ToString() },cancellationToken);
 
             return Unit.Value;
 

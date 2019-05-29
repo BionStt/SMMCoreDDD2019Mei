@@ -28,3 +28,7 @@ dotnet restore
 dotnet ef database update  -c BlogDbContext 
 
 
+contoh northwindtraders365 
+dotnet ef database update -c NorthwindDbContext -p ..\Northwind.Persistence\Northwind.Persistence.csproj -s .\Northwind.WebUI.csproj
+
+

@@ -8,18 +8,18 @@ using System.Threading;
 using MediatR;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 
 namespace SmmCoreDDD2019.Application.DataPegawaiDataOrmass.Command.CreateDataPegawaiDataOrmas
 {
     public class CreateDataPegawaiDataOrmasCommandHandler : IRequestHandler<CreateDataPegawaiDataOrmasCommand, Unit>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
         public CreateDataPegawaiDataOrmasCommandHandler(
-            SMMCoreDDD2019DbContext context,
+            ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
             IMediator mediator)
         {
@@ -51,7 +51,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataOrmass.Command.CreateDataPeg
 
             await _context.SaveChangesAsync(cancellationToken);
 
-           await _mediator.Publish(new DataPegawaiDataOrmasCreated { DataPegawaiDataOrmassID = entity.NoUrut.ToString() });
+           await _mediator.Publish(new DataPegawaiDataOrmasCreated { DataPegawaiDataOrmassID = entity.NoUrut.ToString() },cancellationToken);
 
             return Unit.Value;
             // throw new NotImplementedException();

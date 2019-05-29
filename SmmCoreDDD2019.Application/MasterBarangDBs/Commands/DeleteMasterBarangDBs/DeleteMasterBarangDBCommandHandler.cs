@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
 
 
 namespace SmmCoreDDD2019.Application.MasterBarangDBs.Commands.DeleteMasterBarangDBs
 {
     public class DeleteMasterBarangDBCommandHandler : IRequestHandler<DeleteMasterBarangDBCommand>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
 
-        public DeleteMasterBarangDBCommandHandler(SMMCoreDDD2019DbContext context)
+        public DeleteMasterBarangDBCommandHandler(ISMMCoreDDD2019DbContext context)
         {
             _context = context;
         }

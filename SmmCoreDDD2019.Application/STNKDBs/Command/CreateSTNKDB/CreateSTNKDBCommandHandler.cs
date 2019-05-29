@@ -9,16 +9,16 @@ using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 
 namespace SmmCoreDDD2019.Application.STNKDBs.Command.CreateSTNKDB
 {
     public class CreateSTNKDBCommandHandler : IRequestHandler<CreateSTNKDBCommand>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
-        public CreateSTNKDBCommandHandler(SMMCoreDDD2019DbContext context,
+        public CreateSTNKDBCommandHandler(ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
                 IMediator mediator)
         {
@@ -46,10 +46,10 @@ namespace SmmCoreDDD2019.Application.STNKDBs.Command.CreateSTNKDB
  
 
             };
-            _context.Add(entity);
+            _context.STNKDB.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new STNKDBCreated { STNKDBID = entity.NoUrutStnk.ToString() });
+            await _mediator.Publish(new STNKDBCreated { STNKDBID = entity.NoUrutStnk.ToString() },cancellationToken);
             return Unit.Value;
         }
     }

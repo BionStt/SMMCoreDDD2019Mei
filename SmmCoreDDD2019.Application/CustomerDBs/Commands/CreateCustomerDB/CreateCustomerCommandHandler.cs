@@ -8,19 +8,19 @@ using System.Threading;
 using MediatR;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 
 
 namespace SmmCoreDDD2019.Application.CustomerDBs.Commands.CreateCustomerDB
 {
     public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Unit>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
 
-        public CreateCustomerCommandHandler(SMMCoreDDD2019DbContext context, INotificationService notificationService, IMediator mediator)
+        public CreateCustomerCommandHandler(ISMMCoreDDD2019DbContext context, INotificationService notificationService, IMediator mediator)
         {
             _context = context;
             _notificationService = notificationService;

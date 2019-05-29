@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
 using SmmCoreDDD2019.Application.Interfaces;
 using System.Threading;
 
@@ -15,12 +14,12 @@ namespace SmmCoreDDD2019.Application.MasterJenisJabatanDBs.Command.CreateMasterJ
 {
     public class CreateMasterJenisJabatanCommandHandler : IRequestHandler<CreateMasterJenisJabatanCommand, Unit>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
 
-        public CreateMasterJenisJabatanCommandHandler(SMMCoreDDD2019DbContext context, INotificationService notificationService, IMediator mediator)
+        public CreateMasterJenisJabatanCommandHandler(ISMMCoreDDD2019DbContext context, INotificationService notificationService, IMediator mediator)
         {
             _context = context;
             _notificationService = notificationService;
@@ -38,7 +37,7 @@ namespace SmmCoreDDD2019.Application.MasterJenisJabatanDBs.Command.CreateMasterJ
 
             _context.MasterJenisJabatan.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new MasterJenisJabatanCreated { MasterJenisJabatanID = entity.NoUrut.ToString() });
+            await _mediator.Publish(new MasterJenisJabatanCreated { MasterJenisJabatanID = entity.NoUrut.ToString() },cancellationToken);
             return Unit.Value;
 
         }

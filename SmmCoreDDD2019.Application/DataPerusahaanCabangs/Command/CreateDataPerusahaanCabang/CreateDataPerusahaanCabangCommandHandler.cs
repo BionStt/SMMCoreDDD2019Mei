@@ -4,19 +4,19 @@ using System.Threading.Tasks;
 using MediatR;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 
 namespace SmmCoreDDD2019.Application.DataPerusahaanCabangs.Command.CreateDataPerusahaanCabang
 {
     public class CreateDataPerusahaanCabangCommandHandler : IRequestHandler<CreateDataPerusahaanCabangCommand, Unit>
     {
 
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
         public CreateDataPerusahaanCabangCommandHandler(
-            SMMCoreDDD2019DbContext context,
+            ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
             IMediator mediator)
         {
@@ -47,7 +47,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanCabangs.Command.CreateDataPer
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new DataPerusahaanCabangCreated { DataPerusahaanCabangID = entity.KodePosisi.ToString() });
+            await _mediator.Publish(new DataPerusahaanCabangCreated { DataPerusahaanCabangID = entity.KodePosisi.ToString() },cancellationToken);
 
             return Unit.Value;
 

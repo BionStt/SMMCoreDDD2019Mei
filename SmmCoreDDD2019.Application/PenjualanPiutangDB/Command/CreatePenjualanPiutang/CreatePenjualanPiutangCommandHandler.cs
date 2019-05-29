@@ -9,15 +9,15 @@ using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 namespace SmmCoreDDD2019.Application.PenjualanPiutangDB.Command.CreatePenjualanPiutang
 {
     public class CreatePenjualanPiutangCommandHandler : IRequestHandler<CreatePenjualanPiutangCommand>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
-        public CreatePenjualanPiutangCommandHandler(SMMCoreDDD2019DbContext context,
+        public CreatePenjualanPiutangCommandHandler(ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
                 IMediator mediator)
         {
@@ -37,9 +37,9 @@ namespace SmmCoreDDD2019.Application.PenjualanPiutangDB.Command.CreatePenjualanP
 
             };
 
-            _context.Add(entity);
+            _context.PenjualanPiutang.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new PenjualanPiutangCreated { PenjualanPiutangID = entity.KodePenjualanDetail.ToString() });
+            await _mediator.Publish(new PenjualanPiutangCreated { PenjualanPiutangID = entity.KodePenjualanDetail.ToString() },cancellationToken);
             return Unit.Value;
         }
     }

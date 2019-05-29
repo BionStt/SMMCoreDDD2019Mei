@@ -7,18 +7,17 @@ using System.Threading.Tasks;
 using MediatR;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
 using SmmCoreDDD2019.Application.Extensions;
 namespace SmmCoreDDD2019.Application.DataKontrakKreditAngsuranDemoDBs.Command.CreateDataKontrakKreditAngsuranDemo
 {
     public class CreateDataKontrakKreditAngsuranDemoCommandHandler : IRequestHandler<CreateDataKontrakKreditAngsuranDemoCommand, Unit>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
 
-        public CreateDataKontrakKreditAngsuranDemoCommandHandler(SMMCoreDDD2019DbContext context, INotificationService notificationService, IMediator mediator)
+        public CreateDataKontrakKreditAngsuranDemoCommandHandler(ISMMCoreDDD2019DbContext context, INotificationService notificationService, IMediator mediator)
         {
             _context = context;
             _notificationService = notificationService;

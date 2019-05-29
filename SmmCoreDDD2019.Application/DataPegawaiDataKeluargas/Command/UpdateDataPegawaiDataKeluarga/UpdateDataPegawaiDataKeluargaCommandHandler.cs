@@ -10,15 +10,15 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
 
 namespace SmmCoreDDD2019.Application.DataPegawaiDataKeluargas.Command.UpdateDataPegawaiDataKeluarga
 {
     public class UpdateDataPegawaiDataKeluargaCommandHandler : IRequestHandler<UpdateDataPegawaiDataKeluargaCommand, Unit>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
 
-        public UpdateDataPegawaiDataKeluargaCommandHandler(SMMCoreDDD2019DbContext context)
+        public UpdateDataPegawaiDataKeluargaCommandHandler(ISMMCoreDDD2019DbContext context)
         {
             _context = context;
         }

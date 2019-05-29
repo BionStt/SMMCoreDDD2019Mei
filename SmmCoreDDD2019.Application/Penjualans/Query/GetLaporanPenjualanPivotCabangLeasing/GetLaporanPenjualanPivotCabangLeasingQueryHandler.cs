@@ -7,15 +7,15 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
 using System.Threading;
 namespace SmmCoreDDD2019.Application.Penjualans.Query.GetLaporanPenjualanPivotCabangLeasing
 {
     public class GetLaporanPenjualanPivotCabangLeasingQueryHandler : IRequestHandler<GetLaporanPenjualanPivotCabangLeasingQuery, GetLaporanPenjualanPivotCabangLeasingViewModel>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
-        public GetLaporanPenjualanPivotCabangLeasingQueryHandler(SMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetLaporanPenjualanPivotCabangLeasingQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

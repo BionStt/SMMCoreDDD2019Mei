@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
 
 namespace SmmCoreDDD2019.Application.DataPegawais.Command.DeleteDataPegawai
 {
     public class DeleteDataPegawaiCommandHandler : IRequestHandler<DeleteDataPegawaiCommand>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
 
-        public DeleteDataPegawaiCommandHandler(SMMCoreDDD2019DbContext context)
+        public DeleteDataPegawaiCommandHandler(ISMMCoreDDD2019DbContext context)
         {
             _context = context;
         }

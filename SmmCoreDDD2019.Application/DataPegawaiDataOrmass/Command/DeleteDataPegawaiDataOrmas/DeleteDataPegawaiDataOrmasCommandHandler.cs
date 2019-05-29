@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Threading;
-
 using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
+
 namespace SmmCoreDDD2019.Application.DataPegawaiDataOrmass.Command.DeleteDataPegawaiDataOrmas
 {
     public class DeleteDataPegawaiDataOrmasCommandHandler : IRequestHandler<DeleteDataPegawaiDataOrmasCommand>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
 
-        public DeleteDataPegawaiDataOrmasCommandHandler(SMMCoreDDD2019DbContext context)
+        public DeleteDataPegawaiDataOrmasCommandHandler(ISMMCoreDDD2019DbContext context)
         {
             _context = context;
         }

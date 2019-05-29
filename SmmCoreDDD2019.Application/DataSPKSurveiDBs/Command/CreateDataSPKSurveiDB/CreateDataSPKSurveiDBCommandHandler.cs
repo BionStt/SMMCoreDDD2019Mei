@@ -9,17 +9,17 @@ using System.Threading;
 using MediatR;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 namespace SmmCoreDDD2019.Application.DataSPKSurveiDBs.Command.CreateDataSPKSurveiDB
 {
     public class CreateDataSPKSurveiDBCommandHandler : IRequestHandler<CreateDataSPKSurveiDBCommand, Unit>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
         public CreateDataSPKSurveiDBCommandHandler(
-            SMMCoreDDD2019DbContext context,
+            ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
             IMediator mediator)
         {
@@ -42,7 +42,7 @@ namespace SmmCoreDDD2019.Application.DataSPKSurveiDBs.Command.CreateDataSPKSurve
             };
 
             _context.DataSPKBaruDB.Add(entity);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
             var nospkbaruid = entity.NoUrutSPKBaru;
          //   await _context.SaveChangesAsync(cancellationToken);
 
@@ -77,7 +77,7 @@ namespace SmmCoreDDD2019.Application.DataSPKSurveiDBs.Command.CreateDataSPKSurve
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new DataSPKSurveiDBCreated { DataSPKSurveiDCID = nospkbaruid.ToString() });
+            await _mediator.Publish(new DataSPKSurveiDBCreated { DataSPKSurveiDCID = nospkbaruid.ToString() },cancellationToken);
 
             return Unit.Value;
 

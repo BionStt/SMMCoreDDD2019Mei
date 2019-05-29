@@ -8,16 +8,16 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
 
 namespace SmmCoreDDD2019.Application.DataPegawais.Command.UpdateDataPegawai
 {
     public class UpdateDataPegawaiCommandHandler : IRequestHandler<UpdateDataPegawaiCommand, Unit>
     {
 
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
 
-        public UpdateDataPegawaiCommandHandler(SMMCoreDDD2019DbContext context)
+        public UpdateDataPegawaiCommandHandler(ISMMCoreDDD2019DbContext context)
         {
             _context = context;
         }

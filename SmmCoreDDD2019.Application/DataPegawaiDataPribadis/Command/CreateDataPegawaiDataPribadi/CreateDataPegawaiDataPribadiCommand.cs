@@ -7,7 +7,7 @@ using System.Threading;
 using MediatR;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 namespace SmmCoreDDD2019.Application.DataPegawaiDataPribadis.Command.CreateDataPegawaiDataPribadi
 {
     public class CreateDataPegawaiDataPribadiCommand:IRequest

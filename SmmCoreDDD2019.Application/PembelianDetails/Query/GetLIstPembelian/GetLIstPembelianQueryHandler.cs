@@ -8,15 +8,16 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
 using System.Threading;
+
 namespace SmmCoreDDD2019.Application.PembelianDetails.Query.GetLIstPembelian
 {
     public class GetLIstPembelianQueryHandler : IRequestHandler<GetLIstPembelianQuery, GetLIstPembelianViewModel>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
-        public GetLIstPembelianQueryHandler(SMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetLIstPembelianQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

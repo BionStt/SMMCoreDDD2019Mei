@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
 using System.Threading;
+using Microsoft.EntityFrameworkCore;
+
 namespace SmmCoreDDD2019.Application.DataSPKSurveiDBs.Queries.GetNamaSPKPenjualan
 {
     public class GetNamaSPKPenjualanQueryHandler : IRequestHandler<GetNamaSPKPenjualanQuery, GetNamaSPKPenjualanViewModel>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
-        public GetNamaSPKPenjualanQueryHandler(SMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetNamaSPKPenjualanQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
 using System.ComponentModel.DataAnnotations;
 namespace SmmCoreDDD2019.Application.AccountingDataKursDB.Command.CreateAccountingDataKurs
 {

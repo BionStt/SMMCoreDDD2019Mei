@@ -10,15 +10,15 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using MediatR;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
 
 namespace SmmCoreDDD2019.Application.DataPerusahaans.Queries.GetNamaPerusahaanLeasingCetak
 {
     public class GetNamaPerusahaanLeasingCetakQueryHandler : IRequestHandler<GetNamaPerusahaanLeasingCetakQuery, GetNamaPerusahaanLeasingCetakViewModal>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
-        public GetNamaPerusahaanLeasingCetakQueryHandler(SMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetNamaPerusahaanLeasingCetakQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

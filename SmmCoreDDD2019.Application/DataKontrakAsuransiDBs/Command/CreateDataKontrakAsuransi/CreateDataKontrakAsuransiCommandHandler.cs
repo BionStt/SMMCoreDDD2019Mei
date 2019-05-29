@@ -7,17 +7,18 @@ using System.Threading.Tasks;
 using MediatR;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
+
 namespace SmmCoreDDD2019.Application.DataKontrakAsuransiDBs.Command.CreateDataKontrakAsuransi
 {
     public class CreateDataKontrakAsuransiCommandHandler : IRequestHandler<CreateDataKontrakAsuransiCommand, Unit>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
 
-        public CreateDataKontrakAsuransiCommandHandler(SMMCoreDDD2019DbContext context, INotificationService notificationService, IMediator mediator)
+        public CreateDataKontrakAsuransiCommandHandler(ISMMCoreDDD2019DbContext context, INotificationService notificationService, IMediator mediator)
         {
             _context = context;
             _notificationService = notificationService;
@@ -47,7 +48,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakAsuransiDBs.Command.CreateDataKo
 
             _context.DataKontrakAsuransi.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new DataKontrakAsuransiCreated { DataKontrakAsuransiID = entity.NoUrutDataAsuransi });
+            await _mediator.Publish(new DataKontrakAsuransiCreated { DataKontrakAsuransiID = entity.NoUrutDataAsuransi },cancellationToken);
 
 
             return Unit.Value;

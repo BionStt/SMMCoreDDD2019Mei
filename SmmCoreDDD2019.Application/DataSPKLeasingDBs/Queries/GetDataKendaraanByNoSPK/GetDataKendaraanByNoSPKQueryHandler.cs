@@ -8,7 +8,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
 using System.Threading;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
@@ -17,10 +17,10 @@ namespace SmmCoreDDD2019.Application.DataSPKLeasingDBs.Queries.GetDataKendaraanB
 {
     public class GetDataKendaraanByNoSPKQueryHandler : IRequestHandler<GetDataKendaraanByNoSPKQuery, GetDataKendaraanByNoSPKViewModel>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
 
-        public GetDataKendaraanByNoSPKQueryHandler(SMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetDataKendaraanByNoSPKQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

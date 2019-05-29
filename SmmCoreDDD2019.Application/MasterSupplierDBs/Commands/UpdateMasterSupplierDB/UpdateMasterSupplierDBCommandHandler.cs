@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
 
 namespace SmmCoreDDD2019.Application.MasterSupplierDBs.Commands.UpdateMasterSupplierDB
 {
     public class UpdateMasterSupplierDBCommandHandler : IRequestHandler<UpdateMasterSupplierDBCommand, Unit>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
-        public UpdateMasterSupplierDBCommandHandler(SMMCoreDDD2019DbContext context)
+        private readonly ISMMCoreDDD2019DbContext _context;
+        public UpdateMasterSupplierDBCommandHandler(ISMMCoreDDD2019DbContext context)
         {
             _context = context;
         }

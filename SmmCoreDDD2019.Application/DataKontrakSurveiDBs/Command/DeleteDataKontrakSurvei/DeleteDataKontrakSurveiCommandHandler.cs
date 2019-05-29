@@ -7,14 +7,15 @@ using System.Threading;
 using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
+
 namespace SmmCoreDDD2019.Application.DataKontrakSurveiDBs.Command.DeleteDataKontrakSurvei
 {
     public class DeleteDataKontrakSurveiCommandHandler : IRequestHandler<DeleteDataKontrakSurveiCommand>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
 
-        public DeleteDataKontrakSurveiCommandHandler(SMMCoreDDD2019DbContext context)
+        public DeleteDataKontrakSurveiCommandHandler(ISMMCoreDDD2019DbContext context)
         {
             _context = context;
         }

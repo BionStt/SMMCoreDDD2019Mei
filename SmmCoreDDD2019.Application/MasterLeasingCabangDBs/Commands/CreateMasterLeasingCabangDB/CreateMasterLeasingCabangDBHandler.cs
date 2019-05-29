@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 using MediatR;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 
 namespace SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Commands.CreateMasterLeasingCabangDB
 {
     public class CreateMasterLeasingCabangDBHandler : IRequestHandler<CreateMasterLeasingCabangDBCommand, Unit>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
         public CreateMasterLeasingCabangDBHandler(
-            SMMCoreDDD2019DbContext context,
+            ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
             IMediator mediator)
         {
@@ -50,7 +50,7 @@ namespace SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Commands.CreateMaste
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new CreateMasterLeasingCabangDBCreated { MasterLeasngCabangID = entity.NoUrutLeasingCabang.ToString() });
+            await _mediator.Publish(new CreateMasterLeasingCabangDBCreated { MasterLeasngCabangID = entity.NoUrutLeasingCabang.ToString() },cancellationToken);
 
             return Unit.Value;
 

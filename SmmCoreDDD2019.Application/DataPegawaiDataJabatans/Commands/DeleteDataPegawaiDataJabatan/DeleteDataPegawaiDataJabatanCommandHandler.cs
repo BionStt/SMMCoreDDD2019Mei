@@ -3,22 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
 using System.Threading;
 using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
 
 
 namespace SmmCoreDDD2019.Application.DataPegawaiDataJabatans.Commands.DeleteDataPegawaiDataJabatan
 {
     public class DeleteDataPegawaiDataJabatanCommandHandler : IRequestHandler<DeleteDataPegawaiDataJabatanCommand>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
 
-        public DeleteDataPegawaiDataJabatanCommandHandler(SMMCoreDDD2019DbContext context)
+        public DeleteDataPegawaiDataJabatanCommandHandler(ISMMCoreDDD2019DbContext context)
         {
             _context = context;
         }

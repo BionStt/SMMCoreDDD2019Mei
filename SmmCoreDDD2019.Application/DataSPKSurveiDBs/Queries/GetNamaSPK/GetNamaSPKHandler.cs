@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
+using SmmCoreDDD2019.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using SmmCoreDDD2019.Persistence;
 using System.Threading;
 
 
@@ -16,9 +15,9 @@ namespace SmmCoreDDD2019.Application.DataSPKSurveiDBs.Queries.GetNamaSPK
 {
     public class GetNamaSPKHandler : IRequestHandler<GetNamaSPKQuery, GetNamaSPKViewModel>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
-        public GetNamaSPKHandler(SMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetNamaSPKHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

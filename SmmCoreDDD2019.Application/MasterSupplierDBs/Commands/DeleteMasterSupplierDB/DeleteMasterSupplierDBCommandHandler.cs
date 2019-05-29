@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
 
 namespace SmmCoreDDD2019.Application.MasterSupplierDBs.Commands.DeleteMasterSupplierDB
 {
     public class DeleteMasterSupplierDBCommandHandler : IRequestHandler<DeleteMasterSupplierDBCommand>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
-        public DeleteMasterSupplierDBCommandHandler(SMMCoreDDD2019DbContext context)
+        private readonly ISMMCoreDDD2019DbContext _context;
+        public DeleteMasterSupplierDBCommandHandler(ISMMCoreDDD2019DbContext context)
         {
             _context = context;
 

@@ -8,17 +8,16 @@ using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
 
 
 namespace SmmCoreDDD2019.Application.PembelianDetails.Command.CreatePembelianDetail
 {
     public class CreatePembelianDetailCommandHandler : IRequestHandler<CreatePembelianDetailCommand>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
-        public CreatePembelianDetailCommandHandler(SMMCoreDDD2019DbContext context,
+        public CreatePembelianDetailCommandHandler(ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
                 IMediator mediator)
         {
@@ -48,9 +47,9 @@ namespace SmmCoreDDD2019.Application.PembelianDetails.Command.CreatePembelianDet
                 SellInPPN= ((request.SellIn??0) + (-(Math.Round((request.SellIn??0) / 110 * 100))))
             };
 
-            _context.Add(entity);
+            _context.PembelianDetail.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new PembelianDetailCreated { PembelianDetailID = entity.KodeBeliDetail.ToString() });
+            await _mediator.Publish(new PembelianDetailCreated { PembelianDetailID = entity.KodeBeliDetail.ToString() },cancellationToken);
             return Unit.Value;
         }
     }

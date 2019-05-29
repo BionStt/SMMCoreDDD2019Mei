@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 using MediatR;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 namespace SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPendidikans.Command.CreateDataPegawaiDataRiwayatPendidikan
 {
     public class CreateDataPegawaiDataRiwayatPendidikanCommandHandler : IRequestHandler<CreateDataPegawaiDataRiwayatPendidikanCommand, Unit>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
         public CreateDataPegawaiDataRiwayatPendidikanCommandHandler(
-            SMMCoreDDD2019DbContext context,
+            ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
             IMediator mediator)
         {
@@ -45,7 +45,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPendidikans.Command.C
 
             await _context.SaveChangesAsync(cancellationToken);
 
-           await _mediator.Publish(new DataPegawaiDataRiwayatPendidikanCreate { DataPegawaiDataRiwayatPendidikanID = entity.NoUrut.ToString() });
+           await _mediator.Publish(new DataPegawaiDataRiwayatPendidikanCreate { DataPegawaiDataRiwayatPendidikanID = entity.NoUrut.ToString() },cancellationToken);
 
             return Unit.Value;
 

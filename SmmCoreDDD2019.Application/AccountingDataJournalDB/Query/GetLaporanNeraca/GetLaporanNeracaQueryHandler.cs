@@ -7,16 +7,16 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
 using System.Threading;
 namespace SmmCoreDDD2019.Application.AccountingDataJournalDB.Query.GetLaporanNeraca
 {
     public class GetLaporanNeracaQueryHandler : IRequestHandler<GetLaporanNeracaQuery, GetLaporanNeracaViewModel>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
 
-        public GetLaporanNeracaQueryHandler(SMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetLaporanNeracaQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

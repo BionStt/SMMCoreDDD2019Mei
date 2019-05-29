@@ -8,16 +8,16 @@ using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 
 namespace SmmCoreDDD2019.Application.PembelianPOs.Command.CreatePembelianPO
 {
     public class CreatePembelianPOCommandHandler : IRequestHandler<CreatePembelianPOCommand>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
-        public CreatePembelianPOCommandHandler(SMMCoreDDD2019DbContext context,
+        public CreatePembelianPOCommandHandler(ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
                 IMediator mediator)
         {
@@ -42,8 +42,8 @@ namespace SmmCoreDDD2019.Application.PembelianPOs.Command.CreatePembelianPO
 
             };
 
-            _context.Add(entity);
-            await _context.SaveChangesAsync();
+            _context.PembelianPO.Add(entity);
+            await _context.SaveChangesAsync(cancellationToken);
 
             var entity2 = await _context.PembelianPO.FindAsync(entity.NoUrutPo);
             if (entity2==null)
@@ -72,7 +72,7 @@ namespace SmmCoreDDD2019.Application.PembelianPOs.Command.CreatePembelianPO
             _context.PembelianPO.Update(entity2);
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new PembelianPoCreated { PembelianPoID = entity.NoUrutPo.ToString() });
+            await _mediator.Publish(new PembelianPoCreated { PembelianPoID = entity.NoUrutPo.ToString() },cancellationToken);
             return Unit.Value;
 
         }

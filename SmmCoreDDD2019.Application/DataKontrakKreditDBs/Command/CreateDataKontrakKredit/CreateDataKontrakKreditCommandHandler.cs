@@ -9,18 +9,18 @@ using MediatR;
 using SmmCoreDDD2019.Application.Extensions;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 
 namespace SmmCoreDDD2019.Application.DataKontrakKreditDBs.Command.CreateDataKontrakKredit
 {
     public class CreateDataKontrakKreditCommandHandler : IRequestHandler<CreateDataKontrakKreditCommand, Unit>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
 
-        public CreateDataKontrakKreditCommandHandler(SMMCoreDDD2019DbContext context, INotificationService notificationService, IMediator mediator)
+        public CreateDataKontrakKreditCommandHandler(ISMMCoreDDD2019DbContext context, INotificationService notificationService, IMediator mediator)
         {
             _context = context;
             _notificationService = notificationService;
@@ -62,7 +62,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakKreditDBs.Command.CreateDataKont
             };
 
             _context.DataKontrakKredit.Add(entity);
-             await _context.SaveChangesAsync();
+             await _context.SaveChangesAsync(cancellationToken);
             var NoRegKontrakKredit = entity.NoUrutDataKontrakKredit;
        
 

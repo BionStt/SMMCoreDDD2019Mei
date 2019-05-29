@@ -8,13 +8,14 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
+
 namespace SmmCoreDDD2019.Application.MasterPerusahaanAsuransiDBs.Command.UpdateMasterPerusahaanAsuransi
 {
     public class UpdateMasterPerusahaanAsuransiCommandHandler : IRequestHandler<UpdateMasterPerusahaanAsuransiCommand, Unit>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
-        public UpdateMasterPerusahaanAsuransiCommandHandler(SMMCoreDDD2019DbContext context)
+        private readonly ISMMCoreDDD2019DbContext _context;
+        public UpdateMasterPerusahaanAsuransiCommandHandler(ISMMCoreDDD2019DbContext context)
         {
             _context = context;
         }

@@ -7,17 +7,17 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
 using System.Threading;
 namespace SmmCoreDDD2019.Application.AccountingDataJournalDB.Query.GetDataJournalAll
 {
   
     public class GetDataJournalAllQueryHandler : IRequestHandler<GetDataJournalAllQuery, GetDataJournalAllViewModel>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
 
-        public GetDataJournalAllQueryHandler(SMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetDataJournalAllQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

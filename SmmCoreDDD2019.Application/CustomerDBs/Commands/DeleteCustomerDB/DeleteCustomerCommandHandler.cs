@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+using SmmCoreDDD2019.Application.Interfaces;
 
 namespace SmmCoreDDD2019.Application.CustomerDBs.Commands.DeleteCustomerDB
 {
     public class DeleteCustomerCommandHandler : IRequestHandler<DeleteCustomerCommand>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
 
-        public DeleteCustomerCommandHandler(SMMCoreDDD2019DbContext context)
+        public DeleteCustomerCommandHandler(ISMMCoreDDD2019DbContext context)
         {
             _context = context;
         }

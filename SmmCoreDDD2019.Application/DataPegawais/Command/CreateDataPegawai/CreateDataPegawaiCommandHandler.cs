@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 using MediatR;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Persistence;
+
 
 namespace SmmCoreDDD2019.Application.DataPegawais.Command.CreateDataPegawai
 {
     public class CreateDataPegawaiCommandHandler : IRequestHandler<CreateDataPegawaiCommand, Unit>
     {
-        private readonly SMMCoreDDD2019DbContext _context;
+        private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
         public CreateDataPegawaiCommandHandler(
-            SMMCoreDDD2019DbContext context,
+            ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
             IMediator mediator)
         {
@@ -49,7 +49,7 @@ namespace SmmCoreDDD2019.Application.DataPegawais.Command.CreateDataPegawai
 
             await _context.SaveChangesAsync(cancellationToken);
 
-           await _mediator.Publish(new DataPegawaiCreated { DataPegawaiID = entity.IDPegawai.ToString() });
+           await _mediator.Publish(new DataPegawaiCreated { DataPegawaiID = entity.IDPegawai.ToString() },cancellationToken);
 
             return Unit.Value;
 
