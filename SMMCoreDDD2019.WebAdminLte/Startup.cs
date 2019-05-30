@@ -145,7 +145,7 @@ namespace SMMCoreDDD2019.WebAdminLte
             });
 
             // Add DbContext using SQL Server Provider
-            services.AddDbContext<SMMCoreDDD2019DbContext>(options =>
+            services.AddDbContext<ISMMCoreDDD2019DbContext, SMMCoreDDD2019DbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("SmmCoreDDD2019Connection")));
 
             services.AddDbContext<AppIdentityDbContext>(options =>
@@ -323,8 +323,9 @@ namespace SMMCoreDDD2019.WebAdminLte
             // .NET Native DI Abstraction
             RegisterServices(services);
 
+
             // Add MediatR
-            //services.AddMediatR(typeof(GetProductQueryHandler).GetTypeInfo().Assembly);
+          //services.AddMediatR(typeof(GetProductQueryHandler).GetTypeInfo().Assembly);
             services.AddMediatR(typeof(GetCustomersListQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetAllDataAccountOrderByKodeAccountQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetDataAccountByDepthQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
@@ -401,6 +402,8 @@ namespace SMMCoreDDD2019.WebAdminLte
             services.AddMediatR(typeof(GetDataSOByIDQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetLaporanSOQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
 
+            services.AddMediatR(Assembly.GetExecutingAssembly());
+            // services.AddMediatR(typeof(Startup));
             services
             .AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
@@ -410,6 +413,7 @@ namespace SMMCoreDDD2019.WebAdminLte
             //    options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "");
             //}).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+          
 
             services.AddMvc()
            .AddJsonOptions(options =>
