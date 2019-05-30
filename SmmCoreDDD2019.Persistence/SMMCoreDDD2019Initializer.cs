@@ -39,9 +39,42 @@ namespace SmmCoreDDD2019.Persistence
             SeedMasterBidangPekerjaan(context);
             SeedMasterBidangUsaha(context);
             SeedAccountingTipeJournalDB(context);
-
-
+            SeedMasterLeaveTypeDB(context);
+            SeedMasterAllowanceTypeDB(context);
         }
+        private void SeedMasterAllowanceTypeDB(SMMCoreDDD2019DbContext context)
+        {
+            if (context.MasterAllowanceType.Any())
+            {
+                return;
+            }
+            var MasterAllowanceTypes = new[]
+            {
+                new MasterAllowanceType{ AllowanceTypeName="SALARY"},
+                     new MasterAllowanceType{ AllowanceTypeName="FUNCTIONAL ALLOWANCE"},
+                        new MasterAllowanceType{ AllowanceTypeName="SPEC TACLES"},
+                 new MasterAllowanceType{ AllowanceTypeName="MEAL ALLOWANCE"},
+                  new MasterAllowanceType{ AllowanceTypeName="TRANSPORT ALLOWANCE"},
+                   new MasterAllowanceType{ AllowanceTypeName="OVERTIME ALLOWANCE"},
+                    new MasterAllowanceType{ AllowanceTypeName="SHIFT ALLOWANCE"},
+                     new MasterAllowanceType{ AllowanceTypeName="EXTRA FOODING ALLOWANCE"},
+                      new MasterAllowanceType{ AllowanceTypeName="JAMSOSTEK"},
+                       new MasterAllowanceType{ AllowanceTypeName="BPJS"},
+                        new MasterAllowanceType{ AllowanceTypeName="MEDICAL ALLOWANCE"},
+                         new MasterAllowanceType{ AllowanceTypeName="HOSPITAL ALLOWANCE"},
+                          new MasterAllowanceType{ AllowanceTypeName="DELIVERY ALLOWANCE"},
+                            new MasterAllowanceType{ AllowanceTypeName="UNI FORM"},
+                              new MasterAllowanceType{ AllowanceTypeName="SHOES"},
+                                new MasterAllowanceType{ AllowanceTypeName="GLASS"},
+                                  new MasterAllowanceType{ AllowanceTypeName="PPH21"}
+                                 
+
+
+            };
+            context.MasterAllowanceType.AddRange(MasterAllowanceTypes);
+            context.SaveChanges();
+        }
+
         private void SeedSupplierDB(SMMCoreDDD2019DbContext context)
         {
             if (context.MasterSupplierDB.Any())
@@ -73,7 +106,37 @@ namespace SmmCoreDDD2019.Persistence
             context.SaveChanges();
 
         }
-      
+        private void SeedMasterLeaveTypeDB(SMMCoreDDD2019DbContext context)
+        {
+            if (context.MasterLeaveTypeHRD.Any())
+            {
+                return;
+            }
+            var MasterLeaveTypeHRDs = new[]
+            {
+                new MasterLeaveTypeHRD{LeaveTypeName="OTHERS" },
+                 new MasterLeaveTypeHRD{LeaveTypeName="ADVANCED LEAVE" },
+                  new MasterLeaveTypeHRD{LeaveTypeName="ANNUAL LEAVE" },
+                   new MasterLeaveTypeHRD{LeaveTypeName="COMPASSIONATE LEAVE" },
+                    new MasterLeaveTypeHRD{LeaveTypeName="EMERGENCY LEAVE" },
+                     new MasterLeaveTypeHRD{LeaveTypeName="HOSPITALIZATION LEAVE" },
+                      new MasterLeaveTypeHRD{LeaveTypeName="MARRIAGE LEAVE" },
+                       new MasterLeaveTypeHRD{LeaveTypeName="MATERNITY LEAVE" },
+                        new MasterLeaveTypeHRD{LeaveTypeName="PATERNITY LEAVE" },
+                         new MasterLeaveTypeHRD{LeaveTypeName="REPLACEMENT LEAVE" },
+                          new MasterLeaveTypeHRD{LeaveTypeName="SICK/MEDICAL LEAVE" },
+                           new MasterLeaveTypeHRD{LeaveTypeName="STUDY/EXAMINATION LEAVE" },
+                          new MasterLeaveTypeHRD{LeaveTypeName="UNPAID LEAVE" },
+                           new MasterLeaveTypeHRD{LeaveTypeName="HALF DAY LEAVE" },
+                            new MasterLeaveTypeHRD{LeaveTypeName="UNRECORDED LEAVE" },
+                            new MasterLeaveTypeHRD{LeaveTypeName="SPECIAL PAID LEAVE" }
+
+            };
+
+            context.MasterLeaveTypeHRD.AddRange(MasterLeaveTypeHRDs);
+            context.SaveChanges();
+
+        }
 
         private void SeedMasterBarangDB(SMMCoreDDD2019DbContext context)
         {

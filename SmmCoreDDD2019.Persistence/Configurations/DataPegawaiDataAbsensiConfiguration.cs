@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SmmCoreDDD2019.Domain.Entities;
+
 namespace SmmCoreDDD2019.Persistence.Configurations
 {
     public class DataPegawaiDataAbsensiConfiguration : IEntityTypeConfiguration<DataPegawaiDataAbsensi>

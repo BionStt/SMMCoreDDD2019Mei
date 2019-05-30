@@ -12,6 +12,7 @@ namespace SmmCoreDDD2019.Application.Interfaces
 {
     public interface ISMMCoreDDD2019DbContext
     {
+        DbSet<MasterAllowanceType> MasterAllowanceType { get; set; }
             DbSet<CustomerDB> CustomerDB { get; set; }
           DbSet<DataPegawai> DataPegawai { get; set; }
           DbSet<DataPegawaiDataJabatan> DataPegawaiDataJabatan { get; set; }
@@ -21,7 +22,7 @@ namespace SmmCoreDDD2019.Application.Interfaces
           DbSet<DataPegawaiDataRiwayatPekerjaan> DataPegawaiDataRiwayatPekerjaan { get; set; }
           DbSet<DataPegawaiDataRiwayatPelatihan> DataPegawaiDataRiwayatPelatihan { get; set; }
           DbSet<DataPegawaiDataRiwayatPendidikan> DataPegawaiDataRiwayatPendidikan { get; set; }
-
+         DbSet<DataPegawaiDataAward> DataPegawaiDataAward { get; set; }
           DbSet<DataPegawaiFoto> DataPegawaiFoto { get; set; }
           DbSet<DataPerusahaan> DataPerusahaan { get; set; }
           DbSet<DataPerusahaanCabang> DataPerusahaanCabang { get; set; }
@@ -58,7 +59,7 @@ namespace SmmCoreDDD2019.Application.Interfaces
           DbSet<DataKontrakKreditAngsuranDemo> DataKontrakKreditAngsuranDemo { get; set; }
           DbSet<MasterPerusahaanAsuransi> MasterPerusahaanAsuransi { get; set; }
           DbSet<PenjualanPiutang> PenjualanPiutang { get; set; }
-
+        DbSet<MasterLeaveTypeHRD> MasterLeaveTypeHRD { get; set; }
           DbSet<DataPegawaiJenisAbsensi> DataPegawaiJenisAbsensi { get; set; }
 
           DbSet<DataPegawaiDataAbsensi> DataPegawaiDataAbsensi { get; set; }

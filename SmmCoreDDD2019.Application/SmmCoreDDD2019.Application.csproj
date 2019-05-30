@@ -35,6 +35,7 @@
     <Folder Include="DataKontrakKreditAngsuranDemoDBs\Query\" />
     <Folder Include="DataPegawaiDataAbsensiDB\Command\" />
     <Folder Include="DataPegawaiDataAbsensiDB\Query\" />
+    <Folder Include="DataPegawaiDataAwardDBs\Query\" />
     <Folder Include="DataPegawaiDataJabatans\Queries\" />
     <Folder Include="DataPegawaiDataKeluargas\Queries\" />
     <Folder Include="DataPegawaiDataOrmass\Queries\" />
@@ -49,6 +50,7 @@
     <Folder Include="DataSPKBaruDBs\Queries\" />
     <Folder Include="DataSPKKendaraanDBs\Queries\" />
     <Folder Include="DataSPKKreditDBs\Queries\" />
+    <Folder Include="MasterAllowanceTypeDB\Query\" />
     <Folder Include="MasterBidangPekerjaanDBs\Command\" />
     <Folder Include="MasterBidangUsahaDBs\Command\" />
     <Folder Include="MasterJenisJabatanDBs\Command\UpdateMasterJenisJabatanDB\" />
@@ -56,6 +58,7 @@
     <Folder Include="MasterKategoriBayaranDbs\Command\" />
     <Folder Include="MasterKategoriCaraPembayaranDB\Command\" />
     <Folder Include="MasterKategoriPenjualanDbs\Command\" />
+    <Folder Include="MasterLeaveTypeHRDDB\Query\" />
     <Folder Include="MasterPerusahaanAsuransiDBs\Query\" />
     <Folder Include="PembelianPODetails\Query\" />
     <Folder Include="PenjualanPiutangDB\Query\" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,16 +8,16 @@ using MediatR;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
 
-namespace SmmCoreDDD2019.Application.MasterLeasingDbs.Commands.CreateMasterLeasingDb
+namespace SmmCoreDDD2019.Application.MasterLeaveTypeHRDDB.Command.CreateMasterLeaveTypeHRD
 {
-    public class CreateMasterLeasingDbHandler : IRequestHandler<CreateMasterLeasingDbCommand, Unit>
+    public class CreateMasterLeaveTypeHRDCommandHandler : IRequestHandler<CreateMasterLeaveTypeHRDCommand, Unit>
     {
 
         private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
-        public CreateMasterLeasingDbHandler(
+        public CreateMasterLeaveTypeHRDCommandHandler(
             ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
             IMediator mediator)
@@ -26,22 +27,21 @@ namespace SmmCoreDDD2019.Application.MasterLeasingDbs.Commands.CreateMasterLeasi
             _mediator = mediator;
         }
 
-        public async Task<Unit> Handle(CreateMasterLeasingDbCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateMasterLeaveTypeHRDCommand request, CancellationToken cancellationToken)
         {
-            var entity = new MasterLeasingDb
+            var entity = new MasterLeaveTypeHRD
             {
-                NamaLease= request.NamaLease,
-               
+                LeaveTypeName = request.LeaveTypeName,
+
             };
 
-            _context.MasterLeasingDb.Add(entity);
+            _context.MasterLeaveTypeHRD.Add(entity);
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new CreateMasterLeasingDbCreated { MasterLeasingID = entity.IDlease.ToString() });
+            await _mediator.Publish(new MasterLeaveTypeCreated { MasterLeaveTypeID = entity.Id.ToString() });
 
             return Unit.Value;
-           
         }
     }
 }

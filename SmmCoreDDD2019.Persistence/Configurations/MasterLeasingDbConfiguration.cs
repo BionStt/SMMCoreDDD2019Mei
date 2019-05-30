@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SmmCoreDDD2019.Domain.Entities;
+
 namespace SmmCoreDDD2019.Persistence.Configurations
 {
     public class MasterLeasingDbConfiguration : IEntityTypeConfiguration<MasterLeasingDb>

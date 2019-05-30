@@ -14,7 +14,8 @@ namespace SmmCoreDDD2019.Persistence
         public SMMCoreDDD2019DbContext(DbContextOptions<SMMCoreDDD2019DbContext> options)
             : base(options)
         { }
-
+        public DbSet<MasterAllowanceType> MasterAllowanceType { get; set; }
+        public DbSet<MasterLeaveTypeHRD> MasterLeaveTypeHRD { get; set; }
         public DbSet<CustomerDB> CustomerDB { get; set; }
         public DbSet<DataPegawai> DataPegawai { get; set; }
         public DbSet<DataPegawaiDataJabatan> DataPegawaiDataJabatan { get; set; }
@@ -78,8 +79,7 @@ namespace SmmCoreDDD2019.Persistence
              public DbSet<AccountingDataPeriode> AccountingDataPeriode { get;set;}
              public DbSet<AccountingDataSaldoAwal> AccountingDataSaldoAwal { get;set;}
              public DbSet<AccountingTipeJournal> AccountingTipeJournal { get;set;}
-
-      
+        public DbSet<DataPegawaiDataAward> DataPegawaiDataAward { get; set ; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
               {

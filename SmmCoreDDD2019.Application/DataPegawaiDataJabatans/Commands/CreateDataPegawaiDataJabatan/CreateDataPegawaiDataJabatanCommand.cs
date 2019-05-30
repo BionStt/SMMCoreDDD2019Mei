@@ -9,6 +9,7 @@ using MediatR;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
+
 namespace SmmCoreDDD2019.Application.DataPegawaiDataJabatans.Commands.CreateDataPegawaiDataJabatan
 {
     public class CreateDataPegawaiDataJabatanCommand:IRequest
