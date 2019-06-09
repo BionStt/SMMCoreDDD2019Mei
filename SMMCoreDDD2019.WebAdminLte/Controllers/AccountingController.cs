@@ -57,9 +57,19 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create2(string KodeAccount1, string Parent1, string Account1a, string NormalPos1, string Kelompok1, CreateAccountingDataAccountCommand CreateAccountingDataAccountCommand1)
+        public async Task<IActionResult> Create2(string KodeAccount1, string Parent1a,string Parent1, string Account1a, string NormalPos1, string Kelompok1, CreateAccountingDataAccountCommand CreateAccountingDataAccountCommand1)
         {
-            CreateAccountingDataAccountCommand1.Parent = Parent1;
+            string NilaiParent;
+            if (Parent1 == "0")
+            {
+                NilaiParent = Parent1a;
+            }
+            else
+            {
+                NilaiParent = Parent1;
+
+            };
+            CreateAccountingDataAccountCommand1.Parent = NilaiParent;
             CreateAccountingDataAccountCommand1.KodeAccount = KodeAccount1;
             CreateAccountingDataAccountCommand1.Account = Account1a;
             CreateAccountingDataAccountCommand1.NormalPos = Int32.Parse(NormalPos1);

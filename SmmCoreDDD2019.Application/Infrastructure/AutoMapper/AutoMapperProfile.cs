@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using AutoMapper;
-
 using System.Reflection;
+
 namespace SmmCoreDDD2019.Application.Infrastructure.AutoMapper
 {
     public class AutoMapperProfile : Profile

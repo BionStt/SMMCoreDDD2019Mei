@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmmCoreDDD2019.Persistence;
 
 namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 {
     [DbContext(typeof(SMMCoreDDD2019DbContext))]
-    partial class SMMCoreDDD2019DbContextModelSnapshot : ModelSnapshot
+    [Migration("20190530072947_InitialCreate3")]
+    partial class InitialCreate3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

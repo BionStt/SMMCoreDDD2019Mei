@@ -8,6 +8,7 @@ using MediatR;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using ValidationException = SmmCoreDDD2019.Application.Exceptions.ValidationException;
 
 namespace SmmCoreDDD2019.Application.Infrastructure
 {

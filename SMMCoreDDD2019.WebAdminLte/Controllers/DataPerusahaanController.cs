@@ -87,10 +87,19 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateStructureOrganization(string KodeAccount1, string Parent1, string Account1a, CreateDataPerusahaanStrukturJabatanCommand CreateDataPerusahaanStrukturJabatanCommand1)
+        public async Task<IActionResult> CreateStructureOrganization(string KodeAccount1, string Parent1a,string Parent1, string Account1a, CreateDataPerusahaanStrukturJabatanCommand CreateDataPerusahaanStrukturJabatanCommand1)
         {
+            string NilaiParent;
+            if (Parent1 == "0")
+            {
+                NilaiParent = Parent1a;
+            }
+            else
+            {
+                NilaiParent = Parent1;
 
-            CreateDataPerusahaanStrukturJabatanCommand1.Parent = Parent1;
+            };
+            CreateDataPerusahaanStrukturJabatanCommand1.Parent = NilaiParent;
             CreateDataPerusahaanStrukturJabatanCommand1.KodeStruktur = KodeAccount1;
             CreateDataPerusahaanStrukturJabatanCommand1.NamaStrukturJabatan = Account1a;
 

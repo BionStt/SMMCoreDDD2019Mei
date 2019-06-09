@@ -320,12 +320,11 @@ namespace SMMCoreDDD2019.WebAdminLte
             // Add AutoMapper
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
 
-            // .NET Native DI Abstraction
-            RegisterServices(services);
+         
 
 
             // Add MediatR
-          //services.AddMediatR(typeof(GetProductQueryHandler).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(GetProductQueryHandler).GetTypeInfo().Assembly);
             services.AddMediatR(typeof(GetCustomersListQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetAllDataAccountOrderByKodeAccountQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetDataAccountByDepthQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
@@ -402,18 +401,26 @@ namespace SMMCoreDDD2019.WebAdminLte
             services.AddMediatR(typeof(GetDataSOByIDQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetLaporanSOQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
 
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            //  services.AddMediatR(Assembly.GetExecutingAssembly());
             // services.AddMediatR(typeof(Startup));
+
+            // .NET Native DI Abstraction
+            RegisterServices(services);
+
             services
             .AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
             .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateCustomerCommandValidator>());
+            //.AddMvcOptions(options => {//tambahan dari web
+            //     options.ModelMetadataDetailsProviders.Clear();
+            //     options.ModelValidatorProviders.Clear();
+            // });
 
             //services.AddMvc().AddRazorPagesOptions(options => {
             //    options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "");
             //}).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-          
+
 
             services.AddMvc()
            .AddJsonOptions(options =>
@@ -471,7 +478,7 @@ namespace SMMCoreDDD2019.WebAdminLte
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();// For the wwwroot folder
-            app.UseCookiePolicy();
+           // app.UseCookiePolicy();
 
             app.UseAuthentication();
 

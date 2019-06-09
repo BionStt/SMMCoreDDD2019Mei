@@ -43,7 +43,7 @@ namespace SmmCoreDDD2019.CrossCutting.IoC
             services.AddTransient<ISmsSender, SmsSender>();
 
             // Add MediatR
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
+           // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));//gak perlu lagi krn udah otomatis register
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 

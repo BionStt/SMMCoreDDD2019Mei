@@ -1,6 +1,8 @@
 ﻿Add-Migration InitialCreate -Context AppIdentityDbContext -OutputDir Migrations\SqlServerMigrations
 
 UPDATE-DATABASE -CONTEXT AppIdentityDbContext
+UPDATE-DATABASE -CONTEXT SMMCoreDDD2019DbContext
+
 
 Remove-Migration -Context AppIdentityDbContext 
 

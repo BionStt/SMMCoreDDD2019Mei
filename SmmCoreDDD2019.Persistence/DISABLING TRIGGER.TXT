@@ -1,0 +1,2 @@
+﻿DISABLE TRIGGER trg_DataPerusahaanStrukturJabatan_UPD
+on [DataPerusahaan].[DataPerusahaanStrukturJabatan]
