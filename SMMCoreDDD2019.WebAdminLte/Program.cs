@@ -14,6 +14,7 @@ using SmmCoreDDD2019.Common.Identity;
 using Microsoft.AspNetCore.Identity;
 using SmmCoreDDD2019.Infrastructure.Services;
 using SmmCoreDDD2019.Common.Services;
+using SmmCoreDDD2019.Application.Interfaces;
 
 namespace SMMCoreDDD2019.WebAdminLte
 { 
@@ -41,7 +42,7 @@ namespace SMMCoreDDD2019.WebAdminLte
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = scope.ServiceProvider.GetService<SMMCoreDDD2019DbContext>();
+                    var context = scope.ServiceProvider.GetService<ISMMCoreDDD2019DbContext>();
                     // var contextIdentity = scope.ServiceProvider.GetService<AppIdentityDbContext>();
                     // var userManager = scope.ServiceProvider.GetService<UserManager<ApplicationUser>>();
                     //var roleManager = scope.ServiceProvider.GetService<RoleManager<ApplicationRole>>();
@@ -56,8 +57,10 @@ namespace SMMCoreDDD2019.WebAdminLte
                     //2 perintah code dibawah ini supaya otomatis migrate database
                     // context.Database.Migrate();
                     // contextIdentity.Database.Migrate();
-
-                    SMMCoreDDD2019Initializer.Initialize(context);
+                    var concreteContext = (SMMCoreDDD2019DbContext)context;
+                   // concreteContext.Database.Migrate();
+                
+                    SMMCoreDDD2019Initializer.Initialize(concreteContext);
                     //  AppIdentityDbInitializar.Initialize(contextIdentity, userManager, roleManager).Wait();
                     AppIdentityDbInitializar.Initialize(contextIdentity, functional).Wait();
                 }

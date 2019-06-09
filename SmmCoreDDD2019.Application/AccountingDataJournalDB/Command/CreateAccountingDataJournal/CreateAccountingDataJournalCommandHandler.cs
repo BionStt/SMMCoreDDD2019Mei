@@ -8,7 +8,6 @@ using MediatR;
 using SmmCoreDDD2019.Application.Exceptions;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Domain.Entities;
-using SmmCoreDDD2019.Application.Interfaces;
 
 namespace SmmCoreDDD2019.Application.AccountingDataJournalDB.Command.CreateAccountingDataJournal
 {

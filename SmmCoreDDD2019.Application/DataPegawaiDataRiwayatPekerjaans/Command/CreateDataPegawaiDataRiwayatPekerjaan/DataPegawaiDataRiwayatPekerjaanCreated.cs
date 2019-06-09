@@ -7,7 +7,7 @@ using MediatR;
 using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Application.Notifications.Models;
 using System.Threading;
-using System.Threading.Tasks;
+
 
 namespace SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPekerjaans.Command.CreateDataPegawaiDataRiwayatPekerjaan
 {

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
-using System;
 using System.Linq.Expressions;
 using SmmCoreDDD2019.Domain.Entities;
+
 namespace SmmCoreDDD2019.Application.CustomerDBs.Queries.GetCustomerDBDetail
 {
    public  class CustomerDetailModel

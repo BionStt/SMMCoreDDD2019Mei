@@ -5,7 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MediatR;
-using System.ComponentModel.DataAnnotations;
+
+
 namespace SmmCoreDDD2019.Application.DataKontrakKreditAngsuranDemoDBs.Command.CreateDataKontrakKreditAngsuranDemo
 {
     public class CreateDataKontrakKreditAngsuranDemoCommand : IRequest

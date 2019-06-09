@@ -11,6 +11,6 @@ namespace SmmCoreDDD2019.Application.Interfaces
     public interface INotificationService
     {
         Task SendAsync(Message message);
-      //  Task SendAsync(Message message);
+     
     }
 }
