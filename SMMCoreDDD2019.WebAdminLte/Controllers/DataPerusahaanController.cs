@@ -85,6 +85,7 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
 
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateStructureOrganization(string KodeAccount1, string Parent1a,string Parent1, string Account1a, CreateDataPerusahaanStrukturJabatanCommand CreateDataPerusahaanStrukturJabatanCommand1)

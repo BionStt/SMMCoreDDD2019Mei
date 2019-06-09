@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MediatR;
 using System.ComponentModel.DataAnnotations;
+
 namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Command.CreateDataPerusahaanStrukturJabatan
 {
     public class CreateDataPerusahaanStrukturJabatanCommand : IRequest

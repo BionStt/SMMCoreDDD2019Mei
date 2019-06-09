@@ -58,11 +58,12 @@ namespace SMMCoreDDD2019.WebAdminLte
                     // context.Database.Migrate();
                     // contextIdentity.Database.Migrate();
                     var concreteContext = (SMMCoreDDD2019DbContext)context;
-                   // concreteContext.Database.Migrate();
+                    concreteContext.Database.Migrate();
                 
                     SMMCoreDDD2019Initializer.Initialize(concreteContext);
                     //  AppIdentityDbInitializar.Initialize(contextIdentity, userManager, roleManager).Wait();
                     AppIdentityDbInitializar.Initialize(contextIdentity, functional).Wait();
+                    //pasword di appsetting
                 }
                 catch (Exception ex)
                 {
@@ -90,8 +91,8 @@ namespace SMMCoreDDD2019.WebAdminLte
         //log level severity: Trace = 0, Debug = 1, Information = 2, Warning = 3, Error = 4, Critical = 5
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                 .UseKestrel()
-                  .UseContentRoot(Directory.GetCurrentDirectory())
+               .UseKestrel()
+               .UseContentRoot(Directory.GetCurrentDirectory())
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     var env = hostingContext.HostingEnvironment;

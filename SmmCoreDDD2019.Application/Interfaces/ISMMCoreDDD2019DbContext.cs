@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using SmmCoreDDD2019.Domain.Entities;
 using System.Threading;
 using Microsoft.EntityFrameworkCore;
