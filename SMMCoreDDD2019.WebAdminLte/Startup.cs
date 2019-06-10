@@ -145,13 +145,32 @@ namespace SMMCoreDDD2019.WebAdminLte
             });
 
             // Add DbContext using SQL Server Provider
+            //services.AddDbContext<ISMMCoreDDD2019DbContext, SMMCoreDDD2019DbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("SmmCoreDDD2019Connection"))
+            //    );
+
             services.AddDbContext<ISMMCoreDDD2019DbContext, SMMCoreDDD2019DbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("SmmCoreDDD2019Connection")));
+             options.UseSqlServer(Configuration["SmmCoreDDD2019Connection"],sqlServerOptionsAction: sqlOptions=> 
+             {
+                        sqlOptions.EnableRetryOnFailure(
+                       maxRetryCount: 5,
+                       maxRetryDelay: TimeSpan.FromSeconds(30),
+                       errorNumbersToAdd: null);
+             })
+             );
 
-            services.AddDbContext<AppIdentityDbContext>(options =>
-              options.UseSqlServer(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection")));
+            //services.AddDbContext<AppIdentityDbContext>(options =>
+            //  options.UseSqlServer(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection")));
 
-         
+            services.AddDbContext<ISMMCoreDDD2019DbContext, SMMCoreDDD2019DbContext>(options =>
+              options.UseSqlServer(Configuration["SmmCoreDDD2019IdentityConnection"], sqlServerOptionsAction: sqlOptions =>
+              {
+                  sqlOptions.EnableRetryOnFailure(
+                maxRetryCount: 5,
+                maxRetryDelay: TimeSpan.FromSeconds(30),
+                errorNumbersToAdd: null);
+              })
+              );
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
             {
