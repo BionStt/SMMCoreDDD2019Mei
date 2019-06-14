@@ -80,10 +80,15 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
         }
         public async Task<IActionResult> CreateStructureOrganization()
         {
-            var DataAccounting = await Mediator.Send(new GetStructureByParentQuery());
-            ViewData["DataAkun1"] = new SelectList(DataAccounting.StructureDataParentDs.ToList(), "NoUrutStrukturID", "DataAkun");
+           
 
-            return View();
+
+                var DataAccounting = await Mediator.Send(new GetStructureByParentQuery());
+                ViewData["DataAkun1"] = new SelectList(DataAccounting.StructureDataParentDs.ToList(), "NoUrutStrukturID", "DataAkun");
+           
+                return View();
+            
+            
         }
 
         [HttpPost]

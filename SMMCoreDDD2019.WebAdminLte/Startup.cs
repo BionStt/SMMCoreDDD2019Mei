@@ -19,16 +19,15 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.CookiePolicy;
 using SmmCoreDDD2019.Common.Identity;
 using SmmCoreDDD2019.Persistence;
-
+using FluentValidation;
 using AutoMapper;
-using FluentValidation.AspNetCore;
+
 using MediatR;
 using MediatR.Pipeline;
-using SmmCoreDDD2019.Application.CustomerDBs.Commands.CreateCustomerDB;
 using SmmCoreDDD2019.Application.Infrastructure;
 using SmmCoreDDD2019.Application.Infrastructure.AutoMapper;
 using SmmCoreDDD2019.Application.Interfaces;
-using SmmCoreDDD2019.Application.CustomerDBs.Queries.GetCustomerDBList;
+
 using SmmCoreDDD2019.Common;
 using SmmCoreDDD2019.Infrastructure;
 using NSwag.AspNetCore;
@@ -40,6 +39,11 @@ using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using SmmCoreDDD2019.CrossCutting.IoC;
+using SMMCoreDDD2019.WebAdminLte.Models;
+
+
+using SmmCoreDDD2019.Application.CustomerDBs.Queries.GetCustomerDBList;
+using SmmCoreDDD2019.Application.CustomerDBs.Commands.CreateCustomerDB;
 using SmmCoreDDD2019.Application.AccountingDataAccountDB.Query.GetAllDataAccountOrderByKodeAccount;
 using SmmCoreDDD2019.Application.AccountingDataAccountDB.Query.GetDataAccountByDepth;
 using SmmCoreDDD2019.Application.AccountingDataAccountDB.Query.GetDataAccountByParent;
@@ -114,7 +118,123 @@ using SmmCoreDDD2019.Application.PenjualanDetails.Query.GetLeasingCetak;
 using SmmCoreDDD2019.Application.PenjualanDetails.Query.GetDataPiutangLeasingMerek;
 using SmmCoreDDD2019.Application.Penjualans.Query.GetDataPenjualanHarian;
 using SmmCoreDDD2019.Application.Penjualans.Query.GetLaporanPenjualanPivot;
-using SMMCoreDDD2019.WebAdminLte.Models;
+using SmmCoreDDD2019.Application.AccountingDataAccountDB.Command.CreateAccountingDataAccount;
+using SmmCoreDDD2019.Application.AccountingDataJournalDB.Command.CreateAccountingDataJournal;
+using SmmCoreDDD2019.Application.AccountingDataJournalHeaderDB.Command.CreateAccountingDataJournalHeader;
+using SmmCoreDDD2019.Application.AccountingDataKursDB.Command.CreateAccountingDataKurs;
+using SmmCoreDDD2019.Application.AccountingDataMataUangDB.Command.CreateAccountingDataMataUang;
+using SmmCoreDDD2019.Application.AccountingDataPeriodeDB.Command.CreateAccountingDataPeriode;
+using SmmCoreDDD2019.Application.AccountingDataSaldoAwalDB.Command.CreateAccountingDataSaldoAwal;
+using SmmCoreDDD2019.Application.AccountingTipeJournalDB.Command.CreateAccountingTipeJournal;
+using SmmCoreDDD2019.Application.BPKBDBs.Command.CreateBPKBDB;
+using SmmCoreDDD2019.Application.CustomerDBs.Commands.DeleteCustomerDB;
+using SmmCoreDDD2019.Application.CustomerDBs.Commands.UpdateCustomerDB;
+using SmmCoreDDD2019.Application.DataKonsumenAvalistDbs.Command.CreateDataKonsumenAvalist;
+using SmmCoreDDD2019.Application.DataKonsumenAvalistDbs.Command.DeleteDataKonsumenAvalist;
+using SmmCoreDDD2019.Application.DataKonsumenAvalistDbs.Command.UpdateDataKonsumenAvalist;
+using SmmCoreDDD2019.Application.DataKontrakAngsuranDBs.Command.DeleteDataKontrakAngsuran;
+using SmmCoreDDD2019.Application.DataKontrakAngsuranDBs.Command.UpdateDataKontrakAngsuran;
+using SmmCoreDDD2019.Application.DataKontrakAsuransiDBs.Command.CreateDataKontrakAsuransi;
+using SmmCoreDDD2019.Application.DataKontrakAsuransiDBs.Command.DeleteDataKontrakAsuransi;
+using SmmCoreDDD2019.Application.DataKontrakAsuransiDBs.Command.UpdateDataKontrakAsuransi;
+using SmmCoreDDD2019.Application.DataKontrakKreditAngsuranDemoDBs.Command.CreateDataKontrakKreditAngsuranDemo;
+using SmmCoreDDD2019.Application.DataKontrakKreditAngsuranDemoDBs.Command.DeleteDataKontrakKreditAngsuranDemo;
+using SmmCoreDDD2019.Application.DataKontrakKreditDBs.Command.CreateDataKontrakKredit;
+using SmmCoreDDD2019.Application.DataKontrakKreditDBs.Command.DeleteDataKontrakKredit;
+using SmmCoreDDD2019.Application.DataKontrakKreditDBs.Command.UpdateDataKontrakKredit;
+using SmmCoreDDD2019.Application.DataKontrakSurveiDBs.Command.CreateDataKontrakSurvei;
+using SmmCoreDDD2019.Application.DataKontrakSurveiDBs.Command.DeleteDataKontrakSurvei;
+using SmmCoreDDD2019.Application.DataKontrakSurveiDBs.Command.UpdateDataKontrakSurvei;
+using SmmCoreDDD2019.Application.DataPegawaiDataAwardDBs.Command.CreateDataPegawaiDataAward;
+using SmmCoreDDD2019.Application.DataPegawaiDataJabatans.Commands.CreateDataPegawaiDataJabatan;
+using SmmCoreDDD2019.Application.DataPegawaiDataJabatans.Commands.DeleteDataPegawaiDataJabatan;
+using SmmCoreDDD2019.Application.DataPegawaiDataJabatans.Commands.UpdateDataPegawaiDataJabatan;
+using SmmCoreDDD2019.Application.DataPegawaiDataKeluargas.Command.CreateDataPegawaiDataKeluarga;
+using SmmCoreDDD2019.Application.DataPegawaiDataKeluargas.Command.DeleteDataPegawaiDataKeluarga;
+using SmmCoreDDD2019.Application.DataPegawaiDataKeluargas.Command.UpdateDataPegawaiDataKeluarga;
+using SmmCoreDDD2019.Application.DataPegawaiDataOrmass.Command.CreateDataPegawaiDataOrmas;
+using SmmCoreDDD2019.Application.DataPegawaiDataOrmass.Command.UpdateDataPegawaiDataOrmas;
+using SmmCoreDDD2019.Application.DataPegawaiDataOrmass.Command.DeleteDataPegawaiDataOrmas;
+using SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPekerjaans.Command.CreateDataPegawaiDataRiwayatPekerjaan;
+using SmmCoreDDD2019.Application.DataPegawaiDataPribadis.Command.DeleteDataPegawaiDataPribadi;
+using SmmCoreDDD2019.Application.DataPegawaiDataPribadis.Command.CreateDataPegawaiDataPribadi;
+using SmmCoreDDD2019.Application.DataPegawaiDataPribadiInput.Command.CreateDataPegawaiDataPribadiInput;
+using SmmCoreDDD2019.Application.DataPegawaiDataPribadis.Command.UpdateDataPegawaiDataPribadi;
+using SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPelatihans.Command.DeleteDataPegawaiDataRiwayatPelatihan;
+using SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPekerjaans.Command.UpdateDataPegawaiDataRiwayatPekerjaan;
+using SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPekerjaans.Command.DeleteDataPegawaiDataRiwayatPekerjaan;
+using SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPelatihans.Command.UpdateDataPegawaiDataRiwayatPelatihan;
+using SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPelatihans.Command.CreateDataPegawaiDataRiwayatPelatihan;
+using SmmCoreDDD2019.Application.StokUnits.Command.UpdateStokUnitPembatalanPj;
+using SmmCoreDDD2019.Application.StokUnits.Command.CreateStokUnit;
+using SmmCoreDDD2019.Application.PermohonanFakturDBs.Command.CreatePermohonanFaktur;
+using SmmCoreDDD2019.Application.PermohonanFakturDBs.Command.DeletePermohonanFaktur;
+using SmmCoreDDD2019.Application.STNKDBs.Command.CreateSTNKDB;
+using SmmCoreDDD2019.Application.Penjualans.Command.DeletePenjualan;
+using SmmCoreDDD2019.Application.MasterPerusahaanAsuransiDBs.Command.CreateMasterPerusahaanAsuransi;
+using SmmCoreDDD2019.Application.PembelianDetails.Command.CreatePembelianDetail;
+using SmmCoreDDD2019.Application.Penjualans.Command.CreatePenjualan;
+using SmmCoreDDD2019.Application.Pembelians.Command.CreatePembelian;
+using SmmCoreDDD2019.Application.PenjualanDetails.Command.DeletePenjualanDetail;
+using SmmCoreDDD2019.Application.MasterSupplierDBs.Commands.CreateMasterSupplierDB;
+using SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPendidikans.Command.CreateDataPegawaiDataRiwayatPendidikan;
+using SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPendidikans.Command.DeleteDataPegawaiDataRiwayatPendidikan;
+using SmmCoreDDD2019.Application.DataSPKLeasingDBs.Command.UpdateDataSPKLeasingDB;
+using SmmCoreDDD2019.Application.DataSPKLeasingDBs.Command.DeleteDataSPKLeasingDB;
+using SmmCoreDDD2019.Application.MasterBarangDBs.Commands.DeleteMasterBarangDBs;
+using SmmCoreDDD2019.Application.DataSPKSurveiDBs.Command.UpdateDataSPKSurveiDB;
+using SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPendidikans.Command.UpdateDataPegawaiDataRiwayatPendidikan;
+using SmmCoreDDD2019.Application.DataPegawaiFotos.Command.CreateDataPegawaiFoto;
+using SmmCoreDDD2019.Application.DataPegawaiFotos.Command.DeleteDataPegawaiFoto;
+using SmmCoreDDD2019.Application.DataPegawaiFotos.Command.UpdateDataPegawaiFoto;
+using SmmCoreDDD2019.Application.DataPegawais.Command.CreateDataPegawai;
+using SmmCoreDDD2019.Application.DataPegawais.Command.DeleteDataPegawai;
+using SmmCoreDDD2019.Application.DataPegawais.Command.UpdateDataPegawai;
+using SmmCoreDDD2019.Application.DataPerusahaanCabangs.Command.CreateDataPerusahaanCabang;
+using SmmCoreDDD2019.Application.DataPerusahaanCabangs.Command.DeleteDataPerusahaanCabang;
+using SmmCoreDDD2019.Application.DataPerusahaanCabangs.Command.UpdateDataPerusahaanCabang;
+using SmmCoreDDD2019.Application.DataPerusahaans.Command.DeleteDataPerusahaan;
+using SmmCoreDDD2019.Application.DataPerusahaans.Command.CreateDataPerusahaan;
+using SmmCoreDDD2019.Application.DataPerusahaans.Command.UpdateDataPerusahaan;
+using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Command.CreateDataPerusahaanStrukturJabatan;
+using SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.CreateDataSPKBaruDB;
+using SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.DeleteDataSPKBaruDB;
+using SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.UpdateDataSPKBaruDB;
+using SmmCoreDDD2019.Application.DataSPKKendaraanDBs.Command.CreateDataSPKKendaraanDB;
+using SmmCoreDDD2019.Application.DataSPKKendaraanDBs.Command.DeleteDataSPKKendaraanDB;
+using SmmCoreDDD2019.Application.DataSPKKendaraanDBs.Command.UpdateDataSPKKendaraanDB;
+using SmmCoreDDD2019.Application.DataSPKKreditDBs.Command.CreateDataSPKKreditDB;
+using SmmCoreDDD2019.Application.DataSPKKreditDBs.Command.DeleteDataSPKKreditDB;
+using SmmCoreDDD2019.Application.DataSPKKreditDBs.Command.UpdateDataSPKKreditDB;
+using SmmCoreDDD2019.Application.DataSPKLeasingDBs.Command.CreateDataSPKLeasingDB;
+using SmmCoreDDD2019.Application.DataSPKSurveiDBs.Command.CreateDataSPKSurveiDB;
+using SmmCoreDDD2019.Application.DataSPKSurveiDBs.Command.DeleteDataSPKSurveiDB;
+using SmmCoreDDD2019.Application.MasterAllowanceTypeDB.Command.CreateMasterAllowanceTypeDB;
+using SmmCoreDDD2019.Application.MasterBarangDBs.Commands.CreateMasterBarangDB;
+using SmmCoreDDD2019.Application.MasterBarangDBs.Commands.UpdateMasterBarangDBs;
+using SmmCoreDDD2019.Application.MasterJenisJabatanDBs.Command.CreateMasterJenisJabatanDB;
+using SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Commands.CreateMasterLeasingCabangDB;
+using SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Commands.DeleteMasterLeasingCabangDB;
+using SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Commands.UpdateMasterLeasingCabangDB;
+using SmmCoreDDD2019.Application.MasterLeasingDbs.Commands.CreateMasterLeasingDb;
+using SmmCoreDDD2019.Application.MasterLeasingDbs.Commands.DeleteMasterLeasingDb;
+using SmmCoreDDD2019.Application.MasterLeasingDbs.Commands.UpdateMasterLeasingDb;
+using SmmCoreDDD2019.Application.MasterLeaveTypeHRDDB.Command.CreateMasterLeaveTypeHRD;
+using SmmCoreDDD2019.Application.MasterPerusahaanAsuransiDBs.Command.DeleteMasterPerusahaanAsuransi;
+using SmmCoreDDD2019.Application.MasterPerusahaanAsuransiDBs.Command.UpdateMasterPerusahaanAsuransi;
+using SmmCoreDDD2019.Application.MasterSupplierDBs.Commands.DeleteMasterSupplierDB;
+using SmmCoreDDD2019.Application.MasterSupplierDBs.Commands.UpdateMasterSupplierDB;
+using SmmCoreDDD2019.Application.PembelianPODetails.Command.CreatePembelianPODetail;
+using SmmCoreDDD2019.Application.PembelianPOs.Command.CreatePembelianPO;
+using SmmCoreDDD2019.Application.PenjualanDetails.Command.CreatePejualanDetail;
+using SmmCoreDDD2019.Application.PenjualanDetails.Command.UpdateCheckPenjualanDetail;
+using SmmCoreDDD2019.Application.PenjualanDetails.Command.UpdateDPPenjualanDetail;
+using SmmCoreDDD2019.Application.PenjualanPiutangDB.Command.CreatePenjualanPiutang;
+using SmmCoreDDD2019.Application.Interfaces.Mapping;
+using FluentValidation.AspNetCore;
+using Lamar;
+using Autofac;
+using Autofac.Core;
 
 namespace SMMCoreDDD2019.WebAdminLte
 {
@@ -124,6 +244,8 @@ namespace SMMCoreDDD2019.WebAdminLte
         {
             Configuration = configuration;
         }
+
+        // public Startup(IHostingEnvironment env) { /* Unchanged */}
 
         public IConfiguration Configuration { get; }
 
@@ -145,31 +267,27 @@ namespace SMMCoreDDD2019.WebAdminLte
             });
 
             // Add DbContext using SQL Server Provider
-            //services.AddDbContext<ISMMCoreDDD2019DbContext, SMMCoreDDD2019DbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("SmmCoreDDD2019Connection"))
-            //    );
-
             services.AddDbContext<ISMMCoreDDD2019DbContext, SMMCoreDDD2019DbContext>(options =>
-             options.UseSqlServer(Configuration["SmmCoreDDD2019Connection"],sqlServerOptionsAction: sqlOptions=> 
-             {
-                        sqlOptions.EnableRetryOnFailure(
-                       maxRetryCount: 5,
-                       maxRetryDelay: TimeSpan.FromSeconds(30),
-                       errorNumbersToAdd: null);
-             })
-             );
+               // options.UseSqlServer(Configuration.GetConnectionString("SmmCoreDDD2019Connection"))
+               options.UseSqlServer(Configuration.GetConnectionString("SmmCoreDDD2019Connection"), sqlServerOptionsAction: sqlOptions =>
+                {
+                    sqlOptions.EnableRetryOnFailure(
+                        maxRetryCount: 5,
+                        maxRetryDelay: TimeSpan.FromSeconds(30),
+                        errorNumbersToAdd: null);
+                })
+                );
 
-            //services.AddDbContext<AppIdentityDbContext>(options =>
-            //  options.UseSqlServer(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection")));
 
-            services.AddDbContext<ISMMCoreDDD2019DbContext, SMMCoreDDD2019DbContext>(options =>
-              options.UseSqlServer(Configuration["SmmCoreDDD2019IdentityConnection"], sqlServerOptionsAction: sqlOptions =>
-              {
-                  sqlOptions.EnableRetryOnFailure(
-                maxRetryCount: 5,
-                maxRetryDelay: TimeSpan.FromSeconds(30),
-                errorNumbersToAdd: null);
-              })
+            services.AddDbContext<AppIdentityDbContext>(options =>
+            //  options.UseSqlServer(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"))
+                   options.UseSqlServer(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"), sqlServerOptionsAction: sqlOptions =>
+                   {
+                       sqlOptions.EnableRetryOnFailure(
+                           maxRetryCount: 5,
+                           maxRetryDelay: TimeSpan.FromSeconds(30),
+                           errorNumbersToAdd: null);
+                   })
               );
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
@@ -193,12 +311,12 @@ namespace SMMCoreDDD2019.WebAdminLte
 
                 // email confirmation require
                 options.SignIn.RequireConfirmedEmail = identityDefaultOptions.SignInRequireConfirmedEmail;
-               // options.User.RequireUniqueEmail = identityDefaultOptions.UserRequireUniqueEmail;
+                // options.User.RequireUniqueEmail = identityDefaultOptions.UserRequireUniqueEmail;
             })
              .AddEntityFrameworkStores<AppIdentityDbContext>()
               .AddDefaultUI(UIFramework.Bootstrap4)
                .AddDefaultTokenProviders();
-            
+
 
             services.AddEntityFrameworkSqlServer();
 
@@ -210,8 +328,8 @@ namespace SMMCoreDDD2019.WebAdminLte
 
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromHours(1);
-              //  options.LoginPath = "/Account/Login2";
-              //  options.LogoutPath = "/Account/Signout";
+                //  options.LoginPath = "/Account/Login2";
+                //  options.LogoutPath = "/Account/Signout";
                 options.Cookie = new CookieBuilder
                 {
                     IsEssential = true // required for auth to work without explicit user consent; adjust to suit your privacy policy
@@ -227,9 +345,9 @@ namespace SMMCoreDDD2019.WebAdminLte
 
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-           
+
 
             if (Configuration["Authentication:Facebook:IsEnabled"] == "true")
             {
@@ -316,8 +434,8 @@ namespace SMMCoreDDD2019.WebAdminLte
                     options.AllowAreas = true;
                     options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
                     options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
-                                   
-                  
+
+
                 });
 
             //services.Configure<PasswordHasherOptions>(options =>
@@ -336,92 +454,34 @@ namespace SMMCoreDDD2019.WebAdminLte
             }
 
             services.AddScoped<Services.Profile.ProfileManager>();
+
+            // Add MediatR
+            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
+
             // Add AutoMapper
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
 
-         
+            var abc = new ServiceRegistry();
+            abc.Scan(scanner =>
+            {
+                    // Here you can add various assembly scans
+                    // to ensure Lamar finds all your classes
+                    // and registers your project conventions.
+                    scanner.TheCallingAssembly();
+                scanner.WithDefaultConventions();
+                scanner.SingleImplementationsOfInterface();
+
+                    // Add all implementations of an interface
+                    scanner.AddAllTypesOf(typeof(IRequestHandler<>));
+                scanner.AddAllTypesOf(typeof(IRequestHandler<,>));
+                scanner.AddAllTypesOf(typeof(INotificationHandler<>));
+                scanner.AddAllTypesOf(typeof(IRequestHandler<,>));
 
 
-            // Add MediatR
-            //services.AddMediatR(typeof(GetProductQueryHandler).GetTypeInfo().Assembly);
-            services.AddMediatR(typeof(GetCustomersListQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetAllDataAccountOrderByKodeAccountQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataAccountByDepthQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataAccountByParentQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataAccountByParent2QueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataJournalAllQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataJournalByKodeAkunQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataJournalByKodeHeaderQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetLaporanLabaRugiQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetLaporanNeracaQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataJournalHeaderQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetTipeJournalQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetCustomerByIDQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetCustomerDataPenjualanQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetCustomerDetailQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataKonsumenAvalistQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataKontrakAngsuranByNoIDQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetListDataKontrakKreditQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetListDataKontrakKreditByNoIDQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataSurveiQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaSalesForceQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaPegawaiHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(DataPegawaiListQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaPerusahaanHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaPerusahaanLeasingCetakQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetStructureByDepthQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetStructureByParentQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetStructureByParent2QueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetStructureByStructureCodeQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataKendaraanByNoSPKQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaSPKHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaSPKPenjualanQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetMasterBarangByIDQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetMerekQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaBarangQrHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaBarangQrByNoUrutHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaBidangPekerjaanQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaBidangUsahaQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaJabatanQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaKategoryBayaranQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaCaraPembayaranQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaKategoryQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetCabangLeasingQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetAllLeasingQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaSupplierHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetKodeBeliQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetKodeBeliDetailQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetLIstPembelianQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetListPembelianDetailQueryHandle).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetListStokUnitByNoKodeBeliQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataPoPembelianHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaPOHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataCekDPBulananQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataCekDPPenjualanQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataCekDPPenjualan2QueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataCheckPenjualanBulananQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataCheckPenjualanDetailBulananQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataDetailLeasingCetakQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataPenjualanDetailByNoQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataPenjualanDetailByNosinQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataPiutangLeasingQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataPiutangLeasingMerekQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetLeasingCetakQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetLeasingCetakBySearchQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataPenjualanBulananBySalesQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataPenjualanHarianQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetLaporanPenjualanPivotQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetLaporanPenjualanPivotCabangLeasingQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetLaporanPenjualanPivotSalesQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaPenjualanFakturQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaFakturBPKBQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaFakturStnkQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataSOQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataSOByIDQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetLaporanSOQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+            });
 
-            //  services.AddMediatR(Assembly.GetExecutingAssembly());
-            // services.AddMediatR(typeof(Startup));
+           
+
 
             // .NET Native DI Abstraction
             RegisterServices(services);
@@ -438,6 +498,7 @@ namespace SMMCoreDDD2019.WebAdminLte
             //services.AddMvc().AddRazorPagesOptions(options => {
             //    options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "");
             //}).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
 
 
 
@@ -463,11 +524,51 @@ namespace SMMCoreDDD2019.WebAdminLte
             //});
 
 
-           
-
+          
+           // ConfigureIoC(services);
 
 
         }
+
+
+
+
+        //public void ConfigureContainer(ServiceRegistry services)
+        //{
+        //    // Add your ASP.Net Core services as usual
+        //    services.AddMvc();
+        //    services.AddLogging();
+
+        //    // Also exposes Lamar specific registrations
+        //    // and functionality
+        //    services.Scan(scanner =>
+        //    {
+        //        // Here you can add various assembly scans
+        //        // to ensure Lamar finds all your classes
+        //        // and registers your project conventions.
+        //        scanner.TheCallingAssembly();
+        //        scanner.WithDefaultConventions();
+        //        scanner.SingleImplementationsOfInterface();
+
+        //        // Add all implementations of an interface
+        //        scanner.AddAllTypesOf(typeof(IRequestHandler<>));
+        //        scanner.AddAllTypesOf(typeof(IRequestHandler<,>));
+        //        scanner.AddAllTypesOf(typeof(INotificationHandler<>));
+        //        scanner.AddAllTypesOf(typeof(IRequestHandler<,>));
+
+
+        //    });
+
+        //    // You can create your own registries like with StructurMap
+        //    // and use expressions to configure types
+        //    //services.For<IAbstraction>().Use(new ConcreteImplementation());
+
+        //    // Power up your architechture with the decorator pattern
+        //    //services
+        //    //    .For(typeof(ICommandHandler<>))
+        //    //    .DecorateAllWith(typeof(ValidationCommandHandlerDecorator));
+        //}
+
 
         //buat belajar
         //https://www.tutorialsteacher.com/core/aspnet-core-logging
@@ -497,7 +598,7 @@ namespace SMMCoreDDD2019.WebAdminLte
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();// For the wwwroot folder
-           // app.UseCookiePolicy();
+                                 // app.UseCookiePolicy();
 
             app.UseAuthentication();
 
@@ -561,6 +662,60 @@ namespace SMMCoreDDD2019.WebAdminLte
             NativeInjectorBootStrapper.RegisterServices(services);
         }
 
+      
+
+
+        public static void ConfigureIoC(IServiceCollection services)
+        {
+
+            //var container = new Container();
+            ////Configure our DI Container
+            //container.Configure(config =>
+            //{
+
+            //    // Fluent Validation
+            //    config.Scan(scanner =>
+            //    {
+            //        //Register everything in our BLL
+            //        scanner.AssemblyContainingType<CreateAccountingDataAccountCommandHandler>();
+            //        scanner.AddAllTypesOf<IValidator>();
+            //        scanner.ConnectImplementationsToTypesClosing(typeof(IValidator<>));
+            //    });
+
+            //    // MediatR
+            //    config.Scan(scanner =>
+            //    {
+            //        //Register everything in our BLL
+            //        // scanner.AssemblyContainingType<SimpleRequestHandler>();
+            //        scanner.AssemblyContainingType(typeof(Startup));
+            //        scanner.AssemblyContainingType(typeof(CreateAccountingDataAccountCommandHandler));
+            //        scanner.ConnectImplementationsToTypesClosing(typeof(IRequestHandler<>)); // Handlers with no response
+            //        scanner.ConnectImplementationsToTypesClosing(typeof(IRequestHandler<,>)); // Handlers with a response
+            //        scanner.ConnectImplementationsToTypesClosing(typeof(INotificationHandler<>));
+            //        scanner.WithDefaultConventions();
+
+
+            //    });
+
+            //    //Pipeline
+            //    config.For(typeof(IPipelineBehavior<,>)).Add(typeof(RequestPerformanceBehaviour<,>));
+            //    config.For(typeof(IPipelineBehavior<,>)).Add(typeof(RequestValidationBehavior<,>));
+
+            //    config.For<IMediator>().LifecycleIs<TransientLifecycle>().Use<Mediator>();
+            //    config.For<ServiceFactory>().Use<ServiceFactory>(ctx => ctx.GetInstance);
+            //    config.Populate(services);
+
+            //    //Constrained notification handlers
+            //    // config.For(typeof(INotificationHandler<>)).Add(typeof(ConstrainedPingedHandler<>));
+
+            //    // This is the default but let's be explicit. At most we should be container scoped.
+            //    config.For<IMediator>().LifecycleIs<TransientLifecycle>().Use<Mediator>();
+
+
+            //});
+            //container.Populate(services);
+            //container.GetInstance<IServiceProvider>();
+        }
 
 
     }

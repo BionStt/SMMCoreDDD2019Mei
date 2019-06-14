@@ -1,5 +1,13 @@
 ﻿Add-Migration InitialCreate -Context AppIdentityDbContext -OutputDir Migrations\SqlServerMigrations
 
+dotnet ef migrations add InitialCreate -Context AppIdentityDbContext -o Migrations\SqlServerMigrations
+dotnet ef migrations add InitialCreate -Context ApplicationDbContext -o Migrations\SqlServerMigrations -p ..\SmmCoreDDD2019Accounting.WebUI\ -s .\SmmCoreDDD2019Accounting.WebUI.csproj
+
+dotnet ef migrations add InitialCreate -C SmmCoreDDD2019AccountingDbContext -o Migrations\SqlServerMigrations
+dotnet ef migrations add InitialCreate  -c SmmCoreDDD2019AccountingDbContext -o Migrations\SqlServerMigrations -p ..\SmmCoreDDD2019Accounting.Persistence\ -s .\SmmCoreDDD2019Accounting.WebUI.csproj
+
+Add-Migration InitialCreate -Context SmmCoreDDD2019AccountingDbContext -OutputDir Migrations\SqlServerMigrations
+
 UPDATE-DATABASE -CONTEXT AppIdentityDbContext
 UPDATE-DATABASE -CONTEXT SMMCoreDDD2019DbContext
 
@@ -15,6 +23,7 @@ Update-Database -Migration 20180904195021_InitialCreate
 di webui folder 
 dotnet ef database update -c AppIdentityDbContext -p ..\SmmCoreDDD2019.Common\SmmCoreDDD2019.Common.csproj -s .\SMMCoreDDD2019.WebUI.csproj
 
+dotnet ef database update -c ApplicationDbContext -p ..\SmmCoreDDD2019Accounting.WebUI\ -s .\SmmCoreDDD2019Accounting.WebUI.csproj
 
 1.Ensure your connection strings in appsettings.json point to a local SQL Server instance.
 

@@ -1,0 +1,288 @@
+﻿   var builder = new ContainerBuilder();
+           // builder.RegisterAssemblyTypes(typeof(IMediator).Assembly).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(typeof(GetStructureByParentQuery).GetTypeInfo().Assembly).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(typeof(CreateAccountingDataAccountCommand).GetTypeInfo().Assembly).AsImplementedInterfaces();
+            //builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            //builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+
+            //register all async handlers
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+                .As(type => type.GetInterfaces()
+                    .Where(interfaceType => interfaceType.IsClosedTypeOf(typeof(IRequestHandler<,>)))
+                    .Select(interfaceType => new KeyedService("IRequestHandler", interfaceType)))
+                .InstancePerLifetimeScope();
+
+            ////register pipeline decorator
+            //builder.RegisterGenericDecorator(
+            //    typeof(IPipelineBehavior<,>),
+            //    typeof(RequestPerformanceBehaviour<,>),
+            //    "asyncRequestHandler")
+            //    .Keyed("IPipelineBehavior", typeof(RequestPerformanceBehaviour<,>))
+            //    .InstancePerLifetimeScope();
+
+            ////register pipeline decorator
+            //builder.RegisterGenericDecorator(
+            //    typeof(IPipelineBehavior<,>),
+            //    typeof(RequestValidationBehavior<,>),
+            //    "asyncRequestHandler")
+            //    .Keyed("IPipelineBehavior", typeof(RequestValidationBehavior<,>))
+            //    .InstancePerLifetimeScope();
+
+            builder
+              .RegisterAssemblyTypes(typeof(IRequest<>).Assembly)
+              .Where(t => t.IsClosedTypeOf(typeof(IRequest<>)))
+              .AsImplementedInterfaces();
+            
+            builder
+                .RegisterAssemblyTypes(typeof(IRequestHandler<>).Assembly)
+                .Where(t => t.IsClosedTypeOf(typeof(IRequestHandler<,>)))
+                .AsImplementedInterfaces();
+
+            //builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+            //      .Where(t => t.Name.EndsWith("CommandValidator"))
+            //      //.Where(t => t.Name.EndsWith("ValidationHandler"))
+            //      .AsImplementedInterfaces()
+            //      .InstancePerLifetimeScope();
+
+            //register RedStripeDbContext
+            builder.RegisterType<SMMCoreDDD2019DbContext>().As<ISMMCoreDDD2019DbContext>().InstancePerRequest();
+
+   public void ConfigureContainer(ServiceRegistry services)
+        {
+            // Add your ASP.Net Core services as usual
+            services.AddMvc();
+            services.AddLogging();
+
+            // Also exposes Lamar specific registrations
+            // and functionality
+            services.Scan(scanner =>
+            {
+                // Here you can add various assembly scans
+                // to ensure Lamar finds all your classes
+                // and registers your project conventions.
+                scanner.TheCallingAssembly();
+                scanner.WithDefaultConventions();
+                scanner.SingleImplementationsOfInterface();
+
+                // Add all implementations of an interface
+                scanner.AddAllTypesOf(typeof(IRequestHandler<>));
+                scanner.AddAllTypesOf(typeof(IRequestHandler<,>));
+                scanner.AddAllTypesOf(typeof(INotificationHandler<>));
+                scanner.AddAllTypesOf(typeof(IRequestHandler<,>));
+
+
+            });
+
+            // You can create your own registries like with StructurMap
+            // and use expressions to configure types
+            //services.For<IAbstraction>().Use(new ConcreteImplementation());
+
+            // Power up your architechture with the decorator pattern
+            //services
+            //    .For(typeof(ICommandHandler<>))
+            //    .DecorateAllWith(typeof(ValidationCommandHandlerDecorator));
+        }
+     //config.For(typeof(IPipelineBehavior<,>)).Add(typeof(RequestPreProcessorBehavior<,>));
+                //config.For(typeof(IPipelineBehavior<,>)).Add(typeof(RequestPostProcessorBehavior<,>));
+                //Add our Validation Behavior, to run Fluent Validation, to our Mediatr pipeline...
+                //config.For(typeof(IPipelineBehavior<,>)).Add(typeof(ValidationBehavior<,>));
+
+                //config.For(typeof(IRequestPreProcessor<>)).Add(typeof(PreProcessingBehavior<>));
+                //config.For(typeof(IRequestPostProcessor<,>)).Add(typeof(PostProcessingBehavior<,>));
+                //config.For(typeof(IPipelineBehavior<,>)).Add(typeof(RequestPreProcessorBehavior<,>));
+                //config.For(typeof(IPipelineBehavior<,>)).Add(typeof(RequestPostProcessorBehavior<,>));
+
+
+ //services.AddMediatR(typeof(Startup));
+            //const string applicationAssemblyName = "SmmCoreDDD2019.Application";
+            //var assembly = AppDomain.CurrentDomain.Load(applicationAssemblyName);
+            //AssemblyScanner
+            //    .FindValidatorsInAssembly(assembly)
+            //    .ForEach(result => services.AddScoped(result.InterfaceType, result.ValidatorType));
+
+            ////Scan for commandhandlers and eventhandlers
+            //services.Scan(scan => scan
+            //                       // .FromCallingAssembly(typeof(assembly)) // 1. Find the concrete classes
+            //                        .FromExecutingAssembly()
+            //                        //.FromAssembliesOf(typeof(Startup))
+            //                         //.FromAssemblyOf(typeof(Startup))
+            //                         //.AddClasses()        //    to register
+            //                         //.AddClasses(t => t.AssignableTo(typeof(IRequestHandler<,>)))
+            //                    //     .AddClasses(classes => classes.Where(x =>
+            //                    //     {
+            //                    //         var allInterfaces = x.GetInterfaces();
+            //                    //         return
+            //                    //           allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IRequestHandler<,>));
+            //                    //         //allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IRequestHandler<>)) ||
+            //                    //         //    allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(ICancellableHandler<>)) ||
+            //                    //         //    allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IQueryHandler<,>)) ||
+            //                    //         //    allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(ICancellableQueryHandler<,>));
+            //                    //     }))
+
+            //                    //.UsingRegistrationStrategy(RegistrationStrategy.Skip) // 2. Define how to handle duplicates
+            //                    // .AsImplementedInterfaces()
+            //                    //  // .AsSelf()    // 2. Specify which services they are registered as
+            //                    //  .WithTransientLifetime() // 3. Set the lifetime for the services
+
+            //  .AddClasses(classes => classes.Where(x =>
+            //   {
+            //       var allInterfaces = x.GetInterfaces();
+            //       return
+            //         allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IHaveCustomMapping))
+            //         ||  allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(AutoMapperProfile))||
+            //       allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IRequestHandler<,>)) ;
+            //       //    allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(ICancellableHandler<>)) ||
+            //       //    allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IQueryHandler<,>)) ||
+            //       //    allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(ICancellableQueryHandler<,>));
+            //   }))
+
+            //                    .UsingRegistrationStrategy(RegistrationStrategy.Skip) // 2. Define how to handle duplicates
+            //                     .AsImplementedInterfaces()
+            //                      // .AsSelf()    // 2. Specify which services they are registered as
+            //                      .WithTransientLifetime()); // 3. Set the lifetime for the services
+
+
+
+
+   services.Scan(scan => scan
+								   // .FromCallingAssembly(typeof(Startup)) // 1. Find the concrete classes
+								   .FromAssembliesOf(typeof(Startup))
+									 //.FromAssemblyOf(typeof(Startup))
+									 //.AddClasses()        //    to register
+									 //.AddClasses(t => t.AssignableTo(typeof(IRequestHandler<,>)))
+									 .AddClasses(classes => classes.Where(x =>
+									 {
+										 var allInterfaces = x.GetInterfaces();
+										 return
+										   allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IRequestHandler<>));
+										 //allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IRequestHandler<>)) ||
+										 //    allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(ICancellableHandler<>)) ||
+										 //    allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IQueryHandler<,>)) ||
+										 //    allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(ICancellableQueryHandler<,>));
+									 }))
+
+								 //.UsingRegistrationStrategy(RegistrationStrategy.Skip) // 2. Define how to handle duplicates
+								 .AsImplementedInterfaces()
+								  // .AsSelf()    // 2. Specify which services they are registered as
+								  .WithTransientLifetime()); // 3. Set the lifetime for the services
+
+		 
+
+		 
+            //services.Scan(scan => scan
+            //    .FromAssemblies(typeof(IRequestHandler).GetTypeInfo().Assembly)
+            //        .AddClasses(classes => classes.Where(x => {
+            //            var allInterfaces = x.GetInterfaces();
+            //            return
+            //                allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IHandler<>)) ||
+            //                allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(ICancellableHandler<>)) ||
+            //                allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IQueryHandler<,>)) ||
+            //                allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(ICancellableQueryHandler<,>));
+            //        }))
+            //        .AsSelf()
+            //        .WithTransientLifetime()
+            //);
+
+
+
+			//services.Scan(x =>
+			//         x.FromAssembliesOf(typeof(IMediator), typeof(Startup))
+			//           .AddClasses(y => y.AssignableTo(typeof(IMediator))).AsImplementedInterfaces().WithScopedLifetime()
+			//           .AddClasses(y => y.AssignableTo(typeof(IRequestHandler<,>))).AsImplementedInterfaces().WithScopedLifetime());
+			//         // .AddClasses(y => y.AssignableTo(typeof(INotificationHandler<>))).AsImplementedInterfaces().WithScopedLifetime());
+
+			//services.Scan(scan => scan
+			//                       // .FromCallingAssembly(typeof(Startup)) // 1. Find the concrete classes
+			//                       .FromAssembliesOf(typeof(Startup))
+			//                        //.FromAssemblyOf(typeof(Startup))
+			//                        //.AddClasses()        //    to register
+			//                        .AddClasses(t => t.AssignableTo(typeof(IRequestHandler<,>)))
+			//                     //.UsingRegistrationStrategy(RegistrationStrategy.Skip) // 2. Define how to handle duplicates
+			//                     .AsImplementedInterfaces()
+			//                      // .AsSelf()    // 2. Specify which services they are registered as
+			//                      .WithTransientLifetime()); // 3. Set the lifetime for the services
+
+			// .AddClasses(t => t.AssignableTo(typeof(IAsyncRequestHandler<,>)))
+			//.UsingRegistrationStrategy(RegistrationStrategy.Skip) // 2. Define how to handle duplicates
+			//.AsImplementedInterfaces()
+			// .AsSelf()    // 2. Specify which services they are registered as
+			//.WithTransientLifetime()); // 3. Set the lifetime for the services
+
+			 services.AddMediatR(typeof(GetCustomersListQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetAllDataAccountOrderByKodeAccountQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataAccountByDepthQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataAccountByParentQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataAccountByParent2QueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataJournalAllQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataJournalByKodeAkunQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataJournalByKodeHeaderQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetLaporanLabaRugiQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetLaporanNeracaQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataJournalHeaderQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetTipeJournalQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetCustomerByIDQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetCustomerDataPenjualanQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetCustomerDetailQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataKonsumenAvalistQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataKontrakAngsuranByNoIDQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetListDataKontrakKreditQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetListDataKontrakKreditByNoIDQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataSurveiQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaSalesForceQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaPegawaiHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(DataPegawaiListQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaPerusahaanHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaPerusahaanLeasingCetakQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+
+			services.AddMediatR(typeof(GetStructureByDepthQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetStructureByParentQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetStructureByParent2QueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetStructureByStructureCodeQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+
+			services.AddMediatR(typeof(GetDataKendaraanByNoSPKQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaSPKHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaSPKPenjualanQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetMasterBarangByIDQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetMerekQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaBarangQrHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaBarangQrByNoUrutHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaBidangPekerjaanQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaBidangUsahaQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaJabatanQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaKategoryBayaranQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaCaraPembayaranQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaKategoryQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetCabangLeasingQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetAllLeasingQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaSupplierHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetKodeBeliQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetKodeBeliDetailQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetLIstPembelianQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetListPembelianDetailQueryHandle).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetListStokUnitByNoKodeBeliQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataPoPembelianHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaPOHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataCekDPBulananQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataCekDPPenjualanQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataCekDPPenjualan2QueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataCheckPenjualanBulananQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataCheckPenjualanDetailBulananQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataDetailLeasingCetakQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataPenjualanDetailByNoQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataPenjualanDetailByNosinQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataPiutangLeasingQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataPiutangLeasingMerekQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetLeasingCetakQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetLeasingCetakBySearchQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataPenjualanBulananBySalesQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataPenjualanHarianQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetLaporanPenjualanPivotQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetLaporanPenjualanPivotCabangLeasingQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetLaporanPenjualanPivotSalesQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaPenjualanFakturQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaFakturBPKBQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetNamaFakturStnkQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataSOQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetDataSOByIDQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+			services.AddMediatR(typeof(GetLaporanSOQueryHandler).GetTypeInfo().Assembly); // nambah sendiri

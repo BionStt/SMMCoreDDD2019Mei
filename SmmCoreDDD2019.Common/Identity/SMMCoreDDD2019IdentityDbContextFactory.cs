@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using SmmCoreDDD2019.Common.Infrastructure;
 namespace SmmCoreDDD2019.Common.Identity
 {
-    public class SMMCoreDDD2019IdentityDbContextFactory : DesignTimeDbContextFactoryBase<AppIdentityDbContext>
+    public class SMMCoreDDD2019IdentityDbContextFactory : DesignTimeIdentityDbContextFactoryBase<AppIdentityDbContext>
     {
         protected override AppIdentityDbContext CreateNewInstance(DbContextOptions<AppIdentityDbContext> options)
         {

@@ -1,5 +1,7 @@
 ﻿Add-Migration InitialCreate -Context SMMCoreDDD2019DbContext -OutputDir Migrations\SqlServerMigrations
 
+dotnet ef migrations add InitialCreate -Context SMMCoreDDD2019DbContext -OutputDir Migrations\SqlServerMigrations
+
 UPDATE-DATABASE -CONTEXT SMMCoreDDD2019DbContext
 
 Remove-Migration -Context SMMCoreDDD2019DbContext 

@@ -27,23 +27,26 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetSt
         }
         public async Task<GetStructureByParentViewModel> Handle(GetStructureByParentQuery request, CancellationToken cancellationToken)
         {
-            var aa = await _context.DataPerusahaanStrukturJabatan
-                    .FromSql($"SELECT *, '[' + KodeStruktur + '] - ' + NamaStrukturJabatan AS DataAkun FROM   DataPerusahaan.DataPerusahaanStrukturJabatan WHERE (Parent IS NULL) ORDER BY KodeStruktur")
-                    .AsNoTracking()
-                    .ToListAsync();
+            //var aa = await _context.DataPerusahaanStrukturJabatan
+            //        .FromSql($"SELECT *, '[' + KodeStruktur + '] - ' + NamaStrukturJabatan AS DataAkun FROM   DataPerusahaan.DataPerusahaanStrukturJabatan WHERE (Parent IS NULL) ORDER BY KodeStruktur")
+            //        .AsNoTracking()
+            //        .ToListAsync();
 
-            //var aa = await (from a in _context.DataPerusahaanStrukturJabatan
-            //                orderby a.KodeStruktur
-            //                where (a.Parent == null)
-            //                select new
-            //                {
-            //                    NoUrutStrukturID = a.NoUrutStrukturID,
-            //                    DataAkun = "[" + a.KodeStruktur + "] - " + a.NamaStrukturJabatan
+            var aa = await (from a in _context.DataPerusahaanStrukturJabatan
+                            orderby a.KodeStruktur
+                            where (a.Parent == null)
+                            select new
+                            {
+                                NoUrutStrukturID = a.NoUrutStrukturID,
+                                DataAkun = "[" + a.KodeStruktur + "] - " + a.NamaStrukturJabatan
 
 
-            //                }).ToListAsync(cancellationToken);
+                            }).ToListAsync(cancellationToken);
+
             var model = new GetStructureByParentViewModel
             {
+                // StructureDataParentDs = _mapper.Map<GetStructureByParentLookUpModel[]>(aa)
+                //StructureDataParentDs = _mapper.Map<IList<GetStructureByParentLookUpModel>>(aa)
                 StructureDataParentDs = _mapper.Map<IEnumerable<GetStructureByParentLookUpModel>>(aa)
             };
             return model;

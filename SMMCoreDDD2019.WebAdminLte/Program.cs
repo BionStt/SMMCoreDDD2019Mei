@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Identity;
 using SmmCoreDDD2019.Infrastructure.Services;
 using SmmCoreDDD2019.Common.Services;
 using SmmCoreDDD2019.Application.Interfaces;
+using Lamar.Microsoft.DependencyInjection;
+using Autofac.Extensions.DependencyInjection;
 
 namespace SMMCoreDDD2019.WebAdminLte
 { 
@@ -49,6 +51,9 @@ namespace SMMCoreDDD2019.WebAdminLte
 
 
                     var contextIdentity = services.GetRequiredService<AppIdentityDbContext>();
+                    contextIdentity.Database.EnsureCreatedAsync();
+                   // contextIdentity.Database.Migrate();
+
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
                     var functional = services.GetRequiredService<IFunctional>();
@@ -58,8 +63,9 @@ namespace SMMCoreDDD2019.WebAdminLte
                     // context.Database.Migrate();
                     // contextIdentity.Database.Migrate();
                     var concreteContext = (SMMCoreDDD2019DbContext)context;
-                    concreteContext.Database.Migrate();
-                
+                     // concreteContext.Database.Migrate();
+                    concreteContext.Database.EnsureCreatedAsync();
+
                     SMMCoreDDD2019Initializer.Initialize(concreteContext);
                     //  AppIdentityDbInitializar.Initialize(contextIdentity, userManager, roleManager).Wait();
                     AppIdentityDbInitializar.Initialize(contextIdentity, functional).Wait();
@@ -120,6 +126,8 @@ namespace SMMCoreDDD2019.WebAdminLte
 
 
                 })
+             .ConfigureServices(sp => sp.AddAutofac())
+                 // .UseLamar()  // Register the Lamar service container
                 .UseStartup<Startup>();
 
 
