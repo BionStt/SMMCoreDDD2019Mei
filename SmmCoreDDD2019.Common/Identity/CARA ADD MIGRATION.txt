@@ -6,6 +6,10 @@ dotnet ef migrations add InitialCreate -Context ApplicationDbContext -o Migratio
 dotnet ef migrations add InitialCreate -C SmmCoreDDD2019AccountingDbContext -o Migrations\SqlServerMigrations
 dotnet ef migrations add InitialCreate  -c SmmCoreDDD2019AccountingDbContext -o Migrations\SqlServerMigrations -p ..\SmmCoreDDD2019Accounting.Persistence\ -s .\SmmCoreDDD2019Accounting.WebUI.csproj
 
+
+dotnet ef database update -c SmmCoreDDD2019AccountingDbContext -p ..\SmmCoreDDD2019Accounting.Persistence\ -s .\SmmCoreDDD2019Accounting.WebUI.csproj
+
+
 Add-Migration InitialCreate -Context SmmCoreDDD2019AccountingDbContext -OutputDir Migrations\SqlServerMigrations
 
 UPDATE-DATABASE -CONTEXT AppIdentityDbContext
