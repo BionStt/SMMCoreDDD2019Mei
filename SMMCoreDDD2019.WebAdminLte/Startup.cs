@@ -455,30 +455,27 @@ namespace SMMCoreDDD2019.WebAdminLte
 
             services.AddScoped<Services.Profile.ProfileManager>();
 
-            // Add MediatR
-            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
-
             // Add AutoMapper
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
 
-            var abc = new ServiceRegistry();
-            abc.Scan(scanner =>
-            {
-                    // Here you can add various assembly scans
-                    // to ensure Lamar finds all your classes
-                    // and registers your project conventions.
-                    scanner.TheCallingAssembly();
-                scanner.WithDefaultConventions();
-                scanner.SingleImplementationsOfInterface();
+            //var abc = new ServiceRegistry();
+            //abc.Scan(scanner =>
+            //{
+            //        // Here you can add various assembly scans
+            //        // to ensure Lamar finds all your classes
+            //        // and registers your project conventions.
+            //        scanner.TheCallingAssembly();
+            //    scanner.WithDefaultConventions();
+            //    scanner.SingleImplementationsOfInterface();
 
-                    // Add all implementations of an interface
-                    scanner.AddAllTypesOf(typeof(IRequestHandler<>));
-                scanner.AddAllTypesOf(typeof(IRequestHandler<,>));
-                scanner.AddAllTypesOf(typeof(INotificationHandler<>));
-                scanner.AddAllTypesOf(typeof(IRequestHandler<,>));
+            //        // Add all implementations of an interface
+            //        scanner.AddAllTypesOf(typeof(IRequestHandler<>));
+            //    scanner.AddAllTypesOf(typeof(IRequestHandler<,>));
+            //    scanner.AddAllTypesOf(typeof(INotificationHandler<>));
+            //    scanner.AddAllTypesOf(typeof(IRequestHandler<,>));
 
 
-            });
+            //});
 
            
 
@@ -523,9 +520,12 @@ namespace SMMCoreDDD2019.WebAdminLte
             //    configuration.RootPath = "ClientApp/dist";
             //});
 
+            // Add MediatR
+            var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
+            services.AddMediatR(Assembly1a);
 
-          
-           // ConfigureIoC(services);
+
+            // ConfigureIoC(services);
 
 
         }
