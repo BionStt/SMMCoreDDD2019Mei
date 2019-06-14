@@ -25,7 +25,8 @@ You can rollback to any migration by using:
 Update-Database -Migration 20180904195021_InitialCreate
 
 di webui folder 
-dotnet ef database update -c AppIdentityDbContext -p ..\SmmCoreDDD2019.Common\SmmCoreDDD2019.Common.csproj -s .\SMMCoreDDD2019.WebUI.csproj
+dotnet ef database update -c AppIdentityDbContext -p ..\SmmCoreDDD2019.Common\SmmCoreDDD2019.Common.csproj -s .\SMMCoreDDD2019.WebAdminLte.csproj
+dotnet ef database update -c SMMCoreDDD2019DbContext -p ..\SmmCoreDDD2019.Persistence\SmmCoreDDD2019.Persistence.csproj -s .\SMMCoreDDD2019.WebAdminLte.csproj
 
 dotnet ef database update -c ApplicationDbContext -p ..\SmmCoreDDD2019Accounting.WebUI\ -s .\SmmCoreDDD2019Accounting.WebUI.csproj
 
