@@ -23,7 +23,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetSt
             //     .ForMember(cDTO => cDTO.NormalPos, opt => opt.MapFrom(c => c.NormalPos))
             //           .ForMember(cDTO => cDTO.Depth, opt => opt.MapFrom(c => c.Depth))
             //.ForMember(cDTO => cDTO.Kelompok, opt => opt.MapFrom(c => c.Kelompok));
-          
+
         }
     }
 }

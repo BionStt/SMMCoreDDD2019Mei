@@ -12,11 +12,11 @@ using System.Threading;
 
 namespace SmmCoreDDD2019.Application.MasterBarangDBs.Queries.GetNamaBarangQr
 {
-    public class GetNamaBarangQrHandler : IRequestHandler<GetNamaBarangQrQuery, GetNamaBarangQrViewModel>
+    public class GetNamaBarangQrQueryHandler : IRequestHandler<GetNamaBarangQrQuery, GetNamaBarangQrViewModel>
     {
         private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
-        public GetNamaBarangQrHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetNamaBarangQrQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

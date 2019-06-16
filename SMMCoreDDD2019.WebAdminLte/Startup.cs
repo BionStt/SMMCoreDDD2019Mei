@@ -232,7 +232,7 @@ using SmmCoreDDD2019.Application.PenjualanDetails.Command.UpdateDPPenjualanDetai
 using SmmCoreDDD2019.Application.PenjualanPiutangDB.Command.CreatePenjualanPiutang;
 using SmmCoreDDD2019.Application.Interfaces.Mapping;
 using FluentValidation.AspNetCore;
-using Lamar;
+//using Lamar;
 using Autofac;
 using Autofac.Core;
 
@@ -458,28 +458,7 @@ namespace SMMCoreDDD2019.WebAdminLte
             // Add AutoMapper
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
 
-            //var abc = new ServiceRegistry();
-            //abc.Scan(scanner =>
-            //{
-            //        // Here you can add various assembly scans
-            //        // to ensure Lamar finds all your classes
-            //        // and registers your project conventions.
-            //        scanner.TheCallingAssembly();
-            //    scanner.WithDefaultConventions();
-            //    scanner.SingleImplementationsOfInterface();
-
-            //        // Add all implementations of an interface
-            //        scanner.AddAllTypesOf(typeof(IRequestHandler<>));
-            //    scanner.AddAllTypesOf(typeof(IRequestHandler<,>));
-            //    scanner.AddAllTypesOf(typeof(INotificationHandler<>));
-            //    scanner.AddAllTypesOf(typeof(IRequestHandler<,>));
-
-
-            //});
-
-           
-
-
+            
             // .NET Native DI Abstraction
             RegisterServices(services);
 
@@ -524,50 +503,19 @@ namespace SMMCoreDDD2019.WebAdminLte
             var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
             services.AddMediatR(Assembly1a);
 
+            //var queryHandlers = Assembly1a.GetExportedTypes().Where(t => t.Name.EndsWith("Handler"));
+            //foreach (var handler in queryHandlers)
+            //{
+            //    services.AddMediatR(handler.GetTypeInfo().Assembly);
+            //}
 
-            // ConfigureIoC(services);
+
+
+
 
 
         }
 
-
-
-
-        //public void ConfigureContainer(ServiceRegistry services)
-        //{
-        //    // Add your ASP.Net Core services as usual
-        //    services.AddMvc();
-        //    services.AddLogging();
-
-        //    // Also exposes Lamar specific registrations
-        //    // and functionality
-        //    services.Scan(scanner =>
-        //    {
-        //        // Here you can add various assembly scans
-        //        // to ensure Lamar finds all your classes
-        //        // and registers your project conventions.
-        //        scanner.TheCallingAssembly();
-        //        scanner.WithDefaultConventions();
-        //        scanner.SingleImplementationsOfInterface();
-
-        //        // Add all implementations of an interface
-        //        scanner.AddAllTypesOf(typeof(IRequestHandler<>));
-        //        scanner.AddAllTypesOf(typeof(IRequestHandler<,>));
-        //        scanner.AddAllTypesOf(typeof(INotificationHandler<>));
-        //        scanner.AddAllTypesOf(typeof(IRequestHandler<,>));
-
-
-        //    });
-
-        //    // You can create your own registries like with StructurMap
-        //    // and use expressions to configure types
-        //    //services.For<IAbstraction>().Use(new ConcreteImplementation());
-
-        //    // Power up your architechture with the decorator pattern
-        //    //services
-        //    //    .For(typeof(ICommandHandler<>))
-        //    //    .DecorateAllWith(typeof(ValidationCommandHandlerDecorator));
-        //}
 
 
         //buat belajar

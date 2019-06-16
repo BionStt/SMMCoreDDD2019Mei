@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using FluentValidation;
-
-namespace SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Commands.CreateMasterLeasingCabangDB
+namespace SmmCoreDDD2019.Application.MasterLeasingDbs.Commands.CreateMasterLeasingDb
 {
-   public class CreateMasterLeasingCabangDBValidator:AbstractValidator<CreateMasterLeasingCabangDBCommand>
+    public class CreateMasterLeasingDbCommandValidator : AbstractValidator<CreateMasterLeasingDbCommand>
     {
-        public CreateMasterLeasingCabangDBValidator()
+        public CreateMasterLeasingDbCommandValidator()
         {
             //RuleFor(x => x.Id).Length(5).NotEmpty();
             //RuleFor(x => x.Address).MaximumLength(60);
@@ -16,6 +15,8 @@ namespace SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Commands.CreateMaste
             //RuleFor(x => x.ContactName).MaximumLength(30);
             //RuleFor(x => x.ContactTitle).MaximumLength(30);
             //RuleFor(x => x.Country).MaximumLength(15);
+
+
         }
     }
 }

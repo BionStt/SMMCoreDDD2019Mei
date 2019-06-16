@@ -9,5 +9,6 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetSt
     public class GetStructureByParentViewModel
     {
         public IEnumerable<GetStructureByParentLookUpModel> StructureDataParentDs { get; set; }
+       //public IList<GetStructureByParentLookUpModel> StructureDataParentDs { get; set; }
     }
 }

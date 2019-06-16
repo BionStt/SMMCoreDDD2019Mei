@@ -13,11 +13,11 @@ using System.Threading;
 
 namespace SmmCoreDDD2019.Application.MasterBarangDBs.Queries.GetNamaBarangQrByNoUrut
 {
-    public class GetNamaBarangQrByNoUrutHandler : IRequestHandler<GetNamaBarangQrByNoUrutQuery, GetNamaBarangQrByNoUrutViewModel>
+    public class GetNamaBarangQrByNoUrutQueryHandler : IRequestHandler<GetNamaBarangQrByNoUrutQuery, GetNamaBarangQrByNoUrutViewModel>
     {
         private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
-        public GetNamaBarangQrByNoUrutHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetNamaBarangQrByNoUrutQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

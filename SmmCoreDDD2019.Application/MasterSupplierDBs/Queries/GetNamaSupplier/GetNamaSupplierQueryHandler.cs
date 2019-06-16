@@ -13,11 +13,11 @@ using SmmCoreDDD2019.Application.Interfaces;
 
 namespace SmmCoreDDD2019.Application.MasterSupplierDBs.Queries.GetNamaSupplier
 {
-    public class GetNamaSupplierHandler : IRequestHandler<GetNamaSupplierQuery, GetNamaSupplierViewModel>
+    public class GetNamaSupplierQueryHandler : IRequestHandler<GetNamaSupplierQuery, GetNamaSupplierViewModel>
     {
         private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
-        public GetNamaSupplierHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetNamaSupplierQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

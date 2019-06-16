@@ -10,19 +10,19 @@ using System.Threading.Tasks;
 
 namespace SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Commands.CreateMasterLeasingCabangDB
 {
-   public class CreateMasterLeasingCabangDBCreated:INotification
+   public class MasterLeasingCabangDBCreated : INotification
     {
         public string MasterLeasngCabangID { get; set; }
-        public class CreateMasterLeasingCabangDBCreatedHandler : INotificationHandler<CreateMasterLeasingCabangDBCreated>
+        public class MasterLeasingCabangDBCreatedHandler : INotificationHandler<MasterLeasingCabangDBCreated>
         {
             private readonly INotificationService _notification;
 
-            public CreateMasterLeasingCabangDBCreatedHandler(INotificationService notification)
+            public MasterLeasingCabangDBCreatedHandler(INotificationService notification)
             {
                 _notification = notification;
             }
 
-            public async Task Handle(CreateMasterLeasingCabangDBCreated notification, CancellationToken cancellationToken)
+            public async Task Handle(MasterLeasingCabangDBCreated notification, CancellationToken cancellationToken)
             {
                 await _notification.SendAsync(new Message());
                 // throw new NotImplementedException();

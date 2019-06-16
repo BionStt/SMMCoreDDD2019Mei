@@ -5,9 +5,9 @@ using FluentValidation;
 
 namespace SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Commands.DeleteMasterLeasingCabangDB
 {
-    public    class DeleteMasterLeasingCabangDBValidator:AbstractValidator<DeleteMasterLeasingCabangDBCommand>
+    public    class DeleteMasterLeasingCabangDBCommandValidator : AbstractValidator<DeleteMasterLeasingCabangDBCommand>
     {
-        public DeleteMasterLeasingCabangDBValidator()
+        public DeleteMasterLeasingCabangDBCommandValidator()
         {
 
             RuleFor(v => v.Id).NotEmpty();

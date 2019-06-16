@@ -8,10 +8,10 @@ using System.Threading;
 using System.Threading.Tasks;
 namespace SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPendidikans.Command.CreateDataPegawaiDataRiwayatPendidikan
 {
-    public class DataPegawaiDataRiwayatPendidikanCreate : INotification
+    public class DataPegawaiDataRiwayatPendidikanCreated : INotification
     {
         public string DataPegawaiDataRiwayatPendidikanID { get; set; }
-        public class DataPegawaiDataRiwayatPendidikanCreateHandler : INotificationHandler<DataPegawaiDataRiwayatPendidikanCreate>
+        public class DataPegawaiDataRiwayatPendidikanCreateHandler : INotificationHandler<DataPegawaiDataRiwayatPendidikanCreated>
         {
             private readonly INotificationService _notification;
 
@@ -20,7 +20,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPendidikans.Command.C
                 _notification = notification;
             }
 
-            public async Task Handle(DataPegawaiDataRiwayatPendidikanCreate notification, CancellationToken cancellationToken)
+            public async Task Handle(DataPegawaiDataRiwayatPendidikanCreated notification, CancellationToken cancellationToken)
             {
                 await _notification.SendAsync(new Message());
                 // throw new NotImplementedException();

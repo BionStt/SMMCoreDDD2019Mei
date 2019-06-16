@@ -13,11 +13,11 @@ using System.Threading;
 
 namespace SmmCoreDDD2019.Application.Pembelians.Query.GetNamaPO
 {
-    public class GetNamaPOHandler : IRequestHandler<GetNamaPOQuery, GetNamaPOViewModel>
+    public class GetNamaPOQueryHandler : IRequestHandler<GetNamaPOQuery, GetNamaPOViewModel>
     {
         private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
-        public GetNamaPOHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetNamaPOQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

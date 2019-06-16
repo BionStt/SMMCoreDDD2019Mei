@@ -9,14 +9,14 @@ using SmmCoreDDD2019.Domain.Entities;
 
 namespace SmmCoreDDD2019.Application.MasterLeasingDbs.Commands.CreateMasterLeasingDb
 {
-    public class CreateMasterLeasingDbHandler : IRequestHandler<CreateMasterLeasingDbCommand, Unit>
+    public class CreateMasterLeasingDbCommandHandler : IRequestHandler<CreateMasterLeasingDbCommand, Unit>
     {
 
         private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
-        public CreateMasterLeasingDbHandler(
+        public CreateMasterLeasingDbCommandHandler(
             ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
             IMediator mediator)
@@ -38,7 +38,7 @@ namespace SmmCoreDDD2019.Application.MasterLeasingDbs.Commands.CreateMasterLeasi
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new CreateMasterLeasingDbCreated { MasterLeasingID = entity.IDlease.ToString() });
+            await _mediator.Publish(new MasterLeasingDbCreated { MasterLeasingID = entity.IDlease.ToString() });
 
             return Unit.Value;
            

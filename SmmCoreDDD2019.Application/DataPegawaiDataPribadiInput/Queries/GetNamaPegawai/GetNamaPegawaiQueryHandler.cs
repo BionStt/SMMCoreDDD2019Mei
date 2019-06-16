@@ -12,11 +12,11 @@ using System.Threading;
 
 namespace SmmCoreDDD2019.Application.DataPegawaiDataPribadiInput.Queries.GetNamaPegawai
 {
-    public class GetNamaPegawaiHandler : IRequestHandler<GetNamaPegawaiQuery, GetNamaPegawaiViewModel>
+    public class GetNamaPegawaiQueryHandler : IRequestHandler<GetNamaPegawaiQuery, GetNamaPegawaiViewModel>
     {
         private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
-        public GetNamaPegawaiHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetNamaPegawaiQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

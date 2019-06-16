@@ -13,11 +13,11 @@ using System.Threading;
 
 namespace SmmCoreDDD2019.Application.DataPerusahaans.Queries.GetNamaPerusahaan
 {
-    public class GetNamaPerusahaanHandler : IRequestHandler<GetNamaPerusahaanQuery, GetNamaPerusahaanViewModel>
+    public class GetNamaPerusahaanQueryHandler : IRequestHandler<GetNamaPerusahaanQuery, GetNamaPerusahaanViewModel>
     {
         private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
-        public GetNamaPerusahaanHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetNamaPerusahaanQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

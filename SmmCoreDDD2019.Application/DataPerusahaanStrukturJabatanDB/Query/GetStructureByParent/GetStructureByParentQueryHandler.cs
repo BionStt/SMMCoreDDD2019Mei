@@ -11,7 +11,7 @@ using SmmCoreDDD2019.Application.Interfaces;
 using System.Threading;
 
 using System.Data.SqlClient;
-
+using System.Collections;
 
 namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByParent
 {
@@ -39,16 +39,31 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetSt
                             {
                                 NoUrutStrukturID = a.NoUrutStrukturID,
                                 DataAkun = "[" + a.KodeStruktur + "] - " + a.NamaStrukturJabatan
-
-
                             }).ToListAsync(cancellationToken);
+
+
+            //return new GetStructureByParentViewModel
+            //{
+            //    StructureDataParentDs = await (from a in _context.DataPerusahaanStrukturJabatan
+            //                                   orderby a.KodeStruktur
+            //                                   where (a.Parent == null)
+            //                                   select new
+            //                                   {
+            //                                       NoUrutStrukturID = a.NoUrutStrukturID,
+            //                                       DataAkun = "[" + a.KodeStruktur + "] - " + a.NamaStrukturJabatan
+
+
+            //                                   }).ProjectTo<GetStructureByParentLookUpModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken)
+            //  };
+
 
             var model = new GetStructureByParentViewModel
             {
                 // StructureDataParentDs = _mapper.Map<GetStructureByParentLookUpModel[]>(aa)
-                //StructureDataParentDs = _mapper.Map<IList<GetStructureByParentLookUpModel>>(aa)
-                StructureDataParentDs = _mapper.Map<IEnumerable<GetStructureByParentLookUpModel>>(aa)
-            };
+               // StructureDataParentDs = _mapper.Map<IList<GetStructureByParentLookUpModel>>(aa)
+                 StructureDataParentDs = _mapper.Map<IEnumerable<GetStructureByParentLookUpModel>>(aa)
+                               
+             };
             return model;
         }
     }

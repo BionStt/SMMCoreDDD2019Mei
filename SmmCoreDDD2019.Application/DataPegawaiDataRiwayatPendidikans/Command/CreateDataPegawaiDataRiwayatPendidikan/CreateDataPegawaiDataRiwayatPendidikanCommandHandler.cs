@@ -45,7 +45,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPendidikans.Command.C
 
             await _context.SaveChangesAsync(cancellationToken);
 
-           await _mediator.Publish(new DataPegawaiDataRiwayatPendidikanCreate { DataPegawaiDataRiwayatPendidikanID = entity.NoUrut.ToString() },cancellationToken);
+           await _mediator.Publish(new DataPegawaiDataRiwayatPendidikanCreated { DataPegawaiDataRiwayatPendidikanID = entity.NoUrut.ToString() },cancellationToken);
 
             return Unit.Value;
 

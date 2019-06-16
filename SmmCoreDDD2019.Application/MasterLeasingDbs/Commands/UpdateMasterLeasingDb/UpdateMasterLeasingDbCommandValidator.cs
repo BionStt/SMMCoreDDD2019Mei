@@ -6,9 +6,9 @@ using FluentValidation.Validators;
 
 namespace SmmCoreDDD2019.Application.MasterLeasingDbs.Commands.UpdateMasterLeasingDb
 {
-   public class UpdateMasterLeasingDbValidator:AbstractValidator<UpdateMasterLeasingDbCommand>
+   public class UpdateMasterLeasingDbCommandValidator : AbstractValidator<UpdateMasterLeasingDbCommand>
     {
-        public UpdateMasterLeasingDbValidator()
+        public UpdateMasterLeasingDbCommandValidator()
         {
             RuleFor(x => x.IDlease).NotEmpty();
             RuleFor(x => x.NamaLease).NotEmpty();

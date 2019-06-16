@@ -11,13 +11,13 @@ using SmmCoreDDD2019.Domain.Entities;
 
 namespace SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Commands.CreateMasterLeasingCabangDB
 {
-    public class CreateMasterLeasingCabangDBHandler : IRequestHandler<CreateMasterLeasingCabangDBCommand, Unit>
+    public class CreateMasterLeasingCabangDBCommandHandler : IRequestHandler<CreateMasterLeasingCabangDBCommand, Unit>
     {
         private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
-        public CreateMasterLeasingCabangDBHandler(
+        public CreateMasterLeasingCabangDBCommandHandler(
             ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
             IMediator mediator)
@@ -50,7 +50,7 @@ namespace SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Commands.CreateMaste
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new CreateMasterLeasingCabangDBCreated { MasterLeasngCabangID = entity.NoUrutLeasingCabang.ToString() },cancellationToken);
+            await _mediator.Publish(new MasterLeasingCabangDBCreated { MasterLeasngCabangID = entity.NoUrutLeasingCabang.ToString() },cancellationToken);
 
             return Unit.Value;
 

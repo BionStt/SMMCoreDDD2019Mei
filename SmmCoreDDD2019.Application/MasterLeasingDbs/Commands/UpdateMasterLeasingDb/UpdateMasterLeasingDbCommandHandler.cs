@@ -12,11 +12,11 @@ using SmmCoreDDD2019.Application.Interfaces;
 
 namespace SmmCoreDDD2019.Application.MasterLeasingDbs.Commands.UpdateMasterLeasingDb
 {
-    public class UpdateMasterLeasingDbHandler : IRequestHandler<UpdateMasterLeasingDbCommand, Unit>
+    public class UpdateMasterLeasingDbCommandHandler : IRequestHandler<UpdateMasterLeasingDbCommand, Unit>
     {
         private readonly ISMMCoreDDD2019DbContext _context;
 
-        public UpdateMasterLeasingDbHandler(ISMMCoreDDD2019DbContext context)
+        public UpdateMasterLeasingDbCommandHandler(ISMMCoreDDD2019DbContext context)
         {
             _context = context;
         }

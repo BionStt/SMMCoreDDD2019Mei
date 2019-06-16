@@ -13,11 +13,11 @@ using System.Threading;
 
 namespace SmmCoreDDD2019.Application.PembelianPOs.Query.GetDataPoPembelian
 {
-    public class GetDataPoPembelianHandler : IRequestHandler<GetDataPoPembelianQuery, GetDataPoPembelianViewModel>
+    public class GetDataPoPembelianQueryHandler : IRequestHandler<GetDataPoPembelianQuery, GetDataPoPembelianViewModel>
     {
         private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
-        public GetDataPoPembelianHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetDataPoPembelianQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

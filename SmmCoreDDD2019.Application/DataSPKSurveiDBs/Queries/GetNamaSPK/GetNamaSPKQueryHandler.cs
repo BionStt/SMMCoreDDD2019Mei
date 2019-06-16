@@ -13,11 +13,11 @@ using System.Threading;
 
 namespace SmmCoreDDD2019.Application.DataSPKSurveiDBs.Queries.GetNamaSPK
 {
-    public class GetNamaSPKHandler : IRequestHandler<GetNamaSPKQuery, GetNamaSPKViewModel>
+    public class GetNamaSPKQueryHandler : IRequestHandler<GetNamaSPKQuery, GetNamaSPKViewModel>
     {
         private readonly ISMMCoreDDD2019DbContext _context;
         private readonly IMapper _mapper;
-        public GetNamaSPKHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetNamaSPKQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

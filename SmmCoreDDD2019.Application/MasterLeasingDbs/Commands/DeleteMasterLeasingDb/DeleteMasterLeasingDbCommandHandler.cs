@@ -12,11 +12,11 @@ using SmmCoreDDD2019.Application.Interfaces;
 
 namespace SmmCoreDDD2019.Application.MasterLeasingDbs.Commands.DeleteMasterLeasingDb
 {
-    public class DeleteMasterLeasingDbHandler : IRequestHandler<DeleteMasterLeasingDbCommand>
+    public class DeleteMasterLeasingDbCommandHandler : IRequestHandler<DeleteMasterLeasingDbCommand>
     {
         private readonly ISMMCoreDDD2019DbContext _context;
 
-        public DeleteMasterLeasingDbHandler(ISMMCoreDDD2019DbContext context)
+        public DeleteMasterLeasingDbCommandHandler(ISMMCoreDDD2019DbContext context)
         {
             _context = context;
         }
