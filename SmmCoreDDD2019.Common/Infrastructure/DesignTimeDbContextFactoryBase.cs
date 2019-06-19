@@ -16,7 +16,7 @@ namespace SmmCoreDDD2019.Common.Infrastructure
 
         public TContext CreateDbContext(string[] args)
         {
-            //perlu di edit lg supaya ketika database update bs sesuai 
+            //perlu di edit lg supaya ketika database update bs sesuai
             //var basePath = Directory.GetCurrentDirectory() + string.Format("{0}..{0}SMMCoreDDD2019.WebUI", Path.DirectorySeparatorChar);
             var basePath = Directory.GetCurrentDirectory() + string.Format("{0}..{0}SMMCoreDDD2019.WebAdminLte", Path.DirectorySeparatorChar);
 

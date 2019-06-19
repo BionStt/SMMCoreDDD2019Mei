@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 using FluentValidation;
 using MediatR;
-//using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ValidationException = SmmCoreDDD2019.Application.Exceptions.ValidationException;
+
 
 namespace SmmCoreDDD2019.Application.Infrastructure
 {
@@ -34,7 +33,7 @@ namespace SmmCoreDDD2019.Application.Infrastructure
 
             if (failures.Count != 0)
             {
-                throw new Exceptions.ValidationException(failures);
+                throw new ValidationException(failures);
             }
 
             return next();

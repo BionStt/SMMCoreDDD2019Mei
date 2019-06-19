@@ -75,11 +75,11 @@ using SmmCoreDDD2019.Application.DataPegawaiDataPribadiInput.Queries.GetNamaSale
 using SmmCoreDDD2019.Application.DataPerusahaans.Queries.GetNamaPerusahaan;
 using SmmCoreDDD2019.Application.DataPegawaiFotos.Queries.GetDataPegawaiList;
 using SmmCoreDDD2019.Application.DataPegawaiDataPribadiInput.Queries.GetNamaPegawai;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByDepth;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByParent2;
+using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByDepth;
+using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByParent2;
 using SmmCoreDDD2019.Application.DataPerusahaans.Queries.GetNamaPerusahaanLeasingCetak;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByParent;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByStructureCode;
+using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByParentC;
+using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByStructureCode;
 using SmmCoreDDD2019.Application.MasterJenisJabatanDBs.Query.GetNamaJabatan;
 using SmmCoreDDD2019.Application.DataSPKSurveiDBs.Queries.GetNamaSPKPenjualan;
 using SmmCoreDDD2019.Application.DataSPKSurveiDBs.Queries.GetNamaSPK;
@@ -196,7 +196,7 @@ using SmmCoreDDD2019.Application.DataPerusahaanCabangs.Command.UpdateDataPerusah
 using SmmCoreDDD2019.Application.DataPerusahaans.Command.DeleteDataPerusahaan;
 using SmmCoreDDD2019.Application.DataPerusahaans.Command.CreateDataPerusahaan;
 using SmmCoreDDD2019.Application.DataPerusahaans.Command.UpdateDataPerusahaan;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Command.CreateDataPerusahaanStrukturJabatan;
+using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatan;
 using SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.CreateDataSPKBaruDB;
 using SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.DeleteDataSPKBaruDB;
 using SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.UpdateDataSPKBaruDB;
@@ -245,7 +245,7 @@ namespace SMMCoreDDD2019.WebAdminLte
             Configuration = configuration;
         }
 
-        // public Startup(IHostingEnvironment env) { /* Unchanged */}
+
 
         public IConfiguration Configuration { get; }
 
@@ -458,14 +458,14 @@ namespace SMMCoreDDD2019.WebAdminLte
             // Add AutoMapper
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
 
-            
+
             // .NET Native DI Abstraction
             RegisterServices(services);
 
             services
             .AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateCustomerCommandValidator>());
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateCustomerCommandValidator>());
             //.AddMvcOptions(options => {//tambahan dari web
             //     options.ModelMetadataDetailsProviders.Clear();
             //     options.ModelValidatorProviders.Clear();
@@ -522,7 +522,7 @@ namespace SMMCoreDDD2019.WebAdminLte
         //https://www.tutorialsteacher.com/core/aspnet-core-logging
         //public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         //{
-        //    // other code remove for clarity 
+        //    // other code remove for clarity
         //    loggerFactory.AddFile("Logs/mylog-{Date}.txt");
         //}
 
@@ -610,7 +610,7 @@ namespace SMMCoreDDD2019.WebAdminLte
             NativeInjectorBootStrapper.RegisterServices(services);
         }
 
-      
+
 
 
         public static void ConfigureIoC(IServiceCollection services)

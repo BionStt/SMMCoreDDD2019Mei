@@ -9,10 +9,10 @@ using SmmCoreDDD2019.Application.DataPerusahaans.Command.CreateDataPerusahaan;
 using SmmCoreDDD2019.Application.DataPerusahaanCabangs.Command.CreateDataPerusahaanCabang;
 using SmmCoreDDD2019.Application.DataPerusahaans.Queries.GetNamaPerusahaan;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByParent;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByStructureCode;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByParent2;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Command.CreateDataPerusahaanStrukturJabatan;
+using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByParentC;
+using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByStructureCode;
+using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByParent2;
+using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatan;
 
 namespace SMMCoreDDD2019.WebAdminLte.Controllers
 {
@@ -60,7 +60,7 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
             return View(DataPerusahaanViewModel);
         }
 
-        public async Task<JsonResult> GetStructureOrganization(string data1a)//ajax calls this function which will return json object  
+        public async Task<JsonResult> GetStructureOrganization(string data1a)//ajax calls this function which will return json object
 
         {
             if (data1a == "0")
@@ -72,7 +72,7 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
             else
             {
                 var DataStructureOgranization1 = await Mediator.Send(new GetStructureByParent2Query { Id = data1a });
-                var bb = DataStructureOgranization1.DataStructureParent2Ds.ToList();
+                var bb = DataStructureOgranization1.DataStructureParent2DCs.ToList();
                 return Json(Newtonsoft.Json.JsonConvert.SerializeObject(bb));
             }
 
@@ -80,15 +80,9 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
         }
         public async Task<IActionResult> CreateStructureOrganization()
         {
-           
-
-
-                var DataAccounting = await Mediator.Send(new GetStructureByParentQuery());
-                ViewData["DataAkun1"] = new SelectList(DataAccounting.StructureDataParentDs.ToList(), "NoUrutStrukturID", "DataAkun");
-           
+                var DataAccounting = await Mediator.Send(new GetStructureByParentCQuery());
+                ViewData["DataAkun1"] = new SelectList(DataAccounting.StructureDataParentCDs.ToList(), "NoUrutStrukturID", "DataAkun1");
                 return View();
-            
-            
         }
 
         [HttpPost]

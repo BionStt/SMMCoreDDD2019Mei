@@ -8,6 +8,6 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Query.GetDataAccoun
 {
     public class GetDataAccountByParentQuery : IRequest<GetDataAccountByParentViewModel>
     {
-        
+
     }
 }

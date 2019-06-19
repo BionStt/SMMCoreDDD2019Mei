@@ -13,7 +13,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Query.GetDataAccoun
     {
         public int NoUrutAccountId { get; set; }
         public string DataAkun { get; set; }
-     
+
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<AccountingDataAccount, GetDataAccountByParentLookUpModel>()

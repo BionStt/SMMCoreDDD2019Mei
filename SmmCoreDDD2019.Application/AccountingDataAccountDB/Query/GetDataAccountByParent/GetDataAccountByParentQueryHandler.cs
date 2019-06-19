@@ -32,7 +32,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Query.GetDataAccoun
                             {
                                 NoUrutAccountId = a.NoUrutAccountId,
                                 DataAkun = "[" + a.KodeAccount + "] - " + a.Account + " - " + Analyze(a.Kelompok) + " - " + NormalPos(a.NormalPos)
-                              
+
 
                             }).ToListAsync(cancellationToken);
             var model = new GetDataAccountByParentViewModel
@@ -40,7 +40,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Query.GetDataAccoun
                 DataAccountParentDs = _mapper.Map<IEnumerable<GetDataAccountByParentLookUpModel>>(aa)
             };
             return model;
-                                 
+
         }
         static String Analyze(String value)
         {

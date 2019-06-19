@@ -15,7 +15,5 @@ namespace SmmCoreDDD2019.Domain.Entities
         public int? Depth { get; set; }
         public string KodeStruktur { get; set; }
         public string NamaStrukturJabatan { get; set; }
-      
-      
     }
 }

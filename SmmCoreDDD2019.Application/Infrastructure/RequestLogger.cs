@@ -22,7 +22,7 @@ namespace SmmCoreDDD2019.Application.Infrastructure
 
             // TODO: Add User Details
 
-            _logger.LogInformation("SMMCore Request: {Name} {@Request}", name, request);
+            _logger.LogInformation("SmmCoreDDD Request: {Name} {@Request}", name, request);
 
             return Task.CompletedTask;
         }

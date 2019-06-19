@@ -19,8 +19,8 @@ using Lamar.Microsoft.DependencyInjection;
 using Autofac.Extensions.DependencyInjection;
 
 namespace SMMCoreDDD2019.WebAdminLte
-{ 
-   
+{
+
     public class Program
     {
         //public static void Main(string[] args)

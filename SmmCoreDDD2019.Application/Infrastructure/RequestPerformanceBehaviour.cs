@@ -36,7 +36,7 @@ namespace SmmCoreDDD2019.Application.Infrastructure
 
                 // TODO: Add User Details
 
-                _logger.LogWarning("SMMCore Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}", name, _timer.ElapsedMilliseconds, request);
+                _logger.LogWarning("SmmCoreDDD Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}", name, _timer.ElapsedMilliseconds, request);
             }
 
             return response;
