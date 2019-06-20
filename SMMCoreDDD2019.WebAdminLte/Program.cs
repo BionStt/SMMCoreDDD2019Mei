@@ -51,8 +51,8 @@ namespace SMMCoreDDD2019.WebAdminLte
 
 
                     var contextIdentity = services.GetRequiredService<AppIdentityDbContext>();
-                    contextIdentity.Database.EnsureCreatedAsync();
-                   // contextIdentity.Database.Migrate();
+                   // contextIdentity.Database.EnsureCreatedAsync();
+                    contextIdentity.Database.Migrate();
 
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
@@ -63,8 +63,8 @@ namespace SMMCoreDDD2019.WebAdminLte
                     // context.Database.Migrate();
                     // contextIdentity.Database.Migrate();
                     var concreteContext = (SMMCoreDDD2019DbContext)context;
-                     // concreteContext.Database.Migrate();
-                    concreteContext.Database.EnsureCreatedAsync();
+                      concreteContext.Database.Migrate();
+                    //concreteContext.Database.EnsureCreatedAsync();
 
                     SMMCoreDDD2019Initializer.Initialize(concreteContext);
                     //  AppIdentityDbInitializar.Initialize(contextIdentity, userManager, roleManager).Wait();
