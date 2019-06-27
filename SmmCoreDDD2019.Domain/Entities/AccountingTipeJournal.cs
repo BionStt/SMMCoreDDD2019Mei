@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class AccountingTipeJournal
+    public class AccountingTipeJournal : BaseEntity
     {
-        public int NoIDTipeJournal { get; set; }
+       // public int NoIDTipeJournal { get; set; }
         public string KodeJournal { get; set; }
         public string NamaJournal { get; set; }
     }

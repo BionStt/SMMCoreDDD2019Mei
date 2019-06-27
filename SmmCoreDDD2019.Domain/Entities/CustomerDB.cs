@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class CustomerDB
+    public class CustomerDB : BaseEntity
     {
         //public CustomerDb()
         //{
@@ -17,7 +17,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         //public byte[] Version { get; set; }
 
         public string NoKodeCustomer { get; set; }
-        public int CustomerID { get; set; }
+      //  public int CustomerID { get; set; }
         public string Alamat { get; set; }
         public string AlamatKirim { get; set; }
         public string Faks { get; set; }

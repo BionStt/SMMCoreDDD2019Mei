@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class BPKBDB
+    public class BPKBDB : BaseEntity
     {
-        public int NoUrutBPKB { get; set; }
+      //  public int NoUrutBPKB { get; set; }
         [Display(Name = "Nama Faktur")]
         public int? NoUrutFaktur { get; set; }
         [Display(Name = "No BPKB")]

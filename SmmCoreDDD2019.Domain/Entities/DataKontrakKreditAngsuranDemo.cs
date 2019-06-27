@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class DataKontrakKreditAngsuranDemo
+    public class DataKontrakKreditAngsuranDemo : BaseEntity
     {
-        public int NoUrutDataKontrakKredit { get; set; }
+      //  public int NoUrutDataKontrakKredit { get; set; }
         public int? AngsKe { get; set; }
         public string NoKwitansi { get; set; }
         public DateTime? TglAngsuran { get; set; }

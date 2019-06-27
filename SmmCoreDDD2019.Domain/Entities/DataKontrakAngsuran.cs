@@ -7,9 +7,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class DataKontrakAngsuran
+    public class DataKontrakAngsuran : BaseEntity
     {
-        public int NoUrutDataAngsuran { get; set; }
+       // public int NoUrutDataAngsuran { get; set; }
         public string NoRegisterKontrakKredit { get; set; }
         public int? AngsuranKe { get; set; }
         public string NoKwitansi { get; set; }

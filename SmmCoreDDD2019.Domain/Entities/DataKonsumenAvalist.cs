@@ -7,9 +7,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class DataKonsumenAvalist
+    public class DataKonsumenAvalist : BaseEntity
     {
-        public int NoUrutKonsumen { get; set; }
+       // public int NoUrutKonsumen { get; set; }
         [Display(Name = "No Register Konsumen")]
         public string NoRegisterKonsumen { get; set; }
         [Display(Name = "Tanggal Register")]

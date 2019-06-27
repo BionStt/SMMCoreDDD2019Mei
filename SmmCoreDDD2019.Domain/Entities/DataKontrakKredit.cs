@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class DataKontrakKredit
+    public class DataKontrakKredit : BaseEntity
     {
-        public int NoUrutDataKontrakKredit { get; set; }
+       // public int NoUrutDataKontrakKredit { get; set; }
         public string NoRegisterKontrakKredit { get; set; }
         public string NoRegisterSurvei { get; set; }
         public DateTime? TanggalKontrak { get; set; }

@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public   class DataPegawai
+    public   class DataPegawai : BaseEntity
     {
-        public int IDPegawai { get; set; }
+      //  public int IDPegawai { get; set; }
         public string ApplicationUserId { get; set; }
         public String NoRegistrasiPegawai { get; set; }
         public DateTime? TglInput { get; set; }

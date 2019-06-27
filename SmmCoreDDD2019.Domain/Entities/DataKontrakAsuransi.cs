@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class DataKontrakAsuransi
+    public class DataKontrakAsuransi : BaseEntity
     {
-        public int NoUrutDataAsuransi { get; set; }
+       // public int NoUrutDataAsuransi { get; set; }
         public string NoRegistrasiKontrakKredit { get; set; }
         public string NoRegistrasiKontrakAsuransi { get; set; }
         public string KodeAsuransi { get; set; }

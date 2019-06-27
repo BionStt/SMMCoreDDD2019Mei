@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class AccountingDataAccount
+    public class AccountingDataAccount : BaseEntity
     {
-        public  int NoUrutAccountId { get; set; }
+      //  public  int NoUrutAccountId { get; set; }
         public int? Lft { get; set; }
         public int? Rgt { get; set; }
         public string Parent { get; set; }
