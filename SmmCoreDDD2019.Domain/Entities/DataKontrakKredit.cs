@@ -10,7 +10,7 @@ namespace SmmCoreDDD2019.Domain.Entities
     {
        // public int NoUrutDataKontrakKredit { get; set; }
         public string NoRegisterKontrakKredit { get; set; }
-        public string NoRegisterSurvei { get; set; }
+        public int DataKontrakSurveiId { get; set; }
         public DateTime? TanggalKontrak { get; set; }
         public string PolaAngsuran { get; set; }
         public string CaraBayar { get; set; }
@@ -30,6 +30,6 @@ namespace SmmCoreDDD2019.Domain.Entities
         public double? BiayaAdministrasiAngsuran { get; set; }
         public string PenagihId { get; set; }
 
-
+        public DataKontrakAngsuran DataKontrakAngsuran { get; set; }
     }
 }

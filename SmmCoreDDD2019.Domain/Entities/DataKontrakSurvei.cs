@@ -11,7 +11,7 @@ namespace SmmCoreDDD2019.Domain.Entities
        // public int NoUrutDataSurvei { get; set; }
         public string NoRegistrasiDataSurvei { get; set; }
         public DateTime? TanggalSurvei { get; set; }
-        public string NoRegistrasiKonsumen { get; set; }
+        public int DataKonsumenAvalistId{ get; set; }
         public string Karakter { get; set; }
         public string Kerjasama { get; set; }
         public decimal? Penghasilan { get; set; }
@@ -68,5 +68,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string HubunganDenganMendesak { get; set; }
         public string SurveiId { get; set; }
         public string KeteranganLain { get; set; }
+
+        public DataKontrakKredit DataKontrakKredit  { get; set; }
     }
 }

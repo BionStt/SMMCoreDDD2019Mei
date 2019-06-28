@@ -30,6 +30,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public DateTime? TanggalCheckLapBulanan { get; set; }
         public string UserCheckLapBulanan { get; set; }
 
+        public PenjualanPiutang PenjualanPiutang { get; set; }
         public PermohonanFakturDB PermohonanFakturDB { get; set; }
 
     }

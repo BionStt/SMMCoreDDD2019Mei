@@ -10,7 +10,7 @@ namespace SmmCoreDDD2019.Domain.Entities
     {
        // public int NoUrutPjPiutang { get; set;}
         public DateTime TanggalLunas { get; set; }
-        public string KodePenjualanDetail { get; set; }
+        public int PenjualanDetailId { get; set; }
         public string Keterangan { get; set; }
     }
 }

@@ -9,9 +9,9 @@ namespace SmmCoreDDD2019.Domain.Entities
     public class PembelianPODetail : BaseEntity
     {
      //   public int NoUrutPoDet { get; set; }
-        public int? NoUrutPo { get; set; }
+        public int? PembelianPOId { get; set; }
       
-        public int? NoUrutMasterBarang { get; set; }
+        public int? MasterBarangDBId { get; set; }
       
         public decimal? OffTheRoad { get; set; }
       

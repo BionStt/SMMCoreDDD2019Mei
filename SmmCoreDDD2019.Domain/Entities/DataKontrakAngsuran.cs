@@ -10,7 +10,7 @@ namespace SmmCoreDDD2019.Domain.Entities
     public class DataKontrakAngsuran : BaseEntity
     {
        // public int NoUrutDataAngsuran { get; set; }
-        public string NoRegisterKontrakKredit { get; set; }
+        public int DataKontrakKreditId { get; set; }
         public int? AngsuranKe { get; set; }
         public string NoKwitansi { get; set; }
         public DateTime? TanggalAngsuran { get; set; }

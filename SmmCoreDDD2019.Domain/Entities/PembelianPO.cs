@@ -19,6 +19,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string UserInput { get; set; }
         public string PoAstra { get; set; }
 
+        public PembelianPODetail PembelianPODetail { get; set; }
         public Pembelian Pembelian { get; set; }
     }
 }

@@ -252,5 +252,10 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string JmlKaryawanPenjamin { get; set; }
         [Display(Name = "Skala Usaha Penjamin")]
         public string SkalaUsahaPenjamin { get; set; }
+
+        public DataKontrakSurvei DataKontrakSurvei { get; set; }
+      
+       
+       
     }
 }

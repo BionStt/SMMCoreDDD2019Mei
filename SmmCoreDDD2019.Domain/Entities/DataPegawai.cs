@@ -11,9 +11,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string ApplicationUserId { get; set; }
         public String NoRegistrasiPegawai { get; set; }
         public DateTime? TglInput { get; set; }
-     
         public DateTime? TglMulaiKerja { get; set; }
-    
         public DateTime? TglBerhentiKerja { get; set; }
         public string Aktif { get; set; }
 
