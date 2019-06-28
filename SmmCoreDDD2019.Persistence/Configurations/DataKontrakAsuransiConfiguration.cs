@@ -14,11 +14,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("DataKontrakAsuransi", "DataAvalist");
 
-            builder.HasKey(e => e.NoUrutDataAsuransi);
-            builder.Property(e => e.NoUrutDataAsuransi).HasColumnName("NoUrutDataAsuransi");
-            builder.Property(e => e.NoUrutDataAsuransi).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataKontrakAsuransi_hilo").IsRequired();
             builder.Property(e => e.NoRegistrasiKontrakAsuransi).HasMaxLength(50).IsUnicode(false);
-            builder.Property(e => e.NoRegistrasiKontrakKredit).HasMaxLength(50).IsUnicode(false);
+            builder.Property(e => e.DataKontrakKreditId);
             builder.Property(e => e.KodeAsuransi).HasMaxLength(5).IsUnicode(false);
             builder.Property(e => e.JenisAsuransi).HasMaxLength(5).IsUnicode(false);
             builder.Property(e => e.TanggalMulaiAsuransi).HasColumnType("datetime");

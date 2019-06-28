@@ -14,11 +14,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("AccountingDataKurs", "Accounting");
 
-            builder.HasKey(e => e.NoUrutKursID);
-            builder.Property(e => e.NoUrutKursID).HasColumnName("NoUrutKursID");
-            builder.Property(e => e.NoUrutKursID).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            builder.Property(e => e.MataUangID).HasColumnName("MataUangID").HasMaxLength(3).IsUnicode(false);
+          
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("AccountingDataKurs_hilo").IsRequired();
+          builder.Property(e => e.MataUangID).HasColumnName("MataUangID").HasMaxLength(3).IsUnicode(false);
 
             builder.Property(e => e.TanggalInput)
               .HasColumnName("TanggalInput")

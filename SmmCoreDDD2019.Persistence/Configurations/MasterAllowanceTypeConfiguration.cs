@@ -15,7 +15,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<MasterAllowanceType> builder)
         {
             builder.ToTable("MasterAllowanceType");
-
+            builder.Property(e=>e.Id).ForSqlServerUseSequenceHiLo("MasterAllowanceType_hilo").IsRequired();
 
         }
     }

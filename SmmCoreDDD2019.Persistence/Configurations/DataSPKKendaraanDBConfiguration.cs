@@ -13,14 +13,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
        
         public void Configure(EntityTypeBuilder<DataSPKKendaraanDB> builder)
         {
-
-            builder.HasKey(e => e.NoUrut);
             builder.ToTable("DataSPKKendaraanDB", "DataSPKBaruDB");
-
-          
-
-            builder.Property(e=>e.NoUrut).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataSPKKendaraanDB_hilo").IsRequired();
+     
             builder.Property(e => e.NamaSTNK)
                 .HasColumnName("NamaSTNK")
                 .HasMaxLength(100)
@@ -31,10 +26,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                         .HasMaxLength(100)
                         .IsUnicode(false);
 
-            builder.Property(e => e.NoUrutSPKBaru).HasColumnName("NoUrutSPKBaru");
-            builder.Property(e => e.NoUrutSPKBaru).ValueGeneratedNever();
+            builder.Property(e => e.DataSPKBaruDBId);
 
-            builder.Property(e => e.NoUrutTypeKendaraan).HasColumnName("NoUrutTypeKendaraan");
+            builder.Property(e => e.MasterBarangDBId);
 
             builder.Property(e => e.TahunPerakitan)
                         .HasColumnName("tahunPerakitan")

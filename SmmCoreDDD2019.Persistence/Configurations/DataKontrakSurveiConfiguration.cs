@@ -14,15 +14,12 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("DataKontrakSurvei", "DataAvalist");
 
-            builder.HasKey(e => e.NoUrutDataSurvei);
-            builder.Property(e => e.NoUrutDataSurvei).HasColumnName("NoUrutDataSurvei");
-            builder.Property(e => e.NoUrutDataSurvei).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            builder.Property(e => e.NoRegistrasiDataSurvei).HasMaxLength(30).IsUnicode(false);
+          builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataKontrakSurvei_hilo").IsRequired();
+          builder.Property(e => e.NoRegistrasiDataSurvei).HasMaxLength(30).IsUnicode(false);
 
             builder.Property(e => e.TanggalSurvei).HasColumnType("datetime").HasDefaultValueSql("(getdate())");
 
-            builder.Property(e => e.NoRegistrasiKonsumen).HasMaxLength(30).IsUnicode(false);
+            builder.Property(e => e.DataKonsumenAvalistId);
             builder.Property(e => e.Karakter).HasMaxLength(2).IsUnicode(false);
             builder.Property(e => e.Kerjasama).HasMaxLength(2).IsUnicode(false);
             builder.Property(e => e.Penghasilan).HasColumnType("money");

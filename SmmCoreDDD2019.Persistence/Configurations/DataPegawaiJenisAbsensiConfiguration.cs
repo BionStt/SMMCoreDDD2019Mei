@@ -13,11 +13,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<DataPegawaiJenisAbsensi> builder)
         {
             builder.ToTable("DataPegawaiJenisAbsensi", "DataPegawai");
-            builder.HasKey(e => e.NoUrutJenisAbsensi);
-            builder.Property(e => e.NoUrutJenisAbsensi).HasColumnName("NoUrutJenisAbsensi");
-            builder.Property(e => e.NoUrutJenisAbsensi).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            builder.Property(e => e.JenisAbsensi).HasColumnName("JenisAbsensi").HasMaxLength(100).IsUnicode(false);
+         
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiJenisAbsensi_hilo").IsRequired();
+         builder.Property(e => e.JenisAbsensi).HasColumnName("JenisAbsensi").HasMaxLength(100).IsUnicode(false);
             builder.Property(e => e.Keterangan).HasColumnName("Keterangan").HasMaxLength(100).IsUnicode(false);
             builder.Property(e => e.JamMulai).HasColumnName("JamMulai").HasColumnType("datetime");
             builder.Property(e => e.JamBerakhir).HasColumnName("JamBerakhir").HasColumnType("datetime");

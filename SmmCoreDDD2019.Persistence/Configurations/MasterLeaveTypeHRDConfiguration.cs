@@ -14,7 +14,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<MasterLeaveTypeHRD> builder)
         {
             builder.ToTable("MasterLeaveTypeHRD", "MasterLeaveType");
-            builder.Property(e => e.LeaveTypeName).HasMaxLength(50)
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterLeaveTypeHRD_hilo").IsRequired();
+
+
+          builder.Property(e => e.LeaveTypeName).HasMaxLength(50)
                .IsUnicode(false);
 
         }

@@ -12,12 +12,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<MasterJenisJabatan> builder)
         {
-            builder.HasKey(e => e.NoUrut);
-
             builder.ToTable("MasterJenisJabatan");
-
-            builder.Property(e=>e.NoUrut).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterJenisJabatan_hilo").IsRequired();
+       
             builder.Property(e => e.NamaJabatan)
                 .HasMaxLength(50)
                 .IsUnicode(false);

@@ -9,7 +9,7 @@ namespace SmmCoreDDD2019.Domain.Entities
       //  public int NoUrutAbsensi { get; set; }
         public int DataPegawaiId { get; set; }
 
-        public string DataPegawaiJenisAbsensiId { get; set; }
+        public int DataPegawaiJenisAbsensiId { get; set; }
         public DateTime JamAbsensi { get; set; }
 
     }

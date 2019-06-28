@@ -12,16 +12,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<DataPerusahaanCabang> builder)
         {
-
-           // builder.HasKey(e => new { e.KodeP, e.KodePosisi });
-            builder.HasKey(e => e.KodePosisi);
             builder.ToTable("DataPerusahaanCabang", "DataPerusahaan");
-         
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPerusahaanCabang_hilo").IsRequired();
 
-            builder.Property(e=>e.KodePosisi).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            //   builder.Property(e => e.KodePosisi).ValueGeneratedOnAdd();
-            builder.Property(e=>e.KodeP).ValueGeneratedNever();
+            builder.Property(e=>e.DataPerusahaanId);
 
             builder.Property(e => e.Alamat)
                 .HasColumnName("Alamat")
@@ -55,16 +49,6 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                 .HasColumnName("Telp")
                 .HasMaxLength(20);
 
-            builder.HasOne(d => d.DataPerusahaan)
-                .WithMany(p => p.DataPerusahaanCabang)
-                .HasForeignKey(d => d.KodeP)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_DataPerusahaanCabang_DataPerusahaan");
-
-
-
-
-            //    throw new NotImplementedException();
         }
     }
 }

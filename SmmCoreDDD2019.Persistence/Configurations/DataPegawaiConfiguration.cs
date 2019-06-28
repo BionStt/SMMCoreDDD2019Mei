@@ -13,19 +13,13 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<DataPegawai> builder)
         {
-            builder.HasKey(e => e.IDPegawai);
-
             builder.ToTable("DataPegawai", "DataPegawai");
 
-            builder.Property(e => e.IDPegawai).HasColumnName("IDPegawai");
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo().IsRequired();
 
             builder.Property(e=>e.NoRegistrasiPegawai).HasColumnName("NoRegistrasiPegawai").HasMaxLength(50);
 
-            builder.Property(e => e.IDPegawai).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            builder.Property(e => e.Aktif)
-                .HasMaxLength(1)
-                .IsUnicode(false);
+            builder.Property(e => e.Aktif).HasMaxLength(1).IsUnicode(false);
 
             builder.Property(e => e.TglBerhentiKerja).HasColumnType("datetime");
 

@@ -9,7 +9,8 @@ namespace SmmCoreDDD2019.Domain.Entities
     public class DataKontrakAsuransi : BaseEntity
     {
        // public int NoUrutDataAsuransi { get; set; }
-        public string NoRegistrasiKontrakKredit { get; set; }
+        public int DataKontrakKreditId { get; set; }
+        public int MasterPerusahaanAsuransiId { get; set; }
         public string NoRegistrasiKontrakAsuransi { get; set; }
         public string KodeAsuransi { get; set; }
         public int? JenisAsuransi { get; set; }
@@ -18,5 +19,6 @@ namespace SmmCoreDDD2019.Domain.Entities
         public int? LamaAsuransi { get; set; }
         public decimal? NilaiPertanggungan { get; set; }
         public decimal? BiayaAsuransi { get; set; }
+      
     }
 }

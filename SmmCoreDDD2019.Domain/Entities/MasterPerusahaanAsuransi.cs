@@ -20,5 +20,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string TelpAsuransi { get; set; }
         public string FaxAsuransi { get; set; }
         public string PihakBerwenang { get; set; }
+
+        public DataKontrakAsuransi DataKontrakAsuransi { get; set; }
     }
 }

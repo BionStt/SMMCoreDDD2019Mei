@@ -14,11 +14,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<MasterPerusahaanAsuransi> builder)
         {
             builder.ToTable("MasterPerusahaanAsuransi", "DataAvalist");
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterPerusahaanAsuransi_hilo").IsRequired();
 
-            builder.HasKey(e => e.NoUrutPerusahaanAsuransi);
-            builder.Property(e => e.NoUrutPerusahaanAsuransi).HasColumnName("NoUrutPerusahaanAsuransi");
-            builder.Property(e => e.NoUrutPerusahaanAsuransi).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-            builder.Property(e => e.KodeAsuransi).HasMaxLength(5).IsUnicode(false);
+           builder.Property(e => e.KodeAsuransi).HasMaxLength(5).IsUnicode(false);
             builder.Property(e => e.NamaAsuransi).HasMaxLength(100).IsUnicode(false);
 
             builder.Property(e => e.AlamatAsuransi).HasMaxLength(100).IsUnicode(false);
@@ -31,13 +29,6 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.FaxAsuransi).HasMaxLength(20).IsUnicode(false);
             builder.Property(e => e.PihakBerwenang).HasMaxLength(50).IsUnicode(false);
-
-
-
-
-
-
-
 
         }
     }

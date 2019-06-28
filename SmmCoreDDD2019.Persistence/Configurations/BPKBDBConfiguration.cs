@@ -13,11 +13,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<BPKBDB> builder)
         {
             builder.ToTable("BPKBDB", "Penjualan");
-            builder.HasKey(e => e.NoUrutBPKB);
-            builder.Property(e => e.NoUrutBPKB).HasColumnName("NoUrutBPKB");
-            builder.Property(e => e.NoUrutBPKB).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            builder.Property(e => e.TanggalTerimaBPKB)
+          
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("BPKBDB_hilo").IsRequired();
+           builder.Property(e => e.TanggalTerimaBPKB)
               .HasColumnName("TglTerimaBPKB")
               .HasColumnType("datetime");
 

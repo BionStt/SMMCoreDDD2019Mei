@@ -15,12 +15,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
         public void Configure(EntityTypeBuilder<MasterKategoriCaraPembayaran> builder)
         {
-            builder.HasKey(e => e.NoUrutCaraBayar);
-
             builder.ToTable("MasterKategoriCaraPembayaran");
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterKategoriCaraPembayaran_hilo").IsRequired();
 
-            builder.Property(e=>e.NoUrutCaraBayar).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
+         
             builder.Property(e => e.CaraPembayaran)
                 .HasMaxLength(50)
                 .IsUnicode(false);

@@ -12,18 +12,14 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<MasterKategoriBayaran> builder)
         {
-
-            builder.HasKey(e => e.NoUrut);
-
             builder.ToTable("MasterKategoriBayaran");
-
-            builder.Property(e=>e.NoUrut).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterKategoriBayaran_hilo").IsRequired();
+              
             builder.Property(e => e.NamaKategoryBayaran)
                 .HasMaxLength(30)
                 .IsUnicode(false);
 
-            // throw new NotImplementedException();
+          
         }
     }
 }

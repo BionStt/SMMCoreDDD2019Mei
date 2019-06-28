@@ -13,12 +13,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<DataPegawaiDataRiwayatPekerjaan> builder)
         {
-            builder.HasKey(e => e.NoUrut);
-
             builder.ToTable("DataPegawaiDataRiwayatPekerjaan", "DataPegawai");
 
-          builder.Property(e=>e.NoUrut).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataRiwayatPekerjaan_hilo").IsRequired();
+         
             builder.Property(e => e.NamaPerusahaan)
                .HasMaxLength(50)
                .IsUnicode(false);
@@ -56,8 +54,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.GajiTerakhir).HasColumnType("money");
 
-            builder.Property(e => e.IDPegawai).HasColumnName("IDPegawai");
-            builder.Property(e => e.IDPegawai).ValueGeneratedNever();
+            builder.Property(e => e.DataPegawaiId);
 
           
 
@@ -85,13 +82,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.TglInput).HasColumnType("datetime").HasDefaultValueSql("(getdate())");
 
-            builder.HasOne(d => d.DataPegawai)
-              .WithMany(p => p.DataPegawaiDataRiwayatPekerjaan)
-              .HasForeignKey(d => d.IDPegawai)
-              .OnDelete(DeleteBehavior.ClientSetNull)
-              .HasConstraintName("FK_DataPegawaiDataRiwayatPekerjaan_DataPegawai");
-
-            //  throw new NotImplementedException();
+         
         }
     }
 }

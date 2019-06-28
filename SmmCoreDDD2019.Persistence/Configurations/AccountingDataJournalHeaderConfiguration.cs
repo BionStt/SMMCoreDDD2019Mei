@@ -14,9 +14,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("AccountingDataJournalHeader", "Accounting");
 
-            builder.HasKey(e => e.NoUrutJournalH);
-            builder.Property(e => e.NoUrutJournalH).HasColumnName("NoUrutJournalH");
-            builder.Property(e => e.NoUrutJournalH).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("AccountingDataJournalHeader_hilo").IsRequired();
 
             builder.Property(e => e.TanggalInput)
               .HasColumnName("TanggalInput")
@@ -24,12 +22,12 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.NoBuktiJournal).HasColumnName("NoBuktiJournal").HasMaxLength(40).IsUnicode(false);
             builder.Property(e => e.Keterangan).HasColumnName("Keterangan").HasMaxLength(500);
-            builder.Property(e => e.NoIDTipeJournal).HasColumnName("NoIDTipeJournal").HasMaxLength(3).IsUnicode(false);
+            builder.Property(e => e.AccountingTipeJournalId);
             builder.Property(e => e.UserInput).HasColumnName("UserInput").HasMaxLength(40).IsUnicode(false);
             builder.Property(e => e.Validasi).HasColumnName("Validasi").HasColumnType("datetime");
             builder.Property(e => e.ValidasiOleh).HasColumnName("ValidasiOleh").HasMaxLength(40).IsUnicode(false);
             builder.Property(e => e.Aktif).HasColumnName("Aktif").HasMaxLength(2).IsUnicode(false);
-            builder.Property(e => e.NoUrutPeriodeID).HasColumnName("NoUrutPeriodeID").HasMaxLength(4).IsUnicode(false);
+            builder.Property(e => e.AccountingDataPeriodeId);
 
            
         }

@@ -13,17 +13,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<DataSPKKreditDB> builder)
         {
-            builder.HasKey(e => e.NoUrut);
-
-          
             builder.ToTable("DataSPKKreditDB", "DataSPKBaruDB");
-
-            builder.Property(e=>e.NoUrut).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            //  builder.HasIndex(e => e.NoUrutSPKBaru);
-
-            builder.Property(e => e.NoUrutSPKBaru).HasColumnName("NourutSPKBaru");
-            builder.Property(e => e.NoUrutSPKBaru).ValueGeneratedNever();
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataSPKKreditDB_hilo").IsRequired();
+         
+            builder.Property(e => e.DataSPKBaruDBId);
 
             builder.Property(e => e.BiayaAdministrasiKredit).HasColumnType("money");
 
@@ -56,13 +49,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.UangTandaJadiKredit).HasColumnType("money");
 
-            builder.HasOne(d => d.DataSPKBaruDB)
-                .WithMany(p => p.DataSPKKreditDB)
-                .HasForeignKey(d => d.NoUrutSPKBaru)
-                 .OnDelete(DeleteBehavior.ClientSetNull)
-         .HasConstraintName("FK_DataSPKKreditDB_DataSPKBaruDB"); ;
-
-            // throw new NotImplementedException();
+       
         }
     }
 }

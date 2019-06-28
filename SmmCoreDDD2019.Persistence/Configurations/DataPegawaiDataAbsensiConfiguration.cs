@@ -15,12 +15,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("DataPegawaiDataAbsensi", "DataPegawai");
 
-            builder.HasKey(e => e.NoUrutAbsensi);
-            builder.Property(e => e.NoUrutAbsensi).HasColumnName("NoUrutAbsensi");
-            builder.Property(e => e.NoUrutAbsensi).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            builder.Property(e=>e.IDPegawai).HasColumnName("IDPegawai");
-            builder.Property(e => e.NoUrutJenisAbsensi).HasColumnName("NoUrutJenisAbsensi").HasMaxLength(3);
+          
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataAbsensi_hilo").IsRequired();
+            builder.Property(e => e.DataPegawaiId);
+            builder.Property(e => e.DataPegawaiJenisAbsensiId);
             builder.Property(e => e.JamAbsensi).HasColumnName("JamAbsensi").HasColumnType("datetime");
            
         }

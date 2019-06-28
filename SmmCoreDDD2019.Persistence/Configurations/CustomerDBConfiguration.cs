@@ -12,17 +12,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<CustomerDB> builder)
         {
-            //  builder.Entity<BukuTamu>(entity => entity.ToTable("BukuTamu", "Operation"));
-            // base.OnModelCreating(modelBuilder);
-            // new StudentMap(modelBuilder.Entity<Student>());
-            // entityBuilder.HasOne(t => t.UserProfile).WithOne(u => u.User).HasForeignKey<UserProfile>(x => x.Id);
-            builder.HasKey(e => e.CustomerID);
-
             builder.ToTable("CustomerDB");
-
-            builder.Property(e => e.CustomerID).HasColumnName("CustomerID");
-
-            builder.Property(e => e.CustomerID).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
+          
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("CustomerDB_hilo").IsRequired();
 
             builder.Property(e=>e.NoKodeCustomer).HasColumnName("NoKodeCustomer").IsUnicode(false);
             builder.Property(e => e.Alamat)
@@ -88,14 +80,12 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.UserIDPeg).HasColumnName("UserIDPeg");
 
-            builder.Property(e => e.UserInput)
-                .HasMaxLength(30)
-                .IsUnicode(false);
+            builder.Property(e => e.UserInput).HasMaxLength(30).IsUnicode(false);
             builder.Property(e => e.KodeBidangPekerjaan).HasMaxLength(1).IsUnicode(false);
             builder.Property(e => e.NamaBidangPekerjaan).HasMaxLength(50).IsUnicode(false);
             builder.Property(e => e.KodeBidangUsaha).HasMaxLength(1).IsUnicode(false);
             builder.Property(e => e.NamaBidangUsaha).HasMaxLength(50).IsUnicode(false);
-            //   throw new NotImplementedException();
+         
         }
     }
 }

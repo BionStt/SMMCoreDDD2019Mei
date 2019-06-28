@@ -14,11 +14,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("AccountingDataPeriode", "Accounting");
 
-            builder.HasKey(e => e.NoUrutPeriodeID);
-            builder.Property(e => e.NoUrutPeriodeID).HasColumnName("NoUrutPeriodeID");
-            builder.Property(e => e.NoUrutPeriodeID).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            builder.Property(e => e.Mulai)
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("AccountingDataPeriode_hilo").IsRequired();
+          builder.Property(e => e.Mulai)
               .HasColumnName("Mulai")
               .HasColumnType("datetime");
 

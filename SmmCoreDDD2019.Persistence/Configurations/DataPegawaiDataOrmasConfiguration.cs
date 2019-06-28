@@ -12,23 +12,19 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<DataPegawaiDataOrmas> builder)
         {
-            builder.HasKey(e => e.NoUrut);
-
-           
             builder.ToTable("DataPegawaiDataOrmas", "DataPegawai");
 
-            builder.Property(e=>e.NoUrut).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            builder.Property(e => e.AlamatOrmas)
+                
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataOrmas_hilo").IsRequired();
+                
+             builder.Property(e => e.AlamatOrmas)
                 .HasColumnName("AlamatOrmas")
                 .HasMaxLength(300)
                 .IsUnicode(false);
 
-            builder.Property(e => e.IDPegawai).HasColumnName("IDPegawai");
+            builder.Property(e => e.DataPegawaiId);
 
-            builder.Property(e => e.IDPegawai).ValueGeneratedNever();
-
-            builder.Property(e => e.Jabatan)
+          builder.Property(e => e.Jabatan)
                 .HasColumnName("Jabatan")
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -54,13 +50,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
               .HasColumnType("datetime")
               .HasDefaultValueSql("(getdate())");
 
-            builder.HasOne(d => d.DataPegawai)
-                 .WithMany(p => p.DataPegawaiDataOrmas)
-                 .HasForeignKey(d => d.IDPegawai)
-                 .OnDelete(DeleteBehavior.ClientSetNull)
-                 .HasConstraintName("FK_DataPegawaiDataOrmas_DataPegawai");
-
-            //  throw new NotImplementedException();
+        
         }
     }
 }

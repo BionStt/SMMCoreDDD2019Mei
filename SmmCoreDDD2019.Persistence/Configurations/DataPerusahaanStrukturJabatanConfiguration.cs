@@ -13,10 +13,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<DataPerusahaanStrukturJabatan> builder)
         {
             builder.ToTable("DataPerusahaanStrukturJabatan", "DataPerusahaan");
-            builder.HasKey(e => e.NoUrutStrukturID);
-            builder.Property(e => e.NoUrutStrukturID).HasColumnName("NoUrutStrukturID");
-            builder.Property(e => e.NoUrutStrukturID).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPerusahaanStrukturJabatan_hilo").IsRequired();
+       
             builder.Property(e => e.Lft).HasColumnName("Lft").ValueGeneratedOnAddOrUpdate();
             builder.Property(e => e.Rgt).HasColumnName("Rgt").ValueGeneratedOnAddOrUpdate();
             builder.Property(e => e.Parent).HasColumnName("Parent").HasMaxLength(15);

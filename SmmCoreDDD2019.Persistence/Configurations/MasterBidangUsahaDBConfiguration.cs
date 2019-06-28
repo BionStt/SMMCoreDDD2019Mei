@@ -13,13 +13,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<MasterBidangUsahaDB> builder)
         {
-            builder.HasKey(e => e.NoKodeMasterBidangUsaha);
-            builder.Property(e => e.NoKodeMasterBidangUsaha).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
             builder.ToTable("MasterBidangUsahaDB");
-
-            builder.Property(e => e.NoKodeMasterBidangUsaha).HasColumnName("NoKodeMasterBidangUsaha");
-
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterBidangUsahaDB_hilo").IsRequired();
+        
             builder.Property(e => e.NamaMasterBidangUsaha).HasColumnName("NamaMasterBidangUsaha")
               .HasMaxLength(200)
               .IsUnicode(false);

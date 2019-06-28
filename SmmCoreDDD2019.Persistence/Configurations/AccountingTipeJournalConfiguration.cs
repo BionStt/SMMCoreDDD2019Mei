@@ -14,11 +14,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("AccountingTipeJournal", "Accounting");
 
-            builder.HasKey(e => e.NoIDTipeJournal);
-            builder.Property(e => e.NoIDTipeJournal).HasColumnName("NoIDTipeJournal");
-            builder.Property(e => e.NoIDTipeJournal).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            builder.Property(e => e.KodeJournal)
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("AccountingTipeJournal_hilo").IsRequired();
+           builder.Property(e => e.KodeJournal)
                .HasMaxLength(10)
               .IsUnicode(false);
 

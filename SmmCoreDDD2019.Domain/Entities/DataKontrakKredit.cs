@@ -30,6 +30,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public double? BiayaAdministrasiAngsuran { get; set; }
         public string PenagihId { get; set; }
 
+        public DataKontrakAsuransi DataKontrakAsuransi { get; set; }
         public DataKontrakAngsuran DataKontrakAngsuran { get; set; }
     }
 }

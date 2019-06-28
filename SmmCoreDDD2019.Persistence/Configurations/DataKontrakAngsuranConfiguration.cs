@@ -16,11 +16,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("DataKontrakAngsuran", "DataAvalist");
 
-            builder.HasKey(e => e.NoUrutDataAngsuran);
-            builder.Property(e => e.NoUrutDataAngsuran).HasColumnName("NoUrutDataAngsuran");
-            builder.Property(e => e.NoUrutDataAngsuran).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            builder.Property(e => e.NoRegisterKontrakKredit).HasMaxLength(30).IsUnicode(false);
+           builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataKontrakAngsuran_hilo").IsRequired();
+            builder.Property(e => e.DataKontrakKreditId);
             builder.Property(e => e.AngsuranKe).HasMaxLength(4).IsUnicode(false);
             builder.Property(e => e.NoKwitansi).HasMaxLength(30).IsUnicode(false);
             builder.Property(e => e.TanggalAngsuran).HasColumnType("datetime");

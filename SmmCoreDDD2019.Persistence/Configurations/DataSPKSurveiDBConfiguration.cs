@@ -13,37 +13,20 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<DataSPKSurveiDB> builder)
         {
-            builder.HasKey(e => e.NoUrut);
-
             builder.ToTable("DataSPKSurveiDB", "DataSPKBaruDB");
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataSPKSurveiDB_hilo").IsRequired();
 
-          
+            builder.Property(e => e.AlamatPemesan).HasMaxLength(250).IsUnicode(false);
 
-            builder.Property(e=>e.NoUrut).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
+            builder.Property(e => e.HandphonePemesan).HasMaxLength(20).IsUnicode(false);
 
-            builder.Property(e => e.AlamatPemesan)
-                .HasMaxLength(250)
-                .IsUnicode(false);
+            builder.Property(e => e.KecamatanPemesan).HasMaxLength(50).IsUnicode(false);
 
-            builder.Property(e => e.HandphonePemesan)
-                .HasMaxLength(20)
-                .IsUnicode(false);
+            builder.Property(e => e.KelurahanPemesan).HasMaxLength(50).IsUnicode(false);
 
-            builder.Property(e => e.KecamatanPemesan)
-                .HasMaxLength(50)
-                .IsUnicode(false);
+            builder.Property(e => e.KodePosPemesan).HasMaxLength(7).IsUnicode(false);
 
-            builder.Property(e => e.KelurahanPemesan)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-
-            builder.Property(e => e.KodePosPemesan)
-                .HasMaxLength(7)
-                .IsUnicode(false);
-
-            builder.Property(e => e.KotaPemesan)
-                .HasMaxLength(50)
-                .IsUnicode(false);
+            builder.Property(e => e.KotaPemesan).HasMaxLength(50).IsUnicode(false);
 
             builder.Property(e => e.NamaNPWP)
                 .HasColumnName("NamaNPWP")
@@ -63,8 +46,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                 .HasMaxLength(100)
                 .IsUnicode(false);
 
-            builder.Property(e => e.NoUrutSPKBaru).HasColumnName("NoUrutSPKBaru");
-            builder.Property(e => e.NoUrutSPKBaru).ValueGeneratedNever();
+            builder.Property(e => e.DataSPKBaruDBId);
 
             builder.Property(e => e.PekerjaanPemesan)
                 .HasMaxLength(100)
@@ -78,14 +60,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                 .HasMaxLength(18)
                 .IsUnicode(false);
 
-            builder.HasOne(d => d.DataSPKBaruDB)
-              .WithMany(p => p.DataSPKSurveiDB)
-              .HasForeignKey(d => d.NoUrutSPKBaru)
-               .OnDelete(DeleteBehavior.ClientSetNull)
-             .HasConstraintName("FK_DataSPKSurveiDB_DataSPKBaruDB"); ;
-
-
-            // throw new NotImplementedException();
+      
         }
     }
 }

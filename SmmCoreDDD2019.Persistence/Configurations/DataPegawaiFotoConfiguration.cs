@@ -12,18 +12,11 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<DataPegawaiFoto> builder)
         {
-
-            builder.HasKey(e => e.NoUrut);
-
             builder.ToTable("DataPegawaiFoto", "DataPegawai");
-          
-
-            builder.Property(e=>e.NoUrut).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiFoto_hilo").IsRequired();
             builder.Property(e => e.Foto).HasColumnType("image");
 
-            builder.Property(e => e.IDPegawai).HasColumnName("IDPegawai");
-            builder.Property(e => e.IDPegawai).ValueGeneratedNever();
+            builder.Property(e => e.DataPegawaiId);
 
             builder.Property(e => e.KodeBarcode)
                 .HasMaxLength(25)
@@ -37,13 +30,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
             builder.Property(e => e.Tglinput).HasColumnType("datetime").HasDefaultValueSql("(getdate())");
 
 
-            builder.HasOne(d => d.DataPegawai)
-         .WithMany(p => p.DataPegawaiFoto)
-         .HasForeignKey(d => d.IDPegawai)
-         .OnDelete(DeleteBehavior.ClientSetNull)
-         .HasConstraintName("FK_DataPegawaiFoto_DataPegawai");
-
-            //  throw new NotImplementedException();
+         
         }
     }
 }

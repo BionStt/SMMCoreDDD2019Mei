@@ -13,7 +13,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public DateTime TanggalInput { get; set; }
         public string NoBuktiJournal { get; set; }
         public string Keterangan { get; set; }
-        public string AccountingTipeJournalId { get; set; }
+        public int AccountingTipeJournalId { get; set; }
         public string UserInput { get; set; }
         public DateTime Validasi { get; set; }
         public string ValidasiOleh { get; set; }

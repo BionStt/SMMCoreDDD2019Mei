@@ -14,14 +14,11 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<PenjualanDetail> builder)
         {
             builder.ToTable("PenjualanDetail", "Penjualan");
-            builder.HasKey(e => e.NoPenjualanDetail);
-        
-            builder.Property(e => e.NoPenjualanDetail).HasColumnName("NoPenjualanDetail");
-            builder.Property(e => e.NoPenjualanDetail).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PenjualanDetail_hilo").IsRequired();
 
-            builder.Property(e => e.KodePenjualan).HasColumnName("KodePenjualan");
+            builder.Property(e => e.PenjualanId);
 
-            builder.Property(e => e.NoUrutSO).HasColumnName("NoUrutSO");
+            builder.Property(e => e.StokUnitId);
 
             builder.Property(e => e.OffTheRoad)
              .HasColumnName("OffTheRoad")

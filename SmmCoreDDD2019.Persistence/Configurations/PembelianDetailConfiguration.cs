@@ -15,17 +15,12 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<PembelianDetail> builder)
         {
-            builder.HasKey(e => e.KodeBeliDetail);
+            builder.ToTable("PembelianDetail", "Pembelian");
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PembelianDetail_hilo").IsRequired();
+      
+            builder.Property(e => e.PembelianId);
 
-            builder.ToTable("PembelianDetail","Pembelian");
-
-            builder.Property(e => e.KodeBeliDetail).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            builder.Property(e => e.KodeBeliDetail).HasColumnName("KodeBeliDetail");
-
-            builder.Property(e => e.KodeBeli).HasColumnName("KodeBeli");
-
-            builder.Property(e => e.KodeBrg).HasColumnName("KodeBrg");
+            builder.Property(e => e.MasterBarangDBId);
 
             builder.Property(e => e.HargaOffTheRoad).HasColumnType("money");
 

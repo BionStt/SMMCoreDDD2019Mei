@@ -14,18 +14,14 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<STNKDB> builder)
         {
-            builder.HasKey(e => e.NoUrutStnk);
-
-            builder.ToTable("STNKDB","Penjualan");
-
-            builder.Property(e => e.NoUrutStnk).HasColumnName("NoUrutSTNK");
-            builder.Property(e => e.NoUrutStnk).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
+            builder.ToTable("STNKDB", "Penjualan");
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("STNKDB_hilo").IsRequired();
 
             builder.Property(e => e.BbnPabrik)
                 .HasColumnName("BBnPabrik")
                 .HasColumnType("money");
 
-            builder.Property(e => e.NoUrutFaktur).HasColumnName("NoUrutFaktur");
+            builder.Property(e => e.PermohonanFakturDBId);
 
             builder.Property(e => e.BiayaTambahan).HasColumnType("money");
 

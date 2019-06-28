@@ -13,12 +13,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<MasterKategoriPenjualan> builder)
         {
-            builder.HasKey(e => e.NoUrutKategoriPenjualan);
-
             builder.ToTable("MasterKategoriPenjualan");
-
-            builder.Property(e=>e.NoUrutKategoriPenjualan).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterKategoriPenjualan_hilo").IsRequired();
+          
             builder.Property(e => e.NamaKategoryPenjualan)
                 .HasMaxLength(50)
                 .IsUnicode(false);

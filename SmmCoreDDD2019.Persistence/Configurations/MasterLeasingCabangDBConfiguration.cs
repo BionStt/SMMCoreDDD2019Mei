@@ -13,15 +13,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<MasterLeasingCabangDB> builder)
         {
-            builder.HasKey(e => e.NoUrutLeasingCabang);
-
-          
             builder.ToTable("MasterLeasingCabangDB", "MasterLeasingDb");
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterLeasingCabangDB_hilo").IsRequired();
 
-            builder.Property(e=>e.NoUrutLeasingCabang).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            builder.Property(e => e.IDlease).HasColumnName("IDlease");
-            builder.Property(e => e.IDlease).ValueGeneratedNever();
+          builder.Property(e => e.MasterLeasingDbId);
 
             builder.Property(e => e.Aktif)
                 .HasMaxLength(2)
@@ -68,12 +63,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
               .HasMaxLength(30)
               .IsUnicode(false);
 
-            builder.HasOne(d => d.MasterLeasingDb)
-                .WithMany(p => p.MasterLeasingCabangDB)
-                .HasForeignKey(d=>d.IDlease)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_MasterLeasingCabangDB_MasterLeasingDb");
-            //  throw new NotImplementedException();
+         
         }
     }
 }

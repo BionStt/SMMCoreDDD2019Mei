@@ -16,11 +16,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("DataKonsumenAvalist", "DataAvalist");
 
-            builder.HasKey(e => e.NoUrutKonsumen);
-            builder.Property(e => e.NoUrutKonsumen).HasColumnName("NoUrutKonsumen");
-            builder.Property(e => e.NoUrutKonsumen).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            builder.Property(e => e.NoRegisterKonsumen).HasMaxLength(50)
+           builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataKonsumenAvalist_hilo").IsRequired();
+           builder.Property(e => e.NoRegisterKonsumen).HasMaxLength(50)
             .IsUnicode(false);
 
             builder.Property(e => e.TanggalRegister).HasColumnType("datetime").HasDefaultValueSql("(getdate())");

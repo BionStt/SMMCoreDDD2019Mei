@@ -14,7 +14,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<DataPegawaiDataAward> builder)
         {
             builder.ToTable("DataPegawaiDataAward", "DataPegawai");
-
+            builder.Property(e=>e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataAward_hilo").IsRequired();
         }
     }
 }

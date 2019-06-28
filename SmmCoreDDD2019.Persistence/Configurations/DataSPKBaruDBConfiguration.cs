@@ -11,16 +11,12 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<DataSPKBaruDB> builder)
         {
-
-            builder.HasKey(e => e.NoUrutSPKBaru);
-
             builder.ToTable("DataSPKBaruDB", "DataSPKBaruDB");
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataSPKBaruDB_hilo").IsRequired();
 
             builder.Property(e=>e.NoRegistrasiSPK).HasColumnName("NoRegistrasiSPK").HasMaxLength(50);
 
-            builder.Property(e=>e.NoUrutSPKBaru).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            builder.Property(e => e.LokasiSpk)
+             builder.Property(e => e.LokasiSpk)
                 .HasColumnName("LokasiSpk")
                 .HasMaxLength(100)
                 .IsUnicode(false);
@@ -38,9 +34,6 @@ namespace SmmCoreDDD2019.Persistence.Configurations
             builder.Property(e => e.UserInput)
                 .HasMaxLength(30)
                 .IsUnicode(false);
-
-
-            //  throw new NotImplementedException();
         }
     }
 }

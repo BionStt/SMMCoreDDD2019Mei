@@ -15,12 +15,11 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<PenjualanPiutang> builder)
         {
-            builder.HasKey(e => e.NoUrutPjPiutang);
-            builder.ToTable("PenjualanPiutang","Penjualan");
-            builder.Property(e => e.NoUrutPjPiutang).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
+            builder.ToTable("PenjualanPiutang", "Penjualan");
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PenjualanPiutang_hilo").IsRequired();
+      
             builder.Property(e=>e.TanggalLunas).HasColumnType("datetime");
-            builder.Property(e=>e.KodePenjualanDetail).HasColumnName("KodePenjualanDetail").IsUnicode(false);
+            builder.Property(e=>e.PenjualanDetailId);
 
             builder.Property(e => e.Keterangan).HasColumnName("Keterangan").IsUnicode(false);
 

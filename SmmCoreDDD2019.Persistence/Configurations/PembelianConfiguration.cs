@@ -14,18 +14,16 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Pembelian> builder)
         {
-            builder.HasKey(e => e.KodeBeli);
-
             builder.ToTable("Pembelian", "Pembelian");
 
-            builder.Property(e => e.KodeBeli).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("Pembelian_hilo").IsRequired();
+           
             builder.Property(e=>e.NoRegistrasiPembelian).HasColumnName("NoRegistrasiPembelian").HasMaxLength(50);
 
             builder.Property(e => e.TglBeli).HasColumnType("datetime")
                   .HasDefaultValueSql("(getdate())");
 
-            builder.Property(e => e.Idsupplier).HasColumnName("IDSupplier");
+            builder.Property(e => e.MasterSupplierDBId);
 
             builder.Property(e => e.JenisTransPmb)
              .HasMaxLength(1)
@@ -48,7 +46,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.UserInputId).HasColumnName("UserInputId");
 
-            builder.Property(e => e.NoPOPembelian).HasColumnName("NoPOPembelian");
+            builder.Property(e => e.PembelianPOId);
 
          
 

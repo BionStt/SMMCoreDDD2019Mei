@@ -11,12 +11,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<DataPegawaiDataKeluarga> builder)
         {
-            builder.HasKey(e => e.NoUrut);
+             builder.ToTable("DataPegawaiDataKeluarga", "DataPegawai");
 
-            builder.Property(e=>e.NoUrut).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-           
-            builder.ToTable("DataPegawaiDataKeluarga", "DataPegawai");
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataKeluarga_hilo").IsRequired();
 
             builder.Property(e => e.Agama)
                 .HasMaxLength(1)
@@ -35,11 +32,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                 .HasMaxLength(1)
                 .IsUnicode(false);
 
-            builder.Property(e => e.IDPegawai).HasColumnName("IDPegawai");
+            builder.Property(e => e.DataPegawaiId);
 
-            builder.Property(e => e.IDPegawai).ValueGeneratedNever();
-
-            builder.Property(e => e.JenisKelamin)
+        builder.Property(e => e.JenisKelamin)
                 .HasMaxLength(1)
                 .IsUnicode(false);
 

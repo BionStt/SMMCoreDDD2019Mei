@@ -14,13 +14,12 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<StokUnit> builder)
         {
-            builder.HasKey(e => e.NoUrutSo);
             builder.ToTable("StokUnit", "Pembelian");
-            builder.Property(e => e.NoUrutSo).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("StokUnit_hilo").IsRequired();
 
-            builder.Property(e => e.KodeBeliDetail).HasColumnName("KodeBeliDetail");
+            builder.Property(e => e.PembelianDetailId);
 
-            builder.Property(e => e.KodeBrg).HasColumnName("KodeBrg");
+            builder.Property(e => e.MasterBarangDBId);
 
             builder.Property(e => e.NoRangka).HasColumnName("NoRangka")
                 .HasMaxLength(30)

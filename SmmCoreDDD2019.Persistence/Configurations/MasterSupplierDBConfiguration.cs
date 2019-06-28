@@ -13,12 +13,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<MasterSupplierDB> builder)
         {
-            builder.HasKey(e => e.IDSupplier);
-
             builder.ToTable("MasterSupplierDB");
-
-            builder.Property(e => e.IDSupplier).HasColumnName("IDSupplier");
-
+            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterSupplierDB_hilo").IsRequired();
+        
             builder.Property(e=>e.NoRegistrasiSupplier).HasColumnName("NoRegistrasiSupplier").HasMaxLength(50);
 
             builder.Property(e => e.Aktif).HasMaxLength(2);
@@ -39,9 +36,6 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                 .IsRequired()
                 .IsUnicode(false);
 
-           
-
-            // throw new NotImplementedException();
         }
     }
 }
