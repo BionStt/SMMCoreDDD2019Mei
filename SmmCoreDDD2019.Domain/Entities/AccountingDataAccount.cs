@@ -17,10 +17,10 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string Account { get; set; }
         public int? NormalPos { get; set; }
         public string Kelompok { get; set; }
-        public string AccountingDataMataUangId { get; set; }
+        public int AccountingDataMataUangId { get; set; }
 
         public AccountingDataSaldoAwal AccountingDataSaldoAwal { get; set; }
-
+        public AccountingDataJournal AccountingDataJournal { get; set; }
 
 
     }

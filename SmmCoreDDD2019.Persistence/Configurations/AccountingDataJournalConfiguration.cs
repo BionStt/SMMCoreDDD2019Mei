@@ -14,12 +14,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("AccountingDataJournal", "Accounting");
 
-            builder.HasKey(e => e.JournalID);
-            builder.Property(e => e.JournalID).HasColumnName("JournalID");
-            builder.Property(e => e.JournalID).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-
-            builder.Property(e => e.NoUrutJournalH).HasColumnName("NoUrutJournalH").HasMaxLength(10);
-            builder.Property(e => e.NoUrutAccountId).HasColumnName("NoUrutAccountId").HasMaxLength(5);
+            builder.Property(e=>e.Id).ForSqlServerUseSequenceHiLo("AccountingDataJournal_hilo").IsRequired();
+            builder.Property(e => e.AccountingDataJournalHeaderId);
+            builder.Property(e => e.AccountingDataAccountId);
             builder.Property(e => e.Debit).HasColumnName("Debit").HasColumnType("money");
             builder.Property(e => e.Kredit).HasColumnName("Kredit").HasColumnType("money");
             builder.Property(e => e.Keterangan).HasColumnName("Keterangan").HasMaxLength(400).IsUnicode(false);

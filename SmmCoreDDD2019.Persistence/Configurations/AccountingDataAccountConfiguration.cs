@@ -14,10 +14,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("AccountingDataAccount", "Accounting");
 
-            builder.HasKey(e => e.NoUrutAccountId);
-            builder.Property(e => e.NoUrutAccountId).HasColumnName("NoUrutAccountId");
-            builder.Property(e => e.NoUrutAccountId).UseSqlServerIdentityColumn().Metadata.BeforeSaveBehavior = Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore;
-            
+            builder.Property(e => e.Id)
+               .ForSqlServerUseSequenceHiLo("AccountingDataAccount_hilo")
+               .IsRequired();
+
 
             builder.Property(e=>e.Lft).HasColumnName("Lft").ValueGeneratedOnAddOrUpdate();
             builder.Property(e => e.Rgt).HasColumnName("Rgt").ValueGeneratedOnAddOrUpdate();
@@ -30,7 +30,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
             builder.Property(e => e.Account).HasColumnName("Account").HasMaxLength(150).IsUnicode(false);
             builder.Property(e => e.NormalPos).HasColumnName("NormalPos");
             builder.Property(e => e.Kelompok).HasColumnName("Kelompok").HasMaxLength(2).IsUnicode(false);
-            builder.Property(e => e.MataUangID).HasColumnName("MataUangID").HasMaxLength(4).IsUnicode(false);
+            builder.Property(e => e.AccountingDataMataUangId).HasColumnName("AccountingDataMataUangId");
         }
     }
 }
