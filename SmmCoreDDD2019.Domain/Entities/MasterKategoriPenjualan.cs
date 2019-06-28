@@ -15,9 +15,8 @@ namespace SmmCoreDDD2019.Domain.Entities
        // public int NoUrutKategoriPenjualan { get; set; }
         public string NamaKategoryPenjualan { get; set; }
 
-        public ICollection<DataSPKLeasingDB> DataSPKLeasingDB { get; private set; }
-        //public ICollection<DataSpkleasingDb> DataSpkleasingDb { get; set; }
-        //public ICollection<PenjualanDb> PenjualanDb { get; set; }
-
+      
+        public DataSPKLeasingDB DataSPKLeasingDB { get; set; }
+        public Penjualan Penjualan { get; set; }
     }
 }

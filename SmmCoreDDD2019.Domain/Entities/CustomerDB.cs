@@ -43,6 +43,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string KodeBidangUsaha { get; set; }
         public string NamaBidangUsaha { get; set; }
 
+        public Penjualan Penjualan { get; set; }
         // public ICollection<PenjualanDb> PenjualanDb { get; set; }
     }
 }

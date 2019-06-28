@@ -11,7 +11,7 @@ namespace SmmCoreDDD2019.Domain.Entities
 
       //  public int NoUrut { get; set; }
       
-        public int? IDPegawai { get; set; }
+        public int? DataPegawaiId { get; set; }
 
        
         public string NamaDepan { get; set; }

@@ -9,7 +9,7 @@ namespace SmmCoreDDD2019.Domain.Entities
        // public int NoUrut { get; set; }
         public string NamaJabatan { get; set; }
 
-        public ICollection<DataPegawaiDataJabatan> DataPegawaiDataJabatan { get; private set; }
-
+        public DataPegawaiDataJabatan DataPegawaiDataJabatan { get; set; }
+     
     }
 }

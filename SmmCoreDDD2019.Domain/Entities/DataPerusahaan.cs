@@ -23,8 +23,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string Telp { get; set; }
         public string Cs { get; set; }
 
-        public ICollection<DataPerusahaanCabang> DataPerusahaanCabang { get; private set; }
+        public DataPerusahaanCabang DataPerusahaanCabang { get; set; }
 
-     //   public ICollection<DetailP> DetailP { get; set; }
     }
 }

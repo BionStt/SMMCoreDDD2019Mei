@@ -6,8 +6,7 @@ namespace SmmCoreDDD2019.Domain.Entities
 {
    public class DataPerusahaanCabang : BaseEntity
     {
-        public int KodeP { get; set; }
-       // public int KodePosisi { get; set; }
+        public int DataPerusahaanId { get; set; }
         public string NamaPosisi { get; set; }
         public string Alamat { get; set; }
         public string Kel { get; set; }
@@ -17,9 +16,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string KodePos { get; set; }
         public string Telp { get; set; }
         public string Cp { get; set; }
-        public DataPerusahaan DataPerusahaan { get; set; }
-
-        //   public ProfilP KodePNavigation { get; set; }
-
+     
+ 
     }
 }

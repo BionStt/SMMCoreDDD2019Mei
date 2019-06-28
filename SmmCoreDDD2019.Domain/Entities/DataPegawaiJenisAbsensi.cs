@@ -14,5 +14,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public DateTime JamMulai { get; set; }
         public DateTime JamBerakhir { get; set; }
 
+        public DataPegawaiDataAbsensi DataPegawaiDataAbsensi { get; set; }
+
     }
 }

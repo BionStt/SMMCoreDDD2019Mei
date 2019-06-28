@@ -13,7 +13,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         [Display(Name = "Tanggal Pembayaran STNK"), Required]
         public DateTime? TanggalBayarSTNK { get; set; }
         [Display(Name = "Nama Faktur")]
-        public int? NoUrutFaktur { get; set; }
+        public int? PermohonanFakturDBId { get; set; }
         [Display(Name = "No STNK")]
         public string NoStnk { get; set; }
         [Display(Name = "Pajak STNK")]

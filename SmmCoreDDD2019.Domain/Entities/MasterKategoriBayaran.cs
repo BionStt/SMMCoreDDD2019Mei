@@ -13,9 +13,7 @@ namespace SmmCoreDDD2019.Domain.Entities
 
       //  public int NoUrut { get; set; }
         public string NamaKategoryBayaran { get; set; }
-        
-        public ICollection<DataSPKLeasingDB> DataSPKLeasingDB { get; private set; }
-      //  public ICollection<DataSpkleasingDb> DataSpkleasingDb { get; set; }
 
+        public DataSPKLeasingDB DataSPKLeasingDB { get; set; }
     }
 }

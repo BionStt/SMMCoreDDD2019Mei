@@ -12,7 +12,7 @@ namespace SmmCoreDDD2019.Domain.Entities
     public string NoRegistrasiPembelian { get; set; }
         public DateTime? TglBeli { get; set; }
      
-        public int? Idsupplier { get; set; }
+        public int? MasterSupplierDBId { get; set; }
      
         public string JenisTransPmb { get; set; }
         public string Kredit { get; set; }
@@ -22,7 +22,12 @@ namespace SmmCoreDDD2019.Domain.Entities
         public int? UserInputId { get; set; }
         public string UserInput { get; set; }
        
-        public int? NoPOPembelian { get; set; }
+        public int? PembelianPOId { get; set; }
+
+
+        public PembelianDetail PembelianDetail { get; set; }
+
+
 
     }
 }

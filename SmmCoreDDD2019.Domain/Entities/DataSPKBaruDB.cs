@@ -21,10 +21,14 @@ namespace SmmCoreDDD2019.Domain.Entities
         public int? UserIdpeg { get; set; }
         public string UserInput { get; set; }
 
-        public ICollection<DataSPKKendaraanDB> DataSPKKendaraanDB { get; set; }
-        public ICollection<DataSPKKreditDB> DataSPKKreditDB { get; set; }
-        public ICollection<DataSPKLeasingDB> DataSPKLeasingDB { get; set; }
-        public ICollection<DataSPKSurveiDB> DataSPKSurveiDB { get; set; }
+        public DataSPKKendaraanDB DataSPKKendaraanDB { get; set; }
+        public Penjualan Penjualan { get; set; }
+        public DataSPKSurveiDB DataSPKSurveiDB { get; set; }
+        public DataSPKLeasingDB DataSPKLeasingDB { get; set; }
+        public DataSPKKreditDB DataSPKKreditDB { get; set; }
+
+
+     
 
 
 

@@ -9,8 +9,8 @@ namespace SmmCoreDDD2019.Domain.Entities
     public class PenjualanDetail : BaseEntity
     {
       //  public int NoPenjualanDetail { get; set; }
-      public int? KodePenjualan { get; set; }
-        public int? NoUrutSO { get; set; }
+      public int? PenjualanId { get; set; }
+        public int? StokUnitId { get; set; }
         public decimal? OffTheRoad { get; set; }
         public decimal? BBN { get; set; }
         public decimal? HargaOTR { get; set; }
@@ -29,6 +29,8 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string CheckLapBulanan { get; set; }
         public DateTime? TanggalCheckLapBulanan { get; set; }
         public string UserCheckLapBulanan { get; set; }
+
+        public PermohonanFakturDB PermohonanFakturDB { get; set; }
 
     }
 }

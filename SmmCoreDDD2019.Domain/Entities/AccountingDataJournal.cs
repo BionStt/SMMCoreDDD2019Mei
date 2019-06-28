@@ -9,7 +9,7 @@ namespace SmmCoreDDD2019.Domain.Entities
     public class AccountingDataJournal : BaseEntity
     {
           //  public int JournalID { get; set; }
-            public string NoUrutJournalH { get;set;}
+            public int AccountingDataJournalHeaderId { get;set;}
               public string NoUrutAccountId { get;set;}
             public Decimal? Debit {get;set;}
            public Decimal? Kredit {get;set;}

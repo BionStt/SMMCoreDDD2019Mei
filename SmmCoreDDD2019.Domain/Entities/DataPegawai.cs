@@ -17,18 +17,17 @@ namespace SmmCoreDDD2019.Domain.Entities
         public DateTime? TglBerhentiKerja { get; set; }
         public string Aktif { get; set; }
 
-        public ICollection<DataPegawaiDataKeluarga> DataPegawaiDataKeluarga { get; private set; }
-        public ICollection<DataPegawaiDataOrmas> DataPegawaiDataOrmas { get; private set; }
+        public DataPegawaiDataRiwayatPelatihan DataPegawaiDataRiwayatPelatihan { get; set; }
+        public DataPegawaiDataAbsensi DataPegawaiDataAbsensi { get; set; }
+        public DataPegawaiDataAward DataPegawaiDataAward { get; set; }
+        public DataPegawaiDataJabatan DataPegawaiDataJabatan { get; set; }
+        public DataPegawaiDataKeluarga DataPegawaiDataKeluarga { get; set; }
+        public DataPegawaiDataOrmas DataPegawaiDataOrmas { get; set; }
+        public DataPegawaiDataPribadi DataPegawaiDataPribadi { get; set; }
+        public DataPegawaiDataRiwayatPekerjaan DataPegawaiDataRiwayatPekerjaan { get; set; }
+        public DataPegawaiDataRiwayatPendidikan DataPegawaiDataRiwayatPendidikan { get; set; }
+        public DataPegawaiFoto DataPegawaiFoto { get; set; }
 
-       //   public ICollection<DataPegawaiDataPribadi> DataPegawaiDataPribadi { get; private set; }
-       public virtual DataPegawaiDataPribadi DataPegawaiDataPribadi { get; private set; }// mengapa harus inibukan yg diatas ???
-        public ICollection<DataPegawaiDataRiwayatPekerjaan> DataPegawaiDataRiwayatPekerjaan { get; private set; }
-
-         public ICollection<DataPegawaiDataRiwayatPelatihan> DataPegawaiDataRiwayatPelatihan { get; private set; }
-
-          public ICollection<DataPegawaiDataRiwayatPendidikan> DataPegawaiDataRiwayatPendidikan  { get; private set; }
-
-          public ICollection<DataPegawaiFoto> DataPegawaiFoto { get; private set; }
-    }
+     }
 
 }

@@ -11,5 +11,10 @@ namespace SmmCoreDDD2019.Domain.Entities
        // public int NoIDTipeJournal { get; set; }
         public string KodeJournal { get; set; }
         public string NamaJournal { get; set; }
+
+        public AccountingDataJournalHeader AccountingDataJournalHeader { get; set; }
+        public AccountingDataBuktiTransaksi AccountingDataBuktiTransaksi { get; set; }
+
+
     }
 }

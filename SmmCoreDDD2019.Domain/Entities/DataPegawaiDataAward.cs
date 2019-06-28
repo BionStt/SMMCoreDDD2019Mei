@@ -30,7 +30,7 @@ namespace SmmCoreDDD2019.Domain.Entities
 
         //[ForeignKey("EmployeeModel")]
         [Required]
-        public int EmployeeId { get; set; }
+        public int DataPegawaiId { get; set; }
       //  public EmployeeModel EmployeeModel { get; set; }
 
     }

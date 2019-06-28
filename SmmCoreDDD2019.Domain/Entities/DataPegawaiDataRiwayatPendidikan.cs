@@ -7,7 +7,7 @@ namespace SmmCoreDDD2019.Domain.Entities
    public class DataPegawaiDataRiwayatPendidikan : BaseEntity
     {
        // public int NoUrut { get; set; }
-        public int? IDPegawai { get; set; }
+        public int? DataPegawaiID { get; set; }
         public string TingkatPend { get; set; }
         public string NamaSekolah { get; set; }
         public string Kota { get; set; }

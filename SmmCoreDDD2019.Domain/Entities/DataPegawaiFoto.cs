@@ -12,9 +12,9 @@ namespace SmmCoreDDD2019.Domain.Entities
         public DateTime? Tglinput { get; set; }
         public string Revisi { get; set; }
        
-        public int? IDPegawai { get; set; }
+        public int? DataPegawaiId { get; set; }
         public string KodeBarcode { get; set; }
-        public DataPegawai DataPegawai { get; set; }
+       
 
     }
 }

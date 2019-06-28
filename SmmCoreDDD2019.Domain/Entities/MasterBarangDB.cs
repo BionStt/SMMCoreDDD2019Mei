@@ -26,6 +26,9 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string Tipe { get; set; }
         public string TypeKendaraan { get; set; }
 
+        public DataSPKKendaraanDB DataSPKKendaraanDB { get; set; }
+        public PembelianDetail PembelianDetail { get; set; }
+        public StokUnit StokUnit { get; set; }
         //public ICollection<DataSpkkendDb> DataSpkkendDb { get; set; }
         //public ICollection<PenjualanDetailDb> PenjualanDetailDb { get; set; }
 

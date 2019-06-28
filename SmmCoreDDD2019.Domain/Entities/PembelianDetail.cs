@@ -9,8 +9,8 @@ namespace SmmCoreDDD2019.Domain.Entities
     public class PembelianDetail : BaseEntity
     {
             //  public int KodeBeliDetail { get; set; }
-              public int KodeBeli { get; set; }
-              public int? KodeBrg { get; set; }
+              public int PembelianId { get; set; }
+              public int? MasterBarangDBId { get; set; }
               public decimal? HargaOffTheRoad { get; set; }
               public decimal? BBN { get; set; }
               public int Qty { get; set; }
@@ -22,5 +22,7 @@ namespace SmmCoreDDD2019.Domain.Entities
              public decimal? HargaPPN { get; set; }
              public decimal? DiskonPPN { get; set; }
              public decimal? SellInPPN { get; set; }
+
+        public StokUnit StokUnit { get; set; }
     }
 }

@@ -15,9 +15,8 @@ namespace SmmCoreDDD2019.Domain.Entities
 
        // public int IDlease { get; set; }
         public string NamaLease { get; set; }
-        public ICollection<MasterLeasingCabangDB> MasterLeasingCabangDB { get; private set; }
-      
-
+       
+        public MasterLeasingCabangDB MasterLeasingCabangDB { get; set; }
         // public ICollection<DataSpkleasingDb> DataSpkleasingDb { get; set; }
         // public ICollection<PenjualanDb> PenjualanDb { get; set; }
 

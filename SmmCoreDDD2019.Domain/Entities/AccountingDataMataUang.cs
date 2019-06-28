@@ -8,8 +8,15 @@ namespace SmmCoreDDD2019.Domain.Entities
 {
     public class AccountingDataMataUang : BaseEntity
     {
-       // public int MataUangID { get; set; }
+        // public int MataUangID { get; set; }
         public string Kode { get; set; }
         public string Nama { get; set; }
+
+
+        public AccountingDataAccount AccountingDataAccount { get; set; }
+
+        public AccountingDataSaldoAwal AccountingDataSaldoAwal { get;set }
+
+
     }
 }

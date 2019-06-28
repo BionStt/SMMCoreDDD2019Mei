@@ -16,12 +16,12 @@ namespace SmmCoreDDD2019.Domain.Entities
         public decimal? DiskonTunai { get; set; }
         public decimal? DPPriceList { get; set; }
         public decimal? Komisi { get; set; }
-        public int? NoUrutSPKBaru { get; set; }
+        public int? DataSPKBaruDBId { get; set; }
         public decimal? OffTheRoad { get; set; }
         public decimal? Promosi { get; set; }
         public decimal? UangTandaJadiTunai { get; set; }
         public decimal? UangTandaJadiKredit { get; set; }
-        public DataSPKBaruDB DataSPKBaruDB { get; set; }
-        // public DataSpkbaruDb NourutSpkbaruNavigation { get; set; }
+
+
     }
 }

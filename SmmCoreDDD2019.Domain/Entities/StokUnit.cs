@@ -9,8 +9,8 @@ namespace SmmCoreDDD2019.Domain.Entities
     public class StokUnit : BaseEntity
     {
        // public int NoUrutSo { get; set; }
-      public int? KodeBeliDetail { get; set; }
-       public int? KodeBrg { get; set; }
+      public int? PembelianDetailId { get; set; }
+       public int? MasterBarangDBId{ get; set; }
       public string NoRangka { get; set; }
      public string NoMesin { get; set; }
         public string Warna { get; set; }
@@ -28,5 +28,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public decimal? SellInPPN { get; set; }
      
       public DateTime? TglInput { get; set; }
+
+        public PenjualanDetail PenjualanDetail { get; set; }
     }
 }

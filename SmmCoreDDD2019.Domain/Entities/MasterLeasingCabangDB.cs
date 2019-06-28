@@ -7,7 +7,7 @@ namespace SmmCoreDDD2019.Domain.Entities
    public class MasterLeasingCabangDB : BaseEntity
     {
        // public int NoUrutLeasingCabang { get; set; }
-        public int IDlease { get; set; }
+        public int MasterLeasingDbId { get; set; }
         public string Aktif { get; set; }
         public string Alamat { get; set; }
         public string Kelurahan { get; set; }
@@ -19,7 +19,8 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string Telp { get; set; }
         public string Faks { get; set; }
         public string Email { get; set; }
-        public MasterLeasingDb MasterLeasingDb { get; set; }
-        public ICollection<DataSPKLeasingDB> DataSPKLeasingDB { get; private set; }
+
+        public DataSPKLeasingDB DataSPKLeasingDB { get; set; }
+        public Penjualan Penjualan { get; set; }
     }
 }

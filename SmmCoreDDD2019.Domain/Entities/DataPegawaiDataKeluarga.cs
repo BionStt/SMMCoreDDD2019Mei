@@ -9,7 +9,7 @@ namespace SmmCoreDDD2019.Domain.Entities
     {
         //public int NoUrut { get; set; }
     
-        public int? IDPegawai { get; set; }
+        public int? DataPegawaiId { get; set; }
      
         public string NamaK { get; set; }
       
@@ -44,7 +44,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string Keterangan { get; set; }
         public string EmergencyCall { get; set; }
         public DateTime? TglInput { get; set; }
-        public DataPegawai DataPegawai { get; set; }
+    
 
     }
 }

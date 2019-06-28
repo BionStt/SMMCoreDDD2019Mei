@@ -10,7 +10,7 @@ namespace SmmCoreDDD2019.Domain.Entities
     {
       //  public int NoUrutBPKB { get; set; }
         [Display(Name = "Nama Faktur")]
-        public int? NoUrutFaktur { get; set; }
+        public int? PermohonanFakturDBId { get; set; }
         [Display(Name = "No BPKB")]
         public string NoBpkb { get; set; }
         [Display(Name = "Tanggal Terima BPKB")]

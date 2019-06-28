@@ -17,11 +17,12 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string NamaPemesan { get; set; }
         public string NoKtpPemesan { get; set; }
         public string NoNPWP { get; set; }
-        public int? NoUrutSPKBaru { get; set; }
+        public int? DataSPKBaruDBId{ get; set; }
         public string PekerjaanPemesan { get; set; }
         public string PropinsiPemesan { get; set; }
         public string TelpPemesan { get; set; }
-        public DataSPKBaruDB DataSPKBaruDB { get; set; }
+      
+
 
     }
 }

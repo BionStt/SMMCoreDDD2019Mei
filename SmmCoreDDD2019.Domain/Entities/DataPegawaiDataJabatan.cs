@@ -12,13 +12,13 @@ namespace SmmCoreDDD2019.Domain.Entities
         // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
       //  public int NoUrut { get; set; }
      
-        public int? IDPegawai { get; set; }
+        public int? DataPegawaiId { get; set; }
       
-        public int? NoUrutJabatan { get; set; }
+        public int? MasterJenisJabatanId { get; set; }
       
         public DateTime? TglMenjabat { get; set; }
         public DateTime? TglBerhentiMenjabat { get; set; }
         public string Keterangan { get; set; }
-        public MasterJenisJabatan MasterJenisJabatan { get; set; }
+       
     }
 }

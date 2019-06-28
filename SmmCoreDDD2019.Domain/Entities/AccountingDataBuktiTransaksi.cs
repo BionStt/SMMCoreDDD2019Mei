@@ -9,7 +9,7 @@ namespace SmmCoreDDD2019.Domain.Entities
     public class AccountingDataBuktiTransaksi : BaseEntity
     {
       //  public int NoUrutBuktiTransaksi {get;set;}
-        public string TipeJournal { get; set; }
+        public int AccountingTipeJournalId { get; set; }
         public string NoBukti { get; set; }
         public DateTime TanggalInput { get; set; }
         public string Keterangan { get; set; }

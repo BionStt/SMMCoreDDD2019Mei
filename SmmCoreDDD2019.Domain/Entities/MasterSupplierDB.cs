@@ -12,7 +12,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         //    PenjualanDetailDb = new HashSet<PenjualanDetailDb>();
         //}
 
-     //   public int IDSupplier { get; set; }
+        //   public int IDSupplier { get; set; }
         public string NoRegistrasiSupplier { get; set; }
         public string Aktif { get; set; }
         public string Alamat { get; set; }
@@ -26,6 +26,9 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string Faks { get; set; }
         public string Email { get; set; }
 
+        public PembelianPO PembelianPO { get; set; }
+
+        public Pembelian Pembelian { get; set; }
 
         //  public ICollection<PenjualanDetailDb> PenjualanDetailDb { get; set; }
     }

@@ -7,7 +7,7 @@ namespace SmmCoreDDD2019.Domain.Entities
    public class DataPegawaiDataOrmas : BaseEntity
     {
        // public int NoUrut { get; set; }
-        public int? IDPegawai { get; set; }
+        public int? DataPegawaiId { get; set; }
         public string NamaOrmas { get; set; }
         public string AlamatOrmas { get; set; }
         public string KotaOrmas { get; set; }
@@ -15,6 +15,6 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string Jabatan { get; set; }
         public string JenisKegiatan { get; set; }
         public DateTime? TglInput { get; set; }
-        public DataPegawai DataPegawai { get; set; }
+       
     }
 }
