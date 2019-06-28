@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-   public class DataPegawaiDataRiwayatPelatihan
+   public class DataPegawaiDataRiwayatPelatihan : BaseEntity
     {
-        public int NoUrut { get; set; }
+      //  public int NoUrut { get; set; }
         public int? IDPegawai { get; set; }
         public string NamaLembaga { get; set; }
         public string AlamatLembaga { get; set; }

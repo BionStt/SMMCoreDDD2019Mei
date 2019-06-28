@@ -6,11 +6,11 @@ using System.Text;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-   public class DataPegawaiDataJabatan
+   public class DataPegawaiDataJabatan : BaseEntity
     {
         //[Key]
         // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int NoUrut { get; set; }
+      //  public int NoUrut { get; set; }
      
         public int? IDPegawai { get; set; }
       

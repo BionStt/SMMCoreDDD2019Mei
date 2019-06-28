@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-   public class DataPegawaiDataKeluarga
+   public class DataPegawaiDataKeluarga : BaseEntity
     {
-        public int NoUrut { get; set; }
+        //public int NoUrut { get; set; }
     
         public int? IDPegawai { get; set; }
      
