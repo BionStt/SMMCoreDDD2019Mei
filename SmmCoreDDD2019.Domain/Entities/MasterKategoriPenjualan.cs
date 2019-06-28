@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-   public class MasterKategoriPenjualan
+   public class MasterKategoriPenjualan : BaseEntity
     {
         //public MasterKategoryPenjualan()
         //{
@@ -12,7 +12,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         //    PenjualanDb = new HashSet<PenjualanDb>();
         //}
 
-        public int NoUrutKategoriPenjualan { get; set; }
+       // public int NoUrutKategoriPenjualan { get; set; }
         public string NamaKategoryPenjualan { get; set; }
 
         public ICollection<DataSPKLeasingDB> DataSPKLeasingDB { get; private set; }

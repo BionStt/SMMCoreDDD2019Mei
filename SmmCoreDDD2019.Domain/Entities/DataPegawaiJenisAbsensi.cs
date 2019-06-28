@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class DataPegawaiJenisAbsensi
+    public class DataPegawaiJenisAbsensi : BaseEntity
     {
-        public int NoUrutJenisAbsensi { get; set; }
+       // public int NoUrutJenisAbsensi { get; set; }
         public string JenisAbsensi { get; set; }
         public string Keterangan { get; set; }
         public DateTime JamMulai { get; set; }

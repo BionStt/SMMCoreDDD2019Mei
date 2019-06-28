@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-   public class MasterBarangDB
+   public class MasterBarangDB : BaseEntity
     {
 
         //public MasterBarangDb()
@@ -13,7 +13,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         //    PenjualanDetailDb = new HashSet<PenjualanDetailDb>();
         //}
 
-        public int NoUrutTypeKendaraan { get; set; }
+      //  public int NoUrutTypeKendaraan { get; set; }
         public string Aktif { get; set; }
         public decimal? BBN { get; set; }
         public string Cc { get; set; }

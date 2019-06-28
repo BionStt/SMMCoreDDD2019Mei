@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
- public class DataSPKBaruDB
+ public class DataSPKBaruDB : BaseEntity
     {
         //public DataSpkbaruDb()
         //{
@@ -12,7 +12,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         //    DataSpkkreditDb = new HashSet<DataSpkkreditDb>();
         //}
 
-        public int NoUrutSPKBaru { get; set; }
+     //   public int NoUrutSPKBaru { get; set; }
         public string NoRegistrasiSPK { get; set; }
         public string LokasiSpk { get; set; }
         public string Terinput { get; set; }

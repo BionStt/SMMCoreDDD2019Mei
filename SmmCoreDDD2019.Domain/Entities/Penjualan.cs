@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class Penjualan
+    public class Penjualan : BaseEntity
     {
       
-        public int KodePenjualan { get; set; }
+       // public int KodePenjualan { get; set; }
         public string NoRegistrasiPenjualan { get; set; }
 
         public int? NoUrutSPK { get; set; }

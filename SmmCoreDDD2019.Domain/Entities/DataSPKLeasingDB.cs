@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-   public class DataSPKLeasingDB
+   public class DataSPKLeasingDB : BaseEntity
     {
-        public int NoUrut { get; set; }
+       // public int NoUrut { get; set; }
         public decimal? Angsuran { get; set; }
         public int? NoUrutLeasingCabang { get; set; }
         public string Mediator { get; set; }

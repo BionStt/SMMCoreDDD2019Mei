@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class PembelianPODetail
+    public class PembelianPODetail : BaseEntity
     {
-        public int NoUrutPoDet { get; set; }
+     //   public int NoUrutPoDet { get; set; }
         public int? NoUrutPo { get; set; }
       
         public int? NoUrutMasterBarang { get; set; }

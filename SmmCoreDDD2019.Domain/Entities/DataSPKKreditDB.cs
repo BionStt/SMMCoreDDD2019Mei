@@ -4,10 +4,10 @@ using System.Text;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-   public class DataSPKKreditDB
+   public class DataSPKKreditDB : BaseEntity
     {
 
-        public int NoUrut { get; set; }
+       // public int NoUrut { get; set; }
         public decimal? BiayaAdministrasiKredit { get; set; }
         public decimal? BiayaAdministrasiTunai { get; set; }
         public decimal? BBN { get; set; }

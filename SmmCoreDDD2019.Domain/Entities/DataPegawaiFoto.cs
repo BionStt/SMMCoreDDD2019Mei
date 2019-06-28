@@ -4,9 +4,9 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class DataPegawaiFoto
+    public class DataPegawaiFoto : BaseEntity
     {
-        public int NoUrut { get; set; }
+       // public int NoUrut { get; set; }
         public byte[] Foto { get; set; }
     
         public DateTime? Tglinput { get; set; }

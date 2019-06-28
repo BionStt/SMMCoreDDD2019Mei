@@ -6,10 +6,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class MasterKategoriCaraPembayaran
+    public class MasterKategoriCaraPembayaran : BaseEntity
     {
 
-        public int NoUrutCaraBayar { get; set; }
+       // public int NoUrutCaraBayar { get; set; }
        
         public string CaraPembayaran { get; set; }
     }

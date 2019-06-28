@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-   public class DataSPKSurveiDB
+   public class DataSPKSurveiDB : BaseEntity
     {
-        public int NoUrut { get; set; }
+       // public int NoUrut { get; set; }
         public string AlamatPemesan { get; set; }
         public string HandphonePemesan { get; set; }
         public string KecamatanPemesan { get; set; }

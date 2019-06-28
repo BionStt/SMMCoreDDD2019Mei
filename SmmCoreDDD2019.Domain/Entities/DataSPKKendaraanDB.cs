@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-   public class DataSPKKendaraanDB
+   public class DataSPKKendaraanDB : BaseEntity
     {
-        public int NoUrut { get; set; }
+      //  public int NoUrut { get; set; }
         public string NamaSTNK { get; set; }
         public string NoKtpSTNK { get; set; }
         public int? NoUrutTypeKendaraan { get; set; }

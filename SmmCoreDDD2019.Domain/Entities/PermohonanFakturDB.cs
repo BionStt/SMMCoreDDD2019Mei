@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class PermohonanFakturDB
+    public class PermohonanFakturDB : BaseEntity
     {
-        public int NoUrutFaktur { get; set; }
+      //  public int NoUrutFaktur { get; set; }
         public string NoRegistrasiFaktur { get; set; }
         public DateTime? TanggalMohonFaktur { get; set; }
         public int? KodePenjualanDetail{ get; set; }

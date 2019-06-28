@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class StokUnit
+    public class StokUnit : BaseEntity
     {
-        public int NoUrutSo { get; set; }
+       // public int NoUrutSo { get; set; }
       public int? KodeBeliDetail { get; set; }
        public int? KodeBrg { get; set; }
       public string NoRangka { get; set; }

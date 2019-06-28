@@ -7,9 +7,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class STNKDB
+    public class STNKDB : BaseEntity
     {
-        public int NoUrutStnk { get; set; }
+      //  public int NoUrutStnk { get; set; }
         [Display(Name = "Tanggal Pembayaran STNK"), Required]
         public DateTime? TanggalBayarSTNK { get; set; }
         [Display(Name = "Nama Faktur")]

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-   public  class MasterJenisJabatan
+   public  class MasterJenisJabatan : BaseEntity
     {
-        public int NoUrut { get; set; }
+       // public int NoUrut { get; set; }
         public string NamaJabatan { get; set; }
 
         public ICollection<DataPegawaiDataJabatan> DataPegawaiDataJabatan { get; private set; }

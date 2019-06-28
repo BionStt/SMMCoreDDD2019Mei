@@ -4,10 +4,10 @@ using System.Text;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-   public class DataPerusahaanCabang
+   public class DataPerusahaanCabang : BaseEntity
     {
         public int KodeP { get; set; }
-        public int KodePosisi { get; set; }
+       // public int KodePosisi { get; set; }
         public string NamaPosisi { get; set; }
         public string Alamat { get; set; }
         public string Kel { get; set; }

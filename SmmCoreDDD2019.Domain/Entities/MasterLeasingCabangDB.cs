@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-   public class MasterLeasingCabangDB
+   public class MasterLeasingCabangDB : BaseEntity
     {
-        public int NoUrutLeasingCabang { get; set; }
+       // public int NoUrutLeasingCabang { get; set; }
         public int IDlease { get; set; }
         public string Aktif { get; set; }
         public string Alamat { get; set; }

@@ -8,10 +8,10 @@ using System.ComponentModel;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-    public class MasterAllowanceType
+    public class MasterAllowanceType : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
+       // [Key]
+     //   public int Id { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime UpdateDate { get; set; }
         public bool IsDelete { get; set; }

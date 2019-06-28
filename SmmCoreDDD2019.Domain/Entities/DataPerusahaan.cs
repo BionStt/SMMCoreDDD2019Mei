@@ -4,14 +4,14 @@ using System.Text;
 
 namespace SmmCoreDDD2019.Domain.Entities
 {
-  public  class DataPerusahaan
+  public  class DataPerusahaan : BaseEntity
     {
         //public ProfilP()
         //{
         //    DetailP = new HashSet<DetailP>();
         //}
 
-        public int KodeP { get; set; }
+      //  public int KodeP { get; set; }
         public string NoRegDataPerusahaan { get; set; }
         public string NamaP { get; set; }
         public string AlamatP { get; set; }
