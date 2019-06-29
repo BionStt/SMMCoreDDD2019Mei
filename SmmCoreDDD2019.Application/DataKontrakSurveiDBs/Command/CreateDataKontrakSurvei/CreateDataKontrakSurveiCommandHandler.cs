@@ -33,7 +33,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakSurveiDBs.Command.CreateDataKont
                 DateTime.UtcNow.Date.Month.ToString() +
                 DateTime.UtcNow.Date.Day.ToString() + Guid.NewGuid().ToString().Substring(0, 4).ToUpper() + "REGDS",
 
-              NoRegistrasiKonsumen = request.NoRegistrasiKonsumen,
+                DataKonsumenAvalistId = request.NoRegistrasiKonsumen,
                 Karakter= request.Karakter,
                 Kerjasama= request.Kerjasama,
                 Penghasilan = request.Penghasilan,
@@ -50,7 +50,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakSurveiDBs.Command.CreateDataKont
                 NamaBidangUsaha=request.NamaBidangUsaha,
                 OmzetBulanan=request.OmzetBulanan,
                 PernahKredit=request.PernahKredit,
-                NoUrutMasterBarang=request.NoUrutMasterBarang,
+                MasterBarangDBId=request.NoUrutMasterBarang,
                 FasilitasKreditBank=request.FasilitasKreditBank,
                 JenisFasilitasbank=request.JenisFasilitasbank,
                 NamaRekeningBank=request.NamaRekeningBank,
@@ -101,7 +101,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakSurveiDBs.Command.CreateDataKont
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new DataKontrakSurveiCreated { DataKontrakSurveiID = entity.NoUrutDataSurvei.ToString() });
+            await _mediator.Publish(new DataKontrakSurveiCreated { DataKontrakSurveiID = entity.Id.ToString() });
 
             return Unit.Value;
 

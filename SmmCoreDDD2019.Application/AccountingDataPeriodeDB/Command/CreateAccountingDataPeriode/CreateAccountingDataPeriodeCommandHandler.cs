@@ -41,7 +41,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataPeriodeDB.Command.CreateAccou
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new AccountingDataPeriodeCreated { AccountingDataPeriodeID = entity.NoUrutPeriodeID.ToString() });
+            await _mediator.Publish(new AccountingDataPeriodeCreated { AccountingDataPeriodeID = entity.Id.ToString() });
 
             return Unit.Value;
         }

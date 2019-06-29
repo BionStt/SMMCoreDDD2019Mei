@@ -25,7 +25,7 @@ namespace SmmCoreDDD2019.Application.CustomerDBs.Commands.UpdateCustomerDB
         public async Task<Unit> Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.CustomerDB
-                .SingleAsync(c => c.CustomerID == request.CustomerID, cancellationToken);
+                .SingleAsync(c => c.Id == request.CustomerID, cancellationToken);
 
             if (entity == null)
             {

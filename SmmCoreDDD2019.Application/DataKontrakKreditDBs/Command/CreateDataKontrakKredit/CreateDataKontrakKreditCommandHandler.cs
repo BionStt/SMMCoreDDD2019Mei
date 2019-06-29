@@ -38,7 +38,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakKreditDBs.Command.CreateDataKont
                 DateTime.UtcNow.Date.Month.ToString() +
                 DateTime.UtcNow.Date.Day.ToString() + Guid.NewGuid().ToString().Substring(0, 4).ToUpper() + "REGKK",
 
-                NoRegisterSurvei = request.NoRegisterSurvei,
+                DataKontrakSurveiId = request.NoRegisterSurvei,
                 TanggalKontrak = request.TanggalKontrak,
                 PolaAngsuran = request.PolaAngsuran,
                 CaraBayar = request.CaraBayar,
@@ -63,7 +63,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakKreditDBs.Command.CreateDataKont
 
             _context.DataKontrakKredit.Add(entity);
              await _context.SaveChangesAsync(cancellationToken);
-            var NoRegKontrakKredit = entity.NoUrutDataKontrakKredit;
+            var NoRegKontrakKredit = entity.Id;
        
 
             if (request.AngsuranDimuka == "1")
@@ -94,7 +94,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakKreditDBs.Command.CreateDataKont
                             //            NoRegisterKontrakKredit = DateTime.UtcNow.Date.Year.ToString() +
                             //DateTime.UtcNow.Date.Month.ToString() +
                             //DateTime.UtcNow.Date.Day.ToString() + Guid.NewGuid().ToString().Substring(0, 4).ToUpper() + "REGKK",
-                            NoRegisterKontrakKredit = NoRegKontrakKredit.ToString(),
+                            DataKontrakKreditId = NoRegKontrakKredit,
                             AngsuranKe = angske,
                             TanggalAngsuran = DateTime.Now.Date,
                             Angsuran = AngsuranBln1a,
@@ -117,7 +117,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakKreditDBs.Command.CreateDataKont
                         _context.DataKontrakAngsuran.Add(new DataKontrakAngsuran
                         {
 
-                            NoRegisterKontrakKredit = NoRegKontrakKredit.ToString(),
+                            DataKontrakKreditId = NoRegKontrakKredit,
                             AngsuranKe = angske,
                             TanggalAngsuran = tglangsur.AddMonths(angske - 1),
                             Angsuran = AngsuranBln1a,
@@ -154,7 +154,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakKreditDBs.Command.CreateDataKont
 
                     _context.DataKontrakAngsuran.Add(new DataKontrakAngsuran
                     {
-                        NoRegisterKontrakKredit = NoRegKontrakKredit.ToString(),
+                        DataKontrakKreditId = NoRegKontrakKredit,
                         AngsuranKe = angske,
                         TanggalAngsuran = tglangsur.AddMonths(angske),
                         Angsuran = Math.Round((((((cicilanpokok / 1000)) * 1000) + ((bunga1 / 1000) * 1000))) / 1000, MidpointRounding.ToEven) * 1000,
@@ -171,7 +171,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakKreditDBs.Command.CreateDataKont
             }
 
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new DataKontrakKreditCreated { DataKontrakKreditID = entity.NoUrutDataKontrakKredit.ToString() });
+            await _mediator.Publish(new DataKontrakKreditCreated { DataKontrakKreditID = entity.Id.ToString() });
 
 
             return Unit.Value;

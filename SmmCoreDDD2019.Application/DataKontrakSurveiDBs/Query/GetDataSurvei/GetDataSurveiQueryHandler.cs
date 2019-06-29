@@ -25,9 +25,9 @@ namespace SmmCoreDDD2019.Application.DataKontrakSurveiDBs.Query.GetDataSurvei
         public async Task<GetDataSurveiViewModel> Handle(GetDataSurveiQuery request, CancellationToken cancellationToken)
         {
             var aa = await (from a in _context.DataKontrakSurvei
-                            join b in _context.DataKonsumenAvalist on a.NoRegistrasiKonsumen equals b.NoUrutKonsumen.ToString()
-                            where _context.DataKontrakKredit.All(x => x.NoRegisterSurvei != a.NoUrutDataSurvei.ToString())
-                            select new { NoDataSurveiAvalist = a.NoUrutDataSurvei, NamaKonsumen = string.Format("{0} - {1} - {2}", b.NoRegisterKonsumen, b.NamaKonsumen, b.NamaPenjamin) }
+                            join b in _context.DataKonsumenAvalist on a.DataKonsumenAvalistId equals b.Id
+                            where _context.DataKontrakKredit.All(x => x.DataKontrakSurveiId != a.Id)
+                            select new { NoDataSurveiAvalist = a.Id, NamaKonsumen = string.Format("{0} - {1} - {2}", b.NoRegisterKonsumen, b.NamaKonsumen, b.NamaPenjamin) }
 
                 ).OrderByDescending(x => x.NoDataSurveiAvalist).ToListAsync(cancellationToken);
             var model = new GetDataSurveiViewModel

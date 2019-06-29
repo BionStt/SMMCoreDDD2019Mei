@@ -25,7 +25,7 @@ namespace SmmCoreDDD2019.Application.CustomerDBs.Queries.GetCustomerDataPenjuala
         {
             var aa = await(from a in _context.CustomerDB
                            where a.Jual==null
-                      select new { NoCustomer=a.CustomerID, NamaKonsumen = string.Format("{0} - {1} - {2}",a.Nama,a.NamaBPKB,a.Handphone) }
+                      select new { NoCustomer=a.Id, NamaKonsumen = string.Format("{0} - {1} - {2}",a.Nama,a.NamaBPKB,a.Handphone) }
 
                 ).OrderByDescending(x=>x.NoCustomer).ToListAsync(cancellationToken);
             var model = new GetCustomerDataPenjualanViewModel

@@ -28,7 +28,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public string NamaBidangUsaha { get; set; }
         public decimal? OmzetBulanan { get; set; }
         public string PernahKredit { get; set; }
-        public string NoUrutMasterBarang { get; set; }
+        public int MasterBarangDBId { get; set; }
         public string FasilitasKreditBank { get; set; }
         public string JenisFasilitasbank { get; set; }
         public string NamaRekeningBank { get; set; }

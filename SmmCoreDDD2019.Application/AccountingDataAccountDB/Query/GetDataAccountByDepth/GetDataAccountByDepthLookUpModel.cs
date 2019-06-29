@@ -11,7 +11,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Query.GetDataAccoun
 {
     public class GetDataAccountByDepthLookUpModel : IHaveCustomMapping
     {
-        public int NoUrutAccountId { get; set; }
+        public int Id { get; set; }
         public string KodeAccount { get; set; }
         public string Account { get; set; }
         public string DataAkun1 { get; set; }
@@ -20,7 +20,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Query.GetDataAccoun
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<AccountingDataAccount, GetDataAccountByDepthLookUpModel>()
-               .ForMember(cDTO => cDTO.NoUrutAccountId, opt => opt.MapFrom(c => c.NoUrutAccountId))
+               .ForMember(cDTO => cDTO.Id, opt => opt.MapFrom(c => c.Id))
                .ForMember(cDTO => cDTO.KodeAccount, opt => opt.MapFrom(c => c.KodeAccount))
                  .ForMember(cDTO => cDTO.Account, opt => opt.MapFrom(c => c.Account));
             

@@ -10,8 +10,8 @@ namespace SmmCoreDDD2019.Application.AccountingDataJournalDB.Query.GetDataJourna
 {
     public class GetDataJournalAllLookUpModel : IHaveCustomMapping
     {
-        public int NoUrutAccountId { get; set; }
-        public int NoUrutJournalHeaderId { get; set; }
+        public int AccountingDataAccountId { get; set; }
+        public int AccountingDataJournalIdH { get; set; }
         public string DataAkun { get; set; }
         public decimal Debit1 { get; set; }
         public decimal Kredit1 { get; set; }
@@ -22,7 +22,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataJournalDB.Query.GetDataJourna
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<AccountingDataJournal, GetDataJournalAllLookUpModel>()
-               .ForMember(cDTO => cDTO.NoUrutAccountId, opt => opt.MapFrom(c => c.NoUrutJournalH));
+               .ForMember(cDTO => cDTO.AccountingDataAccountId, opt => opt.MapFrom(c => c.Id));
             // .ForMember(cDTO => cDTO.KodeAccount, opt => opt.MapFrom(c => c.KodeAccount))
             //   .ForMember(cDTO => cDTO.Account, opt => opt.MapFrom(c => c.Account))
             //     .ForMember(cDTO => cDTO.NormalPos, opt => opt.MapFrom(c => c.NormalPos))

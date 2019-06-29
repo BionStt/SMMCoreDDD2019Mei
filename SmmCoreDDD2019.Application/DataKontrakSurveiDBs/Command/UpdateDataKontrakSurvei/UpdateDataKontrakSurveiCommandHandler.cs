@@ -23,7 +23,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakSurveiDBs.Command.UpdateDataKont
         public async Task<Unit> Handle(UpdateDataKontrakSurveiCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.DataKontrakSurvei
-              .SingleAsync(c => c.NoUrutDataSurvei == request.NoUrutDataSurvei, cancellationToken);
+              .SingleAsync(c => c.Id == request.NoUrutDataSurvei, cancellationToken);
 
             if (entity == null)
             {
@@ -31,7 +31,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakSurveiDBs.Command.UpdateDataKont
             }
 
             entity.NoRegistrasiDataSurvei = request.NoRegistrasiDataSurvei;
-              entity.NoRegistrasiKonsumen = request.NoRegistrasiKonsumen;
+              entity.DataKonsumenAvalistId = request.NoRegistrasiKonsumen;
                 entity.Karakter = request.Karakter;
                 entity.Kerjasama = request.Kerjasama;
                entity.Penghasilan = request.Penghasilan;
@@ -48,7 +48,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakSurveiDBs.Command.UpdateDataKont
               entity.NamaBidangUsaha = request.NamaBidangUsaha;
               entity.OmzetBulanan = request.OmzetBulanan;
                entity.PernahKredit = request.PernahKredit;
-               entity.NoUrutMasterBarang = request.NoUrutMasterBarang;
+               entity.MasterBarangDBId = request.NoUrutMasterBarang;
                entity.FasilitasKreditBank = request.FasilitasKreditBank;
                entity.JenisFasilitasbank = request.JenisFasilitasbank;
                entity.NamaRekeningBank = request.NamaRekeningBank;

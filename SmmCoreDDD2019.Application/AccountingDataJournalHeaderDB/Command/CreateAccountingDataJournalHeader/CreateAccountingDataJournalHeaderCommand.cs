@@ -12,7 +12,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataJournalHeaderDB.Command.Creat
     {
         //  public int NoUrutJournalH { get; set; }
         [Display(Name = "Periode Pembukuan")]
-        public string NoUrutPeriodeID { get; set; }
+        public int NoUrutPeriodeID { get; set; }
         [Display(Name = "Tanggal Input Journal")]
         public DateTime TangglInput { get; set; }
         [Display(Name = "No Bukti Journal")]
@@ -20,7 +20,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataJournalHeaderDB.Command.Creat
         [Display(Name = "Keterangan")]
         public string Keterangan { get; set; }
         [Display(Name = "Tipe Journal")]
-        public string NoIDTipeJournal { get; set; }
+        public int NoIDTipeJournal { get; set; }
       
 
         public string UserInput { get; set; }

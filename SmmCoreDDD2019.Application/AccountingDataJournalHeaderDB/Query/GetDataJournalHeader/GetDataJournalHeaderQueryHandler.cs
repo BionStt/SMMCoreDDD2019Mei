@@ -28,7 +28,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataJournalHeaderDB.Query.GetData
             var aa = await(from a in _context.AccountingDataJournalHeader
                             select new
                            {
-                                NoUrutJournalHID = a.NoUrutJournalH,
+                                NoUrutJournalHID = a.Id,
                                 DataJournalHeaders = string.Format("{0:d}", a.TanggalInput) +" - "+ a.NoBuktiJournal + " - " + a.Keterangan     
                                 
                             }).ToListAsync(cancellationToken);

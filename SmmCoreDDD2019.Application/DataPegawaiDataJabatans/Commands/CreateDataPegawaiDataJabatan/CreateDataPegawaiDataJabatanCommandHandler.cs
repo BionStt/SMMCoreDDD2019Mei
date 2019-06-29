@@ -34,9 +34,9 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataJabatans.Commands.CreateData
 
             var entity = new DataPegawaiDataJabatan
             {
-              // NoUrut = request.NoUrut,
-                IDPegawai= request.IDPegawai,
-                NoUrutJabatan= request.NoUrutJabatan,
+                // NoUrut = request.NoUrut,
+                DataPegawaiId = request.IDPegawai,
+                MasterJenisJabatanId = request.NoUrutJabatan,
                // TglMenjabat= request.TglMenjabat,
              //   TglBerhentiMenjabat= request.TglBerhentiMenjabat,
                 Keterangan = request.Keterangan
@@ -49,7 +49,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataJabatans.Commands.CreateData
 
             await _context.SaveChangesAsync(cancellationToken);
 
-           await _mediator.Publish(new DataPegawaiDataJabatanCreated { DataPegawaiDataJabatanID = entity.NoUrut.ToString() },cancellationToken);
+           await _mediator.Publish(new DataPegawaiDataJabatanCreated { DataPegawaiDataJabatanID = entity.Id.ToString() },cancellationToken);
 
             return Unit.Value;
 

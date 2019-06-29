@@ -32,7 +32,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakAsuransiDBs.Command.CreateDataKo
                 DateTime.UtcNow.Date.Month.ToString() +
                 DateTime.UtcNow.Date.Day.ToString() + Guid.NewGuid().ToString().Substring(0, 4).ToUpper() + "REGKA",
 
-                NoRegistrasiKontrakKredit = request.NoRegistrasiKontrakKredit,
+                DataKontrakKreditId = request.NoRegistrasiKontrakKredit,
                 KodeAsuransi = request.KodeAsuransi,
                 JenisAsuransi = request.JenisAsuransi,
                 TanggalMulaiAsuransi = request.TanggalMulaiAsuransi,
@@ -47,7 +47,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakAsuransiDBs.Command.CreateDataKo
 
             _context.DataKontrakAsuransi.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new DataKontrakAsuransiCreated { DataKontrakAsuransiID = entity.NoUrutDataAsuransi },cancellationToken);
+            await _mediator.Publish(new DataKontrakAsuransiCreated { DataKontrakAsuransiID = entity.Id},cancellationToken);
 
 
             return Unit.Value;

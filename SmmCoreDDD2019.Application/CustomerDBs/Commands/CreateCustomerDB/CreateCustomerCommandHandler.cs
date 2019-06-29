@@ -67,11 +67,11 @@ namespace SmmCoreDDD2019.Application.CustomerDBs.Commands.CreateCustomerDB
 
             _context.CustomerDB.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new CustomerCreated { CustomerId = entity.CustomerID });
+            await _mediator.Publish(new CustomerCreated { CustomerId = entity.Id });
 
 
             return Unit.Value;
-            //  throw new NotImplementedException();
+          
         }
     }
 }

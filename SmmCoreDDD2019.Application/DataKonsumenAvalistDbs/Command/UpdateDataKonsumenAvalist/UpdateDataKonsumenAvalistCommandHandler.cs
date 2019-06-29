@@ -24,7 +24,7 @@ namespace SmmCoreDDD2019.Application.DataKonsumenAvalistDbs.Command.UpdateDataKo
         public async Task<Unit> Handle(UpdateDataKonsumenAvalistCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.DataKonsumenAvalist
-                .SingleAsync(c => c.NoUrutKonsumen == request.NoUrutKonsumen, cancellationToken);
+                .SingleAsync(c => c.Id == request.NoUrutKonsumen, cancellationToken);
 
             if (entity == null)
             {

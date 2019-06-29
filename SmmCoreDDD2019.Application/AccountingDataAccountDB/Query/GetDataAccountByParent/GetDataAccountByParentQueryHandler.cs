@@ -30,7 +30,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Query.GetDataAccoun
                             where (a.Parent==null)
                             select new
                             {
-                                NoUrutAccountId = a.NoUrutAccountId,
+                                Id = a.Id,
                                 DataAkun = "[" + a.KodeAccount + "] - " + a.Account + " - " + Analyze(a.Kelompok) + " - " + NormalPos(a.NormalPos)
 
 

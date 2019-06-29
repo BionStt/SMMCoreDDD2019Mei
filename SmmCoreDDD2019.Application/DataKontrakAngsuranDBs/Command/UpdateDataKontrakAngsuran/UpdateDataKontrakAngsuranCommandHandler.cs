@@ -23,14 +23,14 @@ namespace SmmCoreDDD2019.Application.DataKontrakAngsuranDBs.Command.UpdateDataKo
         public  async Task<Unit> Handle(UpdateDataKontrakAngsuranCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.DataKontrakAngsuran
-               .SingleAsync(c => c.NoUrutDataAngsuran == request.NoUrutDataAngsuran, cancellationToken);
+               .SingleAsync(c => c.Id == request.NoUrutDataAngsuran, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(DataKontrakAngsuran), request.NoUrutDataAngsuran);
             }
 
-            entity.NoRegisterKontrakKredit = request.NoRegisterKontrakKredit;
+            entity.DataKontrakKreditId = request.NoRegisterKontrakKredit;
                 entity.AngsuranKe = request.AngsuranKe;
                 entity.NoKwitansi = request.NoKwitansi;
                 entity.TanggalAngsuran = request.TanggalAngsuran;

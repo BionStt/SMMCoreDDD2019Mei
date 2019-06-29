@@ -30,8 +30,8 @@ namespace SmmCoreDDD2019.Application.AccountingDataJournalDB.Command.CreateAccou
         {
             var entity = new AccountingDataJournal
             {
-                NoUrutJournalH = request.NoUrutJournalH,
-                NoUrutAccountId = request.NoUrutAccountId,
+                AccountingDataJournalHeaderId = request.AccountingDataJournalHeaderId,
+                AccountingDataAccountId = request.AccountingDataAccountId,
                 Debit= request.Debit,
                 Kredit= request.Kredit,
                 Keterangan= request.Keterangan
@@ -43,7 +43,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataJournalDB.Command.CreateAccou
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new AccountingDataJournalCreated { AccountingDataJournalID = entity.JournalID.ToString() });
+            await _mediator.Publish(new AccountingDataJournalCreated { AccountingDataJournalID = entity.Id.ToString() });
 
             return Unit.Value;
         }

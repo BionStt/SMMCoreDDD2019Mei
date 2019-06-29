@@ -12,7 +12,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakAsuransiDBs.Command.CreateDataKo
       
         public int NoUrutDataAsuransi { get; set; }
         [Display(Name = "No Registrasi Kontrak Kredit")]
-        public string NoRegistrasiKontrakKredit { get; set; }
+        public int NoRegistrasiKontrakKredit { get; set; }
         [Display(Name = "Kode Asuransi")]
         public string KodeAsuransi { get; set; }
         [Display(Name = "Jenis Asuransi")]

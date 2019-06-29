@@ -23,14 +23,14 @@ namespace SmmCoreDDD2019.Application.DataKontrakAsuransiDBs.Command.UpdateDataKo
         public async Task<Unit> Handle(UpdateDataKontrakAsuransiCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.DataKontrakAsuransi
-              .SingleAsync(c => c.NoUrutDataAsuransi == request.NoUrutDataAsuransi, cancellationToken);
+              .SingleAsync(c => c.Id == request.NoUrutDataAsuransi, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(DataKontrakAsuransi), request.NoUrutDataAsuransi);
             }
 
-            entity.NoRegistrasiKontrakKredit = request.NoRegistrasiKontrakKredit;
+            entity.DataKontrakKreditId = request.NoRegistrasiKontrakKredit;
                 entity.KodeAsuransi = request.KodeAsuransi;
                entity.JenisAsuransi = request.JenisAsuransi;
                entity.TanggalMulaiAsuransi = request.TanggalMulaiAsuransi;

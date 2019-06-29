@@ -26,16 +26,16 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataJabatans.Commands.UpdateData
         {
 
             var entity = await _context.DataPegawaiDataJabatan
-              .SingleAsync(c => c.IDPegawai == request.IDPegawai, cancellationToken);
+              .SingleAsync(c => c.DataPegawaiId == request.IDPegawai, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(DataPegawaiDataJabatan), request.IDPegawai);
             }
 
-            entity.NoUrut = request.NoUrut;
-                entity.IDPegawai = request.IDPegawai;
-                entity.NoUrutJabatan = request.NoUrutJabatan;
+         //   entity.Id = request.NoUrut;
+                entity.DataPegawaiId = request.IDPegawai;
+                entity.MasterJenisJabatanId = request.NoUrutJabatan;
                 entity.TglMenjabat = request.TglMenjabat;
                 entity.TglBerhentiMenjabat = request.TglBerhentiMenjabat;
                 entity.Keterangan = request.Keterangan;

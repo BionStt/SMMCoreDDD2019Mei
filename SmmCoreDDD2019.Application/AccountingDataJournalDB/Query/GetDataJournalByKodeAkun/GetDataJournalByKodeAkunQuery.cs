@@ -8,6 +8,6 @@ namespace SmmCoreDDD2019.Application.AccountingDataJournalDB.Query.GetDataJourna
 {
     public class GetDataJournalByKodeAkunQuery : IRequest<GetDataJournalByKodeAkunViewModel>
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
     }
 }

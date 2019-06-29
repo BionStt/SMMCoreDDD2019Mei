@@ -24,7 +24,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakKreditDBs.Command.UpdateDataKont
         public async Task<Unit> Handle(UpdateDataKontrakKreditCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.DataKontrakKredit
-               .SingleAsync(c => c.NoUrutDataKontrakKredit == request.NoUrutDataKontrakKredit, cancellationToken);
+               .SingleAsync(c => c.Id == request.NoUrutDataKontrakKredit, cancellationToken);
 
             if (entity == null)
             {
@@ -32,7 +32,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakKreditDBs.Command.UpdateDataKont
             }
 
             entity.NoRegisterKontrakKredit = request.NoRegisterKontrakKredit;
-            entity.NoRegisterSurvei = request.NoRegisterSurvei;
+            entity.DataKontrakSurveiId = request.NoRegisterSurvei;
                 entity.TanggalKontrak = request.TanggalKontrak;
               entity.PolaAngsuran = request.PolaAngsuran;
               entity.CaraBayar = request.CaraBayar;

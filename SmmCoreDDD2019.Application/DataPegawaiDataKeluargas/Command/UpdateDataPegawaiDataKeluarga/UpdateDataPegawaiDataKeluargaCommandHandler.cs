@@ -28,15 +28,15 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataKeluargas.Command.UpdateData
         {
 
             var entity = await _context.DataPegawaiDataKeluarga
-              .SingleAsync(c => c.IDPegawai == request.IDPegawai, cancellationToken);
+              .SingleAsync(c => c.DataPegawaiId == request.IDPegawai, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(DataPegawaiDataKeluarga), request.IDPegawai);
             }
 
-            entity.NoUrut = request.NoUrut;
-            entity.IDPegawai = request.IDPegawai;
+          //  entity.NoUrut = request.NoUrut;
+            entity.DataPegawaiId = request.IDPegawai;
             entity.NamaK = request.NamaK;
             entity.AlamatK = request.AlamatK;
             entity.KelurahanK = request.KelurahanK;

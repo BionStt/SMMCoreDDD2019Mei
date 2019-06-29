@@ -40,7 +40,7 @@ namespace SmmCoreDDD2019.Application.AccountingTipeJournalDB.Command.CreateAccou
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new AccountingTipeJournalCreated { AccountingTipeJournalID = entity.NoIDTipeJournal.ToString() });
+            await _mediator.Publish(new AccountingTipeJournalCreated { AccountingTipeJournalID = entity.Id.ToString() });
 
             return Unit.Value;
         }

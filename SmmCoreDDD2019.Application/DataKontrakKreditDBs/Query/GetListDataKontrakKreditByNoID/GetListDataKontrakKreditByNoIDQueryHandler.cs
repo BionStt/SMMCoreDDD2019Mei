@@ -25,14 +25,14 @@ namespace SmmCoreDDD2019.Application.DataKontrakKreditDBs.Query.GetListDataKontr
         public async Task<GetListDataKontrakKreditByNoIDViewModel> Handle(GetListDataKontrakKreditByNoIDQuery request, CancellationToken cancellationToken)
         {
             var aa = await (from a in _context.DataKontrakAngsuran
-                            join b in _context.DataKontrakKredit on a.NoRegisterKontrakKredit equals b.NoUrutDataKontrakKredit.ToString()
-                            join c in _context.DataKontrakSurvei on b.NoRegisterSurvei equals c.NoUrutDataSurvei.ToString()
-                            join d in _context.DataKonsumenAvalist on c.NoRegistrasiKonsumen equals d.NoUrutKonsumen.ToString()
-                            where b.NoUrutDataKontrakKredit == Int32.Parse(request.Id)
+                            join b in _context.DataKontrakKredit on a.DataKontrakKreditId equals b.Id
+                            join c in _context.DataKontrakSurvei on b.DataKontrakSurveiId equals c.Id
+                            join d in _context.DataKonsumenAvalist on c.DataKonsumenAvalistId equals d.Id
+                            where b.Id == Int32.Parse(request.Id)
 
                             select new
                             {
-                                NoUrutDataKontrakKredit1 = b.NoUrutDataKontrakKredit,
+                                NoUrutDataKontrakKredit1 = b.Id,
                                 NamaKonsumen1 = d.NamaKonsumen,
                                 NamaPenjamin1 = d.NamaPenjamin,
                                 AlamatRumah = string.Format("{0} Kel.{1} Kec.{2} Kota {3} Propinsi {4} Kode Pos:{5}", d.AlamatTinggalK, d.KelurahanK, d.KecamatanK, d.KotaK, d.PropinsiK, d.KodePosTinggalK),

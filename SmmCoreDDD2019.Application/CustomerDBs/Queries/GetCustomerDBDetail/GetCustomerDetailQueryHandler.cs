@@ -33,7 +33,7 @@ namespace SmmCoreDDD2019.Application.CustomerDBs.Queries.GetCustomerDBDetail
 
             return new CustomerDetailModel
             {
-               CustomerID = entity.CustomerID,
+               CustomerID = entity.Id,
                 Alamat = entity.Alamat,
                 AlamatKirim = entity.AlamatKirim,
                 Faks = entity.Faks,

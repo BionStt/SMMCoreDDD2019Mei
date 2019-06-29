@@ -15,7 +15,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakSurveiDBs.Command.UpdateDataKont
         //[Display(Name = "Tanggal Sur")]
         //public DateTime? TanggalSurvei { get; set; }
         [Display(Name = "No Regisrasi Konsumen")]
-        public string NoRegistrasiKonsumen { get; set; }
+        public int NoRegistrasiKonsumen { get; set; }
         [Display(Name = "Karakter")]
         public string Karakter { get; set; }
         [Display(Name = "Kerjasama")]
@@ -49,7 +49,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakSurveiDBs.Command.UpdateDataKont
         [Display(Name = "Pernah Kredit ?")]
         public string PernahKredit { get; set; }
         [Display(Name = "Nama Barang")]
-        public string NoUrutMasterBarang { get; set; }
+        public int NoUrutMasterBarang { get; set; }
         [Display(Name = "Fasilitas Kredit Bank?")]
         public string FasilitasKreditBank { get; set; }
         [Display(Name = "Jenis Fasilitas Kredit Bank")]

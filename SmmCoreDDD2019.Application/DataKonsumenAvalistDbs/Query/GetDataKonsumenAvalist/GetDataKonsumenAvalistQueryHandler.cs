@@ -24,8 +24,8 @@ namespace SmmCoreDDD2019.Application.DataKonsumenAvalistDbs.Query.GetDataKonsume
         public async Task<GetDataKonsumenAvalistViewModel> Handle(GetDataKonsumenAvalistQuery request, CancellationToken cancellationToken)
         {
             var aa = await (from a in _context.DataKonsumenAvalist
-                            where _context.DataKontrakSurvei.All(x=>x.NoRegistrasiKonsumen!=a.NoUrutKonsumen.ToString())
-                           select new { NoCustomerAvalist = a.NoUrutKonsumen, NamaKonsumen = string.Format("{0} - {1} - {2}", a.NamaKonsumen, a.NamaPenjamin, a.NoHandphone) }
+                            where _context.DataKontrakSurvei.All(x=>x.DataKonsumenAvalistId != a.Id)
+                           select new { NoCustomerAvalist = a.Id, NamaKonsumen = string.Format("{0} - {1} - {2}", a.NamaKonsumen, a.NamaPenjamin, a.NoHandphone) }
 
                 ).OrderByDescending(x => x.NoCustomerAvalist).ToListAsync(cancellationToken);
             var model = new GetDataKonsumenAvalistViewModel

@@ -46,7 +46,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Command.CreateAccou
                 Account = request.Account,
                 NormalPos = request.NormalPos,
                 Kelompok = request.Kelompok,
-                MataUangID= request.MataUangID,
+                AccountingDataMataUangId= request.AccountingDataMataUangId,
               //  Parent = request.Parent
               Parent= NilaiParent
             };
@@ -55,7 +55,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Command.CreateAccou
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new AccountingDataAccountCreated { AccountingDataAccountID = entity.NoUrutAccountId.ToString() });
+            await _mediator.Publish(new AccountingDataAccountCreated { AccountingDataAccountID = entity.Id.ToString() });
 
             return Unit.Value;
         }

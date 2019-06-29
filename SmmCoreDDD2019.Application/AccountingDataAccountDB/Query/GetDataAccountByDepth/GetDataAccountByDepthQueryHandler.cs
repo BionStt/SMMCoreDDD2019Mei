@@ -26,11 +26,11 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Query.GetDataAccoun
         {
             var aa = (from a in _context.AccountingDataAccount
                       from b in _context.AccountingDataAccount
-                      where a.Parent == b.NoUrutAccountId.ToString() && (a.Depth==3)
+                      where a.Parent == b.Id.ToString() && (a.Depth==3)
                         
                       select new
                       {
-                          NoUrutAccountId =  a.NoUrutAccountId,
+                          Id =  a.Id,
                           Account =   b.Account,
                           KodeAccount =   a.KodeAccount,
                           DataAkun1= "[" + a.KodeAccount + "] - " + a.Account + " - " + Analyze(b.Kelompok) + " - " + NormalPos(b.NormalPos),

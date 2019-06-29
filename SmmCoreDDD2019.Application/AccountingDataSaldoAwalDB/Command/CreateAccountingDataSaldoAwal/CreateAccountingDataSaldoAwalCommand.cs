@@ -18,9 +18,9 @@ namespace SmmCoreDDD2019.Application.AccountingDataSaldoAwalDB.Command.CreateAcc
 
         public DateTime TanggalInput { get; set; }
         [Display(Name = "Periode Pembukuan")]
-        public string NoUrutPeriodeID { get; set; }
+        public int NoUrutPeriodeID { get; set; }
         [Display(Name = "Nama Akun")]
-        public string NoUrutAccountId { get; set; }
+        public int NoUrutAccountId { get; set; }
         [Display(Name = "Debet")]
         public Decimal Debet { get; set; }
         [Display(Name = "Kredit")]
@@ -29,7 +29,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataSaldoAwalDB.Command.CreateAcc
         public Decimal Saldo { get; set; }
         [Display(Name = "Mata Uang")]
 
-        public string MataUangID { get; set; }
+        public int MataUangID { get; set; }
         [Display(Name = "Nilai Kurs")]
         public Decimal NilaiKurs { get; set; }
         [Display(Name = "User Input")]

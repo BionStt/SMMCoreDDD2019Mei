@@ -25,12 +25,12 @@ namespace SmmCoreDDD2019.Application.DataKontrakKreditDBs.Query.GetListDataKontr
         public async Task<GetListDataKontrakKreditViewModel> Handle(GetListDataKontrakKreditQuery request, CancellationToken cancellationToken)
         {
             var aa = await (from a in _context.DataKontrakKredit
-                            join b in _context.DataKontrakSurvei on a.NoRegisterSurvei equals b.NoUrutDataSurvei.ToString()
-                            join c in _context.DataKonsumenAvalist on b.NoRegistrasiKonsumen equals c.NoUrutKonsumen.ToString()
-                            join d in _context.MasterBarangDB on b.NoUrutMasterBarang equals d.NoUrutTypeKendaraan.ToString()
+                            join b in _context.DataKontrakSurvei on a.DataKontrakSurveiId equals b.Id
+                            join c in _context.DataKonsumenAvalist on b.DataKonsumenAvalistId equals c.Id
+                            join d in _context.MasterBarangDB on b.MasterBarangDBId equals d.Id
                             select new
                             {
-                                NoUrutDataKontrakKredit1 = a.NoUrutDataKontrakKredit,
+                                NoUrutDataKontrakKredit1 = a.Id,
                                 DataKontrakKredit = string.Format("{0} - {1} - {2} - {3}", a.NoRegisterKontrakKredit, c.NamaKonsumen, c.NamaPenjamin, d.NamaBarang) }
 
             ).OrderByDescending(x=>x.NoUrutDataKontrakKredit1).ToListAsync(cancellationToken);

@@ -32,7 +32,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataKeluargas.Command.CreateData
             var entity = new DataPegawaiDataKeluarga
             {
               //  NoUrut = request.NoUrut,
-                IDPegawai= request.IDPegawai,
+                DataPegawaiId= request.IDPegawai,
                 NamaK= request.NamaK,
                 AlamatK= request.AlamatK,
                 KelurahanK= request.KelurahanK,
@@ -59,7 +59,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataKeluargas.Command.CreateData
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new DataPegawaiDataKeluargaCreated { DataPegawaiDataKeluargaID = entity.NoUrut.ToString() },cancellationToken);
+            await _mediator.Publish(new DataPegawaiDataKeluargaCreated { DataPegawaiDataKeluargaID = entity.Id.ToString() },cancellationToken);
 
             return Unit.Value;
 

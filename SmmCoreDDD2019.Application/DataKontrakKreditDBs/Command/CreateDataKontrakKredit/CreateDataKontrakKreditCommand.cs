@@ -13,7 +13,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakKreditDBs.Command.CreateDataKont
         //[Display(Name = "No Register Kontrak Kredit")]
         //public string NoRegisterKontrakKredit { get; set; }
         [Display(Name = "No Register Survei")]
-        public string NoRegisterSurvei { get; set; }
+        public int NoRegisterSurvei { get; set; }
         [Display(Name = "Tanggal Kontrak"), DataType(DataType.Text)]
         public DateTime? TanggalKontrak { get; set; }
         [Display(Name = "Pola Angsuran")]

@@ -13,9 +13,9 @@ namespace SmmCoreDDD2019.Application.AccountingDataJournalDB.Command.CreateAccou
      
         //  public int JournalID { get; set; }
         [Display(Name = "Journal Header")]
-        public string NoUrutJournalH { get; set; }
+        public int AccountingDataJournalHeaderId { get; set; }
         [Display(Name = "Nama Akun")]
-        public string NoUrutAccountId { get; set; }
+        public int AccountingDataAccountId { get; set; }
         [Display(Name = "Debit")]
         public Decimal Debit { get; set; }
         [Display(Name = "Kredit")]

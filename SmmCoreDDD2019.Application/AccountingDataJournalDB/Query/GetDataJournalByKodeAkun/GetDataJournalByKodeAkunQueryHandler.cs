@@ -24,14 +24,14 @@ namespace SmmCoreDDD2019.Application.AccountingDataJournalDB.Query.GetDataJourna
         public async Task<GetDataJournalByKodeAkunViewModel> Handle(GetDataJournalByKodeAkunQuery request, CancellationToken cancellationToken)
         {
             var aa = await(from a in _context.AccountingDataAccount
-                            join b in _context.AccountingDataJournal on a.NoUrutAccountId equals Int32.Parse(b.NoUrutAccountId)
-                           join c in _context.AccountingDataJournalHeader on b.NoUrutJournalH equals c.NoUrutJournalH.ToString()
-                           where  b.NoUrutAccountId == request.Id
+                            join b in _context.AccountingDataJournal on a.Id equals b.AccountingDataAccountId
+                           join c in _context.AccountingDataJournalHeader on b.AccountingDataJournalHeaderId equals c.Id
+                           where  b.AccountingDataAccountId == request.Id
                       
                            select new
                            {
-                               NoUrutAccountId = a.NoUrutAccountId,
-                               NoUrutJournalHeaderId = c.NoUrutJournalH,
+                               NoUrutAccountId = a.Id,
+                               NoUrutJournalHeaderId = c.Id,
                                DataAkun = a.KodeAccount + " - " + a.Account,
                                Debit1 = b.Debit,
                                Kredit1 = b.Kredit,

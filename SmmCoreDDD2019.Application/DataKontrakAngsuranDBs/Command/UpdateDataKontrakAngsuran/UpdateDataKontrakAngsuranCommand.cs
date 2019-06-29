@@ -11,7 +11,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakAngsuranDBs.Command.UpdateDataKo
     {
         public int NoUrutDataAngsuran { get; set; }
         [Display(Name = "No Register Kontrak Kredit")]
-        public string NoRegisterKontrakKredit { get; set; }
+        public int NoRegisterKontrakKredit { get; set; }
         [Display(Name = "Angsuran Ke")]
         public int? AngsuranKe { get; set; }
         [Display(Name = "No Kwitansi")]

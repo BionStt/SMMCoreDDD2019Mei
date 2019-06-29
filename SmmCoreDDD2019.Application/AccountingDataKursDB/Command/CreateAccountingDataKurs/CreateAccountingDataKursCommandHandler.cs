@@ -43,7 +43,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataKursDB.Command.CreateAccounti
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new AccountingDataKursCreated { AccountingDataKursID = entity.NoUrutKursID.ToString() });
+            await _mediator.Publish(new AccountingDataKursCreated { AccountingDataKursID = entity.Id.ToString() });
 
             return Unit.Value;
         }

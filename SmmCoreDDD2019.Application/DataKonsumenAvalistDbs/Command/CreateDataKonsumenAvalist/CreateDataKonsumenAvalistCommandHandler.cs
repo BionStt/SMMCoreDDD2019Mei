@@ -18,9 +18,7 @@ namespace SmmCoreDDD2019.Application.DataKonsumenAvalistDbs.Command.CreateDataKo
         private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
-        public CreateDataKonsumenAvalistCommandHandler(ISMMCoreDDD2019DbContext context,
-            INotificationService notificationService,
-                IMediator mediator)
+        public CreateDataKonsumenAvalistCommandHandler(ISMMCoreDDD2019DbContext context,INotificationService notificationService,IMediator mediator)
         {
             _context = context;
             _notificationService = notificationService;
@@ -162,7 +160,7 @@ namespace SmmCoreDDD2019.Application.DataKonsumenAvalistDbs.Command.CreateDataKo
 
             _context.DataKonsumenAvalist.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new DataKonsumenAvalistCreated { DataKonsumenAvalistID = entity.NoUrutKonsumen },cancellationToken);
+            await _mediator.Publish(new DataKonsumenAvalistCreated { DataKonsumenAvalistID = entity.Id },cancellationToken);
             return Unit.Value;
         }
     }

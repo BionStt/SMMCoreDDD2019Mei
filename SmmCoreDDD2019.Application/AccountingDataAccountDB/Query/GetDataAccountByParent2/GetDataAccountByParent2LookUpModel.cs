@@ -11,13 +11,13 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Query.GetDataAccoun
 {
     public class GetDataAccountByParent2LookUpModel : IHaveCustomMapping
     {
-        public int NoUrutAccountId { get; set; }
+        public int Id { get; set; }
         public string DataAkun { get; set; }
 
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<AccountingDataAccount, GetDataAccountByParent2LookUpModel>()
-               .ForMember(cDTO => cDTO.NoUrutAccountId, opt => opt.MapFrom(c => c.NoUrutAccountId));
+               .ForMember(cDTO => cDTO.Id, opt => opt.MapFrom(c => c.Id));
             // .ForMember(cDTO => cDTO.KodeAccount, opt => opt.MapFrom(c => c.KodeAccount))
             //   .ForMember(cDTO => cDTO.Account, opt => opt.MapFrom(c => c.Account))
             //     .ForMember(cDTO => cDTO.NormalPos, opt => opt.MapFrom(c => c.NormalPos))

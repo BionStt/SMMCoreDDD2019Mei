@@ -30,11 +30,11 @@ namespace SmmCoreDDD2019.Application.AccountingDataJournalHeaderDB.Command.Creat
         {
             var entity = new AccountingDataJournalHeader
             {
-                NoUrutPeriodeID = request.NoUrutPeriodeID,
+                AccountingDataPeriodeId = request.NoUrutPeriodeID,
                 TanggalInput = request.TangglInput,
               //  NoBuktiJournal = request.NoBuktiJournal,
                 Keterangan= request.Keterangan,
-                NoIDTipeJournal = request.NoIDTipeJournal,
+                AccountingTipeJournalId = request.NoIDTipeJournal,
                 UserInput= request.UserInput
 
             };
@@ -42,7 +42,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataJournalHeaderDB.Command.Creat
             _context.AccountingDataJournalHeader.Add(entity);
             // DENGAN CANCELTOKEN MALAH GAK INPUT
             await _context.SaveChangesAsync(cancellationToken);
-            int KodeIdHeader = entity.NoUrutJournalH;
+            int KodeIdHeader = entity.Id;
             int thn = entity.TanggalInput.Year;
             int bln = entity.TanggalInput.Month;
             string Isi1 = string.Empty;
@@ -60,16 +60,16 @@ namespace SmmCoreDDD2019.Application.AccountingDataJournalHeaderDB.Command.Creat
             else if (bln == 11) { Isi1 = "NBJ/" + KodeIdHeader + "/XI/" + thn; }
             else if (bln == 12) { Isi1 = "NBJ/" + KodeIdHeader + "/XII/" + thn; }
 
-            var entity2 = await _context.AccountingDataJournalHeader.FindAsync(entity.NoUrutJournalH);
+            var entity2 = await _context.AccountingDataJournalHeader.FindAsync(entity.Id);
             if (entity2 == null)
             {
-                throw new NotFoundException(nameof(AccountingDataJournalHeader), entity.NoUrutJournalH);
+                throw new NotFoundException(nameof(AccountingDataJournalHeader), entity.Id);
             }
             entity2.NoBuktiJournal = Isi1;
             _context.AccountingDataJournalHeader.Update(entity2);
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new AccountingDataJournalHeaderCreated { AccountingDataJournalHeaderID = entity.NoUrutJournalH.ToString() });
+            await _mediator.Publish(new AccountingDataJournalHeaderCreated { AccountingDataJournalHeaderID = entity.Id.ToString() });
 
             return Unit.Value;
         }

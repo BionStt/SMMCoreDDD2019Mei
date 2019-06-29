@@ -27,7 +27,7 @@ namespace SmmCoreDDD2019.Application.CustomerDBs.Queries.GetCustomerByID
         {
             return new GetCustomerByIDViewModel
             {
-                CustomerDs = await _context.CustomerDB.Where(x => x.CustomerID == Int32.Parse(request.Id)).ProjectTo<GetCustomerByIDLookUpModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken)
+                CustomerDs = await _context.CustomerDB.Where(x => x.Id == Int32.Parse(request.Id)).ProjectTo<GetCustomerByIDLookUpModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken)
             };
         }
     }

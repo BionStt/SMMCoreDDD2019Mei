@@ -30,12 +30,12 @@ namespace SmmCoreDDD2019.Application.AccountingDataSaldoAwalDB.Command.CreateAcc
             var entity = new AccountingDataSaldoAwal
             {
                 //  KodeP = request.KodeP,
-                NoUrutPeriodeID = request.NoUrutPeriodeID,
-                NoUrutAccountId = request.NoUrutAccountId,
+                AccountingDataPeriodeId = request.NoUrutPeriodeID,
+                AccountingDataAccountId = request.NoUrutAccountId,
                 Debet = request.Debet,
                 Kredit= request.Kredit,
                 Saldo = request.Saldo,
-                MataUangID = request.MataUangID,
+                AccountingDataMataUangId = request.MataUangID,
                 UserInput = request.UserInput,
                 NilaiKurs = request.NilaiKurs,
                 TanggalInput = request.TanggalInput
@@ -48,7 +48,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataSaldoAwalDB.Command.CreateAcc
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new AccountingDataSaldoAwalCreated { AccountingDataSaldoAwalID = entity.NoUrutSaldoAwalID.ToString() });
+            await _mediator.Publish(new AccountingDataSaldoAwalCreated { AccountingDataSaldoAwalID = entity.Id.ToString() });
 
             return Unit.Value;
         }

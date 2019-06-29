@@ -25,7 +25,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Command.CreateAccou
         [Display(Name = "Kelompok")]
         public string Kelompok { get; set; }
         [Display(Name = "Mata Uang")]
-        public string MataUangID { get; set; }
+        public int AccountingDataMataUangId { get; set; }
 
 
     }

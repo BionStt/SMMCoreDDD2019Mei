@@ -41,7 +41,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataMataUangDB.Command.CreateAcco
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new AccountingDataMataUangCreated { AccountingDataMataUangID = entity.MataUangID.ToString() });
+            await _mediator.Publish(new AccountingDataMataUangCreated { AccountingDataMataUangID = entity.Id.ToString() });
 
             return Unit.Value;
 

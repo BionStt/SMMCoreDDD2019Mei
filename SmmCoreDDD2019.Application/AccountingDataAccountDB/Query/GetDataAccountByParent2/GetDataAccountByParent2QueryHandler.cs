@@ -29,7 +29,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Query.GetDataAccoun
                            orderby Child.KodeAccount
                            select new
                            {
-                               NoUrutAccountId = Child.NoUrutAccountId,
+                               NoUrutAccountId = Child.Id,
                                DataAkun = "[" + Child.KodeAccount + "] - " + Child.Account + " - " + Analyze(Child.Kelompok) + " - " + NormalPos(Child.NormalPos)
 
                            }).ToListAsync(cancellationToken);

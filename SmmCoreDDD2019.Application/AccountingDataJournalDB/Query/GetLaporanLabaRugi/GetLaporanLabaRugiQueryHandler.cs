@@ -26,11 +26,11 @@ namespace SmmCoreDDD2019.Application.AccountingDataJournalDB.Query.GetLaporanLab
 
 
             var aa = await(from a1 in _context.AccountingDataAccount
-                           join b2 in _context.AccountingDataAccount on a1.Parent equals b2.NoUrutAccountId.ToString()
-                           join c in _context.AccountingDataAccount on a1.NoUrutAccountId equals Int32.Parse( c.Parent)
-                           join e in _context.AccountingDataAccount on b2.Parent equals e.NoUrutAccountId.ToString()
-                           from d in _context.AccountingDataJournal.Where(x=>x.NoUrutAccountId==c.NoUrutAccountId.ToString()).DefaultIfEmpty()
-                           join f in _context.AccountingDataJournalHeader on d.NoUrutJournalH equals f.NoUrutJournalH.ToString()
+                           join b2 in _context.AccountingDataAccount on a1.Parent equals b2.Id.ToString()
+                           join c in _context.AccountingDataAccount on a1.Id equals Int32.Parse( c.Parent)
+                           join e in _context.AccountingDataAccount on b2.Parent equals e.Id.ToString()
+                           from d in _context.AccountingDataJournal.Where(x=>x.AccountingDataAccountId== c.Id).DefaultIfEmpty()
+                           join f in _context.AccountingDataJournalHeader on d.AccountingDataJournalHeaderId equals f.Id
                            where b2.Kelompok=="L"  && (f.TanggalInput >= request.Tanggal1 && f.TanggalInput <=request.Tanggal2)
                            orderby a1.KodeAccount,c.KodeAccount,a1.Depth
                            let nm = c.KodeAccount + " - " + c.Account

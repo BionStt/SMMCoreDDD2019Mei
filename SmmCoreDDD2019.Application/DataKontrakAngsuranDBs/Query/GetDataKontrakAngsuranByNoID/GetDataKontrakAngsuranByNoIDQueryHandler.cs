@@ -25,13 +25,13 @@ namespace SmmCoreDDD2019.Application.DataKontrakAngsuranDBs.Query.GetDataKontrak
         public async Task<GetDataKontrakAngsuranByNoIDViewModel> Handle(GetDataKontrakAngsuranByNoIDQuery request, CancellationToken cancellationToken)
         {
             var aa = await (from a in _context.DataKontrakAngsuran
-                            join b in _context.DataKontrakKredit on a.NoRegisterKontrakKredit equals b.NoUrutDataKontrakKredit.ToString()
-                            join c in _context.DataKontrakSurvei on b.NoRegisterSurvei equals c.NoUrutDataSurvei.ToString()
-                            where b.NoUrutDataKontrakKredit == Int32.Parse(request.Id)
+                            join b in _context.DataKontrakKredit on a.DataKontrakKreditId equals b.Id
+                            join c in _context.DataKontrakSurvei on b.DataKontrakSurveiId equals c.Id
+                            where b.Id == Int32.Parse(request.Id)
                       
                            select new
                            {
-                               NoUrutDataKontrakKredit1 = b.NoUrutDataKontrakKredit,
+                               NoUrutDataKontrakKredit1 = b.Id,
                                AngsuranKeA = a.AngsuranKe,
                                TanggalAngsuran1= a.TanggalAngsuran,
                                AngsuranPerBulan= a.Angsuran,
