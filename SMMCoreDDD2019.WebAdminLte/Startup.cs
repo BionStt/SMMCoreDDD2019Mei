@@ -500,15 +500,23 @@ namespace SMMCoreDDD2019.WebAdminLte
             //});
 
             // Add MediatR
-            var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
-            services.AddMediatR(Assembly1a);
-
+             var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
+                services.AddMediatR(Assembly1a);
+            services.AddMediatR(typeof(CreateDataPerusahaanStrukturJabatanCommand).GetTypeInfo().Assembly);
+            // services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
             //var queryHandlers = Assembly1a.GetExportedTypes().Where(t => t.Name.EndsWith("Handler"));
             //foreach (var handler in queryHandlers)
             //{
             //    services.AddMediatR(handler.GetTypeInfo().Assembly);
             //}
 
+            //var queryHandlers1 = typeof(Startup).Assembly.GetTypes()
+            // .Where(t => t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>)));
+
+            //foreach (var handler in queryHandlers)
+            //{
+            //    services.AddScoped(handler.GetInterfaces().First(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IQueryHandler<,>)), handler);
+            //}
 
 
 

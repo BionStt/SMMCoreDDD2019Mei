@@ -1,4 +1,15 @@
-﻿   var builder = new ContainerBuilder();
+﻿       var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
+            var A1 = Assembly1a.GetTypes().Where(t => t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequest)));
+            foreach (var handler in A1)
+            {
+                services.AddTransient(handler.GetInterfaces().First(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequest)), handler);
+               
+            }
+
+
+            services.AddMediatR(Assembly1a);
+  
+  var builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly).AsImplementedInterfaces();
 
             var mediatrOpenTypes = new[]
