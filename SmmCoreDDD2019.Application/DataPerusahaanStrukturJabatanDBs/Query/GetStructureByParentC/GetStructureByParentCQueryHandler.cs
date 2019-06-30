@@ -29,7 +29,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetS
                             where (a.Parent == null)
                             select new
                             {
-                                NoUrutStrukturID = a.NoUrutStrukturID,
+                                NoUrutStrukturID = a.Id,
                                 DataAkun1 = "[" + a.KodeStruktur + "] - " + a.NamaStrukturJabatan
                             })
                           // .ProjectTo<GetStructureByParentLookUpModel>(_mapper.ConfigurationProvider)

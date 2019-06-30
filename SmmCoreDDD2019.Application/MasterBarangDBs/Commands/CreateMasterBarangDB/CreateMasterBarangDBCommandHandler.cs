@@ -47,7 +47,7 @@ namespace SmmCoreDDD2019.Application.MasterBarangDBs.Commands.CreateMasterBarang
 
             _context.MasterBarangDB.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-             await _mediator.Publish(new CreateMasterBarangDBCreated { MasterBarangDBID = entity.NoUrutTypeKendaraan.ToString() } );
+             await _mediator.Publish(new CreateMasterBarangDBCreated { MasterBarangDBID = entity.Id.ToString() } );
             return Unit.Value;
          
         }

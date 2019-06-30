@@ -29,12 +29,12 @@ namespace SmmCoreDDD2019.Application.PembelianDetails.Query.GetListPembelianDeta
             {
 
             var aa = await (from a in _context.Pembelian
-                            join b in _context.PembelianDetail on a.KodeBeli equals b.KodeBeli
-                            join c in _context.MasterBarangDB on b.KodeBrg equals c.NoUrutTypeKendaraan
+                            join b in _context.PembelianDetail on a.Id equals b.PembelianId
+                            join c in _context.MasterBarangDB on b.MasterBarangDBId equals c.Id
                           //  join d in _context.StokUnit on b.KodeBeliDetail equals d.KodeBeliDetail
-                               where a.KodeBeli == Int32.Parse(request.Id)
+                               where a.Id == Int32.Parse(request.Id)
                             select new {
-                                NoUrutPembelianDetail = b.KodeBeliDetail,
+                                NoUrutPembelianDetail = b.Id,
                                 NamaBarang1 = c.NamaBarang,
                                 HargaOff = string.Format("{0:c}",c.Harga),
                                 BBN1 = string.Format("{0:c}",c.BBN),
@@ -42,7 +42,7 @@ namespace SmmCoreDDD2019.Application.PembelianDetails.Query.GetListPembelianDeta
                                 Diskon =string.Format("{0:c}",b.Diskon),
                                 SellIn =string.Format("{0:c}",b.SellIn),
                                 Qty1 =b.Qty ,
-                                Count1=_context.StokUnit.Count(x=>x.KodeBeliDetail==b.KodeBeliDetail)
+                                Count1=_context.StokUnit.Count(x=>x.PembelianDetailId==b.Id)
                             }
 
                ).ToListAsync(cancellationToken);

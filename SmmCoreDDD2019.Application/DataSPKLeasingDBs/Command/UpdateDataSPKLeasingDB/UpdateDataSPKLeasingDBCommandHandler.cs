@@ -24,7 +24,7 @@ namespace SmmCoreDDD2019.Application.DataSPKLeasingDBs.Command.UpdateDataSPKLeas
         public async Task<Unit> Handle(UpdateDataSPKLeasingDBCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.DataSPKLeasingDB
-              .SingleAsync(c => c.NoUrut == request.NoUrut, cancellationToken);
+              .SingleAsync(c => c.Id == request.NoUrut, cancellationToken);
 
             if (entity == null)
             {
@@ -32,16 +32,16 @@ namespace SmmCoreDDD2019.Application.DataSPKLeasingDBs.Command.UpdateDataSPKLeas
             }
 
     
-               entity.NoUrut = request.NoUrut;
+              // entity.NoUrut = request.NoUrut;
                 entity.Angsuran = request.Angsuran;
-                entity.NoUrutLeasingCabang = request.NoUrutLeasingCabang;
+                entity.MasterLeasingCabangDBId = request.NoUrutLeasingCabang;
                 entity.Mediator = request.Mediator;
                 entity.NamaCmo = request.NamaCmo;
-                entity.NoUrutKategoriBayaran = request.NoUrutKategoriBayaran;
+                entity.MasterKategoriBayaranId = request.NoUrutKategoriBayaran;
 
-                entity.NoUrutKategoriPenjualan = request.NoUrutKategoriPenjualan;
+                entity.MasterKategoriPenjualanId = request.NoUrutKategoriPenjualan;
                 entity.NoUrutSales = request.NoUrutSales;
-                entity.NoUrutSPKBaru = request.NoUrutSPKBaru;
+                entity.DataSPKBaruDBId = request.NoUrutSPKBaru;
                 entity.Tenor = request.Tenor;
                 entity.TglSurvei = request.TglSurvei;
 

@@ -15,7 +15,7 @@ namespace SmmCoreDDD2019.Application.Penjualans.Query.GetNamaPenjualanFaktur
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<PenjualanDetail, GetNamaPenjualanFakturLookUpModel>()
-             .ForMember(cDTO => cDTO.NoPenjualanDetail, opt => opt.MapFrom(c => c.NoPenjualanDetail));
+             .ForMember(cDTO => cDTO.NoPenjualanDetail, opt => opt.MapFrom(c => c.Id));
             //  .ForMember(cDTO => cDTO.NamaPemesan, opt => opt.MapFrom(c => c.NamaPemesan));
 
         }

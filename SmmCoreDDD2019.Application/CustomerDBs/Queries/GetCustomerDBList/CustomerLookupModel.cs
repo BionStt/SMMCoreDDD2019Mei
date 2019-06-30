@@ -15,7 +15,7 @@ namespace SmmCoreDDD2019.Application.CustomerDBs.Queries.GetCustomerDBList
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<CustomerDB, CustomerLookupModel>()
-                .ForMember(cDTO => cDTO.Id, opt => opt.MapFrom(c => c.CustomerID))
+                .ForMember(cDTO => cDTO.Id, opt => opt.MapFrom(c => c.Id))
                 .ForMember(cDTO => cDTO.Name, opt => opt.MapFrom(c => c.Nama));
         }
     }

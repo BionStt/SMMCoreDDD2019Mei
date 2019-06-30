@@ -16,7 +16,7 @@ namespace SmmCoreDDD2019.Application.DataKonsumenAvalistDbs.Query.GetDataKonsume
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<DataKonsumenAvalist, GetDataKonsumenAvalistLookUpModel>()
-             .ForMember(cDTO => cDTO.NoCustomerAvalist, opt => opt.MapFrom(c => c.NoUrutKonsumen));
+             .ForMember(cDTO => cDTO.NoCustomerAvalist, opt => opt.MapFrom(c => c.Id));
              //.ForMember(cDTO => cDTO.NamaKonsumen, opt => opt.MapFrom(c => c.nama));
             //  .ForMember(cDTO => cDTO.NamaPembelian, opt => opt.MapFrom(c => string.Format("{0} - {1:d} - {2}", c.KodeBeli, c.TglBeli, c.Idsupplier)));
 

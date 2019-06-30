@@ -31,7 +31,7 @@ namespace SmmCoreDDD2019.Application.PenjualanPiutangDB.Command.CreatePenjualanP
             var entity = new PenjualanPiutang
             {
                 TanggalLunas = request.TanggalLunas,
-                KodePenjualanDetail = request.KodePenjualanDetail,
+                PenjualanDetailId = request.KodePenjualanDetail,
                 Keterangan = request.Keterangan,
              
 
@@ -39,7 +39,7 @@ namespace SmmCoreDDD2019.Application.PenjualanPiutangDB.Command.CreatePenjualanP
 
             _context.PenjualanPiutang.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new PenjualanPiutangCreated { PenjualanPiutangID = entity.KodePenjualanDetail.ToString() },cancellationToken);
+            await _mediator.Publish(new PenjualanPiutangCreated { PenjualanPiutangID = entity.Id.ToString() },cancellationToken);
             return Unit.Value;
         }
     }

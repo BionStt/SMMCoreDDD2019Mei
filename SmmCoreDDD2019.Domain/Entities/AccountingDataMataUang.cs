@@ -15,7 +15,7 @@ namespace SmmCoreDDD2019.Domain.Entities
 
         public AccountingDataAccount AccountingDataAccount { get; set; }
 
-        public AccountingDataSaldoAwal AccountingDataSaldoAwal { get;set }
+        public AccountingDataSaldoAwal AccountingDataSaldoAwal { get; set; }
 
 
     }

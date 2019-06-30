@@ -29,8 +29,8 @@ namespace SmmCoreDDD2019.Application.PenjualanDetails.Command.CreatePejualanDeta
         {
             var entity = new PenjualanDetail
             {
-                KodePenjualan = request.KodePenjualan,
-                NoUrutSO= request.NoUrutSO,
+                PenjualanId = request.KodePenjualan,
+                StokUnitId= request.NoUrutSO,
                 OffTheRoad= request.OffTheRoad,
                 BBN= request.BBN,
                 HargaOTR= request.HargaOTR,
@@ -50,7 +50,7 @@ namespace SmmCoreDDD2019.Application.PenjualanDetails.Command.CreatePejualanDeta
 
             _context.PenjualanDetail.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new PenjualanDetailCreated { PenjualanDetailID = entity.NoPenjualanDetail.ToString() },cancellationToken);
+            await _mediator.Publish(new PenjualanDetailCreated { PenjualanDetailID = entity.Id.ToString() },cancellationToken);
             return Unit.Value;
         }
     }

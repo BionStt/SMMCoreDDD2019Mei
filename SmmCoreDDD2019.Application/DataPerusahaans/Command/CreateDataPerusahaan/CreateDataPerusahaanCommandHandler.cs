@@ -51,7 +51,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaans.Command.CreateDataPerusahaa
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new DataPerusahaanCreated { DataPerusahanID = entity.KodeP.ToString() },cancellationToken);
+            await _mediator.Publish(new DataPerusahaanCreated { DataPerusahanID = entity.Id.ToString() },cancellationToken);
 
             return Unit.Value;
 

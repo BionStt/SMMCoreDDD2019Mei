@@ -51,7 +51,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.Cr
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new DataPerusahaanStrukturJabatanCreated { DataPerusahaanStrukturJabatanID = entity.NoUrutStrukturID.ToString() }, cancellationToken);
+            await _mediator.Publish(new DataPerusahaanStrukturJabatanCreated { DataPerusahaanStrukturJabatanID = entity.Id.ToString() }, cancellationToken);
 
             return Unit.Value;
         }

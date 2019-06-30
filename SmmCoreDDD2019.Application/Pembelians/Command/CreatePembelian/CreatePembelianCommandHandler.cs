@@ -39,19 +39,19 @@ namespace SmmCoreDDD2019.Application.Pembelians.Command.CreatePembelian
                 DateTime.UtcNow.Date.Month.ToString() +
                 DateTime.UtcNow.Date.Day.ToString() + Guid.NewGuid().ToString().Substring(0, 4).ToUpper() + "REGPMB",
 
-                Idsupplier = request.Idsupplier,
+                MasterSupplierDBId = request.Idsupplier,
                 JenisTransPmb = request.JenisTransPmb,
                 Kredit = request.Kredit,
                 Keterangan = request.Keterangan,
                 UserInput = request.UserInput,
                 UserInputId = request.UserInputId,
-                NoPOPembelian = request.NoPOPembelian
+                PembelianPOId = request.NoPOPembelian
 
             };
 
             _context.Pembelian.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new PembelianCreated { PembelianID = entity.KodeBeli.ToString() },cancellationToken);
+            await _mediator.Publish(new PembelianCreated { PembelianID = entity.Id.ToString() },cancellationToken);
           
           
 

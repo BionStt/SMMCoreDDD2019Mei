@@ -38,7 +38,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataAwardDBs.Command.CreateDataP
                 Price = request.Price,
                 Date = request.Date,
                 Month = request.Month,
-                EmployeeId = request.EmployeeId
+                DataPegawaiId = request.EmployeeId
             };
 
             _context.DataPegawaiDataAward.Add(entity);

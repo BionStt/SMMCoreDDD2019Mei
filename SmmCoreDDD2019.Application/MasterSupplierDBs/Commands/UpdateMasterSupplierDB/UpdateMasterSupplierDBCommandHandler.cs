@@ -23,7 +23,7 @@ namespace SmmCoreDDD2019.Application.MasterSupplierDBs.Commands.UpdateMasterSupp
         public async Task<Unit> Handle(UpdateMasterSupplierDBCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.MasterSupplierDB
-               .SingleAsync(c => c.IDSupplier == request.IDSupplier, cancellationToken);
+               .SingleAsync(c => c.Id == request.IDSupplier, cancellationToken);
 
             if (entity == null)
             {

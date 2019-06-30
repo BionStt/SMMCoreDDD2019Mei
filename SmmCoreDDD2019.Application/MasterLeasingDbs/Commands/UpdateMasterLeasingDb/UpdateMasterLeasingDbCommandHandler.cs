@@ -26,7 +26,7 @@ namespace SmmCoreDDD2019.Application.MasterLeasingDbs.Commands.UpdateMasterLeasi
         public async Task<Unit> Handle(UpdateMasterLeasingDbCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.MasterLeasingDb
-               .SingleAsync(c => c.IDlease == request.IDlease, cancellationToken);
+               .SingleAsync(c => c.Id == request.IDlease, cancellationToken);
 
             if (entity == null)
             {

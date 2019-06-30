@@ -40,7 +40,7 @@ namespace SmmCoreDDD2019.Application.DataSPKKreditDBs.Command.CreateDataSPKKredi
             DiskonTunai = request.DiskonTunai,
                 DPPriceList = request.DPPriceList,
                 Komisi = request.Komisi,
-                NoUrutSPKBaru = request.NoUrutSPKBaru,
+                DataSPKBaruDBId = request.NoUrutSPKBaru,
                 OffTheRoad= request.OffTheRoad,
                 Promosi = request.Promosi,
                 UangTandaJadiTunai= request.UangTandaJadiTunai,
@@ -54,7 +54,7 @@ namespace SmmCoreDDD2019.Application.DataSPKKreditDBs.Command.CreateDataSPKKredi
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new DataSPKKreditDBCreated { DataSPKKreditDBID = entity.NoUrut.ToString() },cancellationToken);
+            await _mediator.Publish(new DataSPKKreditDBCreated { DataSPKKreditDBID = entity.Id.ToString() },cancellationToken);
 
             return Unit.Value;
 

@@ -25,10 +25,10 @@ namespace SmmCoreDDD2019.Application.PembelianDetails.Query.GetKodeBeliDetail
         public async Task<GetKodeBeliDetailViewModel> Handle(GetKodeBeliDetailQuery request, CancellationToken cancellationToken)
         {
             var aa = await (from a in _context.PembelianDetail
-                            join b in _context.MasterBarangDB on a.KodeBrg equals b.NoUrutTypeKendaraan
-                            where a.KodeBeliDetail == Int32.Parse(request.Id)
+                            join b in _context.MasterBarangDB on a.MasterBarangDBId equals b.Id
+                            where a.Id == Int32.Parse(request.Id)
                             //   where a.Terinput == null
-                            select new { NoKodeBeli1=a.KodeBeli, NoKodeBeliDetail = a.KodeBeliDetail, KodeBarang=b.NoUrutTypeKendaraan, HargaOff=b.Harga, Diskon1=a.Diskon, SellIn1=a.SellIn, NamaBarang1 = string.Format("{0} - {1} - {2}", b.TypeKendaraan, b.NamaBarang,b.Merek) }
+                            select new { NoKodeBeli1=a.PembelianId, NoKodeBeliDetail = a.Id, KodeBarang=b.Id, HargaOff=b.Harga, Diskon1=a.Diskon, SellIn1=a.SellIn, NamaBarang1 = string.Format("{0} - {1} - {2}", b.TypeKendaraan, b.NamaBarang,b.Merek) }
 
                ).ToListAsync(cancellationToken);
             var model = new GetKodeBeliDetailViewModel

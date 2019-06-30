@@ -31,8 +31,8 @@ namespace SmmCoreDDD2019.Application.StokUnits.Command.CreateStokUnit
         {
             var entity = new StokUnit
             {
-                KodeBeliDetail = request.KodeBeliDetail,
-                KodeBrg = request.KodeBrg,
+                PembelianDetailId = request.KodeBeliDetail,
+                MasterBarangDBId = request.KodeBrg,
                 NoRangka = request.NoRangka,
                 NoMesin = request.NoMesin,
                 Warna = request.Warna,
@@ -51,7 +51,7 @@ namespace SmmCoreDDD2019.Application.StokUnits.Command.CreateStokUnit
             _context.StokUnit.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
      
-            await _mediator.Publish(new StokUnitCreated { StokUnitID = entity.NoUrutSo.ToString() },cancellationToken);
+            await _mediator.Publish(new StokUnitCreated { StokUnitID = entity.Id.ToString() },cancellationToken);
             return Unit.Value;
         }
     }

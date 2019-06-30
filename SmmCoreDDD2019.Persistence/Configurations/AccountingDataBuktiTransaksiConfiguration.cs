@@ -16,7 +16,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("AccountingDataBuktiTransaksi_hilo").IsRequired();
 
-            builder.Property(e => e.TipeJournal).HasColumnName("TipeJournal");
+            builder.Property(e => e.AccountingTipeJournalId);
             builder.Property(e => e.NoBukti).HasColumnName("NoBukti");
 
             builder.Property(e => e.TanggalInput)

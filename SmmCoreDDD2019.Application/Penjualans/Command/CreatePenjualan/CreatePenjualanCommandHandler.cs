@@ -35,14 +35,14 @@ namespace SmmCoreDDD2019.Application.Penjualans.Command.CreatePenjualan
                 DateTime.UtcNow.Date.Month.ToString() +
                 DateTime.UtcNow.Date.Day.ToString() + Guid.NewGuid().ToString().Substring(0, 4).ToUpper() + "REGPJ",
 
-                NoUrutSPK = request.NoUrutSPK,
+                DataSPKBaruDBId = request.NoUrutSPK,
                 TanggalPenjualan= request.TanggalPenjualan,
-                KodeKonsumen= request.KodeKonsumen,
-                KodeLease= request.KodeLease,
+                CustomerDBId = request.KodeKonsumen,
+                MasterLeasingCabangDBId = request.KodeLease,
                 NoBuku= request.NoBuku,
                 NoUrutSales = request.NoUrutSales,
                 Keterangan = request.Keterangan,
-                KategoriPenjualan= request.KategoriPenjualan,
+                MasterKategoriPenjualanId = request.KategoriPenjualan,
                 Mediator= request.Mediator,
                 UserInputId = request.UserInputId,
                 UserInput= request.UserInput
@@ -52,7 +52,7 @@ namespace SmmCoreDDD2019.Application.Penjualans.Command.CreatePenjualan
 
             _context.Penjualan.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new PenjualanCreated { PenjualanID = entity.KodePenjualan.ToString() },cancellationToken);
+            await _mediator.Publish(new PenjualanCreated { PenjualanID = entity.Id.ToString() },cancellationToken);
             return Unit.Value;
         }
     }

@@ -19,7 +19,7 @@ namespace SmmCoreDDD2019.Application.AccountingDataJournalHeaderDB.Query.GetData
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<AccountingDataJournalHeader, GetDataJournalHeaderLookUpModel>()
-               .ForMember(cDTO => cDTO.NoUrutJournalHID, opt => opt.MapFrom(c => c.NoUrutJournalH));
+               .ForMember(cDTO => cDTO.NoUrutJournalHID, opt => opt.MapFrom(c => c.Id));
             // .ForMember(cDTO => cDTO.KodeAccount, opt => opt.MapFrom(c => c.KodeAccount))
             //   .ForMember(cDTO => cDTO.Account, opt => opt.MapFrom(c => c.Account))
             //     .ForMember(cDTO => cDTO.NormalPos, opt => opt.MapFrom(c => c.NormalPos))

@@ -32,7 +32,7 @@ namespace SmmCoreDDD2019.Application.STNKDBs.Command.CreateSTNKDB
             var entity = new STNKDB
             {
                 TanggalBayarSTNK = request.TanggalBayarSTNK,
-                NoUrutFaktur= request.NoUrutFaktur,
+                PermohonanFakturDBId= request.NoUrutFaktur,
                 NoStnk= request.NoStnk,
                 PajakStnk= request.PajakStnk,
                 Birojasa= request.Birojasa,
@@ -49,7 +49,7 @@ namespace SmmCoreDDD2019.Application.STNKDBs.Command.CreateSTNKDB
             _context.STNKDB.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new STNKDBCreated { STNKDBID = entity.NoUrutStnk.ToString() },cancellationToken);
+            await _mediator.Publish(new STNKDBCreated { STNKDBID = entity.Id.ToString() },cancellationToken);
             return Unit.Value;
         }
     }

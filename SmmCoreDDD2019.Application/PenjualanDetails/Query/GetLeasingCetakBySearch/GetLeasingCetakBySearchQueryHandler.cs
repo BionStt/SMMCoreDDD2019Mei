@@ -26,14 +26,14 @@ namespace SmmCoreDDD2019.Application.PenjualanDetails.Query.GetLeasingCetakBySea
         public async Task<GetLeasingCetakBySearchViewModel> Handle(GetLeasingCetakBySearchQuery request, CancellationToken cancellationToken)
         {
             var aa = await (from a in _context.Penjualan
-                            join b in _context.PenjualanDetail on a.KodePenjualan equals b.KodePenjualan
-                            join c in _context.CustomerDB on a.KodeKonsumen equals c.CustomerID
-                            join d in _context.StokUnit on b.NoUrutSO equals d.NoUrutSo
-                            join e in _context.MasterBarangDB on d.KodeBrg equals e.NoUrutTypeKendaraan
+                            join b in _context.PenjualanDetail on a.Id equals b.PenjualanId
+                            join c in _context.CustomerDB on a.CustomerDBId equals c.Id
+                            join d in _context.StokUnit on b.StokUnitId equals d.Id
+                            join e in _context.MasterBarangDB on d.MasterBarangDBId equals e.Id
                             where d.NoMesin.Contains(request.ID) || d.NoRangka.Contains(request.ID)
                             select new
                             {
-                                NoUrutPenjualanDetail = b.NoPenjualanDetail,
+                                NoUrutPenjualanDetail = b.Id,
                                 TanggalPenjualan1 = a.TanggalPenjualan,
                                 NamaKonsumen = string.Format("{0:d} - {1} - {2} - {3} - {4} - {5}", a.TanggalPenjualan, c.Nama, c.NamaBPKB, a.NoBuku, e.NamaBarang, d.NoMesin)
 

@@ -17,7 +17,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakKreditDBs.Query.GetListDataKontr
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<DataKontrakKredit, GetListDataKontrakKreditLookUpModel>()
-             .ForMember(cDTO => cDTO.NoUrutDataKontrakKredit1, opt => opt.MapFrom(c => c.NoUrutDataKontrakKredit));
+             .ForMember(cDTO => cDTO.NoUrutDataKontrakKredit1, opt => opt.MapFrom(c => c.Id));
             //  .ForMember(cDTO => cDTO.NamaPemesan, opt => opt.MapFrom(c => c.NamaPemesan));
 
         }

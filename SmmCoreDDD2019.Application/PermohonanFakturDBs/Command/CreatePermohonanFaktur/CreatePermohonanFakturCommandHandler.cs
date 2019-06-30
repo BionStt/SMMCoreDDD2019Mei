@@ -36,7 +36,7 @@ namespace SmmCoreDDD2019.Application.PermohonanFakturDBs.Command.CreatePermohona
                 DateTime.UtcNow.Date.Month.ToString() +
                 DateTime.UtcNow.Date.Day.ToString() + Guid.NewGuid().ToString().Substring(0, 4).ToUpper() + "REGMHNFKT",
 
-                KodePenjualanDetail= request.KodePenjualanDetail,
+                PenjualanDetailId= request.KodePenjualanDetail,
                 TanggalLahir= request.TanggalLahir,
                 NomorKTP= request.NomorKTP,
                 NamaFaktur= request.NamaFaktur,
@@ -55,7 +55,7 @@ namespace SmmCoreDDD2019.Application.PermohonanFakturDBs.Command.CreatePermohona
 
             _context.PermohonanFakturDB.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new PermohonanFakturCreated { PermohonanFakturID = entity.NoUrutFaktur.ToString() },cancellationToken);
+            await _mediator.Publish(new PermohonanFakturCreated { PermohonanFakturID = entity.Id.ToString() },cancellationToken);
             return Unit.Value;
         }
     }

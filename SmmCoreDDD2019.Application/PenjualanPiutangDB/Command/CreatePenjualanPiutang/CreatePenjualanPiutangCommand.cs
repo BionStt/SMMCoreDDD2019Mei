@@ -12,7 +12,7 @@ namespace SmmCoreDDD2019.Application.PenjualanPiutangDB.Command.CreatePenjualanP
         [Display(Name = "Tanggal Pembayaran")]
         public DateTime TanggalLunas { get; set; }
         [Display(Name = "Data Penjualan")]
-        public string KodePenjualanDetail { get; set; }
+        public int KodePenjualanDetail { get; set; }
         [Display(Name = "Keterangan")]
         public string Keterangan { get; set; }
     }

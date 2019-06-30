@@ -50,11 +50,11 @@ namespace SmmCoreDDD2019.Application.Penjualans.Query.GetLaporanPenjualanPivot
 
 
              var bb = await (from a in _context.PenjualanDetail
-                            join b in _context.StokUnit on a.NoUrutSO equals b.NoUrutSo
-                            join c in _context.MasterBarangDB on b.KodeBrg equals c.NoUrutTypeKendaraan
-                            join d in _context.Penjualan on a.KodePenjualan equals d.KodePenjualan
-                            join e in _context.MasterLeasingCabangDB on d.KodeLease equals e.NoUrutLeasingCabang
-                            join f in _context.MasterLeasingDb on e.IDlease equals f.IDlease
+                            join b in _context.StokUnit on a.StokUnitId equals b.Id
+                            join c in _context.MasterBarangDB on b.MasterBarangDBId equals c.Id
+                            join d in _context.Penjualan on a.PenjualanId equals d.Id
+                            join e in _context.MasterLeasingCabangDB on d.MasterLeasingCabangDBId equals e.Id
+                            join f in _context.MasterLeasingDb on e.MasterLeasingDbId equals f.Id
                             where (d.TanggalPenjualan <= request.PeriodeAkhir && d.TanggalPenjualan >= request.PeriodeAwal)
                             select new
                             {

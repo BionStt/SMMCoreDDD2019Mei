@@ -135,7 +135,7 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
                 var OptionGrp = new SelectListGroup() { Name = akungroup.Key };
                 foreach (var akun1 in akungroup)
                 {
-                    model.AccountIdList.Add(new SelectListItem() { Value = akun1.NoUrutAccountId.ToString(), Text = akun1.DataAkun1, Group = OptionGrp });
+                    model.AccountIdList.Add(new SelectListItem() { Value = akun1.Id.ToString(), Text = akun1.DataAkun1, Group = OptionGrp });
                 }
 
             }
@@ -156,10 +156,10 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateJournalDetail(string IdAccount1, decimal Debit1, decimal Kredit1, string Keterangan1, string IdBukti1, CreateAccountingDataJournalCommand CreateAccountingDataJournalCommand1)
+        public async Task<IActionResult> CreateJournalDetail(int IdAccount1, decimal Debit1, decimal Kredit1, string Keterangan1, int IdBukti1, CreateAccountingDataJournalCommand CreateAccountingDataJournalCommand1)
         {
-            CreateAccountingDataJournalCommand1.NoUrutJournalH = IdBukti1;
-            CreateAccountingDataJournalCommand1.NoUrutAccountId = IdAccount1;
+            CreateAccountingDataJournalCommand1.AccountingDataJournalHeaderId = IdBukti1;
+            CreateAccountingDataJournalCommand1.AccountingDataAccountId = IdAccount1;
             CreateAccountingDataJournalCommand1.Debit = Debit1;
             CreateAccountingDataJournalCommand1.Kredit = Kredit1;
             CreateAccountingDataJournalCommand1.Keterangan = Keterangan1;
@@ -180,7 +180,7 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
                 var OptionGrp = new SelectListGroup() { Name = akungroup.Key };
                 foreach (var akun1 in akungroup)
                 {
-                    model.AccountIdList.Add(new SelectListItem() { Value = akun1.NoUrutAccountId.ToString(), Text = akun1.DataAkun1, Group = OptionGrp });
+                    model.AccountIdList.Add(new SelectListItem() { Value = akun1.Id.ToString(), Text = akun1.DataAkun1, Group = OptionGrp });
                 }
 
             }
@@ -205,7 +205,7 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
                 var OptionGrp = new SelectListGroup() { Name = akungroup.Key };
                 foreach (var akun1 in akungroup)
                 {
-                    model.AccountIdList.Add(new SelectListItem() { Value = akun1.NoUrutAccountId.ToString(), Text = akun1.DataAkun1, Group = OptionGrp });
+                    model.AccountIdList.Add(new SelectListItem() { Value = akun1.Id.ToString(), Text = akun1.DataAkun1, Group = OptionGrp });
                 }
 
             }
@@ -216,7 +216,7 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
             return View();
         }
 
-        public async Task<IActionResult> LapAkunBukuBesarDetail(string Akun1)
+        public async Task<IActionResult> LapAkunBukuBesarDetail(int Akun1)
         {
             var aas1 = await Mediator.Send(new GetDataJournalByKodeAkunQuery { Id = Akun1 });
             var aas3 = aas1.DataJournalByKodeAkunDs.ToList();

@@ -16,7 +16,7 @@ namespace SmmCoreDDD2019.Application.AccountingTipeJournalDB.Query.GetTipeJourna
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<AccountingTipeJournal, GetTipeJournalLookUpModel>()
-               .ForMember(cDTO => cDTO.NoIDTipeJournal, opt => opt.MapFrom(c => c.NoIDTipeJournal))
+               .ForMember(cDTO => cDTO.NoIDTipeJournal, opt => opt.MapFrom(c => c.Id))
              .ForMember(cDTO => cDTO.KodeJournal, opt => opt.MapFrom(c => c.KodeJournal))
              .ForMember(cDTO => cDTO.NamaJournal, opt => opt.MapFrom(c => c.NamaJournal));
 

@@ -24,14 +24,14 @@ namespace SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.UpdateDataSPKBaruDB
         public async Task<Unit> Handle(UpdateDataSPKBaruDBCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.DataSPKBaruDB
-               .SingleAsync(c => c.NoUrutSPKBaru == request.NoUrutSPKBaru, cancellationToken);
+               .SingleAsync(c => c.Id == request.NoUrutSPKBaru, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(DataSPKBaruDB), request.NoUrutSPKBaru);
             }
 
-          entity.NoUrutSPKBaru = request.NoUrutSPKBaru;
+       //   entity.Id = request.NoUrutSPKBaru;
                 entity.LokasiSpk = request.LokasiSpk;
                 entity.Terinput = request.Terinput;
                 entity.TglInput = request.TglInput;

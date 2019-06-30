@@ -16,7 +16,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
             builder.ToTable("DataPegawaiDataRiwayatPendidikan", "DataPegawai");
             builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataRiwayatPendidikan_hilo").IsRequired();
        
-            builder.Property(e => e.DataPegawaiID);
+            builder.Property(e => e.DataPegawaiId);
 
             builder.Property(e => e.Jurusan)
                 .HasMaxLength(50)

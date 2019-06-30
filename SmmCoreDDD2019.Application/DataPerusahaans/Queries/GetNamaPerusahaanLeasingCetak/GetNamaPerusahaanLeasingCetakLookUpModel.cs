@@ -26,14 +26,14 @@ namespace SmmCoreDDD2019.Application.DataPerusahaans.Queries.GetNamaPerusahaanLe
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<DataPerusahaan, GetNamaPerusahaanLeasingCetakLookUpModel>()
-             .ForMember(cDTO => cDTO.IDPerusahaan, opt => opt.MapFrom(c => c.KodeP))
+             .ForMember(cDTO => cDTO.IDPerusahaan, opt => opt.MapFrom(c => c.Id))
                .ForMember(cDTO => cDTO.NamaPerusahaan, opt => opt.MapFrom(c => c.NamaP))
                  .ForMember(cDTO => cDTO.AlamatPerusahaan, opt => opt.MapFrom(c => c.AlamatP))
                    .ForMember(cDTO => cDTO.KelurahanPerusahaan, opt => opt.MapFrom(c => c.Kel))
                      .ForMember(cDTO => cDTO.KecamatanPerusahaan, opt => opt.MapFrom(c => c.Kec))
                        .ForMember(cDTO => cDTO.KotaPerusahaan, opt => opt.MapFrom(c => c.Kota))
                         .ForMember(cDTO => cDTO.PropinsiPerusahaan, opt => opt.MapFrom(c => c.Propinsi))
-                         .ForMember(cDTO => cDTO.KodePos, opt => opt.MapFrom(c => c.KodeP))
+                         .ForMember(cDTO => cDTO.KodePos, opt => opt.MapFrom(c => c.KodePos))
                           .ForMember(cDTO => cDTO.Telp, opt => opt.MapFrom(c => c.Telp))
                             .ForMember(cDTO => cDTO.Cs, opt => opt.MapFrom(c => c.Cs));
 

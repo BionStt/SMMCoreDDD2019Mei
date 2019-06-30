@@ -22,7 +22,7 @@ namespace SmmCoreDDD2019.Application.MasterPerusahaanAsuransiDBs.Command.UpdateM
         public async Task<Unit> Handle(UpdateMasterPerusahaanAsuransiCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.MasterPerusahaanAsuransi
-               .SingleAsync(c => c.NoUrutPerusahaanAsuransi == request.NoUrutPerusahaanAsuransi, cancellationToken);
+               .SingleAsync(c => c.Id == request.NoUrutPerusahaanAsuransi, cancellationToken);
 
             if (entity == null)
             {

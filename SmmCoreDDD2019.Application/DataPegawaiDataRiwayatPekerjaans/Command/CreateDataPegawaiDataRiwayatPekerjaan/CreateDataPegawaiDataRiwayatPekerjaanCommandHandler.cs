@@ -31,7 +31,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPekerjaans.Command.Cr
         {
             var entity = new DataPegawaiDataRiwayatPekerjaan
             {
-                IDPegawai = request.IDPegawai,
+                DataPegawaiId = request.IDPegawai,
                 NamaPerusahaan= request.NamaPerusahaan,
                 AlamatP = request.AlamatP,
                 KelurahanP= request.KelurahanP,
@@ -54,7 +54,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPekerjaans.Command.Cr
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new DataPegawaiDataRiwayatPekerjaanCreated { DatapegawaiDataRiwayatPekerjaanID = entity.NoUrut.ToString() },cancellationToken);
+            await _mediator.Publish(new DataPegawaiDataRiwayatPekerjaanCreated { DatapegawaiDataRiwayatPekerjaanID = entity.Id.ToString() },cancellationToken);
 
             return Unit.Value;
 

@@ -24,7 +24,7 @@ namespace SmmCoreDDD2019.Application.PenjualanDetails.Command.UpdateCheckPenjual
         public async Task<Unit> Handle(UpdateCheckPenjualanDetailCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.PenjualanDetail
-                 .SingleAsync(c => c.NoPenjualanDetail == Int32.Parse(request.NoUrutPenjualanDetail), cancellationToken);
+                 .SingleAsync(c => c.Id == Int32.Parse(request.NoUrutPenjualanDetail), cancellationToken);
 
             if (entity == null)
             {

@@ -16,7 +16,7 @@ namespace SmmCoreDDD2019.Application.DataSPKSurveiDBs.Queries.GetNamaSPKPenjuala
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<DataSPKSurveiDB, GetNamaSPKPenjualanLookUpModel>()
-             .ForMember(cDTO => cDTO.NoUrutSPKBaru1, opt => opt.MapFrom(c => c.NoUrutSPKBaru));
+             .ForMember(cDTO => cDTO.NoUrutSPKBaru1, opt => opt.MapFrom(c => c.DataSPKBaruDBId));
             //  .ForMember(cDTO => cDTO.NamaPemesan, opt => opt.MapFrom(c => c.NamaPemesan));
 
         }

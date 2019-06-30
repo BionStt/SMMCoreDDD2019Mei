@@ -24,12 +24,12 @@ namespace SmmCoreDDD2019.Application.DataSPKSurveiDBs.Queries.GetNamaSPKPenjuala
         public async Task<GetNamaSPKPenjualanViewModel> Handle(GetNamaSPKPenjualanQuery request, CancellationToken cancellationToken)
         {
             var aa = await(from a in _context.DataSPKBaruDB
-                           join b in _context.DataSPKSurveiDB on a.NoUrutSPKBaru equals b.NoUrutSPKBaru
-                           join c in _context.DataSPKKendaraanDB on a.NoUrutSPKBaru equals c.NoUrutSPKBaru
-                           join d in _context.MasterBarangDB on c.NoUrutTypeKendaraan equals d.NoUrutTypeKendaraan
-                           join e in _context.DataSPKKreditDB on a.NoUrutSPKBaru equals e.NoUrutSPKBaru
+                           join b in _context.DataSPKSurveiDB on a.Id equals b.DataSPKBaruDBId
+                           join c in _context.DataSPKKendaraanDB on a.Id equals c.DataSPKBaruDBId
+                           join d in _context.MasterBarangDB on c.MasterBarangDBId equals d.Id
+                           join e in _context.DataSPKKreditDB on a.Id equals e.DataSPKBaruDBId
                            //   where a.Terinput == null
-                           select new { NoUrutSPKBaru1 = a.NoUrutSPKBaru, NamaPemesan = string.Format("{0} - {1} - {2} - {3:c}", b.NamaPemesan, b.HandphonePemesan, d.NamaBarang, e.DPPriceList) }
+                           select new { NoUrutSPKBaru1 = a.Id, NamaPemesan = string.Format("{0} - {1} - {2} - {3:c}", b.NamaPemesan, b.HandphonePemesan, d.NamaBarang, e.DPPriceList) }
 
              ).ToListAsync(cancellationToken);
             var model = new GetNamaSPKPenjualanViewModel

@@ -25,9 +25,9 @@ namespace SmmCoreDDD2019.Application.PembelianDetails.Query.GetLIstPembelian
         public async Task<GetLIstPembelianViewModel> Handle(GetLIstPembelianQuery request, CancellationToken cancellationToken)
         {
             var aa = await(from a in _context.Pembelian
-                           join b in _context.MasterSupplierDB on a.Idsupplier equals b.IDSupplier
+                           join b in _context.MasterSupplierDB on a.MasterSupplierDBId equals b.Id
                            //   where a.Terinput == null
-                           select new { NoUrutPembelian = a.KodeBeli, NamaPembelian = string.Format("{0}  - {1:d} - {2}", a.KodeBeli, a.TglBeli, b.NamaSupplier) }
+                           select new { NoUrutPembelian = a.Id, NamaPembelian = string.Format("{0}  - {1:d} - {2}", a.Id, a.TglBeli, b.NamaSupplier) }
 
                 ).ToListAsync(cancellationToken);
             var model = new GetLIstPembelianViewModel

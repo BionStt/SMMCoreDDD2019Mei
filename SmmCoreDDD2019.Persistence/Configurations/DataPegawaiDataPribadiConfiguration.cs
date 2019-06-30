@@ -147,11 +147,6 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
            
 
-            builder.HasOne(d => d.DataPegawai)
-                   .WithOne(p => p.DataPegawaiDataPribadi)
-                   .HasForeignKey<DataPegawaiDataPribadi>(d => d.IDPegawai)
-                   .OnDelete(DeleteBehavior.ClientSetNull)
-                   .HasConstraintName("FK_DataPegawaiDataPribadi_DataPegawai");
              
             
         }

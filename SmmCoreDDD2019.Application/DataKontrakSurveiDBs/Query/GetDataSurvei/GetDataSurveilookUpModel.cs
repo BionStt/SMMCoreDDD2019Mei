@@ -16,7 +16,7 @@ namespace SmmCoreDDD2019.Application.DataKontrakSurveiDBs.Query.GetDataSurvei
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<DataKontrakSurvei, GetDataSurveilookUpModel>()
-             .ForMember(cDTO => cDTO.NoDataSurveiAvalist, opt => opt.MapFrom(c => c.NoUrutDataSurvei));
+             .ForMember(cDTO => cDTO.NoDataSurveiAvalist, opt => opt.MapFrom(c => c.Id));
             //.ForMember(cDTO => cDTO.NamaKonsumen, opt => opt.MapFrom(c => c.nama));
             //  .ForMember(cDTO => cDTO.NamaPembelian, opt => opt.MapFrom(c => string.Format("{0} - {1:d} - {2}", c.KodeBeli, c.TglBeli, c.Idsupplier)));
 

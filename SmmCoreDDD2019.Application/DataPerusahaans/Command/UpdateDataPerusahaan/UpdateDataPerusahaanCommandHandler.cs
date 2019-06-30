@@ -24,14 +24,14 @@ namespace SmmCoreDDD2019.Application.DataPerusahaans.Command.UpdateDataPerusahaa
         public async Task<Unit> Handle(UpdateDataPerusahaanCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.DataPerusahaan
-               .SingleAsync(c => c.KodeP == request.KodeP, cancellationToken);
+               .SingleAsync(c => c.Id == request.KodeP, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(DataPerusahaan), request.KodeP);
             }
 
-            entity.KodeP = request.KodeP;
+          //  entity.KodeP = request.KodeP;
             entity.NamaP = request.NamaP;
             entity.AlamatP= request.AlamatP;
             entity.Kel= request.Kel;

@@ -41,7 +41,7 @@ namespace SmmCoreDDD2019.Application.CustomerDBs.Queries.GetCustomerByID
         {
             configuration.CreateMap<CustomerDB, GetCustomerByIDLookUpModel>()
              .ForMember(cDTO => cDTO.NoKodeCustomer, opt => opt.MapFrom(c => c.NoKodeCustomer))
-           .ForMember(cDTO => cDTO.CustomerID, opt => opt.MapFrom(c => c.CustomerID))
+           .ForMember(cDTO => cDTO.CustomerID, opt => opt.MapFrom(c => c.Id))
              .ForMember(cDTO => cDTO.Alamat, opt => opt.MapFrom(c => c.Alamat))
                .ForMember(cDTO => cDTO.Faks, opt => opt.MapFrom(c => c.Faks))
                  .ForMember(cDTO => cDTO.Handphone, opt => opt.MapFrom(c => c.Handphone))

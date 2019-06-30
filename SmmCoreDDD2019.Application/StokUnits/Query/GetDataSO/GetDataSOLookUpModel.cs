@@ -17,7 +17,7 @@ namespace SmmCoreDDD2019.Application.StokUnits.Query.GetDataSO
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<StokUnit, GetDataSOLookUpModel>()
-             .ForMember(cDTO => cDTO.NoUrutSO, opt => opt.MapFrom(c => c.NoUrutSo));
+             .ForMember(cDTO => cDTO.NoUrutSO, opt => opt.MapFrom(c => c.Id));
             // .ForMember(cDTO => cDTO.NamaBarang, opt => opt.MapFrom(c => c.NamaBarang));
            // .ForMember(cDTO => cDTO.NamaBarang, opt => opt.MapFrom(c => string.Format("{0} - {1:d} - {2}", c.KodeBeli, c.TglBeli, c.Idsupplier)));
 

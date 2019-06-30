@@ -17,7 +17,7 @@ namespace SmmCoreDDD2019.Application.MasterBidangUsahaDBs.Query.GetNamaBidangUsa
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<MasterBidangUsahaDB, GetNamaBidangUsahaLookUpModel>()
-               .ForMember(cDTO => cDTO.NoKodeMasterBidangUsaha, opt => opt.MapFrom(c => c.NoKodeMasterBidangUsaha))
+               .ForMember(cDTO => cDTO.NoKodeMasterBidangUsaha, opt => opt.MapFrom(c => c.Id))
                .ForMember(cDTO => cDTO.NamaMasterBidangUsaha, opt => opt.MapFrom(c => c.NamaMasterBidangUsaha));
 
             // throw new NotImplementedException();

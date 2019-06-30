@@ -24,14 +24,14 @@ namespace SmmCoreDDD2019.Application.Penjualans.Query.GetNamaPenjualanFaktur
         public async Task<GetNamaPenjualanFakturViewModel> Handle(GetNamaPenjualanFakturQuery request, CancellationToken cancellationToken)
         {
             var aa = await (from a in _context.Penjualan
-                            join b in _context.PenjualanDetail on a.KodePenjualan equals b.KodePenjualan
-                            join c in _context.CustomerDB on a.KodeKonsumen equals c.CustomerID
-                            join d in _context.StokUnit on b.NoUrutSO equals d.NoUrutSo
-                            join e in _context.MasterBarangDB on d.KodeBrg equals e.NoUrutTypeKendaraan
-                            where _context.PermohonanFakturDB.All(x=>x.KodePenjualanDetail!=b.NoPenjualanDetail)
+                            join b in _context.PenjualanDetail on a.Id equals b.PenjualanId
+                            join c in _context.CustomerDB on a.CustomerDBId equals c.Id
+                            join d in _context.StokUnit on b.StokUnitId equals d.Id
+                            join e in _context.MasterBarangDB on d.MasterBarangDBId equals e.Id
+                            where _context.PermohonanFakturDB.All(x=>x.PenjualanDetailId!=b.Id)
                         
                            //   where a.Terinput == null
-                           select new { NoPenjualanDetail = b.NoPenjualanDetail, NamaKonsumen1 = string.Format("{0} - {1} - {2} - {3}", d.NoMesin,c.Nama, c.NamaBPKB, e.NamaBarang ) }
+                           select new { NoPenjualanDetail = b.Id, NamaKonsumen1 = string.Format("{0} - {1} - {2} - {3}", d.NoMesin,c.Nama, c.NamaBPKB, e.NamaBarang ) }
 
              ).ToListAsync(cancellationToken);
             var model = new GetNamaPenjualanFakturViewModel

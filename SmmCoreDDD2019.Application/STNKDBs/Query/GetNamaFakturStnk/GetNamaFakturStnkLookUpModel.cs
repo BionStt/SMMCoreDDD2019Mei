@@ -18,7 +18,7 @@ namespace SmmCoreDDD2019.Application.STNKDBs.Query.GetNamaFakturStnk
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<PermohonanFakturDB, GetNamaFakturStnkLookUpModel>()
-             .ForMember(cDTO => cDTO.NoUrutFaktur1, opt => opt.MapFrom(c => c.NoUrutFaktur));
+             .ForMember(cDTO => cDTO.NoUrutFaktur1, opt => opt.MapFrom(c => c.Id));
             // .ForMember(cDTO => cDTO.NamaBarang, opt => opt.MapFrom(c => c.NamaBarang));
            // .ForMember(cDTO => cDTO.NamaFaktur, opt => opt.MapFrom(c => string.Format("{0} - {1:d} - {2}", c.NoUrutPo, c.TglPo, c.NoDealer)));
 

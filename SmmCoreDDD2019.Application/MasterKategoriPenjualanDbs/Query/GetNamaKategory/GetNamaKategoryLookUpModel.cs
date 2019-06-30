@@ -15,7 +15,7 @@ namespace SmmCoreDDD2019.Application.MasterKategoriPenjualanDbs.Query.GetNamaKat
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<MasterKategoriPenjualan, GetNamaKategoryLookUpModel>()
-             .ForMember(cDTO => cDTO.NoUrut, opt => opt.MapFrom(c => c.NoUrutKategoriPenjualan))
+             .ForMember(cDTO => cDTO.NoUrut, opt => opt.MapFrom(c => c.Id))
              .ForMember(cDTO => cDTO.NamaKategoryPenjualan, opt => opt.MapFrom(c => c.NamaKategoryPenjualan));
 
         }

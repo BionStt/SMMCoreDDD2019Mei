@@ -24,14 +24,14 @@ namespace SmmCoreDDD2019.Application.DataSPKSurveiDBs.Command.UpdateDataSPKSurve
         public async Task<Unit> Handle(UpdateDataSPKSurveiDBCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.DataSPKSurveiDB
-                 .SingleAsync(c => c.NoUrut == request.NoUrut, cancellationToken);
+                 .SingleAsync(c => c.Id == request.NoUrut, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(DataSPKSurveiDB), request.NoUrut);
             }
             
-                   entity.NoUrut = request.NoUrut;
+                //   entity.NoUrut = request.NoUrut;
                 entity.AlamatPemesan = request.AlamatPemesan;
                 entity.HandphonePemesan = request.HandphonePemesan;
                 entity.KecamatanPemesan = request.KecamatanPemesan;
@@ -43,7 +43,7 @@ namespace SmmCoreDDD2019.Application.DataSPKSurveiDBs.Command.UpdateDataSPKSurve
                 entity.NamaPemesan = request.NamaPemesan;
                 entity.NoKtpPemesan = request.NoKtpPemesan;
                 entity.NoNPWP = request.NoNPWP;
-                entity.NoUrutSPKBaru = request.NoUrutSPKBaru;
+                entity.DataSPKBaruDBId = request.NoUrutSPKBaru;
                 entity.PekerjaanPemesan = request.PekerjaanPemesan;
                 entity.PropinsiPemesan = request.PropinsiPemesan;
 

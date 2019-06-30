@@ -52,7 +52,7 @@ namespace SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.CreateDataSPKBaruDB
 
             await _context.SaveChangesAsync(cancellationToken);
 
-           await _mediator.Publish(new DataSPKBaruDBCreated { DataSPKBaruDBID = entity.NoUrutSPKBaru.ToString() },cancellationToken);
+           await _mediator.Publish(new DataSPKBaruDBCreated { DataSPKBaruDBID = entity.Id.ToString() },cancellationToken);
 
             return Unit.Value;
 

@@ -32,7 +32,7 @@ namespace SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Commands.CreateMaste
 
             var entity = new MasterLeasingCabangDB
             {
-                IDlease = request.IDlease,
+                MasterLeasingDbId = request.IDlease,
                 Aktif = request.Aktif,
                 Alamat = request.Alamat,
                 Kelurahan= request.Kelurahan,
@@ -50,7 +50,7 @@ namespace SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Commands.CreateMaste
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new MasterLeasingCabangDBCreated { MasterLeasngCabangID = entity.NoUrutLeasingCabang.ToString() },cancellationToken);
+            await _mediator.Publish(new MasterLeasingCabangDBCreated { MasterLeasngCabangID = entity.Id.ToString() },cancellationToken);
 
             return Unit.Value;
 

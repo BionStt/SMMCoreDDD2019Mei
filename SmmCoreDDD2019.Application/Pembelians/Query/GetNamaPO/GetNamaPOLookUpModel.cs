@@ -16,9 +16,9 @@ namespace SmmCoreDDD2019.Application.Pembelians.Query.GetNamaPO
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<PembelianPO, GetNamaPOLookUpModel>()
-             .ForMember(cDTO => cDTO.NoUrutPoPembelian, opt => opt.MapFrom(c => c.NoUrutPo))
+             .ForMember(cDTO => cDTO.NoUrutPoPembelian, opt => opt.MapFrom(c => c.Id))
             // .ForMember(cDTO => cDTO.NamaBarang, opt => opt.MapFrom(c => c.NamaBarang));
-            .ForMember(cDTO => cDTO.NamaPOPembelian, opt => opt.MapFrom(c => string.Format("{0} - {1:d} - {2}", c.NoUrutPo, c.TglPo, c.NoDealer)));
+            .ForMember(cDTO => cDTO.NamaPOPembelian, opt => opt.MapFrom(c => string.Format("{0} - {1:d} - {2}", c.Id, c.TglPo, c.MasterSupplierDBId)));
 
 
         }

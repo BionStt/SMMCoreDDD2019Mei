@@ -18,7 +18,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiFotos.Queries.GetDataPegawaiList
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<DataPegawaiFoto, DataPegawaiLookUpModel>()
-                .ForMember(cDTO => cDTO.IdPegawai, opt => opt.MapFrom(c => c.IDPegawai))
+                .ForMember(cDTO => cDTO.IdPegawai, opt => opt.MapFrom(c => c.DataPegawaiId))
                 .ForMember(cDTO => cDTO.Foto, opt => opt.MapFrom(c => c.Foto));
         }
     }

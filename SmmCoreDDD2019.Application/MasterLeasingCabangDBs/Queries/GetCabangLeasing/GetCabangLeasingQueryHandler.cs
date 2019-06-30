@@ -24,9 +24,9 @@ namespace SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Queries.GetCabangLea
         {
             // TODO: Set view model state based on user permissions.
           var CabangLeasing = await (from a in _context.MasterLeasingDb
-                                 join b in _context.MasterLeasingCabangDB on a.IDlease equals b.IDlease
+                                 join b in _context.MasterLeasingCabangDB on a.Id equals b.MasterLeasingDbId
                                  let NamaCab = a.NamaLease+" - "+b.Cabang
-                                 select new {b.NoUrutLeasingCabang,NamaCab }
+                                 select new {b.Id,NamaCab }
                                  ).OrderBy(x=>x.NamaCab).ToListAsync(cancellationToken);
 
             // var CabangLeasing = await (_context.MasterLeasingCabangDB.OrderBy(x=>x.Cabang).Include(p=>p.MasterLeasingDb).ToListAsync(cancellationToken));

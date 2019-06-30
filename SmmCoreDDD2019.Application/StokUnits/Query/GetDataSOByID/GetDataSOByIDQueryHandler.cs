@@ -32,8 +32,8 @@ namespace SmmCoreDDD2019.Application.StokUnits.Query.GetDataSOByID
             //};
 
             var DataStokUnit = await (from a in _context.StokUnit
-                                      join b in _context.MasterBarangDB on a.KodeBrg equals b.NoUrutTypeKendaraan
-                                         where a.NoUrutSo == Int32.Parse(request.Id)
+                                      join b in _context.MasterBarangDB on a.MasterBarangDBId equals b.Id
+                                         where a.Id == Int32.Parse(request.Id)
                                        select new { HargaOff =b.Harga, BBN = b. BBN}
                  ).ToListAsync(cancellationToken);
 

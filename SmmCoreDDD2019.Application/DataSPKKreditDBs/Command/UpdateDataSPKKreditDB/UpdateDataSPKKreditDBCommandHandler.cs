@@ -23,14 +23,14 @@ namespace SmmCoreDDD2019.Application.DataSPKKreditDBs.Command.UpdateDataSPKKredi
         public async Task<Unit> Handle(UpdateDataSPKKreditDBCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.DataSPKKreditDB
-              .SingleAsync(c => c.NoUrutSPKBaru == request.NoUrutSPKBaru, cancellationToken);
+              .SingleAsync(c => c.Id == request.NoUrutSPKBaru, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(DataSPKKreditDB), request.NoUrutSPKBaru);
             }
 
-                entity.NoUrut = request.NoUrut;
+               // entity.NoUrut = request.NoUrut;
                 entity.BiayaAdministrasiKredit = request.BiayaAdministrasiKredit;
                 entity.BiayaAdministrasiTunai = request.BiayaAdministrasiTunai;
                 entity.BBN = request.BBN;
@@ -39,7 +39,7 @@ namespace SmmCoreDDD2019.Application.DataSPKKreditDBs.Command.UpdateDataSPKKredi
                 entity.DiskonTunai = request.DiskonTunai;
                 entity.DPPriceList = request.DPPriceList;
                 entity.Komisi = request.Komisi;
-                entity.NoUrutSPKBaru = request.NoUrutSPKBaru;
+                entity.DataSPKBaruDBId = request.NoUrutSPKBaru;
                 entity.OffTheRoad = request.OffTheRoad;
                 entity.Promosi = request.Promosi;
                 entity.UangTandaJadiTunai = request.UangTandaJadiTunai;

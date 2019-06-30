@@ -30,8 +30,8 @@ namespace SmmCoreDDD2019.Application.PembelianDetails.Command.CreatePembelianDet
         {
             var entity = new PembelianDetail
             {
-                KodeBeli = request.KodeBeli,
-                KodeBrg = request.KodeBrg,
+                PembelianId = request.KodeBeli,
+                MasterBarangDBId = request.KodeBrg,
                 HargaOffTheRoad= request.HargaOffTheRoad,
                 BBN= request.BBN,
                 Qty = request.Qty,
@@ -49,7 +49,7 @@ namespace SmmCoreDDD2019.Application.PembelianDetails.Command.CreatePembelianDet
 
             _context.PembelianDetail.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new PembelianDetailCreated { PembelianDetailID = entity.KodeBeliDetail.ToString() },cancellationToken);
+            await _mediator.Publish(new PembelianDetailCreated { PembelianDetailID = entity.Id.ToString() },cancellationToken);
             return Unit.Value;
         }
     }

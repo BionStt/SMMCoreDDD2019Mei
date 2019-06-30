@@ -15,7 +15,7 @@ namespace SmmCoreDDD2019.Application.MasterKategoriBayaranDbs.Query.GetNamaKateg
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<MasterKategoriBayaran, GetNamaKategoryBayaranlookUpModel>()
-             .ForMember(cDTO => cDTO.NoUrut, opt => opt.MapFrom(c => c.NoUrut))
+             .ForMember(cDTO => cDTO.NoUrut, opt => opt.MapFrom(c => c.Id))
              .ForMember(cDTO => cDTO.NamaKategoryBayaran, opt => opt.MapFrom(c => c.NamaKategoryBayaran));
 
         }

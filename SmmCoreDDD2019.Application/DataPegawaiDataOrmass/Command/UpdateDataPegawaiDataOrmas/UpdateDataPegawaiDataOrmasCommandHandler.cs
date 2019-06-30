@@ -25,15 +25,15 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataOrmass.Command.UpdateDataPeg
         public async Task<Unit> Handle(UpdateDataPegawaiDataOrmasCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.DataPegawaiDataOrmas
-                .SingleAsync(c => c.NoUrut == request.NoUrut, cancellationToken);
+                .SingleAsync(c => c.Id == request.NoUrut, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(DataPegawaiDataOrmas), request.IDPegawai);
             }
 
-            entity.NoUrut = request.NoUrut;
-            entity.IDPegawai = request.IDPegawai;
+            //entity.Id = request.NoUrut;
+            entity.DataPegawaiId = request.IDPegawai;
             entity.NamaOrmas = request.NamaOrmas;
             entity.AlamatOrmas = request.AlamatOrmas;
             entity.KotaOrmas = request.KotaOrmas;

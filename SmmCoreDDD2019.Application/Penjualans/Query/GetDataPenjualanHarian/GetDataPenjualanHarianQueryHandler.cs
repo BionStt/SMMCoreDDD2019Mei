@@ -24,23 +24,23 @@ namespace SmmCoreDDD2019.Application.Penjualans.Query.GetDataPenjualanHarian
         public async Task<GetDataPenjualanHarianViewModel> Handle(GetDataPenjualanHarianQuery request, CancellationToken cancellationToken)
         {
             var aa = await (from a in _context.Penjualan
-                            join b in _context.MasterKategoriPenjualan on a.KategoriPenjualan equals b.NoUrutKategoriPenjualan
-                            join c in _context.CustomerDB on a.KodeKonsumen equals c.CustomerID
-                            join d in _context.PenjualanDetail on a.KodePenjualan equals d.KodePenjualan
-                            join e in _context.StokUnit on d.NoUrutSO equals e.NoUrutSo
-                            join f in _context.PembelianDetail on e.KodeBeliDetail equals f.KodeBeliDetail
-                            join g in _context.Pembelian on f.KodeBeli equals g.KodeBeli
-                            join h in _context.MasterSupplierDB on g.Idsupplier equals h.IDSupplier
-                            join i in _context.MasterBarangDB on e.KodeBrg equals i.NoUrutTypeKendaraan
-                            join j in _context.MasterLeasingCabangDB on a.KodeLease equals j.NoUrutLeasingCabang
-                            join k in _context.MasterLeasingDb on j.IDlease equals k.IDlease
-                            join l in _context.DataPegawaiDataPribadi on a.NoUrutSales equals l.NoUrut
-                            join m in _context.PenjualanPiutang on d.NoPenjualanDetail equals Int32.Parse(m.KodePenjualanDetail) into ps
+                            join b in _context.MasterKategoriPenjualan on a.MasterKategoriPenjualanId equals b.Id
+                            join c in _context.CustomerDB on a.CustomerDBId equals c.Id
+                            join d in _context.PenjualanDetail on a.Id equals d.PenjualanId
+                            join e in _context.StokUnit on d.StokUnitId equals e.Id
+                            join f in _context.PembelianDetail on e.PembelianDetailId equals f.Id
+                            join g in _context.Pembelian on f.PembelianId equals g.Id
+                            join h in _context.MasterSupplierDB on g.MasterSupplierDBId equals h.Id
+                            join i in _context.MasterBarangDB on e.MasterBarangDBId equals i.Id
+                            join j in _context.MasterLeasingCabangDB on a.MasterLeasingCabangDBId equals j.Id
+                            join k in _context.MasterLeasingDb on j.MasterLeasingDbId equals k.Id
+                            join l in _context.DataPegawaiDataPribadi on a.NoUrutSales equals l.DataPegawaiId
+                            join m in _context.PenjualanPiutang on d.Id equals m.PenjualanDetailId into ps
                             from m in ps.DefaultIfEmpty()
                             where (a.TanggalPenjualan <= request.PeriodeAkhir && a.TanggalPenjualan >= request.PeriodeAwal)
                             //   where a.Terinput == null
                             select new {
-                               KodePenjualanID = a.KodePenjualan,
+                               KodePenjualanID = a.Id,
                                 TanggalPenjualan = a.TanggalPenjualan,
                                 NoBuku = a.NoBuku,
                                 NamaKonsumen = c.Nama,

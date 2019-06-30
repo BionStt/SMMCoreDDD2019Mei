@@ -19,7 +19,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetS
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<DataPerusahaanStrukturJabatan, GetStructureByStructureCodeLookUpModel>()
-               .ForMember(cDTO => cDTO.NoUrutStrukturID, opt => opt.MapFrom(c => c.NoUrutStrukturID))
+               .ForMember(cDTO => cDTO.NoUrutStrukturID, opt => opt.MapFrom(c => c.Id))
                .ForMember(cDTO => cDTO.KodeStruktur, opt => opt.MapFrom(c => c.KodeStruktur))
                  .ForMember(cDTO => cDTO.NamaStrukturJabatan, opt => opt.MapFrom(c => c.NamaStrukturJabatan))
                                        .ForMember(cDTO => cDTO.Depth, opt => opt.MapFrom(c => c.Depth));

@@ -34,14 +34,14 @@ namespace SmmCoreDDD2019.Application.DataSPKLeasingDBs.Command.CreateDataSPKLeas
             {
               //  NoUrut = request.NoUrut,
                 Angsuran= request.Angsuran,
-                NoUrutLeasingCabang = request.NoUrutLeasingCabang,
+                MasterLeasingCabangDBId = request.NoUrutLeasingCabang,
                 Mediator= request.Mediator,
                 NamaCmo= request.NamaCmo,
-                NoUrutKategoriBayaran= request.NoUrutKategoriBayaran,
+                MasterKategoriBayaranId = request.NoUrutKategoriBayaran,
 
-                NoUrutKategoriPenjualan= request.NoUrutKategoriPenjualan,
+                MasterKategoriPenjualanId = request.NoUrutKategoriPenjualan,
                 NoUrutSales = request.NoUrutSales,
-                NoUrutSPKBaru= request.NoUrutSPKBaru,
+                DataSPKBaruDBId = request.NoUrutSPKBaru,
                 Tenor= request.Tenor,
                 TglSurvei= request.TglSurvei
             
@@ -54,7 +54,7 @@ namespace SmmCoreDDD2019.Application.DataSPKLeasingDBs.Command.CreateDataSPKLeas
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new DataSPKLeasingDBCreated { DataSPKLeasingDBID = entity.NoUrut.ToString() },cancellationToken);
+            await _mediator.Publish(new DataSPKLeasingDBCreated { DataSPKLeasingDBID = entity.Id.ToString() },cancellationToken);
 
             return Unit.Value;
             // throw new NotImplementedException();

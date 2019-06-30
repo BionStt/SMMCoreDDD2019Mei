@@ -51,7 +51,7 @@ namespace SmmCoreDDD2019.Application.MasterSupplierDBs.Commands.CreateMasterSupp
 
             _context.MasterSupplierDB.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new CreateMasterSupplierDBCreated { MasterSupplierID = entity.IDSupplier.ToString()},cancellationToken);
+            await _mediator.Publish(new CreateMasterSupplierDBCreated { MasterSupplierID = entity.Id.ToString()},cancellationToken);
             return Unit.Value;
 
             //throw new System.NotImplementedException();

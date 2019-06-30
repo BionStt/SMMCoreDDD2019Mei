@@ -25,9 +25,9 @@ namespace SmmCoreDDD2019.Application.Pembelians.Query.GetNamaPO
         public async Task<GetNamaPOViewModel> Handle(GetNamaPOQuery request, CancellationToken cancellationToken)
         {
             var aa = await(from a in _context.PembelianPO
-                           join b in _context.MasterSupplierDB on a.NoDealer equals b.IDSupplier
+                           join b in _context.MasterSupplierDB on a.MasterSupplierDBId equals b.Id
                            where a.Terinput == null
-                           select new { NoUrutPoPembelian= a.NoUrutPo, NamaPOPembelian =string.Format("{0}  - {1:d} - {2}", a.NoUrutPo,a.TglPo, b.NamaSupplier) }
+                           select new { NoUrutPoPembelian= a.Id, NamaPOPembelian =string.Format("{0}  - {1:d} - {2}", a.Id,a.TglPo, b.NamaSupplier) }
                 
                 ).ToListAsync(cancellationToken);
             var model = new GetNamaPOViewModel

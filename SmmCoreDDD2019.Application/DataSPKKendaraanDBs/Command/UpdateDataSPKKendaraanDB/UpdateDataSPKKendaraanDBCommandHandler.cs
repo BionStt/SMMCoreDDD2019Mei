@@ -24,17 +24,17 @@ namespace SmmCoreDDD2019.Application.DataSPKKendaraanDBs.Command.UpdateDataSPKKe
         {
 
             var entity = await _context.DataSPKKendaraanDB
-              .SingleAsync(c => c.NoUrut == request.NoUrut, cancellationToken);
+              .SingleAsync(c => c.Id == request.NoUrut, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(DataSPKKendaraanDB), request.NoUrut);
             }
-                  entity.NoUrut = request.NoUrut;
+                //  entity.NoUrut = request.NoUrut;
                 entity.NamaSTNK = request.NamaSTNK;
                 entity.NoKtpSTNK = request.NoKtpSTNK;
-                entity.NoUrutTypeKendaraan = request.NoUrutTypeKendaraan;
-                entity.NoUrutSPKBaru = request.NoUrutSPKBaru;
+                entity.MasterBarangDBId = request.NoUrutTypeKendaraan;
+                entity.DataSPKBaruDBId = request.NoUrutSPKBaru;
                 entity.TahunPerakitan = request.TahunPerakitan;
                 entity.Warna = request.Warna;
 

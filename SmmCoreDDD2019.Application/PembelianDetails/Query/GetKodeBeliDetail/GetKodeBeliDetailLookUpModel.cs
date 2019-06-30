@@ -24,7 +24,7 @@ namespace SmmCoreDDD2019.Application.PembelianDetails.Query.GetKodeBeliDetail
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<PembelianDetail, GetKodeBeliDetailLookUpModel>()
-             .ForMember(cDTO => cDTO.NoKodeBeliDetail, opt => opt.MapFrom(c => c.KodeBeliDetail));
+             .ForMember(cDTO => cDTO.NoKodeBeliDetail, opt => opt.MapFrom(c => c.Id));
             // .ForMember(cDTO => cDTO.NamaBarang, opt => opt.MapFrom(c => c.NamaBarang));
           //  .ForMember(cDTO => cDTO.NamaPembelian, opt => opt.MapFrom(c => string.Format("{0} - {1:d} - {2}", c.KodeBeli, c.TglBeli, c.Idsupplier)));
 

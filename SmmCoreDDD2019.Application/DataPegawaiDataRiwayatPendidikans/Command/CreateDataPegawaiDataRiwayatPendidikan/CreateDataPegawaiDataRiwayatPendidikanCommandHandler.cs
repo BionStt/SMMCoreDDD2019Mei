@@ -31,7 +31,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPendidikans.Command.C
             var entity = new DataPegawaiDataRiwayatPendidikan
             {
             //    NoUrut = request.NoUrut,
-                IDPegawai= request.IDPegawai,
+                DataPegawaiId= request.IDPegawai,
                 TingkatPend = request.TingkatPend,
                 NamaSekolah = request.NamaSekolah,
                 Kota = request.Kota,
@@ -45,7 +45,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPendidikans.Command.C
 
             await _context.SaveChangesAsync(cancellationToken);
 
-           await _mediator.Publish(new DataPegawaiDataRiwayatPendidikanCreated { DataPegawaiDataRiwayatPendidikanID = entity.NoUrut.ToString() },cancellationToken);
+           await _mediator.Publish(new DataPegawaiDataRiwayatPendidikanCreated { DataPegawaiDataRiwayatPendidikanID = entity.Id.ToString() },cancellationToken);
 
             return Unit.Value;
 

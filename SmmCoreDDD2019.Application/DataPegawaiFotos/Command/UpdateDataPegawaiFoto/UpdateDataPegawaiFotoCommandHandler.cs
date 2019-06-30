@@ -22,18 +22,18 @@ namespace SmmCoreDDD2019.Application.DataPegawaiFotos.Command.UpdateDataPegawaiF
         public async Task<Unit> Handle(UpdateDataPegawaiFotoCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.DataPegawaiFoto
-               .SingleAsync(c => c.IDPegawai == request.IDPegawai, cancellationToken);
+               .SingleAsync(c => c.Id == request.IDPegawai, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(DataPegawaiFoto), request.IDPegawai);
             }
 
-            entity.NoUrut = request.NoUrut;
+           // entity.NoUrut = request.NoUrut;
             entity.Foto = request.Foto;
             entity.Tglinput= request.Tglinput;
             entity.Revisi= request.Revisi;
-            entity.IDPegawai= request.IDPegawai;
+            entity.DataPegawaiId= request.IDPegawai;
             entity.KodeBarcode = request.KodeBarcode;
           
 

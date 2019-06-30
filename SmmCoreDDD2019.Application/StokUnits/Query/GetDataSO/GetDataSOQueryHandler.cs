@@ -24,9 +24,9 @@ namespace SmmCoreDDD2019.Application.StokUnits.Query.GetDataSO
         public async Task<GetDataSOViewModel> Handle(GetDataSOQuery request, CancellationToken cancellationToken)
         {
             var aa = await (from a in _context.StokUnit
-                            join b in _context.MasterBarangDB on a.KodeBrg equals b.NoUrutTypeKendaraan
+                            join b in _context.MasterBarangDB on a.MasterBarangDBId equals b.Id
                             //   where a.Terinput == null
-                            select new { NoUrutSO = a.NoUrutSo, NamaBarang = string.Format("{0} - {1} - {2} - {3} - {4} - {5:c}", a.NoMesin, a.NoRangka, a.Warna,b.NamaBarang,b.Merek,b.Harga+b.BBN) }
+                            select new { NoUrutSO = a.Id, NamaBarang = string.Format("{0} - {1} - {2} - {3} - {4} - {5:c}", a.NoMesin, a.NoRangka, a.Warna,b.NamaBarang,b.Merek,b.Harga+b.BBN) }
 
                ).ToListAsync(cancellationToken);
             var model = new GetDataSOViewModel

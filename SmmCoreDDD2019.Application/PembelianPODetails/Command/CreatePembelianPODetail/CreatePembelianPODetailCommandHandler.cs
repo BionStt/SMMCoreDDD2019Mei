@@ -30,8 +30,8 @@ namespace SmmCoreDDD2019.Application.PembelianPODetails.Command.CreatePembelianP
         {
             var entity = new PembelianPODetail
             {
-                NoUrutPo = request.NoUrutPo,
-                NoUrutMasterBarang = request.NoUrutMasterBarang,
+                PembelianPOId = request.NoUrutPo,
+                MasterBarangDBId = request.NoUrutMasterBarang,
                 OffTheRoad = request.OffTheRoad,
                 Bbn = request.Bbn,
                 Diskon= request.Diskon,
@@ -43,7 +43,7 @@ namespace SmmCoreDDD2019.Application.PembelianPODetails.Command.CreatePembelianP
 
             _context.PembelianPODetail.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new PembelianPODetailCreated { PembelianPoDetailID = entity.NoUrutPoDet.ToString() },cancellationToken);
+            await _mediator.Publish(new PembelianPODetailCreated { PembelianPoDetailID = entity.Id.ToString() },cancellationToken);
             return Unit.Value;
 
         }

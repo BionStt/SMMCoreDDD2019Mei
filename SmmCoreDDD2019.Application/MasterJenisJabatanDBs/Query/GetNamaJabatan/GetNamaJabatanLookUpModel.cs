@@ -16,7 +16,7 @@ namespace SmmCoreDDD2019.Application.MasterJenisJabatanDBs.Query.GetNamaJabatan
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<MasterJenisJabatan, GetNamaJabatanLookUpModel>()
-             .ForMember(cDTO => cDTO.NoUrut, opt => opt.MapFrom(c => c.NoUrut))
+             .ForMember(cDTO => cDTO.NoUrut, opt => opt.MapFrom(c => c.Id))
              .ForMember(cDTO => cDTO.NamaJabatan, opt => opt.MapFrom(c => c.NamaJabatan));
 
         }

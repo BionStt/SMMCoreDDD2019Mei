@@ -23,15 +23,15 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPekerjaans.Command.Up
         public async Task<Unit> Handle(UpdateDataPegawaiDataRiwayatPekerjaanCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.DataPegawaiDataRiwayatPekerjaan
-             .SingleAsync(c => c.IDPegawai == request.IDPegawai, cancellationToken);
+             .SingleAsync(c => c.Id == request.IDPegawai, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(DataPegawaiDataRiwayatPekerjaan), request.IDPegawai);
             }
 
-            entity.NoUrut = request.NoUrut;
-            entity.IDPegawai= request.IDPegawai;
+          //  entity.NoUrut = request.NoUrut;
+            entity.DataPegawaiId = request.IDPegawai;
             entity.NamaPerusahaan= request.NamaPerusahaan;
             entity.AlamatP= request.AlamatP;
             entity.KelurahanP = request.KelurahanP;

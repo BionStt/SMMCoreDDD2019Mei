@@ -16,7 +16,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataPribadiInput.Queries.GetNama
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<DataPegawaiDataPribadi, GetNamaPegawaiLookUpModel>()
-             .ForMember(cDTO => cDTO.IDPegawai, opt => opt.MapFrom(c => c.IDPegawai))
+             .ForMember(cDTO => cDTO.IDPegawai, opt => opt.MapFrom(c => c.DataPegawaiId))
              .ForMember(cDTO => cDTO.NamaDepan, opt => opt.MapFrom(c => c.NamaDepan));
            
         }

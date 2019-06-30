@@ -25,7 +25,7 @@ namespace SmmCoreDDD2019.Application.MasterBarangDBs.Queries.GetNamaBarangQrByNo
         public async Task<GetNamaBarangQrByNoUrutViewModel> Handle(GetNamaBarangQrByNoUrutQuery request, CancellationToken cancellationToken)
         {
             var databarang = await (from a  in _context.MasterBarangDB
-                                    where a.NoUrutTypeKendaraan == Int32.Parse(request.Id)
+                                    where a.Id == Int32.Parse(request.Id)
                                     select new { HargaOff = a.Harga, BBN1 =a.BBN}
                 ).ToListAsync(cancellationToken);
             var model = new GetNamaBarangQrByNoUrutViewModel

@@ -47,7 +47,7 @@ namespace SmmCoreDDD2019.Application.MasterPerusahaanAsuransiDBs.Command.CreateM
 
             _context.MasterPerusahaanAsuransi.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new MasterPerusahaanAsuransiCreated { MasterPerusahaanAsuransiID = entity.NoUrutPerusahaanAsuransi.ToString() });
+            await _mediator.Publish(new MasterPerusahaanAsuransiCreated { MasterPerusahaanAsuransiID = entity.Id.ToString() });
             return Unit.Value;
         }
     }

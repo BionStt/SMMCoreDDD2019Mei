@@ -16,7 +16,7 @@ namespace SmmCoreDDD2019.Application.CustomerDBs.Queries.GetCustomerDataPenjuala
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<CustomerDB, GetCustomerDataPenjualanLookUpModel>()
-             .ForMember(cDTO => cDTO.NoCustomer, opt => opt.MapFrom(c => c.CustomerID))
+             .ForMember(cDTO => cDTO.NoCustomer, opt => opt.MapFrom(c => c.Id))
              .ForMember(cDTO => cDTO.NamaKonsumen, opt => opt.MapFrom(c => c.Nama));
             //  .ForMember(cDTO => cDTO.NamaPembelian, opt => opt.MapFrom(c => string.Format("{0} - {1:d} - {2}", c.KodeBeli, c.TglBeli, c.Idsupplier)));
 

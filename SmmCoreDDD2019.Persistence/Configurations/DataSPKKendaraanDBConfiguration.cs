@@ -39,13 +39,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                         .HasMaxLength(35)
                         .IsUnicode(false);
 
-            builder.HasOne(d=>d.DataSPKBaruDB)
-                .WithMany(p=>p.DataSPKKendaraanDB)
-                .HasForeignKey(d=>d.NoUrutSPKBaru)
-                  .OnDelete(DeleteBehavior.ClientSetNull)
-         .HasConstraintName("FK_DataSPKKendaraanDB_DataSPKBaruDB");
-
-            // throw new NotImplementedException();
+        
         }
     }
 }

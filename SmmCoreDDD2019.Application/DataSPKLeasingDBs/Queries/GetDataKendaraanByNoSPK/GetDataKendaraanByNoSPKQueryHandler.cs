@@ -33,9 +33,9 @@ namespace SmmCoreDDD2019.Application.DataSPKLeasingDBs.Queries.GetDataKendaraanB
             //};
 
            var dataKendaraan = await (from a in _context.DataSPKBaruDB
-                                      join c in _context.DataSPKKendaraanDB on a.NoUrutSPKBaru equals c.NoUrutSPKBaru
-                                       join b in _context.MasterBarangDB on c.NoUrutTypeKendaraan equals b.NoUrutTypeKendaraan
-                                        where a.NoUrutSPKBaru ==Int32.Parse(request.Id)
+                                      join c in _context.DataSPKKendaraanDB on a.Id equals c.DataSPKBaruDBId
+                                       join b in _context.MasterBarangDB on c.MasterBarangDBId equals b.Id
+                                        where a.Id ==Int32.Parse(request.Id)
                                        select new { HargaOff=b.Harga, BBN=b.BBN }
                 ).ToListAsync(cancellationToken);
 

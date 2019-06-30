@@ -15,7 +15,7 @@ namespace SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Queries.GetCabangLea
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<MasterLeasingCabangDB, GetCabangLeasingLookUpModel>()
-             .ForMember(cDTO => cDTO.NoUrutLeasingCabang, opt => opt.MapFrom(c => c.NoUrutLeasingCabang))
+             .ForMember(cDTO => cDTO.NoUrutLeasingCabang, opt => opt.MapFrom(c => c.Id))
              .ForMember(cDTO => cDTO.NamaCab, opt => opt.MapFrom(c => c.Cabang));
 
         }

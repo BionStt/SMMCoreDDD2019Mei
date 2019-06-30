@@ -22,7 +22,7 @@ namespace SmmCoreDDD2019.Application.StokUnits.Command.UpdateStokUnitPembatalanP
         public async Task<Unit> Handle(UpdateStokUnitPembatalanPjCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.StokUnit
-                .SingleAsync(c => c.NoUrutSo == Int32.Parse(request.NoUrutSO), cancellationToken);
+                .SingleAsync(c => c.Id == Int32.Parse(request.NoUrutSO), cancellationToken);
 
             if (entity == null)
             {

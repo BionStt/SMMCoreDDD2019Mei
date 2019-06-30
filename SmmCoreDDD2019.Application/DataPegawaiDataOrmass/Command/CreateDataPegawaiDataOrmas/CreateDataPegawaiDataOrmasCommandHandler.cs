@@ -33,8 +33,8 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataOrmass.Command.CreateDataPeg
 
             var entity = new DataPegawaiDataOrmas
             {
-              //  NoUrut = request.NoUrut,
-                IDPegawai = request.IDPegawai,
+                //  NoUrut = request.NoUrut,
+                DataPegawaiId = request.IDPegawai,
                 NamaOrmas= request.NamaOrmas,
                 AlamatOrmas= request.AlamatOrmas,
                 KotaOrmas= request.KotaOrmas,
@@ -51,7 +51,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataOrmass.Command.CreateDataPeg
 
             await _context.SaveChangesAsync(cancellationToken);
 
-           await _mediator.Publish(new DataPegawaiDataOrmasCreated { DataPegawaiDataOrmassID = entity.NoUrut.ToString() },cancellationToken);
+           await _mediator.Publish(new DataPegawaiDataOrmasCreated { DataPegawaiDataOrmassID = entity.Id.ToString() },cancellationToken);
 
             return Unit.Value;
             // throw new NotImplementedException();

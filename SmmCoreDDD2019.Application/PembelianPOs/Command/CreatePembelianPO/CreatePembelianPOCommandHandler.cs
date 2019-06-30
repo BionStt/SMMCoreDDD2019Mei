@@ -31,7 +31,7 @@ namespace SmmCoreDDD2019.Application.PembelianPOs.Command.CreatePembelianPO
             var entity = new PembelianPO
             {
                // TglPo = request.TglPo,
-                NoDealer = request.NoDealer,
+                MasterSupplierDBId = request.NoDealer,
                 Keterangan = request.Keterangan,
                 UserId = request.UserId,
                 UserInput = request.UserInput,
@@ -45,14 +45,14 @@ namespace SmmCoreDDD2019.Application.PembelianPOs.Command.CreatePembelianPO
             _context.PembelianPO.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
 
-            var entity2 = await _context.PembelianPO.FindAsync(entity.NoUrutPo);
+            var entity2 = await _context.PembelianPO.FindAsync(entity.Id);
             if (entity2==null)
             {
-                throw new NotFoundException(nameof(PembelianPO), entity.NoUrutPo);
+                throw new NotFoundException(nameof(PembelianPO), entity.Id);
             }
             int thn = entity2.TglPo.Value.Year;
             int bln = entity2.TglPo.Value.Month;
-            int KodePO = entity2.NoUrutPo;
+            int KodePO = entity2.Id;
             String Isi1 = string.Empty;
             if (bln == 1)
             { Isi1 = "PO" + KodePO + "/I/SM/" + thn; }
@@ -72,7 +72,7 @@ namespace SmmCoreDDD2019.Application.PembelianPOs.Command.CreatePembelianPO
             _context.PembelianPO.Update(entity2);
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new PembelianPoCreated { PembelianPoID = entity.NoUrutPo.ToString() },cancellationToken);
+            await _mediator.Publish(new PembelianPoCreated { PembelianPoID = entity.Id.ToString() },cancellationToken);
             return Unit.Value;
 
         }

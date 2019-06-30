@@ -25,14 +25,14 @@ namespace SmmCoreDDD2019.Application.DataPegawais.Command.UpdateDataPegawai
         public async Task<Unit> Handle(UpdateDataPegawaiCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.DataPegawai
-                .SingleAsync(c => c.IDPegawai == request.IDPegawai, cancellationToken);
+                .SingleAsync(c => c.Id == request.IDPegawai, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(DataPegawai), request.IDPegawai);
             }
 
-            entity.IDPegawai = request.IDPegawai;
+            entity.Id = request.IDPegawai;
             entity.TglInput = request.TglInput;
             entity.TglMulaiKerja= request.TglMulaiKerja;
             entity.TglBerhentiKerja= request.TglBerhentiKerja;

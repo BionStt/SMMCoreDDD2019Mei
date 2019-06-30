@@ -25,10 +25,10 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataPribadiInput.Queries.GetNama
         {
             // TODO: Set view model state based on user permissions.
           var NamaSales =  await (from a in _context.DataPegawai
-                             join c in _context.DataPegawaiDataPribadi on a.IDPegawai equals c.IDPegawai
-                             join b in _context.DataPegawaiDataJabatan on a.IDPegawai equals b.IDPegawai
-                             where b.NoUrutJabatan == 2 && a.Aktif==null
-                             select new {a.IDPegawai,c.NamaDepan }
+                             join c in _context.DataPegawaiDataPribadi on a.Id equals c.DataPegawaiId
+                             join b in _context.DataPegawaiDataJabatan on a.Id equals b.DataPegawaiId
+                                  where b.Id == 2 && a.Aktif==null
+                             select new {a.Id,c.NamaDepan }
                              ).OrderBy(x=>x.NamaDepan).ToListAsync(cancellationToken);
           
            var model= new GetNamaSalesForceViewModel

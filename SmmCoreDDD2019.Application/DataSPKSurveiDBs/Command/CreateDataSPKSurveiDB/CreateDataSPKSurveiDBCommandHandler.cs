@@ -43,7 +43,7 @@ namespace SmmCoreDDD2019.Application.DataSPKSurveiDBs.Command.CreateDataSPKSurve
 
             _context.DataSPKBaruDB.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            var nospkbaruid = entity.NoUrutSPKBaru;
+            var nospkbaruid = entity.Id;
          //   await _context.SaveChangesAsync(cancellationToken);
 
          //   await _mediator.Publish(new DataSPKBaruDBCreated { DataSPKBaruDBID = entity.NoUrutSPKBaru.ToString() });
@@ -65,7 +65,7 @@ namespace SmmCoreDDD2019.Application.DataSPKSurveiDBs.Command.CreateDataSPKSurve
                 NamaPemesan= request.NamaPemesan,
                 NoKtpPemesan= request.NoKtpPemesan,
                 NoNPWP= request.NoNPWP,
-                NoUrutSPKBaru= nospkbaruid,
+                DataSPKBaruDBId= nospkbaruid,
                 PekerjaanPemesan= request.PekerjaanPemesan,
                 PropinsiPemesan= request.PropinsiPemesan,
 

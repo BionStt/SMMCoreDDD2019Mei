@@ -17,7 +17,7 @@ namespace SmmCoreDDD2019.Application.MasterLeasingDbs.Queries.GetAllLeasing
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<MasterLeasingDb, GetAllLeasinglookupModel>()
-               .ForMember(cDTO => cDTO.IDlease, opt => opt.MapFrom(c => c.IDlease))
+               .ForMember(cDTO => cDTO.IDlease, opt => opt.MapFrom(c => c.Id))
                .ForMember(cDTO => cDTO.NamaLease, opt => opt.MapFrom(c => c.NamaLease));
 
             // throw new NotImplementedException();

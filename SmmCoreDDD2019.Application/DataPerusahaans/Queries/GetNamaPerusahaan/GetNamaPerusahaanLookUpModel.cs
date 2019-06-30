@@ -15,7 +15,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaans.Queries.GetNamaPerusahaan
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<DataPerusahaan, GetNamaPerusahaanLookUpModel>()
-             .ForMember(cDTO => cDTO.IDPerusahaan, opt => opt.MapFrom(c => c.KodeP))
+             .ForMember(cDTO => cDTO.IDPerusahaan, opt => opt.MapFrom(c => c.Id))
             .ForMember(cDTO => cDTO.NamaPerusahaan, opt => opt.MapFrom(c => c.NamaP));
          //   .ForMember(cDTO => cDTO.NamaPerusahaan, opt => opt.MapFrom(c => string.Format("{0} - {1} - {2:c}", c.NamaBarang, c.Merek, (c.Harga + c.BBN))));
 

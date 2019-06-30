@@ -30,11 +30,11 @@ namespace SmmCoreDDD2019.Application.PembelianDetails.Query.GetListStokUnitByNoK
             {
 
                 var aa = await(from a in _context.StokUnit
-                               join b in _context.MasterBarangDB on a.KodeBrg equals b.NoUrutTypeKendaraan
-                               where a.KodeBeliDetail == Int32.Parse(request.Id)
+                               join b in _context.MasterBarangDB on a.MasterBarangDBId equals b.Id
+                               where a.PembelianDetailId == Int32.Parse(request.Id)
                                select new
                                {
-                                   NoUrutSO = a.NoUrutSo,
+                                   NoUrutSO = a.Id,
                                    NamaBarang1 = string.Format("{0} - {1} - {2:c} - {3:c} - {4:c}",b.Merek,b.NamaBarang, b.Harga,b.BBN, b.Harga+b.BBN),
                                    NoRangka1 = a.NoRangka,
                                    NoMesin1 = a.NoMesin,

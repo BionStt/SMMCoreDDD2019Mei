@@ -25,15 +25,15 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanCabangs.Command.UpdateDataPer
         {
 
             var entity = await _context.DataPerusahaanCabang
-               .SingleAsync(c => c.KodePosisi == request.KodePosisi, cancellationToken);
+               .SingleAsync(c => c.Id == request.KodePosisi, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(DataPerusahaanCabang), request.KodePosisi);
             }
 
-            entity.KodeP = request.KodeP;
-            entity.KodePosisi = request.KodePosisi;
+            entity.DataPerusahaanId = request.KodeP;
+           // entity.KodePosisi = request.KodePosisi;
             entity.NamaPosisi = request.NamaPosisi;
             entity.Alamat= request.Alamat;
             entity.Kel= request.Kel;

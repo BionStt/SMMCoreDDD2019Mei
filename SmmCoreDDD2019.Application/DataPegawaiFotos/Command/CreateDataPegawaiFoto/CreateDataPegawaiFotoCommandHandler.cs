@@ -35,7 +35,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiFotos.Command.CreateDataPegawaiF
                 Foto = request.Foto,
               //  Tglinput = request.Tglinput,
                 Revisi= request.Revisi,
-                IDPegawai= request.IDPegawai,
+                DataPegawaiId= request.IDPegawai,
                 KodeBarcode= request.KodeBarcode
               
             };
@@ -44,7 +44,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiFotos.Command.CreateDataPegawaiF
 
             await _context.SaveChangesAsync(cancellationToken);
 
-           await _mediator.Publish(new DataPegawaiFotoCreated { DataPegawaiFotoID = entity.NoUrut.ToString() });
+           await _mediator.Publish(new DataPegawaiFotoCreated { DataPegawaiFotoID = entity.Id.ToString() });
 
             return Unit.Value;
 

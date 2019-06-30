@@ -43,7 +43,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataPribadiInput.Command.CreateD
             var entity2 = new DataPegawaiDataPribadi
             {
                 // NoUrut = request.NoUrut,
-                IDPegawai = entity.IDPegawai,
+                DataPegawaiId = entity.Id,
                 NamaDepan = request.NamaDepan,
                 NamaTengah = request.NamaTengah,
                 NamaBelakang = request.NamaBelakang,
@@ -77,7 +77,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataPribadiInput.Command.CreateD
                       
             _context.DataPegawaiDataPribadi.Add(entity2);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new DataPegawaiDataPribadiInputCreated { DataPegawaiID = entity.IDPegawai.ToString() },cancellationToken);
+            await _mediator.Publish(new DataPegawaiDataPribadiInputCreated { DataPegawaiID = entity.Id.ToString() },cancellationToken);
             return Unit.Value;
 
         }

@@ -38,7 +38,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
             builder.Property(e => e.NamaBidangUsaha).HasMaxLength(50).IsUnicode(false);
             builder.Property(e => e.OmzetBulanan).HasColumnType("money");
             builder.Property(e => e.PernahKredit).HasMaxLength(2).IsUnicode(false);
-            builder.Property(e => e.NoUrutMasterBarang).HasMaxLength(4).IsUnicode(false);
+            builder.Property(e => e.MasterBarangDBId);
             builder.Property(e => e.FasilitasKreditBank).HasMaxLength(50).IsUnicode(false);
             builder.Property(e => e.JenisFasilitasbank).HasMaxLength(50).IsUnicode(false);
             builder.Property(e => e.NamaRekeningBank).HasMaxLength(50).IsUnicode(false);

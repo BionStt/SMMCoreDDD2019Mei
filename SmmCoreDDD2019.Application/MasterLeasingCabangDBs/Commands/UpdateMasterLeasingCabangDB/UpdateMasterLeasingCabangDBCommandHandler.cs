@@ -24,14 +24,14 @@ namespace SmmCoreDDD2019.Application.MasterLeasingCabangDBs.Commands.UpdateMaste
         public async Task<Unit> Handle(UpdateMasterLeasingCabangDBCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.MasterLeasingCabangDB
-                .SingleAsync(c => c.NoUrutLeasingCabang == request.NoUrutLeasingCabang, cancellationToken);
+                .SingleAsync(c => c.Id == request.NoUrutLeasingCabang, cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(MasterLeasingCabangDB), request.NoUrutLeasingCabang);
             }
 
-            entity.IDlease = request.IDlease;
+            //entity.IDlease = request.IDlease;
             entity.Aktif = request.Aktif;
             entity.Alamat= request.Alamat;
             entity.Kelurahan= request.Kelurahan;

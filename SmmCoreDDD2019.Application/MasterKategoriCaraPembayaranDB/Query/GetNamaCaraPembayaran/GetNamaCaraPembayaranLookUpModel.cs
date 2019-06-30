@@ -15,7 +15,7 @@ namespace SmmCoreDDD2019.Application.MasterKategoriCaraPembayaranDB.Query.GetNam
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<MasterKategoriCaraPembayaran, GetNamaCaraPembayaranLookUpModel>()
-             .ForMember(cDTO => cDTO.NoUrut, opt => opt.MapFrom(c => c.NoUrutCaraBayar))
+             .ForMember(cDTO => cDTO.NoUrut, opt => opt.MapFrom(c => c.Id))
              .ForMember(cDTO => cDTO.NamaKategoryCaraBayaran, opt => opt.MapFrom(c => c.CaraPembayaran));
 
         }

@@ -16,7 +16,7 @@ namespace SmmCoreDDD2019.Application.MasterBidangPekerjaanDBs.Query.GetNamaBidan
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<MasterBidangPekerjaanDB, GetNamaBidangPekerjaanLookUpModel>()
-               .ForMember(cDTO => cDTO.NoUrutBidangPekerjaan, opt => opt.MapFrom(c => c.NoKodeMasterBidangPekerjaan))
+               .ForMember(cDTO => cDTO.NoUrutBidangPekerjaan, opt => opt.MapFrom(c => c.Id))
                .ForMember(cDTO => cDTO.NamaMasterBidangPekerjaan, opt => opt.MapFrom(c => c.NamaMasterBidangPekerjaan));
 
             // throw new NotImplementedException();

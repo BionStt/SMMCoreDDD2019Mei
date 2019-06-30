@@ -34,8 +34,8 @@ namespace SmmCoreDDD2019.Application.DataSPKKendaraanDBs.Command.CreateDataSPKKe
               //  NoUrut = request.NoUrut,
                 NamaSTNK= request.NamaSTNK,
                 NoKtpSTNK = request.NoKtpSTNK,
-                NoUrutTypeKendaraan= request.NoUrutTypeKendaraan,
-                NoUrutSPKBaru= request.NoUrutSPKBaru,
+                MasterBarangDBId = request.NoUrutTypeKendaraan,
+                DataSPKBaruDBId = request.NoUrutSPKBaru,
                 TahunPerakitan= request.TahunPerakitan,
                 Warna = request.Warna
 
@@ -47,7 +47,7 @@ namespace SmmCoreDDD2019.Application.DataSPKKendaraanDBs.Command.CreateDataSPKKe
 
             await _context.SaveChangesAsync(cancellationToken);
 
-           await _mediator.Publish(new DataSPKKendaraanDBCreated { DataSPKKendaraanDBID = entity.NoUrut.ToString() });
+           await _mediator.Publish(new DataSPKKendaraanDBCreated { DataSPKKendaraanDBID = entity.Id.ToString() });
 
             return Unit.Value;
 

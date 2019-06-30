@@ -24,13 +24,13 @@ namespace SmmCoreDDD2019.Application.STNKDBs.Query.GetNamaFakturStnk
         public async Task<GetNamaFakturStnkViewModel> Handle(GetNamaFakturStnkQuery request, CancellationToken cancellationToken)
         {
             var aa = await (from a in _context.PermohonanFakturDB
-                            join b in _context.PenjualanDetail on a.KodePenjualanDetail equals b.NoPenjualanDetail
-                            join c in _context.Penjualan on b.KodePenjualan equals c.KodePenjualan
-                            join d in _context.CustomerDB on c.KodeKonsumen equals d.CustomerID
-                            join e in _context.StokUnit on b.NoUrutSO equals e.NoUrutSo
-                            join f in _context.MasterBarangDB on e.KodeBrg equals f.NoUrutTypeKendaraan
-                            where _context.STNKDB.All(x=>x.NoUrutFaktur !=a.NoUrutFaktur)
-                            select new { NoUrutFaktur1 = a.NoUrutFaktur, NamaFaktur = string.Format("{0} - {1} - {2}", e.NoMesin,a.NamaFaktur, f.NamaBarang) }
+                            join b in _context.PenjualanDetail on a.PenjualanDetailId equals b.Id
+                            join c in _context.Penjualan on b.PenjualanId equals c.Id
+                            join d in _context.CustomerDB on c.CustomerDBId equals d.Id
+                            join e in _context.StokUnit on b.StokUnitId equals e.Id
+                            join f in _context.MasterBarangDB on e.MasterBarangDBId equals f.Id
+                            where _context.STNKDB.All(x=>x.PermohonanFakturDBId !=a.Id)
+                            select new { NoUrutFaktur1 = a.Id, NamaFaktur = string.Format("{0} - {1} - {2}", e.NoMesin,a.NamaFaktur, f.NamaBarang) }
 
               ).ToListAsync(cancellationToken);
             var model = new GetNamaFakturStnkViewModel

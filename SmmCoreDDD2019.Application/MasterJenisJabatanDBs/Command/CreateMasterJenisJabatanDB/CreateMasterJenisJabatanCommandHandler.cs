@@ -37,7 +37,7 @@ namespace SmmCoreDDD2019.Application.MasterJenisJabatanDBs.Command.CreateMasterJ
 
             _context.MasterJenisJabatan.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
-            await _mediator.Publish(new MasterJenisJabatanCreated { MasterJenisJabatanID = entity.NoUrut.ToString() },cancellationToken);
+            await _mediator.Publish(new MasterJenisJabatanCreated { MasterJenisJabatanID = entity.Id.ToString() },cancellationToken);
             return Unit.Value;
 
         }

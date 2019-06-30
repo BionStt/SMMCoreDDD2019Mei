@@ -214,7 +214,7 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
             return View();
 
         }
-        public async Task<IActionResult> CekPembayaranLeasingDetail(string submit, string Ket1, DateTime TglLunasLeasing, DateTime tgl1, DateTime tgl2, string KodeLeasing, string KodePj1n, string KodePj1a, DateTime tgl1a, DateTime tgl2a, string NourutPjDetaila, DateTime tgl1b, DateTime tgl2b)
+        public async Task<IActionResult> CekPembayaranLeasingDetail(string submit, string Ket1, DateTime TglLunasLeasing, DateTime tgl1, DateTime tgl2, string KodeLeasing, string KodePj1n, int KodePj1a, DateTime tgl1a, DateTime tgl2a, string NourutPjDetaila, DateTime tgl1b, DateTime tgl2b)
         {
             switch (submit)
             {

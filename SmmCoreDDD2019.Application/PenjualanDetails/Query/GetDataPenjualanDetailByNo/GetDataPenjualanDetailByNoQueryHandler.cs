@@ -25,28 +25,28 @@ namespace SmmCoreDDD2019.Application.PenjualanDetails.Query.GetDataPenjualanDeta
         public async Task<GetDataPenjualanDetailByNoViewModel> Handle(GetDataPenjualanDetailByNoQuery request, CancellationToken cancellationToken)
         {
             var aa = await (from a in _context.Penjualan
-                            join b in _context.PenjualanDetail on a.KodePenjualan equals b.KodePenjualan
-                            join c in _context.CustomerDB on a.KodeKonsumen equals c.CustomerID
-                            join d in _context.StokUnit on b.NoUrutSO equals d.NoUrutSo
-                            join e in _context.MasterBarangDB on d.KodeBrg equals e.NoUrutTypeKendaraan
-                            join f in _context.MasterKategoriPenjualan on a.KategoriPenjualan equals f.NoUrutKategoriPenjualan
-                            join g in _context.MasterLeasingCabangDB on a.KodeLease equals g.NoUrutLeasingCabang
-                            join h in _context.MasterLeasingDb on g.IDlease equals h.IDlease
-                            join i in _context.DataPegawaiDataPribadi on a.NoUrutSales equals i.IDPegawai
-                            join j in _context.PembelianDetail on d.KodeBeliDetail equals j.KodeBeliDetail
-                            join k in _context.Pembelian on j.KodeBeli equals k.KodeBeli
-                            join l in _context.MasterSupplierDB on k.Idsupplier equals l.IDSupplier
-                            join m in _context.PermohonanFakturDB on b.NoPenjualanDetail equals m.KodePenjualanDetail
+                            join b in _context.PenjualanDetail on a.Id equals b.PenjualanId
+                            join c in _context.CustomerDB on a.CustomerDBId equals c.Id
+                            join d in _context.StokUnit on b.StokUnitId equals d.Id
+                            join e in _context.MasterBarangDB on d.MasterBarangDBId equals e.Id
+                            join f in _context.MasterKategoriPenjualan on a.MasterKategoriPenjualanId equals f.Id
+                            join g in _context.MasterLeasingCabangDB on a.MasterLeasingCabangDBId equals g.Id
+                            join h in _context.MasterLeasingDb on g.MasterLeasingDbId equals h.Id
+                            join i in _context.DataPegawaiDataPribadi on a.NoUrutSales equals i.Id
+                            join j in _context.PembelianDetail on d.PembelianDetailId equals j.Id
+                            join k in _context.Pembelian on j.PembelianId equals k.Id
+                            join l in _context.MasterSupplierDB on k.MasterSupplierDBId equals l.Id
+                            join m in _context.PermohonanFakturDB on b.Id equals m.PenjualanDetailId
 
-                            where b.NoPenjualanDetail == Int32.Parse(request.Id)
+                            where b.Id == Int32.Parse(request.Id)
                             select new
                             {
-                                NoUrutPenjualanDetail = b.NoPenjualanDetail,
-                                KodeKonsumen = c.CustomerID,
+                                NoUrutPenjualanDetail = b.Id,
+                                KodeKonsumen = c.Id,
                                 NamaKonsumen = c.Nama,
                                 NamaBPKB = c.NamaBPKB,
                                 NamaFaktur = m.NamaFaktur,
-                                NoUrutPenjualan = a.KodePenjualan,
+                                NoUrutPenjualan = a.Id,
                                 TanggalPenjualan = a.TanggalPenjualan,
                                 Merek = e.Merek,
                                 NamaBarang = e.NamaBarang,
@@ -59,7 +59,7 @@ namespace SmmCoreDDD2019.Application.PenjualanDetails.Query.GetDataPenjualanDeta
                                 NamaSupplier = l.NamaSupplier,
                                 DiskonUnit = d.Diskon,
                                 SellIn = d.SellIn,
-                                NoUrutSO = d.NoUrutSo,
+                                NoUrutSO = d.Id,
                                 TanggalBeliUnit = k.TglBeli,
                                 HargaOTR = b.HargaOTR,
                                 UangMuka = b.UangMuka,

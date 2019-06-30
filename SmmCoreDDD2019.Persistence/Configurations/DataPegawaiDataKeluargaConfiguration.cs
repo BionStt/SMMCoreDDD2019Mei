@@ -100,15 +100,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                 .HasColumnType("datetime")
                 .HasDefaultValueSql("(getdate())");
 
-            builder.HasOne(d => d.DataPegawai)
-                 .WithMany(p => p.DataPegawaiDataKeluarga)
-                 .HasForeignKey(d => d.IDPegawai)
-                 .OnDelete(DeleteBehavior.ClientSetNull)
-                 .HasConstraintName("FK_DataPegawaiDataKeluarga_DataPegawai");
-
-
-
-            //  throw new NotImplementedException();
+        
         }
     }
 }

@@ -28,8 +28,8 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPelatihans.Command.Cr
         {
             var entity = new DataPegawaiDataRiwayatPelatihan
             {
-              //  NoUrut = request.NoUrut,
-                IDPegawai = request.IDPegawai,
+                //  NoUrut = request.NoUrut,
+                DataPegawaiId = request.IDPegawai,
                 NamaLembaga= request.NamaLembaga,
                 AlamatLembaga= request.AlamatLembaga,
                 TelpLembaga= request.TelpLembaga,
@@ -45,7 +45,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataRiwayatPelatihans.Command.Cr
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new DataPegawaiDataRiwayatPelatihanCreated { DataPegawaiDataRiwayatPelatihanID = entity.NoUrut.ToString() });
+            await _mediator.Publish(new DataPegawaiDataRiwayatPelatihanCreated { DataPegawaiDataRiwayatPelatihanID = entity.Id.ToString() });
 
             return Unit.Value;
 

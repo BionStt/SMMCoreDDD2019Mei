@@ -20,7 +20,7 @@ namespace SmmCoreDDD2019.Application.Penjualans.Query.GetLaporanPenjualanPivotSa
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<Penjualan, GetLaporanPenjualanPivotSalesLookUpModel>()
-             .ForMember(cDTO => cDTO.KodePenjualanID, opt => opt.MapFrom(c => c.KodePenjualan));
+             .ForMember(cDTO => cDTO.KodePenjualanID, opt => opt.MapFrom(c => c.Id));
             //  .ForMember(cDTO => cDTO.NamaPemesan, opt => opt.MapFrom(c => c.NamaPemesan));
 
         }

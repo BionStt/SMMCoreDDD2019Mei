@@ -24,7 +24,7 @@ namespace SmmCoreDDD2019.Application.MasterBarangDBs.Queries.GetMasterBarangByID
         {
             return new GetMasterBarangByIDViewModel
             {
-                MasterBarangDs = await _context.MasterBarangDB.Where(x=>x.NoUrutTypeKendaraan==Int32.Parse(request.Id)).ProjectTo<GetMasterBarangByIDLookUpModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken)
+                MasterBarangDs = await _context.MasterBarangDB.Where(x=>x.Id==Int32.Parse(request.Id)).ProjectTo<GetMasterBarangByIDLookUpModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken)
             };
         }
     }

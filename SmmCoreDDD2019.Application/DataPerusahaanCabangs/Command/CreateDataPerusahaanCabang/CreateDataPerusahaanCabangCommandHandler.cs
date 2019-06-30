@@ -30,7 +30,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanCabangs.Command.CreateDataPer
         {
             var entity = new DataPerusahaanCabang
             {
-                KodeP = request.KodeP,
+                DataPerusahaanId = request.KodeP,
               //  KodePosisi = request.KodePosisi,
                 NamaPosisi = request.NamaPosisi,
                 Alamat= request.Alamat,
@@ -47,7 +47,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanCabangs.Command.CreateDataPer
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new DataPerusahaanCabangCreated { DataPerusahaanCabangID = entity.KodePosisi.ToString() },cancellationToken);
+            await _mediator.Publish(new DataPerusahaanCabangCreated { DataPerusahaanCabangID = entity.Id.ToString() },cancellationToken);
 
             return Unit.Value;
 

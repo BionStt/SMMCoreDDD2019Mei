@@ -23,28 +23,28 @@ namespace SmmCoreDDD2019.Application.PenjualanDetails.Query.GetDataCheckPenjuala
         public async Task<GetDataCheckPenjualanBulananViewModel> Handle(GetDataCheckPenjualanBulananQuery request, CancellationToken cancellationToken)
         {
             var aa = await(from a in _context.Penjualan
-                           join b in _context.PenjualanDetail on a.KodePenjualan equals b.KodePenjualan
-                           join c in _context.CustomerDB on a.KodeKonsumen equals c.CustomerID
-                           join d in _context.StokUnit on b.NoUrutSO equals d.NoUrutSo
-                           join e in _context.MasterBarangDB on d.KodeBrg equals e.NoUrutTypeKendaraan
-                           join f in _context.MasterKategoriPenjualan on a.KategoriPenjualan equals f.NoUrutKategoriPenjualan
-                           join g in _context.MasterLeasingCabangDB on a.KodeLease equals g.NoUrutLeasingCabang
-                           join h in _context.MasterLeasingDb on g.IDlease equals h.IDlease
-                           join i in _context.DataPegawaiDataPribadi on a.NoUrutSales equals i.IDPegawai
-                           join j in _context.PembelianDetail on d.KodeBeliDetail equals j.KodeBeliDetail
-                           join k in _context.Pembelian on j.KodeBeli equals k.KodeBeli
-                           join l in _context.MasterSupplierDB on k.Idsupplier equals l.IDSupplier
-                           join m in _context.PermohonanFakturDB on b.NoPenjualanDetail equals m.KodePenjualanDetail
+                           join b in _context.PenjualanDetail on a.Id equals b.PenjualanId
+                           join c in _context.CustomerDB on a.CustomerDBId equals c.Id
+                           join d in _context.StokUnit on b.StokUnitId equals d.Id
+                           join e in _context.MasterBarangDB on d.MasterBarangDBId equals e.Id
+                           join f in _context.MasterKategoriPenjualan on a.MasterKategoriPenjualanId equals f.Id
+                           join g in _context.MasterLeasingCabangDB on a.MasterLeasingCabangDBId equals g.Id
+                           join h in _context.MasterLeasingDb on g.MasterLeasingDbId equals h.Id
+                           join i in _context.DataPegawaiDataPribadi on a.NoUrutSales equals i.Id
+                           join j in _context.PembelianDetail on d.PembelianDetailId equals j.Id
+                           join k in _context.Pembelian on j.PembelianId equals k.Id
+                           join l in _context.MasterSupplierDB on k.MasterSupplierDBId equals l.Id
+                           join m in _context.PermohonanFakturDB on b.Id equals m.PenjualanDetailId
                            //  join n in _context.PenjualanPiutang on b.NoPenjualanDetail equals n.KodePenjualanDetail
                            let DataPj = c.Nama + " - " + a.NoBuku + " - " + a.TanggalPenjualan + " - " + h.NamaLease + " - " + g.Cabang
                            where b.CheckLapBulanan==null && ((a.TanggalPenjualan.Value <= request.TanggalPenjualan2 && a.TanggalPenjualan.Value >= request.TanggalPenjualan1) || (a.TanggalPenjualan.Value <= request.TanggalPenjualan2a && a.TanggalPenjualan.Value >= request.TanggalPenjualan1a)) 
                            select new
                            {
-                               NoUrutPenjualanDetail = b.NoPenjualanDetail,
+                               NoUrutPenjualanDetail = b.Id,
                                DataPenjualan = DataPj,
                                TanggalPenjualan = a.TanggalPenjualan,
                                CheckDP = b.CheckDp,
-                               KodePenjualan = a.KodePenjualan
+                               KodePenjualan = a.Id
 
                            }).ToListAsync(cancellationToken);
             var model = new GetDataCheckPenjualanBulananViewModel

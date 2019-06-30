@@ -49,7 +49,7 @@ namespace SmmCoreDDD2019.Application.DataPegawais.Command.CreateDataPegawai
 
             await _context.SaveChangesAsync(cancellationToken);
 
-           await _mediator.Publish(new DataPegawaiCreated { DataPegawaiID = entity.IDPegawai.ToString() },cancellationToken);
+           await _mediator.Publish(new DataPegawaiCreated { DataPegawaiID = entity.Id.ToString() },cancellationToken);
 
             return Unit.Value;
 

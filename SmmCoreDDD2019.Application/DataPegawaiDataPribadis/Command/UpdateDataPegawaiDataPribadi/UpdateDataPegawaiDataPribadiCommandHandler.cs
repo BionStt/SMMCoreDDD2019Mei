@@ -25,7 +25,7 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataPribadis.Command.UpdateDataP
         public  async Task<Unit> Handle(UpdateDataPegawaiDataPribadiCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.DataPegawaiDataPribadi
-               .SingleAsync(c => c.IDPegawai == request.IDPegawai, cancellationToken);
+               .SingleAsync(c => c.Id == request.IDPegawai, cancellationToken);
 
             if (entity == null)
             {
@@ -33,8 +33,8 @@ namespace SmmCoreDDD2019.Application.DataPegawaiDataPribadis.Command.UpdateDataP
             }
 
 
-            entity.NoUrut = request.NoUrut;
-            entity.IDPegawai = request.IDPegawai;
+           // entity.NoUrut = request.NoUrut;
+            entity.DataPegawaiId = request.IDPegawai;
             entity.NamaDepan = request.NamaDepan;
             entity.NamaTengah = request.NamaTengah;
             entity.NamaBelakang = request.NamaBelakang;
