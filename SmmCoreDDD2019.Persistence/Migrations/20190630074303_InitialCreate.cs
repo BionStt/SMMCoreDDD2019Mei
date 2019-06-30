@@ -1557,7 +1557,7 @@ namespace SmmCoreDDD2019.Persistence.Migrations
                     Debet = table.Column<decimal>(type: "money", nullable: false),
                     Kredit = table.Column<decimal>(type: "money", nullable: false),
                     Saldo = table.Column<decimal>(type: "money", nullable: false),
-                    AccountingDataMataUangId = table.Column<int>(nullable: false),
+                    AccountingDataMataUangId = table.Column<int>(nullable: true),
                     UserInput = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
                     NilaiKurs = table.Column<decimal>(type: "money", nullable: false),
                     TanggalInput = table.Column<DateTime>(type: "datetime", nullable: false)
@@ -1570,13 +1570,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations
                         column: x => x.AccountingDataAccountId,
                         principalSchema: "Accounting",
                         principalTable: "AccountingDataAccount",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AccountingDataSaldoAwal_AccountingDataMataUang_AccountingDataMataUangId",
-                        column: x => x.AccountingDataMataUangId,
-                        principalSchema: "Accounting",
-                        principalTable: "AccountingDataMataUang",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -2111,13 +2104,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations
                 schema: "Accounting",
                 table: "AccountingDataSaldoAwal",
                 column: "AccountingDataAccountId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AccountingDataSaldoAwal_AccountingDataMataUangId",
-                schema: "Accounting",
-                table: "AccountingDataSaldoAwal",
-                column: "AccountingDataMataUangId",
                 unique: true);
 
             migrationBuilder.CreateIndex(

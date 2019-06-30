@@ -10,7 +10,7 @@ using SmmCoreDDD2019.Persistence;
 namespace SmmCoreDDD2019.Persistence.Migrations
 {
     [DbContext(typeof(SMMCoreDDD2019DbContext))]
-    [Migration("20190630071216_InitialCreate")]
+    [Migration("20190630074303_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -344,7 +344,7 @@ namespace SmmCoreDDD2019.Persistence.Migrations
 
                     b.Property<int>("AccountingDataAccountId");
 
-                    b.Property<int>("AccountingDataMataUangId");
+                    b.Property<int?>("AccountingDataMataUangId");
 
                     b.Property<int>("AccountingDataPeriodeId");
 
@@ -376,9 +376,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AccountingDataAccountId")
-                        .IsUnique();
-
-                    b.HasIndex("AccountingDataMataUangId")
                         .IsUnique();
 
                     b.HasIndex("AccountingDataPeriodeId")
@@ -3686,11 +3683,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations
                     b.HasOne("SmmCoreDDD2019.Domain.Entities.AccountingDataAccount")
                         .WithOne("AccountingDataSaldoAwal")
                         .HasForeignKey("SmmCoreDDD2019.Domain.Entities.AccountingDataSaldoAwal", "AccountingDataAccountId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SmmCoreDDD2019.Domain.Entities.AccountingDataMataUang")
-                        .WithOne("AccountingDataSaldoAwal")
-                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.AccountingDataSaldoAwal", "AccountingDataMataUangId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmmCoreDDD2019.Domain.Entities.AccountingDataPeriode")

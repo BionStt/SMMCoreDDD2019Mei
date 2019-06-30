@@ -17,7 +17,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public Decimal Kredit { get; set; }
         public Decimal Saldo { get; set; }
 
-        public int AccountingDataMataUangId { get; set; }
+        public int? AccountingDataMataUangId { get; set; }
 
         public string UserInput { get; set; }
         public Decimal NilaiKurs{ get; set; }
