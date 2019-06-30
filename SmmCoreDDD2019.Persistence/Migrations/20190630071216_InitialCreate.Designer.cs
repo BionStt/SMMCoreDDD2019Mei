@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmmCoreDDD2019.Persistence;
 
-namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
+namespace SmmCoreDDD2019.Persistence.Migrations
 {
     [DbContext(typeof(SMMCoreDDD2019DbContext))]
-    [Migration("20190516105233_InitialCreate2CreateTriggerForAccounting")]
-    partial class InitialCreate2CreateTriggerForAccounting
+    [Migration("20190630071216_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,19 +19,81 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("Relational:Sequence:.AccountingDataAccount_hilo", "'AccountingDataAccount_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.AccountingDataBuktiTransaksi_hilo", "'AccountingDataBuktiTransaksi_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.AccountingDataJournal_hilo", "'AccountingDataJournal_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.AccountingDataJournalHeader_hilo", "'AccountingDataJournalHeader_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.AccountingDataKurs_hilo", "'AccountingDataKurs_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.AccountingDataMataUang_hilo", "'AccountingDataMataUang_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.AccountingDataPeriode_hilo", "'AccountingDataPeriode_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.AccountingDataSaldoAwal_hilo", "'AccountingDataSaldoAwal_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.AccountingTipeJournal_hilo", "'AccountingTipeJournal_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.BPKBDB_hilo", "'BPKBDB_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.CustomerDB_hilo", "'CustomerDB_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataKonsumenAvalist_hilo", "'DataKonsumenAvalist_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataKontrakAngsuran_hilo", "'DataKontrakAngsuran_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataKontrakAsuransi_hilo", "'DataKontrakAsuransi_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataKontrakKredit_hilo", "'DataKontrakKredit_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataKontrakKreditAngsuranDemo_hilo", "'DataKontrakKreditAngsuranDemo_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataKontrakSurvei_hilo", "'DataKontrakSurvei_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataPegawaiDataAbsensi_hilo", "'DataPegawaiDataAbsensi_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataPegawaiDataAward_hilo", "'DataPegawaiDataAward_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataPegawaiDataJabatan_hilo", "'DataPegawaiDataJabatan_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataPegawaiDataKeluarga_hilo", "'DataPegawaiDataKeluarga_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataPegawaiDataOrmas_hilo", "'DataPegawaiDataOrmas_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataPegawaiDataPribadi_hilo", "'DataPegawaiDataPribadi_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataPegawaiDataRiwayatPekerjaan_hilo", "'DataPegawaiDataRiwayatPekerjaan_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataPegawaiDataRiwayatPelatihan_hilo", "'DataPegawaiDataRiwayatPelatihan_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataPegawaiDataRiwayatPendidikan_hilo", "'DataPegawaiDataRiwayatPendidikan_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataPegawaiFoto_hilo", "'DataPegawaiFoto_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataPegawaiJenisAbsensi_hilo", "'DataPegawaiJenisAbsensi_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataPerusahaan_hilo", "'DataPerusahaan_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataPerusahaanCabang_hilo", "'DataPerusahaanCabang_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataPerusahaanStrukturJabatan_hilo", "'DataPerusahaanStrukturJabatan_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataSPKBaruDB_hilo", "'DataSPKBaruDB_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataSPKKendaraanDB_hilo", "'DataSPKKendaraanDB_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataSPKKreditDB_hilo", "'DataSPKKreditDB_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataSPKLeasingDB_hilo", "'DataSPKLeasingDB_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.DataSPKSurveiDB_hilo", "'DataSPKSurveiDB_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.EntityFrameworkHiLoSequence", "'EntityFrameworkHiLoSequence', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.MasterAllowanceType_hilo", "'MasterAllowanceType_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.MasterBarangDB_hilo", "'MasterBarangDB_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.MasterBidangPekerjaanDB_hilo", "'MasterBidangPekerjaanDB_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.MasterBidangUsahaDB_hilo", "'MasterBidangUsahaDB_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.MasterJenisJabatan_hilo", "'MasterJenisJabatan_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.MasterKategoriBayaran_hilo", "'MasterKategoriBayaran_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.MasterKategoriCaraPembayaran_hilo", "'MasterKategoriCaraPembayaran_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.MasterKategoriPenjualan_hilo", "'MasterKategoriPenjualan_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.MasterLeasingCabangDB_hilo", "'MasterLeasingCabangDB_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.MasterLeasingDB_hilo", "'MasterLeasingDB_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.MasterLeaveTypeHRD_hilo", "'MasterLeaveTypeHRD_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.MasterPerusahaanAsuransi_hilo", "'MasterPerusahaanAsuransi_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.MasterSupplierDB_hilo", "'MasterSupplierDB_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.Pembelian_hilo", "'Pembelian_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.PembelianDetail_hilo", "'PembelianDetail_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.PembelianPO_hilo", "'PembelianPO_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.PembelianPODetail_hilo", "'PembelianPODetail_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.PenjualanDetail_hilo", "'PenjualanDetail_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.PenjualanPiutang_hilo", "'PenjualanPiutang_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.PermohonanFakturDB_hilo", "'PermohonanFakturDB_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.STNKDB_hilo", "'STNKDB_hilo', '', '1', '10', '', '', 'Int64', 'False'")
+                .HasAnnotation("Relational:Sequence:.StokUnit_hilo", "'StokUnit_hilo', '', '1', '10', '', '', 'Int64', 'False'")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.AccountingDataAccount", b =>
                 {
-                    b.Property<int>("NoUrutAccountId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutAccountId")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "AccountingDataAccount_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Account")
                         .HasColumnName("Account")
                         .HasMaxLength(150)
                         .IsUnicode(false);
+
+                    b.Property<int>("AccountingDataMataUangId")
+                        .HasColumnName("AccountingDataMataUangId");
 
                     b.Property<int?>("Depth")
                         .ValueGeneratedOnAddOrUpdate()
@@ -50,11 +112,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnName("Lft");
 
-                    b.Property<string>("MataUangID")
-                        .HasColumnName("MataUangID")
-                        .HasMaxLength(4)
-                        .IsUnicode(false);
-
                     b.Property<int?>("NormalPos")
                         .HasColumnName("NormalPos");
 
@@ -66,17 +123,22 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnName("Rgt");
 
-                    b.HasKey("NoUrutAccountId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountingDataMataUangId")
+                        .IsUnique();
 
                     b.ToTable("AccountingDataAccount","Accounting");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.AccountingDataBuktiTransaksi", b =>
                 {
-                    b.Property<int>("NoUrutBuktiTransaksi")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutBuktiTransaksi")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "AccountingDataBuktiTransaksi_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
+
+                    b.Property<int>("AccountingTipeJournalId");
 
                     b.Property<string>("Keterangan")
                         .HasColumnName("Keterangan");
@@ -87,9 +149,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<DateTime>("TanggalInput")
                         .HasColumnName("TanggalInput")
                         .HasColumnType("datetime");
-
-                    b.Property<string>("TipeJournal")
-                        .HasColumnName("TipeJournal");
 
                     b.Property<decimal>("Total")
                         .HasColumnName("Total")
@@ -102,17 +161,24 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnName("ValidatedDate")
                         .HasColumnType("datetime");
 
-                    b.HasKey("NoUrutBuktiTransaksi");
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountingTipeJournalId")
+                        .IsUnique();
 
                     b.ToTable("AccountingDataBuktiTransaksi","Accounting");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.AccountingDataJournal", b =>
                 {
-                    b.Property<int>("JournalID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("JournalID")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "AccountingDataJournal_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
+
+                    b.Property<int>("AccountingDataAccountId");
+
+                    b.Property<int>("AccountingDataJournalHeaderId");
 
                     b.Property<decimal?>("Debit")
                         .HasColumnName("Debit")
@@ -127,25 +193,27 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnName("Kredit")
                         .HasColumnType("money");
 
-                    b.Property<string>("NoUrutAccountId")
-                        .HasColumnName("NoUrutAccountId")
-                        .HasMaxLength(5);
+                    b.HasKey("Id");
 
-                    b.Property<string>("NoUrutJournalH")
-                        .HasColumnName("NoUrutJournalH")
-                        .HasMaxLength(10);
+                    b.HasIndex("AccountingDataAccountId")
+                        .IsUnique();
 
-                    b.HasKey("JournalID");
+                    b.HasIndex("AccountingDataJournalHeaderId")
+                        .IsUnique();
 
                     b.ToTable("AccountingDataJournal","Accounting");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.AccountingDataJournalHeader", b =>
                 {
-                    b.Property<int>("NoUrutJournalH")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutJournalH")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "AccountingDataJournalHeader_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
+
+                    b.Property<int>("AccountingDataPeriodeId");
+
+                    b.Property<int>("AccountingTipeJournalId");
 
                     b.Property<string>("Aktif")
                         .HasColumnName("Aktif")
@@ -159,16 +227,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<string>("NoBuktiJournal")
                         .HasColumnName("NoBuktiJournal")
                         .HasMaxLength(40)
-                        .IsUnicode(false);
-
-                    b.Property<string>("NoIDTipeJournal")
-                        .HasColumnName("NoIDTipeJournal")
-                        .HasMaxLength(3)
-                        .IsUnicode(false);
-
-                    b.Property<string>("NoUrutPeriodeID")
-                        .HasColumnName("NoUrutPeriodeID")
-                        .HasMaxLength(4)
                         .IsUnicode(false);
 
                     b.Property<DateTime>("TanggalInput")
@@ -189,17 +247,23 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(40)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutJournalH");
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountingDataPeriodeId")
+                        .IsUnique();
+
+                    b.HasIndex("AccountingTipeJournalId")
+                        .IsUnique();
 
                     b.ToTable("AccountingDataJournalHeader","Accounting");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.AccountingDataKurs", b =>
                 {
-                    b.Property<int>("NoUrutKursID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutKursID")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "AccountingDataKurs_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("MataUangID")
                         .HasColumnName("MataUangID")
@@ -214,17 +278,17 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnName("TanggalInput")
                         .HasColumnType("datetime");
 
-                    b.HasKey("NoUrutKursID");
+                    b.HasKey("Id");
 
                     b.ToTable("AccountingDataKurs","Accounting");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.AccountingDataMataUang", b =>
                 {
-                    b.Property<int>("MataUangID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("MataUangID")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "AccountingDataMataUang_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Kode")
                         .HasColumnName("Kode")
@@ -236,17 +300,17 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
-                    b.HasKey("MataUangID");
+                    b.HasKey("Id");
 
                     b.ToTable("AccountingDataMataUang","Accounting");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.AccountingDataPeriode", b =>
                 {
-                    b.Property<int>("NoUrutPeriodeID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutPeriodeID")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "AccountingDataPeriode_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<DateTime>("Berakhir")
                         .HasColumnName("Berakhir")
@@ -266,17 +330,23 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutPeriodeID");
+                    b.HasKey("Id");
 
                     b.ToTable("AccountingDataPeriode","Accounting");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.AccountingDataSaldoAwal", b =>
                 {
-                    b.Property<int>("NoUrutSaldoAwalID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutSaldoAwalID")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "AccountingDataSaldoAwal_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
+
+                    b.Property<int>("AccountingDataAccountId");
+
+                    b.Property<int>("AccountingDataMataUangId");
+
+                    b.Property<int>("AccountingDataPeriodeId");
 
                     b.Property<decimal>("Debet")
                         .HasColumnName("Debet")
@@ -286,24 +356,9 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnName("Kredit")
                         .HasColumnType("money");
 
-                    b.Property<string>("MataUangID")
-                        .HasColumnName("MataUangID")
-                        .HasMaxLength(4)
-                        .IsUnicode(false);
-
                     b.Property<decimal>("NilaiKurs")
                         .HasColumnName("NilaiKurs")
                         .HasColumnType("money");
-
-                    b.Property<string>("NoUrutAccountId")
-                        .HasColumnName("NoUrutAccountId")
-                        .HasMaxLength(4)
-                        .IsUnicode(false);
-
-                    b.Property<string>("NoUrutPeriodeID")
-                        .HasColumnName("NoUrutPeriodeID")
-                        .HasMaxLength(4)
-                        .IsUnicode(false);
 
                     b.Property<decimal>("Saldo")
                         .HasColumnName("Saldo")
@@ -318,17 +373,26 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutSaldoAwalID");
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountingDataAccountId")
+                        .IsUnique();
+
+                    b.HasIndex("AccountingDataMataUangId")
+                        .IsUnique();
+
+                    b.HasIndex("AccountingDataPeriodeId")
+                        .IsUnique();
 
                     b.ToTable("AccountingDataSaldoAwal","Accounting");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.AccountingTipeJournal", b =>
                 {
-                    b.Property<int>("NoIDTipeJournal")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoIDTipeJournal")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "AccountingTipeJournal_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("KodeJournal")
                         .HasMaxLength(10)
@@ -339,40 +403,44 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
-                    b.HasKey("NoIDTipeJournal");
+                    b.HasKey("Id");
 
                     b.ToTable("AccountingTipeJournal","Accounting");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.BPKBDB", b =>
                 {
-                    b.Property<int>("NoUrutBPKB")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutBPKB")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "BPKBDB_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("NoBpkb")
                         .HasColumnName("NoBPKB")
                         .HasMaxLength(20)
                         .IsUnicode(false);
 
-                    b.Property<int?>("NoUrutFaktur");
+                    b.Property<int?>("PermohonanFakturDBId");
 
                     b.Property<DateTime?>("TanggalTerimaBPKB")
                         .HasColumnName("TglTerimaBPKB")
                         .HasColumnType("datetime");
 
-                    b.HasKey("NoUrutBPKB");
+                    b.HasKey("Id");
+
+                    b.HasIndex("PermohonanFakturDBId")
+                        .IsUnique()
+                        .HasFilter("[PermohonanFakturDBId] IS NOT NULL");
 
                     b.ToTable("BPKBDB","Penjualan");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.CustomerDB", b =>
                 {
-                    b.Property<int>("CustomerID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("CustomerID")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "CustomerDB_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Alamat")
                         .HasMaxLength(200)
@@ -471,17 +539,17 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(30)
                         .IsUnicode(false);
 
-                    b.HasKey("CustomerID");
+                    b.HasKey("Id");
 
                     b.ToTable("CustomerDB");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataKonsumenAvalist", b =>
                 {
-                    b.Property<int>("NoUrutKonsumen")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutKonsumen")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataKonsumenAvalist_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Agama")
                         .HasMaxLength(2)
@@ -959,17 +1027,17 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(2)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutKonsumen");
+                    b.HasKey("Id");
 
                     b.ToTable("DataKonsumenAvalist","DataAvalist");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataKontrakAngsuran", b =>
                 {
-                    b.Property<int>("NoUrutDataAngsuran")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutDataAngsuran")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataKontrakAngsuran_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<decimal?>("Angsuran")
                         .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
@@ -991,6 +1059,8 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(3)
                         .IsUnicode(false);
 
+                    b.Property<int>("DataKontrakKreditId");
+
                     b.Property<decimal?>("Denda")
                         .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
                         .HasColumnType("money");
@@ -1004,10 +1074,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnType("money");
 
                     b.Property<string>("NoKwitansi")
-                        .HasMaxLength(30)
-                        .IsUnicode(false);
-
-                    b.Property<string>("NoRegisterKontrakKredit")
                         .HasMaxLength(30)
                         .IsUnicode(false);
 
@@ -1037,20 +1103,25 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
                         .HasColumnType("money");
 
-                    b.HasKey("NoUrutDataAngsuran");
+                    b.HasKey("Id");
+
+                    b.HasIndex("DataKontrakKreditId")
+                        .IsUnique();
 
                     b.ToTable("DataKontrakAngsuran","DataAvalist");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataKontrakAsuransi", b =>
                 {
-                    b.Property<int>("NoUrutDataAsuransi")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutDataAsuransi")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataKontrakAsuransi_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<decimal?>("BiayaAsuransi")
                         .HasColumnType("money");
+
+                    b.Property<int>("DataKontrakKreditId");
 
                     b.Property<int?>("JenisAsuransi")
                         .HasMaxLength(5)
@@ -1064,14 +1135,12 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(4)
                         .IsUnicode(false);
 
+                    b.Property<int>("MasterPerusahaanAsuransiId");
+
                     b.Property<decimal?>("NilaiPertanggungan")
                         .HasColumnType("money");
 
                     b.Property<string>("NoRegistrasiKontrakAsuransi")
-                        .HasMaxLength(50)
-                        .IsUnicode(false);
-
-                    b.Property<string>("NoRegistrasiKontrakKredit")
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
@@ -1081,17 +1150,23 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<DateTime?>("TanggalMulaiAsuransi")
                         .HasColumnType("datetime");
 
-                    b.HasKey("NoUrutDataAsuransi");
+                    b.HasKey("Id");
+
+                    b.HasIndex("DataKontrakKreditId")
+                        .IsUnique();
+
+                    b.HasIndex("MasterPerusahaanAsuransiId")
+                        .IsUnique();
 
                     b.ToTable("DataKontrakAsuransi","DataAvalist");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataKontrakKredit", b =>
                 {
-                    b.Property<int>("NoUrutDataKontrakKredit")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutDataKontrakKredit")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataKontrakKredit_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<decimal?>("Administrasi")
                         .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
@@ -1123,6 +1198,8 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(2)
                         .IsUnicode(false);
 
+                    b.Property<int>("DataKontrakSurveiId");
+
                     b.Property<decimal?>("HargaBarang")
                         .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
                         .HasColumnType("money");
@@ -1140,10 +1217,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnType("money");
 
                     b.Property<string>("NoRegisterKontrakKredit")
-                        .HasMaxLength(30)
-                        .IsUnicode(false);
-
-                    b.Property<string>("NoRegisterSurvei")
                         .HasMaxLength(30)
                         .IsUnicode(false);
 
@@ -1169,17 +1242,20 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
                         .HasColumnType("money");
 
-                    b.HasKey("NoUrutDataKontrakKredit");
+                    b.HasKey("Id");
+
+                    b.HasIndex("DataKontrakSurveiId")
+                        .IsUnique();
 
                     b.ToTable("DataKontrakKredit","DataAvalist");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataKontrakKreditAngsuranDemo", b =>
                 {
-                    b.Property<int>("NoUrutDataKontrakKredit")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutDataKontrakKredit")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataKontrakKreditAngsuranDemo_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<int?>("AngsKe")
                         .HasColumnName("AngsKe");
@@ -1238,17 +1314,17 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
                         .HasColumnType("money");
 
-                    b.HasKey("NoUrutDataKontrakKredit");
+                    b.HasKey("Id");
 
                     b.ToTable("DataKontrakKreditAngsuranDemo","DataAvalist");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataKontrakSurvei", b =>
                 {
-                    b.Property<int>("NoUrutDataSurvei")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutDataSurvei")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataKontrakSurvei_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("AlamatMendesak")
                         .HasMaxLength(50)
@@ -1257,6 +1333,8 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<string>("AtapRumah")
                         .HasMaxLength(2)
                         .IsUnicode(false);
+
+                    b.Property<int>("DataKonsumenAvalistId");
 
                     b.Property<string>("DayaListrikRumah")
                         .HasMaxLength(10)
@@ -1370,6 +1448,8 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(30)
                         .IsUnicode(false);
 
+                    b.Property<int>("MasterBarangDBId");
+
                     b.Property<string>("NamaBidangPekerjaan")
                         .HasMaxLength(50)
                         .IsUnicode(false);
@@ -1390,16 +1470,8 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(30)
                         .IsUnicode(false);
 
-                    b.Property<string>("NoRegistrasiKonsumen")
-                        .HasMaxLength(30)
-                        .IsUnicode(false);
-
                     b.Property<string>("NoRekeningBank")
                         .HasMaxLength(30)
-                        .IsUnicode(false);
-
-                    b.Property<string>("NoUrutMasterBarang")
-                        .HasMaxLength(4)
                         .IsUnicode(false);
 
                     b.Property<decimal?>("OmzetBulanan")
@@ -1479,17 +1551,23 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(1)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutDataSurvei");
+                    b.HasKey("Id");
+
+                    b.HasIndex("DataKonsumenAvalistId")
+                        .IsUnique();
+
+                    b.HasIndex("MasterBarangDBId")
+                        .IsUnique();
 
                     b.ToTable("DataKontrakSurvei","DataAvalist");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawai", b =>
                 {
-                    b.Property<int>("IDPegawai")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("IDPegawai")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "EntityFrameworkHiLoSequence")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Aktif")
                         .HasMaxLength(1)
@@ -1513,48 +1591,86 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<DateTime?>("TglMulaiKerja")
                         .HasColumnType("datetime");
 
-                    b.HasKey("IDPegawai");
+                    b.HasKey("Id");
 
                     b.ToTable("DataPegawai","DataPegawai");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataAbsensi", b =>
                 {
-                    b.Property<int>("NoUrutAbsensi")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutAbsensi")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataPegawaiDataAbsensi_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
-                    b.Property<int>("IDPegawai")
-                        .HasColumnName("IDPegawai");
+                    b.Property<int>("DataPegawaiId");
+
+                    b.Property<int>("DataPegawaiJenisAbsensiId");
 
                     b.Property<DateTime>("JamAbsensi")
                         .HasColumnName("JamAbsensi")
                         .HasColumnType("datetime");
 
-                    b.Property<string>("NoUrutJenisAbsensi")
-                        .HasColumnName("NoUrutJenisAbsensi")
-                        .HasMaxLength(3);
+                    b.HasKey("Id");
 
-                    b.HasKey("NoUrutAbsensi");
+                    b.HasIndex("DataPegawaiId")
+                        .IsUnique();
+
+                    b.HasIndex("DataPegawaiJenisAbsensiId")
+                        .IsUnique();
 
                     b.ToTable("DataPegawaiDataAbsensi","DataPegawai");
                 });
 
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataAward", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataPegawaiDataAward_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
+
+                    b.Property<string>("AwardTitle")
+                        .IsRequired();
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<int>("DataPegawaiId");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Gift")
+                        .IsRequired();
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Month");
+
+                    b.Property<double>("Price");
+
+                    b.Property<DateTime>("UpdateDate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DataPegawaiId")
+                        .IsUnique();
+
+                    b.ToTable("DataPegawaiDataAward","DataPegawai");
+                });
+
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataJabatan", b =>
                 {
-                    b.Property<int>("NoUrut")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataPegawaiDataJabatan_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
-                    b.Property<int?>("IDPegawai");
+                    b.Property<int?>("DataPegawaiId");
 
                     b.Property<string>("Keterangan")
                         .HasMaxLength(400)
                         .IsUnicode(false);
 
-                    b.Property<int?>("NoUrutJabatan")
-                        .HasColumnName("NoUrutJabatan");
+                    b.Property<int?>("MasterJenisJabatanId");
 
                     b.Property<DateTime?>("TglBerhentiMenjabat")
                         .HasColumnType("datetime");
@@ -1564,18 +1680,25 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("(getdate())");
 
-                    b.HasKey("NoUrut");
+                    b.HasKey("Id");
 
-                    b.HasIndex("NoUrutJabatan");
+                    b.HasIndex("DataPegawaiId")
+                        .IsUnique()
+                        .HasFilter("[DataPegawaiId] IS NOT NULL");
+
+                    b.HasIndex("MasterJenisJabatanId")
+                        .IsUnique()
+                        .HasFilter("[MasterJenisJabatanId] IS NOT NULL");
 
                     b.ToTable("DataPegawaiDataJabatan","DataPegawai");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataKeluarga", b =>
                 {
-                    b.Property<int>("NoUrut")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataPegawaiDataKeluarga_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Agama")
                         .HasMaxLength(1)
@@ -1585,6 +1708,8 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnName("alamatK")
                         .HasMaxLength(200)
                         .IsUnicode(false);
+
+                    b.Property<int?>("DataPegawaiId");
 
                     b.Property<string>("EmergencyCall")
                         .HasMaxLength(1)
@@ -1597,9 +1722,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<string>("HubunganK")
                         .HasMaxLength(1)
                         .IsUnicode(false);
-
-                    b.Property<int?>("IDPegawai")
-                        .HasColumnName("IDPegawai");
 
                     b.Property<string>("JenisKelamin")
                         .HasMaxLength(1)
@@ -1664,26 +1786,28 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnName("Tgllahir")
                         .HasColumnType("datetime");
 
-                    b.HasKey("NoUrut");
+                    b.HasKey("Id");
 
-                    b.HasIndex("IDPegawai");
+                    b.HasIndex("DataPegawaiId")
+                        .IsUnique()
+                        .HasFilter("[DataPegawaiId] IS NOT NULL");
 
                     b.ToTable("DataPegawaiDataKeluarga","DataPegawai");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataOrmas", b =>
                 {
-                    b.Property<int>("NoUrut")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataPegawaiDataOrmas_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("AlamatOrmas")
                         .HasColumnName("AlamatOrmas")
                         .HasMaxLength(300)
                         .IsUnicode(false);
 
-                    b.Property<int?>("IDPegawai")
-                        .HasColumnName("IDPegawai");
+                    b.Property<int?>("DataPegawaiId");
 
                     b.Property<string>("Jabatan")
                         .HasColumnName("Jabatan")
@@ -1712,18 +1836,21 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("(getdate())");
 
-                    b.HasKey("NoUrut");
+                    b.HasKey("Id");
 
-                    b.HasIndex("IDPegawai");
+                    b.HasIndex("DataPegawaiId")
+                        .IsUnique()
+                        .HasFilter("[DataPegawaiId] IS NOT NULL");
 
                     b.ToTable("DataPegawaiDataOrmas","DataPegawai");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataPribadi", b =>
                 {
-                    b.Property<int>("NoUrut")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataPegawaiDataPribadi_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Agama")
                         .HasMaxLength(1)
@@ -1737,6 +1864,8 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<string>("AlamatRumah")
                         .HasMaxLength(50)
                         .IsUnicode(false);
+
+                    b.Property<int?>("DataPegawaiId");
 
                     b.Property<string>("Email")
                         .HasMaxLength(50)
@@ -1754,9 +1883,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnName("Handphone2")
                         .HasMaxLength(20)
                         .IsUnicode(false);
-
-                    b.Property<int?>("IDPegawai")
-                        .HasColumnName("IDPegawai");
 
                     b.Property<string>("JenisKelamin")
                         .HasMaxLength(1)
@@ -1849,20 +1975,21 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("(getdate())");
 
-                    b.HasKey("NoUrut");
+                    b.HasKey("Id");
 
-                    b.HasIndex("IDPegawai")
+                    b.HasIndex("DataPegawaiId")
                         .IsUnique()
-                        .HasFilter("[IDPegawai] IS NOT NULL");
+                        .HasFilter("[DataPegawaiId] IS NOT NULL");
 
                     b.ToTable("DataPegawaiDataPribadi","DataPegawai");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataRiwayatPekerjaan", b =>
                 {
-                    b.Property<int>("NoUrut")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataPegawaiDataRiwayatPekerjaan_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<DateTime?>("AkhirBekerja")
                         .HasColumnType("datetime");
@@ -1875,11 +2002,10 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
+                    b.Property<int?>("DataPegawaiId");
+
                     b.Property<decimal?>("GajiTerakhir")
                         .HasColumnType("money");
-
-                    b.Property<int?>("IDPegawai")
-                        .HasColumnName("IDPegawai");
 
                     b.Property<string>("JabatanAkhir")
                         .HasColumnName("JabatanAkhir")
@@ -1933,18 +2059,21 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("(getdate())");
 
-                    b.HasKey("NoUrut");
+                    b.HasKey("Id");
 
-                    b.HasIndex("IDPegawai");
+                    b.HasIndex("DataPegawaiId")
+                        .IsUnique()
+                        .HasFilter("[DataPegawaiId] IS NOT NULL");
 
                     b.ToTable("DataPegawaiDataRiwayatPekerjaan","DataPegawai");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataRiwayatPelatihan", b =>
                 {
-                    b.Property<int>("NoUrut")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataPegawaiDataRiwayatPelatihan_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("AlamatLembaga")
                         .HasColumnName("AlamatLembaga")
@@ -1955,12 +2084,11 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
+                    b.Property<int?>("DataPegawaiId");
+
                     b.Property<string>("DibiayaiOleh")
                         .HasMaxLength(50)
                         .IsUnicode(false);
-
-                    b.Property<int?>("IDPegawai")
-                        .HasColumnName("IDPegawai");
 
                     b.Property<string>("LamaKursus")
                         .HasMaxLength(50)
@@ -1975,21 +2103,23 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrut");
+                    b.HasKey("Id");
 
-                    b.HasIndex("IDPegawai");
+                    b.HasIndex("DataPegawaiId")
+                        .IsUnique()
+                        .HasFilter("[DataPegawaiId] IS NOT NULL");
 
                     b.ToTable("DataPegawaiDataRiwayatPelatihan","DataPegawai");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataRiwayatPendidikan", b =>
                 {
-                    b.Property<int>("NoUrut")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataPegawaiDataRiwayatPendidikan_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
-                    b.Property<int?>("IDPegawai")
-                        .HasColumnName("IDPegawai");
+                    b.Property<int?>("DataPegawaiId");
 
                     b.Property<string>("Jurusan")
                         .HasMaxLength(50)
@@ -2013,24 +2143,26 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<string>("TingkatPend")
                         .HasColumnType("nchar(10)");
 
-                    b.HasKey("NoUrut");
+                    b.HasKey("Id");
 
-                    b.HasIndex("IDPegawai");
+                    b.HasIndex("DataPegawaiId")
+                        .IsUnique()
+                        .HasFilter("[DataPegawaiId] IS NOT NULL");
 
                     b.ToTable("DataPegawaiDataRiwayatPendidikan","DataPegawai");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiFoto", b =>
                 {
-                    b.Property<int>("NoUrut")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataPegawaiFoto_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
+
+                    b.Property<int?>("DataPegawaiId");
 
                     b.Property<byte[]>("Foto")
                         .HasColumnType("image");
-
-                    b.Property<int?>("IDPegawai")
-                        .HasColumnName("IDPegawai");
 
                     b.Property<string>("KodeBarcode")
                         .HasMaxLength(25)
@@ -2046,19 +2178,21 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("(getdate())");
 
-                    b.HasKey("NoUrut");
+                    b.HasKey("Id");
 
-                    b.HasIndex("IDPegawai");
+                    b.HasIndex("DataPegawaiId")
+                        .IsUnique()
+                        .HasFilter("[DataPegawaiId] IS NOT NULL");
 
                     b.ToTable("DataPegawaiFoto","DataPegawai");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiJenisAbsensi", b =>
                 {
-                    b.Property<int>("NoUrutJenisAbsensi")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutJenisAbsensi")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataPegawaiJenisAbsensi_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<DateTime>("JamBerakhir")
                         .HasColumnName("JamBerakhir")
@@ -2078,16 +2212,17 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(100)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutJenisAbsensi");
+                    b.HasKey("Id");
 
                     b.ToTable("DataPegawaiJenisAbsensi","DataPegawai");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPerusahaan", b =>
                 {
-                    b.Property<int>("KodeP")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataPerusahaan_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("AlamatP")
                         .HasMaxLength(50);
@@ -2126,16 +2261,17 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<string>("Telp")
                         .HasMaxLength(25);
 
-                    b.HasKey("KodeP");
+                    b.HasKey("Id");
 
                     b.ToTable("DataPerusahaan","DataPerusahaan");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPerusahaanCabang", b =>
                 {
-                    b.Property<int>("KodePosisi")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataPerusahaanCabang_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Alamat")
                         .HasColumnName("Alamat")
@@ -2146,6 +2282,8 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
+                    b.Property<int>("DataPerusahaanId");
+
                     b.Property<string>("Kec")
                         .HasMaxLength(50)
                         .IsUnicode(false);
@@ -2153,8 +2291,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<string>("Kel")
                         .HasMaxLength(50)
                         .IsUnicode(false);
-
-                    b.Property<int>("KodeP");
 
                     b.Property<string>("KodePos")
                         .HasMaxLength(7)
@@ -2174,19 +2310,20 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnName("Telp")
                         .HasMaxLength(20);
 
-                    b.HasKey("KodePosisi");
+                    b.HasKey("Id");
 
-                    b.HasIndex("KodeP");
+                    b.HasIndex("DataPerusahaanId")
+                        .IsUnique();
 
                     b.ToTable("DataPerusahaanCabang","DataPerusahaan");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPerusahaanStrukturJabatan", b =>
                 {
-                    b.Property<int>("NoUrutStrukturID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutStrukturID")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataPerusahaanStrukturJabatan_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<int?>("Depth")
                         .ValueGeneratedOnAddOrUpdate()
@@ -2213,16 +2350,17 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnName("Rgt");
 
-                    b.HasKey("NoUrutStrukturID");
+                    b.HasKey("Id");
 
                     b.ToTable("DataPerusahaanStrukturJabatan","DataPerusahaan");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataSPKBaruDB", b =>
                 {
-                    b.Property<int>("NoUrutSPKBaru")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataSPKBaruDB_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("LokasiSpk")
                         .HasColumnName("LokasiSpk")
@@ -2252,16 +2390,21 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(30)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutSPKBaru");
+                    b.HasKey("Id");
 
                     b.ToTable("DataSPKBaruDB","DataSPKBaruDB");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataSPKKendaraanDB", b =>
                 {
-                    b.Property<int>("NoUrut")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataSPKKendaraanDB_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
+
+                    b.Property<int?>("DataSPKBaruDBId");
+
+                    b.Property<int?>("MasterBarangDBId");
 
                     b.Property<string>("NamaSTNK")
                         .HasColumnName("NamaSTNK")
@@ -2273,12 +2416,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(100)
                         .IsUnicode(false);
 
-                    b.Property<int?>("NoUrutSPKBaru")
-                        .HasColumnName("NoUrutSPKBaru");
-
-                    b.Property<int?>("NoUrutTypeKendaraan")
-                        .HasColumnName("NoUrutTypeKendaraan");
-
                     b.Property<string>("TahunPerakitan")
                         .HasColumnName("tahunPerakitan")
                         .HasMaxLength(5)
@@ -2288,18 +2425,25 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(35)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrut");
+                    b.HasKey("Id");
 
-                    b.HasIndex("NoUrutSPKBaru");
+                    b.HasIndex("DataSPKBaruDBId")
+                        .IsUnique()
+                        .HasFilter("[DataSPKBaruDBId] IS NOT NULL");
+
+                    b.HasIndex("MasterBarangDBId")
+                        .IsUnique()
+                        .HasFilter("[MasterBarangDBId] IS NOT NULL");
 
                     b.ToTable("DataSPKKendaraanDB","DataSPKBaruDB");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataSPKKreditDB", b =>
                 {
-                    b.Property<int>("NoUrut")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataSPKKreditDB_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<decimal?>("BBN")
                         .HasColumnName("BBN")
@@ -2315,6 +2459,8 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnName("DPPricelist")
                         .HasColumnType("money");
 
+                    b.Property<int?>("DataSPKBaruDBId");
+
                     b.Property<decimal?>("DendaWilayah")
                         .HasColumnType("money");
 
@@ -2328,9 +2474,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<decimal?>("Komisi")
                         .HasColumnType("money");
 
-                    b.Property<int?>("NoUrutSPKBaru")
-                        .HasColumnName("NourutSPKBaru");
-
                     b.Property<decimal?>("OffTheRoad")
                         .HasColumnType("money");
 
@@ -2343,21 +2486,32 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<decimal?>("UangTandaJadiTunai")
                         .HasColumnType("money");
 
-                    b.HasKey("NoUrut");
+                    b.HasKey("Id");
 
-                    b.HasIndex("NoUrutSPKBaru");
+                    b.HasIndex("DataSPKBaruDBId")
+                        .IsUnique()
+                        .HasFilter("[DataSPKBaruDBId] IS NOT NULL");
 
                     b.ToTable("DataSPKKreditDB","DataSPKBaruDB");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataSPKLeasingDB", b =>
                 {
-                    b.Property<int>("NoUrut")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataSPKLeasingDB_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<decimal?>("Angsuran")
                         .HasColumnType("money");
+
+                    b.Property<int?>("DataSPKBaruDBId");
+
+                    b.Property<int?>("MasterKategoriBayaranId");
+
+                    b.Property<int?>("MasterKategoriPenjualanId");
+
+                    b.Property<int?>("MasterLeasingCabangDBId");
 
                     b.Property<string>("Mediator")
                         .HasMaxLength(100)
@@ -2368,17 +2522,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(100)
                         .IsUnicode(false);
 
-                    b.Property<int?>("NoUrutKategoriBayaran");
-
-                    b.Property<int?>("NoUrutKategoriPenjualan")
-                        .HasColumnName("NoUrutKategoriPenjualan");
-
-                    b.Property<int?>("NoUrutLeasingCabang")
-                        .HasColumnName("NoUrutLeasingCabang");
-
-                    b.Property<int?>("NoUrutSPKBaru")
-                        .HasColumnName("NoUrutSPKBaru");
-
                     b.Property<int?>("NoUrutSales");
 
                     b.Property<int?>("Tenor")
@@ -2387,28 +2530,39 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<DateTime?>("TglSurvei")
                         .HasColumnType("datetime");
 
-                    b.HasKey("NoUrut");
+                    b.HasKey("Id");
 
-                    b.HasIndex("NoUrutKategoriBayaran");
+                    b.HasIndex("DataSPKBaruDBId")
+                        .IsUnique()
+                        .HasFilter("[DataSPKBaruDBId] IS NOT NULL");
 
-                    b.HasIndex("NoUrutKategoriPenjualan");
+                    b.HasIndex("MasterKategoriBayaranId")
+                        .IsUnique()
+                        .HasFilter("[MasterKategoriBayaranId] IS NOT NULL");
 
-                    b.HasIndex("NoUrutLeasingCabang");
+                    b.HasIndex("MasterKategoriPenjualanId")
+                        .IsUnique()
+                        .HasFilter("[MasterKategoriPenjualanId] IS NOT NULL");
 
-                    b.HasIndex("NoUrutSPKBaru");
+                    b.HasIndex("MasterLeasingCabangDBId")
+                        .IsUnique()
+                        .HasFilter("[MasterLeasingCabangDBId] IS NOT NULL");
 
                     b.ToTable("DataSPKLeasingDB","DataSPKBaruDB");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataSPKSurveiDB", b =>
                 {
-                    b.Property<int>("NoUrut")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "DataSPKSurveiDB_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("AlamatPemesan")
                         .HasMaxLength(250)
                         .IsUnicode(false);
+
+                    b.Property<int?>("DataSPKBaruDBId");
 
                     b.Property<string>("HandphonePemesan")
                         .HasMaxLength(20)
@@ -2448,9 +2602,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(100)
                         .IsUnicode(false);
 
-                    b.Property<int?>("NoUrutSPKBaru")
-                        .HasColumnName("NoUrutSPKBaru");
-
                     b.Property<string>("PekerjaanPemesan")
                         .HasMaxLength(100)
                         .IsUnicode(false);
@@ -2463,19 +2614,42 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(18)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrut");
+                    b.HasKey("Id");
 
-                    b.HasIndex("NoUrutSPKBaru");
+                    b.HasIndex("DataSPKBaruDBId")
+                        .IsUnique()
+                        .HasFilter("[DataSPKBaruDBId] IS NOT NULL");
 
                     b.ToTable("DataSPKSurveiDB","DataSPKBaruDB");
                 });
 
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.MasterAllowanceType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "MasterAllowanceType_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
+
+                    b.Property<string>("AllowanceTypeName")
+                        .IsRequired();
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<DateTime>("UpdateDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MasterAllowanceType");
+                });
+
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.MasterBarangDB", b =>
                 {
-                    b.Property<int>("NoUrutTypeKendaraan")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutTypeKendaraan")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "MasterBarangDB_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Aktif")
                         .HasMaxLength(1)
@@ -2521,17 +2695,17 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(30)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutTypeKendaraan");
+                    b.HasKey("Id");
 
                     b.ToTable("MasterBarangDB");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.MasterBidangPekerjaanDB", b =>
                 {
-                    b.Property<int>("NoKodeMasterBidangPekerjaan")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoKodeMasterBidangPekerjaan")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "MasterBidangPekerjaanDB_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("NamaMasterBidangPekerjaan")
                         .HasColumnName("NamaMasterBidangPekerjaan")
@@ -2544,17 +2718,17 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("(getdate())");
 
-                    b.HasKey("NoKodeMasterBidangPekerjaan");
+                    b.HasKey("Id");
 
                     b.ToTable("MasterBidangPekerjaanDB");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.MasterBidangUsahaDB", b =>
                 {
-                    b.Property<int>("NoKodeMasterBidangUsaha")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoKodeMasterBidangUsaha")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "MasterBidangUsahaDB_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("NamaMasterBidangUsaha")
                         .HasColumnName("NamaMasterBidangUsaha")
@@ -2567,76 +2741,81 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("(getdate())");
 
-                    b.HasKey("NoKodeMasterBidangUsaha");
+                    b.HasKey("Id");
 
                     b.ToTable("MasterBidangUsahaDB");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.MasterJenisJabatan", b =>
                 {
-                    b.Property<int>("NoUrut")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "MasterJenisJabatan_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("NamaJabatan")
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrut");
+                    b.HasKey("Id");
 
                     b.ToTable("MasterJenisJabatan");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.MasterKategoriBayaran", b =>
                 {
-                    b.Property<int>("NoUrut")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "MasterKategoriBayaran_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("NamaKategoryBayaran")
                         .HasMaxLength(30)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrut");
+                    b.HasKey("Id");
 
                     b.ToTable("MasterKategoriBayaran");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.MasterKategoriCaraPembayaran", b =>
                 {
-                    b.Property<int>("NoUrutCaraBayar")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "MasterKategoriCaraPembayaran_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("CaraPembayaran")
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutCaraBayar");
+                    b.HasKey("Id");
 
                     b.ToTable("MasterKategoriCaraPembayaran");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.MasterKategoriPenjualan", b =>
                 {
-                    b.Property<int>("NoUrutKategoriPenjualan")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "MasterKategoriPenjualan_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("NamaKategoryPenjualan")
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutKategoriPenjualan");
+                    b.HasKey("Id");
 
                     b.ToTable("MasterKategoriPenjualan");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.MasterLeasingCabangDB", b =>
                 {
-                    b.Property<int>("NoUrutLeasingCabang")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "MasterLeasingCabangDB_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Aktif")
                         .HasMaxLength(2)
@@ -2659,9 +2838,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(20)
                         .IsUnicode(false);
 
-                    b.Property<int>("IDlease")
-                        .HasColumnName("IDlease");
-
                     b.Property<string>("Kecamatan")
                         .HasMaxLength(50)
                         .IsUnicode(false);
@@ -2678,6 +2854,8 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
+                    b.Property<int>("MasterLeasingDbId");
+
                     b.Property<string>("Propinsi")
                         .HasMaxLength(50)
                         .IsUnicode(false);
@@ -2686,35 +2864,59 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(20)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutLeasingCabang");
+                    b.HasKey("Id");
 
-                    b.HasIndex("IDlease");
+                    b.HasIndex("MasterLeasingDbId")
+                        .IsUnique();
 
                     b.ToTable("MasterLeasingCabangDB","MasterLeasingDb");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.MasterLeasingDb", b =>
                 {
-                    b.Property<int>("IDlease")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("IDlease")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "MasterLeasingDB_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("NamaLease")
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
-                    b.HasKey("IDlease");
+                    b.HasKey("Id");
 
                     b.ToTable("MasterLeasingDB","MasterLeasingDB");
                 });
 
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.MasterLeaveTypeHRD", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "MasterLeaveTypeHRD_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("LeaveTypeName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .IsUnicode(false);
+
+                    b.Property<DateTime>("UpdateDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MasterLeaveTypeHRD","MasterLeaveType");
+                });
+
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.MasterPerusahaanAsuransi", b =>
                 {
-                    b.Property<int>("NoUrutPerusahaanAsuransi")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutPerusahaanAsuransi")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "MasterPerusahaanAsuransi_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("AlamatAsuransi")
                         .HasMaxLength(100)
@@ -2760,17 +2962,17 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(20)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutPerusahaanAsuransi");
+                    b.HasKey("Id");
 
                     b.ToTable("MasterPerusahaanAsuransi","DataAvalist");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.MasterSupplierDB", b =>
                 {
-                    b.Property<int>("IDSupplier")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("IDSupplier")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "MasterSupplierDB_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Aktif")
                         .HasMaxLength(2);
@@ -2812,23 +3014,21 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<string>("Telp")
                         .HasMaxLength(20);
 
-                    b.HasKey("IDSupplier");
+                    b.HasKey("Id");
 
                     b.ToTable("MasterSupplierDB");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.Pembelian", b =>
                 {
-                    b.Property<int>("KodeBeli")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "Pembelian_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Batal")
                         .HasMaxLength(1)
                         .IsUnicode(false);
-
-                    b.Property<int?>("Idsupplier")
-                        .HasColumnName("IDSupplier");
 
                     b.Property<string>("JenisTransPmb")
                         .HasMaxLength(1)
@@ -2842,12 +3042,13 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(3)
                         .IsUnicode(false);
 
-                    b.Property<int?>("NoPOPembelian")
-                        .HasColumnName("NoPOPembelian");
+                    b.Property<int?>("MasterSupplierDBId");
 
                     b.Property<string>("NoRegistrasiPembelian")
                         .HasColumnName("NoRegistrasiPembelian")
                         .HasMaxLength(50);
+
+                    b.Property<int?>("PembelianPOId");
 
                     b.Property<DateTime?>("TglBeli")
                         .ValueGeneratedOnAdd()
@@ -2861,17 +3062,25 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<int?>("UserInputId")
                         .HasColumnName("UserInputId");
 
-                    b.HasKey("KodeBeli");
+                    b.HasKey("Id");
+
+                    b.HasIndex("MasterSupplierDBId")
+                        .IsUnique()
+                        .HasFilter("[MasterSupplierDBId] IS NOT NULL");
+
+                    b.HasIndex("PembelianPOId")
+                        .IsUnique()
+                        .HasFilter("[PembelianPOId] IS NOT NULL");
 
                     b.ToTable("Pembelian","Pembelian");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.PembelianDetail", b =>
                 {
-                    b.Property<int>("KodeBeliDetail")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("KodeBeliDetail")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "PembelianDetail_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<decimal?>("BBN")
                         .HasColumnName("BBN")
@@ -2900,11 +3109,9 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnName("HargaPPN")
                         .HasColumnType("money");
 
-                    b.Property<int>("KodeBeli")
-                        .HasColumnName("KodeBeli");
+                    b.Property<int?>("MasterBarangDBId");
 
-                    b.Property<int?>("KodeBrg")
-                        .HasColumnName("KodeBrg");
+                    b.Property<int>("PembelianId");
 
                     b.Property<int>("Qty")
                         .HasColumnName("Qty");
@@ -2921,24 +3128,30 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnName("SellInPPN")
                         .HasColumnType("money");
 
-                    b.HasKey("KodeBeliDetail");
+                    b.HasKey("Id");
+
+                    b.HasIndex("MasterBarangDBId")
+                        .IsUnique()
+                        .HasFilter("[MasterBarangDBId] IS NOT NULL");
+
+                    b.HasIndex("PembelianId")
+                        .IsUnique();
 
                     b.ToTable("PembelianDetail","Pembelian");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.PembelianPO", b =>
                 {
-                    b.Property<int>("NoUrutPo")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutPo")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "PembelianPO_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Keterangan")
                         .HasMaxLength(300)
                         .IsUnicode(false);
 
-                    b.Property<int?>("NoDealer")
-                        .HasColumnName("NoDealer");
+                    b.Property<int?>("MasterSupplierDBId");
 
                     b.Property<string>("NoRegistrasiPoPMB")
                         .HasColumnName("NoRegistrasiPoPMB")
@@ -2965,16 +3178,21 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(30)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutPo");
+                    b.HasKey("Id");
+
+                    b.HasIndex("MasterSupplierDBId")
+                        .IsUnique()
+                        .HasFilter("[MasterSupplierDBId] IS NOT NULL");
 
                     b.ToTable("PembelianPO","PembelianPO");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.PembelianPODetail", b =>
                 {
-                    b.Property<int>("NoUrutPoDet")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "PembelianPODetail_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<decimal?>("Bbn")
                         .HasColumnName("BBn")
@@ -2987,14 +3205,12 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(200)
                         .IsUnicode(false);
 
-                    b.Property<int?>("NoUrutMasterBarang")
-                        .HasColumnName("NoUrutMasterBarang");
-
-                    b.Property<int?>("NoUrutPo")
-                        .HasColumnName("NoUrutPO");
+                    b.Property<int?>("MasterBarangDBId");
 
                     b.Property<decimal?>("OffTheRoad")
                         .HasColumnType("money");
+
+                    b.Property<int?>("PembelianPOId");
 
                     b.Property<int?>("Qty")
                         .HasColumnName("Qty");
@@ -3004,33 +3220,41 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(40)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutPoDet");
+                    b.HasKey("Id");
+
+                    b.HasIndex("MasterBarangDBId")
+                        .IsUnique()
+                        .HasFilter("[MasterBarangDBId] IS NOT NULL");
+
+                    b.HasIndex("PembelianPOId")
+                        .IsUnique()
+                        .HasFilter("[PembelianPOId] IS NOT NULL");
 
                     b.ToTable("PembelianPODetail","PembelianPO");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.Penjualan", b =>
                 {
-                    b.Property<int>("KodePenjualan")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "EntityFrameworkHiLoSequence")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Batal")
                         .HasMaxLength(1)
                         .IsUnicode(false);
 
-                    b.Property<int?>("KategoriPenjualan")
-                        .HasColumnName("KategoriPenjualan");
+                    b.Property<int?>("CustomerDBId");
+
+                    b.Property<int?>("DataSPKBaruDBId");
 
                     b.Property<string>("Keterangan")
                         .HasMaxLength(300)
                         .IsUnicode(false);
 
-                    b.Property<int?>("KodeKonsumen")
-                        .HasColumnName("KodeKonsumen");
+                    b.Property<int?>("MasterKategoriPenjualanId");
 
-                    b.Property<int?>("KodeLease")
-                        .HasColumnName("KodeLease");
+                    b.Property<int?>("MasterLeasingCabangDBId");
 
                     b.Property<string>("Mediator")
                         .HasMaxLength(15)
@@ -3043,9 +3267,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<string>("NoRegistrasiPenjualan")
                         .HasColumnName("NoRegistrasiPenjualan")
                         .HasMaxLength(50);
-
-                    b.Property<int?>("NoUrutSPK")
-                        .HasColumnName("NoUrutSPK");
 
                     b.Property<int?>("NoUrutSales")
                         .HasColumnName("NoUrutSales");
@@ -3062,17 +3283,33 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<int?>("UserInputId")
                         .HasColumnName("UserInputID");
 
-                    b.HasKey("KodePenjualan");
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerDBId")
+                        .IsUnique()
+                        .HasFilter("[CustomerDBId] IS NOT NULL");
+
+                    b.HasIndex("DataSPKBaruDBId")
+                        .IsUnique()
+                        .HasFilter("[DataSPKBaruDBId] IS NOT NULL");
+
+                    b.HasIndex("MasterKategoriPenjualanId")
+                        .IsUnique()
+                        .HasFilter("[MasterKategoriPenjualanId] IS NOT NULL");
+
+                    b.HasIndex("MasterLeasingCabangDBId")
+                        .IsUnique()
+                        .HasFilter("[MasterLeasingCabangDBId] IS NOT NULL");
 
                     b.ToTable("Penjualan","Penjualan");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.PenjualanDetail", b =>
                 {
-                    b.Property<int>("NoPenjualanDetail")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoPenjualanDetail")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "PenjualanDetail_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<decimal?>("BBN")
                         .HasColumnName("BBN")
@@ -3107,18 +3344,14 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                     b.Property<decimal?>("JoinPromo2")
                         .HasColumnType("money");
 
-                    b.Property<int?>("KodePenjualan")
-                        .HasColumnName("KodePenjualan");
-
                     b.Property<decimal?>("Komisi")
                         .HasColumnType("money");
-
-                    b.Property<int?>("NoUrutSO")
-                        .HasColumnName("NoUrutSO");
 
                     b.Property<decimal?>("OffTheRoad")
                         .HasColumnName("OffTheRoad")
                         .HasColumnType("money");
+
+                    b.Property<int?>("PenjualanId");
 
                     b.Property<decimal?>("Promosi")
                         .HasColumnType("money");
@@ -3129,6 +3362,8 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 
                     b.Property<decimal?>("SellOut")
                         .HasColumnType("money");
+
+                    b.Property<int?>("StokUnitId");
 
                     b.Property<decimal?>("Subsidi")
                         .HasColumnType("money");
@@ -3143,38 +3378,49 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnName("UserCheckLapBulanan")
                         .HasMaxLength(50);
 
-                    b.HasKey("NoPenjualanDetail");
+                    b.HasKey("Id");
+
+                    b.HasIndex("PenjualanId")
+                        .IsUnique()
+                        .HasFilter("[PenjualanId] IS NOT NULL");
+
+                    b.HasIndex("StokUnitId")
+                        .IsUnique()
+                        .HasFilter("[StokUnitId] IS NOT NULL");
 
                     b.ToTable("PenjualanDetail","Penjualan");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.PenjualanPiutang", b =>
                 {
-                    b.Property<int>("NoUrutPjPiutang")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "PenjualanPiutang_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Keterangan")
                         .HasColumnName("Keterangan")
                         .IsUnicode(false);
 
-                    b.Property<string>("KodePenjualanDetail")
-                        .HasColumnName("KodePenjualanDetail")
-                        .IsUnicode(false);
+                    b.Property<int>("PenjualanDetailId");
 
                     b.Property<DateTime>("TanggalLunas")
                         .HasColumnType("datetime");
 
-                    b.HasKey("NoUrutPjPiutang");
+                    b.HasKey("Id");
+
+                    b.HasIndex("PenjualanDetailId")
+                        .IsUnique();
 
                     b.ToTable("PenjualanPiutang","Penjualan");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.PermohonanFakturDB", b =>
                 {
-                    b.Property<int>("NoUrutFaktur")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "PermohonanFakturDB_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<string>("Alamat")
                         .HasMaxLength(150)
@@ -3192,9 +3438,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnName("kelF")
                         .HasMaxLength(60)
                         .IsUnicode(false);
-
-                    b.Property<int?>("KodePenjualanDetail")
-                        .HasColumnName("KodePenjualanDetail");
 
                     b.Property<string>("KodePos")
                         .HasMaxLength(7)
@@ -3217,6 +3460,8 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(30)
                         .IsUnicode(false);
 
+                    b.Property<int?>("PenjualanDetailId");
+
                     b.Property<string>("Propinsi")
                         .HasMaxLength(60)
                         .IsUnicode(false);
@@ -3233,17 +3478,21 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(15)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutFaktur");
+                    b.HasKey("Id");
+
+                    b.HasIndex("PenjualanDetailId")
+                        .IsUnique()
+                        .HasFilter("[PenjualanDetailId] IS NOT NULL");
 
                     b.ToTable("PermohonanFakturDB","Penjualan");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.STNKDB", b =>
                 {
-                    b.Property<int>("NoUrutStnk")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("NoUrutSTNK")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "STNKDB_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<decimal?>("BbnPabrik")
                         .HasColumnName("BBnPabrik")
@@ -3263,9 +3512,6 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(25)
                         .IsUnicode(false);
 
-                    b.Property<int?>("NoUrutFaktur")
-                        .HasColumnName("NoUrutFaktur");
-
                     b.Property<string>("NomorPlat")
                         .HasMaxLength(12)
                         .IsUnicode(false);
@@ -3275,6 +3521,8 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
 
                     b.Property<decimal>("PajakStnk")
                         .HasColumnType("money");
+
+                    b.Property<int?>("PermohonanFakturDBId");
 
                     b.Property<decimal?>("Perwil")
                         .HasColumnType("money");
@@ -3286,16 +3534,21 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnName("TanggalBayarSTNK")
                         .HasColumnType("datetime");
 
-                    b.HasKey("NoUrutStnk");
+                    b.HasKey("Id");
+
+                    b.HasIndex("PermohonanFakturDBId")
+                        .IsUnique()
+                        .HasFilter("[PermohonanFakturDBId] IS NOT NULL");
 
                     b.ToTable("STNKDB","Penjualan");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.StokUnit", b =>
                 {
-                    b.Property<int>("NoUrutSo")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "StokUnit_hilo")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
                     b.Property<decimal?>("Diskon")
                         .HasColumnName("Diskon")
@@ -3336,11 +3589,7 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(1)
                         .IsUnicode(false);
 
-                    b.Property<int?>("KodeBeliDetail")
-                        .HasColumnName("KodeBeliDetail");
-
-                    b.Property<int?>("KodeBrg")
-                        .HasColumnName("KodeBrg");
+                    b.Property<int?>("MasterBarangDBId");
 
                     b.Property<string>("NoMesin")
                         .HasColumnName("NoMesin")
@@ -3351,6 +3600,8 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasColumnName("NoRangka")
                         .HasMaxLength(30)
                         .IsUnicode(false);
+
+                    b.Property<int?>("PembelianDetailId");
 
                     b.Property<decimal?>("SellIn")
                         .HasColumnName("SellIn")
@@ -3375,136 +3626,371 @@ namespace SmmCoreDDD2019.Persistence.Migrations.SqlServerMigrations
                         .HasMaxLength(40)
                         .IsUnicode(false);
 
-                    b.HasKey("NoUrutSo");
+                    b.HasKey("Id");
+
+                    b.HasIndex("MasterBarangDBId")
+                        .IsUnique()
+                        .HasFilter("[MasterBarangDBId] IS NOT NULL");
+
+                    b.HasIndex("PembelianDetailId")
+                        .IsUnique()
+                        .HasFilter("[PembelianDetailId] IS NOT NULL");
 
                     b.ToTable("StokUnit","Pembelian");
                 });
 
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.AccountingDataAccount", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.AccountingDataMataUang")
+                        .WithOne("AccountingDataAccount")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.AccountingDataAccount", "AccountingDataMataUangId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.AccountingDataBuktiTransaksi", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.AccountingTipeJournal")
+                        .WithOne("AccountingDataBuktiTransaksi")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.AccountingDataBuktiTransaksi", "AccountingTipeJournalId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.AccountingDataJournal", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.AccountingDataAccount")
+                        .WithOne("AccountingDataJournal")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.AccountingDataJournal", "AccountingDataAccountId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.AccountingDataJournalHeader")
+                        .WithOne("AccountingDataJournal")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.AccountingDataJournal", "AccountingDataJournalHeaderId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.AccountingDataJournalHeader", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.AccountingDataPeriode")
+                        .WithOne("AccountingDataJournalHeader")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.AccountingDataJournalHeader", "AccountingDataPeriodeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.AccountingTipeJournal")
+                        .WithOne("AccountingDataJournalHeader")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.AccountingDataJournalHeader", "AccountingTipeJournalId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.AccountingDataSaldoAwal", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.AccountingDataAccount")
+                        .WithOne("AccountingDataSaldoAwal")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.AccountingDataSaldoAwal", "AccountingDataAccountId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.AccountingDataMataUang")
+                        .WithOne("AccountingDataSaldoAwal")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.AccountingDataSaldoAwal", "AccountingDataMataUangId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.AccountingDataPeriode")
+                        .WithOne("AccountingDataSaldoAwal")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.AccountingDataSaldoAwal", "AccountingDataPeriodeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.BPKBDB", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.PermohonanFakturDB")
+                        .WithOne("BPKBDB")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.BPKBDB", "PermohonanFakturDBId");
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataKontrakAngsuran", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataKontrakKredit")
+                        .WithOne("DataKontrakAngsuran")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataKontrakAngsuran", "DataKontrakKreditId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataKontrakAsuransi", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataKontrakKredit")
+                        .WithOne("DataKontrakAsuransi")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataKontrakAsuransi", "DataKontrakKreditId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterPerusahaanAsuransi")
+                        .WithOne("DataKontrakAsuransi")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataKontrakAsuransi", "MasterPerusahaanAsuransiId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataKontrakKredit", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataKontrakSurvei")
+                        .WithOne("DataKontrakKredit")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataKontrakKredit", "DataKontrakSurveiId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataKontrakSurvei", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataKonsumenAvalist")
+                        .WithOne("DataKontrakSurvei")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataKontrakSurvei", "DataKonsumenAvalistId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterBarangDB")
+                        .WithOne("DataKontrakSurvei")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataKontrakSurvei", "MasterBarangDBId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataAbsensi", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPegawai")
+                        .WithOne("DataPegawaiDataAbsensi")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataAbsensi", "DataPegawaiId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPegawaiJenisAbsensi")
+                        .WithOne("DataPegawaiDataAbsensi")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataAbsensi", "DataPegawaiJenisAbsensiId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataAward", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPegawai")
+                        .WithOne("DataPegawaiDataAward")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataAward", "DataPegawaiId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataJabatan", b =>
                 {
-                    b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterJenisJabatan", "MasterJenisJabatan")
-                        .WithMany("DataPegawaiDataJabatan")
-                        .HasForeignKey("NoUrutJabatan")
-                        .HasConstraintName("FK_DataPegawaiDataJabatan_MasterJenisJabatan");
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPegawai")
+                        .WithOne("DataPegawaiDataJabatan")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataJabatan", "DataPegawaiId");
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterJenisJabatan")
+                        .WithOne("DataPegawaiDataJabatan")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataJabatan", "MasterJenisJabatanId");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataKeluarga", b =>
                 {
-                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPegawai", "DataPegawai")
-                        .WithMany("DataPegawaiDataKeluarga")
-                        .HasForeignKey("IDPegawai")
-                        .HasConstraintName("FK_DataPegawaiDataKeluarga_DataPegawai");
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPegawai")
+                        .WithOne("DataPegawaiDataKeluarga")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataKeluarga", "DataPegawaiId");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataOrmas", b =>
                 {
-                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPegawai", "DataPegawai")
-                        .WithMany("DataPegawaiDataOrmas")
-                        .HasForeignKey("IDPegawai")
-                        .HasConstraintName("FK_DataPegawaiDataOrmas_DataPegawai");
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPegawai")
+                        .WithOne("DataPegawaiDataOrmas")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataOrmas", "DataPegawaiId");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataPribadi", b =>
                 {
                     b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPegawai", "DataPegawai")
                         .WithOne("DataPegawaiDataPribadi")
-                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataPribadi", "IDPegawai")
-                        .HasConstraintName("FK_DataPegawaiDataPribadi_DataPegawai");
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataPribadi", "DataPegawaiId");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataRiwayatPekerjaan", b =>
                 {
                     b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPegawai", "DataPegawai")
-                        .WithMany("DataPegawaiDataRiwayatPekerjaan")
-                        .HasForeignKey("IDPegawai")
-                        .HasConstraintName("FK_DataPegawaiDataRiwayatPekerjaan_DataPegawai");
+                        .WithOne("DataPegawaiDataRiwayatPekerjaan")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataRiwayatPekerjaan", "DataPegawaiId");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataRiwayatPelatihan", b =>
                 {
-                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPegawai", "DataPegawai")
-                        .WithMany("DataPegawaiDataRiwayatPelatihan")
-                        .HasForeignKey("IDPegawai")
-                        .HasConstraintName("FK_DataPegawaiDataRiwayatPelatihan_DataPegawai");
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPegawai")
+                        .WithOne("DataPegawaiDataRiwayatPelatihan")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataRiwayatPelatihan", "DataPegawaiId");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataRiwayatPendidikan", b =>
                 {
                     b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPegawai", "DataPegawai")
-                        .WithMany("DataPegawaiDataRiwayatPendidikan")
-                        .HasForeignKey("IDPegawai")
-                        .HasConstraintName("FK_DataPegawaiDataRiwayatPendidikan_DataPegawai");
+                        .WithOne("DataPegawaiDataRiwayatPendidikan")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataPegawaiDataRiwayatPendidikan", "DataPegawaiId");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPegawaiFoto", b =>
                 {
-                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPegawai", "DataPegawai")
-                        .WithMany("DataPegawaiFoto")
-                        .HasForeignKey("IDPegawai")
-                        .HasConstraintName("FK_DataPegawaiFoto_DataPegawai");
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPegawai")
+                        .WithOne("DataPegawaiFoto")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataPegawaiFoto", "DataPegawaiId");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataPerusahaanCabang", b =>
                 {
-                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPerusahaan", "DataPerusahaan")
-                        .WithMany("DataPerusahaanCabang")
-                        .HasForeignKey("KodeP")
-                        .HasConstraintName("FK_DataPerusahaanCabang_DataPerusahaan");
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataPerusahaan")
+                        .WithOne("DataPerusahaanCabang")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataPerusahaanCabang", "DataPerusahaanId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataSPKKendaraanDB", b =>
                 {
-                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataSPKBaruDB", "DataSPKBaruDB")
-                        .WithMany("DataSPKKendaraanDB")
-                        .HasForeignKey("NoUrutSPKBaru")
-                        .HasConstraintName("FK_DataSPKKendaraanDB_DataSPKBaruDB");
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataSPKBaruDB")
+                        .WithOne("DataSPKKendaraanDB")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataSPKKendaraanDB", "DataSPKBaruDBId");
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterBarangDB")
+                        .WithOne("DataSPKKendaraanDB")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataSPKKendaraanDB", "MasterBarangDBId");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataSPKKreditDB", b =>
                 {
-                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataSPKBaruDB", "DataSPKBaruDB")
-                        .WithMany("DataSPKKreditDB")
-                        .HasForeignKey("NoUrutSPKBaru")
-                        .HasConstraintName("FK_DataSPKKreditDB_DataSPKBaruDB");
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataSPKBaruDB")
+                        .WithOne("DataSPKKreditDB")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataSPKKreditDB", "DataSPKBaruDBId");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataSPKLeasingDB", b =>
                 {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataSPKBaruDB")
+                        .WithOne("DataSPKLeasingDB")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataSPKLeasingDB", "DataSPKBaruDBId");
+
                     b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterKategoriBayaran", "MasterKategoriBayaran")
-                        .WithMany("DataSPKLeasingDB")
-                        .HasForeignKey("NoUrutKategoriBayaran")
-                        .HasConstraintName("FK_DataSPKLeasingDB_MasterKategoriBayaran");
+                        .WithOne("DataSPKLeasingDB")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataSPKLeasingDB", "MasterKategoriBayaranId");
 
                     b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterKategoriPenjualan", "MasterKategoriPenjualan")
-                        .WithMany("DataSPKLeasingDB")
-                        .HasForeignKey("NoUrutKategoriPenjualan")
-                        .HasConstraintName("FK_DataSPKLeasingDB_MasterKategoriPenjualan");
+                        .WithOne("DataSPKLeasingDB")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataSPKLeasingDB", "MasterKategoriPenjualanId");
 
                     b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterLeasingCabangDB", "MasterLeasingCabangDB")
-                        .WithMany("DataSPKLeasingDB")
-                        .HasForeignKey("NoUrutLeasingCabang")
-                        .HasConstraintName("FK_DataSPKLeasingDB_MasterLeasingDb");
-
-                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataSPKBaruDB", "DataSPKBaruDB")
-                        .WithMany("DataSPKLeasingDB")
-                        .HasForeignKey("NoUrutSPKBaru")
-                        .HasConstraintName("FK_DataSPKLeasingDB_DataSPKBaruDB");
+                        .WithOne("DataSPKLeasingDB")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataSPKLeasingDB", "MasterLeasingCabangDBId");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.DataSPKSurveiDB", b =>
                 {
-                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataSPKBaruDB", "DataSPKBaruDB")
-                        .WithMany("DataSPKSurveiDB")
-                        .HasForeignKey("NoUrutSPKBaru")
-                        .HasConstraintName("FK_DataSPKSurveiDB_DataSPKBaruDB");
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataSPKBaruDB")
+                        .WithOne("DataSPKSurveiDB")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.DataSPKSurveiDB", "DataSPKBaruDBId");
                 });
 
             modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.MasterLeasingCabangDB", b =>
                 {
-                    b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterLeasingDb", "MasterLeasingDb")
-                        .WithMany("MasterLeasingCabangDB")
-                        .HasForeignKey("IDlease")
-                        .HasConstraintName("FK_MasterLeasingCabangDB_MasterLeasingDb");
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterLeasingDb")
+                        .WithOne("MasterLeasingCabangDB")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.MasterLeasingCabangDB", "MasterLeasingDbId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.Pembelian", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterSupplierDB")
+                        .WithOne("Pembelian")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.Pembelian", "MasterSupplierDBId");
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.PembelianPO")
+                        .WithOne("Pembelian")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.Pembelian", "PembelianPOId");
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.PembelianDetail", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterBarangDB")
+                        .WithOne("PembelianDetail")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.PembelianDetail", "MasterBarangDBId");
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.Pembelian")
+                        .WithOne("PembelianDetail")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.PembelianDetail", "PembelianId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.PembelianPO", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterSupplierDB")
+                        .WithOne("PembelianPO")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.PembelianPO", "MasterSupplierDBId");
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.PembelianPODetail", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterBarangDB")
+                        .WithOne("PembelianPODetail")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.PembelianPODetail", "MasterBarangDBId");
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.PembelianPO")
+                        .WithOne("PembelianPODetail")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.PembelianPODetail", "PembelianPOId");
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.Penjualan", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.CustomerDB")
+                        .WithOne("Penjualan")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.Penjualan", "CustomerDBId");
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.DataSPKBaruDB")
+                        .WithOne("Penjualan")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.Penjualan", "DataSPKBaruDBId");
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterKategoriPenjualan")
+                        .WithOne("Penjualan")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.Penjualan", "MasterKategoriPenjualanId");
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterLeasingCabangDB")
+                        .WithOne("Penjualan")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.Penjualan", "MasterLeasingCabangDBId");
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.PenjualanDetail", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.Penjualan")
+                        .WithOne("PenjualanDetail")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.PenjualanDetail", "PenjualanId");
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.StokUnit")
+                        .WithOne("PenjualanDetail")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.PenjualanDetail", "StokUnitId");
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.PenjualanPiutang", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.PenjualanDetail")
+                        .WithOne("PenjualanPiutang")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.PenjualanPiutang", "PenjualanDetailId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.PermohonanFakturDB", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.PenjualanDetail")
+                        .WithOne("PermohonanFakturDB")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.PermohonanFakturDB", "PenjualanDetailId");
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.STNKDB", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.PermohonanFakturDB")
+                        .WithOne("STNKDB")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.STNKDB", "PermohonanFakturDBId");
+                });
+
+            modelBuilder.Entity("SmmCoreDDD2019.Domain.Entities.StokUnit", b =>
+                {
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.MasterBarangDB")
+                        .WithOne("StokUnit")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.StokUnit", "MasterBarangDBId");
+
+                    b.HasOne("SmmCoreDDD2019.Domain.Entities.PembelianDetail")
+                        .WithOne("StokUnit")
+                        .HasForeignKey("SmmCoreDDD2019.Domain.Entities.StokUnit", "PembelianDetailId");
                 });
 #pragma warning restore 612, 618
         }

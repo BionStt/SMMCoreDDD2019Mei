@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SmmCoreDDD2019.Common.Migrations.SqlServerMigrations
+namespace SmmCoreDDD2019.Common.Migrations
 {
     public partial class InitialCreate : Migration
     {
@@ -50,7 +50,11 @@ namespace SmmCoreDDD2019.Common.Migrations.SqlServerMigrations
                     LocalIPAddress = table.Column<string>(nullable: true),
                     LocalPort = table.Column<string>(nullable: true),
                     RemoteIPAddress = table.Column<string>(nullable: true),
-                    RemotePort = table.Column<string>(nullable: true)
+                    RemotePort = table.Column<string>(nullable: true),
+                    profilePictureUrl = table.Column<string>(nullable: true),
+                    isSuperAdmin = table.Column<bool>(nullable: false),
+                    HomeRole = table.Column<bool>(nullable: false),
+                    ApplicationUserRole = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

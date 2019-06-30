@@ -3,21 +3,19 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmmCoreDDD2019.Common.Identity;
 
-namespace SmmCoreDDD2019.Common.Migrations.SqlServerMigrations
+namespace SmmCoreDDD2019.Common.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20190210080255_InitialCreate")]
-    partial class InitialCreate
+    partial class AppIdentityDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -160,6 +158,8 @@ namespace SmmCoreDDD2019.Common.Migrations.SqlServerMigrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<bool>("ApplicationUserRole");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -167,6 +167,8 @@ namespace SmmCoreDDD2019.Common.Migrations.SqlServerMigrations
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<bool>("HomeRole");
 
                     b.Property<bool>("IsEnabled");
 
@@ -204,6 +206,10 @@ namespace SmmCoreDDD2019.Common.Migrations.SqlServerMigrations
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
+
+                    b.Property<bool>("isSuperAdmin");
+
+                    b.Property<string>("profilePictureUrl");
 
                     b.HasKey("Id");
 

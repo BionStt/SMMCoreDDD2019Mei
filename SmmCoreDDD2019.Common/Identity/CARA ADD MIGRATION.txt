@@ -1,6 +1,9 @@
 ﻿Add-Migration InitialCreate -Context AppIdentityDbContext -OutputDir Migrations\SqlServerMigrations
 
-dotnet ef migrations add InitialCreate -Context AppIdentityDbContext -o Migrations\SqlServerMigrations
+dotnet ef migrations add InitialCreate -Context AppIdentityDbContext -o Migrations\SqlServerMigrations -p ..\SMMCoreDDD2019.WebAdminLte\ -s .\SMMCoreDDD2019.WebAdminLte.csproj
+
+dotnet ef migrations add InitialCreate -Context AppIdentityDbContext -o Migrations\SqlServerMigrations -p ..\SMMCoreDDD2019.WebAdminLte\ -s .\SMMCoreDDD2019.WebAdminLte.csproj
+
 dotnet ef migrations add InitialCreate -Context ApplicationDbContext -o Migrations\SqlServerMigrations -p ..\SmmCoreDDD2019Accounting.WebUI\ -s .\SmmCoreDDD2019Accounting.WebUI.csproj
 
 dotnet ef migrations add InitialCreate -C SmmCoreDDD2019AccountingDbContext -o Migrations\SqlServerMigrations
@@ -27,6 +30,10 @@ Update-Database -Migration 20180904195021_InitialCreate
 di webui folder 
 dotnet ef database update -c AppIdentityDbContext -p ..\SmmCoreDDD2019.Common\SmmCoreDDD2019.Common.csproj -s .\SMMCoreDDD2019.WebAdminLte.csproj
 dotnet ef database update -c SMMCoreDDD2019DbContext -p ..\SmmCoreDDD2019.Persistence\SmmCoreDDD2019.Persistence.csproj -s .\SMMCoreDDD2019.WebAdminLte.csproj
+
+di webui folder 
+dotnet ef migrations add InitialCreate -c AppIdentityDbContext -p ..\SmmCoreDDD2019.Common\SmmCoreDDD2019.Common.csproj -s .\SMMCoreDDD2019.WebAdminLte.csproj
+dotnet ef migrations add InitialCreate -c SMMCoreDDD2019DbContext -p ..\SmmCoreDDD2019.Persistence\SmmCoreDDD2019.Persistence.csproj -s .\SMMCoreDDD2019.WebAdminLte.csproj
 
 dotnet ef database update -c ApplicationDbContext -p ..\SmmCoreDDD2019Accounting.WebUI\ -s .\SmmCoreDDD2019Accounting.WebUI.csproj
 
