@@ -1,4 +1,28 @@
-﻿       var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
+﻿   var genericRequestHandlers = typeof(GetAll<>).Assembly
+.ExportedTypes
+.Where(x => IsGenericRequestHandler(x))
+.ToArray();
+
+foreach (var genericRequestHandler in genericRequestHandlers)
+{
+builder
+.RegisterGeneric(genericRequestHandler)
+.AsImplementedInterfaces();
+}
+
+private static bool IsGenericRequestHandler(Type t)
+{
+return
+t.IsGenericTypeDefinition &&
+t.GetInterfaces.Any(i =>
+{
+return
+i.IsGenericType &&
+i.GetGenericTypeDefinition == typeof(IRequestHandler<,>);
+});
+}
+   
+   var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
             var A1 = Assembly1a.GetTypes().Where(t => t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequest)));
             foreach (var handler in A1)
             {

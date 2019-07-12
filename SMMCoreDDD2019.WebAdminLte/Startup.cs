@@ -460,7 +460,26 @@ namespace SMMCoreDDD2019.WebAdminLte
 
 
             // .NET Native DI Abstraction
-            RegisterServices(services);
+            //    RegisterServices(services);
+
+            // ASP.NET HttpContext dependency
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            // services.AddTransient<INumberSequence, SmmCoreDDD2019.Common.Services.NumberSequence>();
+            services.AddTransient<IRoles, Roles>();
+            services.AddTransient<IFunctional, Functional>();
+
+            // Add framework services.
+            //  services.AddTransient<INotificationService, NotificationService>();
+            services.AddTransient<IDateTime, MachineDateTime>();
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<ApplicationSignInManager>();
+            services.AddTransient<ISmsSender, SmsSender>();
+
+            // Add MediatR
+            // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));//gak perlu lagi krn udah otomatis register
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
             services
             .AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
@@ -498,11 +517,29 @@ namespace SMMCoreDDD2019.WebAdminLte
             //{
             //    configuration.RootPath = "ClientApp/dist";
             //});
-
+          
             // Add MediatR
-             var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
-                services.AddMediatR(Assembly1a);
-            services.AddMediatR(typeof(CreateDataPerusahaanStrukturJabatanCommand).GetTypeInfo().Assembly);
+            var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
+            services.AddMediatR(Assembly1a);
+
+            //var builder = new ContainerBuilder();
+            //builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly)
+            //.AsImplementedInterfaces();
+
+            //// Register all the Command classes (they implement IAsyncRequestHandler)
+            //// in assembly holding the Commands
+            //builder.RegisterAssemblyTypes(
+            //                      typeof(CreateDataPerusahaanStrukturJabatanCommand).GetTypeInfo().Assembly).
+            //                           AsClosedTypesOf(typeof(IRequestHandler<,>));
+            // Other types registration
+
+            // services.AddScoped(typeof(ISMMCoreDDD2019DbContext), typeof(SMMCoreDDD2019DbContext));
+            // Add MediatR
+            //services.AddMediatR(typeof(CreateDataPerusahaanStrukturJabatanCommand).GetTypeInfo().Assembly);
+            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
+            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+
+            // services.AddMediatR(typeof(CreateDataPerusahaanStrukturJabatanCommand).GetTypeInfo().Assembly);
             // services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
             //var queryHandlers = Assembly1a.GetExportedTypes().Where(t => t.Name.EndsWith("Handler"));
             //foreach (var handler in queryHandlers)
@@ -524,7 +561,7 @@ namespace SMMCoreDDD2019.WebAdminLte
 
         }
 
-
+     
 
         //buat belajar
         //https://www.tutorialsteacher.com/core/aspnet-core-logging
@@ -618,7 +655,7 @@ namespace SMMCoreDDD2019.WebAdminLte
             NativeInjectorBootStrapper.RegisterServices(services);
         }
 
-
+    
 
 
         public static void ConfigureIoC(IServiceCollection services)

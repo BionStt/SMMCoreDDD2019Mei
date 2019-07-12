@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatan
 {
-    public class CreateDataPerusahaanStrukturJabatanCommand:IRequest
+    public class CreateDataPerusahaanStrukturJabatanCommand:IRequest<int>
     {
         public int NoUrutStrukturID { get; set; }
         //public int Lft { get; set; }

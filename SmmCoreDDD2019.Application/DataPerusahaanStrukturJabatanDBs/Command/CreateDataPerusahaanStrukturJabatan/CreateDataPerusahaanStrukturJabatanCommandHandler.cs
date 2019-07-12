@@ -10,7 +10,7 @@ using SmmCoreDDD2019.Domain.Entities;
 
 namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatan
 {
-    public class CreateDataPerusahaanStrukturJabatanCommandHandler : IRequestHandler<CreateDataPerusahaanStrukturJabatanCommand, Unit>
+    public class CreateDataPerusahaanStrukturJabatanCommandHandler : IRequestHandler<CreateDataPerusahaanStrukturJabatanCommand, int>
     {
         private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
@@ -26,7 +26,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.Cr
             _mediator = mediator;
         }
 
-        public async Task<Unit> Handle(CreateDataPerusahaanStrukturJabatanCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateDataPerusahaanStrukturJabatanCommand request, CancellationToken cancellationToken)
         {
             string NilaiParent;
             if (request.Parent == "0")
@@ -53,7 +53,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.Cr
 
             await _mediator.Publish(new DataPerusahaanStrukturJabatanCreated { DataPerusahaanStrukturJabatanID = entity.Id.ToString() }, cancellationToken);
 
-            return Unit.Value;
+            return entity.Id;
         }
 
     }
