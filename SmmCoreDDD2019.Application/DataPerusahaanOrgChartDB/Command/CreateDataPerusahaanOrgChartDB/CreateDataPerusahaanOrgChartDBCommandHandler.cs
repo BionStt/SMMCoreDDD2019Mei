@@ -8,25 +8,24 @@ using System.Threading;
 using System.Threading.Tasks;
 using SmmCoreDDD2019.Domain.Entities;
 
-namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatanDBs2
+
+namespace SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Command.CreateDataPerusahaanOrgChartDB
 {
-    public class CreateDataPerusahaanStrukturJabatanDBs2CommandHandler : IRequestHandler<CreateDataPerusahaanStrukturJabatanDBs2Command, Unit>
+    public class CreateDataPerusahaanOrgChartDBCommandHandler : IRequestHandler<CreateDataPerusahaanOrgChartDBCommand, Unit>
     {
         private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
-
-        public CreateDataPerusahaanStrukturJabatanDBs2CommandHandler(
-            ISMMCoreDDD2019DbContext context,
-            INotificationService notificationService,
-            IMediator mediator)
+        public CreateDataPerusahaanOrgChartDBCommandHandler(
+          ISMMCoreDDD2019DbContext context,
+          INotificationService notificationService,
+          IMediator mediator)
         {
             _context = context;
             _notificationService = notificationService;
             _mediator = mediator;
         }
-
-        public async Task<Unit> Handle(CreateDataPerusahaanStrukturJabatanDBs2Command request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateDataPerusahaanOrgChartDBCommand request, CancellationToken cancellationToken)
         {
             string NilaiParent;
             if (request.Parent == "0")
@@ -38,20 +37,19 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.Cr
                 NilaiParent = request.Parent;
 
             };
-            var entity = new DataPerusahaanStrukturJabatan
+            var entity = new DataPerusahaanOrgChart
             {
-                KodeStruktur = request.KodeStruktur,
+                KodeStrukturJabatan = request.KodeStrukturJabatan,
                 NamaStrukturJabatan = request.NamaStrukturJabatan,
                 Parent = NilaiParent
 
-
             };
 
-            _context.DataPerusahaanStrukturJabatan.Add(entity);
+            _context.DataPerusahaanOrgChart.Add(entity);
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new DataPerusahaanStrukturJabatanDBs2Created { DataPerusahaanStrukturJabatanID = entity.Id.ToString() }, cancellationToken);
+            await _mediator.Publish(new DataPerusahaanOrgChartDBCreated { DataPerusahaanOrgChartID = entity.Id.ToString() }, cancellationToken);
 
             return Unit.Value;
         }

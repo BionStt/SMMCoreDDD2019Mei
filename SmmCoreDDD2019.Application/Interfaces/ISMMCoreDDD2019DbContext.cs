@@ -75,6 +75,9 @@ namespace SmmCoreDDD2019.Application.Interfaces
           DbSet<AccountingDataPeriode> AccountingDataPeriode { get; set; }
           DbSet<AccountingDataSaldoAwal> AccountingDataSaldoAwal { get; set; }
           DbSet<AccountingTipeJournal> AccountingTipeJournal { get; set; }
+        DbSet<DataPerusahaanOrgChart> DataPerusahaanOrgChart { get; set; }
+
+
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
       //  Task<int> SaveChangesAsync();

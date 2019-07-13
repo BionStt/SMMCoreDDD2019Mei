@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
-
-namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatanDBs2
+namespace SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Command.CreateDataPerusahaanOrgChartDB
 {
-    public class CreateDataPerusahaanStrukturJabatanDBs2CommandValidator : AbstractValidator<CreateDataPerusahaanStrukturJabatanDBs2Command>
+    public class CreateDataPerusahaanOrgChartDBCommandValidator: AbstractValidator<CreateDataPerusahaanOrgChartDBCommand>
     {
-        public CreateDataPerusahaanStrukturJabatanDBs2CommandValidator()
+        public CreateDataPerusahaanOrgChartDBCommandValidator()
         {
             //RuleFor(x => x.Id).Length(5).NotEmpty();
             //RuleFor(x => x.Address).MaximumLength(60);
@@ -19,6 +18,5 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.Cr
             //RuleFor(x => x.ContactTitle).MaximumLength(30);
             //RuleFor(x => x.Country).MaximumLength(15);
         }
-
     }
 }

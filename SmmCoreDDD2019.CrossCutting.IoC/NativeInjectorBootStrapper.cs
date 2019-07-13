@@ -49,11 +49,11 @@ using SmmCoreDDD2019.Application.DataPegawaiDataPribadiInput.Queries.GetNamaSale
 using SmmCoreDDD2019.Application.DataPerusahaans.Queries.GetNamaPerusahaan;
 using SmmCoreDDD2019.Application.DataPegawaiFotos.Queries.GetDataPegawaiList;
 using SmmCoreDDD2019.Application.DataPegawaiDataPribadiInput.Queries.GetNamaPegawai;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByDepth;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByParent2;
+using SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Query.GetOrgChartByDepth;
+using SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Query.GetOrgChartByParent2;
 using SmmCoreDDD2019.Application.DataPerusahaans.Queries.GetNamaPerusahaanLeasingCetak;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByParentC;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByStructureCode;
+using SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Query.GetOrgChartByParentC;
+using SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Query.GetOrgChartByDepthByChart;
 using SmmCoreDDD2019.Application.MasterJenisJabatanDBs.Query.GetNamaJabatan;
 using SmmCoreDDD2019.Application.DataSPKSurveiDBs.Queries.GetNamaSPKPenjualan;
 using SmmCoreDDD2019.Application.DataSPKSurveiDBs.Queries.GetNamaSPK;
@@ -170,7 +170,7 @@ using SmmCoreDDD2019.Application.DataPerusahaanCabangs.Command.UpdateDataPerusah
 using SmmCoreDDD2019.Application.DataPerusahaans.Command.DeleteDataPerusahaan;
 using SmmCoreDDD2019.Application.DataPerusahaans.Command.CreateDataPerusahaan;
 using SmmCoreDDD2019.Application.DataPerusahaans.Command.UpdateDataPerusahaan;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatanDBs2;
+using SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Command.CreateDataPerusahaanOrgChartDB;
 using SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.CreateDataSPKBaruDB;
 using SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.DeleteDataSPKBaruDB;
 using SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.UpdateDataSPKBaruDB;

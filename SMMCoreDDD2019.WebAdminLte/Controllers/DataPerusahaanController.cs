@@ -9,10 +9,11 @@ using SmmCoreDDD2019.Application.DataPerusahaans.Command.CreateDataPerusahaan;
 using SmmCoreDDD2019.Application.DataPerusahaanCabangs.Command.CreateDataPerusahaanCabang;
 using SmmCoreDDD2019.Application.DataPerusahaans.Queries.GetNamaPerusahaan;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByParentC;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByStructureCode;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByParent2;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatanDBs2;
+
+using SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Query.GetOrgChartByParentC;
+using SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Query.GetOrgChartByDepthByChart;
+using SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Query.GetOrgChartByParent2;
+using SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Command.CreateDataPerusahaanOrgChartDB;
 
 namespace SMMCoreDDD2019.WebAdminLte.Controllers
 {
@@ -60,34 +61,17 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
             return View(DataPerusahaanViewModel);
         }
 
-        public async Task<JsonResult> GetStructureOrganization(string data1a)//ajax calls this function which will return json object
-
-        {
-            if (data1a == "0")
-            {
-                var DataStructureOgranization = await Mediator.Send(new GetStructureByStructureCodeQuery());
-                var bb = DataStructureOgranization.DataStructureCodeDs.ToList();
-                return Json(Newtonsoft.Json.JsonConvert.SerializeObject(bb));
-            }
-            else
-            {
-                var DataStructureOgranization1 = await Mediator.Send(new GetStructureByParent2Query { Id = data1a });
-                var bb = DataStructureOgranization1.DataStructureParent2DCs.ToList();
-                return Json(Newtonsoft.Json.JsonConvert.SerializeObject(bb));
-            }
-
-
-        }
+        
         public async Task<IActionResult> CreateStructureOrganization()
         {
-                var DataAccounting = await Mediator.Send(new GetStructureByParentCQuery());
-                ViewData["DataAkun1"] = new SelectList(DataAccounting.StructureDataParentCDs.ToList(), "NoUrutStrukturID", "DataAkun1");
+                var DataAccounting = await Mediator.Send(new GetOrgChartByParentCQuery());
+                ViewData["DataAkun1"] = new SelectList(DataAccounting.DataOrgChartParentCDs.ToList(), "NoUrutStrukturID", "DataAkun1");
                 return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateStructureOrganization(string KodeAccount1, string Parent1a,string Parent1, string Account1a, CreateDataPerusahaanStrukturJabatanDBs2Command CreateDataPerusahaanStrukturJabatanCommand1)
+        public async Task<IActionResult> CreateStructureOrganization(string KodeAccount1, string Parent1a,string Parent1, string Account1a, CreateDataPerusahaanOrgChartDBCommand CreateDataPerusahaanStrukturJabatanCommand1)
         {
             string NilaiParent;
             if (Parent1 == "0")
@@ -100,7 +84,7 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
 
             };
             CreateDataPerusahaanStrukturJabatanCommand1.Parent = NilaiParent;
-            CreateDataPerusahaanStrukturJabatanCommand1.KodeStruktur = KodeAccount1;
+            CreateDataPerusahaanStrukturJabatanCommand1.KodeStrukturJabatan = KodeAccount1;
             CreateDataPerusahaanStrukturJabatanCommand1.NamaStrukturJabatan = Account1a;
 
 
@@ -113,6 +97,23 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
             return View();
         }
 
+        public async Task<JsonResult> GetStructureOrganization(string data1a)//ajax calls this function which will return json object
+        {
+            if (data1a == "0")
+            {
+                var DataStructureOgranization = await Mediator.Send(new GetOrgChartByDepthByChartQuery());
+                var bb = DataStructureOgranization.DataStructureCodeDs.ToList();
+                return Json(Newtonsoft.Json.JsonConvert.SerializeObject(bb));
+            }
+            else
+            {
+                var DataStructureOgranization1 = await Mediator.Send(new GetOrgChartByParent2Query { Id = data1a });
+                var bb = DataStructureOgranization1.DataOrgChartParent2DCs.ToList();
+                return Json(Newtonsoft.Json.JsonConvert.SerializeObject(bb));
+            }
+
+
+        }
 
 
     }

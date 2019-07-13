@@ -1,14 +1,16 @@
-﻿using MediatR;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using MediatR;
 
-namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatanDBs2
+
+namespace SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Command.CreateDataPerusahaanOrgChartDB
 {
-    public class CreateDataPerusahaanStrukturJabatanDBs2Command : IRequest
+    public class CreateDataPerusahaanOrgChartDBCommand:IRequest
     {
         public int NoUrutStrukturID { get; set; }
         //public int Lft { get; set; }
@@ -18,7 +20,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.Cr
 
         //public int Depth { get; set; }
         [Display(Name = "Kode Struktur Organisasi")]
-        public string KodeStruktur { get; set; }
+        public string KodeStrukturJabatan { get; set; }
         [Display(Name = "Nama Jabatan")]
         public string NamaStrukturJabatan { get; set; }
     }

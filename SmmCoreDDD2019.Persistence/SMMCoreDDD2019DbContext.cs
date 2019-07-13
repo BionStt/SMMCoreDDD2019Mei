@@ -29,6 +29,8 @@ namespace SmmCoreDDD2019.Persistence
         public DbSet<DataPegawaiFoto> DataPegawaiFoto { get; set; }
         public DbSet<DataPerusahaan> DataPerusahaan { get; set; }
         public DbSet<DataPerusahaanCabang> DataPerusahaanCabang { get; set; }
+        public DbSet<DataPerusahaanOrgChart> DataPerusahaanOrgChart { get; set; }
+
         public DbSet<DataSPKBaruDB> DataSPKBaruDB { get; set; }
         public DbSet<DataSPKKendaraanDB> DataSPKKendaraanDB { get; set; }
         public DbSet<DataSPKKreditDB> DataSPKKreditDB { get; set; }
@@ -80,6 +82,7 @@ namespace SmmCoreDDD2019.Persistence
              public DbSet<AccountingDataSaldoAwal> AccountingDataSaldoAwal { get;set;}
              public DbSet<AccountingTipeJournal> AccountingTipeJournal { get;set;}
         public DbSet<DataPegawaiDataAward> DataPegawaiDataAward { get; set ; }
+     
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
               {

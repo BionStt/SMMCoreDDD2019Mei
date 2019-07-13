@@ -75,11 +75,11 @@ using SmmCoreDDD2019.Application.DataPegawaiDataPribadiInput.Queries.GetNamaSale
 using SmmCoreDDD2019.Application.DataPerusahaans.Queries.GetNamaPerusahaan;
 using SmmCoreDDD2019.Application.DataPegawaiFotos.Queries.GetDataPegawaiList;
 using SmmCoreDDD2019.Application.DataPegawaiDataPribadiInput.Queries.GetNamaPegawai;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByDepth;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByParent2;
+using SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Query.GetOrgChartByDepth;
+using SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Query.GetOrgChartByParent2;
 using SmmCoreDDD2019.Application.DataPerusahaans.Queries.GetNamaPerusahaanLeasingCetak;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByParentC;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByStructureCode;
+using SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Query.GetOrgChartByParentC;
+using SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Query.GetOrgChartByDepthByChart;
 using SmmCoreDDD2019.Application.MasterJenisJabatanDBs.Query.GetNamaJabatan;
 using SmmCoreDDD2019.Application.DataSPKSurveiDBs.Queries.GetNamaSPKPenjualan;
 using SmmCoreDDD2019.Application.DataSPKSurveiDBs.Queries.GetNamaSPK;
@@ -196,7 +196,7 @@ using SmmCoreDDD2019.Application.DataPerusahaanCabangs.Command.UpdateDataPerusah
 using SmmCoreDDD2019.Application.DataPerusahaans.Command.DeleteDataPerusahaan;
 using SmmCoreDDD2019.Application.DataPerusahaans.Command.CreateDataPerusahaan;
 using SmmCoreDDD2019.Application.DataPerusahaans.Command.UpdateDataPerusahaan;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatanDBs2;
+using SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Command.CreateDataPerusahaanOrgChartDB;
 using SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.CreateDataSPKBaruDB;
 using SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.DeleteDataSPKBaruDB;
 using SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.UpdateDataSPKBaruDB;
@@ -458,6 +458,10 @@ namespace SMMCoreDDD2019.WebAdminLte
             // Add AutoMapper
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
 
+            // Add MediatR
+            // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));//gak perlu lagi krn udah otomatis register
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
             // .NET Native DI Abstraction
             //    RegisterServices(services);
@@ -476,19 +480,8 @@ namespace SMMCoreDDD2019.WebAdminLte
             services.AddTransient<ApplicationSignInManager>();
             services.AddTransient<ISmsSender, SmsSender>();
 
-            // Add MediatR
-           // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));//gak perlu lagi krn udah otomatis register
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
-
-            services
-            .AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateCustomerCommandValidator>());
-            //.AddMvcOptions(options => {//tambahan dari web
-            //     options.ModelMetadataDetailsProviders.Clear();
-            //     options.ModelValidatorProviders.Clear();
-            // });
+          
+         
 
             //services.AddMvc().AddRazorPagesOptions(options => {
             //    options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "");
@@ -521,6 +514,7 @@ namespace SMMCoreDDD2019.WebAdminLte
             // Add MediatR
             var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
             services.AddMediatR(Assembly1a);
+
 
             ////Scan for commandhandlers and eventhandlers
             //services.Scan(scan => scan
@@ -570,13 +564,20 @@ namespace SMMCoreDDD2019.WebAdminLte
             //    services.AddScoped(handler.GetInterfaces().First(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IQueryHandler<,>)), handler);
             //}
 
-
+            services
+         .AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
+         .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+         .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateCustomerCommandValidator>());
+            //.AddMvcOptions(options => {//tambahan dari web
+            //     options.ModelMetadataDetailsProviders.Clear();
+            //     options.ModelValidatorProviders.Clear();
+            // });
 
 
 
         }
 
-     
+
 
         //buat belajar
         //https://www.tutorialsteacher.com/core/aspnet-core-logging
@@ -664,66 +665,16 @@ namespace SMMCoreDDD2019.WebAdminLte
 
 
         }
-        private static void RegisterServices(IServiceCollection services)
-        {
-            // Adding dependencies from another layers (isolated from Presentation)
-            NativeInjectorBootStrapper.RegisterServices(services);
-        }
+        //private static void RegisterServices(IServiceCollection services)
+        //{
+        //    // Adding dependencies from another layers (isolated from Presentation)
+        //    NativeInjectorBootStrapper.RegisterServices(services);
+        //}
 
     
 
 
-        public static void ConfigureIoC(IServiceCollection services)
-        {
-
-            //var container = new Container();
-            ////Configure our DI Container
-            //container.Configure(config =>
-            //{
-
-            //    // Fluent Validation
-            //    config.Scan(scanner =>
-            //    {
-            //        //Register everything in our BLL
-            //        scanner.AssemblyContainingType<CreateAccountingDataAccountCommandHandler>();
-            //        scanner.AddAllTypesOf<IValidator>();
-            //        scanner.ConnectImplementationsToTypesClosing(typeof(IValidator<>));
-            //    });
-
-            //    // MediatR
-            //    config.Scan(scanner =>
-            //    {
-            //        //Register everything in our BLL
-            //        // scanner.AssemblyContainingType<SimpleRequestHandler>();
-            //        scanner.AssemblyContainingType(typeof(Startup));
-            //        scanner.AssemblyContainingType(typeof(CreateAccountingDataAccountCommandHandler));
-            //        scanner.ConnectImplementationsToTypesClosing(typeof(IRequestHandler<>)); // Handlers with no response
-            //        scanner.ConnectImplementationsToTypesClosing(typeof(IRequestHandler<,>)); // Handlers with a response
-            //        scanner.ConnectImplementationsToTypesClosing(typeof(INotificationHandler<>));
-            //        scanner.WithDefaultConventions();
-
-
-            //    });
-
-            //    //Pipeline
-            //    config.For(typeof(IPipelineBehavior<,>)).Add(typeof(RequestPerformanceBehaviour<,>));
-            //    config.For(typeof(IPipelineBehavior<,>)).Add(typeof(RequestValidationBehavior<,>));
-
-            //    config.For<IMediator>().LifecycleIs<TransientLifecycle>().Use<Mediator>();
-            //    config.For<ServiceFactory>().Use<ServiceFactory>(ctx => ctx.GetInstance);
-            //    config.Populate(services);
-
-            //    //Constrained notification handlers
-            //    // config.For(typeof(INotificationHandler<>)).Add(typeof(ConstrainedPingedHandler<>));
-
-            //    // This is the default but let's be explicit. At most we should be container scoped.
-            //    config.For<IMediator>().LifecycleIs<TransientLifecycle>().Use<Mediator>();
-
-
-            //});
-            //container.Populate(services);
-            //container.GetInstance<IServiceProvider>();
-        }
+       
 
 
     }
