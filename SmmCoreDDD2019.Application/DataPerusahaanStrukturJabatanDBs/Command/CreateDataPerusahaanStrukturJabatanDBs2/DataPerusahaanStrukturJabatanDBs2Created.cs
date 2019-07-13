@@ -8,25 +8,24 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatan
+namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatanDBs2
 {
-    public class DataPerusahaanStrukturJabatanCreated : INotification
+    public class DataPerusahaanStrukturJabatanDBs2Created : INotification
     {
         public string DataPerusahaanStrukturJabatanID { get; set; }
-        public class DataPerusahaanStrukturJabatanCreatedHandler : INotificationHandler<DataPerusahaanStrukturJabatanCreated>
+        public class DataPerusahaanStrukturJabatanDBs2CreatedHandler : INotificationHandler<DataPerusahaanStrukturJabatanDBs2Created>
         {
             private readonly INotificationService _notification;
-            public DataPerusahaanStrukturJabatanCreatedHandler(INotificationService notification)
+            public DataPerusahaanStrukturJabatanDBs2CreatedHandler(INotificationService notification)
             {
                 _notification = notification;
             }
 
-            public async Task Handle(DataPerusahaanStrukturJabatanCreated notification, CancellationToken cancellationToken)
+            public async Task Handle(DataPerusahaanStrukturJabatanDBs2Created notification, CancellationToken cancellationToken)
             {
                 await _notification.SendAsync(new Message());
             }
         }
-
 
     }
 }

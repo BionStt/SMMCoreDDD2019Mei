@@ -196,7 +196,7 @@ using SmmCoreDDD2019.Application.DataPerusahaanCabangs.Command.UpdateDataPerusah
 using SmmCoreDDD2019.Application.DataPerusahaans.Command.DeleteDataPerusahaan;
 using SmmCoreDDD2019.Application.DataPerusahaans.Command.CreateDataPerusahaan;
 using SmmCoreDDD2019.Application.DataPerusahaans.Command.UpdateDataPerusahaan;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatan;
+using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatanDBs2;
 using SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.CreateDataSPKBaruDB;
 using SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.DeleteDataSPKBaruDB;
 using SmmCoreDDD2019.Application.DataSPKBaruDBs.Command.UpdateDataSPKBaruDB;
@@ -464,27 +464,27 @@ namespace SMMCoreDDD2019.WebAdminLte
 
             // ASP.NET HttpContext dependency
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
+            //services.AddHttpContextAccessor();
             // services.AddTransient<INumberSequence, SmmCoreDDD2019.Common.Services.NumberSequence>();
             services.AddTransient<IRoles, Roles>();
             services.AddTransient<IFunctional, Functional>();
 
             // Add framework services.
-            //  services.AddTransient<INotificationService, NotificationService>();
+              services.AddTransient<INotificationService, NotificationService>();
             services.AddTransient<IDateTime, MachineDateTime>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<ApplicationSignInManager>();
             services.AddTransient<ISmsSender, SmsSender>();
 
             // Add MediatR
-            // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));//gak perlu lagi krn udah otomatis register
+           // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));//gak perlu lagi krn udah otomatis register
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
             services
             .AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            //.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateCustomerCommandValidator>());
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateCustomerCommandValidator>());
             //.AddMvcOptions(options => {//tambahan dari web
             //     options.ModelMetadataDetailsProviders.Clear();
             //     options.ModelValidatorProviders.Clear();
@@ -517,10 +517,25 @@ namespace SMMCoreDDD2019.WebAdminLte
             //{
             //    configuration.RootPath = "ClientApp/dist";
             //});
-          
+
             // Add MediatR
             var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
             services.AddMediatR(Assembly1a);
+
+            ////Scan for commandhandlers and eventhandlers
+            //services.Scan(scan => scan
+            //    .FromAssemblies(typeof(CreateCustomerCommandHandler).GetTypeInfo().Assembly)
+            //        .AddClasses(classes => classes.Where(x => {
+            //            var allInterfaces = x.GetInterfaces();
+            //            return
+            //                allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IRequest<>)) ||
+            //                //allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(ICancellableHandler<>)) ||
+            //                //allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IRequestHandler<,>)) ||
+            //                allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IRequestHandler<,>));
+            //        }))
+            //        .AsSelf()
+            //        .WithTransientLifetime()
+            //);
 
             //var builder = new ContainerBuilder();
             //builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly)

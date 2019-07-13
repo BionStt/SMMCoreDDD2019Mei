@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
 
-namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatan
+namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatanDBs2
 {
-    public class CreateDataPerusahaanStrukturJabatanCommandValidator : AbstractValidator<CreateDataPerusahaanStrukturJabatanCommand>
+    public class CreateDataPerusahaanStrukturJabatanDBs2CommandValidator : AbstractValidator<CreateDataPerusahaanStrukturJabatanDBs2Command>
     {
-        public CreateDataPerusahaanStrukturJabatanCommandValidator()
+        public CreateDataPerusahaanStrukturJabatanDBs2CommandValidator()
         {
             //RuleFor(x => x.Id).Length(5).NotEmpty();
             //RuleFor(x => x.Address).MaximumLength(60);
@@ -18,7 +18,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.Cr
             //RuleFor(x => x.ContactName).MaximumLength(30);
             //RuleFor(x => x.ContactTitle).MaximumLength(30);
             //RuleFor(x => x.Country).MaximumLength(15);
-
         }
+
     }
 }

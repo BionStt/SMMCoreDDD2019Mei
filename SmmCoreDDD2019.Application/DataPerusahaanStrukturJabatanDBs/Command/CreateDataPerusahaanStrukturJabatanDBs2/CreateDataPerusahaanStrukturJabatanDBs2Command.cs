@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatan
+namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatanDBs2
 {
-    public class CreateDataPerusahaanStrukturJabatanCommand:IRequest<int>
+    public class CreateDataPerusahaanStrukturJabatanDBs2Command : IRequest
     {
         public int NoUrutStrukturID { get; set; }
         //public int Lft { get; set; }
@@ -21,6 +21,5 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.Cr
         public string KodeStruktur { get; set; }
         [Display(Name = "Nama Jabatan")]
         public string NamaStrukturJabatan { get; set; }
-
     }
 }

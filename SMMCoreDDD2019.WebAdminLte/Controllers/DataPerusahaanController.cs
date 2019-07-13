@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByParentC;
 using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByStructureCode;
 using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Query.GetStructureByParent2;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatan;
+using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatanDBs2;
 
 namespace SMMCoreDDD2019.WebAdminLte.Controllers
 {
@@ -87,7 +87,7 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateStructureOrganization(string KodeAccount1, string Parent1a,string Parent1, string Account1a, CreateDataPerusahaanStrukturJabatanCommand CreateDataPerusahaanStrukturJabatanCommand1)
+        public async Task<IActionResult> CreateStructureOrganization(string KodeAccount1, string Parent1a,string Parent1, string Account1a, CreateDataPerusahaanStrukturJabatanDBs2Command CreateDataPerusahaanStrukturJabatanCommand1)
         {
             string NilaiParent;
             if (Parent1 == "0")

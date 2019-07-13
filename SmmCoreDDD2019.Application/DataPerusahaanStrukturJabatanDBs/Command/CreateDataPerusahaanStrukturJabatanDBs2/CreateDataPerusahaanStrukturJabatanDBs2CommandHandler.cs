@@ -8,15 +8,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using SmmCoreDDD2019.Domain.Entities;
 
-namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatan
+namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.CreateDataPerusahaanStrukturJabatanDBs2
 {
-    public class CreateDataPerusahaanStrukturJabatanCommandHandler : IRequestHandler<CreateDataPerusahaanStrukturJabatanCommand, int>
+    public class CreateDataPerusahaanStrukturJabatanDBs2CommandHandler : IRequestHandler<CreateDataPerusahaanStrukturJabatanDBs2Command, Unit>
     {
         private readonly ISMMCoreDDD2019DbContext _context;
         private readonly INotificationService _notificationService;
         private readonly IMediator _mediator;
 
-        public CreateDataPerusahaanStrukturJabatanCommandHandler(
+        public CreateDataPerusahaanStrukturJabatanDBs2CommandHandler(
             ISMMCoreDDD2019DbContext context,
             INotificationService notificationService,
             IMediator mediator)
@@ -26,7 +26,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.Cr
             _mediator = mediator;
         }
 
-        public async Task<int> Handle(CreateDataPerusahaanStrukturJabatanCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateDataPerusahaanStrukturJabatanDBs2Command request, CancellationToken cancellationToken)
         {
             string NilaiParent;
             if (request.Parent == "0")
@@ -51,10 +51,9 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDBs.Command.Cr
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new DataPerusahaanStrukturJabatanCreated { DataPerusahaanStrukturJabatanID = entity.Id.ToString() }, cancellationToken);
+            await _mediator.Publish(new DataPerusahaanStrukturJabatanDBs2Created { DataPerusahaanStrukturJabatanID = entity.Id.ToString() }, cancellationToken);
 
-            return entity.Id;
+            return Unit.Value;
         }
-
     }
 }
