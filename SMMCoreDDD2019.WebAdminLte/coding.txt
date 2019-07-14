@@ -1,4 +1,139 @@
-﻿   var genericRequestHandlers = typeof(GetAll<>).Assembly
+﻿  
+  
+  // Add MediatR
+            //var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
+            //services.AddMediatR(Assembly1a);
+          //  services.AddMediatR(typeof(Startup));
+           // services.AddMediatR(Assembly.GetExecutingAssembly());
+            // if you have handlers/events in other assemblies
+          //  services.AddMediatR(typeof(CreateDataSPKLeasingDBCommandHandler).Assembly,typeof(GetOrgChartByParentCQueryHandler).Assembly);
+
+           // var applicationAssembly = typeof(CreateDataSPKLeasingDBCommandHandler).GetTypeInfo().Assembly;
+             var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
+         //   services.AddMediatR(applicationAssembly);
+            //services.Scan(scan =>
+            //  scan.FromAssemblies(Assembly1a)
+            //    .AddClasses(classes => classes.AssignableTo(typeof(IRequestHandler<,>)))
+            //    .AsImplementedInterfaces()
+            //    .WithTransientLifetime());
+
+         //   var commandHandlers = typeof(CreateDataSPKLeasingDBCommandHandler).Assembly.GetTypes()
+         //    .Where(t => t.GetInterfaces().Any(i  => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<>))
+         //);
+
+         //   foreach (var handler in commandHandlers)
+         //   {
+         //       services.AddScoped(handler.GetInterfaces().First(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<>)), handler);
+         //   }
+
+         //   var queryHandlers = typeof(GetOrgChartByParentCQueryHandler).Assembly.GetTypes()
+         //    .Where(t => t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>))
+         //);
+
+         //   foreach (var handler in queryHandlers)
+         //   {
+         //       services.AddScoped(handler.GetInterfaces().First(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>)), handler);
+         //   }
+
+
+            //var classTypes = Assembly1a.ExportedTypes.Select(t => t.GetTypeInfo()).Where(t => t.IsClass && !t.IsAbstract);
+
+            //foreach (var type in classTypes)
+            //{
+            //    var interfaces = type.ImplementedInterfaces.Select(i => i.GetTypeInfo());
+
+            //    foreach (var handlerType in interfaces.Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>)))
+            //    {
+            //        services.AddTransient(handlerType.AsType(), type.AsType());
+            //    }
+            //    foreach (var handlerType in interfaces.Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<>)))
+            //    {
+            //        services.AddTransient(handlerType.AsType(), type.AsType());
+            //    }
+             
+            //    foreach (var handlerType in interfaces.Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequest<>)))
+            //    {
+            //        services.AddTransient(handlerType.AsType(), type.AsType());
+            //    }
+            //}
+            services.Scan(scan => scan
+                     .FromCallingAssembly()
+                     .AddClasses(classes => classes.InNamespaces("SmmCoreDDD2019.Application"))
+                     .UsingRegistrationStrategy(RegistrationStrategy.Skip)
+                     .AsImplementedInterfaces()
+                     .WithTransientLifetime());
+
+
+            //services.Scan(scan => scan
+            //                       // .FromCallingAssembly(GetOrgChartByParentCQueryHandler) // 1. Find the concrete classes
+            //                       .FromAssembliesOf(typeof(GetOrgChartByParentCQueryHandler))
+            //                        //.FromAssemblyOf(typeof(Startup))
+            //                        //.AddClasses()        //    to register
+            //                       // .AddClasses(t => t.AssignableTo(typeof(IRequestHandler<,>)))
+            //                     //.UsingRegistrationStrategy(RegistrationStrategy.Skip) // 2. Define how to handle duplicates
+            //                   //  .AsImplementedInterfaces()
+            //                      // .AsSelf()    // 2. Specify which services they are registered as
+            //                    //  .WithTransientLifetime()) // 3. Set the lifetime for the services
+
+            // .AddClasses(t => t.AssignableTo(typeof(IRequestHandler<,>)))
+            //.UsingRegistrationStrategy(RegistrationStrategy.Skip) // 2. Define how to handle duplicates
+            //.AsImplementedInterfaces()
+            // .AsSelf()    // 2. Specify which services they are registered as
+            //.WithTransientLifetime()); // 3. Set the lifetime for the services
+
+
+            //  // services.AddMediatR(typeof(SomeHandler).Assembly,  typeof(SomeOtherHandler).Assembly); 
+            ////Scan for commandhandlers and eventhandlers
+            //services.Scan(scan => scan
+            //    .FromAssemblies(typeof(CreateCustomerCommandHandler).GetTypeInfo().Assembly)
+            //        .AddClasses(classes => classes.Where(x => {
+            //            var allInterfaces = x.GetInterfaces();
+            //            return
+            //                allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IRequest<>)) ||
+            //                //allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(ICancellableHandler<>)) ||
+            //                //allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IRequestHandler<,>)) ||
+            //                allInterfaces.Any(y => y.GetTypeInfo().IsGenericType && y.GetTypeInfo().GetGenericTypeDefinition() == typeof(IRequestHandler<,>));
+            //        }))
+            //        .AsSelf()
+            //        .WithTransientLifetime()
+            //);
+
+            //var builder = new ContainerBuilder();
+            //builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly)
+            //.AsImplementedInterfaces();
+
+            //// Register all the Command classes (they implement IAsyncRequestHandler)
+            //// in assembly holding the Commands
+            //builder.RegisterAssemblyTypes(
+            //                      typeof(CreateDataPerusahaanStrukturJabatanCommand).GetTypeInfo().Assembly).
+            //                           AsClosedTypesOf(typeof(IRequestHandler<,>));
+            // Other types registration
+
+            // services.AddScoped(typeof(ISMMCoreDDD2019DbContext), typeof(SMMCoreDDD2019DbContext));
+            // Add MediatR
+            //services.AddMediatR(typeof(CreateDataPerusahaanStrukturJabatanCommand).GetTypeInfo().Assembly);
+            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
+            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+
+            // services.AddMediatR(typeof(CreateDataPerusahaanStrukturJabatanCommand).GetTypeInfo().Assembly);
+            // services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
+            //var queryHandlers = Assembly1a.GetExportedTypes().Where(t => t.Name.EndsWith("Handler"));
+            //foreach (var handler in queryHandlers)
+            //{
+            //    services.AddMediatR(handler.GetTypeInfo().Assembly);
+            //}
+
+            //var queryHandlers1 = typeof(Startup).Assembly.GetTypes()
+            // .Where(t => t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>)));
+
+            //foreach (var handler in queryHandlers)
+            //{
+            //    services.AddScoped(handler.GetInterfaces().First(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IQueryHandler<,>)), handler);
+            //}
+
+
+
+   var genericRequestHandlers = typeof(GetAll<>).Assembly
 .ExportedTypes
 .Where(x => IsGenericRequestHandler(x))
 .ToArray();

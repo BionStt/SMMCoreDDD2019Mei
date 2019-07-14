@@ -235,6 +235,7 @@ using FluentValidation.AspNetCore;
 //using Lamar;
 using Autofac;
 using Autofac.Core;
+using Scrutor;
 
 namespace SMMCoreDDD2019.WebAdminLte
 {
@@ -456,12 +457,12 @@ namespace SMMCoreDDD2019.WebAdminLte
             services.AddScoped<Services.Profile.ProfileManager>();
 
             // Add AutoMapper
-            services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
+          //  services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
 
             // Add MediatR
             // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));//gak perlu lagi krn udah otomatis register
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+          //  services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
+           // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
             // .NET Native DI Abstraction
             //    RegisterServices(services);
@@ -474,14 +475,14 @@ namespace SMMCoreDDD2019.WebAdminLte
             services.AddTransient<IFunctional, Functional>();
 
             // Add framework services.
-              services.AddTransient<INotificationService, NotificationService>();
+           //   services.AddTransient<INotificationService, NotificationService>();
             services.AddTransient<IDateTime, MachineDateTime>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<ApplicationSignInManager>();
             services.AddTransient<ISmsSender, SmsSender>();
 
-          
-         
+
+
 
             //services.AddMvc().AddRazorPagesOptions(options => {
             //    options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "");
@@ -512,10 +513,100 @@ namespace SMMCoreDDD2019.WebAdminLte
             //});
 
             // Add MediatR
-            var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
-            services.AddMediatR(Assembly1a);
+            //var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
+            //services.AddMediatR(Assembly1a);
+          //  services.AddMediatR(typeof(Startup));
+           // services.AddMediatR(Assembly.GetExecutingAssembly());
+            // if you have handlers/events in other assemblies
+          //  services.AddMediatR(typeof(CreateDataSPKLeasingDBCommandHandler).Assembly,typeof(GetOrgChartByParentCQueryHandler).Assembly);
+
+           // var applicationAssembly = typeof(CreateDataSPKLeasingDBCommandHandler).GetTypeInfo().Assembly;
+           //  var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
+           //services.AddMediatR(Assembly1a);
+           // services.AddAutoMapper(Assembly1a);
+
+            var builder = new ContainerBuilder();
+            builder
+                    .RegisterAssemblyTypes(typeof(IRequest<>).Assembly)
+                    .Where(t => t.IsClosedTypeOf(typeof(IRequest<>)))
+                    .AsImplementedInterfaces();
+
+            builder
+                .RegisterAssemblyTypes(typeof(IRequestHandler<>).Assembly)
+                .Where(t => t.IsClosedTypeOf(typeof(IRequestHandler<>)))
+                .AsImplementedInterfaces();
+            //services.Scan(scan =>
+            //  scan.FromAssemblies(Assembly1a)
+            //    .AddClasses(classes => classes.AssignableTo(typeof(IRequestHandler<,>)))
+            //    .AsImplementedInterfaces()
+            //    .WithTransientLifetime());
+
+            //   var commandHandlers = typeof(CreateDataSPKLeasingDBCommandHandler).Assembly.GetTypes()
+            //    .Where(t => t.GetInterfaces().Any(i  => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<>))
+            //);
+
+            //   foreach (var handler in commandHandlers)
+            //   {
+            //       services.AddScoped(handler.GetInterfaces().First(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<>)), handler);
+            //   }
+
+            //   var queryHandlers = typeof(GetOrgChartByParentCQueryHandler).Assembly.GetTypes()
+            //    .Where(t => t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>))
+            //);
+
+            //   foreach (var handler in queryHandlers)
+            //   {
+            //       services.AddScoped(handler.GetInterfaces().First(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>)), handler);
+            //   }
 
 
+            //var classTypes = Assembly1a.ExportedTypes.Select(t => t.GetTypeInfo()).Where(t => t.IsClass && !t.IsAbstract);
+
+            //foreach (var type in classTypes)
+            //{
+            //    var interfaces = type.ImplementedInterfaces.Select(i => i.GetTypeInfo());
+
+            //    foreach (var handlerType in interfaces.Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>)))
+            //    {
+            //        services.AddTransient(handlerType.AsType(), type.AsType());
+            //    }
+            //    foreach (var handlerType in interfaces.Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<>)))
+            //    {
+            //        services.AddTransient(handlerType.AsType(), type.AsType());
+            //    }
+
+            //    foreach (var handlerType in interfaces.Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequest<>)))
+            //    {
+            //        services.AddTransient(handlerType.AsType(), type.AsType());
+            //    }
+            //}
+            //services.Scan(scan => scan
+            //         .FromCallingAssembly()
+            //         .AddClasses(classes => classes.InNamespaces("SmmCoreDDD2019.Application"))
+            //         .UsingRegistrationStrategy(RegistrationStrategy.Skip)
+            //         .AsImplementedInterfaces()
+            //         .WithTransientLifetime());
+
+
+            //services.Scan(scan => scan
+            //                       // .FromCallingAssembly(GetOrgChartByParentCQueryHandler) // 1. Find the concrete classes
+            //                       .FromAssembliesOf(typeof(GetOrgChartByParentCQueryHandler))
+            //                        //.FromAssemblyOf(typeof(Startup))
+            //                        //.AddClasses()        //    to register
+            //                       // .AddClasses(t => t.AssignableTo(typeof(IRequestHandler<,>)))
+            //                     //.UsingRegistrationStrategy(RegistrationStrategy.Skip) // 2. Define how to handle duplicates
+            //                   //  .AsImplementedInterfaces()
+            //                      // .AsSelf()    // 2. Specify which services they are registered as
+            //                    //  .WithTransientLifetime()) // 3. Set the lifetime for the services
+
+            // .AddClasses(t => t.AssignableTo(typeof(IRequestHandler<,>)))
+            //.UsingRegistrationStrategy(RegistrationStrategy.Skip) // 2. Define how to handle duplicates
+            //.AsImplementedInterfaces()
+            // .AsSelf()    // 2. Specify which services they are registered as
+            //.WithTransientLifetime()); // 3. Set the lifetime for the services
+
+
+            //  // services.AddMediatR(typeof(SomeHandler).Assembly,  typeof(SomeOtherHandler).Assembly); 
             ////Scan for commandhandlers and eventhandlers
             //services.Scan(scan => scan
             //    .FromAssemblies(typeof(CreateCustomerCommandHandler).GetTypeInfo().Assembly)
@@ -566,8 +657,8 @@ namespace SMMCoreDDD2019.WebAdminLte
 
             services
          .AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
-         .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-         .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateCustomerCommandValidator>());
+         .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+        // .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateCustomerCommandValidator>());
             //.AddMvcOptions(options => {//tambahan dari web
             //     options.ModelMetadataDetailsProviders.Clear();
             //     options.ModelValidatorProviders.Clear();
@@ -577,7 +668,7 @@ namespace SMMCoreDDD2019.WebAdminLte
 
         }
 
-
+       
 
         //buat belajar
         //https://www.tutorialsteacher.com/core/aspnet-core-logging
@@ -670,11 +761,11 @@ namespace SMMCoreDDD2019.WebAdminLte
         //    // Adding dependencies from another layers (isolated from Presentation)
         //    NativeInjectorBootStrapper.RegisterServices(services);
         //}
-
-    
-
-
        
+
+
+
+
 
 
     }
