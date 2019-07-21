@@ -204,8 +204,10 @@ using SmmCoreDDD2019.Application.PenjualanDetails.Command.CreatePejualanDetail;
 using SmmCoreDDD2019.Application.PenjualanDetails.Command.UpdateCheckPenjualanDetail;
 using SmmCoreDDD2019.Application.PenjualanDetails.Command.UpdateDPPenjualanDetail;
 using SmmCoreDDD2019.Application.PenjualanPiutangDB.Command.CreatePenjualanPiutang;
-
-
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using System.Net.Http;
+using AutoMapper.Configuration;
 
 namespace SmmCoreDDD2019.CrossCutting.IoC
 {
@@ -222,8 +224,11 @@ namespace SmmCoreDDD2019.CrossCutting.IoC
 
             // ASP.NET HttpContext dependency
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-           // services.AddTransient<INumberSequence, SmmCoreDDD2019.Common.Services.NumberSequence>();
+            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            services.AddTransient<HttpClient>();
+           // services.AddSingleton<IConfiguration>(Configuration);
+            services.AddTransient<IUrlHelperFactory, UrlHelperFactory>();
+            // services.AddTransient<INumberSequence, SmmCoreDDD2019.Common.Services.NumberSequence>();
             services.AddTransient<IRoles, Roles>();
             services.AddTransient<IFunctional, Functional>();
 
@@ -261,10 +266,10 @@ namespace SmmCoreDDD2019.CrossCutting.IoC
             //services.AddScoped<IUser, AspNetUser>();
 
             //domain - command
-            //services.AddMediatR(typeof(GetStructureByDepthQueryHandler).GetTypeInfo().Assembly);
-            //services.AddMediatR(typeof(GetStructureByParentCQueryHandler).GetTypeInfo().Assembly);
-            //services.AddMediatR(typeof(GetStructureByParent2QueryHandler).GetTypeInfo().Assembly);
-            //services.AddMediatR(typeof(GetStructureByStructureCodeQueryHandler).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(GetOrgChartByDepthQueryHandler).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(GetOrgChartByParentCQueryHandler).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(GetOrgChartByParent2QueryHandler).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(GetOrgChartByDepthByChartQueryHandler).GetTypeInfo().Assembly);
 
             //services.AddMediatR(typeof(CreateAccountingDataAccountCommand).Assembly, typeof(CreateAccountingDataAccountCommandHandler).Assembly);
             //services.AddMediatR(typeof(CreateAccountingDataJournalCommand).Assembly, typeof(CreateAccountingDataJournalCommandHandler).Assembly);
@@ -329,7 +334,7 @@ namespace SmmCoreDDD2019.CrossCutting.IoC
             //services.AddMediatR(typeof(CreateDataPerusahaanCommand).Assembly, typeof(CreateDataPerusahaanCommandHandler).Assembly);
             //services.AddMediatR(typeof(DeleteDataPerusahaanCommand).Assembly, typeof(DeleteDataPerusahaanCommandHandler).Assembly);
             //services.AddMediatR(typeof(UpdateDataPerusahaanCommand).Assembly, typeof(UpdateDataPerusahaanCommandHandler).Assembly);
-            //services.AddMediatR(typeof(CreateDataPerusahaanStrukturJabatanCommand).Assembly, typeof(CreateDataPerusahaanStrukturJabatanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataPerusahaanOrgChartDBCommand).Assembly, typeof(CreateDataPerusahaanOrgChartDBCommandHandler).Assembly);
             //services.AddMediatR(typeof(CreateDataSPKBaruDBCommand).Assembly, typeof(CreateDataSPKBaruDBCommandHandler).Assembly);
             //services.AddMediatR(typeof(DeleteDataSPKBaruDBCommand).Assembly, typeof(DeleteDataSPKBaruDBCommandHandler).Assembly);
             //services.AddMediatR(typeof(UpdateDataSPKBaruDBCommand).Assembly, typeof(UpdateDataSPKBaruDBCommandHandler).Assembly);
@@ -406,10 +411,6 @@ namespace SmmCoreDDD2019.CrossCutting.IoC
             //services.AddMediatR(typeof(DataPegawaiListQuery).Assembly, typeof(DataPegawaiListQueryHandler).Assembly);
             //services.AddMediatR(typeof(GetNamaPerusahaanQuery).Assembly, typeof(GetNamaPerusahaanQueryHandler).Assembly);
             //services.AddMediatR(typeof(GetNamaPerusahaanLeasingCetakQuery).Assembly, typeof(GetNamaPerusahaanLeasingCetakQueryHandler).Assembly);
-            //services.AddMediatR(typeof(GetStructureByDepthQuery).Assembly, typeof(GetStructureByDepthQueryHandler).Assembly);
-            //services.AddMediatR(typeof(GetStructureByParentCQuery).Assembly, typeof(GetStructureByParentCQueryHandler).Assembly);
-            //services.AddMediatR(typeof(GetStructureByParent2Query).Assembly, typeof(GetStructureByParent2QueryHandler).Assembly);
-            //services.AddMediatR(typeof(GetStructureByStructureCodeQuery).Assembly, typeof(GetStructureByStructureCodeQueryHandler).Assembly);
             //services.AddMediatR(typeof(GetDataKendaraanByNoSPKQuery).Assembly, typeof(GetDataKendaraanByNoSPKQueryHandler).Assembly);
             //services.AddMediatR(typeof(GetNamaSPKQuery).Assembly, typeof(GetNamaSPKQueryHandler).Assembly);
             //services.AddMediatR(typeof(GetNamaSPKPenjualanQuery).Assembly, typeof(GetNamaSPKPenjualanQueryHandler).Assembly);
@@ -462,6 +463,203 @@ namespace SmmCoreDDD2019.CrossCutting.IoC
             //services.AddMediatR(typeof(   ).Assembly, typeof(  ).Assembly);
             //services.AddMediatR(typeof(   ).Assembly, typeof(  ).Assembly);
             //services.AddMediatR(typeof(   ).Assembly, typeof(  ).Assembly);
+
+
+
+            ////tambahan neh
+            //services.AddMediatR(typeof(GetOrgChartByDepthQueryHandler).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(GetOrgChartByParentCQueryHandler).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(GetOrgChartByParent2QueryHandler).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(GetOrgChartByDepthByChartQueryHandler).GetTypeInfo().Assembly);
+
+          
+            //services.AddMediatR(typeof(CreateAccountingDataAccountCommand).Assembly, typeof(CreateAccountingDataAccountCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateAccountingDataJournalCommand).Assembly, typeof(CreateAccountingDataJournalCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateAccountingDataJournalHeaderCommand).Assembly, typeof(CreateAccountingDataJournalHeaderCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateAccountingDataKursCommand).Assembly, typeof(CreateAccountingDataKursCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateAccountingDataMataUangCommand).Assembly, typeof(CreateAccountingDataMataUangCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateAccountingDataPeriodeCommand).Assembly, typeof(CreateAccountingDataPeriodeCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateAccountingDataSaldoAwalCommand).Assembly, typeof(CreateAccountingDataSaldoAwalCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateAccountingTipeJournalCommand).Assembly, typeof(CreateAccountingTipeJournalCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateBPKBDBCommand).Assembly, typeof(CreateBPKBDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateCustomerCommand).Assembly, typeof(CreateCustomerCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteCustomerCommand).Assembly, typeof(DeleteCustomerCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateCustomerCommand).Assembly, typeof(UpdateCustomerCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataKonsumenAvalistCommand).Assembly, typeof(CreateDataKonsumenAvalistCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataKonsumenAvalistCommand).Assembly, typeof(DeleteDataKonsumenAvalistCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataKonsumenAvalistCommand).Assembly, typeof(UpdateDataKonsumenAvalistCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataKontrakAngsuranCommand).Assembly, typeof(DeleteDataKontrakAngsuranCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataKontrakAngsuranCommand).Assembly, typeof(UpdateDataKontrakAngsuranCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataKontrakAsuransiCommand).Assembly, typeof(CreateDataKontrakAsuransiCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataKontrakAsuransiCommand).Assembly, typeof(DeleteDataKontrakAsuransiCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataKontrakAsuransiCommand).Assembly, typeof(UpdateDataKontrakAsuransiCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataKontrakKreditAngsuranDemoCommand).Assembly, typeof(CreateDataKontrakKreditAngsuranDemoCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataKontrakKreditAngsuranDemoCommand).Assembly, typeof(DeleteDataKontrakKreditAngsuranDemoCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataKontrakKreditCommand).Assembly, typeof(CreateDataKontrakKreditCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataKontrakKreditCommand).Assembly, typeof(DeleteDataKontrakKreditCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataKontrakKreditCommand).Assembly, typeof(UpdateDataKontrakKreditCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataKontrakSurveiCommand).Assembly, typeof(CreateDataKontrakSurveiCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataKontrakSurveiCommand).Assembly, typeof(DeleteDataKontrakSurveiCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataKontrakSurveiCommand).Assembly, typeof(UpdateDataKontrakSurveiCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataPegawaiDataAwardCommand).Assembly, typeof(CreateDataPegawaiDataAwardCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataPegawaiDataJabatanCommand).Assembly, typeof(CreateDataPegawaiDataJabatanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataPegawaiDataJabatanCommand).Assembly, typeof(DeleteDataPegawaiDataJabatanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataPegawaiDataJabatanCommand).Assembly, typeof(UpdateDataPegawaiDataJabatanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataPegawaiDataKeluargaCommand).Assembly, typeof(CreateDataPegawaiDataKeluargaCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataPegawaiDataKeluargaCommand).Assembly, typeof(DeleteDataPegawaiDataKeluargaCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataPegawaiDataKeluargaCommand).Assembly, typeof(UpdateDataPegawaiDataKeluargaCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataPegawaiDataOrmasCommand).Assembly, typeof(CreateDataPegawaiDataOrmasCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataPegawaiDataOrmasCommand).Assembly, typeof(DeleteDataPegawaiDataOrmasCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataPegawaiDataOrmasCommand).Assembly, typeof(UpdateDataPegawaiDataOrmasCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataPegawaiDataPribadiInputCommand).Assembly, typeof(CreateDataPegawaiDataPribadiInputCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataPegawaiDataPribadiCommand).Assembly, typeof(CreateDataPegawaiDataPribadiCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataPegawaiDataPribadiCommand).Assembly, typeof(DeleteDataPegawaiDataPribadiCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataPegawaiDataPribadiCommand).Assembly, typeof(UpdateDataPegawaiDataPribadiCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataPegawaiDataRiwayatPekerjaanCommand).Assembly, typeof(CreateDataPegawaiDataRiwayatPekerjaanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataPegawaiDataRiwayatPekerjaanCommand).Assembly, typeof(DeleteDataPegawaiDataRiwayatPekerjaanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataPegawaiDataRiwayatPekerjaanCommand).Assembly, typeof(UpdateDataPegawaiDataRiwayatPekerjaanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataPegawaiDataRiwayatPelatihanCommand).Assembly, typeof(CreateDataPegawaiDataRiwayatPelatihanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataPegawaiDataRiwayatPelatihanCommand).Assembly, typeof(DeleteDataPegawaiDataRiwayatPelatihanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataPegawaiDataRiwayatPelatihanCommand).Assembly, typeof(UpdateDataPegawaiDataRiwayatPelatihanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataPegawaiDataRiwayatPendidikanCommand).Assembly, typeof(CreateDataPegawaiDataRiwayatPendidikanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataPegawaiDataRiwayatPendidikanCommand).Assembly, typeof(DeleteDataPegawaiDataRiwayatPendidikanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataPegawaiDataRiwayatPendidikanCommand).Assembly, typeof(UpdateDataPegawaiDataRiwayatPendidikanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataPegawaiFotoCommand).Assembly, typeof(CreateDataPegawaiFotoCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataPegawaiFotoCommand).Assembly, typeof(DeleteDataPegawaiFotoCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataPegawaiFotoCommand).Assembly, typeof(UpdateDataPegawaiFotoCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataPegawaiCommand).Assembly, typeof(CreateDataPegawaiCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataPegawaiCommand).Assembly, typeof(DeleteDataPegawaiCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataPegawaiCommand).Assembly, typeof(UpdateDataPegawaiCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataPerusahaanCabangCommand).Assembly, typeof(CreateDataPerusahaanCabangCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataPerusahaanCabangCommand).Assembly, typeof(DeleteDataPerusahaanCabangCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataPerusahaanCabangCommand).Assembly, typeof(UpdateDataPerusahaanCabangCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataPerusahaanCommand).Assembly, typeof(CreateDataPerusahaanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataPerusahaanCommand).Assembly, typeof(DeleteDataPerusahaanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataPerusahaanCommand).Assembly, typeof(UpdateDataPerusahaanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataPerusahaanOrgChartDBCommand).Assembly, typeof(CreateDataPerusahaanOrgChartDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataSPKBaruDBCommand).Assembly, typeof(CreateDataSPKBaruDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataSPKBaruDBCommand).Assembly, typeof(DeleteDataSPKBaruDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataSPKBaruDBCommand).Assembly, typeof(UpdateDataSPKBaruDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataSPKKendaraanDBCommand).Assembly, typeof(CreateDataSPKKendaraanDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataSPKKendaraanDBCommand).Assembly, typeof(DeleteDataSPKKendaraanDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataSPKKendaraanDBCommand).Assembly, typeof(UpdateDataSPKKendaraanDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataSPKKreditDBCommand).Assembly, typeof(CreateDataSPKKreditDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataSPKKreditDBCommand).Assembly, typeof(DeleteDataSPKKreditDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataSPKKreditDBCommand).Assembly, typeof(UpdateDataSPKKreditDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataSPKLeasingDBCommand).Assembly, typeof(CreateDataSPKLeasingDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataSPKLeasingDBCommand).Assembly, typeof(DeleteDataSPKLeasingDBHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataSPKLeasingDBCommand).Assembly, typeof(UpdateDataSPKLeasingDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateDataSPKSurveiDBCommand).Assembly, typeof(CreateDataSPKSurveiDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteDataSPKSurveiDBCommand).Assembly, typeof(DeleteDataSPKSurveiDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDataSPKSurveiDBCommand).Assembly, typeof(UpdateDataSPKSurveiDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateMasterAllowanceTypeDBCommand).Assembly, typeof(CreateMasterAllowanceTypeDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateMasterBarangDBCommand).Assembly, typeof(CreateMasterBarangDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteMasterBarangDBCommand).Assembly, typeof(DeleteMasterBarangDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateMasterBarangDBCommand).Assembly, typeof(UpdateMasterBarangDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateMasterJenisJabatanCommand).Assembly, typeof(CreateMasterJenisJabatanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateMasterLeasingCabangDBCommand).Assembly, typeof(CreateMasterLeasingCabangDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteMasterLeasingCabangDBCommand).Assembly, typeof(DeleteMasterLeasingCabangDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateMasterLeasingCabangDBCommand).Assembly, typeof(UpdateMasterLeasingCabangDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateMasterLeasingDbCommand).Assembly, typeof(CreateMasterLeasingDbCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteMasterLeasingDbCommand).Assembly, typeof(DeleteMasterLeasingDbCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateMasterLeasingDbCommand).Assembly, typeof(UpdateMasterLeasingDbCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateMasterLeaveTypeHRDCommand).Assembly, typeof(CreateMasterLeaveTypeHRDCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateMasterPerusahaanAsuransiCommand).Assembly, typeof(CreateMasterPerusahaanAsuransiCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteMasterPerusahaanAsuransiCommand).Assembly, typeof(DeleteMasterPerusahaanAsuransiCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateMasterPerusahaanAsuransiCommand).Assembly, typeof(UpdateMasterPerusahaanAsuransiCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateMasterSupplierDBCommand).Assembly, typeof(CreateMasterSupplierDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeleteMasterSupplierDBCommand).Assembly, typeof(DeleteMasterSupplierDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateMasterSupplierDBCommand).Assembly, typeof(UpdateMasterSupplierDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreatePembelianDetailCommand).Assembly, typeof(CreatePembelianDetailCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreatePembelianPODetailCommand).Assembly, typeof(CreatePembelianPODetailCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreatePembelianPOCommand).Assembly, typeof(CreatePembelianPOCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreatePembelianCommand).Assembly, typeof(CreatePembelianCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreatePejualanDetailCommand).Assembly, typeof(CreatePejualanDetailCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeletePenjualanDetailCommand).Assembly, typeof(DeletePenjualanDetailCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateCheckPenjualanDetailCommand).Assembly, typeof(UpdateCheckPenjualanDetailCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateDPPenjualanDetailCommand).Assembly, typeof(UpdateDPPenjualanDetailCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreatePenjualanPiutangCommand).Assembly, typeof(CreatePenjualanPiutangCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreatePenjualanCommand).Assembly, typeof(CreatePenjualanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeletePenjualanCommand).Assembly, typeof(DeletePenjualanCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreatePermohonanFakturCommand).Assembly, typeof(CreatePermohonanFakturCommandHandler).Assembly);
+            //services.AddMediatR(typeof(DeletePermohonanFakturCommand).Assembly, typeof(DeletePermohonanFakturCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateSTNKDBCommand).Assembly, typeof(CreateSTNKDBCommandHandler).Assembly);
+            //services.AddMediatR(typeof(CreateStokUnitCommand).Assembly, typeof(CreateStokUnitCommandHandler).Assembly);
+            //services.AddMediatR(typeof(UpdateStokUnitPembatalanPjCommand).Assembly, typeof(UpdateStokUnitPembatalanPjCommandHandler).Assembly);
+
+            ////domain-query
+            //services.AddMediatR(typeof(GetAllDataAccountOrderByKodeAccountQuery).Assembly, typeof(GetAllDataAccountOrderByKodeAccountQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataAccountByDepthQuery).Assembly, typeof(GetDataAccountByDepthQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataAccountByParentQuery).Assembly, typeof(GetDataAccountByParentQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataAccountByParent2Query).Assembly, typeof(GetDataAccountByParent2QueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataJournalAllQuery).Assembly, typeof(GetDataJournalAllQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataJournalByKodeAkunQuery).Assembly, typeof(GetDataJournalByKodeAkunQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataJournalByKodeHeaderQuery).Assembly, typeof(GetDataJournalByKodeHeaderQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetLaporanLabaRugiQuery).Assembly, typeof(GetLaporanLabaRugiQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetLaporanNeracaQuery).Assembly, typeof(GetLaporanNeracaQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataJournalHeaderQuery).Assembly, typeof(GetDataJournalHeaderQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetTipeJournalQuery).Assembly, typeof(GetTipeJournalQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetCustomerByIDQuery).Assembly, typeof(GetCustomerByIDQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetCustomerDataPenjualanQuery).Assembly, typeof(GetCustomerDataPenjualanQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetCustomerDetailQuery).Assembly, typeof(GetCustomerDetailQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetCustomersListQuery).Assembly, typeof(GetCustomersListQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataKonsumenAvalistQuery).Assembly, typeof(GetDataKonsumenAvalistQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataKontrakAngsuranByNoIDQuery).Assembly, typeof(GetDataKontrakAngsuranByNoIDQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetListDataKontrakKreditQuery).Assembly, typeof(GetListDataKontrakKreditQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetListDataKontrakKreditByNoIDQuery).Assembly, typeof(GetListDataKontrakKreditByNoIDQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataSurveiQuery).Assembly, typeof(GetDataSurveiQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaPegawaiQuery).Assembly, typeof(GetNamaPegawaiQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaSalesForceQuery).Assembly, typeof(GetNamaSalesForceQueryHandler).Assembly);
+            //services.AddMediatR(typeof(DataPegawaiListQuery).Assembly, typeof(DataPegawaiListQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaPerusahaanQuery).Assembly, typeof(GetNamaPerusahaanQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaPerusahaanLeasingCetakQuery).Assembly, typeof(GetNamaPerusahaanLeasingCetakQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataKendaraanByNoSPKQuery).Assembly, typeof(GetDataKendaraanByNoSPKQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaSPKQuery).Assembly, typeof(GetNamaSPKQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaSPKPenjualanQuery).Assembly, typeof(GetNamaSPKPenjualanQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetMasterBarangByIDQuery).Assembly, typeof(GetMasterBarangByIDQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetMerekQuery).Assembly, typeof(GetMerekQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaBarangQrQuery).Assembly, typeof(GetNamaBarangQrQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaBarangQrByNoUrutQuery).Assembly, typeof(GetNamaBarangQrByNoUrutQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaBidangPekerjaanQuery).Assembly, typeof(GetNamaBidangPekerjaanQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaBidangUsahaQuery).Assembly, typeof(GetNamaBidangUsahaQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaJabatanQuery).Assembly, typeof(GetNamaJabatanQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaKategoryBayaranQuery).Assembly, typeof(GetNamaKategoryBayaranQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaCaraPembayaranQuery).Assembly, typeof(GetNamaCaraPembayaranQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaKategoryQuery).Assembly, typeof(GetNamaKategoryQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetCabangLeasingQuery).Assembly, typeof(GetCabangLeasingQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetAllLeasingQuery).Assembly, typeof(GetAllLeasingQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaSupplierQuery).Assembly, typeof(GetNamaSupplierQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetKodeBeliQuery).Assembly, typeof(GetKodeBeliQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetKodeBeliDetailQuery).Assembly, typeof(GetKodeBeliDetailQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetLIstPembelianQuery).Assembly, typeof(GetLIstPembelianQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetListPembelianDetailQuery).Assembly, typeof(GetListPembelianDetailQueryHandle).Assembly);
+            //services.AddMediatR(typeof(GetListStokUnitByNoKodeBeliQuery).Assembly, typeof(GetListStokUnitByNoKodeBeliQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataPoPembelianQuery).Assembly, typeof(GetDataPoPembelianQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaPOQuery).Assembly, typeof(GetNamaPOQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataCekDPBulananQuery).Assembly, typeof(GetDataCekDPBulananQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataCekDPPenjualanQuery).Assembly, typeof(GetDataCekDPPenjualanQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataCekDPPenjualan2Query).Assembly, typeof(GetDataCekDPPenjualan2QueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataCheckPenjualanBulananQuery).Assembly, typeof(GetDataCheckPenjualanBulananQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataCheckPenjualanDetailBulananQuery).Assembly, typeof(GetDataCheckPenjualanDetailBulananQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataDetailLeasingCetakQuery).Assembly, typeof(GetDataDetailLeasingCetakQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataPenjualanDetailByNoQuery).Assembly, typeof(GetDataPenjualanDetailByNoQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataPenjualanDetailByNosinQuery).Assembly, typeof(GetDataPenjualanDetailByNosinQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataPiutangLeasingQuery).Assembly, typeof(GetDataPiutangLeasingQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataPiutangLeasingMerekQuery).Assembly, typeof(GetDataPiutangLeasingMerekQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetLeasingCetakQuery).Assembly, typeof(GetLeasingCetakQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetLeasingCetakBySearchQuery).Assembly, typeof(GetLeasingCetakBySearchQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataPenjualanBulananBySalesQuery).Assembly, typeof(GetDataPenjualanBulananBySalesQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataPenjualanHarianQuery).Assembly, typeof(GetDataPenjualanHarianQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetLaporanPenjualanPivotQuery).Assembly, typeof(GetLaporanPenjualanPivotQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetLaporanPenjualanPivotCabangLeasingQuery).Assembly, typeof(GetLaporanPenjualanPivotCabangLeasingQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetLaporanPenjualanPivotSalesQuery).Assembly, typeof(GetLaporanPenjualanPivotSalesQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaPenjualanFakturQuery).Assembly, typeof(GetNamaPenjualanFakturQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaFakturBPKBQuery).Assembly, typeof(GetNamaFakturBPKBQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetNamaFakturStnkQuery).Assembly, typeof(GetNamaFakturStnkQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataSOQuery).Assembly, typeof(GetDataSOQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetDataSOByIDQuery).Assembly, typeof(GetDataSOByIDQueryHandler).Assembly);
+            //services.AddMediatR(typeof(GetLaporanSOQuery).Assembly, typeof(GetLaporanSOQueryHandler).Assembly);
+
 
 
         }

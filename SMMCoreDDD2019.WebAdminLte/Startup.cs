@@ -236,6 +236,7 @@ using FluentValidation.AspNetCore;
 using Autofac;
 using Autofac.Core;
 using Scrutor;
+using System.Runtime.Loader;
 
 namespace SMMCoreDDD2019.WebAdminLte
 {
@@ -457,34 +458,13 @@ namespace SMMCoreDDD2019.WebAdminLte
             services.AddScoped<Services.Profile.ProfileManager>();
 
             // Add AutoMapper
-          //  services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
+              services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
 
-            // Add MediatR
-            // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));//gak perlu lagi krn udah otomatis register
-          //  services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
-           // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
-
+            services.AddSingleton<IConfiguration>(Configuration);
             // .NET Native DI Abstraction
-            //    RegisterServices(services);
+            RegisterServices(services);
 
-            // ASP.NET HttpContext dependency
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            //services.AddHttpContextAccessor();
-            // services.AddTransient<INumberSequence, SmmCoreDDD2019.Common.Services.NumberSequence>();
-            services.AddTransient<IRoles, Roles>();
-            services.AddTransient<IFunctional, Functional>();
-
-            // Add framework services.
-           //   services.AddTransient<INotificationService, NotificationService>();
-            services.AddTransient<IDateTime, MachineDateTime>();
-            services.AddTransient<IEmailSender, EmailSender>();
-            services.AddTransient<ApplicationSignInManager>();
-            services.AddTransient<ISmsSender, SmsSender>();
-
-
-
-
-            //services.AddMvc().AddRazorPagesOptions(options => {
+                      //services.AddMvc().AddRazorPagesOptions(options => {
             //    options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "");
             //}).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -512,29 +492,46 @@ namespace SMMCoreDDD2019.WebAdminLte
             //    configuration.RootPath = "ClientApp/dist";
             //});
 
+            // Adding MediatR for Domain Events and Notifications
+          //  services.AddMediatR(typeof(Startup));
+
             // Add MediatR
             //var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
             //services.AddMediatR(Assembly1a);
-          //  services.AddMediatR(typeof(Startup));
-           // services.AddMediatR(Assembly.GetExecutingAssembly());
+            //  services.AddMediatR(typeof(Startup));
+            // services.AddMediatR(Assembly.GetExecutingAssembly());
             // if you have handlers/events in other assemblies
-          //  services.AddMediatR(typeof(CreateDataSPKLeasingDBCommandHandler).Assembly,typeof(GetOrgChartByParentCQueryHandler).Assembly);
+            //  services.AddMediatR(typeof(CreateDataSPKLeasingDBCommandHandler).Assembly,typeof(GetOrgChartByParentCQueryHandler).Assembly);
 
-           // var applicationAssembly = typeof(CreateDataSPKLeasingDBCommandHandler).GetTypeInfo().Assembly;
-           //  var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
-           //services.AddMediatR(Assembly1a);
-           // services.AddAutoMapper(Assembly1a);
+            // var applicationAssembly = typeof(CreateDataSPKLeasingDBCommandHandler).GetTypeInfo().Assembly;
+            //  var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
+            //services.AddMediatR(Assembly1a);
+            // services.AddAutoMapper(Assembly1a);
 
-            var builder = new ContainerBuilder();
-            builder
-                    .RegisterAssemblyTypes(typeof(IRequest<>).Assembly)
-                    .Where(t => t.IsClosedTypeOf(typeof(IRequest<>)))
-                    .AsImplementedInterfaces();
+           //var builder = new ContainerBuilder();
+           // builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly)
+           //.AsImplementedInterfaces();
 
-            builder
-                .RegisterAssemblyTypes(typeof(IRequestHandler<>).Assembly)
-                .Where(t => t.IsClosedTypeOf(typeof(IRequestHandler<>)))
-                .AsImplementedInterfaces();
+           // // Register all the Command classes (they implement IAsyncRequestHandler)
+           // // in assembly holding the Commands
+           // builder.RegisterAssemblyTypes(
+           //                       typeof(CreateDataSPKLeasingDBCommand).GetTypeInfo().Assembly).
+           //                            AsClosedTypesOf(typeof(IRequestHandler<,>));
+           // builder.RegisterAssemblyTypes(
+           //                    typeof(CreateDataSPKLeasingDBCommand).GetTypeInfo().Assembly).
+           //                         AsClosedTypesOf(typeof(IRequestHandler<>));
+            // Other types registration
+
+            
+            //builder
+            //        .RegisterAssemblyTypes(typeof(IRequest<>).Assembly)
+            //        .Where(t => t.IsClosedTypeOf(typeof(IRequest<>)))
+            //        .AsImplementedInterfaces();
+
+            //builder
+            //    .RegisterAssemblyTypes(typeof(IRequestHandler<>).Assembly)
+            //    .Where(t => t.IsClosedTypeOf(typeof(IRequestHandler<>)))
+            //    .AsImplementedInterfaces();
             //services.Scan(scan =>
             //  scan.FromAssemblies(Assembly1a)
             //    .AddClasses(classes => classes.AssignableTo(typeof(IRequestHandler<,>)))
@@ -720,6 +717,7 @@ namespace SMMCoreDDD2019.WebAdminLte
             //    settings.Path = "/api";
             //    settings.DocumentPath = "/api/specification.json";
             //});
+           // app.UseMvcJQueryDataTables();
 
             app.UseMvc(routes =>
             {
@@ -753,17 +751,36 @@ namespace SMMCoreDDD2019.WebAdminLte
             //});
 
 
+        }
 
+        private static void RegisterServices(IServiceCollection services)
+        {
+            // Adding dependencies from another layers (isolated from Presentation)
+            NativeInjectorBootStrapper.RegisterServices(services);
+        }
+
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterType<Mediator>().As<IMediator>().InstancePerLifetimeScope();
+
+            builder.Register<ServiceFactory>(ctx =>
+            {
+                var c = ctx.Resolve<IComponentContext>();
+                return t => c.TryResolve(t, out var o) ? o : null;
+            }).InstancePerLifetimeScope();
+
+            var dataAssembly = AssemblyLoadContext.Default.LoadFromAssemblyName(new AssemblyName("SmmCoreDDD2019.Application"));
+            // var servicesAssembly = AssemblyLoadContext.Default.LoadFromAssemblyName(new AssemblyName("FreelancerBlog.Services"));
+            //builder.RegisterAssemblyTypes(dataAssembly, servicesAssembly, Assembly.GetEntryAssembly()).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(dataAssembly,  Assembly.GetEntryAssembly()).AsImplementedInterfaces();
+
+            //builder.RegisterModule<AuthMessageSenderModule>();
+            //builder.RegisterModule<FreelancerBlogDbContextSeedDataModule>();
+            //builder.RegisterModule<FileManagerModule>();
+            //builder.RegisterModule<FileSystemWrapperModule>();
 
         }
-        //private static void RegisterServices(IServiceCollection services)
-        //{
-        //    // Adding dependencies from another layers (isolated from Presentation)
-        //    NativeInjectorBootStrapper.RegisterServices(services);
-        //}
-       
-
-
 
 
 

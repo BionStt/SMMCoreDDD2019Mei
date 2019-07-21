@@ -31,6 +31,7 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Query.GetOrgChartB
                             {
                                 NoUrutStrukturID = a.Id,
                                 DataAkun1 = "[" + a.KodeStrukturJabatan + "] - " + a.NamaStrukturJabatan
+                                //string.format("{0}", "[" + a.KodeStrukturJabatan + "] - " + a.NamaStrukturJabatan)
                             })
                         // .ProjectTo<GetStructureByParentLookUpModel>(_mapper.ConfigurationProvider)
                         .ToListAsync(cancellationToken);

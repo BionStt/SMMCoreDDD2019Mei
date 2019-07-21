@@ -18,6 +18,8 @@ using SmmCoreDDD2019.Application.Interfaces;
 using Lamar.Microsoft.DependencyInjection;
 using Autofac.Extensions.DependencyInjection;
 
+using Serilog;
+
 namespace SMMCoreDDD2019.WebAdminLte
 {
 
@@ -127,7 +129,8 @@ namespace SMMCoreDDD2019.WebAdminLte
 
                 })
              .ConfigureServices(sp => sp.AddAutofac())
-                 // .UseLamar()  // Register the Lamar service container
+              
+                // .UseLamar()  // Register the Lamar service container
                 .UseStartup<Startup>();
 
 

@@ -17,7 +17,8 @@ namespace SmmCoreDDD2019.Application.DataPerusahaanOrgChartDB.Query.GetOrgChartB
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<DataPerusahaanOrgChart, GetOrgChartByParentCLookUpModel>()
-                 .ForMember(cDTO => cDTO.NoUrutStrukturID, opt => opt.MapFrom(c => c.Id));
+                .ForMember(cDTO => cDTO.NoUrutStrukturID, opt => opt.MapFrom(c => c.Id))
+                 .ForMember(cDTO => cDTO.DataAkun1, opt => opt.MapFrom(c => string.Format("{0}", "[" + c.KodeStrukturJabatan + "] - " + c.NamaStrukturJabatan)));
 
         }
     }
