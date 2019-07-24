@@ -67,6 +67,11 @@
     <Folder Include="PenjualanPiutangDB\Query\" />
     <Folder Include="PermohonanFakturDBs\Query\" />
     <Folder Include="Reports\" />
+    <Folder Include="ViewModels\NewFolder1\" />
+    <Folder Include="ViewModels\NewFolder2\" />
+    <Folder Include="ViewModels\NewFolder3\" />
+    <Folder Include="ViewModels\NewFolder4\" />
+    <Folder Include="ViewModels\NewFolder5\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -38,7 +38,9 @@ namespace SmmCoreDDD2019.Application.AccountingDataAccountDB.Query.GetDataAccoun
                 DataAccountParentDs = _mapper.Map<IEnumerable<GetDataAccountByParent2LookUpModel>>(aa)
             };
             return model;
+
         }
+
         static String Analyze(String value)
         {
             // Return a value for each argument.

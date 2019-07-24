@@ -83,6 +83,8 @@ namespace SmmCoreDDD2019.Application.Interfaces
       //  Task<int> SaveChangesAsync();
          DbQuery<TQuery> Query<TQuery>() where TQuery : class;
 
+        //Task SaveAsync();
+        //void Save();
 
 
     }
