@@ -233,14 +233,14 @@ namespace SmmCoreDDD2019.CrossCutting.IoC
             services.AddTransient<IFunctional, Functional>();
 
             // Add framework services.
-          //  services.AddTransient<INotificationService, NotificationService>();
+            services.AddTransient<INotificationService, NotificationService>();
             services.AddTransient<IDateTime, MachineDateTime>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<ApplicationSignInManager>();
             services.AddTransient<ISmsSender, SmsSender>();
 
             // Add MediatR
-            // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));//gak perlu lagi krn udah otomatis register
+           // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));//gak perlu lagi krn udah otomatis register
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 

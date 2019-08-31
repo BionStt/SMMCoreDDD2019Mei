@@ -493,11 +493,12 @@ namespace SMMCoreDDD2019.WebAdminLte
             //});
 
             // Adding MediatR for Domain Events and Notifications
-          //  services.AddMediatR(typeof(Startup));
+            //  services.AddMediatR(typeof(Startup));
 
             // Add MediatR
-            //var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
-            //services.AddMediatR(Assembly1a);
+           // var dataAssembly = AssemblyLoadContext.Default.LoadFromAssemblyName(new AssemblyName("SmmCoreDDD2019.Application"));
+            var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
+            services.AddMediatR(Assembly1a);
             //  services.AddMediatR(typeof(Startup));
             // services.AddMediatR(Assembly.GetExecutingAssembly());
             // if you have handlers/events in other assemblies
@@ -508,21 +509,21 @@ namespace SMMCoreDDD2019.WebAdminLte
             //services.AddMediatR(Assembly1a);
             // services.AddAutoMapper(Assembly1a);
 
-           //var builder = new ContainerBuilder();
-           // builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly)
-           //.AsImplementedInterfaces();
+            //var builder = new ContainerBuilder();
+            // builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly)
+            //.AsImplementedInterfaces();
 
-           // // Register all the Command classes (they implement IAsyncRequestHandler)
-           // // in assembly holding the Commands
-           // builder.RegisterAssemblyTypes(
-           //                       typeof(CreateDataSPKLeasingDBCommand).GetTypeInfo().Assembly).
-           //                            AsClosedTypesOf(typeof(IRequestHandler<,>));
-           // builder.RegisterAssemblyTypes(
-           //                    typeof(CreateDataSPKLeasingDBCommand).GetTypeInfo().Assembly).
-           //                         AsClosedTypesOf(typeof(IRequestHandler<>));
+            // // Register all the Command classes (they implement IAsyncRequestHandler)
+            // // in assembly holding the Commands
+            // builder.RegisterAssemblyTypes(
+            //                       typeof(CreateDataSPKLeasingDBCommand).GetTypeInfo().Assembly).
+            //                            AsClosedTypesOf(typeof(IRequestHandler<,>));
+            // builder.RegisterAssemblyTypes(
+            //                    typeof(CreateDataSPKLeasingDBCommand).GetTypeInfo().Assembly).
+            //                         AsClosedTypesOf(typeof(IRequestHandler<>));
             // Other types registration
 
-            
+
             //builder
             //        .RegisterAssemblyTypes(typeof(IRequest<>).Assembly)
             //        .Where(t => t.IsClosedTypeOf(typeof(IRequest<>)))
@@ -760,27 +761,27 @@ namespace SMMCoreDDD2019.WebAdminLte
         }
 
 
-        public void ConfigureContainer(ContainerBuilder builder)
-        {
-            builder.RegisterType<Mediator>().As<IMediator>().InstancePerLifetimeScope();
+        //public void ConfigureContainer(ContainerBuilder builder)
+        //{
+        //    builder.RegisterType<Mediator>().As<IMediator>().InstancePerLifetimeScope();
 
-            builder.Register<ServiceFactory>(ctx =>
-            {
-                var c = ctx.Resolve<IComponentContext>();
-                return t => c.TryResolve(t, out var o) ? o : null;
-            }).InstancePerLifetimeScope();
+        //    builder.Register<ServiceFactory>(ctx =>
+        //    {
+        //        var c = ctx.Resolve<IComponentContext>();
+        //        return t => c.TryResolve(t, out var o) ? o : null;
+        //    }).InstancePerLifetimeScope();
 
-            var dataAssembly = AssemblyLoadContext.Default.LoadFromAssemblyName(new AssemblyName("SmmCoreDDD2019.Application"));
-            // var servicesAssembly = AssemblyLoadContext.Default.LoadFromAssemblyName(new AssemblyName("FreelancerBlog.Services"));
-            //builder.RegisterAssemblyTypes(dataAssembly, servicesAssembly, Assembly.GetEntryAssembly()).AsImplementedInterfaces();
-            builder.RegisterAssemblyTypes(dataAssembly,  Assembly.GetEntryAssembly()).AsImplementedInterfaces();
+        //    var dataAssembly = AssemblyLoadContext.Default.LoadFromAssemblyName(new AssemblyName("SmmCoreDDD2019.Application"));
+        //    // var servicesAssembly = AssemblyLoadContext.Default.LoadFromAssemblyName(new AssemblyName("FreelancerBlog.Services"));
+        //    //builder.RegisterAssemblyTypes(dataAssembly, servicesAssembly, Assembly.GetEntryAssembly()).AsImplementedInterfaces();
+        //    builder.RegisterAssemblyTypes(dataAssembly,  Assembly.GetEntryAssembly()).AsImplementedInterfaces();
 
-            //builder.RegisterModule<AuthMessageSenderModule>();
-            //builder.RegisterModule<FreelancerBlogDbContextSeedDataModule>();
-            //builder.RegisterModule<FileManagerModule>();
-            //builder.RegisterModule<FileSystemWrapperModule>();
+        //    //builder.RegisterModule<AuthMessageSenderModule>();
+        //    //builder.RegisterModule<FreelancerBlogDbContextSeedDataModule>();
+        //    //builder.RegisterModule<FileManagerModule>();
+        //    //builder.RegisterModule<FileSystemWrapperModule>();
 
-        }
+        //}
 
 
 
