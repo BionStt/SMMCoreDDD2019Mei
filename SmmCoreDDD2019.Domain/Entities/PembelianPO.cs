@@ -12,7 +12,7 @@ namespace SmmCoreDDD2019.Domain.Entities
       
       public DateTime? TglPo { get; set; }
       public int? MasterSupplierDBId { get; set; }
-   public string NoRegistrasiPoPMB { get; set; }
+        public string NoRegistrasiPoPMB { get; set; }
         public string Keterangan { get; set; }
         public string Terinput { get; set; }
         public int? UserId { get; set; }

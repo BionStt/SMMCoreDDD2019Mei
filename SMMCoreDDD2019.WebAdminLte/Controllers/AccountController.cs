@@ -13,7 +13,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Identity.UI.Services;
+
 using SmmCoreDDD2019.Infrastructure.Services;
 using SmmCoreDDD2019.Common.Identity.ViewModel.Account;
 using SMMCoreDDD2019.WebAdminLte.Extensions;

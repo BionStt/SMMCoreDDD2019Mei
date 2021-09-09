@@ -17,7 +17,6 @@ using SmmCoreDDD2019.Common.Services;
 using SmmCoreDDD2019.Application.Interfaces;
 using Lamar.Microsoft.DependencyInjection;
 using Autofac.Extensions.DependencyInjection;
-
 using Serilog;
 
 namespace SMMCoreDDD2019.WebAdminLte
@@ -96,6 +95,7 @@ namespace SMMCoreDDD2019.WebAdminLte
 
             // CreateWebHostBuilder(args).Build().Run();
         }
+
         //log level severity: Trace = 0, Debug = 1, Information = 2, Warning = 3, Error = 4, Critical = 5
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)

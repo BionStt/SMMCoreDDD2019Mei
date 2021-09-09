@@ -67,7 +67,7 @@ namespace SmmCoreDDD2019.Persistence
                               new MasterAllowanceType{ AllowanceTypeName="SHOES"},
                                 new MasterAllowanceType{ AllowanceTypeName="GLASS"},
                                   new MasterAllowanceType{ AllowanceTypeName="PPH21"}
-                                 
+
 
 
             };
@@ -231,7 +231,7 @@ namespace SmmCoreDDD2019.Persistence
                new MasterBidangPekerjaanDB{ NamaMasterBidangPekerjaan="Pekerja Pengolahan, Kerajinan,dan YBDI" },
                new MasterBidangPekerjaanDB{ NamaMasterBidangPekerjaan="Operator dan Perakit Mesin" },
                new MasterBidangPekerjaanDB{ NamaMasterBidangPekerjaan="Pekerja Kasar" }
-           
+
             };
             context.MasterBidangPekerjaanDB.AddRange(MasterBidangPekerjaanDB);
             context.SaveChanges();
@@ -302,12 +302,12 @@ namespace SmmCoreDDD2019.Persistence
                 new MasterKategoriCaraPembayaran {CaraPembayaran="TUNAI" },
                 new MasterKategoriCaraPembayaran {CaraPembayaran="TRANFER BANK" },
                 new MasterKategoriCaraPembayaran {CaraPembayaran="GIRO" }
-            
+
 
 
             };
             context.MasterKategoriCaraPembayaran.AddRange(MasterKategoriCaraPembayarans);
-            context.SaveChanges(); 
+            context.SaveChanges();
         }
         private void SeedMasterKategoriPenjualan(SMMCoreDDD2019DbContext context)
         {
@@ -329,7 +329,7 @@ namespace SmmCoreDDD2019.Persistence
 
             };
             context.MasterKategoriPenjualan.AddRange(MasterKategoriPenjualans);
-            context.SaveChanges(); 
+            context.SaveChanges();
 
         }
         //private void SeedRegions(NorthwindDbContext context)

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,7 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SMMCoreDDD2019.WebAdminLte.Services;
 using SMMCoreDDD2019.WebAdminLte.Services.Mail;
-using Microsoft.AspNetCore.Authentication.Facebook;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.CookiePolicy;
 using SmmCoreDDD2019.Common.Identity;
@@ -316,7 +315,7 @@ namespace SMMCoreDDD2019.WebAdminLte
                 // options.User.RequireUniqueEmail = identityDefaultOptions.UserRequireUniqueEmail;
             })
              .AddEntityFrameworkStores<AppIdentityDbContext>()
-              .AddDefaultUI(UIFramework.Bootstrap4)
+             // .AddDefaultUI(UIFramework.Bootstrap4)
                .AddDefaultTokenProviders();
 
 
@@ -351,25 +350,25 @@ namespace SMMCoreDDD2019.WebAdminLte
 
 
 
-            if (Configuration["Authentication:Facebook:IsEnabled"] == "true")
-            {
-                services
-                    .AddAuthentication()
-                    .AddFacebook(facebookOptions => {
-                        facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
-                        facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
-                    });
-            }
+            //if (Configuration["Authentication:Facebook:IsEnabled"] == "true")
+            //{
+            //    services
+            //        .AddAuthentication()
+            //        .AddFacebook(facebookOptions => {
+            //            facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+            //            facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            //        });
+            //}
 
-            if (Configuration["Authentication:Google:IsEnabled"] == "true")
-            {
-                services
-                    .AddAuthentication()
-                    .AddGoogle(googleOptions => {
-                        googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
-                        googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-                    });
-            }
+            //if (Configuration["Authentication:Google:IsEnabled"] == "true")
+            //{
+            //    services
+            //        .AddAuthentication()
+            //        .AddGoogle(googleOptions => {
+            //            googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+            //            googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            //        });
+            //}
 
 
             // Get SendGrid configuration options
@@ -433,7 +432,7 @@ namespace SMMCoreDDD2019.WebAdminLte
             services.AddMvc()
                 .AddRazorPagesOptions(options =>
                 {
-                    options.AllowAreas = true;
+                  //  options.AllowAreas = true;
                     options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
                     options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
 
@@ -474,9 +473,9 @@ namespace SMMCoreDDD2019.WebAdminLte
             services.AddMvc()
            .AddJsonOptions(options =>
            {
-               options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+              // options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                //pascal case json
-               options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+             //  options.SerializerSettings.ContractResolver = new DefaultContractResolver();
 
            });
 
@@ -685,7 +684,7 @@ namespace SMMCoreDDD2019.WebAdminLte
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+             //   app.UseDatabaseErrorPage();
             }
             else
             {
