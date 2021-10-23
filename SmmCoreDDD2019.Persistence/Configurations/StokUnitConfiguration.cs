@@ -15,7 +15,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<StokUnit> builder)
         {
             builder.ToTable("StokUnit", "Pembelian");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("StokUnit_hilo").IsRequired();
+            //  builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("StokUnit_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
             builder.Property(e => e.PembelianDetailId);
 
@@ -35,15 +36,15 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.Jual).HasColumnName("Jual")
                  .HasMaxLength(1)
-              .IsUnicode(false); 
+              .IsUnicode(false);
 
             builder.Property(e => e.Kembali).HasColumnName("Kembali")
                  .HasMaxLength(1)
-              .IsUnicode(false); 
+              .IsUnicode(false);
 
             builder.Property(e => e.Faktur).HasColumnName("Faktur")
                  .HasMaxLength(1)
-              .IsUnicode(false); 
+              .IsUnicode(false);
 
             builder.Property(e => e.Harga).HasColumnName("Harga").HasColumnType("money");
 

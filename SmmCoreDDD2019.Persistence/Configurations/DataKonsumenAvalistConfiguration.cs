@@ -16,7 +16,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("DataKonsumenAvalist", "DataAvalist");
 
-           builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataKonsumenAvalist_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
            builder.Property(e => e.NoRegisterKonsumen).HasMaxLength(50)
             .IsUnicode(false);
 

@@ -13,8 +13,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<CustomerDB> builder)
         {
             builder.ToTable("CustomerDB");
-          
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("CustomerDB_hilo").IsRequired();
+
+            // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("CustomerDB_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
             builder.Property(e=>e.NoKodeCustomer).HasColumnName("NoKodeCustomer").IsUnicode(false);
             builder.Property(e => e.Alamat)
@@ -73,8 +74,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.TelpKantor).HasMaxLength(20);
 
-            //otomatis input tgl 
-            builder.Property(e => e.TglInput).HasColumnType("datetime").HasDefaultValueSql("(getdate())"); 
+            //otomatis input tgl
+            builder.Property(e => e.TglInput).HasColumnType("datetime").HasDefaultValueSql("(getdate())");
 
             builder.Property(e => e.TglLahir).HasColumnType("datetime");
 
@@ -85,7 +86,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
             builder.Property(e => e.NamaBidangPekerjaan).HasMaxLength(50).IsUnicode(false);
             builder.Property(e => e.KodeBidangUsaha).HasMaxLength(1).IsUnicode(false);
             builder.Property(e => e.NamaBidangUsaha).HasMaxLength(50).IsUnicode(false);
-         
+
         }
     }
 }

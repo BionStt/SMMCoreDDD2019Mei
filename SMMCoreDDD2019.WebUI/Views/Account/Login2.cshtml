@@ -1,7 +1,6 @@
 ﻿@using System.Collections.Generic
 @using System.Linq
 @using Microsoft.AspNetCore.Http
-@using Microsoft.AspNetCore.Http.Authentication
 @model SmmCoreDDD2019.Common.Identity.Models.AccountViewModels.LoginViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 @{
@@ -17,14 +16,14 @@
         <p class="login-box-msg">Sign in to start your session</p>
         <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
             <div class="form-group has-feedback">
-         
+
                 <span class="input-group-addon"> <span class="glyphicon glyphicon-envelope form-group "></span></span>
                 <input style="font-size:14px" asp-for="Email" type="email" value="sutanto.gasali@gmail.com" class="form-control" placeholder="Email" />
-              
+
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group has-feedback">
-      
+
                 <span class="input-group-addon"> <span class="glyphicon glyphicon-lock form-group "></span></span>
                 <input  style="font-size:14px" asp-for="Password" type="password" value="123456" class="form-control" placeholder="Password" />
 

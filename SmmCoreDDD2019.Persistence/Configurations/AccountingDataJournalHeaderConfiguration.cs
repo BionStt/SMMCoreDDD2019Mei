@@ -14,8 +14,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("AccountingDataJournalHeader", "Accounting");
 
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("AccountingDataJournalHeader_hilo").IsRequired();
-
+            // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("AccountingDataJournalHeader_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
             builder.Property(e => e.TanggalInput)
               .HasColumnName("TanggalInput")
               .HasColumnType("datetime");
@@ -29,7 +29,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
             builder.Property(e => e.Aktif).HasColumnName("Aktif").HasMaxLength(2).IsUnicode(false);
             builder.Property(e => e.AccountingDataPeriodeId);
 
-           
+
         }
     }
 }

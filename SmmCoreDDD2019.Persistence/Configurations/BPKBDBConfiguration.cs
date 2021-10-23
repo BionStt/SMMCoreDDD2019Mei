@@ -13,9 +13,12 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<BPKBDB> builder)
         {
             builder.ToTable("BPKBDB", "Penjualan");
-          
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("BPKBDB_hilo").IsRequired();
-           builder.Property(e => e.TanggalTerimaBPKB)
+
+           // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("BPKBDB_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
+
+            builder.Property(e => e.TanggalTerimaBPKB)
               .HasColumnName("TglTerimaBPKB")
               .HasColumnType("datetime");
 

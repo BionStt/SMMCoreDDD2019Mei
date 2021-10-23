@@ -13,7 +13,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<DataPegawaiFoto> builder)
         {
             builder.ToTable("DataPegawaiFoto", "DataPegawai");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiFoto_hilo").IsRequired();
+            // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiFoto_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
             builder.Property(e => e.Foto).HasColumnType("image");
 
             builder.Property(e => e.DataPegawaiId);
@@ -30,7 +32,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
             builder.Property(e => e.Tglinput).HasColumnType("datetime").HasDefaultValueSql("(getdate())");
 
 
-         
+
         }
     }
 }

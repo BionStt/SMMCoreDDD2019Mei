@@ -89,7 +89,7 @@ namespace SmmCoreDDD2019.Common.Identity
                 adminId2 = user.Id;
             }
 
-                     
+
 
 
         }

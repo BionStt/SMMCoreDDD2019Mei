@@ -14,7 +14,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<PermohonanFakturDB> builder)
         {
             builder.ToTable("PermohonanFakturDB", "Penjualan");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PermohonanFakturDB_hilo").IsRequired();
+            // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PermohonanFakturDB_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
             builder.Property(e=>e.NoRegistrasiFaktur).HasColumnName("NoRegistrasiFaktur").HasMaxLength(50);
             builder.Property(e => e.TanggalMohonFaktur).HasColumnType("datetime")

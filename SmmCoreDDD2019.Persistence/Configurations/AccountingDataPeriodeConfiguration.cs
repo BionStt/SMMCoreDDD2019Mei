@@ -14,8 +14,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("AccountingDataPeriode", "Accounting");
 
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("AccountingDataPeriode_hilo").IsRequired();
-          builder.Property(e => e.Mulai)
+            //   builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("AccountingDataPeriode_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
+            builder.Property(e => e.Mulai)
               .HasColumnName("Mulai")
               .HasColumnType("datetime");
 

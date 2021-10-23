@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SmmCoreDDD2019.Common.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
+//using Microsoft.AspNetCore.Identity.UI.Services;
 using SmmCoreDDD2019.Infrastructure.Services;
 using SmmCoreDDD2019.Common.Identity.ViewModel.Account;
 
@@ -376,7 +376,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationUser signedUser = await _userManager.FindByEmailAsync(model.Email);
-                //ketika email dan username tdk sama maka pola harus digunakan spt ini 
+                //ketika email dan username tdk sama maka pola harus digunakan spt ini
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 if (signedUser.IsEnabled == true)
@@ -412,7 +412,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
                     return View(model);
 
                 }
-              
+
             }
 
             // If we got this far, something failed, redisplay form
@@ -506,7 +506,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
 
 
 
-      
+
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
@@ -515,7 +515,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
             return View();
         }
 
-       
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -531,7 +531,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
                     _logger.LogInformation("input user id to data pegawai");
                     CreateDataPegawaiCommand CreateDataPegawaiCommand1 = new CreateDataPegawaiCommand { ApplicationUserID=user.Id};
                     await Mediator.Send(CreateDataPegawaiCommand1);
-                    
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

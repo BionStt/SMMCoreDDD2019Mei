@@ -14,9 +14,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<MasterLeasingCabangDB> builder)
         {
             builder.ToTable("MasterLeasingCabangDB", "MasterLeasingDb");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterLeasingCabangDB_hilo").IsRequired();
+           // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterLeasingCabangDB_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
-          builder.Property(e => e.MasterLeasingDbId);
+         builder.Property(e => e.MasterLeasingDbId);
 
             builder.Property(e => e.Aktif)
                 .HasMaxLength(2)
@@ -63,7 +64,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
               .HasMaxLength(30)
               .IsUnicode(false);
 
-         
+
         }
     }
 }

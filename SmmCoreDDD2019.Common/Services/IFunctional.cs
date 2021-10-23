@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
+
 namespace SmmCoreDDD2019.Common.Services
 {
     public interface IFunctional
@@ -33,7 +34,7 @@ namespace SmmCoreDDD2019.Common.Services
             int smtpPort,
             bool smtpSSL);
 
-        Task<string> UploadFile(List<IFormFile> files, IHostingEnvironment env, string uploadFolder);
+        Task<string> UploadFile(List<IFormFile> files, IWebHostEnvironment env, string uploadFolder);
 
     }
 }

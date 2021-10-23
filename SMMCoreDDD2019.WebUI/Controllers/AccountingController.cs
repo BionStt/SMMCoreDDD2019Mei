@@ -35,7 +35,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
 
             return View();
         }
-        public async Task<JsonResult> GetAccount(string data1a)//ajax calls this function which will return json object  
+        public async Task<JsonResult> GetAccount(string data1a)//ajax calls this function which will return json object
 
         {
             if (data1a == "0")
@@ -79,13 +79,13 @@ namespace SMMCoreDDD2019.WebUI.Controllers
         {
             var TipeJournal = await Mediator.Send(new GetTipeJournalQuery());
             ViewData["TipeJournal1"] = new SelectList(TipeJournal.DataTipeJournalDs.ToList(), "NoIDTipeJournal", "NamaJournal");
-            //jenis tipe journal 
+            //jenis tipe journal
 
             return View();
         }
 
         // POST: JournalHeaders/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -124,7 +124,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
                 var OptionGrp = new SelectListGroup() { Name = akungroup.Key };
                 foreach (var akun1 in akungroup)
                 {
-                    model.AccountIdList.Add(new SelectListItem() { Value = akun1.NoUrutAccountId.ToString(), Text = akun1.DataAkun1, Group = OptionGrp });
+                    model.AccountIdList.Add(new SelectListItem() { Value = akun1.Id.ToString(), Text = akun1.DataAkun1, Group = OptionGrp });
                 }
 
             }
@@ -141,20 +141,20 @@ namespace SMMCoreDDD2019.WebUI.Controllers
         }
 
         // POST: Journals/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateJournalDetail(string IdAccount1, decimal Debit1, decimal Kredit1, string Keterangan1, string IdBukti1, CreateAccountingDataJournalCommand CreateAccountingDataJournalCommand1)
         {
-            CreateAccountingDataJournalCommand1.NoUrutJournalH = IdBukti1;
-            CreateAccountingDataJournalCommand1.NoUrutAccountId = IdAccount1;
+            CreateAccountingDataJournalCommand1.AccountingDataJournalHeaderId = int.Parse(IdBukti1);
+            CreateAccountingDataJournalCommand1.AccountingDataAccountId = int.Parse(IdAccount1);
             CreateAccountingDataJournalCommand1.Debit = Debit1;
             CreateAccountingDataJournalCommand1.Kredit = Kredit1;
             CreateAccountingDataJournalCommand1.Keterangan = Keterangan1;
 
             await Mediator.Send(CreateAccountingDataJournalCommand1);
-            var aa1 = await Mediator.Send(new GetDataJournalByKodeHeaderQuery { Id = IdBukti1 });
+            var aa1 = await Mediator.Send(new GetDataJournalByKodeHeaderQuery { Id = int.Parse(IdBukti1) });
             var DataJournalHeader = await Mediator.Send(new GetDataJournalHeaderQuery());
             ViewData["DataJournalHeader1"] = new SelectList(DataJournalHeader.DataJournalHeaderDs.OrderByDescending(x => x.NoUrutJournalHID).Take(10).ToList(), "NoUrutJournalHID", "DataJournalHeaders");
             var bb = await Mediator.Send(new GetDataAccountByDepthQuery());
@@ -169,7 +169,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
                 var OptionGrp = new SelectListGroup() { Name = akungroup.Key };
                 foreach (var akun1 in akungroup)
                 {
-                    model.AccountIdList.Add(new SelectListItem() { Value = akun1.NoUrutAccountId.ToString(), Text = akun1.DataAkun1, Group = OptionGrp });
+                    model.AccountIdList.Add(new SelectListItem() { Value = akun1.Id.ToString(), Text = akun1.DataAkun1, Group = OptionGrp });
                 }
 
             }
@@ -194,7 +194,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
                 var OptionGrp = new SelectListGroup() { Name = akungroup.Key };
                 foreach (var akun1 in akungroup)
                 {
-                    model.AccountIdList.Add(new SelectListItem() { Value = akun1.NoUrutAccountId.ToString(), Text = akun1.DataAkun1, Group = OptionGrp });
+                    model.AccountIdList.Add(new SelectListItem() { Value = akun1.Id.ToString(), Text = akun1.DataAkun1, Group = OptionGrp });
                 }
 
             }
@@ -207,7 +207,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
 
         public async Task<IActionResult> LapAkunBukuBesarDetail(string Akun1)
         {
-            var aas1 = await Mediator.Send(new GetDataJournalByKodeAkunQuery { Id = Akun1 });
+            var aas1 = await Mediator.Send(new GetDataJournalByKodeAkunQuery { Id = int.Parse(Akun1) });
             var aas3 = aas1.DataJournalByKodeAkunDs.ToList();
 
             ViewData["Akun1"] = aas3[0].DataAkun;
@@ -254,7 +254,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
 
         public IActionResult LaporanNeraca2Tanggal()
         {
-           
+
             return View();
         }
         public async Task<IActionResult> LaporanNeraca2(DateTime Tgl1, DateTime Tgl2)

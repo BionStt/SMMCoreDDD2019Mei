@@ -35,6 +35,6 @@ namespace SmmCoreDDD2019.Common.Identity
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; } = new List<IdentityUserRole<string>>();
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; } = new List<IdentityUserClaim<string>>();
-        
+
     }
 }

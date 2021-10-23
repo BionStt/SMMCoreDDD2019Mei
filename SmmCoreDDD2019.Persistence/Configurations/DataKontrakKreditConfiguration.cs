@@ -14,7 +14,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("DataKontrakKredit", "DataAvalist");
 
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataKontrakKredit_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
             builder.Property(e => e.NoRegisterKontrakKredit).HasMaxLength(30).IsUnicode(false);
             builder.Property(e => e.DataKontrakSurveiId);
@@ -33,7 +33,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
             builder.Property(e => e.AngsuranDimuka).HasMaxLength(2).IsUnicode(false);
             builder.Property(e => e.NilaiBunga).HasColumnType("money");
             builder.Property(e => e.NilaiKontrak).HasColumnType("money");
-         
+
             builder.Property(e => e.AngsuranBulanan).HasColumnType("money");
             builder.Property(e => e.BiayaAdministrasiAngsuran).HasColumnType("money");
             builder.Property(e => e.PenagihId).HasMaxLength(2).IsUnicode(false);

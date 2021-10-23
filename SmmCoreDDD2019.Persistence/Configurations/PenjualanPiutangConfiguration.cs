@@ -16,8 +16,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<PenjualanPiutang> builder)
         {
             builder.ToTable("PenjualanPiutang", "Penjualan");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PenjualanPiutang_hilo").IsRequired();
-      
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
+
             builder.Property(e=>e.TanggalLunas).HasColumnType("datetime");
             builder.Property(e=>e.PenjualanDetailId);
 

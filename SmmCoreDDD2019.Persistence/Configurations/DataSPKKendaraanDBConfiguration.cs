@@ -10,12 +10,13 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 {
    public class DataSPKKendaraanDBConfiguration : IEntityTypeConfiguration<DataSPKKendaraanDB>
     {
-       
+
         public void Configure(EntityTypeBuilder<DataSPKKendaraanDB> builder)
         {
             builder.ToTable("DataSPKKendaraanDB", "DataSPKBaruDB");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataSPKKendaraanDB_hilo").IsRequired();
-     
+            //  builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataSPKKendaraanDB_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
             builder.Property(e => e.NamaSTNK)
                 .HasColumnName("NamaSTNK")
                 .HasMaxLength(100)
@@ -39,7 +40,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                         .HasMaxLength(35)
                         .IsUnicode(false);
 
-        
+
         }
     }
 }

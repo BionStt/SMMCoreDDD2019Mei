@@ -14,7 +14,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("AccountingDataSaldoAwal", "Accounting");
 
-           builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("AccountingDataSaldoAwal_hilo").IsRequired();
+            //builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("AccountingDataSaldoAwal_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
             builder.Property(e => e.AccountingDataPeriodeId);
             builder.Property(e => e.AccountingDataAccountId);
             builder.Property(e => e.Debet).HasColumnName("Debet").HasColumnType("money");
@@ -23,13 +25,13 @@ namespace SmmCoreDDD2019.Persistence.Configurations
             builder.Property(e => e.AccountingDataMataUangId);
             builder.Property(e => e.UserInput).HasColumnName("UserInput").HasMaxLength(50).IsUnicode(false);
             builder.Property(e => e.NilaiKurs).HasColumnName("NilaiKurs").HasColumnType("money");
-          
+
 
             builder.Property(e => e.TanggalInput)
               .HasColumnName("TanggalInput")
               .HasColumnType("datetime");
 
-           
+
         }
     }
 }

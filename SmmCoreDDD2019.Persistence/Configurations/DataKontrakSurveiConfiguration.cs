@@ -14,8 +14,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("DataKontrakSurvei", "DataAvalist");
 
-          builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataKontrakSurvei_hilo").IsRequired();
-          builder.Property(e => e.NoRegistrasiDataSurvei).HasMaxLength(30).IsUnicode(false);
+            //builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataKontrakSurvei_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
+              builder.Property(e => e.NoRegistrasiDataSurvei).HasMaxLength(30).IsUnicode(false);
 
             builder.Property(e => e.TanggalSurvei).HasColumnType("datetime").HasDefaultValueSql("(getdate())");
 

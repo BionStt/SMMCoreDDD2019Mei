@@ -24,7 +24,8 @@ namespace SmmCoreDDD2019.Common.Services
         //user settings
         public bool UserRequireUniqueEmail { get; set; }
         public bool SignInRequireConfirmedEmail { get; set; }
-
+        public bool RequireConfirmedAccount { get; set; }
+        public bool RequireConfirmedPhoneNumber { get; set; }
         //cookie settings
         public bool CookieHttpOnly { get; set; }
         public double CookieExpiration { get; set; }
@@ -32,5 +33,6 @@ namespace SmmCoreDDD2019.Common.Services
         public string LogoutPath { get; set; }
         public string AccessDeniedPath { get; set; }
         public bool SlidingExpiration { get; set; }
+        public double ExpireTimeSpan { get; set; }
     }
 }

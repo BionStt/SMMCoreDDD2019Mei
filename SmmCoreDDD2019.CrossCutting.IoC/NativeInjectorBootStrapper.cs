@@ -236,13 +236,13 @@ namespace SmmCoreDDD2019.CrossCutting.IoC
             services.AddTransient<INotificationService, NotificationService>();
             services.AddTransient<IDateTime, MachineDateTime>();
             services.AddTransient<IEmailSender, EmailSender>();
-            services.AddTransient<ApplicationSignInManager>();
+          //  services.AddTransient<ApplicationSignInManager>();
             services.AddTransient<ISmsSender, SmsSender>();
 
             // Add MediatR
            // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));//gak perlu lagi krn udah otomatis register
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+          //  services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
             // Domain Bus (Mediator)
             //services.AddScoped<IMediatorHandler, InMemoryBus>();
@@ -472,7 +472,7 @@ namespace SmmCoreDDD2019.CrossCutting.IoC
             //services.AddMediatR(typeof(GetOrgChartByParent2QueryHandler).GetTypeInfo().Assembly);
             //services.AddMediatR(typeof(GetOrgChartByDepthByChartQueryHandler).GetTypeInfo().Assembly);
 
-          
+
             //services.AddMediatR(typeof(CreateAccountingDataAccountCommand).Assembly, typeof(CreateAccountingDataAccountCommandHandler).Assembly);
             //services.AddMediatR(typeof(CreateAccountingDataJournalCommand).Assembly, typeof(CreateAccountingDataJournalCommandHandler).Assembly);
             //services.AddMediatR(typeof(CreateAccountingDataJournalHeaderCommand).Assembly, typeof(CreateAccountingDataJournalHeaderCommandHandler).Assembly);

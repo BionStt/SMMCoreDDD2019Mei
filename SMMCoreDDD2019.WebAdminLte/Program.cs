@@ -129,7 +129,7 @@ namespace SMMCoreDDD2019.WebAdminLte
 
                 })
              .ConfigureServices(sp => sp.AddAutofac())
-              
+
                 // .UseLamar()  // Register the Lamar service container
                 .UseStartup<Startup>();
 

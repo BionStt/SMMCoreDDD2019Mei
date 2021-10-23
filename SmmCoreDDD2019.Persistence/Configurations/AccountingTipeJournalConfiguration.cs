@@ -14,7 +14,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("AccountingTipeJournal", "Accounting");
 
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("AccountingTipeJournal_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
            builder.Property(e => e.KodeJournal)
                .HasMaxLength(10)
               .IsUnicode(false);

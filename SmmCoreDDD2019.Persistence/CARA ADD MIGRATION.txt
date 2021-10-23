@@ -1,17 +1,23 @@
-﻿Add-Migration InitialCreate -Context SMMCoreDDD2019DbContext -OutputDir Migrations\SqlServerMigrations
+﻿identity
+EntityFrameworkCore\Add-Migration InitialCreate -Context AppIdentityDbContext -OutputDir Migrations\SqlServerMigrations
+EntityFrameworkCore\UPDATE-DATABASE -CONTEXT AppIdentityDbContext
+
+
+
+EntityFrameworkCore\Add-Migration InitialCreate -Context SMMCoreDDD2019DbContext -OutputDir Migrations\SqlServerMigrations
 
 dotnet ef migrations add InitialCreate -Context SMMCoreDDD2019DbContext -OutputDir Migrations\SqlServerMigrations
 
-UPDATE-DATABASE -CONTEXT SMMCoreDDD2019DbContext
+EntityFrameworkCore\UPDATE-DATABASE -CONTEXT SMMCoreDDD2019DbContext
 
-Remove-Migration -Context SMMCoreDDD2019DbContext 
+EntityFrameworkCore\Remove-Migration -Context SMMCoreDDD2019DbContext
 
-di webui folder 
+di webui folder
 dotnet ef database update -c AppIdentityDbContext -p ..\SmmCoreDDD2019.Common\SmmCoreDDD2019.Common.csproj -s .\SMMCoreDDD2019.WebUI.csproj
 
 You can rollback to any migration by using:
 
-Update-Database -Migration 20190307003447_InitialCreate11 -Context SMMCoreDDD2019DbContext 
+EntityFrameworkCore\Update-Database -Migration 20190307003447_InitialCreate11 -Context SMMCoreDDD2019DbContext
 
 jgn lupa ganti nama initialcreate nya
 
@@ -27,10 +33,11 @@ dotnet ef database update -c appidentitydbcontext -p ../Infrastructure/Infrastru
 These commands will create two separate databases, one for the store's catalog data and shopping cart information, and one for the app's user credentials and identity data.
 
 dotnet restore
-dotnet ef database update  -c BlogDbContext 
+dotnet ef database update  -c BlogDbContext
 
 
-contoh northwindtraders365 
+contoh northwindtraders365
 dotnet ef database update -c NorthwindDbContext -p ..\Northwind.Persistence\Northwind.Persistence.csproj -s .\Northwind.WebUI.csproj
 
 
+EntityFrameworkCore\Update-Database -ProjectName ProjectName  -ConfigurationTypeName ProjectName.Migrations.Configuration

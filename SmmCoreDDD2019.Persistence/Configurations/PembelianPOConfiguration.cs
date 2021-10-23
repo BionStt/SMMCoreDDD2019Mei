@@ -14,12 +14,13 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<PembelianPO> builder)
         {
             builder.ToTable("PembelianPO", "PembelianPO");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PembelianPO_hilo").IsRequired();
-         
+            //  builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PembelianPO_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
             builder.Property(e=>e.NoRegistrasiPoPMB).HasColumnName("NoRegistrasiPoPMB").HasMaxLength(50);
 
           builder.Property(e => e.MasterSupplierDBId);
-           
+
             builder.Property(e => e.Keterangan)
                 .HasMaxLength(300)
                 .IsUnicode(false);
@@ -33,7 +34,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
             builder.Property(e => e.UserInput)
              .HasMaxLength(30)
              .IsUnicode(false);
-                       
+
             builder.Property(e => e.PoAstra)
                 .HasMaxLength(25)
                 .IsUnicode(false);
@@ -43,8 +44,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                 .HasColumnType("datetime")
                 .HasDefaultValueSql("(getdate())");
 
-          
-         
+
+
         }
     }
 }

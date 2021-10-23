@@ -1,9 +1,11 @@
 ﻿@using System.Collections.Generic
 @using System.Linq
 @using Microsoft.AspNetCore.Http
-@using Microsoft.AspNetCore.Http.Authentication
-@model SmmCoreDDD2019.Common.Identity.Models.AccountViewModels.LoginViewModel
+@*@using Microsoft.AspNetCore.Http.Authentication*@
 @inject SignInManager<ApplicationUser> SignInManager
+
+@model SmmCoreDDD2019.Common.Identity.Models.AccountViewModels.LoginViewModel
+@*@inject SignInManager<ApplicationUser> SignInManager*@
 @{
     ViewData["Title"] = "Log in";
     //Layout = "~/Views/Shared/_AdminlteBlank.cshtml";
@@ -71,7 +73,7 @@
 @section Scripts
 {
     @await Html.PartialAsync("_ValidationScriptsPartial")
-  
+
           <script>
                       $(function ()
                       {

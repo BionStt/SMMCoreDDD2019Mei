@@ -14,8 +14,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<MasterSupplierDB> builder)
         {
             builder.ToTable("MasterSupplierDB");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterSupplierDB_hilo").IsRequired();
-        
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
+
             builder.Property(e=>e.NoRegistrasiSupplier).HasColumnName("NoRegistrasiSupplier").HasMaxLength(50);
 
             builder.Property(e => e.Aktif).HasMaxLength(2);

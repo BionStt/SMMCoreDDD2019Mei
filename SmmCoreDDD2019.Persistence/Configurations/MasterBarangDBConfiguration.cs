@@ -14,9 +14,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<MasterBarangDB> builder)
         {
             builder.ToTable("MasterBarangDB");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterBarangDB_hilo").IsRequired();
-      
-            builder.Property(e => e.Aktif)
+           // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterBarangDB_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+                 builder.Property(e => e.Aktif)
                 .HasMaxLength(1)
                 .IsUnicode(false);
 
@@ -56,7 +56,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                 .HasColumnName("TypeKendaraan")
                 .HasMaxLength(30)
                 .IsUnicode(false);
-         
+
         }
     }
 }

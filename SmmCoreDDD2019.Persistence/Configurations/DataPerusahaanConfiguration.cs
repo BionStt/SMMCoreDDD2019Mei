@@ -14,11 +14,12 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<DataPerusahaan> builder)
         {
             builder.ToTable("DataPerusahaan", "DataPerusahaan");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPerusahaan_hilo").IsRequired();
+            // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPerusahaan_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
           builder.Property(e=>e.NoRegDataPerusahaan).HasColumnName("NoRegDataPerusahaan").HasMaxLength(50);
 
-          
+
             builder.Property(e => e.AlamatP).HasMaxLength(50);
 
             builder.Property(e => e.Cs)
@@ -47,7 +48,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.Telp).HasMaxLength(25);
 
-          
+
         }
     }
 }

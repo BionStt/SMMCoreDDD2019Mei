@@ -15,12 +15,13 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("DataPegawaiDataAbsensi", "DataPegawai");
 
-          
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataAbsensi_hilo").IsRequired();
-            builder.Property(e => e.DataPegawaiId);
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
+             //  builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataAbsensi_hilo").IsRequired();
+             builder.Property(e => e.DataPegawaiId);
             builder.Property(e => e.DataPegawaiJenisAbsensiId);
             builder.Property(e => e.JamAbsensi).HasColumnName("JamAbsensi").HasColumnType("datetime");
-           
+
         }
     }
 }

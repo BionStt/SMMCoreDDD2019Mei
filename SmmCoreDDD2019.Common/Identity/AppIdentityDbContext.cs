@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SmmCoreDDD2019.Common.Identity
 {
-    public class AppIdentityDbContext:IdentityDbContext<ApplicationUser,ApplicationRole,string>
+    public class AppIdentityDbContext:IdentityDbContext<ApplicationUser>
     {
         public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext>options):base(options)
         {
@@ -20,63 +20,14 @@ namespace SmmCoreDDD2019.Common.Identity
         {
             base.OnModelCreating(builder);
 
-            //builder.Entity<ApplicationUser>(entity=> {
+            builder.ApplyConfigurationsFromAssembly(typeof(AppIdentityDbContext).Assembly);
 
-
-
-            //});
-
-            builder.Entity<NumberSequence>(entity => {
-                entity.Property<int>("NumentityerSequenceId")
-                       .ValueGeneratedOnAdd();
-
-                entity.Property<int>("LastNumentityer");
-
-                entity.Property<string>("Module")
-                    .IsRequired();
-
-                entity.Property<string>("NumentityerSequenceName")
-                    .IsRequired();
-
-                entity.Property<string>("Prefix")
-                    .IsRequired();
-
-                entity.HasKey("NumentityerSequenceId");
-
-                entity.ToTable("NumberSequence");
-
-            });
-
-            builder.Entity<UserProfile>(entity=>
-            {
-                entity.Property<int>("UserProfileId")
-                         .ValueGeneratedOnAdd();
-
-                entity.Property<string>("ApplicationUserId");
-
-                entity.Property<string>("ConfirmPassword");
-
-                entity.Property<string>("Email");
-
-                entity.Property<string>("FirstName");
-
-                entity.Property<string>("LastName");
-
-                entity.Property<string>("OldPassword");
-
-                entity.Property<string>("Password");
-
-                entity.Property<string>("ProfilePicture");
-
-                entity.HasKey("UserProfileId");
-
-                entity.ToTable("UserProfile");
-            });
 
 
         }
         public DbSet<UserProfile> UserProfile { get; set; }
         public DbSet<NumberSequence> NumberSequence { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<ApplicationRole> ApplicationRole { get; set; }
     }
 }

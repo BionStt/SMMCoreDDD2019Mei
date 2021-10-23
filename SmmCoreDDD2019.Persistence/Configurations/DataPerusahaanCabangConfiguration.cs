@@ -13,7 +13,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<DataPerusahaanCabang> builder)
         {
             builder.ToTable("DataPerusahaanCabang", "DataPerusahaan");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPerusahaanCabang_hilo").IsRequired();
+            // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPerusahaanCabang_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
             builder.Property(e=>e.DataPerusahaanId);
 

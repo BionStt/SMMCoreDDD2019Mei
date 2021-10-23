@@ -14,7 +14,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<PenjualanDetail> builder)
         {
             builder.ToTable("PenjualanDetail", "Penjualan");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PenjualanDetail_hilo").IsRequired();
+           // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PenjualanDetail_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
             builder.Property(e => e.PenjualanId);
 
@@ -53,7 +54,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                     .HasColumnType("money");
 
             builder.Property(e => e.SellOut).HasColumnType("money");
-        
+
             builder.Property(e => e.DendaWilayah).HasColumnType("money");
 
             builder.Property(e => e.CheckDp)

@@ -19,8 +19,12 @@ using SmmCoreDDD2019.Common.Identity.ViewModel.Account;
 using SMMCoreDDD2019.WebAdminLte.Extensions;
 using SmmCoreDDD2019.Application.DataPegawais.Command.CreateDataPegawai;
 
+using Microsoft.AspNetCore.Http;
+//using Microsoft.AspNetCore.Http.Authentication;
+
+
 namespace SMMCoreDDD2019.WebAdminLte.Controllers
-{  
+{
     // [Authorize]
     [Route("[controller]/[action]")]
     public class AccountController : BaseController
@@ -29,22 +33,22 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
         private readonly ILogger _logger;
 
         private readonly UserManager<ApplicationUser> _userManager;
-         private readonly ApplicationSignInManager _signInManager2;
+       //  private readonly ApplicationSignInManager _signInManager2;
         private readonly SmmCoreDDD2019.Infrastructure.Services.IEmailSender _emailSender;
        private readonly ISmsSender _smsSender;
 
         public AccountController(
-            SignInManager<ApplicationUser> signInManager, 
+            SignInManager<ApplicationUser> signInManager,
             ILogger<AccountController> logger,
-               UserManager<ApplicationUser> userManager,     
-             ApplicationSignInManager signInManager2,
+               UserManager<ApplicationUser> userManager,
+           //  ApplicationSignInManager signInManager2,
            SmmCoreDDD2019.Infrastructure.Services.IEmailSender emailSender,
             ISmsSender smsSender
             )
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _signInManager2 = signInManager2;
+          //  _signInManager2 = signInManager2;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = logger;
@@ -60,7 +64,7 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
             return RedirectToPage("~/Account/Login");
           //  return RedirectToAction(nameof(AccountController.), "Home");
         }
-       
+
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public async Task<IActionResult> Logout()
@@ -396,7 +400,7 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationUser signedUser = await _userManager.FindByEmailAsync(model.Email);
-                //ketika email dan username tdk sama maka pola harus digunakan spt ini 
+                //ketika email dan username tdk sama maka pola harus digunakan spt ini
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 if (signedUser.IsEnabled == true)
@@ -461,7 +465,8 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 // var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: true);
-                var result = await _signInManager2.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: true);
+               // var result = await _signInManager2.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: true);
+                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: true);
 
                 if (result.Succeeded)
                 {
@@ -673,7 +678,7 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
         }
 
 
-       
+
 
 
         public IActionResult Index()
@@ -698,5 +703,5 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers
 
 
     }
-    
+
 }

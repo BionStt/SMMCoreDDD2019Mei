@@ -13,8 +13,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<MasterJenisJabatan> builder)
         {
             builder.ToTable("MasterJenisJabatan");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterJenisJabatan_hilo").IsRequired();
-       
+            //  builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterJenisJabatan_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
             builder.Property(e => e.NamaJabatan)
                 .HasMaxLength(50)
                 .IsUnicode(false);

@@ -66,11 +66,11 @@ using SmmCoreDDD2019.Application.DataPegawaiDataPribadiInput.Queries.GetNamaSale
 using SmmCoreDDD2019.Application.DataPerusahaans.Queries.GetNamaPerusahaan;
 using SmmCoreDDD2019.Application.DataPegawaiFotos.Queries.GetDataPegawaiList;
 using SmmCoreDDD2019.Application.DataPegawaiDataPribadiInput.Queries.GetNamaPegawai;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByDepth;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByParent2;
+//using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByDepth;
+//using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByParent2;
 using SmmCoreDDD2019.Application.DataPerusahaans.Queries.GetNamaPerusahaanLeasingCetak;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByParent;
-using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByStructureCode;
+//using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByParent;
+//using SmmCoreDDD2019.Application.DataPerusahaanStrukturJabatanDB.Query.GetStructureByStructureCode;
 using SmmCoreDDD2019.Application.MasterJenisJabatanDBs.Query.GetNamaJabatan;
 using SmmCoreDDD2019.Application.DataSPKSurveiDBs.Queries.GetNamaSPKPenjualan;
 using SmmCoreDDD2019.Application.DataSPKSurveiDBs.Queries.GetNamaSPK;
@@ -109,6 +109,8 @@ using SmmCoreDDD2019.Application.PenjualanDetails.Query.GetLeasingCetak;
 using SmmCoreDDD2019.Application.PenjualanDetails.Query.GetDataPiutangLeasingMerek;
 using SmmCoreDDD2019.Application.Penjualans.Query.GetDataPenjualanHarian;
 using SmmCoreDDD2019.Application.Penjualans.Query.GetLaporanPenjualanPivot;
+
+using Newtonsoft.Json.Serialization;
 
 namespace SMMCoreDDD2019.WebUI
 {
@@ -249,8 +251,8 @@ namespace SMMCoreDDD2019.WebUI
 
             // .NET Native DI Abstraction
             RegisterServices(services);
-                        
-          
+
+
 
             // Add MediatR
             //services.AddMediatR(typeof(GetProductQueryHandler).GetTypeInfo().Assembly);
@@ -275,21 +277,21 @@ namespace SMMCoreDDD2019.WebUI
             services.AddMediatR(typeof(GetListDataKontrakKreditByNoIDQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetDataSurveiQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetNamaSalesForceQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaPegawaiHandler).GetTypeInfo().Assembly); // nambah sendiri
+          //  services.AddMediatR(typeof(GetNamaPegawaiHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(DataPegawaiListQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaPerusahaanHandler).GetTypeInfo().Assembly); // nambah sendiri
+          //  services.AddMediatR(typeof(GetNamaPerusahaanHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetNamaPerusahaanLeasingCetakQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetStructureByDepthQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetStructureByParentQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetStructureByParent2QueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetStructureByStructureCodeQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+            //services.AddMediatR(typeof(GetStructureByDepthQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+            //services.AddMediatR(typeof(GetStructureByParentQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+            //services.AddMediatR(typeof(GetStructureByParent2QueryHandler).GetTypeInfo().Assembly); // nambah sendiri
+            //services.AddMediatR(typeof(GetStructureByStructureCodeQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetDataKendaraanByNoSPKQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaSPKHandler).GetTypeInfo().Assembly); // nambah sendiri
+            //services.AddMediatR(typeof(GetNamaSPKHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetNamaSPKPenjualanQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetMasterBarangByIDQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetMerekQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaBarangQrHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaBarangQrByNoUrutHandler).GetTypeInfo().Assembly); // nambah sendiri
+            //services.AddMediatR(typeof(GetNamaBarangQrHandler).GetTypeInfo().Assembly); // nambah sendiri
+            //services.AddMediatR(typeof(GetNamaBarangQrByNoUrutHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetNamaBidangPekerjaanQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetNamaBidangUsahaQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetNamaJabatanQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
@@ -298,14 +300,14 @@ namespace SMMCoreDDD2019.WebUI
             services.AddMediatR(typeof(GetNamaKategoryQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetCabangLeasingQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetAllLeasingQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaSupplierHandler).GetTypeInfo().Assembly); // nambah sendiri
+          //  services.AddMediatR(typeof(GetNamaSupplierHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetKodeBeliQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetKodeBeliDetailQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetLIstPembelianQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetListPembelianDetailQueryHandle).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetListStokUnitByNoKodeBeliQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetDataPoPembelianHandler).GetTypeInfo().Assembly); // nambah sendiri
-            services.AddMediatR(typeof(GetNamaPOHandler).GetTypeInfo().Assembly); // nambah sendiri
+            //services.AddMediatR(typeof(GetDataPoPembelianHandler).GetTypeInfo().Assembly); // nambah sendiri
+            //services.AddMediatR(typeof(GetNamaPOHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetDataCekDPBulananQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetDataCekDPPenjualanQueryHandler).GetTypeInfo().Assembly); // nambah sendiri
             services.AddMediatR(typeof(GetDataCekDPPenjualan2QueryHandler).GetTypeInfo().Assembly); // nambah sendiri
@@ -338,20 +340,28 @@ namespace SMMCoreDDD2019.WebUI
             services.AddDbContext<AppIdentityDbContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection")));
 
-          
+
             services
               .AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
               .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
               .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateCustomerCommandValidator>());
 
-            services.AddMvc()
-           .AddJsonOptions(options =>
-           {
-               options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                //pascal case json
-                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-
+            services.AddControllersWithViews().AddNewtonsoftJson(x =>
+            {
+                x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                x.SerializerSettings.ContractResolver = new DefaultContractResolver();
             });
+
+            services.AddControllersWithViews(options => options.EnableEndpointRouting = false);
+
+            // services.AddMvc()
+            //.AddJsonOptions(options =>
+            //{
+            //    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            //     //pascal case json
+            //     options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+
+            // });
 
             // Customise default API behavour
             //services.Configure<ApiBehaviorOptions>(options =>
@@ -373,7 +383,7 @@ namespace SMMCoreDDD2019.WebUI
         //https://www.tutorialsteacher.com/core/aspnet-core-logging
         //public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         //{
-        //    // other code remove for clarity 
+        //    // other code remove for clarity
         //    loggerFactory.AddFile("Logs/mylog-{Date}.txt");
         //}
 
@@ -388,14 +398,14 @@ namespace SMMCoreDDD2019.WebUI
             //{
             //    app.UseExceptionHandler("/Home/Error");
             //}
-            //code removed for clarity 
+            //code removed for clarity
             //https://www.tutorialsteacher.com/core/aspnet-core-exception-handling
 
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+             //   app.UseDatabaseErrorPage();
             }
             else
             {
@@ -404,9 +414,9 @@ namespace SMMCoreDDD2019.WebUI
                 app.UseHsts();
             }
 
-          
+
             app.UseHttpsRedirection();
-           
+
             app.UseCookiePolicy();
             app.UseAuthentication();
 
@@ -440,6 +450,7 @@ namespace SMMCoreDDD2019.WebUI
                   name: "default",
                   template: "{controller=UserRole}/{action=UserProfile}/{id?}");
             });
+
 
             //app.UseSpa(spa =>
             //{

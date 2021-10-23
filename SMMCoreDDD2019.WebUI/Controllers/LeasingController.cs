@@ -62,7 +62,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
             var DataDetailLeasingCetak = await Mediator.Send(new GetDataDetailLeasingCetakQuery { Id = Id });
             var bb = DataPerusahaan.NamaPerusahaanBDs.ToList();
             return View(bb);
-          
+
         }
         public async Task <IActionResult> SuratJalan2(string Id)
         {
@@ -81,7 +81,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
             var DataDetailLeasingCetak = await Mediator.Send(new GetDataDetailLeasingCetakQuery { Id = Id });
             var bb = DataPerusahaan.NamaPerusahaanBDs.ToList();
             return View(bb);
-          
+
         }
         public async Task <IActionResult> SuratJalan3(string Id)
         {
@@ -100,7 +100,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
             var DataDetailLeasingCetak = await Mediator.Send(new GetDataDetailLeasingCetakQuery { Id = Id });
             var bb = DataPerusahaan.NamaPerusahaanBDs.ToList();
             return View(bb);
-         
+
         }
         public async Task <IActionResult> SuratJalan4(string Id)
         {
@@ -119,7 +119,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
             var DataDetailLeasingCetak = await Mediator.Send(new GetDataDetailLeasingCetakQuery { Id = Id });
             var bb = DataPerusahaan.NamaPerusahaanBDs.ToList();
             return View(bb);
-          
+
         }
         public async Task<IActionResult> SuratJalanTunai(string Id)
         {
@@ -156,7 +156,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
             var DataDetailLeasingCetak = await Mediator.Send(new GetDataDetailLeasingCetakQuery { Id = Id });
             var bb = DataPerusahaan.NamaPerusahaanBDs.ToList();
             return View(bb);
-          
+
         }
 
         public async Task<IActionResult> SIPBPKB2(string Id)
@@ -176,7 +176,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
             var DataDetailLeasingCetak = await Mediator.Send(new GetDataDetailLeasingCetakQuery { Id = Id });
             var bb = DataPerusahaan.NamaPerusahaanBDs.ToList();
             return View(bb);
-           
+
         }
         public async Task<IActionResult> PenagihanL(string Id)
         {
@@ -195,7 +195,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
             var DataDetailLeasingCetak = await Mediator.Send(new GetDataDetailLeasingCetakQuery { Id = Id });
             var bb = DataPerusahaan.NamaPerusahaanBDs.ToList();
             return View(bb);
-         
+
         }
 
         public async Task<IActionResult> LaporanStokUnit()
@@ -224,7 +224,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
                         {
                             Keterangan = Ket1,
                             TanggalLunas = TglLunasLeasing,
-                            KodePenjualanDetail = KodePj1a
+                            KodePenjualanDetail = int.Parse(KodePj1a)
                         };
                         var PiutangPj = await Mediator.Send(CreatePenjualanPiutangCommand1);
 
@@ -232,7 +232,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
 
                     var dd = await Mediator.Send(new GetDataCekDPPenjualan2Query { IDLeasingCabang= KodeLeasing,TanggalPenjualan2=tgl2,TanggalPenjualan1=tgl1,TanggalPenjualan2a=tgl2a,TanggalPenjualan1a=tgl1a  });
 
-                
+
 
                     ViewData["Tgl1a"] = tgl1;
                     ViewData["Tgl2a"] = tgl2;
@@ -265,7 +265,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
                     else
                     {
                         var aa = await Mediator.Send(new GetDataCekDPPenjualanQuery());
-                     
+
                         return View(aa.CekDPPenjualanDS.ToList());
                     }
                     return View();
@@ -308,7 +308,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
                 default:
                     var cc = await Mediator.Send(new GetDataCekDPBulananQuery { TanggalPenjualan2 = tgl2, TanggalPenjualan1 = tgl1, TanggalPenjualan1a = tgl1a, TanggalPenjualan2a = tgl2a });
 
-                 
+
                     ViewData["Tgl1a"] = tgl1;
                     ViewData["Tgl2a"] = tgl2;
                     ViewData["KodePj1b"] = KodePj1a;
@@ -321,7 +321,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
                     {
                         var aa = await Mediator.Send(new GetDataPenjualanDetailByNoQuery { Id= KodePj1a });
 
-                       
+
                         return View(aa.GetDataPenjualanDetailByNoDS.ToList());
                     }
                     return View();
@@ -394,7 +394,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
                         await Mediator.Send(new UpdateStokUnitPembatalanPjCommand {NoUrutSO= NoSO11 } );
                     }
                     return RedirectToAction(nameof(InputPembatalanPenjualan));
-               
+
 
                 case "Cari":
                     if (Nosin1 != null)
@@ -442,7 +442,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
                     }
 
                     var dd = await Mediator.Send(new GetDataCheckPenjualanBulananQuery {TanggalPenjualan1=tgl1,TanggalPenjualan1a=tgl1b,TanggalPenjualan2=tgl2,TanggalPenjualan2a =tgl2b});
-  
+
 
                     ViewData["Tgl1a"] = tgl1;
                     ViewData["Tgl2a"] = tgl2;
@@ -457,7 +457,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
 
                 default:
                     var cc = await Mediator.Send(new GetDataCheckPenjualanBulananQuery { TanggalPenjualan1 = tgl1, TanggalPenjualan1a = tgl1a, TanggalPenjualan2 = tgl2, TanggalPenjualan2a = tgl2a });
-                                     
+
                     ViewData["Tgl1a"] = tgl1;
                     ViewData["Tgl2a"] = tgl2;
                     ViewData["Tgl1b"] = tgl1b;
@@ -474,7 +474,7 @@ namespace SMMCoreDDD2019.WebUI.Controllers
                         //kodepj detail
                         var aa = await Mediator.Send(new GetDataCheckPenjualanDetailBulananQuery { Id= NourutPjDetaila });
 
-                     
+
                         return View(aa.GetDataPenjualanDetailByNosinDS.ToList());
                     }
                     return View();

@@ -14,7 +14,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<DataSPKSurveiDB> builder)
         {
             builder.ToTable("DataSPKSurveiDB", "DataSPKBaruDB");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataSPKSurveiDB_hilo").IsRequired();
+           // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataSPKSurveiDB_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
             builder.Property(e => e.AlamatPemesan).HasMaxLength(250).IsUnicode(false);
 
@@ -60,7 +61,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                 .HasMaxLength(18)
                 .IsUnicode(false);
 
-      
+
         }
     }
 }

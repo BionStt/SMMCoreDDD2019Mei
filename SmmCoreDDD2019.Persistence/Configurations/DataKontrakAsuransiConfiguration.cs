@@ -14,7 +14,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("DataKontrakAsuransi", "DataAvalist");
 
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataKontrakAsuransi_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
             builder.Property(e => e.NoRegistrasiKontrakAsuransi).HasMaxLength(50).IsUnicode(false);
             builder.Property(e => e.DataKontrakKreditId);
             builder.Property(e => e.KodeAsuransi).HasMaxLength(5).IsUnicode(false);
@@ -25,7 +26,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
             builder.Property(e => e.NilaiPertanggungan).HasColumnType("money");
             builder.Property(e => e.BiayaAsuransi).HasColumnType("money");
 
-          
+
         }
     }
 }

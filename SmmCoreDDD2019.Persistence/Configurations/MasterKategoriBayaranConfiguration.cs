@@ -13,13 +13,14 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<MasterKategoriBayaran> builder)
         {
             builder.ToTable("MasterKategoriBayaran");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterKategoriBayaran_hilo").IsRequired();
-              
+            // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterKategoriBayaran_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
             builder.Property(e => e.NamaKategoryBayaran)
                 .HasMaxLength(30)
                 .IsUnicode(false);
 
-          
+
         }
     }
 }

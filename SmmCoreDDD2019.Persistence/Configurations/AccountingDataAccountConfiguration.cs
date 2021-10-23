@@ -14,16 +14,16 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("AccountingDataAccount", "Accounting");
 
-            builder.Property(e => e.Id)
-               .ForSqlServerUseSequenceHiLo("AccountingDataAccount_hilo")
-               .IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
+
 
 
             builder.Property(e=>e.Lft).HasColumnName("Lft").ValueGeneratedOnAddOrUpdate();
             builder.Property(e => e.Rgt).HasColumnName("Rgt").ValueGeneratedOnAddOrUpdate();
             builder.Property(e => e.Parent).HasColumnName("Parent").HasMaxLength(15);
             builder.Property(e => e.Depth).HasColumnName("Depth").ValueGeneratedOnAddOrUpdate();
-         
+
 
             builder.Property(e => e.NormalPos).HasColumnName("NormalPos");
             builder.Property(e => e.KodeAccount).HasColumnName("KodeAccount").HasMaxLength(25);

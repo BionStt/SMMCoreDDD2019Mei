@@ -30,24 +30,27 @@ namespace SmmCoreDDD2019.Application.DataSPKSurveiDBs.Command.UpdateDataSPKSurve
             {
                 throw new NotFoundException(nameof(DataSPKSurveiDB), request.NoUrut);
             }
-            
+            entity.EditDataSPKSurveiDB(request.AlamatPemesan, request.HandphonePemesan, request.KecamatanPemesan, request.KelurahanPemesan,
+                request.KodePosPemesan,request.KotaPemesan,request.NamaNPWP,request.NamaPemesan,request.NoKtpPemesan,request.NoNPWP,
+                request.NoUrutSPKBaru,request.PekerjaanPemesan,request.PropinsiPemesan,request.TelpPemesan);
+
                 //   entity.NoUrut = request.NoUrut;
-                entity.AlamatPemesan = request.AlamatPemesan;
-                entity.HandphonePemesan = request.HandphonePemesan;
-                entity.KecamatanPemesan = request.KecamatanPemesan;
-                entity.KelurahanPemesan = request.KelurahanPemesan;
-                entity.KodePosPemesan = request.KodePosPemesan;
+                //entity.AlamatPemesan = request.AlamatPemesan;
+                //entity.HandphonePemesan = request.HandphonePemesan;
+                //entity.KecamatanPemesan = request.KecamatanPemesan;
+                //entity.KelurahanPemesan = request.KelurahanPemesan;
+                //entity.KodePosPemesan = request.KodePosPemesan;
 
-                entity.NamaNPWP = request.NamaNPWP;
+                //entity.NamaNPWP = request.NamaNPWP;
 
-                entity.NamaPemesan = request.NamaPemesan;
-                entity.NoKtpPemesan = request.NoKtpPemesan;
-                entity.NoNPWP = request.NoNPWP;
-                entity.DataSPKBaruDBId = request.NoUrutSPKBaru;
-                entity.PekerjaanPemesan = request.PekerjaanPemesan;
-                entity.PropinsiPemesan = request.PropinsiPemesan;
+                //entity.NamaPemesan = request.NamaPemesan;
+                //entity.NoKtpPemesan = request.NoKtpPemesan;
+                //entity.NoNPWP = request.NoNPWP;
+                //entity.DataSPKBaruDBId = request.NoUrutSPKBaru;
+                //entity.PekerjaanPemesan = request.PekerjaanPemesan;
+                //entity.PropinsiPemesan = request.PropinsiPemesan;
 
-                entity.TelpPemesan = request.TelpPemesan;
+                //entity.TelpPemesan = request.TelpPemesan;
 
 
             _context.DataSPKSurveiDB.Update(entity);

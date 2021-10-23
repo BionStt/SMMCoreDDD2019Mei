@@ -15,9 +15,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<STNKDB> builder)
         {
             builder.ToTable("STNKDB", "Penjualan");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("STNKDB_hilo").IsRequired();
+            //  builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("STNKDB_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
-            builder.Property(e => e.BbnPabrik)
+             builder.Property(e => e.BbnPabrik)
                 .HasColumnName("BBnPabrik")
                 .HasColumnType("money");
 
@@ -29,7 +30,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.FormA).HasColumnType("money");
 
-         
+
             builder.Property(e => e.NomorPlat)
                 .HasMaxLength(12)
                 .IsUnicode(false);
@@ -49,7 +50,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                 .HasColumnName("TanggalBayarSTNK")
                 .HasColumnType("datetime");
 
-         
+
         }
     }
 }

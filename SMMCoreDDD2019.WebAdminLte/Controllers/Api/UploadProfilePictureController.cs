@@ -19,12 +19,12 @@ namespace SMMCoreDDD2019.WebAdminLte.Controllers.Api
     public class UploadProfilePictureController : Controller
     {
         private readonly IFunctional _functionalService;
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly AppIdentityDbContext _context;
 
         public UploadProfilePictureController(IFunctional functionalService,
-            IHostingEnvironment env,
+            IWebHostEnvironment env,
             UserManager<ApplicationUser> userManager,
             AppIdentityDbContext context)
         {

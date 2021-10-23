@@ -28,7 +28,7 @@ namespace SmmCoreDDD2019.Domain.Entities
         public DataSPKKreditDB DataSPKKreditDB { get; set; }
 
 
-     
+
 
 
 

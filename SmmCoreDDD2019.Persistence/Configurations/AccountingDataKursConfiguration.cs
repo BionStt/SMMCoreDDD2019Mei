@@ -14,16 +14,18 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("AccountingDataKurs", "Accounting");
 
-          
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("AccountingDataKurs_hilo").IsRequired();
-          builder.Property(e => e.MataUangID).HasColumnName("MataUangID").HasMaxLength(3).IsUnicode(false);
+
+            //builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("AccountingDataKurs_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
+              builder.Property(e => e.MataUangID).HasColumnName("MataUangID").HasMaxLength(3).IsUnicode(false);
 
             builder.Property(e => e.TanggalInput)
               .HasColumnName("TanggalInput")
               .HasColumnType("datetime");
 
             builder.Property(e => e.Nilai).HasColumnName("Nilai").HasColumnType("money");
-          
+
         }
     }
 }

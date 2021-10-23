@@ -16,8 +16,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<PembelianDetail> builder)
         {
             builder.ToTable("PembelianDetail", "Pembelian");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PembelianDetail_hilo").IsRequired();
-      
+           // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PembelianDetail_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
             builder.Property(e => e.PembelianId);
 
             builder.Property(e => e.MasterBarangDBId);

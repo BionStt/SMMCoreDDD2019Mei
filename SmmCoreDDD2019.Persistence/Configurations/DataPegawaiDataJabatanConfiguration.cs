@@ -13,8 +13,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<DataPegawaiDataJabatan> builder)
         {
             builder.ToTable("DataPegawaiDataJabatan", "DataPegawai");
-         
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataJabatan_hilo").IsRequired();
+
+            //    builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataJabatan_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
             builder.Property(e => e.DataPegawaiId);
 
@@ -26,7 +27,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.TglMenjabat).HasColumnType("datetime").HasDefaultValueSql("(getdate())");
 
-          
+
           }
     }
 }

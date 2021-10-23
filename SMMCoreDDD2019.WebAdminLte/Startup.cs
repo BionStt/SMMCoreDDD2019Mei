@@ -260,13 +260,6 @@ namespace SMMCoreDDD2019.WebAdminLte
             //apakah ini tdk sama dengan dibawah ???
             var identityDefaultOptions = identityDefaultOptionsConfigurationSection.Get<IdentityDefaultOptions>();
 
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-
             // Add DbContext using SQL Server Provider
             services.AddDbContext<ISMMCoreDDD2019DbContext, SMMCoreDDD2019DbContext>(options =>
                // options.UseSqlServer(Configuration.GetConnectionString("SmmCoreDDD2019Connection"))
@@ -312,6 +305,9 @@ namespace SMMCoreDDD2019.WebAdminLte
 
                 // email confirmation require
                 options.SignIn.RequireConfirmedEmail = identityDefaultOptions.SignInRequireConfirmedEmail;
+                options.SignIn.RequireConfirmedAccount = identityDefaultOptions.RequireConfirmedAccount;
+                options.SignIn.RequireConfirmedPhoneNumber = identityDefaultOptions.RequireConfirmedPhoneNumber;
+
                 // options.User.RequireUniqueEmail = identityDefaultOptions.UserRequireUniqueEmail;
             })
              .AddEntityFrameworkStores<AppIdentityDbContext>()
@@ -321,14 +317,21 @@ namespace SMMCoreDDD2019.WebAdminLte
 
             services.AddEntityFrameworkSqlServer();
 
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
             services.ConfigureApplicationCookie(options =>
             {
-                options.LoginPath = $"/Identity/Account/Login";
-                options.LogoutPath = $"/Identity/Account/Logout";
-                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+                //options.LoginPath = $"/Identity/Account/Login";
+                //options.LogoutPath = $"/Identity/Account/Logout";
+                //options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 
-                options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromHours(1);
+                //options.Cookie.HttpOnly = true;
+                //options.ExpireTimeSpan = TimeSpan.FromHours(1);
                 //  options.LoginPath = "/Account/Login2";
                 //  options.LogoutPath = "/Account/Signout";
                 options.Cookie = new CookieBuilder
@@ -337,12 +340,13 @@ namespace SMMCoreDDD2019.WebAdminLte
                 };
 
                 // Cookie settings
-                //options.Cookie.HttpOnly = identityDefaultOptions.CookieHttpOnly;
-                //options.Cookie.Expiration = TimeSpan.FromDays(identityDefaultOptions.CookieExpiration);
-                //options.LoginPath = identityDefaultOptions.LoginPath; // If the LoginPath is not set here, ASP.NET Core will default to /Account/Login
-                //options.LogoutPath = identityDefaultOptions.LogoutPath; // If the LogoutPath is not set here, ASP.NET Core will default to /Account/Logout
-                //options.AccessDeniedPath = identityDefaultOptions.AccessDeniedPath; // If the AccessDeniedPath is not set here, ASP.NET Core will default to /Account/AccessDenied
-                //options.SlidingExpiration = identityDefaultOptions.SlidingExpiration;
+                options.Cookie.HttpOnly = identityDefaultOptions.CookieHttpOnly;
+              //  options.Cookie.Expiration = TimeSpan.FromDays(identityDefaultOptions.CookieExpiration);
+                options.ExpireTimeSpan = TimeSpan.FromDays(identityDefaultOptions.CookieExpiration);
+                options.LoginPath = identityDefaultOptions.LoginPath; // If the LoginPath is not set here, ASP.NET Core will default to /Account/Login
+                options.LogoutPath = identityDefaultOptions.LogoutPath; // If the LogoutPath is not set here, ASP.NET Core will default to /Account/Logout
+                options.AccessDeniedPath = identityDefaultOptions.AccessDeniedPath; // If the AccessDeniedPath is not set here, ASP.NET Core will default to /Account/AccessDenied
+                options.SlidingExpiration = identityDefaultOptions.SlidingExpiration;
 
             });
 
@@ -369,7 +373,9 @@ namespace SMMCoreDDD2019.WebAdminLte
             //            googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
             //        });
             //}
+            services.AddTransient<IRoles, Roles>();
 
+            services.AddTransient<IFunctional, Functional>();
 
             // Get SendGrid configuration options
             //  services.Configure<SendGridOptions>(Configuration.GetSection("SendGridOptions"));
@@ -429,15 +435,15 @@ namespace SMMCoreDDD2019.WebAdminLte
              });
 
 
-            services.AddMvc()
-                .AddRazorPagesOptions(options =>
-                {
-                  //  options.AllowAreas = true;
-                    options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
-                    options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
+            //services.AddMvc()
+            //    .AddRazorPagesOptions(options =>
+            //    {
+            //      //  options.AllowAreas = true;
+            //        options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
+            //        options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
 
 
-                });
+            //    });
 
             //services.Configure<PasswordHasherOptions>(options =>
             //      options.CompatibilityMode = PasswordHasherCompatibilityMode.IdentityV3);
@@ -463,21 +469,27 @@ namespace SMMCoreDDD2019.WebAdminLte
             // .NET Native DI Abstraction
             RegisterServices(services);
 
-                      //services.AddMvc().AddRazorPagesOptions(options => {
+            //services.AddMvc().AddRazorPagesOptions(options => {
             //    options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "");
             //}).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
 
+            services.AddControllersWithViews().AddNewtonsoftJson(x =>
+            {
+                x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                x.SerializerSettings.ContractResolver = new DefaultContractResolver();
+            });
 
+            services.AddControllersWithViews(options => options.EnableEndpointRouting = false);
 
-            services.AddMvc()
-           .AddJsonOptions(options =>
-           {
-              // options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-               //pascal case json
-             //  options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+           // services.AddMvc()
+           //.AddJsonOptions(options =>
+           //{
+           //   // options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+           //    //pascal case json
+           //  //  options.SerializerSettings.ContractResolver = new DefaultContractResolver();
 
-           });
+           //});
 
             // Customise default API behavour
             //services.Configure<ApiBehaviorOptions>(options =>
@@ -603,7 +615,7 @@ namespace SMMCoreDDD2019.WebAdminLte
             //.WithTransientLifetime()); // 3. Set the lifetime for the services
 
 
-            //  // services.AddMediatR(typeof(SomeHandler).Assembly,  typeof(SomeOtherHandler).Assembly); 
+            //  // services.AddMediatR(typeof(SomeHandler).Assembly,  typeof(SomeOtherHandler).Assembly);
             ////Scan for commandhandlers and eventhandlers
             //services.Scan(scan => scan
             //    .FromAssemblies(typeof(CreateCustomerCommandHandler).GetTypeInfo().Assembly)
@@ -665,7 +677,7 @@ namespace SMMCoreDDD2019.WebAdminLte
 
         }
 
-       
+
 
         //buat belajar
         //https://www.tutorialsteacher.com/core/aspnet-core-logging

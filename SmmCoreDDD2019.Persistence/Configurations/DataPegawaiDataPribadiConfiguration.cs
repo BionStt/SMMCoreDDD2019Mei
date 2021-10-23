@@ -16,16 +16,16 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("DataPegawaiDataPribadi", "DataPegawai");
 
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataPribadi_hilo").IsRequired();
+           // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataPribadi_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
+           builder.Property(e => e.DataPegawaiId);
 
-            builder.Property(e => e.DataPegawaiId);
-        
             builder.Property(e => e.NamaDepan)
            .HasMaxLength(75)
              .IsUnicode(false);
 
-   
+
               builder.Property(e => e.NamaTengah)
               .HasMaxLength(75)
               .IsUnicode(false);
@@ -141,14 +141,14 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
-        
-        
+
+
             builder.Property(e => e.TglInput).HasColumnType("datetime").HasDefaultValueSql("(getdate())");
 
-           
 
-             
-            
+
+
+
         }
     }
 }

@@ -16,7 +16,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<DataPerusahaanOrgChart> builder)
         {
             builder.ToTable("DataPerusahaanOrgChart", "DataPerusahaan");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPerusahaanOrgChart_hilo").IsRequired();
+            // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPerusahaanOrgChart_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
             builder.Property(e => e.Lft).HasColumnName("Lft").ValueGeneratedOnAddOrUpdate();
             builder.Property(e => e.Rgt).HasColumnName("Rgt").ValueGeneratedOnAddOrUpdate();

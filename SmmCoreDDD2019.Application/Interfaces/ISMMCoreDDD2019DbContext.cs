@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SmmCoreDDD2019.Domain.Entities;
 using System.Threading;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Entity.Infrastructure;
 
 namespace SmmCoreDDD2019.Application.Interfaces
 {
@@ -81,7 +82,7 @@ namespace SmmCoreDDD2019.Application.Interfaces
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
       //  Task<int> SaveChangesAsync();
-         DbQuery<TQuery> Query<TQuery>() where TQuery : class;
+       //  DbQuery<TQuery> Query<TQuery>() where TQuery : class;
 
         //Task SaveAsync();
         //void Save();

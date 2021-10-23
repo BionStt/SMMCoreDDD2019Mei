@@ -10,13 +10,13 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 {
     public class MasterPerusahaanAsuransiConfiguration : IEntityTypeConfiguration<MasterPerusahaanAsuransi>
     {
-       
+
         public void Configure(EntityTypeBuilder<MasterPerusahaanAsuransi> builder)
         {
             builder.ToTable("MasterPerusahaanAsuransi", "DataAvalist");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterPerusahaanAsuransi_hilo").IsRequired();
-
-           builder.Property(e => e.KodeAsuransi).HasMaxLength(5).IsUnicode(false);
+          //  builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterPerusahaanAsuransi_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+          builder.Property(e => e.KodeAsuransi).HasMaxLength(5).IsUnicode(false);
             builder.Property(e => e.NamaAsuransi).HasMaxLength(100).IsUnicode(false);
 
             builder.Property(e => e.AlamatAsuransi).HasMaxLength(100).IsUnicode(false);

@@ -44,34 +44,16 @@ namespace SmmCoreDDD2019.Application.DataSPKSurveiDBs.Command.CreateDataSPKSurve
             _context.DataSPKBaruDB.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
             var nospkbaruid = entity.Id;
-         //   await _context.SaveChangesAsync(cancellationToken);
+            //   await _context.SaveChangesAsync(cancellationToken);
 
-         //   await _mediator.Publish(new DataSPKBaruDBCreated { DataSPKBaruDBID = entity.NoUrutSPKBaru.ToString() });
+            //   await _mediator.Publish(new DataSPKBaruDBCreated { DataSPKBaruDBID = entity.NoUrutSPKBaru.ToString() });
 
-          //  return Unit.Value;
+            //  return Unit.Value;
 
 
-            var entity2 = new DataSPKSurveiDB
-            {
-              //  NoUrut = request.NoUrut,
-              AlamatPemesan= request.AlamatPemesan,
-                HandphonePemesan= request.HandphonePemesan,
-                KecamatanPemesan= request.KecamatanPemesan,
-                KelurahanPemesan= request.KelurahanPemesan,
-                KodePosPemesan= request.KodePosPemesan,
-
-                NamaNPWP= request.NamaNPWP,
-
-                NamaPemesan= request.NamaPemesan,
-                NoKtpPemesan= request.NoKtpPemesan,
-                NoNPWP= request.NoNPWP,
-                DataSPKBaruDBId= nospkbaruid,
-                PekerjaanPemesan= request.PekerjaanPemesan,
-                PropinsiPemesan= request.PropinsiPemesan,
-
-                TelpPemesan= request.TelpPemesan
-
-            };
+            var entity2 = DataSPKSurveiDB.CreateDataSPKSurveiDB(request.AlamatPemesan, request.HandphonePemesan, request.KecamatanPemesan, request.KelurahanPemesan,
+                request.KodePosPemesan, request.KotaPemesan, request.NamaNPWP, request.NamaPemesan, request.NoKtpPemesan, request.NoNPWP
+                , nospkbaruid, request.PekerjaanPemesan, request.PropinsiPemesan, request.TelpPemesan);
 
             _context.DataSPKSurveiDB.Add(entity2);
 
@@ -82,7 +64,7 @@ namespace SmmCoreDDD2019.Application.DataSPKSurveiDBs.Command.CreateDataSPKSurve
             return Unit.Value;
 
 
-            
+
         }
     }
 }

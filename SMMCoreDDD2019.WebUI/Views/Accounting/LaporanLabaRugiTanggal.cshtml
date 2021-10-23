@@ -5,12 +5,10 @@
 }
 
 <h2>Isian Periode Laporan Laba Rugi</h2>
-
-
 <div>
     @using (Html.BeginForm("LaporanLabaRugi", "Accounting", FormMethod.Post))
     {
-      
+
         <table style="border:double">
             <tr style="border:double">Masukkan Periode Waktu</tr>
             <tr style="border:double">
@@ -37,25 +35,25 @@
             </tr>
         </table>
 
-        <script>
-                $('#datepicker1').datepicker({
-                    changeMonth: true,
-                    changeYear: true,
-                    appendText: "(Tanggal-Bulan-Tahun)",
-                    dateFormat: "dd-mm-yy",
-                    yearRange: "c-100:c+10"
 
-                });
-                $('#datepicker2').datepicker({
-                    changeMonth: true,
-                    changeYear: true,
-                    appendText: "(Tanggal-Bulan-Tahun)",
-                    dateFormat: "dd-mm-yy",
-                    yearRange: "c-100:c+10"
-
-                });
-        </script>
-     
     }
 
 </div>
+<script>
+    $('#datepicker1').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        appendText: "(Tanggal-Bulan-Tahun)",
+        dateFormat: "dd-mm-yy",
+        yearRange: "c-100:c+10"
+
+    });
+    $('#datepicker2').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        appendText: "(Tanggal-Bulan-Tahun)",
+        dateFormat: "dd-mm-yy",
+        yearRange: "c-100:c+10"
+
+    });
+</script>

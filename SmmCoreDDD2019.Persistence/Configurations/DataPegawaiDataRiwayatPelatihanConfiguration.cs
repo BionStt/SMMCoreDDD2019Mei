@@ -14,9 +14,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("DataPegawaiDataRiwayatPelatihan", "DataPegawai");
 
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataRiwayatPelatihan_hilo").IsRequired();
-          
-            builder.Property(e => e.AlamatLembaga)
+            // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataRiwayatPelatihan_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
+             builder.Property(e => e.AlamatLembaga)
                 .HasColumnName("AlamatLembaga")
                 .HasMaxLength(200)
                 .IsUnicode(false);
@@ -44,7 +45,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
-          
+
         }
     }
 }

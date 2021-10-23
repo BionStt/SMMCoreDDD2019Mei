@@ -14,8 +14,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<DataSPKKreditDB> builder)
         {
             builder.ToTable("DataSPKKreditDB", "DataSPKBaruDB");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataSPKKreditDB_hilo").IsRequired();
-         
+            // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataSPKKreditDB_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
             builder.Property(e => e.DataSPKBaruDBId);
 
             builder.Property(e => e.BiayaAdministrasiKredit).HasColumnType("money");
@@ -49,7 +50,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.UangTandaJadiKredit).HasColumnType("money");
 
-       
+
         }
     }
 }

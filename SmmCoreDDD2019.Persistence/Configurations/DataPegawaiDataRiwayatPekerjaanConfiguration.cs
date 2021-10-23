@@ -15,9 +15,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("DataPegawaiDataRiwayatPekerjaan", "DataPegawai");
 
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataRiwayatPekerjaan_hilo").IsRequired();
-         
-            builder.Property(e => e.NamaPerusahaan)
+            // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataPegawaiDataRiwayatPekerjaan_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
+               builder.Property(e => e.NamaPerusahaan)
                .HasMaxLength(50)
                .IsUnicode(false);
 
@@ -56,12 +57,12 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.DataPegawaiId);
 
-          
+
 
             builder.Property(e => e.JabatanAwal)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-         
+
             builder.Property(e => e.Keterangan)
                 .HasMaxLength(200)
                 .IsUnicode(false);
@@ -74,7 +75,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
               .HasMaxLength(50)
               .IsUnicode(false);
 
-           
+
 
             builder.Property(e => e.TelpP)
                 .HasMaxLength(50)
@@ -82,7 +83,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.TglInput).HasColumnType("datetime").HasDefaultValueSql("(getdate())");
 
-         
+
         }
     }
 }

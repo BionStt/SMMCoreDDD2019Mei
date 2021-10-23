@@ -15,9 +15,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
 
             builder.ToTable("PembelianPODetail", "PembelianPO");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PembelianPODetail_hilo").IsRequired();
-      
-            builder.Property(e=>e.MasterBarangDBId);
+            // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PembelianPODetail_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                 builder.Property(e=>e.MasterBarangDBId);
 
             builder.Property(e => e.OffTheRoad).HasColumnType("money");
 
@@ -38,11 +39,11 @@ namespace SmmCoreDDD2019.Persistence.Configurations
                 .HasMaxLength(200)
                 .IsUnicode(false);
 
-          
 
-          
 
-          
+
+
+
         }
     }
 }

@@ -16,8 +16,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("Pembelian", "Pembelian");
 
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("Pembelian_hilo").IsRequired();
-           
+            //  builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("Pembelian_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
             builder.Property(e=>e.NoRegistrasiPembelian).HasColumnName("NoRegistrasiPembelian").HasMaxLength(50);
 
             builder.Property(e => e.TglBeli).HasColumnType("datetime")
@@ -48,9 +49,9 @@ namespace SmmCoreDDD2019.Persistence.Configurations
 
             builder.Property(e => e.PembelianPOId);
 
-         
 
-          
+
+
         }
     }
 }

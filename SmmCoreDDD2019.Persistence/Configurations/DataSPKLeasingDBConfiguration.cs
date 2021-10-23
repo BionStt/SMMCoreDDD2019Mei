@@ -15,10 +15,10 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         public void Configure(EntityTypeBuilder<DataSPKLeasingDB> builder)
         {
             builder.ToTable("DataSPKLeasingDB", "DataSPKBaruDB");
-            builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataSPKLeasingDB_hilo").IsRequired();
-       
-         
-            builder.Property(e=>e.NoUrutSales);
+          //  builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataSPKLeasingDB_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                builder.Property(e=>e.NoUrutSales);
 
             builder.Property(e => e.Angsuran).HasColumnType("money");
 
@@ -35,7 +35,7 @@ namespace SmmCoreDDD2019.Persistence.Configurations
             builder.Property(e => e.Tenor).HasColumnName("tenor");
 
             builder.Property(e => e.TglSurvei).HasColumnType("datetime");
-           
+
         }
     }
 }

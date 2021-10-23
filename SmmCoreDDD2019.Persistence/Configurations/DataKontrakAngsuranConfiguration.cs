@@ -16,7 +16,8 @@ namespace SmmCoreDDD2019.Persistence.Configurations
         {
             builder.ToTable("DataKontrakAngsuran", "DataAvalist");
 
-           builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("DataKontrakAngsuran_hilo").IsRequired();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
             builder.Property(e => e.DataKontrakKreditId);
             builder.Property(e => e.AngsuranKe).HasMaxLength(4).IsUnicode(false);
             builder.Property(e => e.NoKwitansi).HasMaxLength(30).IsUnicode(false);
