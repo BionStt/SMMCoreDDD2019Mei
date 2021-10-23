@@ -13,12 +13,18 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangPekerjaanD
 {
     public class GetNamaBidangPekerjaanQueryHandler : IRequestHandler<GetNamaBidangPekerjaanQuery, IReadOnlyCollection<GetNamaBidangPekerjaanResponse>>
     {
-        private readonly SalesMarketingContext _context;
+        private readonly SalesMarketingContext _dbcontext;
+
+        public GetNamaBidangPekerjaanQueryHandler(SalesMarketingContext dbcontext)
+        {
+            _dbcontext = dbcontext;
+        }
+
         public async Task<IReadOnlyCollection<GetNamaBidangPekerjaanResponse>> Handle(GetNamaBidangPekerjaanQuery request, CancellationToken cancellationToken)
         {
-            var returnQuery = await _context.MasterBidangPekerjaanDB.Select(x => new GetNamaBidangPekerjaanResponse
+            var returnQuery = await _dbcontext.MasterBidangPekerjaanDB.Select(x => new GetNamaBidangPekerjaanResponse
             {
-                NoUrutBidangPekerjaan = x.MasterBidangPekerjaanDBId,
+                NoUrutBidangPekerjaan = x.NoUrutId,
                 NamaMasterBidangPekerjaan = x.NamaMasterBidangPekerjaan
 
             }).AsNoTracking().ToListAsync();
