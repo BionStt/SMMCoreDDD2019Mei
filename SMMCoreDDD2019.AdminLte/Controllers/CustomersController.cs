@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using SmmCoreDDD2019.Application.CustomerDBs.Commands.CreateCustomerDB;
 using SmmCoreDDD2019.Application.CustomerDBs.Commands.UpdateCustomerDB;
 using SmmCoreDDD2019.Application.CustomerDBs.Queries.GetCustomerByID;
-using SmmCoreDDD2019.Application.MasterBidangPekerjaanDBs.Query.GetNamaBidangPekerjaan;
-using SmmCoreDDD2019.Application.MasterBidangUsahaDBs.Query.GetNamaBidangUsaha;
+using SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangPekerjaanDBs.Queries;
+using SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangUsahaDBs.Queries;
 using System.Threading.Tasks;
 
 namespace SMMCoreDDD2019.AdminLte.Controllers

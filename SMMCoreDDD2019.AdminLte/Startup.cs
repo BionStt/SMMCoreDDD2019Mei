@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using SmmCoreDDD2019.Common;
 using SmmCoreDDD2019.Persistence;
+using SumberMas2015.SalesMarketing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,8 @@ namespace SMMCoreDDD2019.AdminLte
         {
             services.AddCommon(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"), Configuration);
             services.AddPersistence(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"));
+
+            services.AddSalesMarketing(Configuration.GetConnectionString("SmmCoreDDD2019Connection"));
             //  services.AddMediatR(Assembly.GetExecutingAssembly());
             // services.AddMediatR(typeof(Startup));
 

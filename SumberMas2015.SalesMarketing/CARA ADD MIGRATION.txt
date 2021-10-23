@@ -1,0 +1,4 @@
+﻿
+EntityFrameworkCore\Add-Migration InitialCreate -Context SalesMarketingContext -OutputDir Migrations
+EntityFrameworkCore\UPDATE-DATABASE -CONTEXT SalesMarketingContext
+
