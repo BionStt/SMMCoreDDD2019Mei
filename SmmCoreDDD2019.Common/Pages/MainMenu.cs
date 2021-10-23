@@ -8,6 +8,22 @@ namespace SmmCoreDDD2019.Common.Pages
 {
     public static class MainMenu
     {
+        public static class CreateDataKonsumen
+        {
+            public const string PageName = "Create Data Konsumen";
+            public const string RoleName = "Create Data Konsumen";
+            public const string Path = "/Customers/Create";
+            public const string ControllerName = "Customers";
+            public const string ActionName = "Create";
+        }
+        public static class EditDataKonsumen
+        {
+            public const string PageName = "Edit Data Konsumen";
+            public const string RoleName = "Edit Data Konsumen";
+            public const string Path = "/Customers/EditCustomer";
+            public const string ControllerName = "Customers";
+            public const string ActionName = "EditCustomer";
+        }
         public static class AccountingDataJournal
         {
             public const string PageName = "Data Journal";

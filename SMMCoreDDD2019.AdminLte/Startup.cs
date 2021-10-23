@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -6,9 +7,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using SmmCoreDDD2019.Common;
+using SmmCoreDDD2019.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace SMMCoreDDD2019.AdminLte
@@ -26,6 +29,12 @@ namespace SMMCoreDDD2019.AdminLte
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCommon(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"), Configuration);
+            services.AddPersistence(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"));
+            //  services.AddMediatR(Assembly.GetExecutingAssembly());
+            // services.AddMediatR(typeof(Startup));
+
+            var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
+            services.AddMediatR(Assembly1a);
 
             services.AddControllersWithViews().AddNewtonsoftJson(x =>
             {
@@ -56,9 +65,10 @@ namespace SMMCoreDDD2019.AdminLte
 
             app.UseRouting();
 
-            app.UseAuthorization();
 
             app.UseAuthentication();
+            app.UseAuthorization();
+
 
             app.UseMvc(routes =>
             {

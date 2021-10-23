@@ -29,16 +29,6 @@
             </li>
             <li class="header">SALES</li>
 
-            <li class="@Html.IsSelected(controller: MainMenu.CustomerType.ControllerName)">
-                <a href="@MainMenu.CustomerType.Path">
-                    <i class="fa fa-gear"></i> <span>@MainMenu.CustomerType.PageName</span>
-                </a>
-            </li>
-            <li class="@Html.IsSelected(controller: MainMenu.Customer.ControllerName)">
-                <a href="@MainMenu.Customer.Path">
-                    <i class="fa fa-building-o"></i> <span>@MainMenu.Customer.PageName</span>
-                </a>
-            </li>
             <li class="@Html.IsSelected(controller: MainMenu.SalesType.ControllerName)">
                 <a href="@MainMenu.SalesType.Path">
                     <i class="fa fa-gear"></i> <span>@MainMenu.SalesType.PageName</span>
@@ -64,7 +54,17 @@
                     <i class="fa fa-certificate"></i> <span>@MainMenu.PaymentReceive.PageName</span>
                 </a>
             </li>*@
-
+             <li class="header">Data Konsumen</li>
+                         <li class="@Html.IsSelected(controller: MainMenu.CreateDataKonsumen.ControllerName)">
+                <a href="@MainMenu.CreateDataKonsumen.Path">
+                    <i class="fa fa-gear"></i> <span>@MainMenu.CreateDataKonsumen.PageName</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: MainMenu.EditDataKonsumen.ControllerName)">
+                <a href="@MainMenu.EditDataKonsumen.Path">
+                    <i class="fa fa-building-o"></i> <span>@MainMenu.EditDataKonsumen.PageName</span>
+                </a>
+            </li>
             <li class="header">PURCHASE</li>
 
             @*<li class="@Html.IsSelected(controller: MainMenu.VendorType.ControllerName)">

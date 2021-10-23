@@ -11,25 +11,28 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SmmCoreDDD2019.Application.Interfaces;
 using System.Threading;
+using SmmCoreDDD2019.Application.Dto.MasterBidangUsahaDBs;
 
 namespace SmmCoreDDD2019.Application.MasterBidangUsahaDBs.Query.GetNamaBidangUsaha
 {
-    public class GetNamaBidangUsahaQueryHandler : IRequestHandler<GetNamaBidangUsahaQuery, GetNamaBidangUsahaViewModel>
+    public class GetNamaBidangUsahaQueryHandler : IRequestHandler<GetNamaBidangUsahaQuery, IReadOnlyCollection<GetNamaBidangUsahaResponse>>
     {
         private readonly ISMMCoreDDD2019DbContext _context;
-        private readonly IMapper _mapper;
 
-        public GetNamaBidangUsahaQueryHandler(ISMMCoreDDD2019DbContext context, IMapper mapper)
+        public GetNamaBidangUsahaQueryHandler(ISMMCoreDDD2019DbContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
-        public async Task<GetNamaBidangUsahaViewModel> Handle(GetNamaBidangUsahaQuery request, CancellationToken cancellationToken)
+        public async Task<IReadOnlyCollection<GetNamaBidangUsahaResponse>> Handle(GetNamaBidangUsahaQuery request, CancellationToken cancellationToken)
         {
-            return new GetNamaBidangUsahaViewModel
-            {
-                MasterBidangUsahaDs = await _context.MasterBidangUsahaDB.ProjectTo<GetNamaBidangUsahaLookUpModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken)
-            };
+            var returnQuery = await _context.MasterBidangUsahaDB.Select(x=> new GetNamaBidangUsahaResponse {
+                NoKodeMasterBidangUsaha = x.Id,
+                NamaMasterBidangUsaha = x.NamaMasterBidangUsaha
+
+            } ).AsNoTracking().ToListAsync();
+
+            return returnQuery;
+
         }
     }
 }
