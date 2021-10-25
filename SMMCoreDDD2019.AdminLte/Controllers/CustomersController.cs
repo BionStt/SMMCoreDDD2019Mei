@@ -4,6 +4,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using SmmCoreDDD2019.Application.CustomerDBs.Commands.CreateCustomerDB;
 using SmmCoreDDD2019.Application.CustomerDBs.Commands.UpdateCustomerDB;
 using SmmCoreDDD2019.Application.CustomerDBs.Queries.GetCustomerByID;
+using SumberMas2015.SalesMarketing.Dto.DataKonsumen;
+using SumberMas2015.SalesMarketing.DtoMapping;
+using SumberMas2015.SalesMarketing.ServiceApplication.Agama.Queries.AgamaList;
+using SumberMas2015.SalesMarketing.ServiceApplication.DataKonsumen.Commands.CreateDataKonsumen;
+using SumberMas2015.SalesMarketing.ServiceApplication.JenisKelamin.ListJenisKelamin;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangPekerjaanDBs.Queries;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangUsahaDBs.Queries;
 using System.Threading.Tasks;
@@ -27,16 +32,24 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             ViewData["NamaBidangPekerjaan1"] = new SelectList(NamaBidangPekerjaan1, "NoUrutBidangPekerjaan", "NamaMasterBidangPekerjaan");
             ViewData["NamaBidangUsaha1"] = new SelectList(NamaBidangUsaha1, "NoKodeMasterBidangUsaha", "NamaMasterBidangUsaha");
 
+            var Agama = await _mediator.Send(new AgamaListQuery());
+            var JnsKelamin = await _mediator.Send(new ListJenisKelaminQuery());
+            ViewData["Agama1"] = new SelectList(Agama, "NoUrutId", "AgamaKeterangan");
+            ViewData["JnsKelamin1"] = new SelectList(JnsKelamin, "NoUrutId", "JenisKelaminKeterangan");
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CreateCustomerCommand customerViewModel)
+        public async Task<IActionResult> Create(CreateDataKonsumenRequest customerViewModel)
         {
             if (ModelState.IsValid)
             {
-                await _mediator.Send(customerViewModel);
+                var dtKonsumen = customerViewModel.ToCommand();
+                await _mediator.Send(dtKonsumen);
+
+
+               // await _mediator.Send(customerViewModel);
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
             return View(customerViewModel);

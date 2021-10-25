@@ -14,6 +14,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<MasterBidangUsahaDB> builder)
         {
             builder.ToTable("MasterBidangUsahaDB");
+
             builder.HasKey(x => x.NoUrutId);
             builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
 

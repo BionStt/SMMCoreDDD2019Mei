@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,9 @@ namespace SumberMas2015.SalesMarketing.Domain.ValueObjects
 {
     public class Name
     {
+        [Display(Name = "Nama Depan", Prompt = "Masukan nama nama depan")]
         public string NamaDepan { get; }
+        [Display(Name = "Nama Belakang", Prompt = "Masukan nama nama belakang")]
         public string NamaBelakang { get; }
         protected Name()
         {

@@ -1,5 +1,4 @@
-﻿using SumberMas2015.DDDSeedWork;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -78,7 +77,7 @@ namespace SumberMas2015.SalesMarketing.Domain
 
         public DataPenjualanDetail EditDataPenjualanDetail(Guid? dataPenjualanId, Guid? stokUnitId, decimal? offTheRoad, decimal? bBN, decimal? hargaOTR, decimal? uangMuka, decimal? diskonKredit, decimal? diskonTunai, decimal? subsidi, decimal? promosi, decimal? komisi, decimal? joinPromo1, decimal? joinPromo2, decimal? sPF, decimal? sellOut, decimal? dendaWilayah, Guid dataPenjualanDetailId)
         {
-            var dtPenjualanDetail = _dataPenjualanDetails.FirstOrDefault(x=>x.Id==dataPenjualanDetailId);
+            var dtPenjualanDetail = _dataPenjualanDetails.FirstOrDefault(x=>x.DataPenjualanDetailId==dataPenjualanDetailId);
             dtPenjualanDetail.EditDataPenjualanDetail(dataPenjualanId,stokUnitId, offTheRoad, bBN, hargaOTR, uangMuka, diskonKredit, diskonTunai, subsidi, promosi, komisi, joinPromo1, joinPromo2, sPF, sellOut, dendaWilayah);
 
             return dtPenjualanDetail;

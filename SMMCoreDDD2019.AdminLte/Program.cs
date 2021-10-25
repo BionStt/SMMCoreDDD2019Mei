@@ -10,10 +10,12 @@ using SmmCoreDDD2019.Application.Interfaces;
 using SmmCoreDDD2019.Common.Identity;
 using SmmCoreDDD2019.Common.Services;
 using SmmCoreDDD2019.Persistence;
+using SumberMas2015.SalesMarketing.InfrastructureData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SumberMas2015.SalesMarketing.InfrastructureData.Context;
 
 namespace SMMCoreDDD2019.AdminLte
 {
@@ -45,6 +47,9 @@ namespace SMMCoreDDD2019.AdminLte
                     //  context.Database.Migrate(); //lama loading
                    // SMMCoreDDD2019Initializer.Initialize(concreteContext);
                     AppIdentityDbInitializar.Initialize(contextIdentity, functional).Wait();
+
+                    var SalesMarketingContext = services.GetRequiredService<SalesMarketingContext>();
+                    DbInitializer.Initialize(SalesMarketingContext).Wait();
 
                 }
                 catch (Exception ex)

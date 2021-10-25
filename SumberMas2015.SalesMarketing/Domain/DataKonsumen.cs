@@ -1,5 +1,4 @@
-﻿
-using SumberMas2015.SalesMarketing.Domain.EnumInEntity;
+﻿using SumberMas2015.SalesMarketing.Domain.EnumInEntity;
 using SumberMas2015.SalesMarketing.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -22,19 +21,21 @@ namespace SumberMas2015.SalesMarketing.Domain
         public Alamat AlamatTinggal { get; private set; }
         public Alamat AlamatKirim { get; private set; }
         public string Email { get; private set; }
-
+        public int KodeBidangPekerjaan { get; set; }
+        public string NamaBidangPekerjaan { get; set; }
+        public int KodeBidangUsaha { get; set; }
+        public string NamaBidangUsaha { get; set; }
         public DateTime CreatedAt { get; private set; }
 
         public Guid JenisKelaminId { get; private set; }
         public Guid AgamaId { get; private set; }
-        public JenisKelamin JenisKelamin { get; private set; }
-        public Agama Agama { get; private set; }
+
         protected DataKonsumen()
         {
 
         }
 
-        private DataKonsumen(string noKTP, DateTime tanggalLahir, Guid jenisKelaminId, Name nama, Name namaBPKB, Alamat alamatTinggal, Alamat alamatKirim, Guid agamaId, string email)//, DateTime createdAt)
+        private DataKonsumen(string noKTP, DateTime tanggalLahir, Guid jenisKelaminId, Name nama, Name namaBPKB, Alamat alamatTinggal, Alamat alamatKirim, Guid agamaId, string email, int kodeBidangPekerjaan, string namaBidangPekerjaan, int kodeBidangUsaha, string namaBidangUsaha)//, DateTime createdAt)
         {
             DataKonsumenId = Guid.NewGuid();
             CreatedAt = DateTime.Now.Date;
@@ -47,12 +48,16 @@ namespace SumberMas2015.SalesMarketing.Domain
             AlamatKirim = alamatKirim;
             AgamaId = agamaId;
             Email = email;
-           // CreatedAt = createdAt;
+            KodeBidangPekerjaan = kodeBidangPekerjaan;
+            NamaBidangPekerjaan = namaBidangPekerjaan;
+            KodeBidangUsaha = kodeBidangUsaha;
+            NamaBidangUsaha = namaBidangUsaha;
+            // CreatedAt = createdAt;
         }
 
-        public static DataKonsumen Create(string nomorKTP, DateTime tanggalLahir, Guid jenisKelamin, Name nama, Name namaBpkb, Alamat alamatTinggal, Alamat alamatKirim, Guid agama, string email)
+        public static DataKonsumen Create(string nomorKTP, DateTime tanggalLahir, Guid jenisKelamin, Name nama, Name namaBpkb, Alamat alamatTinggal, Alamat alamatKirim, Guid agama, string email, int kodeBidangPekerjaan, string namaBidangPekerjaan, int kodeBidangUsaha, string namaBidangUsaha)
         {
-            return new DataKonsumen(nomorKTP, tanggalLahir, jenisKelamin, nama, namaBpkb, alamatTinggal, alamatKirim,agama,email);
+            return new DataKonsumen(nomorKTP, tanggalLahir, jenisKelamin, nama, namaBpkb, alamatTinggal, alamatKirim,agama,email,kodeBidangPekerjaan,namaBidangPekerjaan,kodeBidangUsaha,namaBidangUsaha);
         }
 
 

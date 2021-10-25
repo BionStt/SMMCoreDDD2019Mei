@@ -14,7 +14,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<MasterLeasingCabang> builder)
         {
             builder.ToTable("MasterLeasingCabang");
-          //  builder.HasKey(e => e.Id);
+            builder.HasKey(e => e.MasterLeasingCabangId);
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
+
             builder.Property(e => e.NamaCabang).HasMaxLength(50);
             builder.Property(e => e.EmailCabang).HasMaxLength(50);
 

@@ -32,7 +32,7 @@ namespace SMMCoreDDD2019.AdminLte
             services.AddCommon(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"), Configuration);
             services.AddPersistence(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"));
 
-            services.AddSalesMarketing(Configuration.GetConnectionString("SmmCoreDDD2019Connection"));
+            services.AddSalesMarketing(Configuration.GetConnectionString("SalesMarketingConnection"));
             //  services.AddMediatR(Assembly.GetExecutingAssembly());
             // services.AddMediatR(typeof(Startup));
 

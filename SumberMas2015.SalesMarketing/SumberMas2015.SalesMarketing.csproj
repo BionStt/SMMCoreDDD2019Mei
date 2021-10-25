@@ -21,6 +21,9 @@
 
   <ItemGroup>
     <Folder Include="Domain\Events\" />
+    <Folder Include="ServiceApplication\DataKonsumen\Queries\" />
+    <Folder Include="ServiceApplication\DataSPK\Queries\" />
+    <Folder Include="ServiceApplication\MasterLeasing\Queries\" />
   </ItemGroup>
 
 </Project>

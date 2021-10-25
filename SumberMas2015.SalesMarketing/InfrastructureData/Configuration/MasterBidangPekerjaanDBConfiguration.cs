@@ -14,9 +14,11 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<MasterBidangPekerjaanDB> builder)
         {
             builder.ToTable("MasterBidangPekerjaanDB");
-            builder.HasKey(e=>e.NoUrutId);
+            builder.HasKey(e => e.MasterBidangPekerjaanDBGuid);
+
+            //builder.HasKey(e=>e.NoUrutId);
            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
-           
+
             builder.Property(e => e.TanggalInput).HasColumnName("TanggalInput").HasColumnType("datetime")
                .HasDefaultValueSql("getdate()");
         }

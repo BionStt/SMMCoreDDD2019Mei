@@ -1,5 +1,4 @@
-﻿
-using SumberMas2015.SalesMarketing.Domain.ValueObjects;
+﻿using SumberMas2015.SalesMarketing.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;

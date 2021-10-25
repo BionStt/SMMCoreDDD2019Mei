@@ -14,7 +14,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<MasterBarang> builder)
         {
             builder.ToTable("MasterBarang");
-            builder.HasKey(e => e.Id);
+            builder.HasKey(e => e.MasterBarangId);
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
+
             builder.Property(e => e.NamaBarang).IsUnicode(false).HasMaxLength(50).IsUnicode(false);
             builder.Property(e => e.NomorRangka).IsUnicode(false).HasMaxLength(50).IsUnicode(false);
             builder.Property(e => e.NomorMesin).IsUnicode(false).HasMaxLength(50).IsUnicode(false);

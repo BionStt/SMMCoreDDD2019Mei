@@ -14,7 +14,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<DataSPKKredit> builder)
         {
             builder.ToTable("DataSPKKredit");
-            builder.HasKey(e => e.Id);
+            builder.HasKey(e => e.DataSPKKreditId);
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
+
             builder.Property(e => e.BiayaAdministrasiKredit).HasColumnType("money");
             builder.Property(e => e.BiayaAdministrasiTunai).HasColumnType("money");
             builder.Property(e => e.BBN).HasColumnType("money");

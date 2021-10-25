@@ -9,6 +9,10 @@ namespace SumberMas2015.SalesMarketing.Domain.ValueObjects
 {
     public class DataNPWP
     {
+        protected DataNPWP()
+        {
+
+        }
         public DataNPWP(string noNPWP, string namaNPWP, Alamat alamatNPWP)
         {
             NoNPWP = noNPWP;

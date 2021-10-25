@@ -14,9 +14,11 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<DataPenjualanDetail> builder)
         {
             builder.ToTable("PenjualanDetail");
+
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
            // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PenjualanDetail_hilo").IsRequired();
 
-            builder.Property(e => e.DataPenjualanId);
+            builder.HasKey(e => e.DataPenjualanId);
 
             builder.Property(e => e.StokUnitId);
 

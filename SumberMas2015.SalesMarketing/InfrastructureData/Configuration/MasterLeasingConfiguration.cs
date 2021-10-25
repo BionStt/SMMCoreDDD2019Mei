@@ -14,7 +14,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<MasterLeasing> builder)
         {
             builder.ToTable("MasterLeasing");
-           // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterLeasingDB_hilo").IsRequired();
+            builder.HasKey(e => e.MasterLeasingId);
+
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
 
             builder.Property(e => e.NamaLeasing).HasMaxLength(50)
                 .IsUnicode(false);

@@ -20,7 +20,7 @@ namespace SumberMas2015.SalesMarketing.Domain
             NamaMasterBidangUsahaGuid = Guid.NewGuid();
         }
         // [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int NoUrutId { get; set; }
         public Guid NamaMasterBidangUsahaGuid { get; set; }
         public string NamaMasterBidangUsaha { get;private set; }

@@ -14,10 +14,13 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<JenisKelamin> builder)
         {
             builder.ToTable("JenisKelamin");
-            builder.HasData(
-                JenisKelamin.AddJenisKelamin("PRIA"),
-                JenisKelamin.AddJenisKelamin("WANITA")
-                );
+            builder.HasKey(e => e.NoUrutId);
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
+
+            //builder.HasData(
+            //    JenisKelamin.AddJenisKelamin("PRIA"),
+            //    JenisKelamin.AddJenisKelamin("WANITA")
+            //    );
         }
     }
 }

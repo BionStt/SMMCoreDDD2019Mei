@@ -14,8 +14,8 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<DataPenjualan> builder)
         {
             builder.ToTable("Penjualan");
-          //  builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo().IsRequired();
-
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd().IsRequired();
+            builder.HasKey(e => e.DataPenjualanId);
 
             builder.Property(e => e.NoRegistrasiPenjualan).HasColumnName("NoRegistrasiPenjualan").HasMaxLength(50);
             builder.Property(e => e.DataSPKId);

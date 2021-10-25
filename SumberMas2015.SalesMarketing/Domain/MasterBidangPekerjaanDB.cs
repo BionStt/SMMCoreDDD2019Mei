@@ -21,7 +21,7 @@ namespace SumberMas2015.SalesMarketing.Domain
             MasterBidangPekerjaanDBGuid = Guid.NewGuid();
         }
         //[Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int NoUrutId { get; private set; }
         public Guid MasterBidangPekerjaanDBGuid { get; private set; }
         public string NamaMasterBidangPekerjaan { get; private set; }

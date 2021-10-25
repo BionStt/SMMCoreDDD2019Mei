@@ -14,8 +14,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<MasterKategoriCaraPembayaran> builder)
         {
             builder.ToTable("MasterKategoriCaraPembayaran");
-           // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterKategoriCaraPembayaran_hilo").IsRequired();
-
+            // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("MasterKategoriCaraPembayaran_hilo").IsRequired();
+            builder.HasKey(e => e.MasterKategoriCaraPembayaranId);
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
 
             builder.Property(e => e.CaraPembayaran)
                 .HasMaxLength(50)

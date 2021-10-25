@@ -14,7 +14,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<DataSPKLeasing> builder)
         {
             builder.ToTable("DataSPKLeasing");
-            builder.HasKey(e => e.Id);
+            builder.HasKey(e => e.DataSPKLeasingId);
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
+
             builder.Property(e => e.Angsuran).HasColumnType("money");
             builder.Property(e => e.Mediator).HasMaxLength(30).IsUnicode(false);
             builder.Property(e => e.NamaCmo).HasMaxLength(30).IsUnicode(false);

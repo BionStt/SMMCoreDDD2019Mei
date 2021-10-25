@@ -9,28 +9,139 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData
 {
     public class DbInitializer
     {
-        public static void Initialize(SalesMarketingContext context)
+        public static async Task Initialize(SalesMarketingContext context)
         {
             var initializer = new DbInitializer();
-            initializer.SeedEverything(context);
+            await initializer.SeedEverything(context);
         }
 
-        public void SeedEverything(SalesMarketingContext context)
+        public async Task SeedEverything(SalesMarketingContext context)
         {
 
-            context.Database.EnsureCreated();
+             context.Database.EnsureCreated();
 
             //if (context.CustomerDB.Any())
             //{
             //    return;// Db has been seeded
             //}
-            SeedMasterBidangPekerjaan(context);
-            SeedMasterBidangUsaha(context);
+            await SeedMasterBidangPekerjaan(context);
+            await SeedMasterBidangUsaha(context);
+            await SeedAgama(context);
+            await SeedJenisKelamin(context);
+            await SeedMasterBarang(context);
+            await SeedMasterKategoriBayaran(context);
+            await SeedMasterKategoriCaraPembayaran(context);
+            await SeedMasterKategoriPenjualan(context);
+        }
+
+        private async Task SeedMasterKategoriPenjualan(SalesMarketingContext context)
+        {
+            if (context.MasterKategoriPenjualan.Any())
+            {
+                return;
+            }
+            var masterKategoriPenjualan = new[] {
+                 Domain.MasterKategoriPenjualan.Create("DIRECT SHOWROOM"),
+                 Domain.MasterKategoriPenjualan.Create("PAMERAN"),
+                  Domain.MasterKategoriPenjualan.Create("MEDIATOR" ),
+                   Domain.MasterKategoriPenjualan.Create("ODEAN LEASING"),
+                    Domain.MasterKategoriPenjualan.Create("ANTAR DEALER" ),
+                     Domain.MasterKategoriPenjualan.Create("CHANELLING"),
+                    Domain.MasterKategoriPenjualan.Create("OUTLET/SATELIT" ),
+                          Domain.MasterKategoriPenjualan.Create("SALES FORCE" ),
+                                Domain.MasterKategoriPenjualan.Create("CANVASSING MOBIL" )
+
+            };
+            context.MasterKategoriPenjualan.AddRange(masterKategoriPenjualan);
+            await context.SaveChangesAsync();
+        }
+
+        private async Task SeedMasterKategoriCaraPembayaran(SalesMarketingContext context)
+        {
+            if (context.MasterKategoriCaraPembayaran.Any())
+            {
+                return;
+            }
+            var masterKategoriCaraBayaran = new[]
+            {
+                  Domain.MasterKategoriCaraPembayaran.Create("TUNAI"),
+                  Domain.MasterKategoriCaraPembayaran.Create("TRANFER BANK"),
+                    Domain.MasterKategoriCaraPembayaran.Create("GIRO")
+            };
+            context.MasterKategoriCaraPembayaran.AddRange(masterKategoriCaraBayaran);
+           await  context.SaveChangesAsync();
 
         }
 
+        private async Task SeedMasterKategoriBayaran(SalesMarketingContext context)
+        {
+            if (context.MasterKategoriBayaran.Any())
+            {
+                return;
+            }
+            var masterKategoriBayaran = new[]
+            {
+                Domain.MasterKategoriBayaran.Create("TAGIH DIRUMAH"),
+                 Domain.MasterKategoriBayaran.Create("CASH DEALER"),
+                  Domain.MasterKategoriBayaran.Create("TRANFER/SETORAN TUNAI BANK"),
+                   Domain.MasterKategoriBayaran.Create("PIUTANG(ODL/MEDI/CHANEL)"),
+                    Domain.MasterKategoriBayaran.Create("PIUTANG SEBAGIAN"),
+            };
+            context.MasterKategoriBayaran.AddRange(masterKategoriBayaran);
+           await context.SaveChangesAsync();
+        }
 
-        private void SeedMasterBidangPekerjaan(SalesMarketingContext context)
+        private async Task SeedMasterBarang(SalesMarketingContext context)
+        {
+            if (context.MasterBarang.Any())
+            {
+                return;
+            }
+            var masterBarang = new[]
+            {
+                Domain.MasterBarang.Create("BEAT STREET CBS ACC","MH1","","HONDA","110",decimal.Parse("13781000"),decimal.Parse("2875000"),"2019","D1I2N2A2A/T"),
+
+            };
+            context.MasterBarang.AddRange(masterBarang);
+           // context.MasterBarang.Add(masterBarang);
+          await  context.SaveChangesAsync();
+        }
+
+        private async Task SeedJenisKelamin(SalesMarketingContext context)
+        {
+            if (context.JenisKelamin.Any())
+            {
+                return;
+            }
+            var jenisKelamin = new[]
+            {
+                Domain.EnumInEntity.JenisKelamin.AddJenisKelamin("PRIA"),
+                    Domain.EnumInEntity.JenisKelamin.AddJenisKelamin("WANITA")
+            };
+            context.JenisKelamin.AddRange(jenisKelamin);
+           await context.SaveChangesAsync();
+        }
+
+        private async Task SeedAgama(SalesMarketingContext context)
+        {
+            if (context.Agama.Any())
+            {
+                return;
+            }
+            var Agama = new[]
+            {
+                Domain.EnumInEntity.Agama.AddAgama("ISLAM"),
+                  Domain.EnumInEntity.Agama.AddAgama("HINDU"),
+                    Domain.EnumInEntity.Agama.AddAgama("KRISTEN"),
+                      Domain.EnumInEntity.Agama.AddAgama("KATOLIK"),
+                        Domain.EnumInEntity.Agama.AddAgama("BUDDHA"),
+                          Domain.EnumInEntity.Agama.AddAgama("KONGHUCU"),
+            };
+            context.Agama.AddRange(Agama);
+            await context.SaveChangesAsync();
+        }
+
+        private async Task SeedMasterBidangPekerjaan(SalesMarketingContext context)
         {
             if (context.MasterBidangPekerjaanDB.Any())
             {
@@ -56,10 +167,10 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData
 
             };
             context.MasterBidangPekerjaanDB.AddRange(MasterBidangPekerjaanDB);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
 
         }
-        private void SeedMasterBidangUsaha(SalesMarketingContext context)
+        private async Task SeedMasterBidangUsaha(SalesMarketingContext context)
         {
             if (context.MasterBidangUsahaDB.Any())
             {
@@ -88,10 +199,10 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData
                             Domain.MasterBidangUsahaDB.CreateMasterBidangUsahaDB("KESENIAN, HIBURAN DAN REKREASI"),
                 Domain.MasterBidangUsahaDB.CreateMasterBidangUsahaDB("AKTIVITAS BADAN INTERNASIONAL DAN BADAN EKSTRA INTERNASIONAL LAINNYA"),
                 Domain.MasterBidangUsahaDB.CreateMasterBidangUsahaDB("AKTIVITAS JASA LAINNYA")
-                                 
+
             };
             context.MasterBidangUsahaDB.AddRange(MasterBidangUsahaDB);
-            context.SaveChanges();
+          await context.SaveChangesAsync();
 
         }
     }

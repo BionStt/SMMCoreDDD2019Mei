@@ -14,15 +14,17 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<Agama> builder)
         {
             builder.ToTable("Agama");
+            builder.HasKey(e => e.NoUrutId);
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
 
-            builder.HasData(
-               Agama.AddAgama("ISLAM"),
-                Agama.AddAgama("HINDU"),
-                 Agama.AddAgama("KRISTEN"),
-                  Agama.AddAgama("KATOLIK"),
-                   Agama.AddAgama("BUDDHA"),
-                    Agama.AddAgama("KONGHUCU")
-               );
+            //builder.HasData(
+            //   Agama.AddAgama("ISLAM"),
+            //    Agama.AddAgama("HINDU"),
+            //     Agama.AddAgama("KRISTEN"),
+            //      Agama.AddAgama("KATOLIK"),
+            //       Agama.AddAgama("BUDDHA"),
+            //        Agama.AddAgama("KONGHUCU")
+            //   );
 
 
         }

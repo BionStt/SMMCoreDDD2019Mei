@@ -14,8 +14,8 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<DataKonsumen> builder)
         {
             builder.ToTable("DataKonsumen");
-            builder.HasKey(b => b.Id);
-
+            builder.HasKey(b => b.DataKonsumenId);
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
             //builder.OwnsOne(o => o.NoKTP, a => {
             //    a.WithOwner();
             //    a.Property(a => a.Value).HasColumnName("NoKTP").IsRequired();
@@ -70,7 +70,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
             });
 
             builder.Property(e => e.Email).HasMaxLength(40);
-            builder.Property(e => e.CreatedAt).HasDefaultValueSql("GetUtcDate()");// if not using sql please check again
+            builder.Property(e => e.CreatedAt).HasDefaultValueSql("GetDate()");// if not using sql please check again
 
 
 

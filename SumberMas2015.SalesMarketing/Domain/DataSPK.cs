@@ -1,5 +1,4 @@
-﻿
-using SumberMas2015.SalesMarketing.Domain.ValueObjects;
+﻿using SumberMas2015.SalesMarketing.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ namespace SumberMas2015.SalesMarketing.Domain
 {
     public class DataSPK
     {
-        private DataSPK(string lokasiSpk, DateTime? tanggalInput, Guid? userId, string userNameInput)
+        private DataSPK(string lokasiSpk, DateTime? tanggalInput, string userNameInput)
         {
             if (lokasiSpk == null) throw new ArgumentNullException("Lokasi SPK tidak boleh kosong");
             DataSPKId = Guid.NewGuid();
@@ -19,13 +18,13 @@ namespace SumberMas2015.SalesMarketing.Domain
             //  Terinput = terinput;
             TanggalInput = tanggalInput;
             //  Tolak = tolak;
-            UserId = userId;
+            //UserId = userId;
             UserNameInput = userNameInput;
             StatusSPK = 0;
         }
-        public static DataSPK CreateDataSPKBaru(string lokasiSpk,  DateTime? tanggallInput,  Guid? userId, string userNameInput)
+        public static DataSPK CreateDataSPKBaru(string lokasiSpk,  DateTime? tanggallInput,   string userNameInput)
         {
-            return new DataSPK(lokasiSpk, tanggallInput, userId,userNameInput);
+            return new DataSPK(lokasiSpk, tanggallInput, userNameInput);
         }
         private void Ditolak()
         {
@@ -90,7 +89,7 @@ namespace SumberMas2015.SalesMarketing.Domain
         }
         public DataSPKSurvei EditDataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan, Guid DataSpkSurveiId)
         {
-            var dataSPKSurvei = _dataSPKSurvei.FirstOrDefault(i => i.Id == DataSpkSurveiId);
+            var dataSPKSurvei = _dataSPKSurvei.FirstOrDefault(i => i.DataSPKSurveiId == DataSpkSurveiId);
             dataSPKSurvei.EditDataSPKSurvei(noKTPPemesan, namaPemesan, alamatPemesan, dataNPWPPemesan, pekerjaanPemesan);
             return dataSPKSurvei;
         }
@@ -106,7 +105,7 @@ namespace SumberMas2015.SalesMarketing.Domain
         }
         public DataSPKLeasing EditDataSpkLeasing(decimal? angsuran, string mediator, string namaCmo, Guid namaSales, int? tenor, DateTime? tanggalSurvei, Guid DataSPKLEasingId)
         {
-            var dataSpkLeasing = _dataSpkLeasing.FirstOrDefault(i => i.Id == DataSPKLEasingId);
+            var dataSpkLeasing = _dataSpkLeasing.FirstOrDefault(i => i.DataSPKLeasingId == DataSPKLEasingId);
             dataSpkLeasing.EditDataSpkLeasing(angsuran, mediator, namaCmo, namaSales, tenor, tanggalSurvei);
             return dataSpkLeasing;
         }
@@ -121,7 +120,7 @@ namespace SumberMas2015.SalesMarketing.Domain
         }
         public DataSPKKredit EditDataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit, Guid DataSpkKreditId)
         {
-            var dataspkKredit = _dataSpkKredit.FirstOrDefault(i => i.Id == DataSpkKreditId);
+            var dataspkKredit = _dataSpkKredit.FirstOrDefault(i => i.DataSPKKreditId == DataSpkKreditId);
             dataspkKredit.EditDataSPKKredit(biayaAdministrasiKredit, biayaAdministrasiTunai, bBN, dendaWilayah, diskonDP, diskonTunai, dPPriceList, komisi, offTheRoad, promosi, uangTandaJadiTunai, uangTandaJadiKredit);
             return dataspkKredit;
 

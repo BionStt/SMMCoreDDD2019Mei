@@ -1,5 +1,4 @@
-﻿
-using SumberMas2015.SalesMarketing.Domain.ValueObjects;
+﻿using SumberMas2015.SalesMarketing.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,13 +38,13 @@ namespace SumberMas2015.SalesMarketing.Domain
 
         public MasterLeasingCabang EditCabangLeasing(Guid masterCabangLeasingId, string namaCabang, string emailCabang, Alamat alamatCabangLeasing)
         {
-            var _listCabangLeasing = _listCabangs.FirstOrDefault(i => i.Id == masterCabangLeasingId);
+            var _listCabangLeasing = _listCabangs.FirstOrDefault(i => i.MasterLeasingCabangId == masterCabangLeasingId);
             _listCabangLeasing.EditMasterLeasingCabang(namaCabang, emailCabang, alamatCabangLeasing);
             return _listCabangLeasing;
         }
         public MasterLeasingCabang CabangLeasingDiNonAktifkan(Guid masterCabangLeasingId)
         {
-            var _listCabangLeasing = _listCabangs.FirstOrDefault(i => i.Id == masterCabangLeasingId);
+            var _listCabangLeasing = _listCabangs.FirstOrDefault(i => i.MasterLeasingCabangId == masterCabangLeasingId);
             _listCabangLeasing.MarkAsNonAktif();
             return _listCabangLeasing;
         }

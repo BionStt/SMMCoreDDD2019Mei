@@ -14,9 +14,18 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<DataSPKSurvei> builder)
         {
             builder.ToTable("DataSPKSurvei");
-            builder.HasKey(e => e.Id);
+            builder.HasKey(e => e.DataSPKSurveiId);
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
+
             builder.Property(e => e.NoKTPPemesan).IsUnicode(false);
-            builder.Property(e => e.NamaPemesan).HasMaxLength(35).IsUnicode(false);
+            //builder.Property(e => e.NamaPemesan).HasMaxLength(35).IsUnicode(false);
+
+            builder.OwnsOne(o => o.NamaPemesan, a => {
+                a.WithOwner();
+                a.Property(a => a.NamaDepan).HasMaxLength(40);
+                a.Property(a => a.NamaBelakang).HasMaxLength(40);
+            });
+
             builder.OwnsOne(o => o.AlamatPemesan, a => {
                 a.WithOwner();
                 a.Property(a => a.Jalan).IsUnicode(false).HasMaxLength(200);
