@@ -23,10 +23,13 @@ namespace SumberMas2015.SalesMarketing.Domain
         public decimal? UangTandaJadiKredit { get; private set; }
         public int NoUrutId { get; set; }
         //relationship
-        public DataSPK DataSPK { get; private set; }
+        public Guid DataSPKId { get; private set; }
 
-
-        public DataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit)
+        public static DataSPKKredit CreateDataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit, Guid dataSPKId)
+        {
+            return new DataSPKKredit(biayaAdministrasiKredit,biayaAdministrasiTunai,bBN,dendaWilayah,diskonDP,diskonTunai,dPPriceList,komisi,offTheRoad,promosi,uangTandaJadiTunai,uangTandaJadiKredit,dataSPKId);
+        }
+        private DataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit, Guid dataSPKId)
         {
             DataSPKKreditId = Guid.NewGuid();
             BiayaAdministrasiKredit = biayaAdministrasiKredit;
@@ -41,6 +44,7 @@ namespace SumberMas2015.SalesMarketing.Domain
             Promosi = promosi;
             UangTandaJadiTunai = uangTandaJadiTunai;
             UangTandaJadiKredit = uangTandaJadiKredit;
+            DataSPKId = dataSPKId;
         }
         public void EditDataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit)
         {

@@ -21,8 +21,9 @@
 
   <ItemGroup>
     <Folder Include="Domain\Events\" />
+    <Folder Include="Dto\DataPenjualan\" />
     <Folder Include="ServiceApplication\DataKonsumen\Queries\" />
-    <Folder Include="ServiceApplication\DataSPK\Queries\" />
+    <Folder Include="ServiceApplication\DataPenjualan\Queries\" />
     <Folder Include="ServiceApplication\MasterLeasing\Queries\" />
   </ItemGroup>
 

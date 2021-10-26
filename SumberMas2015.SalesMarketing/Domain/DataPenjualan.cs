@@ -29,7 +29,7 @@ namespace SumberMas2015.SalesMarketing.Domain
         {
 
         }
-        private DataPenjualan(Guid? dataSPKId, Guid? dataKonsumenId, Guid? masterLeasingCabangId, string noBuku, Guid? salesUserId, string keterangan,  Guid? masterKategoriPenjualanId, string mediator, Guid? userInputId, string userNameInput)
+        private DataPenjualan(Guid? dataSPKId, Guid? dataKonsumenId, Guid? masterLeasingCabangId, string noBuku, Guid? salesUserId, string keterangan,  Guid? masterKategoriPenjualanId, string mediator, string userNameInput)
         {
             DataPenjualanId = Guid.NewGuid();
 
@@ -43,13 +43,13 @@ namespace SumberMas2015.SalesMarketing.Domain
          //   Batal = batal;
             MasterKategoriPenjualanId = masterKategoriPenjualanId;
             Mediator = mediator;
-            UserInputId = userInputId;
+           // UserInputId = userInputId;
             UserNameInput = userNameInput;
            // TanggalPenjualan = tanggalPenjualan;
         }
-        public static DataPenjualan CreateDataPenjualan(Guid? dataSPKId, Guid? dataKonsumenId, Guid? masterLeasingCabangId, string noBuku, Guid? salesUserId, string keterangan, Guid? masterKategoriPenjualanId, string mediator, Guid? userInputId, string userNameInput)
+        public static DataPenjualan CreateDataPenjualan(Guid? dataSPKId, Guid? dataKonsumenId, Guid? masterLeasingCabangId, string noBuku, Guid? salesUserId, string keterangan, Guid? masterKategoriPenjualanId, string mediator, string userNameInput)
         {
-            return new DataPenjualan(dataSPKId,dataKonsumenId,masterLeasingCabangId,noBuku,salesUserId,keterangan,masterKategoriPenjualanId,mediator,userInputId,userNameInput);
+            return new DataPenjualan(dataSPKId,dataKonsumenId,masterLeasingCabangId,noBuku,salesUserId,keterangan,masterKategoriPenjualanId,mediator,userNameInput);
         }
 
         private string KodeRegistrasiPenjualan(DateTime Tanggal)

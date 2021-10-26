@@ -24,8 +24,11 @@ namespace SumberMas2015.SalesMarketing.Domain
         {
 
         }
-
-        public DataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan)
+        public static DataSPKSurvei CreateDataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan)
+        {
+            return new DataSPKSurvei(noKTPPemesan,namaPemesan, alamatPemesan, dataNPWPPemesan,pekerjaanPemesan);
+        }
+        private DataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan)
         {
             DataSPKSurveiId = Guid.NewGuid();
             NoKTPPemesan = noKTPPemesan;

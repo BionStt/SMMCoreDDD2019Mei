@@ -12,7 +12,11 @@ namespace SumberMas2015.SalesMarketing.Domain
         {
 
         }
-        public DataSPKLeasing(decimal? angsuran, string mediator, string namaCmo, Guid namaSales, int? tenor)//, DateTime? tanggalSurvei)
+        public static DataSPKLeasing CreateDataSPKLeasing(decimal? angsuran, string mediator, string namaCmo, Guid namaSales, int? tenor)
+        {
+            return new DataSPKLeasing(angsuran,mediator,namaCmo,namaSales,tenor);
+        }
+        private DataSPKLeasing(decimal? angsuran, string mediator, string namaCmo, Guid namaSales, int? tenor)//, DateTime? tanggalSurvei)
         {
             DataSPKLeasingId = Guid.NewGuid();
             Angsuran = angsuran;
