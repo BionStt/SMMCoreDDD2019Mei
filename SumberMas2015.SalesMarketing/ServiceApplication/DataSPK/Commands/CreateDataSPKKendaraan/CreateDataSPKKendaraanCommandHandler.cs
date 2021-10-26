@@ -23,8 +23,9 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.Creat
         public async Task<Guid> Handle(CreateDataSPKKendaraanCommand request, CancellationToken cancellationToken)
         {
             var mstBarang = await _mediator.Send(new MasterBarangByIdQuery { MasterBarangId = request.MasterBarangId});
+            var dtSPKId = Guid.NewGuid();
 
-            var dtSpkKendaraan = Domain.DataSPKKendaraan.CreateDataSPKKendaraan(request.TahunPerakitan,request.Warna,request.NamaSTNK,request.NoKTPSTNK, mstBarang.MasterBarangIdGuid);
+            var dtSpkKendaraan = Domain.DataSPKKendaraan.CreateDataSPKKendaraan(request.TahunPerakitan,request.Warna,request.NamaSTNK,request.NoKTPSTNK, mstBarang.MasterBarangIdGuid, dtSPKId);
 
             await _context.DataSPKKendaraan.AddAsync(dtSpkKendaraan);
             await _context.SaveChangesAsync();

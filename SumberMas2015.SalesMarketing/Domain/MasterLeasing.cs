@@ -28,9 +28,9 @@ namespace SumberMas2015.SalesMarketing.Domain
         private readonly List<MasterLeasingCabang> _listCabangs = new List<MasterLeasingCabang>();
         public IReadOnlyCollection<MasterLeasingCabang> MasterLeasingCabangs => _listCabangs;
 
-        public MasterLeasingCabang AddCabangLeasing(string namaCabang, Guid masterLeasingId, string emailCabang, Alamat alamatCabangLeasing)
+        public MasterLeasingCabang AddCabangLeasing(string namaCabang, Guid masterLeasingId, string emailCabang, Alamat alamatCabangLeasing,Guid mstLeasingId)
         {
-            var listCabangLeasing = MasterLeasingCabang.Create(namaCabang, emailCabang, alamatCabangLeasing);
+            var listCabangLeasing = MasterLeasingCabang.Create(namaCabang, emailCabang, alamatCabangLeasing, mstLeasingId);
             _listCabangs.Add(listCabangLeasing);
             return listCabangLeasing;
 

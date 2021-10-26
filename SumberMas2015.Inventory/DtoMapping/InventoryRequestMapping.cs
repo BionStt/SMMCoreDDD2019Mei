@@ -1,6 +1,14 @@
 ﻿using SumberMas2015.Inventory.Dto;
 using SumberMas2015.Inventory.Dto.Pembelian;
+using SumberMas2015.Inventory.Dto.PembelianDetail;
+using SumberMas2015.Inventory.Dto.PurchaseOrderPembelian;
+using SumberMas2015.Inventory.Dto.PurchaseOrderPembelianDetail;
+using SumberMas2015.Inventory.Dto.StokUnit;
 using SumberMas2015.Inventory.ServiceApplication.Pembelian.Commands.CreatePembelian;
+using SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Commands.CreatePembelianDetail;
+using SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Commands.CreatePurchaseOrderPembelian;
+using SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelianDetail.Commands.CreatePurchaseOrderPembelianDetail;
+using SumberMas2015.Inventory.ServiceApplication.StokUnit.Commands.CreateStokUnit;
 using SumberMas2015.Inventory.ServiceApplication.Supplier.Commands.CreateSupplier;
 using System;
 using System.Collections.Generic;
@@ -12,6 +20,70 @@ namespace SumberMas2015.Inventory.DtoMapping
 {
     public static class InventoryRequestMapping
     {
+        public static CreatePembelianDetailCommand ToCommand(this CreatePembelianDetailRequest model)
+        {
+            return new CreatePembelianDetailCommand {
+            BBN = model.BBN,
+            Diskon = model.Diskon,
+            Diskon2 = model.Diskon2,
+            DiskonPPN = model.DiskonPPN,
+            Harga1 = model.Harga1,
+            HargaOffTheRoad = model.HargaOffTheRoad,
+            HargaPPN = model.HargaPPN,
+            Qty = model.Qty,
+            SellIn = model.SellIn,
+            Sellin2 = model.Sellin2,
+            SellInPPN=model.SellInPPN
+
+
+            };
+        }
+        public static CreateStokUnitCommand ToCommand(this CreateStokUnitRequest model)
+        {
+            return new CreateStokUnitCommand {
+            Diskon = model.Diskon,
+            Diskon2 = model.Diskon2,
+            DiskonPPN = model.DiskonPPN,
+            Harga = model.Harga,
+            Harga1 = model.Harga1,
+            HargaPPN = model.HargaPPN,
+            masterBarangId = model.masterBarangId,
+            NomorMesin = model.NomorMesin,
+            NomorRangka = model.NomorRangka,
+               pembelianDetailId = model.pembelianDetailId,
+               Sellin = model.Sellin,
+            SellIn2= model.SellIn2,
+                SellInPPN = model.SellInPPN,
+                Warna = model.Warna
+
+
+
+
+            };
+        }
+        public static CreatePurchaseOrderPembelianDetailCommand ToCommand(this CreatePurchaseOrderPembelianDetailRequest model)
+        {
+            return new CreatePurchaseOrderPembelianDetailCommand {
+            BBN = model.BBN,
+            Diskon = model.Diskon,
+            Keterangan = model.Keterangan,
+            OffTHeRoad = model.OffTHeRoad,
+            Qty  = model.Qty,
+            Warna = model.Warna
+
+
+
+            };
+        }
+        public static CreatePurchaseOrderPembelianCommand ToCommand(this CreatePurchaseOrderPembelianRequest model )
+        {
+            return new CreatePurchaseOrderPembelianCommand {
+            Keterangan = model.Keterangan,
+            MasterSupplierId = model.MasterSupplierId,
+            PoASTRA  = model.PoASTRA,
+            UserInput = model.UserInput
+            };
+        }
         public static CreatePembelianCommand ToCommand(this CreatePembelianRequest model )
         {
             return new CreatePembelianCommand {

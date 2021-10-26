@@ -10,6 +10,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.MasterLeasing.Commands
 {
     public class CreateMasterLeasingCabangCommand:IRequest<Guid>
     {
+        public int MasterLeasingId { get; set; }
         public string NamaCabangLeasing { get; set; }
         public string EmailCabang { get; set; }
         public Alamat AlamatLeasingCabang { get; set; }

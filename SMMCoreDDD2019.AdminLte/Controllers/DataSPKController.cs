@@ -70,13 +70,13 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             var NamaL = await _mediator.Send(new GetNamaSPKQuery());
             var NamaKategoryPenjualan = await _mediator.Send(new ListKategoriPenjualanQuery());
             var NamaKategoryBayaran = await _mediator.Send(new ListKategoriBayaranQuery());
-            var NamaSalesForce1 = await _mediator.Send(new GetNamaSalesForceQuery());
+          //  var NamaSalesForce1 = await _mediator.Send(new GetNamaSalesForceQuery());
             var LeasingCab = await _mediator.Send(new ListCabangLeasingQuery());
 
             ViewData["NamaPemesan"] = new SelectList(NamaL, "NoUrutSPKBaru1", "NamaPemesan");
             ViewData["NamaKategoryPenjualan"] = new SelectList(NamaKategoryPenjualan, "NoUrut", "NamaKategoryPenjualan");
             ViewData["NamaKategoryBayaran"] = new SelectList(NamaKategoryBayaran, "NoUrut", "NamaKategoryBayaran");
-            ViewData["NamaSalesForce"] = new SelectList(NamaSalesForce1, "IDPegawai", "NamaDepan");
+          //  ViewData["NamaSalesForce"] = new SelectList(NamaSalesForce1, "IDPegawai", "NamaDepan");
             ViewData["NamaLeasingCabang"] = new SelectList(LeasingCab, "NoUrutLeasingCabang", "NamaCab");
 
             return View();

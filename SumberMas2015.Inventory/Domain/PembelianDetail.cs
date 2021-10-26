@@ -9,6 +9,7 @@ namespace SumberMas2015.Inventory.Domain
     public class PembelianDetail
     {
         public Guid PembelianDetailId { get; private set; }
+        public Guid PembelianId { get; private set; }
         public Guid MasterBarangDBId { get; private set; }
         public decimal? HargaOffTheRoad { get; private set; }
         public decimal? BBN { get; private set; }
@@ -27,7 +28,7 @@ namespace SumberMas2015.Inventory.Domain
 
         }
 
-        private PembelianDetail(Guid masterBarangDBId, decimal? hargaOffTheRoad, decimal? bBN, int qty, decimal? diskon, decimal? sellIn, decimal? harga1, decimal? diskon2, decimal? sellIn2, decimal? hargaPPN, decimal? diskonPPN, decimal? sellInPPN)
+        private PembelianDetail(Guid masterBarangDBId, decimal? hargaOffTheRoad, decimal? bBN, int qty, decimal? diskon, decimal? sellIn, decimal? harga1, decimal? diskon2, decimal? sellIn2, decimal? hargaPPN, decimal? diskonPPN, decimal? sellInPPN, Guid pembelianId)
         {
             PembelianDetailId = Guid.NewGuid();
             MasterBarangDBId = masterBarangDBId;
@@ -42,11 +43,12 @@ namespace SumberMas2015.Inventory.Domain
             HargaPPN = hargaPPN;
             DiskonPPN = diskonPPN;
             SellInPPN = sellInPPN;
+            PembelianId = pembelianId;
         }
 
-        public static PembelianDetail CreatePembelianDetail(Guid masterBarangDBId, decimal? hargaOffTheRoad, decimal? bBN, int qty, decimal? diskon, decimal? sellIn, decimal? harga1, decimal? diskon2, decimal? sellIn2, decimal? hargaPPN, decimal? diskonPPN, decimal? sellInPPN)
+        public static PembelianDetail CreatePembelianDetail(Guid masterBarangDBId, decimal? hargaOffTheRoad, decimal? bBN, int qty, decimal? diskon, decimal? sellIn, decimal? harga1, decimal? diskon2, decimal? sellIn2, decimal? hargaPPN, decimal? diskonPPN, decimal? sellInPPN, Guid pembelianId)
         {
-            return new PembelianDetail(masterBarangDBId, hargaOffTheRoad, bBN, qty, diskon, sellIn, harga1, diskon2, sellIn2, hargaPPN, diskonPPN, sellInPPN);
+            return new PembelianDetail(masterBarangDBId, hargaOffTheRoad, bBN, qty, diskon, sellIn, harga1, diskon2, sellIn2, hargaPPN, diskonPPN, sellInPPN, pembelianId);
         }
     }
 }

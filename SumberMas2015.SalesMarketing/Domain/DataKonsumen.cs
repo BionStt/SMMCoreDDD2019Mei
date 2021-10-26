@@ -29,6 +29,7 @@ namespace SumberMas2015.SalesMarketing.Domain
 
         public Guid JenisKelaminId { get; private set; }
         public Guid AgamaId { get; private set; }
+        public string Terinput { get; set; }
 
         protected DataKonsumen()
         {

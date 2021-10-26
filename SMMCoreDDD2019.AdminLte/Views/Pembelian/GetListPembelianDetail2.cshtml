@@ -1,0 +1,105 @@
+﻿@model IReadOnlyCollection<SumberMas2015.Inventory.Dto.PembelianDetail.GetListPembelianDetailResponse>
+
+@{
+    //  ViewData["Title"] = "GetListPembelianDetail2";
+  //  Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+    // Layout = "";
+}
+
+
+
+<table class="table table-bordered table-striped grid text-nowrap table-responsive " style="border:double" width="200">
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.NoUrutPembelianDetail)*@KodeBeli
+
+            </th>
+            <th>
+                Nama Barang
+
+            </th>
+            <th>
+              Harga Off The Road
+            </th>
+            <th>
+               BBN
+            </th>
+            <th>
+              Harga OTR
+            </th>
+            <th>
+               Diskon
+            </th>
+            <th>
+             Sell In
+            </th>
+            <th>
+               Qty
+            </th>
+            <th>Terinput</th>
+            <th>Perintah</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+
+
+                    @Html.DisplayFor(modelItem => item.NoUrutPembelianDetail)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NamaBarang1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HargaOff)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BBN1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HargaOTr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diskon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SellIn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Qty1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Count1)
+                </td>
+                <td>
+                    @if (item.Qty1 == Int32.Parse(item.Count1))
+                    {
+                        <p>Sudah Terinput</p>
+
+                    }
+                    else
+                    {
+                        <p>
+                            <a asp-controller="Pembelian" asp-action="InputStokUnit" asp-route-KodeBeliDetail="@item.NoUrutPembelianDetail">Create New</a>
+                        </p>
+
+                        @*<button id="Create1" type="button" class="btn btn-info" data-id="@item.NoUrutPembelianDetail" data-toggle="modal" data-target="#modal-default">
+                                Create
+                            </button>*@
+
+                    }
+
+
+                </td>
+            </tr>
+
+
+        }
+    </tbody>
+</table>
+

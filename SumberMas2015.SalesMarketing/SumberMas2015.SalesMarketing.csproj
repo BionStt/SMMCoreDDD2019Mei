@@ -22,9 +22,8 @@
   <ItemGroup>
     <Folder Include="Domain\Events\" />
     <Folder Include="Dto\DataPenjualan\" />
-    <Folder Include="ServiceApplication\DataKonsumen\Queries\" />
     <Folder Include="ServiceApplication\DataPenjualan\Queries\" />
-    <Folder Include="ServiceApplication\Penjualan\Queries\" />
+    <Folder Include="ServiceApplication\Penjualan\Queries\NewFolder\" />
   </ItemGroup>
 
 </Project>

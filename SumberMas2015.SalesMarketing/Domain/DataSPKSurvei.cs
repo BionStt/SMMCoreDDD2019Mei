@@ -17,7 +17,7 @@ namespace SumberMas2015.SalesMarketing.Domain
         public string PekerjaanPemesan { get; private set; }
         public int NoUrutId { get; set; }
 
-        public DataSPK DataSPK { get; private set; }
+        public Guid DataSPKId { get; private set; }
 
 
         public DataSPKSurvei()

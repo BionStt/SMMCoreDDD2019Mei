@@ -9,6 +9,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.Creat
 {
     public class CreateDataSPKKendaraanCommand:IRequest<Guid>
     {
+        public int DataSPKId { get; set; }
         public string TahunPerakitan { get; set; }
         public string Warna { get; set; }
         public string NamaSTNK { get; set; }

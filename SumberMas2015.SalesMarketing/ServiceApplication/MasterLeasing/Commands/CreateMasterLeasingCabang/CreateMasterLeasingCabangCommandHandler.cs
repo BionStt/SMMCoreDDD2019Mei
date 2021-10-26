@@ -20,7 +20,8 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.MasterLeasing.Commands
 
         public async Task<Guid> Handle(CreateMasterLeasingCabangCommand request, CancellationToken cancellationToken)
         {
-            var mstLeasingCabang = Domain.MasterLeasingCabang.Create(request.NamaCabangLeasing, request.EmailCabang, request.AlamatLeasingCabang);
+            var mstleadingId = Guid.NewGuid();
+            var mstLeasingCabang = Domain.MasterLeasingCabang.Create(request.NamaCabangLeasing, request.EmailCabang, request.AlamatLeasingCabang, mstleadingId);
 
             await _context.MasterLeasingCabang.AddAsync(mstLeasingCabang);
             await _context.SaveChangesAsync();

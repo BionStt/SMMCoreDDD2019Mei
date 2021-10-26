@@ -51,7 +51,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
                 .HasColumnName("UserNameInput")
                 .HasMaxLength(20);
 
-            builder.Property(e => e.UserInputId).HasColumnName("UserInputID");
+           // builder.Property(e => e.UserInputId).HasColumnName("UserInputID");
         }
     }
 }

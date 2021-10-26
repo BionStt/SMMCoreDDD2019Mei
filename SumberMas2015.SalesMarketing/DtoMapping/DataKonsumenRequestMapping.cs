@@ -3,6 +3,7 @@ using SumberMas2015.SalesMarketing.Dto.DataSPK;
 using SumberMas2015.SalesMarketing.Dto.MasterBarang;
 using SumberMas2015.SalesMarketing.Dto.Penjualan;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataKonsumen.Commands.CreateDataKonsumen;
+using SumberMas2015.SalesMarketing.ServiceApplication.DataPenjualan.Commands.CreateDataPenjualanDetail;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.CreateDataSPKKendaraan;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.CreateDataSPKKredit;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.CreateDataSPKLeasing;
@@ -19,6 +20,32 @@ namespace SumberMas2015.SalesMarketing.DtoMapping
 {
     public static class DataKonsumenRequestMapping
     {
+        public static CreateDataPenjualanDetailCommand ToCommand(this CreateDataPenjualanDetailRequest model)
+        {
+            return new CreateDataPenjualanDetailCommand {
+            bBN=model.bBN,
+            dataPenjualanId = model.dataPenjualanId,
+            dendaWilayah = model.dendaWilayah,
+            diskonKredit = model.diskonKredit,
+            diskonTunai = model.diskonTunai,
+            hargaOTR = model.hargaOTR,
+            joinPromo1 = model.joinPromo1,
+            joinPromo2 = model.joinPromo2,
+            komisi = model.komisi,
+               offTheRoad = model.offTheRoad,
+               promosi = model.promosi,
+               sellOut = model.sellOut,
+               sPF = model.sPF,
+                stokUnitId = model.stokUnitId,
+                subsidi = model.subsidi,
+                uangMuka = model.uangMuka
+
+
+
+
+
+            };
+        }
         public static CreatePenjualanCommand ToCommand(this CreatePenjualanRequest model)
         {
             return new CreatePenjualanCommand {

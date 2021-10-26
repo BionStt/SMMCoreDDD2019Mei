@@ -1,6 +1,23 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SumberMas2015.Inventory.Dto.Pembelian;
+using SumberMas2015.Inventory.Dto.PembelianDetail;
+using SumberMas2015.Inventory.Dto.PurchaseOrderPembelian;
+using SumberMas2015.Inventory.Dto.PurchaseOrderPembelianDetail;
+using SumberMas2015.Inventory.Dto.StokUnit;
+using SumberMas2015.Inventory.DtoMapping;
+using SumberMas2015.Inventory.ServiceApplication.MasterBarang.Queries.GetNamaBarang;
+using SumberMas2015.Inventory.ServiceApplication.MasterBarang.Queries.GetNamaBarangQrByNoUrut;
+using SumberMas2015.Inventory.ServiceApplication.Pembelian.Queries.GetListPembelian;
+using SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Queries.GetKodeBeli;
+using SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Queries.GetKodeBeliDetail;
+using SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Queries.GetListPembelianDetail;
+using SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Queries.GetDataPOPembelian;
+using SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Queries.GetNamaPO;
+using SumberMas2015.Inventory.ServiceApplication.StokUnit.Queries.GetListStokUnitByNoKodeBeli;
+using SumberMas2015.Inventory.ServiceApplication.Supplier.Queries.GetNamaSupplier;
+using SumberMas2015.SalesMarketing.ServiceApplication.MasterKategoriCaraPembayaran.Queries.ListKategoriCaraPembayaran;
 using System;
 using System.Threading.Tasks;
 
@@ -18,17 +35,19 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         public async Task<IActionResult> CreatePembelianPO()
         {
             var NamaSupplier = await _mediator.Send(new GetNamaSupplierQuery());
-            ViewData["NamaSupplier"] = new SelectList(NamaSupplier.MasterSupplierDs, "NoUrutSupplier", "NamaSupplier");
+            ViewData["NamaSupplier"] = new SelectList(NamaSupplier, "NoUrutSupplier", "NamaSupplier");
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreatePembelianPO(CreatePembelianPOCommand PembelianPOViewModel)
+        public async Task<IActionResult> CreatePembelianPO(CreatePurchaseOrderPembelianRequest PembelianPOViewModel)
         {
             if (ModelState.IsValid)
             {
-                await _mediator.Send(PembelianPOViewModel);
+                var xx = PembelianPOViewModel.ToCommand();
+
+                await _mediator.Send(xx);
 
                 return RedirectToAction(nameof(PembelianController.CreatePembelianPODetail), "Pembelian");
             }
@@ -37,20 +56,21 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         [HttpGet]
         public async Task<IActionResult> CreatePembelianPODetail()
         {
-            var NamaBarang = await _mediator.Send(new GetNamaBarangQrQuery());
-            var NamaPO = await _mediator.Send(new GetDataPoPembelianQuery());
-            ViewData["NamaBarang"] = new SelectList(NamaBarang.MasterBarangDs, "NoUrutKendaraan", "NamaBarang");
-            ViewData["NamaPO"] = new SelectList(NamaPO.DataPembelianPODs.OrderByDescending(x => x.NoUrutPoPembelian), "NoUrutPoPembelian", "NamaPOPembelian");
+            var NamaBarang = await _mediator.Send(new GetNamaBarangQuery());
+            var NamaPO = await _mediator.Send(new GetDataPOPembelianQuery());
+            ViewData["NamaBarang"] = new SelectList(NamaBarang, "NoUrutKendaraan", "NamaBarang");
+            ViewData["NamaPO"] = new SelectList(NamaPO, "NoUrutPoPembelian", "NamaPOPembelian");
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreatePembelianPODetail(CreatePembelianPODetailCommand PembelianPODetailViewModel)
+        public async Task<IActionResult> CreatePembelianPODetail(CreatePurchaseOrderPembelianDetailRequest PembelianPODetailViewModel)
         {
             if (ModelState.IsValid)
             {
-                await _mediator.Send(PembelianPODetailViewModel);
+                var xx = PembelianPODetailViewModel.ToCommand();
+                await _mediator.Send(xx);
 
                 return RedirectToAction(nameof(PembelianController.CreatePembelianPODetail), "Pembelian");
             }
@@ -59,8 +79,8 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         [HttpGet]
         public async Task<IActionResult> GetListPembelianDetail1A()
         {
-            var DataPembelian = await _mediator.Send(new GetLIstPembelianQuery());
-            ViewData["DataPembelian1"] = new SelectList(DataPembelian.DataPembelianDs.OrderByDescending(x => x.NoUrutPembelian), "NoUrutPembelian", "NamaPembelian");
+            var DataPembelian = await _mediator.Send(new GetListPembelianQuery());
+            ViewData["DataPembelian1"] = new SelectList(DataPembelian, "NoUrutPembelian", "NamaPembelian");
 
             return View();
         }
@@ -70,7 +90,8 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         {
             //apakah 2 baris perintah dibawah ini harus di kasih comment .krn tdk perlu eksekusik
             var DataPembelian = await _mediator.Send(new GetListPembelianDetailQuery { Id = DataPmb1 });
-            IEnumerable<GetListPembelianDetailLookUpModel> model2 = DataPembelian.DataPembelianDetailDs;
+
+           // IEnumerable<GetListPembelianDetailLookUpModel> model2 = DataPembelian.DataPembelianDetailDs;
 
             return RedirectToAction(nameof(PembelianController.GetListPembelianDetail2), "Pembelian", new { DataPmb1 = DataPmb1 });
 
@@ -89,8 +110,8 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
 
             var DataPembelian = await _mediator.Send(new GetListPembelianDetailQuery { Id = DataPmb1 });
 
-            IEnumerable<GetListPembelianDetailLookUpModel> model2 = DataPembelian.DataPembelianDetailDs;
-            return View("GetListPembelianDetail2", model2);
+
+            return View("GetListPembelianDetail2", DataPembelian);
 
         }
 
@@ -98,12 +119,12 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         public async Task<IActionResult> InputStokUnit(string KodeBeliDetail)
         {
             var StokUnitDetail = await _mediator.Send(new GetListStokUnitByNoKodeBeliQuery { Id = KodeBeliDetail });
-            var abc2 = StokUnitDetail.DataStokUnitDs.ToList();
-            ViewBag.StokUnitItems = abc2;
+           // var abc2 = StokUnitDetail.DataStokUnitDs.ToList();
+            ViewBag.StokUnitItems = StokUnitDetail;
 
             var KodeBeliDetail1 = await _mediator.Send(new GetKodeBeliDetailQuery { Id = KodeBeliDetail });
-            var abc = KodeBeliDetail1.DataPembelianDetailDS.ToList();
-            var abc1 = abc[0];
+            //var abc = KodeBeliDetail1.DataPembelianDetailDS.ToList();
+            var abc1 = KodeBeliDetail1;
             ViewData["KodeBeli1"] = abc1.NoKodeBeli1;
             ViewData["KodeBeliDetail1"] = abc1.NoKodeBeliDetail;
             ViewData["KodeBrg1"] = abc1.KodeBarang;
@@ -116,21 +137,22 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> InputStokUnit(CreateStokUnitCommand StokUnitViewModel, string KodeBeli1)
+        public async Task<IActionResult> InputStokUnit(CreateStokUnitRequest StokUnitViewModel, string KodeBeli1)
         {
             if (ModelState.IsValid)
             {
-                await _mediator.Send(StokUnitViewModel);
+                var xx = StokUnitViewModel.ToCommand();
+
+                await _mediator.Send(xx);
                 //  return RedirectToAction(nameof(PembelianController.GetListPembelianDetail), "Pembelian");
                 //return RedirectToAction(nameof(PembelianController.GetListPembelianDetail2), "Pembelian",new { DataPmb1 = KodeBeli1 } );
             }
-            var StokUnitDetail = await _mediator.Send(new GetListStokUnitByNoKodeBeliQuery { Id = StokUnitViewModel.KodeBeliDetail.ToString() });
-            var abc2 = StokUnitDetail.DataStokUnitDs.ToList();
-            ViewBag.StokUnitItems = abc2;
+            var StokUnitDetail = await _mediator.Send(new GetListStokUnitByNoKodeBeliQuery { Id = StokUnitViewModel.pembelianDetailId.ToString() });
 
-            var KodeBeliDetail1 = await _mediator.Send(new GetKodeBeliDetailQuery { Id = StokUnitViewModel.KodeBeliDetail.ToString() });
-            var abc = KodeBeliDetail1.DataPembelianDetailDS.ToList();
-            var abc1 = abc[0];
+            ViewBag.StokUnitItems = StokUnitDetail;
+
+            var KodeBeliDetail1 = await _mediator.Send(new GetKodeBeliDetailQuery { Id = StokUnitViewModel.pembelianDetailId.ToString() });
+            var abc1 = KodeBeliDetail1;
             ViewData["KodeBeli1"] = abc1.NoKodeBeli1;
             ViewData["KodeBeliDetail1"] = abc1.NoKodeBeliDetail;
             ViewData["KodeBrg1"] = abc1.KodeBarang;
@@ -148,23 +170,24 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         public async Task<IActionResult> CreatePembelian()
         {
             var NamaSupplier = await _mediator.Send(new GetNamaSupplierQuery());
-            ViewData["NamaSupplier"] = new SelectList(NamaSupplier.MasterSupplierDs, "NoUrutSupplier", "NamaSupplier");
+            ViewData["NamaSupplier"] = new SelectList(NamaSupplier, "NoUrutSupplier", "NamaSupplier");
 
-            var NamaKategoryCaraPembayaran = await _mediator.Send(new GetNamaCaraPembayaranQuery());
-            ViewData["NamaKategoryCaraPembayaran"] = new SelectList(NamaKategoryCaraPembayaran.MasterCaraPembayaranDs, "NoUrut", "NamaKategoryCaraBayaran");
+            var NamaKategoryCaraPembayaran = await _mediator.Send(new ListKategoriCaraPembayaranQuery());
+            ViewData["NamaKategoryCaraPembayaran"] = new SelectList(NamaKategoryCaraPembayaran, "NoUrutId", "KategoriCaraPembayaran");
 
             var NamaPO = await _mediator.Send(new GetNamaPOQuery());
-            ViewData["NamaPO"] = new SelectList(NamaPO.DataPODS.OrderByDescending(x => x.NoUrutPoPembelian), "NoUrutPoPembelian", "NamaPOPembelian");
+            ViewData["NamaPO"] = new SelectList(NamaPO, "NoUrutPoPembelian", "NamaPOPembelian");
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreatePembelian(CreatePembelianCommand PembelianViewModel)
+        public async Task<IActionResult> CreatePembelian(CreatePembelianRequest PembelianViewModel)
         {
             if (ModelState.IsValid)
             {
-                await _mediator.Send(PembelianViewModel);
+                var xx = PembelianViewModel.ToCommand();
+                await _mediator.Send(xx);
 
                 return RedirectToAction(nameof(PembelianController.CreatePembelianDetail), "Pembelian");
             }
@@ -173,22 +196,23 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         [HttpGet]
         public async Task<IActionResult> CreatePembelianDetail()
         {
-            var NamaBarang = await _mediator.Send(new GetNamaBarangQrQuery());
-            ViewData["NamaBarang"] = new SelectList(NamaBarang.MasterBarangDs, "NoUrutKendaraan", "NamaBarang");
+            var NamaBarang = await _mediator.Send(new GetNamaBarangQuery());
+            ViewData["NamaBarang"] = new SelectList(NamaBarang, "NoUrutKendaraan", "NamaBarang");
 
             var KodeBeli = await _mediator.Send(new GetKodeBeliQuery());
-            ViewData["KodeBeli"] = new SelectList(KodeBeli.DataPembelianDS.OrderByDescending(x => x.NoUrutPembelian), "NoUrutPembelian", "NamaPembelian");
+            ViewData["KodeBeli"] = new SelectList(KodeBeli, "NoUrutPembelian", "NamaPembelian");
 
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreatePembelianDetail(CreatePembelianDetailCommand PembelianDetailViewModel)
+        public async Task<IActionResult> CreatePembelianDetail(CreatePembelianDetailRequest PembelianDetailViewModel)
         {
             if (ModelState.IsValid)
             {
-                await _mediator.Send(PembelianDetailViewModel);
+                var xx = PembelianDetailViewModel.ToCommand();
+                await _mediator.Send(xx);
 
                 return RedirectToAction(nameof(PembelianController.CreatePembelianDetail), "Pembelian");
             }
@@ -200,12 +224,12 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
 
             var datakendaraan1 = await _mediator.Send(new GetNamaBarangQrByNoUrutQuery { Id = NoUrutTypeBrg });
 
-            var datakendaraan2 = datakendaraan1.MasterBarangDs.ToList();
+            var datakendaraan2 = datakendaraan1;
 
             var zz = new
             {
-                datakendaraan2[0].HargaOff,
-                datakendaraan2[0].BBN1,
+                datakendaraan2.HargaOff,
+                datakendaraan2.BBN1,
 
             };
 

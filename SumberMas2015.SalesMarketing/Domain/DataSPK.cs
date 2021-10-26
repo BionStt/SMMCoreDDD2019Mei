@@ -83,7 +83,7 @@ namespace SumberMas2015.SalesMarketing.Domain
 
         public DataSPKSurvei AddDataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan)
         {
-            var DtSPKSurvei = new DataSPKSurvei(noKTPPemesan, namaPemesan, alamatPemesan, dataNPWPPemesan, pekerjaanPemesan);
+            var DtSPKSurvei = Domain.DataSPKSurvei.CreateDataSPKSurvei(noKTPPemesan,namaPemesan,alamatPemesan,dataNPWPPemesan,pekerjaanPemesan);
             _dataSPKSurvei.Add(DtSPKSurvei);
             return DtSPKSurvei;
         }
@@ -99,7 +99,7 @@ namespace SumberMas2015.SalesMarketing.Domain
 
         public DataSPKLeasing AddDataSPKLeasing(decimal? angsuran, string mediator, string namaCmo, Guid namaSales, int? tenor, DateTime? tanggalSurvei)
         {
-            var dataSpkLeasing = new DataSPKLeasing(angsuran, mediator, namaCmo, namaSales, tenor);
+            var dataSpkLeasing = Domain.DataSPKLeasing.CreateDataSPKLeasing(angsuran,mediator,namaCmo,namaSales,tenor);
             _dataSpkLeasing.Add(dataSpkLeasing);
             return dataSpkLeasing;
         }
@@ -114,7 +114,7 @@ namespace SumberMas2015.SalesMarketing.Domain
         public IReadOnlyCollection<DataSPKKredit> DataSPKKredit => _dataSpkKredit.AsReadOnly();
         public DataSPKKredit AddDataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit)
         {
-            var dataSPKKredit = new DataSPKKredit(biayaAdministrasiKredit, biayaAdministrasiTunai, bBN, dendaWilayah, diskonDP, diskonTunai, dPPriceList, komisi, offTheRoad, promosi, uangTandaJadiTunai, uangTandaJadiKredit);
+            var dataSPKKredit = Domain.DataSPKKredit.CreateDataSPKKredit(biayaAdministrasiKredit,biayaAdministrasiTunai,bBN,dendaWilayah,diskonDP,diskonTunai,dPPriceList,komisi,offTheRoad,promosi,uangTandaJadiTunai,uangTandaJadiKredit,DataSPKId);
             _dataSpkKredit.Add(dataSPKKredit);
             return dataSPKKredit;
         }

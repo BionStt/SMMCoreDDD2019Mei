@@ -31,6 +31,7 @@ namespace SumberMas2015.Inventory.InfrastructureData.Context
         public DbSet<PurchaseOrderPembelianDetail> PurchaseOrderPembelianDetail { get; set; }
         public DbSet<StokUnit> StokUnit { get; set; }
         public DbSet<Supplier> Supplier { get; set; }
+        public DbSet<MasterBarang> MasterBarang { get; set; }
 
 
 

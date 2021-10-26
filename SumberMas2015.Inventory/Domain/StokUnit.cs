@@ -33,6 +33,9 @@ namespace SumberMas2015.Inventory.Domain
             DiskonPPN = diskonPPN;
             SellInPPN = sellInPPN;
         }
+
+
+
         public static StokUnit CreateStokUnit(Guid pembelianDetailId, Guid masterBarangId, string nomorRangka, string nomorMesin, string warna, decimal? harga, decimal? diskon, decimal? sellIn, decimal? harga1, decimal? diskon2, decimal? sellIn2, decimal? hargaPPN, decimal? diskonPPN, decimal? sellInPPN)
         {
             return new StokUnit(pembelianDetailId, masterBarangId, nomorRangka, nomorMesin, warna, harga, diskon, sellIn, harga1, diskon2, sellIn2, hargaPPN, diskonPPN, sellInPPN);
