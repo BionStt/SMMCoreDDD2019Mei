@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>testDataSPKLeasing</title>
+</head>
+<body>
+
+    <div class="row">
+        <div class="col-md-10">
+            <form asp-action="CreateDataSPKLeasing">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="TglSurvei" class="control-label">Tanggal Survei</label>
+                            <input id="datepicker1" asp-for="TglSurvei" class="form-control" />
+                            <span asp-validation-for="TglSurvei" class="text-danger"></span>
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="NoUrutSPKBaru" class="control-label">Data SPK ID</label>
+
+                            <select asp-for="NoUrutSPKBaru" class="form-control" asp-items="ViewBag.NamaPemesan"></select>
+                            <span asp-validation-for="NoUrutSPKBaru" class="text-danger"></span>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="NoUrutLeasingCabang" class="control-label">Nama Leasing</label>
+
+                            <select asp-items="ViewBag.NamaLeasingCabang" asp-for="NoUrutLeasingCabang" class="form-control"></select>
+                            <span asp-validation-for="NoUrutLeasingCabang" class="text-danger"></span>
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+
+                            <label asp-for="Angsuran" class="control-label">Angsuran</label>
+
+                            <input id="Angsuran1" asp-for="Angsuran" class="form-control" />
+                            <span asp-validation-for="Angsuran" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="Tenor" class="control-label">Tenor</label>
+
+                            <input id="Tenor1" asp-for="Tenor" class="form-control" />
+                            <span asp-validation-for="Tenor" class="text-danger"></span>
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="NamaCmo" class="control-label">Nama CMO</label>
+
+                            <input asp-for="NamaCmo" class="form-control" />
+                            <span asp-validation-for="NamaCmo" class="text-danger"></span>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="Mediator" class="control-label">Mediator</label>
+
+                            <input asp-for="Mediator" class="form-control" />
+                            <span asp-validation-for="Mediator" class="text-danger"></span>
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="NoUrutKategoriPenjualan" class="control-label">Kategori Penjualan</label>
+
+                            <select asp-for="NoUrutKategoriPenjualan" class="form-control" asp-items="ViewBag.NamaKategoryPenjualan"></select>
+                            <span asp-validation-for="NoUrutKategoriPenjualan" class="text-danger"></span>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+
+                            <label asp-for="NoUrutKategoriBayaran" class="control-label">Kategori Pembayaran</label>
+
+                            <select asp-for="NoUrutKategoriBayaran" class="form-control" asp-items="ViewBag.NamaKategoryBayaran"></select>
+                            <span asp-validation-for="NoUrutKategoriBayaran" class="text-danger"></span>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+
+                            <label asp-for="NoUrutSales" class="control-label">Nama Sales</label>
+
+                            <select asp-for="NoUrutSales" class="form-control" asp-items="ViewBag.NamaSalesForce"></select>
+                            <span asp-validation-for="NoUrutSales" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

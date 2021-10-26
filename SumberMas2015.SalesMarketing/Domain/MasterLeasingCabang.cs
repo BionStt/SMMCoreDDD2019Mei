@@ -16,8 +16,8 @@ namespace SumberMas2015.SalesMarketing.Domain
         public int NoUrutId { get; private set; }
         public Alamat AlamatCabangLeasing { get; private set; }
 
-      //  public Guid MasterLeasingId { get; private set; }
-        public MasterLeasing MasterLeasing { get; private set; }
+        public Guid MasterLeasingId { get; private set; }
+       // public MasterLeasing MasterLeasing { get; private set; }
         //public enum LeasingCabangStatus
         //{
         //    TidakAktif = 0,
@@ -27,12 +27,12 @@ namespace SumberMas2015.SalesMarketing.Domain
         {
 
         }
-        public static MasterLeasingCabang Create(string namaCabang, string emailCabang, Alamat alamatCabangLeasing)
+        public static MasterLeasingCabang Create(string namaCabang, string emailCabang, Alamat alamatCabangLeasing, Guid masterLeasingId)
         {
-            return new MasterLeasingCabang(namaCabang, emailCabang, alamatCabangLeasing);
+            return new MasterLeasingCabang(namaCabang, emailCabang, alamatCabangLeasing,masterLeasingId);
         }
 
-        private MasterLeasingCabang(string namaCabang, string emailCabang, Alamat alamatCabangLeasing)
+        private MasterLeasingCabang(string namaCabang, string emailCabang, Alamat alamatCabangLeasing, Guid masterLeasingId)
         {
             MasterLeasingCabangId = Guid.NewGuid();
             // MasterLeasingId = masterLeasingId;
@@ -40,6 +40,7 @@ namespace SumberMas2015.SalesMarketing.Domain
             EmailCabang = emailCabang;
             Status = 1;
             AlamatCabangLeasing = alamatCabangLeasing;
+            MasterLeasingId = masterLeasingId;
         }
         public void EditMasterLeasingCabang(string namaCabang, string emailCabang, Alamat alamatCabangLeasing)
         {

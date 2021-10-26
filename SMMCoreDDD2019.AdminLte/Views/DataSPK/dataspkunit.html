@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>dataspkunit</title>
+</head>
+<body>
+
+    <div class="row">
+        <div class="col-md-10">
+            <form asp-action="CreateDataSPKUnit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+
+                            <label asp-for="NoUrutSPKBaru" class="control-label">Data SPK ID</label>
+
+
+                            <select asp-for="NoUrutSPKBaru" class="form-control" asp-items="ViewBag.NamaPekerja"></select>
+                            <span asp-validation-for="NoUrutSPKBaru" class="text-danger"></span>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="NoKtpSTNK" class="control-label">No KTP STNK</label>
+
+                            <input id="NoKtp1" asp-for="NoKtpSTNK" class="form-control" />
+                            <span asp-validation-for="NoKtpSTNK" class="text-danger"></span>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+
+                            <label asp-for="NamaSTNK" class="control-label">Nama STNK</label>
+
+                            <input asp-for="NamaSTNK" class="form-control" />
+                            <span asp-validation-for="NamaSTNK" class="text-danger"></span>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="NoUrutTypeKendaraan" class="control-label">Type Kendaraan</label>
+
+
+                            <select asp-for="NoUrutTypeKendaraan" class="form-control" asp-items="ViewBag.NamaBarang"></select>
+                            <span asp-validation-for="NoUrutTypeKendaraan" class="text-danger"></span>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+
+                            <label asp-for="TahunPerakitan" class="control-label">Tahun Perakitan</label>
+
+                            <input id="Tahun1" asp-for="TahunPerakitan" class="form-control" />
+                            <span asp-validation-for="TahunPerakitan" class="text-danger"></span>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="Warna" class="control-label">Warna</label>
+
+                            <input asp-for="Warna" class="form-control" />
+                            <span asp-validation-for="Warna" class="text-danger"></span>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+
+                            <input type="submit" value="Create" class="btn btn-primary" />
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -20,6 +20,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.Creat
         public decimal OffTheRoad { get; set; }
         public decimal Promosi { get; set; }
         public decimal UangTandaJadiTunai{ get; set; }
+        public decimal UangTandaJadiKredit { get; set; }
         public int DataSPKId { get; set; }
 
     }

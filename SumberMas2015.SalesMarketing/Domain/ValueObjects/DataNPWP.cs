@@ -13,7 +13,11 @@ namespace SumberMas2015.SalesMarketing.Domain.ValueObjects
         {
 
         }
-        public DataNPWP(string noNPWP, string namaNPWP, Alamat alamatNPWP)
+        public static DataNPWP Create(string noNPWP, string namaNPWP, Alamat alamatNPWP)
+        {
+            return new DataNPWP(noNPWP,namaNPWP,alamatNPWP);
+        }
+        private DataNPWP(string noNPWP, string namaNPWP, Alamat alamatNPWP)
         {
             NoNPWP = noNPWP;
             NamaNPWP = namaNPWP;

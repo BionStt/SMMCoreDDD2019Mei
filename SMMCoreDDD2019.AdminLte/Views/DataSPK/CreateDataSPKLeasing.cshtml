@@ -1,0 +1,265 @@
+﻿@model SumberMas2015.SalesMarketing.Dto.DataSPK.CreateDataSPKLeasingRequest
+
+@{
+    //  ViewData["Title"] = "CreateDataSPKLeasing";
+   // Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<hr />
+
+    <div class="row">
+        <div class="col-md-10">
+            <form asp-action="CreateDataSPKLeasing">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="TanggalSurvei" class="control-label">Tanggal Survei</label>
+                            <input id="datepicker1" asp-for="TanggalSurvei" class="form-control" />
+                            <span asp-validation-for="TanggalSurvei" class="text-danger"></span>
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="DataSPKId" class="control-label">Data SPK ID</label>
+
+                            <select asp-for="DataSPKId" class="form-control" asp-items="ViewBag.NamaPemesan"></select>
+                            <span asp-validation-for="DataSPKId" class="text-danger"></span>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="MasterLeasingId" class="control-label">Nama Leasing</label>
+
+                            <select asp-items="ViewBag.NamaLeasingCabang" asp-for="MasterLeasingId" class="form-control"></select>
+                            <span asp-validation-for="MasterLeasingId" class="text-danger"></span>
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+
+                            <label asp-for="Angsuran" class="control-label">Angsuran</label>
+
+                            <input id="Angsuran1" asp-for="Angsuran" class="form-control" />
+                            <span asp-validation-for="Angsuran" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="Tenor" class="control-label">Tenor</label>
+
+                            <input id="Tenor1" asp-for="Tenor" class="form-control" />
+                            <span asp-validation-for="Tenor" class="text-danger"></span>
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="NamaCMO" class="control-label">Nama CMO</label>
+
+                            <input asp-for="NamaCMO" class="form-control" />
+                            <span asp-validation-for="NamaCMO" class="text-danger"></span>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="Mediator" class="control-label">Mediator</label>
+
+                            <input asp-for="Mediator" class="form-control" />
+                            <span asp-validation-for="Mediator" class="text-danger"></span>
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="MasterKategoriPenjualan" class="control-label">Kategori Penjualan</label>
+
+                            <select asp-for="MasterKategoriPenjualan" class="form-control" asp-items="ViewBag.NamaKategoryPenjualan"></select>
+                            <span asp-validation-for="MasterKategoriPenjualan" class="text-danger"></span>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+
+                            <label asp-for="MasterKategoriBayaran" class="control-label">Kategori Pembayaran</label>
+
+                            <select asp-for="MasterKategoriBayaran" class="form-control" asp-items="ViewBag.NamaKategoryBayaran"></select>
+                            <span asp-validation-for="MasterKategoriBayaran" class="text-danger"></span>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+
+                            <label asp-for="NamaSalesId" class="control-label">Nama Sales</label>
+
+                            <select asp-for="NamaSalesId" class="form-control" asp-items="ViewBag.NamaSalesForce"></select>
+                            <span asp-validation-for="NamaSalesId" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </form>
+        </div>
+    </div>
+
+<hr />
+<hr />
+
+<script>
+    $('#datepicker1').datepicker({
+        changeMonth: true,
+        changeYear: true,
+       // appendText: "(Tanggal-Bulan-Tahun)",
+        dateFormat: "dd-mm-yy",
+        yearRange: "c-100:c+10"
+
+    });
+    $('#Angsuran1').keypress(function (e) {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+
+        return false;
+    });
+    $('#Angsuran1').keydown(function (e) {
+        // return /[0-9]/.test(String.fromCharCode(e.which));
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+        return false;
+    });
+    $('#Tenor1').keypress(function (e) {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+
+        return false;
+    });
+    $('#Tenor1').keydown(function (e) {
+        // return /[0-9]/.test(String.fromCharCode(e.which));
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+        return false;
+    });
+
+</script>
