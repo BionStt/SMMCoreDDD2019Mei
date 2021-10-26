@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SumberMas2015.Inventory.Dto
+namespace SumberMas2015.Inventory.ServiceApplication.Supplier.Queries.GetNamaSupplier
 {
-    public class CreateSupplierRequest
+    public class GetNamaSupplierQueryHandler
     {
         
     }

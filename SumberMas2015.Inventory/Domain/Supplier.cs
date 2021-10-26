@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SumberMas2015.Inventory.Domain.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

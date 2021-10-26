@@ -13,10 +13,12 @@ namespace SumberMas2015.Inventory.InfrastructureData.Configuration
     {
         public void Configure(EntityTypeBuilder<Pembelian> builder)
         {
-            builder.ToTable("Agama");
+            builder.ToTable("Pembelian");
             builder.HasKey(e => e.NoUrutId);
             builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
 
+            builder.Property(e => e.TanggalBeli).HasColumnType("datetime")
+                .HasDefaultValueSql("(getdate())");
 
 
         }

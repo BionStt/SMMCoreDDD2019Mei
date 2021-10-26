@@ -1,0 +1,146 @@
+﻿@model  SumberMas2015.Inventory.Dto.CreateSupplierRequest
+
+@{
+    ViewData["Title"] = "Create";
+   // Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                    <label asp-for="IDSupplier" class="control-label"></label>
+                    <input asp-for="IDSupplier" class="form-control" />
+                    <span asp-validation-for="IDSupplier" class="text-danger"></span>
+                </div>*@
+
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="NamaSupplier" class="control-label"></label>
+                        <input asp-for="NamaSupplier" class="form-control" />
+                        <span asp-validation-for="NamaSupplier" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Jalan" class="control-label"></label>
+
+                        <input asp-for="Jalan" class="form-control" />
+                        <span asp-validation-for="Jalan" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label asp-for="Kelurahan" class="control-label"></label>
+
+                        <input asp-for="Kelurahan" class="form-control" />
+                        <span asp-validation-for="Kelurahan" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Kecamatan" class="control-label"></label>
+
+                        <input asp-for="Kecamatan" class="form-control" />
+                        <span asp-validation-for="Kecamatan" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <label asp-for="Kota" class="control-label"></label>
+                        <input asp-for="Kota" class="form-control" />
+                        <span asp-validation-for="Kota" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Propinsi" class="control-label"></label>
+
+                        <input asp-for="Propinsi" class="form-control" />
+                        <span asp-validation-for="Propinsi" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="KodePos" class="control-label"></label>
+
+                        <input asp-for="KodePos" class="form-control" />
+                        <span asp-validation-for="KodePos" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="NomorTelepon" class="control-label"></label>
+                        <input asp-for="NomorTelepon" class="form-control" />
+                        <span asp-validation-for="NomorTelepon" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="NomorFaks" class="control-label"></label>
+
+                        <input asp-for="NomorFaks" class="form-control" />
+                        <span asp-validation-for="NomorFaks" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+
+                        <input type="submit" value="Create" class="btn btn-primary" />
+
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+<hr />
+<hr />

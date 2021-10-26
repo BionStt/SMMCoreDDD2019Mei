@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SumberMas2015.Inventory.Dto;
+using SumberMas2015.Inventory.DtoMapping;
 using System.Threading.Tasks;
 
 namespace SMMCoreDDD2019.AdminLte.Controllers
@@ -14,11 +16,13 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CreateMasterSupplierDBCommand SupplierViewModel)
+        public async Task<IActionResult> Create(CreateSupplierRequest SupplierViewModel)
         {
             if (ModelState.IsValid)
             {
-                await Mediator.Send(SupplierViewModel);
+                var xx = SupplierViewModel.ToCommand();
+                await _mediator.Send(xx);
+
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
             return View(SupplierViewModel);

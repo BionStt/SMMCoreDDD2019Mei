@@ -6,9 +6,8 @@
 
   <ItemGroup>
     <Folder Include="Domain\EnumInEntity\" />
-    <Folder Include="DtoMapping\" />
     <Folder Include="InfrastructureData\Migrations\" />
-    <Folder Include="ServiceApplication\Supplier\Queries\" />
+    <Folder Include="ServiceApplication\Pembelian\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
