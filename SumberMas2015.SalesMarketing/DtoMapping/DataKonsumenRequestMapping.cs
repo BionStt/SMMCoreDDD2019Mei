@@ -1,12 +1,14 @@
 ﻿using SumberMas2015.SalesMarketing.Dto.DataKonsumen;
 using SumberMas2015.SalesMarketing.Dto.DataSPK;
 using SumberMas2015.SalesMarketing.Dto.MasterBarang;
+using SumberMas2015.SalesMarketing.Dto.Penjualan;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataKonsumen.Commands.CreateDataKonsumen;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.CreateDataSPKKendaraan;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.CreateDataSPKKredit;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.CreateDataSPKLeasing;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.CreateDataSPKSurvei;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterBarang.Commands.CreateMasterBarang;
+using SumberMas2015.SalesMarketing.ServiceApplication.Penjualan.Commands.CreatePenjualan;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,21 @@ namespace SumberMas2015.SalesMarketing.DtoMapping
 {
     public static class DataKonsumenRequestMapping
     {
+        public static CreatePenjualanCommand ToCommand(this CreatePenjualanRequest model)
+        {
+            return new CreatePenjualanCommand {
+                DataSPKId = model.DataSPKId,
+                DataKonsumenId = model.DataKonsumenId,
+                MasterLeasingCabang = model.MasterLeasingCabang,
+                NoBuku = model.NoBuku,
+                MasterKategoriPenjualan = model.MasterKategoriPenjualan,
+                Keterangan = model.Keterangan,
+                UserNameInput =model.UserNameInput,
+                Mediator = model.Mediator
+
+            };
+
+        }
         public static CreateMasterBarangCommand ToCommand(this CreateMasterBarangRequest model)
         {
             return new CreateMasterBarangCommand {

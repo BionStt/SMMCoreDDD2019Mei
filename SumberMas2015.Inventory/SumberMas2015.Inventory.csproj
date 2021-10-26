@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Domain\EnumInEntity\" />
+    <Folder Include="Dto\" />
+    <Folder Include="DtoMapping\" />
+    <Folder Include="InfrastructureData\Configuration\" />
+    <Folder Include="InfrastructureData\Context\" />
+    <Folder Include="InfrastructureData\Migrations\" />
+    <Folder Include="ServiceApplication\" />
+  </ItemGroup>
+
+</Project>

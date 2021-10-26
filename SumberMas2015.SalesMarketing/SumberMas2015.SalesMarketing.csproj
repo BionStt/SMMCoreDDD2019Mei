@@ -24,6 +24,7 @@
     <Folder Include="Dto\DataPenjualan\" />
     <Folder Include="ServiceApplication\DataKonsumen\Queries\" />
     <Folder Include="ServiceApplication\DataPenjualan\Queries\" />
+    <Folder Include="ServiceApplication\Penjualan\Queries\" />
   </ItemGroup>
 
 </Project>

@@ -11,25 +11,25 @@ namespace SumberMas2015.SalesMarketing.Domain
 
         public Guid DataPenjualanId { get; set; }
         public string NoRegistrasiPenjualan { get; private set; }
-        public Guid? DataSPKId { get; private set; }
-        public Guid? DataKonsumenId { get; private set; }
-        public Guid? MasterLeasingCabangId { get; private set; }
+        public Guid DataSPKId { get; private set; }
+        public Guid DataKonsumenId { get; private set; }
+        public Guid MasterLeasingCabangId { get; private set; }
         public string NoBuku { get; private set; }
-        public Guid? SalesUserId { get; private set; }
+        public Guid SalesUserId { get; private set; }
         public string Keterangan { get; private set; }
         public string Batal { get; private set; }
-        public Guid? MasterKategoriPenjualanId { get; private set; }
+        public Guid MasterKategoriPenjualanId { get; private set; }
         public string Mediator { get; private set; }
         //   public int? KdMarco { get; set; }
-        public Guid? UserInputId { get; private set; }
+      //  public Guid UserInputId { get; private set; }
         public string UserNameInput { get; private set; }
-        public DateTime? TanggalPenjualan { get; private set; }
+        public DateTime TanggalPenjualan { get; private set; }
         public int NoUrutId { get; set; }
         protected DataPenjualan()
         {
 
         }
-        private DataPenjualan(Guid? dataSPKId, Guid? dataKonsumenId, Guid? masterLeasingCabangId, string noBuku, Guid? salesUserId, string keterangan,  Guid? masterKategoriPenjualanId, string mediator, string userNameInput)
+        private DataPenjualan(Guid dataSPKId, Guid dataKonsumenId, Guid masterLeasingCabangId, string noBuku, Guid salesUserId, string keterangan,  Guid masterKategoriPenjualanId, string mediator, string userNameInput)
         {
             DataPenjualanId = Guid.NewGuid();
 
@@ -47,7 +47,7 @@ namespace SumberMas2015.SalesMarketing.Domain
             UserNameInput = userNameInput;
            // TanggalPenjualan = tanggalPenjualan;
         }
-        public static DataPenjualan CreateDataPenjualan(Guid? dataSPKId, Guid? dataKonsumenId, Guid? masterLeasingCabangId, string noBuku, Guid? salesUserId, string keterangan, Guid? masterKategoriPenjualanId, string mediator, string userNameInput)
+        public static DataPenjualan CreateDataPenjualan(Guid dataSPKId, Guid dataKonsumenId, Guid masterLeasingCabangId, string noBuku, Guid salesUserId, string keterangan, Guid masterKategoriPenjualanId, string mediator, string userNameInput)
         {
             return new DataPenjualan(dataSPKId,dataKonsumenId,masterLeasingCabangId,noBuku,salesUserId,keterangan,masterKategoriPenjualanId,mediator,userNameInput);
         }
