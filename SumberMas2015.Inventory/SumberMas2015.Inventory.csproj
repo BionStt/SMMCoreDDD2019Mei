@@ -6,12 +6,24 @@
 
   <ItemGroup>
     <Folder Include="Domain\EnumInEntity\" />
-    <Folder Include="Dto\" />
     <Folder Include="DtoMapping\" />
-    <Folder Include="InfrastructureData\Configuration\" />
-    <Folder Include="InfrastructureData\Context\" />
     <Folder Include="InfrastructureData\Migrations\" />
-    <Folder Include="ServiceApplication\" />
+    <Folder Include="ServiceApplication\Supplier\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
