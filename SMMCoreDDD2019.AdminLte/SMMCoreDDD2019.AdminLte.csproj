@@ -25,6 +25,7 @@
     <ProjectReference Include="..\SmmCoreDDD2019.Infrastructure\SmmCoreDDD2019.Infrastructure.csproj" />
     <ProjectReference Include="..\SmmCoreDDD2019.Persistence\SmmCoreDDD2019.Persistence.csproj" />
     <ProjectReference Include="..\SumberMas2015.Inventory\SumberMas2015.Inventory.csproj" />
+    <ProjectReference Include="..\SumberMas2015.Organization\SumberMas2015.Organization.csproj" />
     <ProjectReference Include="..\SumberMas2015.SalesMarketing\SumberMas2015.SalesMarketing.csproj" />
   </ItemGroup>
 

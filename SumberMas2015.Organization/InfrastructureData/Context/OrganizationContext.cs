@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SumberMas2015.Organization.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,12 @@ namespace SumberMas2015.Organization.InfrastructureData.Context
             builder.ApplyConfigurationsFromAssembly(typeof(OrganizationContext).Assembly);//test pakai ini
         }
 
-       // public DbSet<Pembelian> Pembelian { get; set; }
+        public DbSet<DataPerusahaan> DataPerusahaan { get; set; }
+        public DbSet<DataPerusahaanCabang> DataPerusahaanCabang { get; set; }
+
+
+
+
+
     }
 }

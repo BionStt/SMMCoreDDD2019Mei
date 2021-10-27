@@ -1,6 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SumberMas2015.Organization.Dto.DataPerusahaan;
+using SumberMas2015.Organization.Dto.DataPerusahaanCabang;
+using SumberMas2015.Organization.DtoMapping;
+using SumberMas2015.Organization.ServiceApplication.DataPerusahaan.Queries.GetNamaPerusahaan;
 using System.Threading.Tasks;
 
 namespace SMMCoreDDD2019.AdminLte.Controllers
@@ -14,46 +18,49 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             _mediator = mediator;
         }
 
-        //[HttpGet]
-        //[Route("DataPerusahaan/DataCabangCreate")]
-        //public async Task<IActionResult> DataCabangCreate()
-        //{
-        //    var DataPerusahaan = await Mediator.Send(new GetNamaPerusahaanQuery());
-        //    ViewData["NamaPerusahaan"] = new SelectList(DataPerusahaan.NamaPerusahaanBDs, "IDPerusahaan", "NamaPerusahaan");
+        [HttpGet]
+        [Route("DataPerusahaan/DataCabangCreate")]
+        public async Task<IActionResult> DataCabangCreate()
+        {
+            var DataPerusahaan = await _mediator.Send(new GetNamaPerusahaanQuery());
+            ViewData["NamaPerusahaan"] = new SelectList(DataPerusahaan, "IDPerusahaan", "NamaPerusahaan");
 
-        //    return View();
-        //}
+            return View();
+        }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //[Route("DataPerusahaan/DataCabangCreate")]
-        //public async Task<IActionResult> DataCabangCreate(CreateDataPerusahaanCabangCommand DataPerusahaanCabangViewModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        await Mediator.Send(DataPerusahaanCabangViewModel);
-        //        // return RedirectToAction(nameof(DataPerusahaanController.DataCabangCreate), "DataPerusahaan");
-        //    }
-        //    return View(DataPerusahaanCabangViewModel);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("DataPerusahaan/DataCabangCreate")]
+        public async Task<IActionResult> DataCabangCreate(CreateDataPerusahaanCabangRequest DataPerusahaanCabangViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var xx = DataPerusahaanCabangViewModel.ToCommand();
+                await _mediator.Send(xx);
+                // return RedirectToAction(nameof(DataPerusahaanController.DataCabangCreate), "DataPerusahaan");
+            }
+            return View(DataPerusahaanCabangViewModel);
+        }
 
-        //[HttpGet]
-        //public IActionResult CreateDataPerusahaan()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public IActionResult CreateDataPerusahaan()
+        {
+            return View();
+        }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> CreateDataPerusahaan(CreateDataPerusahaanCommand DataPerusahaanViewModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        await Mediator.Send(DataPerusahaanViewModel);
-        //        return RedirectToAction(nameof(DataPerusahaanController.DataCabangCreate), "DataPerusahaan");
-        //    }
-        //    return View(DataPerusahaanViewModel);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateDataPerusahaan(CreateDataPerusahaanRequest DataPerusahaanViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var xx = DataPerusahaanViewModel.ToCommand();
+                await _mediator.Send(DataPerusahaanViewModel);
+
+                return RedirectToAction(nameof(DataPerusahaanController.DataCabangCreate), "DataPerusahaan");
+            }
+            return View(DataPerusahaanViewModel);
+        }
 
 
         //public async Task<IActionResult> CreateStructureOrganization()
