@@ -37,4 +37,9 @@
     <None Include="wwwroot\adminlte\components\select2\.github\PULL_REQUEST_TEMPLATE.md" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\DataPerusahaan\" />
+    <Folder Include="Views\Penjualan\" />
+  </ItemGroup>
+
 </Project>
