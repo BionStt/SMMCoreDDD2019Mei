@@ -20,7 +20,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.Creat
 
         public async Task<Guid> Handle(CreateDataSPKCommand request, CancellationToken cancellationToken)
         {
-            var dtSPK = Domain.DataSPK.CreateDataSPKBaru(request.NamaLokasi, request.TanggalInput, request.UserName);
+            var dtSPK = Domain.DataSPK.CreateDataSPKBaru(request.NamaLokasi,  request.UserName);
 
             await _context.DataSPK.AddAsync(dtSPK);
             await _context.SaveChangesAsync();

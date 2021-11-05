@@ -8,21 +8,22 @@ namespace SumberMas2015.SalesMarketing.Dto.Penjualan
 {
     public class CreateDataPenjualanDetailRequest
     {
-        public  decimal bBN { get; set; }
+        public  decimal BBN { get; set; }
         public decimal uangMuka { get;  set; }
-        public decimal subsidi { get;  set; }
-        public Guid stokUnitId { get;  set; }
-        public decimal sPF { get;  set; }
-        public decimal sellOut { get;  set; }
+        public decimal Subsidi { get;  set; }
+        public int NoUrutSO { get;  set; }
+        public decimal SPF { get;  set; }
+        public decimal SellOut { get;  set; }
         public decimal promosi { get;  set; }
-        public Guid dataPenjualanId { get;  set; }
-        public decimal dendaWilayah { get;  set; }
-        public decimal diskonKredit { get;  set; }
-        public decimal diskonTunai { get;  set; }
-        public decimal hargaOTR { get;  set; }
-        public decimal joinPromo1 { get;  set; }
-        public decimal joinPromo2 { get;  set; }
-        public decimal offTheRoad { get;  set; }
-        public decimal komisi { get;  set; }
+        public int KodePenjualan { get;  set; }
+        public decimal DendaWilayah { get;  set; }
+        public decimal DiskonKredit { get;  set; }
+        public decimal DiskonTunai { get;  set; }
+        public decimal HargaOTR { get;  set; }
+        public decimal HargaOffTheRoad { get; set; }
+        public decimal JoinPromo1 { get;  set; }
+        public decimal JoinPromo2 { get;  set; }
+        public decimal OffTheRoad { get;  set; }
+        public decimal Komisi { get;  set; }
     }
 }

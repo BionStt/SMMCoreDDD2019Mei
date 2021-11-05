@@ -9,6 +9,7 @@ namespace SumberMas2015.SalesMarketing.Domain
 {
     public class DataSPKSurvei
     {
+    
         public Guid DataSPKSurveiId { get; set; }
         public string NoKTPPemesan { get; private set; }
         public Name NamaPemesan { get; private set; }
@@ -24,11 +25,11 @@ namespace SumberMas2015.SalesMarketing.Domain
         {
 
         }
-        public static DataSPKSurvei CreateDataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan)
+        public static DataSPKSurvei CreateDataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan, Guid dataSPKId)
         {
-            return new DataSPKSurvei(noKTPPemesan,namaPemesan, alamatPemesan, dataNPWPPemesan,pekerjaanPemesan);
+            return new DataSPKSurvei(noKTPPemesan,namaPemesan, alamatPemesan, dataNPWPPemesan,pekerjaanPemesan, dataSPKId);
         }
-        private DataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan)
+        private DataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan, Guid dataSPKId)
         {
             DataSPKSurveiId = Guid.NewGuid();
             NoKTPPemesan = noKTPPemesan;
@@ -36,6 +37,7 @@ namespace SumberMas2015.SalesMarketing.Domain
             AlamatPemesan = alamatPemesan;
             DataNPWPPemesan = dataNPWPPemesan;
             PekerjaanPemesan = pekerjaanPemesan;
+            DataSPKId = dataSPKId;
         }
         public void EditDataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan)
         {

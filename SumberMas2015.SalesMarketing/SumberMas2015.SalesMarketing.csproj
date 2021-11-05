@@ -21,9 +21,12 @@
 
   <ItemGroup>
     <Folder Include="Domain\Events\" />
-    <Folder Include="Dto\DataPenjualan\" />
     <Folder Include="ServiceApplication\DataPenjualan\Queries\" />
-    <Folder Include="ServiceApplication\Penjualan\Queries\NewFolder\" />
+    <Folder Include="ServiceApplication\PermohonanFaktur\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SumberMas2015.Inventory\SumberMas2015.Inventory.csproj" />
   </ItemGroup>
 
 </Project>

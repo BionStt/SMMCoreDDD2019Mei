@@ -21,7 +21,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
             builder.Property(e => e.Mediator).HasMaxLength(30).IsUnicode(false);
             builder.Property(e => e.NamaCmo).HasMaxLength(30).IsUnicode(false);
             //   builder.Property(e => e.NamaSales);
-            builder.Property(e => e.TanggalSurvei).HasColumnType("datetime").HasDefaultValueSql("GetUtcDate()");
+           // builder.Property(e => e.TanggalSurvei).HasColumnType("datetime").HasDefaultValueSql("GetUtcDate()");
 
         }
     }

@@ -1,0 +1,166 @@
+﻿@model SumberMas2015.SalesMarketing.Dto.Penjualan.CreatePenjualanRequest
+
+@{
+    ViewData["Title"] = "Penjualan";
+    //Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Penjualan">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <div class="col-md-6">
+                    <div class="form-group">
+
+                        <label asp-for="DataSPKId" class="control-label"></label>
+
+                        <select asp-for="DataSPKId" class="form-control" asp-items="@ViewBag.DataSPK1"></select>
+                        <span asp-validation-for="DataSPKId" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="TanggalPenjualan" class="control-label"></label>
+
+                        <input id="datepicker1" asp-for="TanggalPenjualan" class="form-control" />
+                        <span asp-validation-for="TanggalPenjualan" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                    <div class="form-group">
+
+                        <label asp-for="DataKonsumenId" class="control-label"></label>
+
+                        <select asp-items="@ViewBag.DataKonsumen" asp-for="DataKonsumenId" class="form-control"></select>
+
+                        <span asp-validation-for="DataKonsumenId" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="MasterLeasingCabang" class="control-label"></label>
+
+                        <select asp-items="@ViewBag.NamaLeasingCabang" asp-for="MasterLeasingCabang" class="form-control"></select>
+                        <span asp-validation-for="MasterLeasingCabang" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="NoBuku" class="control-label"></label>
+
+                        <input asp-for="NoBuku" class="form-control" />
+                        <span asp-validation-for="NoBuku" class="text-danger"></span>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="NamaSales" class="control-label"></label>
+
+                        <select asp-for="NamaSales" class="form-control" asp-items="@ViewBag.NamaSalesForce"></select>
+                        <span asp-validation-for="NamaSales" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                    <div class="form-group">
+
+                        <label asp-for="Mediator" class="control-label"></label>
+
+                        <input asp-for="Mediator" class="form-control" />
+                        <span asp-validation-for="Mediator" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="MasterKategoriPenjualan" class="control-label"></label>
+
+                        <select asp-for="MasterKategoriPenjualan" class="form-control" asp-items="@ViewBag.NamaKategoryPenjualan"></select>
+                        <span asp-validation-for="MasterKategoriPenjualan" class="text-danger"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div class="form-group">
+
+                        <label asp-for="Keterangan" class="control-label"></label>
+
+                        <input asp-for="Keterangan" class="form-control" />
+                        <span asp-validation-for="Keterangan" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div hidden class="form-group">
+                        <div>
+                           
+
+                            <label asp-for="UserNameInput" class="control-label"></label>
+                            <input asp-for="UserNameInput" class="form-control" />
+                            <span asp-validation-for="UserNameInput" class="text-danger"></span>
+
+                          
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div class="form-group">
+
+                        <input type="submit" value="Create" class="btn btn-primary" />
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<hr />
+<hr />
+<script>
+    $('#datepicker1').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        appendText: "(Tanggal-Bulan-Tahun)",
+        dateFormat: "dd-mm-yy",
+        yearRange: "c-100:c+10"
+
+    });
+</script>

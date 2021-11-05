@@ -12,11 +12,11 @@ namespace SumberMas2015.SalesMarketing.Domain
         {
 
         }
-        public static DataSPKLeasing CreateDataSPKLeasing(decimal? angsuran, string mediator, string namaCmo, Guid namaSales, int? tenor)
+        public static DataSPKLeasing CreateDataSPKLeasing(decimal? angsuran, string mediator, string namaCmo, Guid namaSales, int? tenor, DateTime? tanggalSurvei, Guid dataSPKId)
         {
-            return new DataSPKLeasing(angsuran,mediator,namaCmo,namaSales,tenor);
+            return new DataSPKLeasing(angsuran,mediator,namaCmo,namaSales,tenor,tanggalSurvei, dataSPKId);
         }
-        private DataSPKLeasing(decimal? angsuran, string mediator, string namaCmo, Guid namaSales, int? tenor)//, DateTime? tanggalSurvei)
+        private DataSPKLeasing(decimal? angsuran, string mediator, string namaCmo, Guid namaSales, int? tenor, DateTime? tanggalSurvei, Guid dataSPKId)//, DateTime? tanggalSurvei)
         {
             DataSPKLeasingId = Guid.NewGuid();
             Angsuran = angsuran;
@@ -24,7 +24,9 @@ namespace SumberMas2015.SalesMarketing.Domain
             NamaCmo = namaCmo;
             NamaSales = namaSales;
             Tenor = tenor;
-           // TanggalSurvei = tanggalSurvei;
+            TanggalSurvei = tanggalSurvei;
+            DataSPKId = dataSPKId;
+            // TanggalSurvei = tanggalSurvei;
         }
         public void EditDataSpkLeasing(decimal? angsuran, string mediator, string namaCmo, Guid namaSales, int? tenor, DateTime? tanggalSurvei)
         {
@@ -36,6 +38,7 @@ namespace SumberMas2015.SalesMarketing.Domain
             TanggalSurvei = tanggalSurvei;
         }
         public Guid DataSPKLeasingId { get; set; }
+        public Guid DataSPKId { get; set; }
         public decimal? Angsuran { get; private set; }
         public string Mediator { get; private set; }
         public string NamaCmo { get; private set; }

@@ -131,7 +131,8 @@ namespace SumberMas2015.SalesMarketing.DtoMapping
                 PekerjaanPemesan = model.PekerjaanPemesan,
                 DataNPWPPemesan = Domain.ValueObjects.DataNPWP.Create(model.NomorNPWP,model.NamaNPWP,Domain.ValueObjects.Alamat.CreateAlamat(model.JalanNPWP,model.KelurahanNPWP,model.KecamatanNPWP,
                 model.KotaNPWP,model.PropinsiNPWP,model.KodePosNPWP,model.NomorTeleponNPWP,model.NomorFaksNPWP,model.NomorHandphoneNPWP)),
-                DataSPKId = model.DataSPKId
+                DataSPKId = model.DataSPKId,
+                LokasiSPK = model.LokasiSPK
 
             };
         }

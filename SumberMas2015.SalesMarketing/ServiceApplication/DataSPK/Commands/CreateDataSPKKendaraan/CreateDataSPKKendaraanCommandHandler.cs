@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using SumberMas2015.SalesMarketing.InfrastructureData.Context;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterBarang.Queries.MasterBarangById;
 using System;
@@ -23,7 +24,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.Creat
         public async Task<Guid> Handle(CreateDataSPKKendaraanCommand request, CancellationToken cancellationToken)
         {
             var mstBarang = await _mediator.Send(new MasterBarangByIdQuery { MasterBarangId = request.MasterBarangId});
-            var dtSPKId = Guid.NewGuid();
+            var dtSPKId = await _context.DataSPK.Where(x => x.NoUrutId == request.DataSPKId).Select(x=>x.DataSPKId).SingleOrDefaultAsync();
 
             var dtSpkKendaraan = Domain.DataSPKKendaraan.CreateDataSPKKendaraan(request.TahunPerakitan,request.Warna,request.NamaSTNK,request.NoKTPSTNK, mstBarang.MasterBarangIdGuid, dtSPKId);
 

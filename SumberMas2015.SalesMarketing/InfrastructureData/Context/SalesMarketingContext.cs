@@ -46,7 +46,11 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Context
         public DbSet<DataKonsumen> DataKonsumen { get; set; }
         public DbSet<DataPenjualan> DataPenjualan { get; set; }
         public DbSet<DataPenjualanDetail> DataPenjualanDetail { get; set; }
+        public DbSet<DataSalesMarketing> DataSalesMarketing { get; set; }
 
+        public DbSet<PermohonanSTNK> PermohonanSTNK { get; set; }
+        public DbSet<PermohonanFaktur> PermohonanFaktur { get; set; }
+        public DbSet<PermohonanBPKB> PermohonanBPKB { get; set; }
 
 
 

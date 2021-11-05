@@ -40,7 +40,6 @@
 
   <ItemGroup>
     <Folder Include="Views\DataPerusahaan\" />
-    <Folder Include="Views\Penjualan\" />
   </ItemGroup>
 
 </Project>

@@ -23,6 +23,10 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         {
             _mediator = mediator;
         }
+        public IActionResult CreateDataSPK()
+        {
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]

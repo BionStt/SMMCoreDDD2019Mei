@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using SumberMas2015.SalesMarketing.InfrastructureData.Context;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Queries.DataSPKById;
 using System;
@@ -23,11 +24,11 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.Creat
 
         public async Task<Guid> Handle(CreateDataSPKKreditCommand request, CancellationToken cancellationToken)
         {
-            var dtSPK = await _mediator.Send(new DataSPKByIdQuery { DataSPKId = request.DataSPKId });
+            var dtSPK = await _context.DataSPK.Where(x => x.NoUrutId == request.DataSPKId).Select(x=>x.DataSPKId).SingleOrDefaultAsync();
 
             var dtSPKKredit = Domain.DataSPKKredit.CreateDataSPKKredit(request.BiayaAdministrasiKredit,
                 request.BiayaAdministrasiTunai, request.BBN, request.DendaWilayah, request.DiskonDP, request.DiskonTunai,
-                request.DPPriceList, request.Komisi, request.OffTheRoad, request.Promosi, request.UangTandaJadiTunai, request.UangTandaJadiTunai, dtSPK.DataSPKId);
+                request.DPPriceList, request.Komisi, request.OffTheRoad, request.Promosi, request.UangTandaJadiTunai, request.UangTandaJadiTunai, dtSPK);
 
             await _context.DataSPKKredit.AddAsync(dtSPKKredit);
             await _context.SaveChangesAsync();

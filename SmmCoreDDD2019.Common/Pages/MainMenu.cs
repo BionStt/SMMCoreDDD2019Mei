@@ -24,6 +24,56 @@ namespace SmmCoreDDD2019.Common.Pages
             public const string ControllerName = "Customers";
             public const string ActionName = "EditCustomer";
         }
+        public static class CreateDataSPK
+        {
+            public const string PageName = "Create Data SPK";
+            public const string RoleName = "Create Data SPK";
+            public const string Path = "/DataSPK/CreateDataSPK";
+            public const string ControllerName = "DataSPK";
+            public const string ActionName = "CreateDataSPK";
+        }
+        public static class CreateMasterBarang
+        {
+            public const string PageName = "Create Data Master Barang";
+            public const string RoleName = "Create Data Master Barang";
+            public const string Path = "/MasterBarang/Create";
+            public const string ControllerName = "MasterBarang";
+            public const string ActionName = "Create";
+        }
+        public static class CreateSupplier
+        {
+            public const string PageName = "Create Data Master Supplier";
+            public const string RoleName = "Create Data Master Supplier";
+            public const string Path = "/Supplier/Create";
+            public const string ControllerName = "Supplier";
+            public const string ActionName = "Create";
+        }
+        public static class CreatePembelian
+        {
+            public const string PageName = "Create Data Pembelian";
+            public const string RoleName = "Create Data Pembelian";
+            public const string Path = "/Pembelian/CreatePembelian";
+            public const string ControllerName = "Pembelian";
+            public const string ActionName = "CreatePembelian";
+        }
+
+        public static class CreatePembelianPO
+        {
+            public const string PageName = "Create Data Purchase Order Pembelian";
+            public const string RoleName = "Create Data Purchase Order Pembelian";
+            public const string Path = "/Pembelian/CreatePembelianPO";
+            public const string ControllerName = "Pembelian";
+            public const string ActionName = "CreatePembelianPO";
+        }
+        public static class CreatePenjualan
+        {
+            public const string PageName = "Create Data Penjualan";
+            public const string RoleName = "Create Data Penjualan";
+            public const string Path = "/Penjualan/CreatePenjualan";
+            public const string ControllerName = "Penjualan";
+            public const string ActionName = "CreatePenjualan";
+        }
+
         public static class AccountingDataJournal
         {
             public const string PageName = "Data Journal";

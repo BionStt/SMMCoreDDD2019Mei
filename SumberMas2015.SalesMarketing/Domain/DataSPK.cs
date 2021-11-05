@@ -9,22 +9,22 @@ namespace SumberMas2015.SalesMarketing.Domain
 {
     public class DataSPK
     {
-        private DataSPK(string lokasiSpk, DateTime? tanggalInput, string userNameInput)
+        private DataSPK(string lokasiSpk,  string userNameInput)
         {
             if (lokasiSpk == null) throw new ArgumentNullException("Lokasi SPK tidak boleh kosong");
             DataSPKId = Guid.NewGuid();
             NoRegistrasiSPK = KodeRegistrasi(DateTime.Now);
             LokasiSpk = lokasiSpk;
             //  Terinput = terinput;
-            TanggalInput = tanggalInput;
+         //   TanggalInput = tanggalInput;
             //  Tolak = tolak;
             //UserId = userId;
             UserNameInput = userNameInput;
             StatusSPK = 0;
         }
-        public static DataSPK CreateDataSPKBaru(string lokasiSpk,  DateTime? tanggallInput,   string userNameInput)
+        public static DataSPK CreateDataSPKBaru(string lokasiSpk,     string userNameInput)
         {
-            return new DataSPK(lokasiSpk, tanggallInput, userNameInput);
+            return new DataSPK(lokasiSpk,  userNameInput);
         }
         private void Ditolak()
         {
@@ -81,9 +81,9 @@ namespace SumberMas2015.SalesMarketing.Domain
         private readonly List<DataSPKSurvei> _dataSPKSurvei = new List<DataSPKSurvei>();
         public IReadOnlyCollection<DataSPKSurvei> DataSPKSurvei => _dataSPKSurvei.AsReadOnly();
 
-        public DataSPKSurvei AddDataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan)
+        public DataSPKSurvei AddDataSPKSurvei(string noKTPPemesan, Name namaPemesan, Alamat alamatPemesan, DataNPWP dataNPWPPemesan, string pekerjaanPemesan,Guid DataSpkId)
         {
-            var DtSPKSurvei = Domain.DataSPKSurvei.CreateDataSPKSurvei(noKTPPemesan,namaPemesan,alamatPemesan,dataNPWPPemesan,pekerjaanPemesan);
+            var DtSPKSurvei = Domain.DataSPKSurvei.CreateDataSPKSurvei(noKTPPemesan,namaPemesan,alamatPemesan,dataNPWPPemesan,pekerjaanPemesan, DataSpkId);
             _dataSPKSurvei.Add(DtSPKSurvei);
             return DtSPKSurvei;
         }
@@ -97,9 +97,9 @@ namespace SumberMas2015.SalesMarketing.Domain
         private readonly List<DataSPKLeasing> _dataSpkLeasing = new List<DataSPKLeasing>();
         public IReadOnlyCollection<DataSPKLeasing> DataSPKLeasing => _dataSpkLeasing.AsReadOnly();
 
-        public DataSPKLeasing AddDataSPKLeasing(decimal? angsuran, string mediator, string namaCmo, Guid namaSales, int? tenor, DateTime? tanggalSurvei)
+        public DataSPKLeasing AddDataSPKLeasing(decimal? angsuran, string mediator, string namaCmo, Guid namaSales, int? tenor, DateTime? tanggalSurvei,Guid DataSpkId)
         {
-            var dataSpkLeasing = Domain.DataSPKLeasing.CreateDataSPKLeasing(angsuran,mediator,namaCmo,namaSales,tenor);
+            var dataSpkLeasing = Domain.DataSPKLeasing.CreateDataSPKLeasing(angsuran,mediator,namaCmo,namaSales,tenor, tanggalSurvei, DataSpkId);
             _dataSpkLeasing.Add(dataSpkLeasing);
             return dataSpkLeasing;
         }
