@@ -9,8 +9,8 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataPenjualan.Commands
 {
     public class CreateDataPenjualanDetailCommand : IRequest<Guid>
     {
-        public Guid dataPenjualanId{get;set;}
-        public Guid stokUnitId { get; set; }
+        public int dataPenjualanId{get;set;}
+        public int stokUnitId { get; set; }
         public decimal offTheRoad { get; set; }
         public decimal bBN { get; set; }
         public decimal hargaOTR { get; set; }

@@ -9,7 +9,8 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.PermohonanFaktur.Comma
 {
     public class CreatePermohonanFakturCommand:IRequest<Guid>
     {
-      
+
+        public DateTime TanggalInput { get; set; }
         public int? KodePenjualanDetail { get; set; }
        
         public DateTime? TanggalLahir { get; set; }
@@ -31,7 +32,8 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.PermohonanFaktur.Comma
         public string KodePos { get; set; }
       
         public string Telepon { get; set; }
-     
+        public string NomorFaks { get; set; }
+
         public string HandphoneF { get; set; }
     }
 }

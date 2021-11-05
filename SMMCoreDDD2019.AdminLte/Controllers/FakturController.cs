@@ -5,7 +5,13 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SmmCoreDDD2019.Application.Penjualans.Query.GetNamaPenjualanFaktur;
+using SumberMas2015.SalesMarketing.Dto.PermohonanBPKB;
+using SumberMas2015.SalesMarketing.Dto.PermohonanFaktur;
+using SumberMas2015.SalesMarketing.Dto.PermohonanSTNK;
+using SumberMas2015.SalesMarketing.DtoMapping;
+using SumberMas2015.SalesMarketing.ServiceApplication.Penjualan.Queries.GetNamaPenjualanFaktur;
+using SumberMas2015.SalesMarketing.ServiceApplication.PermohonanSTNK.Queries.GetNamaFakturBPKB;
+using SumberMas2015.SalesMarketing.ServiceApplication.PermohonanSTNK.Queries.GetNamaFakturStnk;
 
 namespace SMMCoreDDD2019.AdminLte.Controllers
 {
@@ -23,17 +29,19 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         {
             var NamaKonsumen1 = await _mediator.Send(new GetNamaPenjualanFakturQuery());
 
-            ViewData["NamaKonsumen1"] = new SelectList(NamaKonsumen1.DataPenjualanFakturDs, "NoPenjualanDetail", "NamaKonsumen1");
+            ViewData["NamaKonsumen1"] = new SelectList(NamaKonsumen1, "NoPenjualanDetail", "NamaKonsumen1");
 
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateMohonFaktur(CreatePermohonanFakturCommand CreatePermohonanFakturCommand1)
+        public async Task<IActionResult> CreateMohonFaktur(CreatePermohonanFakturRequest CreatePermohonanFakturCommand1)
         {
             if (ModelState.IsValid)
             {
-                await Mediator.Send(CreatePermohonanFakturCommand1);
+                var xx = CreatePermohonanFakturCommand1.ToCommand();
+
+                await _mediator.Send(xx);
                 return RedirectToAction(nameof(FakturController.CreateMohonFaktur), "Faktur");
 
             }
@@ -45,18 +53,20 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateMohonSTNK()
         {
-            var NamaKonsumen1 = await Mediator.Send(new GetNamaFakturStnkQuery());
+            var NamaKonsumen1 = await _mediator.Send(new GetNamaFakturStnkQuery());
 
-            ViewData["NamaKonsumen1"] = new SelectList(NamaKonsumen1.DataFakturStnkDs, "NoUrutFaktur1", "NamaFaktur");
+            ViewData["NamaKonsumen1"] = new SelectList(NamaKonsumen1, "NoUrutFaktur1", "NamaFaktur");
 
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateMohonSTNK(CreateSTNKDBCommand CreateSTNKDBCommand1)
+        public async Task<IActionResult> CreateMohonSTNK(CreatePermohonanSTNKRequest CreateSTNKDBCommand1)
         {
             if (ModelState.IsValid)
             {
-                await Mediator.Send(CreateSTNKDBCommand1);
+                var xx = CreateSTNKDBCommand1.ToCommand();
+
+                await _mediator.Send(xx);
                 return RedirectToAction(nameof(FakturController.CreateMohonSTNK), "Faktur");
 
             }
@@ -67,19 +77,20 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateMohonBPKB()
         {
-            var NamaKonsumen1 = await Mediator.Send(new GetNamaFakturBPKBQuery());
+            var NamaKonsumen1 = await _mediator.Send(new GetNamaFakturBPKBQuery());
 
-            ViewData["NamaKonsumen1"] = new SelectList(NamaKonsumen1.DataFakturBPKBDs, "NoUrutFaktur1", "NamaFaktur");
+            ViewData["NamaKonsumen1"] = new SelectList(NamaKonsumen1, "NoUrutFaktur1", "NamaFaktur");
 
             return View();
 
         }
         [HttpPost]
-        public async Task<IActionResult> CreateMohonBPKB(CreateBPKBDBCommand CreateBPKBDBCommand1)
+        public async Task<IActionResult> CreateMohonBPKB(CreatePermohonanBPKBRequest CreateBPKBDBCommand1)
         {
             if (ModelState.IsValid)
             {
-                await Mediator.Send(CreateBPKBDBCommand1);
+                var xx = CreateBPKBDBCommand1.ToCommand();
+                await _mediator.Send(xx);
                 return RedirectToAction(nameof(FakturController.CreateMohonBPKB), "Faktur");
 
             }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31815.197
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{551C84BD-CA68-4F72-83CB-FFDCBB22C3F5}"
 EndProject
@@ -59,13 +59,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SumberMas2015.Authenticatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SumberMas2015.Accounting", "SumberMas2015.Accounting", "{A3B48ECA-51A6-46AF-B651-C3DD7174164E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumberMas2015.Organization", "SumberMas2015.Organization\SumberMas2015.Organization.csproj", "{62C2136B-A279-4206-A2D0-6F309EFE80EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SumberMas2015.Organization", "SumberMas2015.Organization\SumberMas2015.Organization.csproj", "{62C2136B-A279-4206-A2D0-6F309EFE80EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumberMas2015.Inventory", "SumberMas2015.Inventory\SumberMas2015.Inventory.csproj", "{3C78C20D-C997-45A0-B8A5-1B1C056AAC5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SumberMas2015.Inventory", "SumberMas2015.Inventory\SumberMas2015.Inventory.csproj", "{3C78C20D-C997-45A0-B8A5-1B1C056AAC5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumberMas2015.HumanCapital", "SumberMas2015.HumanCapital\SumberMas2015.HumanCapital.csproj", "{90A7DC31-CD52-41D5-95B5-6BA6787F4426}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SumberMas2015.HumanCapital", "SumberMas2015.HumanCapital\SumberMas2015.HumanCapital.csproj", "{90A7DC31-CD52-41D5-95B5-6BA6787F4426}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumberMas2015.Accounting", "SumberMas2015.Accounting\SumberMas2015.Accounting.csproj", "{F806A7B1-79F0-4B70-BDE6-0DB159CF6F5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SumberMas2015.Accounting", "SumberMas2015.Accounting\SumberMas2015.Accounting.csproj", "{F806A7B1-79F0-4B70-BDE6-0DB159CF6F5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

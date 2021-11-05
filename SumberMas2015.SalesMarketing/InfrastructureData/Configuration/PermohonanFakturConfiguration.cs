@@ -14,6 +14,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<PermohonanFaktur> builder)
         {
             builder.ToTable("PermohonanFaktur");
+
+
+            //mau isi value object nya
         }
     }
 }

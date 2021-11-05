@@ -8,6 +8,7 @@ namespace SumberMas2015.SalesMarketing.Dto.PermohonanFaktur
 {
     public class CreatePermohonanFakturRequest
     {
+        public DateTime TanggalInput { get; set; }
         public int? KodePenjualanDetail { get; set; }
 
         public DateTime? TanggalLahir { get; set; }
@@ -29,6 +30,7 @@ namespace SumberMas2015.SalesMarketing.Dto.PermohonanFaktur
         public string KodePos { get; set; }
 
         public string Telepon { get; set; }
+        public string NomorFaks { get; set; }
 
         public string HandphoneF { get; set; }
     }
