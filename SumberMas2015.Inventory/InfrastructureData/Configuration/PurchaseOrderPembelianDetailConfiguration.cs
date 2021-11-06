@@ -9,11 +9,18 @@ using System.Threading.Tasks;
 
 namespace SumberMas2015.Inventory.InfrastructureData.Configuration
 {
-    public class PurchaseOrderPembelianDetailConfiguration : IEntityTypeConfiguration<PembelianDetail>
+    public class PurchaseOrderPembelianDetailConfiguration : IEntityTypeConfiguration<PurchaseOrderPembelianDetail>
     {
-        public void Configure(EntityTypeBuilder<PembelianDetail> builder)
+        public void Configure(EntityTypeBuilder<PurchaseOrderPembelianDetail> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("PurchaseOrderPembelianDetail");
+            builder.Property(e => e.Bbn).HasColumnType("money");
+            builder.Property(e => e.Diskon).HasColumnType("money");
+            builder.Property(e => e.OffTheRoad).HasColumnType("money");
+   
+  
+
+
         }
     }
 }

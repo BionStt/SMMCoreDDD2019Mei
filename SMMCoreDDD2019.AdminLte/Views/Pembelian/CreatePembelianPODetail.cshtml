@@ -7,127 +7,139 @@
 
 
 <hr />
-<div class="row">
-    <div class="col-md-10">
-        <form asp-action="CreatePembelianPODetail">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <div class="form-group">
-                        <label asp-for="NoUrutPurchaseOrderID" class="control-label"></label>
+<div class="content-wrapper">
+    <section class="content">
 
-                        <select asp-items="ViewBag.NamaPO" asp-for="NoUrutPurchaseOrderID" class="form-control"></select>
-                        <span asp-validation-for="NoUrutPurchaseOrderID" class="text-danger"></span>
+        <div class="content-wrapper">
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-10">
+                        <form asp-action="CreatePembelianPODetail">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <label asp-for="NoUrutPurchaseOrderID" class="control-label"></label>
+
+                                        <select asp-items="ViewBag.NamaPO" asp-for="NoUrutPurchaseOrderID" class="form-control"></select>
+                                        <span asp-validation-for="NoUrutPurchaseOrderID" class="text-danger"></span>
 
 
 
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <label asp-for="NoUrutMasterBarang" class="control-label"></label>
+
+                                        <select id="NamaBarang1" asp-for="NoUrutMasterBarang" class="form-control" asp-items="ViewBag.NamaBarang"></select>
+                                        <span asp-validation-for="NoUrutMasterBarang" class="text-danger"></span>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label asp-for="OffTHeRoad" class="control-label"></label>
+                                        <input id="OffTheRoad1a" asp-for="OffTHeRoad" class="form-control" />
+                                        <span asp-validation-for="OffTHeRoad" class="text-danger"></span>
+
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+
+                                        <label asp-for="BBN" class="control-label"></label>
+
+                                        <input id="BBN1" asp-for="BBN" class="form-control" />
+                                        <span asp-validation-for="BBN" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Harga OTR</label>
+
+                                        <input id="HargaOTR1" readonly class="form-control" />
+
+
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label asp-for="Diskon" class="control-label"></label>
+
+                                        <input id="Diskon1" asp-for="Diskon" class="form-control" />
+                                        <span asp-validation-for="Diskon" class="text-danger"></span>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label asp-for="Qty" class="control-label"></label>
+
+                                        <input id="Qty1" asp-for="Qty" class="form-control" />
+                                        <span asp-validation-for="Qty" class="text-danger"></span>
+
+
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+
+                                        <label asp-for="Warna" class="control-label"></label>
+
+                                        <input asp-for="Warna" class="form-control" />
+                                        <span asp-validation-for="Warna" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <div class="form-group">
+
+                                        <label asp-for="Keterangan" class="control-label"></label>
+
+                                        <input asp-for="Keterangan" class="form-control" />
+                                        <span asp-validation-for="Keterangan" class="text-danger"></span>
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <input type="submit" value="Create" class="btn btn-primary" />
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </form>
                     </div>
                 </div>
-                <div class="col-md-10">
-                    <div class="form-group">
-                        <label asp-for="NoUrutMasterBarang" class="control-label"></label>
-
-                        <select id="NamaBarang1" asp-for="NoUrutMasterBarang" class="form-control" asp-items="ViewBag.NamaBarang"></select>
-                        <span asp-validation-for="NoUrutMasterBarang" class="text-danger"></span>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="OffTHeRoad" class="control-label"></label>
-                        <input id="OffTheRoad1a" asp-for="OffTHeRoad" class="form-control" />
-                        <span asp-validation-for="OffTHeRoad" class="text-danger"></span>
-
-
-
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-
-                        <label asp-for="BBN" class="control-label"></label>
-
-                        <input id="BBN1" asp-for="BBN" class="form-control" />
-                        <span asp-validation-for="BBN" class="text-danger"></span>
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label">Harga OTR</label>
-
-                        <input id="HargaOTR1" readonly class="form-control" />
-
-
-
-
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label asp-for="Diskon" class="control-label"></label>
-
-                        <input id="Diskon1" asp-for="Diskon" class="form-control" />
-                        <span asp-validation-for="Diskon" class="text-danger"></span>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label asp-for="Qty" class="control-label"></label>
-
-                        <input id="Qty1" asp-for="Qty" class="form-control" />
-                        <span asp-validation-for="Qty" class="text-danger"></span>
-
-
-
-
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="form-group">
-
-                        <label asp-for="Warna" class="control-label"></label>
-
-                        <input asp-for="Warna" class="form-control" />
-                        <span asp-validation-for="Warna" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <div class="form-group">
-
-                        <label asp-for="Keterangan" class="control-label"></label>
-
-                        <input asp-for="Keterangan" class="form-control" />
-                        <span asp-validation-for="Keterangan" class="text-danger"></span>
-
-
-                    </div>
-                </div>
-                <div class="col-md-10">
-                    <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
-
-                    </div>
-                </div>
-            </div>
-
-
-        </form>
-    </div>
+            </section>
+        </div>
+    </section>
 </div>
-<hr />
-<hr />
+
+
+
+
+
 <script>
     $(document).ready(function () {
         $("#OffTheRoad1a").change(function () {

@@ -1,1 +1,7 @@
 ﻿
+EntityFrameworkCore\Add-Migration InitialCreate -Context InventoryContext -OutputDir InfrastructureData\Migrations
+EntityFrameworkCore\UPDATE-DATABASE -CONTEXT InventoryContext
+
+
+
+EntityFrameworkCore\Add-Migration InitialCreate1 -Context InventoryContext -OutputDir InfrastructureData\Migrations

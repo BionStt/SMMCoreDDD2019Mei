@@ -231,6 +231,12 @@
                                 <span asp-validation-for="NomorHandphoneNPWP" class="text-danger"></span>
 
                             </td>
+                            <td>
+                                <Input asp-for="UserInput" value="@ViewBag.UserName" class="form-control">
+                                @*<Input asp-for="UserInput" value="@Context.User.Identity.Name" class="form-control">*@
+                                <span asp-validation-for="UserInput" class="text-danger"></span>
+
+                            </td>
                         </tr>
                     </table>
 

@@ -31,5 +31,6 @@ namespace SumberMas2015.SalesMarketing.Dto.PermohonanSTNK
         public decimal? BbnPabrik { get; set; }
 
         public int ProgresifKe { get; set; }
+        public string UserInputName { get; set; }
     }
 }

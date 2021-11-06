@@ -8,6 +8,10 @@ namespace SumberMas2015.SalesMarketing.Domain
 {
     public class PermohonanSTNK
     {
+        protected PermohonanSTNK()
+        {
+
+        }
         public static PermohonanSTNK CreatePermohonanSTNK( DateTime? tanggalBayarSTNK, int? permohonanFakturDBId, string noStnk, decimal pajakStnk, decimal birojasa, decimal biayaTambahan, decimal formA, string nomorPlat, decimal? perwil, decimal? pajakProgresif, decimal? bbnPabrik, int progresifKe)
         {
             return new PermohonanSTNK(tanggalBayarSTNK, permohonanFakturDBId, noStnk, pajakStnk, birojasa, biayaTambahan, formA, nomorPlat, perwil,pajakProgresif,bbnPabrik,progresifKe);

@@ -6,107 +6,111 @@
 }
 
 <hr />
+<div class="content-wrapper">
+    <section class="content">
 
-    <div class="row">
-        <div class="col-md-10">
-            <form asp-action="CreateDataSPKUnit">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <div class="col-md-5">
-                        <div class="form-group">
+        <div class="row">
+            <div class="col-md-10">
+                <form asp-action="CreateDataSPKUnit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <div class="col-md-5">
+                            <div class="form-group">
 
-                            <label asp-for="DataSPKId" class="control-label">Data SPK ID</label>
-
-
-                            <select asp-for="DataSPKId" class="form-control" asp-items="ViewBag.DataSPK1"></select>
-                            <span asp-validation-for="DataSPKId" class="text-danger"></span>
+                                <label asp-for="DataSPKId" class="control-label">Data SPK ID</label>
 
 
+                                <select asp-for="DataSPKId" class="form-control" asp-items="ViewBag.DataSPK1"></select>
+                                <span asp-validation-for="DataSPKId" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="NoKTPSTNK" class="control-label">No KTP STNK</label>
+
+                                <input id="NoKtp1" asp-for="NoKTPSTNK" class="form-control" />
+                                <span asp-validation-for="NoKTPSTNK" class="text-danger"></span>
+
+
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label asp-for="NoKTPSTNK" class="control-label">No KTP STNK</label>
+                    <div class="form-group">
+                        <div class="col-md-5">
+                            <div class="form-group">
 
-                            <input id="NoKtp1" asp-for="NoKTPSTNK" class="form-control" />
-                            <span asp-validation-for="NoKTPSTNK" class="text-danger"></span>
+                                <label asp-for="NamaSTNK" class="control-label">Nama STNK</label>
+
+                                <input asp-for="NamaSTNK" class="form-control" />
+                                <span asp-validation-for="NamaSTNK" class="text-danger"></span>
 
 
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="MasterBarangId" class="control-label">Type Kendaraan</label>
+
+
+                                <select asp-for="MasterBarangId" class="form-control" asp-items="ViewBag.NamaBarang"></select>
+                                <span asp-validation-for="MasterBarangId" class="text-danger"></span>
+
+
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-5">
-                        <div class="form-group">
+                    <div class="form-group">
+                        <div class="col-md-5">
+                            <div class="form-group">
 
-                            <label asp-for="NamaSTNK" class="control-label">Nama STNK</label>
+                                <label asp-for="TahunPerakitan" class="control-label">Tahun Perakitan</label>
 
-                            <input asp-for="NamaSTNK" class="form-control" />
-                            <span asp-validation-for="NamaSTNK" class="text-danger"></span>
+                                <input id="Tahun1" asp-for="TahunPerakitan" class="form-control" />
+                                <span asp-validation-for="TahunPerakitan" class="text-danger"></span>
 
 
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="Warna" class="control-label">Warna</label>
+
+                                <input asp-for="Warna" class="form-control" />
+                                <span asp-validation-for="Warna" class="text-danger"></span>
+
+
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label asp-for="MasterBarangId" class="control-label">Type Kendaraan</label>
+                    <div class="form-group">
+                        <div class="col-md-5">
+                            <div class="form-group">
+
+                                <input type="submit" value="Create" class="btn btn-primary" />
+
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
 
 
-                            <select asp-for="MasterBarangId" class="form-control" asp-items="ViewBag.NamaBarang"></select>
-                            <span asp-validation-for="MasterBarangId" class="text-danger"></span>
-
-
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-5">
-                        <div class="form-group">
-
-                            <label asp-for="TahunPerakitan" class="control-label">Tahun Perakitan</label>
-
-                            <input id="Tahun1" asp-for="TahunPerakitan" class="form-control" />
-                            <span asp-validation-for="TahunPerakitan" class="text-danger"></span>
 
 
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label asp-for="Warna" class="control-label">Warna</label>
-
-                            <input asp-for="Warna" class="form-control" />
-                            <span asp-validation-for="Warna" class="text-danger"></span>
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-5">
-                        <div class="form-group">
-
-                            <input type="submit" value="Create" class="btn btn-primary" />
-
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-
-
-                        </div>
-                    </div>
-                </div>
-
-
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
+
+    </section>
+</div>
 
 
 
-<hr />
-<hr />
+
 <script>
 
     $('#Tahun1').keypress(function (e) {

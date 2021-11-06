@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -11,6 +12,7 @@ using SumberMas2015.SalesMarketing.ServiceApplication.MasterKategoriBayaran.Quer
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterKategoriPenjualan.Queries.ListKategoriPenjualan;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterLeasing.Queries.ListCabangLeasing;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace SMMCoreDDD2019.AdminLte.Controllers
@@ -18,13 +20,23 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
     public class DataSPKController : Controller
     {
         private IMediator _mediator;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly string _userName;
+        private readonly string _userId;
 
-        public DataSPKController(IMediator mediator)
+
+        public DataSPKController(IMediator mediator, IHttpContextAccessor httpContextAccessor)
         {
             _mediator = mediator;
+            _httpContextAccessor = httpContextAccessor;
+            _userName = httpContextAccessor.HttpContext.User.Identity.Name;
+            _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
         }
         public IActionResult CreateDataSPK()
         {
+            ViewData["UserName"] = _userName;
+            ViewData["UserId"] = _userId;
             return View();
         }
 

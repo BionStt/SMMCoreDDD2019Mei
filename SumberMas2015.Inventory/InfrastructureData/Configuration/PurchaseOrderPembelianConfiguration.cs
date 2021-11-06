@@ -13,7 +13,7 @@ namespace SumberMas2015.Inventory.InfrastructureData.Configuration
     {
         public void Configure(EntityTypeBuilder<PurchaseOrderPembelian> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("PurchaseOrderPembelian");
         }
     }
 }

@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Domain\EnumInEntity\" />
-    <Folder Include="InfrastructureData\Migrations\" />
     <Folder Include="ServiceApplication\PurchaseOrderPembelianDetail\Queries\" />
   </ItemGroup>
 

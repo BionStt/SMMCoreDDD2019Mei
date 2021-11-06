@@ -7,203 +7,210 @@
 
 <hr />
 
- <div class="row">
-        <div class="col-md-10">
-            <form asp-action="CreateDataSPKKredit">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="content-wrapper">
+    <section class="content">
 
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label asp-for="DataSPKId" class="control-label">Data SPK ID</label>
+        <div class="row">
+            <div class="col-md-10">
+                <form asp-action="CreateDataSPKKredit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                            <select id="NamaPemesan" asp-items="ViewBag.NamaPemesan" asp-for="DataSPKId" class="form-control"></select>
-                            <span asp-validation-for="DataSPKId" class="text-danger"></span>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="DataSPKId" class="control-label">Data SPK ID</label>
+
+                                <select id="NamaPemesan" asp-items="ViewBag.NamaPemesan" asp-for="DataSPKId" class="form-control"></select>
+                                <span asp-validation-for="DataSPKId" class="text-danger"></span>
 
 
 
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="OffTheRoad" class="control-label">Off The Road</label>
+
+                                <input id="OffTheRoad1a" asp-for="OffTheRoad" class="form-control" />
+                                <span asp-validation-for="OffTheRoad" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+
+                                <label asp-for="BBN" class="control-label">BBN</label>
+
+                                <input id="BBN1" asp-for="BBN" class="form-control" />
+                                <span asp-validation-for="BBN" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Harga On The Road</label>
+                                <input id="OTR1" readonly class="form-control" />
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="DPPriceList" class="control-label">DP Price List</label>
+
+                                <input id="DPPricelist1" value="0" asp-for="DPPriceList" class="form-control" />
+                                <span asp-validation-for="DPPriceList" class="text-danger"></span>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="DiskonDP" class="control-label">Diskon DP</label>
+
+                                <input value="0" id="DiskonDP1" asp-for="DiskonDP" class="form-control" />
+                                <span asp-validation-for="DiskonDP" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+
+                                <label class="control-label">DP Bayar</label>
+                                <input id="DPBayar1" readonly class="form-control" />
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="UangTandaJadiTunai" class="control-label">Uang Tanda Jadi Tunai</label>
+
+                                <input value="0" id="UangTandajadiTunai1" asp-for="UangTandaJadiTunai" class="form-control" />
+                                <span asp-validation-for="UangTandaJadiTunai" class="text-danger"></span>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="UangTandaJadiKredit" class="control-label">Uang Tanda Jadi Kredit</label>
+
+                                <input value="0" id="UangTandaJadiKredit1" asp-for="UangTandaJadiKredit" class="form-control" />
+                                <span asp-validation-for="UangTandaJadiKredit" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="DiskonTunai" class="control-label">Diskon Tunai</label>
+                                <input value="0" id="DiskonTunai1" asp-for="DiskonTunai" class="form-control" />
+                                <span asp-validation-for="DiskonTunai" class="text-danger"></span>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="Promosi" class="control-label">Promosi</label>
+
+                                <input value="0" id="Promosi1" asp-for="Promosi" class="form-control" />
+                                <span asp-validation-for="Promosi" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="DendaWilayah" class="control-label">Denda Wilayah</label>
+
+                                <input value="0" id="DendaWilayah1" asp-for="DendaWilayah" class="form-control" />
+                                <span asp-validation-for="DendaWilayah" class="text-danger"></span>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="BiayaAdministrasiTunai" class="control-label">Biaya Administrasi Tunai</label>
+
+                                <input value="0" id="BiayaAdministrasiTunai1" asp-for="BiayaAdministrasiTunai" class="form-control" />
+                                <span asp-validation-for="BiayaAdministrasiTunai" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5">
+                            <div class="form-group">
+
+                                <label asp-for="BiayaAdministrasiKredit" class="control-label">Biaya Administrasi Kredit</label>
+
+                                <input value="0" id="BiayaAdministrasiKredit1" asp-for="BiayaAdministrasiKredit" class="form-control" />
+                                <span asp-validation-for="BiayaAdministrasiKredit" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="Komisi" class="control-label">Komisi</label>
+
+                                <input value="0" id="Komisi1" asp-for="Komisi" class="form-control" />
+                                <span asp-validation-for="Komisi" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5">
+                            <div class="form-group">
+
+                                <input type="submit" value="Create" class="btn btn-primary" />
+
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+
+
+                            </div>
                         </div>
                     </div>
 
-                </div>
-                <div class="form-group">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label asp-for="OffTheRoad" class="control-label">Off The Road</label>
-
-                            <input id="OffTheRoad1a" asp-for="OffTheRoad" class="form-control" />
-                            <span asp-validation-for="OffTheRoad" class="text-danger"></span>
 
 
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-
-                            <label asp-for="BBN" class="control-label">BBN</label>
-
-                            <input id="BBN1" asp-for="BBN" class="form-control" />
-                            <span asp-validation-for="BBN" class="text-danger"></span>
-
-
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label class="control-label">Harga On The Road</label>
-                            <input id="OTR1" readonly class="form-control" />
-
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label asp-for="DPPriceList" class="control-label">DP Price List</label>
-
-                            <input id="DPPricelist1" value="0" asp-for="DPPriceList" class="form-control" />
-                            <span asp-validation-for="DPPriceList" class="text-danger"></span>
-
-
-
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label asp-for="DiskonDP" class="control-label">Diskon DP</label>
-
-                            <input value="0" id="DiskonDP1" asp-for="DiskonDP" class="form-control" />
-                            <span asp-validation-for="DiskonDP" class="text-danger"></span>
-
-
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-
-                            <label class="control-label">DP Bayar</label>
-                            <input id="DPBayar1" readonly class="form-control" />
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label asp-for="UangTandaJadiTunai" class="control-label">Uang Tanda Jadi Tunai</label>
-
-                            <input value="0" id="UangTandajadiTunai1" asp-for="UangTandaJadiTunai" class="form-control" />
-                            <span asp-validation-for="UangTandaJadiTunai" class="text-danger"></span>
-
-
-
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label asp-for="UangTandaJadiKredit" class="control-label">Uang Tanda Jadi Kredit</label>
-
-                            <input value="0" id="UangTandaJadiKredit1" asp-for="UangTandaJadiKredit" class="form-control" />
-                            <span asp-validation-for="UangTandaJadiKredit" class="text-danger"></span>
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label asp-for="DiskonTunai" class="control-label">Diskon Tunai</label>
-                            <input value="0" id="DiskonTunai1" asp-for="DiskonTunai" class="form-control" />
-                            <span asp-validation-for="DiskonTunai" class="text-danger"></span>
-
-
-
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label asp-for="Promosi" class="control-label">Promosi</label>
-
-                            <input value="0" id="Promosi1" asp-for="Promosi" class="form-control" />
-                            <span asp-validation-for="Promosi" class="text-danger"></span>
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label asp-for="DendaWilayah" class="control-label">Denda Wilayah</label>
-
-                            <input value="0" id="DendaWilayah1" asp-for="DendaWilayah" class="form-control" />
-                            <span asp-validation-for="DendaWilayah" class="text-danger"></span>
-
-
-
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label asp-for="BiayaAdministrasiTunai" class="control-label">Biaya Administrasi Tunai</label>
-
-                            <input value="0" id="BiayaAdministrasiTunai1" asp-for="BiayaAdministrasiTunai" class="form-control" />
-                            <span asp-validation-for="BiayaAdministrasiTunai" class="text-danger"></span>
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-5">
-                        <div class="form-group">
-
-                            <label asp-for="BiayaAdministrasiKredit" class="control-label">Biaya Administrasi Kredit</label>
-
-                            <input value="0" id="BiayaAdministrasiKredit1" asp-for="BiayaAdministrasiKredit" class="form-control" />
-                            <span asp-validation-for="BiayaAdministrasiKredit" class="text-danger"></span>
-
-
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label asp-for="Komisi" class="control-label">Komisi</label>
-
-                            <input value="0" id="Komisi1" asp-for="Komisi" class="form-control" />
-                            <span asp-validation-for="Komisi" class="text-danger"></span>
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-5">
-                        <div class="form-group">
-
-                            <input type="submit" value="Create" class="btn btn-primary" />
-
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-
-
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-<hr />
-<hr />
+
+
+    </section>
+</div>
+
+
 <script>
     $(document).ready(function () {
 

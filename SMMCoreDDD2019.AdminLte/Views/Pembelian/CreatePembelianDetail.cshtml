@@ -7,127 +7,132 @@
 
 
 <hr />
-<div class="row">
-    <div class="col-md-10">
-        <form asp-action="CreatePembelianDetail">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <div class="col-md-10">
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-10">
+                <form asp-action="CreatePembelianDetail">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
+                        <div class="col-md-10">
+                            <div class="form-group">
 
-                        <label asp-for="PembelianId" class="control-label"></label>
+                                <label asp-for="PembelianId" class="control-label"></label>
 
-                        <select asp-for="PembelianId" class="form-control" asp-items="ViewBag.KodeBeli"></select>
-                        <span asp-validation-for="PembelianId" class="text-danger"></span>
+                                <select asp-for="PembelianId" class="form-control" asp-items="ViewBag.KodeBeli"></select>
+                                <span asp-validation-for="PembelianId" class="text-danger"></span>
 
 
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <label asp-for="MasterBarangId" class="control-label"></label>
+
+
+                                <select id="NamaBarang1" asp-for="MasterBarangId" class="form-control" asp-items="ViewBag.NamaBarang"></select>
+                                <span asp-validation-for="MasterBarangId" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-10">
                     <div class="form-group">
-                        <label asp-for="MasterBarangId" class="control-label"></label>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="HargaOffTheRoad" class="control-label"></label>
+
+                                <input id="OffTheRoad1a" asp-for="HargaOffTheRoad" class="form-control" />
+                                <span asp-validation-for="HargaOffTheRoad" class="text-danger"></span>
 
 
-                        <select id="NamaBarang1" asp-for="MasterBarangId" class="form-control" asp-items="ViewBag.NamaBarang"></select>
-                        <span asp-validation-for="MasterBarangId" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="BBN" class="control-label"></label>
+
+                                <input id="BBN1" asp-for="BBN" class="form-control" />
+                                <span asp-validation-for="BBN" class="text-danger"></span>
 
 
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Harga OTR</label>
+
+                                <input readonly id="HargaOTR1" class="form-control" />
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="Qty" class="control-label"></label>
+
+                                <input id="Qty1" asp-for="Qty" class="form-control" />
+                                <span asp-validation-for="Qty" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <div class="form-group">
+
+                                <label asp-for="Diskon" class="control-label"></label>
+
+
+                                <input id="Diskon1" asp-for="Diskon" class="form-control" />
+                                <span asp-validation-for="Diskon" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="SellIn" class="control-label"></label>
+
+
+                                <input id="SellIn1" asp-for="SellIn" class="form-control" />
+                                <span asp-validation-for="SellIn" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <div class="form-group">
+
+                                <input type="submit" value="Create" class="btn btn-primary" />
+
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
             </div>
-            <div class="form-group">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="HargaOffTheRoad" class="control-label"></label>
-
-                        <input id="OffTheRoad1a" asp-for="HargaOffTheRoad" class="form-control" />
-                        <span asp-validation-for="HargaOffTheRoad" class="text-danger"></span>
-
-
-
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="BBN" class="control-label"></label>
-
-                        <input id="BBN1" asp-for="BBN" class="form-control" />
-                        <span asp-validation-for="BBN" class="text-danger"></span>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label class="control-label">Harga OTR</label>
-
-                        <input readonly id="HargaOTR1" class="form-control" />
-
-
-
-
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="Qty" class="control-label"></label>
-
-                        <input id="Qty1" asp-for="Qty" class="form-control" />
-                        <span asp-validation-for="Qty" class="text-danger"></span>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-3">
-                    <div class="form-group">
-
-                        <label asp-for="Diskon" class="control-label"></label>
-
-
-                        <input id="Diskon1" asp-for="Diskon" class="form-control" />
-                        <span asp-validation-for="Diskon" class="text-danger"></span>
-
-
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="SellIn" class="control-label"></label>
-
-
-                        <input id="SellIn1" asp-for="SellIn" class="form-control" />
-                        <span asp-validation-for="SellIn" class="text-danger"></span>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <div class="form-group">
-
-                        <input type="submit" value="Create" class="btn btn-primary" />
-
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="form-group">
-
-
-                    </div>
-                </div>
-            </div>
-
-
-        </form>
-    </div>
+        </div>
+    </section>
 </div>
-<hr />
-<hr />
+
+
+
 
 <script>
     $(document).ready(function () {

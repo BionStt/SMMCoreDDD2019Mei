@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SumberMas2015.SalesMarketing.InfrastructureData.Context;
 
 namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
 {
     [DbContext(typeof(SalesMarketingContext))]
-    partial class SalesMarketingContextModelSnapshot : ModelSnapshot
+    [Migration("20211106070738_InitialCreate2")]
+    partial class InitialCreate2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -799,16 +801,16 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal?>("BbnPabrik")
-                        .HasColumnType("money");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("BiayaTambahan")
-                        .HasColumnType("money");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("Birojasa")
-                        .HasColumnType("money");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("FormA")
-                        .HasColumnType("money");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("NoStnk")
                         .HasColumnType("nvarchar(max)");
@@ -817,16 +819,16 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("PajakProgresif")
-                        .HasColumnType("money");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("PajakStnk")
-                        .HasColumnType("money");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("PermohonanFakturDBId")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("Perwil")
-                        .HasColumnType("money");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("ProgresifKe")
                         .HasColumnType("int");

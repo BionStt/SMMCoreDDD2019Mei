@@ -9,6 +9,7 @@ namespace SumberMas2015.SalesMarketing.Dto.DataSPK
     public class CreateDataSPKSurveiRequest
     {
         public string UserInput { get; set; }
+        public string UserInputName { get; set; }
         public string NomorKTPPemesan { get; set; }
         public string LokasiSPK { get; set; }
         public string NamaDepan { get; set; }

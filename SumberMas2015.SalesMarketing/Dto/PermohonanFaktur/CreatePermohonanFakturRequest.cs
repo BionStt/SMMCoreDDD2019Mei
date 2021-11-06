@@ -33,5 +33,6 @@ namespace SumberMas2015.SalesMarketing.Dto.PermohonanFaktur
         public string NomorFaks { get; set; }
 
         public string HandphoneF { get; set; }
+        public string UserNameInput{ get; set; }
     }
 }

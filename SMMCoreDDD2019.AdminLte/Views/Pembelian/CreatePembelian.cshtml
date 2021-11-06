@@ -6,95 +6,100 @@
 }
 
 <hr />
-<div class="row">
-    <div class="col-md-10">
-        <form asp-action="CreatePembelian">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <div class="col-md-5">
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-10">
+                <form asp-action="CreatePembelian">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
-                        <label asp-for="PurchaseOrderId" class="control-label"></label>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="PurchaseOrderId" class="control-label"></label>
 
 
-                        <select asp-items="ViewBag.NamaPO" asp-for="PurchaseOrderId" class="form-control"></select>
-                        <span asp-validation-for="PurchaseOrderId" class="text-danger"></span>
-
-
-
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label asp-for="DataSupplierId" class="control-label"></label>
-
-
-                        <select asp-items="ViewBag.NamaSupplier" asp-for="DataSupplierId" class="form-control"></select>
-                        <span asp-validation-for="DataSupplierId" class="text-danger"></span>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-5">
-                    <div class="form-group">
-
-                        <label asp-for="JenisTransaksiPembelian" class="control-label"></label>
-
-                        <select asp-items="ViewBag.NamaKategoryCaraPembayaran" asp-for="JenisTransaksiPembelian" class="form-control"></select>
-                        <span asp-validation-for="JenisTransaksiPembelian" class="text-danger"></span>
-
-
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label asp-for="Tenor" class="control-label"></label>
-                        <input value="0" id="Kredit1" asp-for="Tenor" class="form-control" />
-                        <span asp-validation-for="Tenor" class="text-danger"></span>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <div class="form-group">
-                        <label asp-for="Keterangan" class="control-label"></label>
-
-                        <input asp-for="Keterangan" class="form-control" />
-                        <span asp-validation-for="Keterangan" class="text-danger"></span>
+                                <select asp-items="ViewBag.NamaPO" asp-for="PurchaseOrderId" class="form-control"></select>
+                                <span asp-validation-for="PurchaseOrderId" class="text-danger"></span>
 
 
 
-                    </div>
-                </div>
-                <div class="col-md-10">
-                    <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
-
-                        <div >
-
-
-
-
-
-                            <label asp-for="UserNameInput" class="control-label"></label>
-
-                            <input asp-for="UserNameInput" class="form-control" />
-                            <span asp-validation-for="UserNameInput" class="text-danger"></span>
+                            </div>
                         </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="DataSupplierId" class="control-label"></label>
 
 
+                                <select asp-items="ViewBag.NamaSupplier" asp-for="DataSupplierId" class="form-control"></select>
+                                <span asp-validation-for="DataSupplierId" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <div class="form-group">
+                        <div class="col-md-5">
+                            <div class="form-group">
 
-        </form>
-    </div>
+                                <label asp-for="JenisTransaksiPembelian" class="control-label"></label>
+
+                                <select asp-items="ViewBag.NamaKategoryCaraPembayaran" asp-for="JenisTransaksiPembelian" class="form-control"></select>
+                                <span asp-validation-for="JenisTransaksiPembelian" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="Tenor" class="control-label"></label>
+                                <input value="0" id="Kredit1" asp-for="Tenor" class="form-control" />
+                                <span asp-validation-for="Tenor" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <label asp-for="Keterangan" class="control-label"></label>
+
+                                <input asp-for="Keterangan" class="form-control" />
+                                <span asp-validation-for="Keterangan" class="text-danger"></span>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+
+                                <div>
+
+
+
+
+
+                                    <label asp-for="UserNameInput" class="control-label"></label>
+
+                                    <input asp-for="UserNameInput" class="form-control" />
+                                    <span asp-validation-for="UserNameInput" class="text-danger"></span>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
 </div>
-<hr />
-<hr />
+
+
+
 <script>
     $('#Kredit1').keypress(function (e) {
         var key = e.which || e.keyCode;

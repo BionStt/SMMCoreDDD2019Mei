@@ -8,6 +8,10 @@ namespace SumberMas2015.SalesMarketing.Domain
 {
     public class PermohonanBPKB
     {
+        protected PermohonanBPKB()
+        {
+
+        }
         public static PermohonanBPKB CreatePermohonanBPKB(Guid permohonanFakturId, string nomorBpkb, DateTime tanggalTerimaBPKB)
         {
             return new PermohonanBPKB(permohonanFakturId, nomorBpkb, tanggalTerimaBPKB);

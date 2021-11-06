@@ -9,6 +9,10 @@ namespace SumberMas2015.SalesMarketing.Domain
 {
     public class PermohonanFaktur
     {
+        protected PermohonanFaktur()
+        {
+
+        }
 
         public static PermohonanFaktur CreatePermohonanFaktur(string noRegistrasiFaktur, DateTime? tanggalMohonFaktur, Guid penjualanDetailId, DateTime? tanggalLahir, string nomorKTP, string namaFaktur, Alamat alamatFaktur)
         {

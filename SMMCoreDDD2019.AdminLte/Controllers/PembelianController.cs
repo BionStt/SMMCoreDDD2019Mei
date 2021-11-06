@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SumberMas2015.Inventory.Dto.Pembelian;
@@ -20,22 +21,33 @@ using SumberMas2015.Inventory.ServiceApplication.Supplier.Queries.GetNamaSupplie
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterKategoriCaraPembayaran.Queries.ListKategoriCaraPembayaran;
 using System;
 using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace SMMCoreDDD2019.AdminLte.Controllers
 {
     public class PembelianController : Controller
     {
         private IMediator _mediator;
-
-        public PembelianController(IMediator mediator)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly string _userName;
+        private readonly string _userId;
+        public PembelianController(IMediator mediator, IHttpContextAccessor httpContextAccessor)
         {
+           
             _mediator = mediator;
+            _httpContextAccessor = httpContextAccessor;
+            _userName = httpContextAccessor.HttpContext.User.Identity.Name;
+            _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
         }
         [HttpGet]
         public async Task<IActionResult> CreatePembelianPO()
         {
             var NamaSupplier = await _mediator.Send(new GetNamaSupplierQuery());
             ViewData["NamaSupplier"] = new SelectList(NamaSupplier, "NoUrutSupplier", "NamaSupplier");
+            ViewData["UserName"] = _userName;
+            ViewData["UserId"] = _userId;
+
             return View();
         }
 

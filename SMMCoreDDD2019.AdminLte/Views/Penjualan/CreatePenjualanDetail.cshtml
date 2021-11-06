@@ -7,221 +7,226 @@
 
 
 <hr />
-<div class="row">
-    <div class="col-md-12">
-        <form asp-action="PenjualanDetail">
+<div class="content-wrapper">
+    <section class="content">
 
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="PenjualanDetail">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
-                        <label asp-for="KodePenjualan" class="control-label"></label>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="KodePenjualan" class="control-label"></label>
 
-                        <select asp-for="KodePenjualan" class="form-control" asp-items="@ViewBag.NamaPemesan1"></select>
-                        <span asp-validation-for="KodePenjualan" class="text-danger"></span>
+                                <select asp-for="KodePenjualan" class="form-control" asp-items="@ViewBag.NamaPemesan1"></select>
+                                <span asp-validation-for="KodePenjualan" class="text-danger"></span>
 
 
 
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="NoUrutSO" class="control-label"></label>
+
+                                <select id="StokUnit1" asp-for="NoUrutSO" class="form-control" asp-items="@ViewBag.NoSoBarang"></select>
+                                <span asp-validation-for="NoUrutSO" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-12">
                     <div class="form-group">
-                        <label asp-for="NoUrutSO" class="control-label"></label>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="HargaOffTheRoad" class="control-label"></label>
 
-                        <select id="StokUnit1" asp-for="NoUrutSO" class="form-control" asp-items="@ViewBag.NoSoBarang"></select>
-                        <span asp-validation-for="NoUrutSO" class="text-danger"></span>
+                                <input id="OffTheRoad1a" asp-for="HargaOffTheRoad" class="form-control" />
+                                <span asp-validation-for="HargaOffTheRoad" class="text-danger"></span>
 
 
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="BBN" class="control-label"></label>
+
+                                <input id="BBN1" asp-for="BBN" class="form-control" />
+                                <span asp-validation-for="BBN" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="HargaOTR" class="control-label"></label>
+
+                                <input id="OTR1" readonly class="form-control" />
+                                <input hidden id="OTR2" readonly asp-for="HargaOTR" class="form-control" />
+                                <span asp-validation-for="HargaOTR" class="text-danger"></span>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="uangMuka" class="control-label"></label>
+
+                                <input value="0" id="DPPricelist1" asp-for="uangMuka" class="form-control" />
+                                <span asp-validation-for="uangMuka" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="DiskonKredit" class="control-label"></label>
+
+                                <input value="0" id="DiskonDP1" asp-for="DiskonKredit" class="form-control" />
+                                <span asp-validation-for="DiskonKredit" class="text-danger"></span>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">DP Bayar</label>
+
+                                <input id="DPBayar1" readonly class="form-control" />
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <div class="form-group">
+
+                                <label asp-for="DiskonTunai" class="control-label"></label>
+
+                                <input value="0" asp-for="DiskonTunai" class="form-control" />
+                                <span asp-validation-for="DiskonTunai" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Subsidi" class="control-label"></label>
+
+                                <input value="0" asp-for="Subsidi" class="form-control" />
+                                <span asp-validation-for="Subsidi" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="promosi" class="control-label"></label>
+
+                                <input value="0" asp-for="promosi" class="form-control" />
+                                <span asp-validation-for="promosi" class="text-danger"></span>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+
+                                <label asp-for="Komisi" class="control-label"></label>
+
+                                <input value="0" asp-for="Komisi" class="form-control" />
+                                <span asp-validation-for="Komisi" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="JoinPromo1" class="control-label"></label>
+
+                                <input value="0" asp-for="JoinPromo1" class="form-control" />
+                                <span asp-validation-for="JoinPromo1" class="text-danger"></span>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="JoinPromo2" class="control-label"></label>
+
+                                <input value="0" asp-for="JoinPromo2" class="form-control" />
+                                <span asp-validation-for="JoinPromo2" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="SPF" class="control-label"></label>
+
+                                <input value="0" asp-for="SPF" class="form-control" />
+                                <span asp-validation-for="SPF" class="text-danger"></span>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+
+                                <label asp-for="SellOut" class="control-label"></label>
+
+                                <input value="0" asp-for="SellOut" class="form-control" />
+                                <span asp-validation-for="SellOut" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <div class="form-group">
+
+                                <label asp-for="DendaWilayah" class="control-label"></label>
+
+                                <input value="0" asp-for="DendaWilayah" class="form-control" />
+                                <span asp-validation-for="DendaWilayah" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
             </div>
-            <div class="form-group">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="HargaOffTheRoad" class="control-label"></label>
+        </div>
 
-                        <input id="OffTheRoad1a" asp-for="HargaOffTheRoad" class="form-control" />
-                        <span asp-validation-for="HargaOffTheRoad" class="text-danger"></span>
-
-
-
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="BBN" class="control-label"></label>
-
-                        <input id="BBN1" asp-for="BBN" class="form-control" />
-                        <span asp-validation-for="BBN" class="text-danger"></span>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="HargaOTR" class="control-label"></label>
-
-                        <input id="OTR1" readonly class="form-control" />
-                        <input hidden id="OTR2" readonly asp-for="HargaOTR" class="form-control" />
-                        <span asp-validation-for="HargaOTR" class="text-danger"></span>
-
-
-
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="uangMuka" class="control-label"></label>
-
-                        <input value="0" id="DPPricelist1" asp-for="uangMuka" class="form-control" />
-                        <span asp-validation-for="uangMuka" class="text-danger"></span>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="DiskonKredit" class="control-label"></label>
-
-                        <input value="0" id="DiskonDP1" asp-for="DiskonKredit" class="form-control" />
-                        <span asp-validation-for="DiskonKredit" class="text-danger"></span>
-
-
-
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label">DP Bayar</label>
-
-                        <input id="DPBayar1" readonly class="form-control" />
-
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-4">
-                    <div class="form-group">
-
-                        <label asp-for="DiskonTunai" class="control-label"></label>
-
-                        <input value="0" asp-for="DiskonTunai" class="form-control" />
-                        <span asp-validation-for="DiskonTunai" class="text-danger"></span>
-                        
-
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="Subsidi" class="control-label"></label>
-
-                        <input value="0" asp-for="Subsidi" class="form-control" />
-                        <span asp-validation-for="Subsidi" class="text-danger"></span>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="promosi" class="control-label"></label>
-
-                        <input value="0" asp-for="promosi" class="form-control" />
-                        <span asp-validation-for="promosi" class="text-danger"></span>
-
-
-
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-
-                        <label asp-for="Komisi" class="control-label"></label>
-
-                        <input value="0" asp-for="Komisi" class="form-control" />
-                        <span asp-validation-for="Komisi" class="text-danger"></span>
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="JoinPromo1" class="control-label"></label>
-
-                        <input value="0" asp-for="JoinPromo1" class="form-control" />
-                        <span asp-validation-for="JoinPromo1" class="text-danger"></span>
-
-
-
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="JoinPromo2" class="control-label"></label>
-
-                        <input value="0" asp-for="JoinPromo2" class="form-control" />
-                        <span asp-validation-for="JoinPromo2" class="text-danger"></span>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label asp-for="SPF" class="control-label"></label>
-
-                        <input value="0" asp-for="SPF" class="form-control" />
-                        <span asp-validation-for="SPF" class="text-danger"></span>
-
-
-
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-
-                        <label asp-for="SellOut" class="control-label"></label>
-
-                        <input value="0" asp-for="SellOut" class="form-control" />
-                        <span asp-validation-for="SellOut" class="text-danger"></span>
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-4">
-                    <div class="form-group">
-
-                        <label asp-for="DendaWilayah" class="control-label"></label>
-
-                        <input value="0" asp-for="DendaWilayah" class="form-control" />
-                        <span asp-validation-for="DendaWilayah" class="text-danger"></span>
-
-
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-
-                        <input type="submit" value="Create" class="btn btn-primary" />
-                    </div>
-                </div>
-            </div>
-
-        </form>
-    </div>
+    </section>
 </div>
-<hr />
-<hr />
+
 <script>
     $(document).ready(function () {
         $("#StokUnit1").change(function ()

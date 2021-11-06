@@ -13,7 +13,19 @@ namespace SumberMas2015.Inventory.InfrastructureData.Configuration
     {
         public void Configure(EntityTypeBuilder<PembelianDetail> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("PembelianDetail");
+            builder.Property(e => e.BBN).HasColumnType("money");
+            builder.Property(e => e.Diskon).HasColumnType("money");
+            builder.Property(e => e.Diskon2).HasColumnType("money");
+            builder.Property(e => e.DiskonPPN).HasColumnType("money");
+            builder.Property(e => e.Harga1).HasColumnType("money");
+            builder.Property(e => e.HargaOffTheRoad).HasColumnType("money");
+            builder.Property(e => e.HargaPPN).HasColumnType("money");
+            builder.Property(e => e.SellIn).HasColumnType("money");
+            builder.Property(e => e.SellIn2).HasColumnType("money");
+            builder.Property(e => e.SellInPPN).HasColumnType("money");
+           
+
         }
     }
 }

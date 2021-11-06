@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using SmmCoreDDD2019.Common;
 using SmmCoreDDD2019.Persistence;
+using SumberMas2015.Inventory;
 using SumberMas2015.SalesMarketing;
 using System;
 using System.Collections.Generic;
@@ -30,12 +32,18 @@ namespace SMMCoreDDD2019.AdminLte
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCommon(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"), Configuration);
-            services.AddPersistence(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"));
+            //services.AddPersistence(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"));
+
+            services.AddInventory(Configuration.GetConnectionString("InventoryConnection"));
+
 
             services.AddSalesMarketing(Configuration.GetConnectionString("SalesMarketingConnection"));
             //  services.AddMediatR(Assembly.GetExecutingAssembly());
             // services.AddMediatR(typeof(Startup));
 
+         //  services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddHttpContextAccessor();
+            
             var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
             services.AddMediatR(Assembly1a);
 
@@ -47,6 +55,7 @@ namespace SMMCoreDDD2019.AdminLte
 
             services.AddControllersWithViews(options => options.EnableEndpointRouting = false);
 
+         
 
         }
 

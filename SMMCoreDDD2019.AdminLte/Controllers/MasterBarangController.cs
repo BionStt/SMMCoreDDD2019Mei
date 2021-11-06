@@ -14,7 +14,11 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         {
             _mediator = mediator;
         }
-
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateMasterBarangRequest MasterBarangViewModel)

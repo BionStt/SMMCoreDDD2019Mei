@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SmmCoreDDD2019.Application.CustomerDBs.Commands.CreateCustomerDB;
@@ -11,6 +12,7 @@ using SumberMas2015.SalesMarketing.ServiceApplication.DataKonsumen.Commands.Crea
 using SumberMas2015.SalesMarketing.ServiceApplication.JenisKelamin.ListJenisKelamin;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangPekerjaanDBs.Queries;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangUsahaDBs.Queries;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace SMMCoreDDD2019.AdminLte.Controllers
@@ -18,10 +20,17 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
     public class CustomersController : Controller
     {
         private IMediator _mediator;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly string _userName;
+        private readonly string _userId;
 
-        public CustomersController(IMediator mediator)
+        public CustomersController(IMediator mediator, IHttpContextAccessor httpContextAccessor)
         {
             _mediator = mediator;
+            _httpContextAccessor = httpContextAccessor;
+            _userName = httpContextAccessor.HttpContext.User.Identity.Name;
+            _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
         }
 
         [HttpGet]
@@ -36,6 +45,9 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             var JnsKelamin = await _mediator.Send(new ListJenisKelaminQuery());
             ViewData["Agama1"] = new SelectList(Agama, "NoUrutId", "AgamaKeterangan");
             ViewData["JnsKelamin1"] = new SelectList(JnsKelamin, "NoUrutId", "JenisKelaminKeterangan");
+            ViewData["UserName"] = _userName;
+            ViewData["UserId"] = _userId;
+
             return View();
         }
 
