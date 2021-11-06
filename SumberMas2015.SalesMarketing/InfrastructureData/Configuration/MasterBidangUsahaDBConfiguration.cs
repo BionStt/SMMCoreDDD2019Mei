@@ -15,7 +15,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         {
             builder.ToTable("MasterBidangUsahaDB");
 
-            builder.HasKey(x => x.NoUrutId);
+            builder.HasKey(x => x.MasterBidangUsahaGuid);
             builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
 
 

@@ -14,6 +14,10 @@ namespace SumberMas2015.Inventory.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<StokUnit> builder)
         {
             builder.ToTable("StokUnit");
+            builder.HasKey(e=>e.StokUnitId);
+
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
+
             builder.Property(e=>e.Diskon).HasColumnType("money");
             builder.Property(e => e.Diskon2).HasColumnType("money");
             builder.Property(e => e.DiskonPPN).HasColumnType("money");

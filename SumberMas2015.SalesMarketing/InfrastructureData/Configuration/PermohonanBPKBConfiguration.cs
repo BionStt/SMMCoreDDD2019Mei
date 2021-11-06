@@ -14,6 +14,10 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<PermohonanBPKB> builder)
         {
             builder.ToTable("PermohonanBPKB");
+            builder.HasKey(e=>e.PermohonanBPKBId);
+
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
+
         }
     }
 }

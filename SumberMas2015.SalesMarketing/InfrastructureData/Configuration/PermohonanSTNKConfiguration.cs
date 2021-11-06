@@ -14,6 +14,10 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<PermohonanSTNK> builder)
         {
             builder.ToTable("PermohonanSTNK");
+            builder.HasKey(e=>e.PermohonanSTNKId);
+
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
+
             builder.Property(x => x.BbnPabrik).HasColumnType("money");
             builder.Property(x => x.BiayaTambahan).HasColumnType("money");
             builder.Property(x => x.Birojasa).HasColumnType("money");

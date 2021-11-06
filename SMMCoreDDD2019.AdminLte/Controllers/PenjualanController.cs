@@ -35,7 +35,7 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             ViewData["DataKonsumen"] = new SelectList(KodeCustomer, "NoCustomer", "NamaKonsumen");
            // ViewData["NamaSalesForce"] = new SelectList(NamaSalesForce1.DataPegawaiDtPribadiDs, "IDPegawai", "NamaDepan");
             ViewData["NamaLeasingCabang"] = new SelectList(LeasingCab, "NoUrutLeasingCabang", "NamaCab");
-            ViewData["NamaKategoryPenjualan"] = new SelectList(NamaKategoryPenjualan, "NoUrut", "NamaKategoryPenjualan");
+            ViewData["NamaKategoryPenjualan"] = new SelectList(NamaKategoryPenjualan, "NoUrutId", "KategoriPenjualan");
             ViewData["DataSPK1"] = new SelectList(DataSPK, "NoUrutSPKBaru1", "NamaPemesan");
 
 

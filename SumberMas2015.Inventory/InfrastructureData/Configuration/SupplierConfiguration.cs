@@ -14,6 +14,8 @@ namespace SumberMas2015.Inventory.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<Supplier> builder)
         {
             builder.ToTable("Supplier");
+            builder.HasKey(e=>e.SupplierId);
+
             builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
 
             builder.OwnsOne(o => o.AlamatSupplier, a => {

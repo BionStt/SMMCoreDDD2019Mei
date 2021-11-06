@@ -14,7 +14,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<JenisKelamin> builder)
         {
             builder.ToTable("JenisKelamin");
-            builder.HasKey(e => e.NoUrutId);
+            builder.HasKey(e => e.JenisKelaminId);
             builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
 
             //builder.HasData(

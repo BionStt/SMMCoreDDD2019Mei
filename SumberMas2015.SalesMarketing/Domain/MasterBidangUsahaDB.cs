@@ -17,12 +17,12 @@ namespace SumberMas2015.SalesMarketing.Domain
         private MasterBidangUsahaDB(string namaMasterBidangUsaha)
         {
             NamaMasterBidangUsaha = namaMasterBidangUsaha;
-            NamaMasterBidangUsahaGuid = Guid.NewGuid();
+            MasterBidangUsahaGuid = Guid.NewGuid();
         }
         // [Key]
        // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int NoUrutId { get; set; }
-        public Guid NamaMasterBidangUsahaGuid { get; set; }
+        public Guid MasterBidangUsahaGuid { get; set; }
         public string NamaMasterBidangUsaha { get;private set; }
         public DateTime TanggalInput { get; set; }
     }

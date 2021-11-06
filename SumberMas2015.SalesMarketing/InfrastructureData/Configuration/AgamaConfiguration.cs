@@ -14,7 +14,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<Agama> builder)
         {
             builder.ToTable("Agama");
-            builder.HasKey(e => e.NoUrutId);
+            builder.HasKey(e => e.AgamaId);
             builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
 
             //builder.HasData(

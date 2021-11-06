@@ -14,6 +14,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<DataSalesMarketing> builder)
         {
             builder.ToTable("DataSalesMarketing");
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
+
+
         }
     }
 }

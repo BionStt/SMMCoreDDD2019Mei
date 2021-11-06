@@ -14,7 +14,7 @@ namespace SumberMas2015.Inventory.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<Pembelian> builder)
         {
             builder.ToTable("Pembelian");
-            builder.HasKey(e => e.NoUrutId);
+            builder.HasKey(e => e.PembelianId);
             builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
 
             builder.Property(e => e.TanggalBeli).HasColumnType("datetime")

@@ -14,6 +14,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<PermohonanFaktur> builder)
         {
             builder.ToTable("PermohonanFaktur");
+            builder.HasKey(e=>e.PermohonanFakturId);
+
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
 
             builder.OwnsOne(o => o.AlamatFaktur, a => {
                 a.WithOwner();

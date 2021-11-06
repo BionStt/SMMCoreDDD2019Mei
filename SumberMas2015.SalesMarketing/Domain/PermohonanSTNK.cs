@@ -58,5 +58,6 @@ namespace SumberMas2015.SalesMarketing.Domain
         public decimal? BbnPabrik { get; set; }
      
         public int? ProgresifKe { get; set; }
+        public int NoUrutId { get; set; }
     }
 }

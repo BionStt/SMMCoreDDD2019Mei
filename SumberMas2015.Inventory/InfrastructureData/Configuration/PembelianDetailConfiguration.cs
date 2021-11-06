@@ -14,6 +14,9 @@ namespace SumberMas2015.Inventory.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<PembelianDetail> builder)
         {
             builder.ToTable("PembelianDetail");
+            builder.HasKey(e => e.PembelianDetailId);
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
+
             builder.Property(e => e.BBN).HasColumnType("money");
             builder.Property(e => e.Diskon).HasColumnType("money");
             builder.Property(e => e.Diskon2).HasColumnType("money");

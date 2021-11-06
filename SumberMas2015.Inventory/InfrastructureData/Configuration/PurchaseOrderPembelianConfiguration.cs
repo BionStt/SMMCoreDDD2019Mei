@@ -14,6 +14,9 @@ namespace SumberMas2015.Inventory.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<PurchaseOrderPembelian> builder)
         {
             builder.ToTable("PurchaseOrderPembelian");
+            builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
+            builder.HasKey(e => e.PurchaseOrderPembelianId);
+
         }
     }
 }

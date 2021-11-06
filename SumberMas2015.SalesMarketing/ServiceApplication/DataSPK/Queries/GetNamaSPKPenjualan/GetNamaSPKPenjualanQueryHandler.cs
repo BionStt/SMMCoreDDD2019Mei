@@ -33,7 +33,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Queries.GetNam
                                      }
 
 
-                ).ToListAsync();
+                ).AsNoTracking().ToListAsync();
 
 
                return returnQuery;
