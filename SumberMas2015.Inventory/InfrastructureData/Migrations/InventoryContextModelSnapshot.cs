@@ -81,10 +81,9 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 
             modelBuilder.Entity("SumberMas2015.Inventory.Domain.Pembelian", b =>
                 {
-                    b.Property<int>("NoUrutId")
+                    b.Property<Guid>("PembelianId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Batal")
                         .HasColumnType("nvarchar(max)");
@@ -95,8 +94,10 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                     b.Property<string>("Keterangan")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PembelianId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("NoUrutId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<Guid>("PurchaseOrderPembelianId")
                         .HasColumnType("uniqueidentifier");
@@ -115,7 +116,7 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                     b.Property<string>("UserNameInput")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("NoUrutId");
+                    b.HasKey("PembelianId");
 
                     b.ToTable("Pembelian");
                 });

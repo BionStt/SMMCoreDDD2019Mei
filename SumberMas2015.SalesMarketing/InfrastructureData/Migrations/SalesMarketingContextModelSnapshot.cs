@@ -469,7 +469,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NoUrutId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.HasKey("DataSalesMarketingId");
 
@@ -478,36 +480,38 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
 
             modelBuilder.Entity("SumberMas2015.SalesMarketing.Domain.EnumInEntity.Agama", b =>
                 {
-                    b.Property<int>("NoUrutId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<Guid>("AgamaId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("AgamaKeterangan")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("NoUrutId");
+                    b.Property<int>("NoUrutId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.HasKey("AgamaId");
 
                     b.ToTable("Agama");
                 });
 
             modelBuilder.Entity("SumberMas2015.SalesMarketing.Domain.EnumInEntity.JenisKelamin", b =>
                 {
-                    b.Property<int>("NoUrutId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<Guid>("JenisKelaminId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("JenisKelaminKeterangan")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("NoUrutId");
+                    b.Property<int>("NoUrutId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.HasKey("JenisKelaminId");
 
                     b.ToTable("JenisKelamin");
                 });
@@ -599,16 +603,17 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
 
             modelBuilder.Entity("SumberMas2015.SalesMarketing.Domain.MasterBidangUsahaDB", b =>
                 {
-                    b.Property<int>("NoUrutId")
+                    b.Property<Guid>("MasterBidangUsahaGuid")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("NamaMasterBidangUsaha")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("NamaMasterBidangUsahaGuid")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("NoUrutId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("TanggalInput")
                         .ValueGeneratedOnAdd()
@@ -616,7 +621,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         .HasColumnName("TanggalInput")
                         .HasDefaultValueSql("getdate()");
 
-                    b.HasKey("NoUrutId");
+                    b.HasKey("MasterBidangUsahaGuid");
 
                     b.ToTable("MasterBidangUsahaDB");
                 });
@@ -744,7 +749,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("NoUrutId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("NomorBpkb")
                         .HasColumnType("nvarchar(max)");
@@ -773,7 +780,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NoUrutId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("NomorKTP")
                         .HasColumnType("nvarchar(max)");
@@ -812,6 +821,11 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
 
                     b.Property<string>("NoStnk")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NoUrutId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("NomorPlat")
                         .HasColumnType("nvarchar(max)");

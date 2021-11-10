@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 {
-    public partial class InitialCreate1 : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,8 +34,6 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                 name: "Pembelian",
                 columns: table => new
                 {
-                    NoUrutId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     PembelianId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TanggalBeli = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())"),
                     SupplierId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -44,11 +42,13 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                     Keterangan = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserNameInput = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PurchaseOrderPembelianId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NoUrutId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Batal = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pembelian", x => x.NoUrutId);
+                    table.PrimaryKey("PK_Pembelian", x => x.PembelianId);
                 });
 
             migrationBuilder.CreateTable(
@@ -58,18 +58,19 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                     PembelianDetailId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PembelianId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MasterBarangDBId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    HargaOffTheRoad = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    BBN = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    HargaOffTheRoad = table.Column<decimal>(type: "money", nullable: true),
+                    BBN = table.Column<decimal>(type: "money", nullable: true),
                     Qty = table.Column<int>(type: "int", nullable: false),
-                    Diskon = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    SellIn = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Harga1 = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Diskon2 = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    SellIn2 = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    HargaPPN = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    DiskonPPN = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    SellInPPN = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Diskon = table.Column<decimal>(type: "money", nullable: true),
+                    SellIn = table.Column<decimal>(type: "money", nullable: true),
+                    Harga1 = table.Column<decimal>(type: "money", nullable: true),
+                    Diskon2 = table.Column<decimal>(type: "money", nullable: true),
+                    SellIn2 = table.Column<decimal>(type: "money", nullable: true),
+                    HargaPPN = table.Column<decimal>(type: "money", nullable: true),
+                    DiskonPPN = table.Column<decimal>(type: "money", nullable: true),
+                    SellInPPN = table.Column<decimal>(type: "money", nullable: true),
                     NoUrutId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
                 },
                 constraints: table =>
                 {
@@ -89,6 +90,7 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                     UserInput = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PoAstra = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NoUrutId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
                 },
                 constraints: table =>
                 {
@@ -101,13 +103,14 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                 {
                     PurchaseOrderPembelianDetailId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MasterBarangDBId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    OffTheRoad = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Bbn = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Diskon = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    OffTheRoad = table.Column<decimal>(type: "money", nullable: true),
+                    Bbn = table.Column<decimal>(type: "money", nullable: true),
+                    Diskon = table.Column<decimal>(type: "money", nullable: true),
                     Warna = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Qty = table.Column<int>(type: "int", nullable: true),
                     Keterangan = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NoUrutId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
                 },
                 constraints: table =>
                 {
@@ -119,7 +122,8 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                 columns: table => new
                 {
                     StokUnitId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NoUrutId = table.Column<int>(type: "int", nullable: false),
+                    NoUrutId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     PembelianDetailId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MasterBarangId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NomorRangka = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -128,15 +132,15 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                     Jual = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Kembali = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Faktur = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Harga = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Diskon = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    SellIn = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Harga1 = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Diskon2 = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    SellIn2 = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    HargaPPN = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    DiskonPPN = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    SellInPPN = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Harga = table.Column<decimal>(type: "money", nullable: true),
+                    Diskon = table.Column<decimal>(type: "money", nullable: true),
+                    SellIn = table.Column<decimal>(type: "money", nullable: true),
+                    Harga1 = table.Column<decimal>(type: "money", nullable: true),
+                    Diskon2 = table.Column<decimal>(type: "money", nullable: true),
+                    SellIn2 = table.Column<decimal>(type: "money", nullable: true),
+                    HargaPPN = table.Column<decimal>(type: "money", nullable: true),
+                    DiskonPPN = table.Column<decimal>(type: "money", nullable: true),
+                    SellInPPN = table.Column<decimal>(type: "money", nullable: true),
                     TanggalInput = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>

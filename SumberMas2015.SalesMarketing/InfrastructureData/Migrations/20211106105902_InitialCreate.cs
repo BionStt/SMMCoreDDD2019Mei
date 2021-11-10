@@ -11,14 +11,14 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                 name: "Agama",
                 columns: table => new
                 {
-                    NoUrutId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     AgamaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    AgamaKeterangan = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    AgamaKeterangan = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NoUrutId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Agama", x => x.NoUrutId);
+                    table.PrimaryKey("PK_Agama", x => x.AgamaId);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,11 +59,26 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                     NamaBidangUsaha = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GetDate()"),
                     JenisKelaminId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    AgamaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    AgamaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Terinput = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DataKonsumen", x => x.DataKonsumenId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DataSalesMarketing",
+                columns: table => new
+                {
+                    DataSalesMarketingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NoUrutId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NamaSales = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DataSalesMarketing", x => x.DataSalesMarketingId);
                 });
 
             migrationBuilder.CreateTable(
@@ -87,17 +102,36 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "JenisKelamin",
+                name: "DataSPKKendaraan",
                 columns: table => new
                 {
+                    DataSPKKendaraanId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TahunPerakitan = table.Column<string>(type: "varchar(5)", unicode: false, maxLength: 5, nullable: true),
+                    Warna = table.Column<string>(type: "varchar(25)", unicode: false, maxLength: 25, nullable: true),
+                    NamaSTNK = table.Column<string>(type: "varchar(35)", unicode: false, maxLength: 35, nullable: true),
+                    NoKtpSTNK = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
                     NoUrutId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    JenisKelaminId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    JenisKelaminKeterangan = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    MasterBarangId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DataSPKId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_JenisKelamin", x => x.NoUrutId);
+                    table.PrimaryKey("PK_DataSPKKendaraan", x => x.DataSPKKendaraanId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "JenisKelamin",
+                columns: table => new
+                {
+                    JenisKelaminId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    JenisKelaminKeterangan = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NoUrutId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JenisKelamin", x => x.JenisKelaminId);
                 });
 
             migrationBuilder.CreateTable(
@@ -142,15 +176,15 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                 name: "MasterBidangUsahaDB",
                 columns: table => new
                 {
+                    MasterBidangUsahaGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NoUrutId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NamaMasterBidangUsahaGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NamaMasterBidangUsaha = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TanggalInput = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MasterBidangUsahaDB", x => x.NoUrutId);
+                    table.PrimaryKey("PK_MasterBidangUsahaDB", x => x.MasterBidangUsahaGuid);
                 });
 
             migrationBuilder.CreateTable(
@@ -215,24 +249,92 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                 {
                     DataPenjualanId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NoRegistrasiPenjualan = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    DataSPKId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    DataKonsumenId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    MasterLeasingCabangId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    DataSPKId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DataKonsumenId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MasterLeasingCabangId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NoBuku = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: true),
-                    SalesUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    SalesUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Keterangan = table.Column<string>(type: "varchar(300)", unicode: false, maxLength: 300, nullable: true),
                     Batal = table.Column<string>(type: "varchar(1)", unicode: false, maxLength: 1, nullable: true),
-                    MasterKategoriPenjualanId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    MasterKategoriPenjualanId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Mediator = table.Column<string>(type: "varchar(15)", unicode: false, maxLength: 15, nullable: true),
-                    UserInputID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     UserNameInput = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    TanggalPenjualan = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "(getdate())"),
+                    TanggalPenjualan = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())"),
                     NoUrutId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Penjualan", x => x.DataPenjualanId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PermohonanBPKB",
+                columns: table => new
+                {
+                    PermohonanBPKBId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NoUrutId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PermohonanFakturId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NomorBpkb = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TanggalTerimaBPKB = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PermohonanBPKB", x => x.PermohonanBPKBId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PermohonanFaktur",
+                columns: table => new
+                {
+                    PermohonanFakturId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NoRegistrasiFaktur = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TanggalMohonFaktur = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    PenjualanDetailId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TanggalLahir = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    NomorKTP = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NamaFaktur = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AlamatFaktur_Jalan = table.Column<string>(type: "varchar(200)", unicode: false, maxLength: 200, nullable: true),
+                    AlamatFaktur_Kelurahan = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    AlamatFaktur_Kecamatan = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    AlamatFaktur_Kota = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    AlamatFaktur_Propinsi = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    AlamatFaktur_KodePos = table.Column<string>(type: "nvarchar(7)", maxLength: 7, nullable: true),
+                    AlamatFaktur_NoTelepon = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    AlamatFaktur_NoFax = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    AlamatFaktur_NoHandphone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    NoUrutId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PermohonanFaktur", x => x.PermohonanFakturId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PermohonanSTNK",
+                columns: table => new
+                {
+                    PermohonanSTNKId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TanggalBayarSTNK = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    PermohonanFakturDBId = table.Column<int>(type: "int", nullable: true),
+                    NoStnk = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PajakStnk = table.Column<decimal>(type: "money", nullable: false),
+                    Birojasa = table.Column<decimal>(type: "money", nullable: false),
+                    BiayaTambahan = table.Column<decimal>(type: "money", nullable: false),
+                    FormA = table.Column<decimal>(type: "money", nullable: false),
+                    NomorPlat = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Perwil = table.Column<decimal>(type: "money", nullable: true),
+                    PajakProgresif = table.Column<decimal>(type: "money", nullable: true),
+                    BbnPabrik = table.Column<decimal>(type: "money", nullable: true),
+                    ProgresifKe = table.Column<int>(type: "int", nullable: true),
+                    NoUrutId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PermohonanSTNK", x => x.PermohonanSTNKId);
                 });
 
             migrationBuilder.CreateTable(
@@ -254,7 +356,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                     UangTandaJadiKredit = table.Column<decimal>(type: "money", nullable: true),
                     NoUrutId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DataSPKId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DataSPKId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -264,7 +366,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         column: x => x.DataSPKId,
                         principalTable: "DataSPK",
                         principalColumn: "DataSPKId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -298,7 +400,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                     PekerjaanPemesan = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
                     NoUrutId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DataSPKId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DataSPKId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -308,38 +410,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         column: x => x.DataSPKId,
                         principalTable: "DataSPK",
                         principalColumn: "DataSPKId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DataSPKKendaraan",
-                columns: table => new
-                {
-                    DataSPKKendaraanId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TahunPerakitan = table.Column<string>(type: "varchar(5)", unicode: false, maxLength: 5, nullable: true),
-                    Warna = table.Column<string>(type: "varchar(25)", unicode: false, maxLength: 25, nullable: true),
-                    NamaSTNK = table.Column<string>(type: "varchar(35)", unicode: false, maxLength: 35, nullable: true),
-                    NoKtpSTNK = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
-                    NoUrutId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MasterBarangId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    DataSPKId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DataSPKKendaraan", x => x.DataSPKKendaraanId);
-                    table.ForeignKey(
-                        name: "FK_DataSPKKendaraan_DataSPK_DataSPKId",
-                        column: x => x.DataSPKId,
-                        principalTable: "DataSPK",
-                        principalColumn: "DataSPKId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_DataSPKKendaraan_MasterBarang_MasterBarangId",
-                        column: x => x.MasterBarangId,
-                        principalTable: "MasterBarang",
-                        principalColumn: "MasterBarangId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -361,7 +432,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                     AlamatCabangLeasing_NoTelepon = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     AlamatCabangLeasing_NoFax = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     AlamatCabangLeasing_NoHandphone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    MasterLeasingId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    MasterLeasingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -371,7 +442,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         column: x => x.MasterLeasingId,
                         principalTable: "MasterLeasing",
                         principalColumn: "MasterLeasingId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -419,18 +490,18 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                 columns: table => new
                 {
                     DataSPKLeasingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DataSPKId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Angsuran = table.Column<decimal>(type: "money", nullable: true),
                     Mediator = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: true),
                     NamaCmo = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: true),
                     NamaSales = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Tenor = table.Column<int>(type: "int", nullable: true),
-                    TanggalSurvei = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "GetUtcDate()"),
+                    TanggalSurvei = table.Column<DateTime>(type: "datetime2", nullable: true),
                     NoUrutId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MasterKategoriBayaranId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     MasterKategoriPenjualanId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    MasterLeasingCabangId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    DataSPKId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    MasterLeasingCabangId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -440,7 +511,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         column: x => x.DataSPKId,
                         principalTable: "DataSPK",
                         principalColumn: "DataSPKId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DataSPKLeasing_MasterKategoriBayaran_MasterKategoriBayaranId",
                         column: x => x.MasterKategoriBayaranId,
@@ -460,16 +531,6 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         principalColumn: "MasterLeasingCabangId",
                         onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DataSPKKendaraan_DataSPKId",
-                table: "DataSPKKendaraan",
-                column: "DataSPKId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DataSPKKendaraan_MasterBarangId",
-                table: "DataSPKKendaraan",
-                column: "MasterBarangId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_DataSPKKredit_DataSPKId",
@@ -521,6 +582,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                 name: "DataKonsumen");
 
             migrationBuilder.DropTable(
+                name: "DataSalesMarketing");
+
+            migrationBuilder.DropTable(
                 name: "DataSPKKendaraan");
 
             migrationBuilder.DropTable(
@@ -536,6 +600,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                 name: "JenisKelamin");
 
             migrationBuilder.DropTable(
+                name: "MasterBarang");
+
+            migrationBuilder.DropTable(
                 name: "MasterBidangPekerjaanDB");
 
             migrationBuilder.DropTable(
@@ -548,7 +615,13 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                 name: "PenjualanDetail");
 
             migrationBuilder.DropTable(
-                name: "MasterBarang");
+                name: "PermohonanBPKB");
+
+            migrationBuilder.DropTable(
+                name: "PermohonanFaktur");
+
+            migrationBuilder.DropTable(
+                name: "PermohonanSTNK");
 
             migrationBuilder.DropTable(
                 name: "MasterKategoriBayaran");

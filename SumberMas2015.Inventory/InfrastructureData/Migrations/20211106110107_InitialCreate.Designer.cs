@@ -10,8 +10,8 @@ using SumberMas2015.Inventory.InfrastructureData.Context;
 namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 {
     [DbContext(typeof(InventoryContext))]
-    [Migration("20211106080403_InitialCreate1")]
-    partial class InitialCreate1
+    [Migration("20211106110107_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,10 +83,9 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 
             modelBuilder.Entity("SumberMas2015.Inventory.Domain.Pembelian", b =>
                 {
-                    b.Property<int>("NoUrutId")
+                    b.Property<Guid>("PembelianId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Batal")
                         .HasColumnType("nvarchar(max)");
@@ -97,8 +96,10 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                     b.Property<string>("Keterangan")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PembelianId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("NoUrutId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<Guid>("PurchaseOrderPembelianId")
                         .HasColumnType("uniqueidentifier");
@@ -117,7 +118,7 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                     b.Property<string>("UserNameInput")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("NoUrutId");
+                    b.HasKey("PembelianId");
 
                     b.ToTable("Pembelian");
                 });
@@ -129,31 +130,33 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal?>("BBN")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<decimal?>("Diskon")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<decimal?>("Diskon2")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<decimal?>("DiskonPPN")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<decimal?>("Harga1")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<decimal?>("HargaOffTheRoad")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<decimal?>("HargaPPN")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<Guid>("MasterBarangDBId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("NoUrutId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<Guid>("PembelianId")
                         .HasColumnType("uniqueidentifier");
@@ -162,13 +165,13 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal?>("SellIn")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<decimal?>("SellIn2")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<decimal?>("SellInPPN")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.HasKey("PembelianDetailId");
 
@@ -191,7 +194,9 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NoUrutId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("PoAstra")
                         .HasColumnType("nvarchar(max)");
@@ -217,10 +222,10 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal?>("Bbn")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<decimal?>("Diskon")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<string>("Keterangan")
                         .HasColumnType("nvarchar(max)");
@@ -229,10 +234,12 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("NoUrutId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal?>("OffTheRoad")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<int?>("Qty")
                         .HasColumnType("int");
@@ -252,25 +259,25 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal?>("Diskon")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<decimal?>("Diskon2")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<decimal?>("DiskonPPN")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<string>("Faktur")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("Harga")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<decimal?>("Harga1")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<decimal?>("HargaPPN")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<string>("Jual")
                         .HasColumnType("nvarchar(max)");
@@ -282,7 +289,9 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("NoUrutId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("NomorMesin")
                         .HasColumnType("nvarchar(max)");
@@ -294,13 +303,13 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal?>("SellIn")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<decimal?>("SellIn2")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<decimal?>("SellInPPN")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<DateTime>("TanggalInput")
                         .HasColumnType("datetime2");
