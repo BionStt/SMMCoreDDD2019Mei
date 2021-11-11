@@ -155,8 +155,8 @@
                                 <input id="ProgresifKe1" asp-for="ProgresifKe" class="form-control" />
                                 <span asp-validation-for="ProgresifKe" class="text-danger"></span>
 
-                                <input asp-for="UserInputName" value="@Context.User.Identity.Name" class="form-control" />
-
+                                <input type="hidden" asp-for="UserInputName" value="@Context.User.Identity.Name" class="form-control" />
+                                <input type="hidden" asp-for="UserNameId" value="@ViewBag.UserId"/>
                             </div>
                         </div>
                     </div>

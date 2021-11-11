@@ -1,10 +1,12 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SumberMas2015.Organization.Dto.DataPerusahaan;
 using SumberMas2015.Organization.Dto.DataPerusahaanCabang;
 using SumberMas2015.Organization.DtoMapping;
 using SumberMas2015.Organization.ServiceApplication.DataPerusahaan.Queries.GetNamaPerusahaan;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace SMMCoreDDD2019.AdminLte.Controllers
@@ -13,9 +15,15 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
     {
         private IMediator _mediator;
 
-        public DataPerusahaanController(IMediator mediator)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly string _userId;
+
+        public DataPerusahaanController(IMediator mediator, IHttpContextAccessor httpContextAccessor = null)
         {
             _mediator = mediator;
+            _httpContextAccessor=httpContextAccessor;
+            _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;//userID Guid
+
         }
 
         [HttpGet]
@@ -24,7 +32,7 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         {
             var DataPerusahaan = await _mediator.Send(new GetNamaPerusahaanQuery());
             ViewData["NamaPerusahaan"] = new SelectList(DataPerusahaan, "IDPerusahaan", "NamaPerusahaan");
-
+            ViewData["UserId"] = _userId;
             return View();
         }
 
@@ -39,12 +47,14 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
                 await _mediator.Send(xx);
                 // return RedirectToAction(nameof(DataPerusahaanController.DataCabangCreate), "DataPerusahaan");
             }
+            
             return View(DataPerusahaanCabangViewModel);
         }
 
         [HttpGet]
         public IActionResult CreateDataPerusahaan()
         {
+            ViewData["UserId"] = _userId;
             return View();
         }
 

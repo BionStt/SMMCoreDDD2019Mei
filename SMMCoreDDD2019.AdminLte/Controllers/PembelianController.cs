@@ -70,6 +70,9 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         {
             var NamaBarang = await _mediator.Send(new GetNamaBarangQuery());
             var NamaPO = await _mediator.Send(new GetDataPOPembelianQuery());
+            ViewData["UserName"] = _userName;
+            ViewData["UserId"] = _userId;
+
             ViewData["NamaBarang"] = new SelectList(NamaBarang, "NoUrutKendaraan", "NamaBarang");
             ViewData["NamaPO"] = new SelectList(NamaPO, "NoUrutPoPembelian", "NamaPOPembelian");
             return View();
@@ -144,6 +147,10 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             ViewData["Diskon1"] = (double)abc1.Diskon1;
             ViewData["SellIn1"] = (double)abc1.SellIn1;
             ViewData["NamaBrg1"] = abc1.NamaBarang1;
+
+            ViewData["UserName"] = _userName;
+            ViewData["UserId"] = _userId;
+
             return View("InputStokUnit");
         }
 
@@ -173,7 +180,8 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             ViewData["SellIn1"] = (double)abc1.SellIn1;
             ViewData["NamaBrg1"] = abc1.NamaBarang1;
 
-
+            ViewData["UserName"] = _userName;
+            ViewData["UserId"] = _userId;
 
             return View(StokUnitViewModel);
         }
@@ -189,6 +197,10 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
 
             var NamaPO = await _mediator.Send(new GetNamaPOQuery());
             ViewData["NamaPO"] = new SelectList(NamaPO, "NoUrutPoPembelian", "NamaPOPembelian");
+
+            ViewData["UserName"] = _userName;
+            ViewData["UserId"] = _userId;
+
             return View();
         }
 
@@ -213,6 +225,9 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
 
             var KodeBeli = await _mediator.Send(new GetKodeBeliQuery());
             ViewData["KodeBeli"] = new SelectList(KodeBeli, "NoUrutPembelian", "NamaPembelian");
+            
+            ViewData["UserName"] = _userName;
+            ViewData["UserId"] = _userId;
 
             return View();
         }

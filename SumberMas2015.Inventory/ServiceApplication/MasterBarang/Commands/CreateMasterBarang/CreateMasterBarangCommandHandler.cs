@@ -21,7 +21,7 @@ namespace SumberMas2015.Inventory.ServiceApplication.MasterBarang.Commands.Creat
         public async Task<Guid> Handle(CreateMasterBarangCommand request, CancellationToken cancellationToken)
         {
             var mstBarang = Domain.MasterBarang.Create(request.NamaBarang, request.NomorRangka, request.NomorMesin, request.Merek
-                , request.KapasitasMesin, request.HargaOff, request.BBn, request.TahunPerakitan, request.TypeKendaraan);
+                , request.KapasitasMesin, request.HargaOff, request.BBn, request.TahunPerakitan, request.TypeKendaraan,request.UserName,request.USerNameId);
 
             await _context.MasterBarang.AddAsync(mstBarang);
             await _context.SaveChangesAsync();

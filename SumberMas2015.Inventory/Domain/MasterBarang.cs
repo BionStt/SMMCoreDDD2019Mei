@@ -20,6 +20,8 @@ namespace SumberMas2015.Inventory.Domain
         public string TypeKendaraan { get; private set; }
         public int MasterBarangStatus { get; private set; }
         public int NoUrutId { get; set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
         public void NonAktifStatusMasterBarang()
         {
             MasterBarangStatus = 0;
@@ -28,7 +30,7 @@ namespace SumberMas2015.Inventory.Domain
         {
 
         }
-        private MasterBarang(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOff, decimal? bbn, string tahunPerakitan, string typeKendaraan)
+        private MasterBarang(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOff, decimal? bbn, string tahunPerakitan, string typeKendaraan, string userName, Guid userNameId)
         {
             MasterBarangId = Guid.NewGuid();
             NamaBarang = namaBarang;
@@ -41,10 +43,12 @@ namespace SumberMas2015.Inventory.Domain
             TahunPerakitan = tahunPerakitan;
             TypeKendaraan = typeKendaraan;
             MasterBarangStatus = 0;
+            UserName=userName;
+            UserNameId=userNameId;
         }
-        public static MasterBarang Create(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOff, decimal? bbn, string tahunPerakitan, string typeKendaraan)
+        public static MasterBarang Create(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOff, decimal? bbn, string tahunPerakitan, string typeKendaraan, string userName, Guid userNameId)
         {
-            return new MasterBarang(namaBarang, nomorRangka, nomorMesin, merek, kapasitasMesin, hargaOff, bbn, tahunPerakitan, typeKendaraan);
+            return new MasterBarang(namaBarang, nomorRangka, nomorMesin, merek, kapasitasMesin, hargaOff, bbn, tahunPerakitan, typeKendaraan,userName,userNameId);
         }
         public void EditMasterBarang(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOff, decimal? bbn, string tahunPerakitan, string typeKendaraan)
         {

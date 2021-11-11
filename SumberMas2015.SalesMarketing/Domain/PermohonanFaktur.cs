@@ -14,11 +14,11 @@ namespace SumberMas2015.SalesMarketing.Domain
 
         }
 
-        public static PermohonanFaktur CreatePermohonanFaktur(string noRegistrasiFaktur, DateTime? tanggalMohonFaktur, Guid penjualanDetailId, DateTime? tanggalLahir, string nomorKTP, string namaFaktur, Alamat alamatFaktur)
+        public static PermohonanFaktur CreatePermohonanFaktur(string noRegistrasiFaktur, DateTime? tanggalMohonFaktur, Guid penjualanDetailId, DateTime? tanggalLahir, string nomorKTP, string namaFaktur, Alamat alamatFaktur, Guid userNameId, string userName)
         {
-            return new PermohonanFaktur(noRegistrasiFaktur,tanggalMohonFaktur,penjualanDetailId,tanggalLahir,nomorKTP,namaFaktur,alamatFaktur);
+            return new PermohonanFaktur(noRegistrasiFaktur,tanggalMohonFaktur,penjualanDetailId,tanggalLahir,nomorKTP,namaFaktur,alamatFaktur,userNameId,userName);
         }
-        private PermohonanFaktur(string noRegistrasiFaktur, DateTime? tanggalMohonFaktur, Guid penjualanDetailId, DateTime? tanggalLahir, string nomorKTP, string namaFaktur, Alamat alamatFaktur)
+        private PermohonanFaktur(string noRegistrasiFaktur, DateTime? tanggalMohonFaktur, Guid penjualanDetailId, DateTime? tanggalLahir, string nomorKTP, string namaFaktur, Alamat alamatFaktur, Guid userNameId, string userName)
         {
             PermohonanFakturId = Guid.NewGuid();
             NoRegistrasiFaktur = noRegistrasiFaktur;
@@ -28,6 +28,8 @@ namespace SumberMas2015.SalesMarketing.Domain
             NomorKTP = nomorKTP;
             NamaFaktur = namaFaktur;
             AlamatFaktur = alamatFaktur;
+            UserNameId=userNameId;
+            UserName=userName;
         }
 
         public Guid PermohonanFakturId { get; set; }
@@ -41,7 +43,8 @@ namespace SumberMas2015.SalesMarketing.Domain
         public string NamaFaktur { get; set; }
         public Alamat AlamatFaktur{ get; set; }
         public int NoUrutId { get; set; }
-
+        public Guid UserNameId { get; set; }
+        public string UserName { get; set; }
 
 
     }

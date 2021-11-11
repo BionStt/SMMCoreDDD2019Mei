@@ -9,22 +9,23 @@ namespace SumberMas2015.SalesMarketing.Domain
 {
     public class DataSPK
     {
-        private DataSPK(string lokasiSpk,  string userNameInput)
+        private DataSPK(string lokasiSpk, string userNameInput, Guid userNameId)
         {
             if (lokasiSpk == null) throw new ArgumentNullException("Lokasi SPK tidak boleh kosong");
             DataSPKId = Guid.NewGuid();
             NoRegistrasiSPK = KodeRegistrasi(DateTime.Now);
             LokasiSpk = lokasiSpk;
             //  Terinput = terinput;
-         //   TanggalInput = tanggalInput;
+            //   TanggalInput = tanggalInput;
             //  Tolak = tolak;
             //UserId = userId;
             UserNameInput = userNameInput;
             StatusSPK = 0;
+            UserNameId=userNameId;
         }
-        public static DataSPK CreateDataSPKBaru(string lokasiSpk,     string userNameInput)
+        public static DataSPK CreateDataSPKBaru(string lokasiSpk,     string userNameInput, Guid userNameId)
         {
-            return new DataSPK(lokasiSpk,  userNameInput);
+            return new DataSPK(lokasiSpk,  userNameInput, userNameId);
         }
         private void Ditolak()
         {
@@ -76,6 +77,7 @@ namespace SumberMas2015.SalesMarketing.Domain
         public string Tolak { get; private set; }
         public Guid? UserId { get; private set; }
         public string? UserNameInput { get; private set; }
+        public Guid UserNameId { get;private set; }
         public int NoUrutId { get; set; }
 
         private readonly List<DataSPKSurvei> _dataSPKSurvei = new List<DataSPKSurvei>();
@@ -112,9 +114,9 @@ namespace SumberMas2015.SalesMarketing.Domain
 
         private readonly List<DataSPKKredit> _dataSpkKredit = new List<DataSPKKredit>();
         public IReadOnlyCollection<DataSPKKredit> DataSPKKredit => _dataSpkKredit.AsReadOnly();
-        public DataSPKKredit AddDataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit)
+        public DataSPKKredit AddDataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit,string userName,Guid userNameId)
         {
-            var dataSPKKredit = Domain.DataSPKKredit.CreateDataSPKKredit(biayaAdministrasiKredit,biayaAdministrasiTunai,bBN,dendaWilayah,diskonDP,diskonTunai,dPPriceList,komisi,offTheRoad,promosi,uangTandaJadiTunai,uangTandaJadiKredit,DataSPKId);
+            var dataSPKKredit = Domain.DataSPKKredit.CreateDataSPKKredit(biayaAdministrasiKredit,biayaAdministrasiTunai,bBN,dendaWilayah,diskonDP,diskonTunai,dPPriceList,komisi,offTheRoad,promosi,uangTandaJadiTunai,uangTandaJadiKredit,DataSPKId,userName,userNameId);
             _dataSpkKredit.Add(dataSPKKredit);
             return dataSPKKredit;
         }

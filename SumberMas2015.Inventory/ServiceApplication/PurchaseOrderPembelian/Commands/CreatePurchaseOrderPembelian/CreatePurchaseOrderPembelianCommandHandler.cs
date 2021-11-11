@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using SumberMas2015.Inventory.InfrastructureData.Context;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,9 @@ namespace SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Comm
 
         public async Task<Guid> Handle(CreatePurchaseOrderPembelianCommand request, CancellationToken cancellationToken)
         {
-            var mstSupplierId = Guid.NewGuid();
+            var mstSupplierId = await _context.Supplier.Where(x => x.NoUrutId == request.MasterSupplierId).Select(x => x.SupplierId).SingleOrDefaultAsync();
 
-            var dtPoPmb = Domain.PurchaseOrderPembelian.CreatePurchaseOrderPembelian(mstSupplierId, request.Keterangan, request.UserInput,request.PoASTRA);
+            var dtPoPmb = Domain.PurchaseOrderPembelian.CreatePurchaseOrderPembelian(mstSupplierId, request.Keterangan, request.UserName,request.UserNameId,request.PoASTRA);
 
             await _context.PurchaseOrderPembelian.AddAsync(dtPoPmb);
             await _context.SaveChangesAsync();

@@ -21,7 +21,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.Creat
         public async Task<Guid> Handle(CreateDataSPKSurveiCommand request, CancellationToken cancellationToken)
         {
             //mau diisi user
-            var dtSPKbary = Domain.DataSPK.CreateDataSPKBaru(request.LokasiSPK,"");
+            var dtSPKbary = Domain.DataSPK.CreateDataSPKBaru(request.LokasiSPK,request.UserName,request.userNameId);
             var dtSPKSurvei = Domain.DataSPKSurvei.CreateDataSPKSurvei(request.NoKTPPemesan, request.NamaPemesan, request.AlamatPemesan, request.DataNPWPPemesan, request.PekerjaanPemesan,dtSPKbary.DataSPKId);
 
             await _context.DataSPK.AddAsync(dtSPKbary);

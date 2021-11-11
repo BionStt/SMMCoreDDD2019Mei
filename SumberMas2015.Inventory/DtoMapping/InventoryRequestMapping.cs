@@ -69,7 +69,9 @@ namespace SumberMas2015.Inventory.DtoMapping
             Keterangan = model.Keterangan,
             OffTHeRoad = model.OffTHeRoad,
             Qty  = model.Qty,
-            Warna = model.Warna
+            Warna = model.Warna,
+            UserName   = model.UserName,
+            UserNameId = model.UserNameId
 
 
 
@@ -81,7 +83,9 @@ namespace SumberMas2015.Inventory.DtoMapping
             Keterangan = model.Keterangan,
             MasterSupplierId = model.MasterSupplierId,
             PoASTRA  = model.PoASTRA,
-            UserInput = model.UserInput
+            UserName= model.UserName,
+            UserNameId = model.UserNameId
+
             };
         }
         public static CreatePembelianCommand ToCommand(this CreatePembelianRequest model )
@@ -101,6 +105,7 @@ namespace SumberMas2015.Inventory.DtoMapping
             return new CreateSupplierCommand {
                 Email = model.Email,
                 NamaSupplier = model.NamaSupplier,
+                UserNameId = model.UserNameInput,
                 AlamatSupplier = Domain.ValueObjects.Alamat.CreateAlamat(model.Jalan,model.Kelurahan,model.Kecamatan,model.Kota,model.Propinsi,
                 model.KodePos,model.NomorTelepon,model.NomorFaks,model.NomorHandphone)
 

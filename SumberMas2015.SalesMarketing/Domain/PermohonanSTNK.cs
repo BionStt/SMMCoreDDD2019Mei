@@ -12,11 +12,11 @@ namespace SumberMas2015.SalesMarketing.Domain
         {
 
         }
-        public static PermohonanSTNK CreatePermohonanSTNK( DateTime? tanggalBayarSTNK, int? permohonanFakturDBId, string noStnk, decimal pajakStnk, decimal birojasa, decimal biayaTambahan, decimal formA, string nomorPlat, decimal? perwil, decimal? pajakProgresif, decimal? bbnPabrik, int progresifKe)
+        public static PermohonanSTNK CreatePermohonanSTNK( DateTime? tanggalBayarSTNK, int? permohonanFakturDBId, string noStnk, decimal pajakStnk, decimal birojasa, decimal biayaTambahan, decimal formA, string nomorPlat, decimal? perwil, decimal? pajakProgresif, decimal? bbnPabrik, int progresifKe, string userName, Guid userNameId)
         {
-            return new PermohonanSTNK(tanggalBayarSTNK, permohonanFakturDBId, noStnk, pajakStnk, birojasa, biayaTambahan, formA, nomorPlat, perwil,pajakProgresif,bbnPabrik,progresifKe);
+            return new PermohonanSTNK(tanggalBayarSTNK, permohonanFakturDBId, noStnk, pajakStnk, birojasa, biayaTambahan, formA, nomorPlat, perwil,pajakProgresif,bbnPabrik,progresifKe,userName,userNameId);
         }
-        private PermohonanSTNK( DateTime? tanggalBayarSTNK, int? permohonanFakturDBId, string noStnk, decimal pajakStnk, decimal birojasa, decimal biayaTambahan, decimal formA, string nomorPlat, decimal? perwil, decimal? pajakProgresif, decimal? bbnPabrik, int progresifKe)
+        private PermohonanSTNK(DateTime? tanggalBayarSTNK, int? permohonanFakturDBId, string noStnk, decimal pajakStnk, decimal birojasa, decimal biayaTambahan, decimal formA, string nomorPlat, decimal? perwil, decimal? pajakProgresif, decimal? bbnPabrik, int progresifKe, string userName, Guid userNameId)
         {
             PermohonanSTNKId = Guid.NewGuid();
             TanggalBayarSTNK = tanggalBayarSTNK;
@@ -31,6 +31,8 @@ namespace SumberMas2015.SalesMarketing.Domain
             PajakProgresif = pajakProgresif;
             BbnPabrik = bbnPabrik;
             ProgresifKe = progresifKe;
+            UserName=userName;
+            UserNameId=userNameId;
         }
 
         public Guid PermohonanSTNKId { get; set; }
@@ -59,5 +61,7 @@ namespace SumberMas2015.SalesMarketing.Domain
      
         public int? ProgresifKe { get; set; }
         public int NoUrutId { get; set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
     }
 }

@@ -15,5 +15,7 @@ namespace SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelianDetai
         public string Warna { get;  set; }
         public int? Qty { get;  set; }
         public string Keterangan { get;  set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
     }
 }

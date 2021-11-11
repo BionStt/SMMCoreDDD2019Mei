@@ -241,20 +241,36 @@
                         <span asp-validation-for="NamaBidangUsaha" class="text-danger"></span>
                         </td>
                 </tr>
-                <tr class="hidden">
+                <tr style="hidden">
+                    <td>     <label asp-for="UserNameId" class="control-label">User Id Pegawai</label>
+                    </td>
+                    <td>
+                        <input asp-for="UserNameId" value="@ViewBag.UserId" class="form-control" />
+                          <input asp-for="UserName" value="@Context.User.Identity.Name" class="form-control" />
+                       
+                    </td>
+                </tr>
+                @*  <tr >
                     <td>     <label asp-for="UserIDPeg" class="control-label">User Id Pegawai</label>
                     </td>
-                    <td>      <input asp-for="UserIDPeg" value="@ViewBag.UserId" class="form-control" />
+                    <td>      <input asp-for="UserIDPeg" value="@ViewBag.UserId2" class="form-control" />
                         <span asp-validation-for="UserIDPeg" class="text-danger"></span>
                     </td>
                 </tr>
-                <tr class="hidden">
+                  <tr >
+                    <td>     <label asp-for="UserIDPeg" class="control-label">User Id Pegawai</label>
+                    </td>
+                    <td>      <input asp-for="UserIDPeg" value="@ViewBag.UserName" class="form-control" />
+                        <span asp-validation-for="UserIDPeg" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr >
                     <td>     <label asp-for="UserInput" class="control-label">User Input</label>
                     </td>
                     <td>  <input type="text" asp-for="UserInput" readonly value="@Context.User.Identity.Name" class="form-control" />
                         <span asp-validation-for="UserInput" class="text-danger"></span>
                     </td>
-                </tr>
+                </tr>*@
 
                 <tr>
                     <td>
@@ -264,6 +280,7 @@
                     </td>
 
                 </tr>
+
               </table>
               </form>
         </div>

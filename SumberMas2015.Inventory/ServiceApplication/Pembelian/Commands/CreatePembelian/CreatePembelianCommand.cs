@@ -13,6 +13,7 @@ namespace SumberMas2015.Inventory.ServiceApplication.Pembelian.Commands.CreatePe
         public string JenisTransaksiPembelian { get; set; }
         public int PurchaseOrderId { get; set; }
         public string UserNameInput { get;  set; }
+        public Guid UserNameId { get; set; }
         public string Keterangan { get;  set; }
         public string Tenor { get;  set; }
     }

@@ -19,5 +19,7 @@ namespace SumberMas2015.SalesMarketing.Dto.DataSPK
         public string NamaCMO { get;  set; }
         public int Tenor { get;  set; }
         public DateTime TanggalSurvei { get;  set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
     }
 }

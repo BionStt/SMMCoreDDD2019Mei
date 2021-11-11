@@ -21,16 +21,19 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
     {
         private IMediator _mediator;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly string _userName;
         private readonly string _userId;
+
+        // private readonly string _userName;      
+        //  private readonly string _userId2;
 
         public CustomersController(IMediator mediator, IHttpContextAccessor httpContextAccessor)
         {
             _mediator = mediator;
             _httpContextAccessor = httpContextAccessor;
-            _userName = httpContextAccessor.HttpContext.User.Identity.Name;
-            _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;//userID Guid
 
+            //  _userName = httpContextAccessor.HttpContext.User.Identity.Name;//username
+            // _userId2 =  httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;//UserNAme
         }
 
         [HttpGet]
@@ -45,8 +48,11 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             var JnsKelamin = await _mediator.Send(new ListJenisKelaminQuery());
             ViewData["Agama1"] = new SelectList(Agama, "NoUrutId", "AgamaKeterangan");
             ViewData["JnsKelamin1"] = new SelectList(JnsKelamin, "NoUrutId", "JenisKelaminKeterangan");
-            ViewData["UserName"] = _userName;
+       
             ViewData["UserId"] = _userId;
+
+            //  ViewData["UserId2"] = _userId2;
+            //  ViewData["UserName"] = _userName;
 
             return View();
         }

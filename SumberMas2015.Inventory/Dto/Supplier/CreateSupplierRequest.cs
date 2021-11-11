@@ -20,7 +20,7 @@ namespace SumberMas2015.Inventory.Dto
         public string NomorTelepon{ get; set; }
         public string NomorFaks { get; set; }
         public string NomorHandphone{ get; set; }
-        public string UserNameInput { get; set; }
+        public Guid UserNameInput { get; set; }
 
     }
 }

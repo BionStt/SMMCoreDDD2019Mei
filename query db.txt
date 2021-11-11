@@ -1,0 +1,5 @@
+SELECT Pembelian.TglBeli, Supplier.Guid, Pembelian.JenisTransPmb, Pembelian.Kredit, Pembelian.Ket, Supplier.Supplier
+FROM   Pembelian INNER JOIN
+             Supplier ON Pembelian.IDSupplier = Supplier.IDSupplier
+WHERE (Pembelian.TglBeli > CONVERT(DATETIME, '2015-01-01 00:00:00', 102) AND Pembelian.TglBeli < CONVERT(DATETIME, '2018-01-01 00:00:00', 102))
+

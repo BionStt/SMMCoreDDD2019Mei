@@ -147,7 +147,8 @@
                                 <label asp-for="HandphoneF" class="control-label"></label>
                                 <input id="Handphone1" asp-for="HandphoneF" class="form-control" />
                                 <span asp-validation-for="HandphoneF" class="text-danger"></span>
-                                <input asp-for="UserNameInput" value="@Context.User.Identity.Name" class="form-control" />
+                                <input type="hidden" asp-for="UserNameInput" value="@Context.User.Identity.Name" class="form-control" />
+                                <input type="hidden" asp-for="UserNameId" value="@ViewBag.UserId" />
                             </div>
                         </div>
                     </div>

@@ -16,15 +16,18 @@ namespace SumberMas2015.SalesMarketing.Domain
         public int NoUrutId { get; set; }
         public Guid MasterBarangId { get; private set; }
         public Guid DataSPKId { get; private set; }
+
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
         protected DataSPKKendaraan()
         {
 
         }
-        public static DataSPKKendaraan CreateDataSPKKendaraan(string tahunPerakitan, string warna, string namaSTNK, string noKtpSTNK,Guid masterBarangId, Guid dataSPKId)
+        public static DataSPKKendaraan CreateDataSPKKendaraan(string tahunPerakitan, string warna, string namaSTNK, string noKtpSTNK,Guid masterBarangId, Guid dataSPKId, string userName, Guid userNameId)
         {
-            return new DataSPKKendaraan(tahunPerakitan,warna,namaSTNK,noKtpSTNK,masterBarangId, dataSPKId);
+            return new DataSPKKendaraan(tahunPerakitan,warna,namaSTNK,noKtpSTNK,masterBarangId, dataSPKId,userName,userNameId);
         }
-        private DataSPKKendaraan(string tahunPerakitan, string warna, string namaSTNK, string noKtpSTNK, Guid masterBarangId, Guid dataSPKId)
+        private DataSPKKendaraan(string tahunPerakitan, string warna, string namaSTNK, string noKtpSTNK, Guid masterBarangId, Guid dataSPKId, string userName, Guid userNameId)
         {
             DataSPKKendaraanId = Guid.NewGuid();
             TahunPerakitan = tahunPerakitan;
@@ -33,6 +36,8 @@ namespace SumberMas2015.SalesMarketing.Domain
             NoKtpSTNK = noKtpSTNK;
             MasterBarangId = masterBarangId;
             DataSPKId = dataSPKId;
+            UserName=userName;
+            UserNameId=userNameId;
         }
         public void EditDataSPKKendaraan(string tahunPerakitan, string warna, string namaSTNK, string noKtpSTNK)
         {

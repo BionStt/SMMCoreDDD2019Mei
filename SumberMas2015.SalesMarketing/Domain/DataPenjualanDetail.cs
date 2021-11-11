@@ -30,13 +30,15 @@ namespace SumberMas2015.SalesMarketing.Domain
         public DateTime? TanggalCheckLapBulanan { get; set; }
         public string UserCheckLapBulanan { get; set; }
         public int NoUrutId { get; set; }
+        public Guid UserNameId { get; set; }
+        public string UserName { get; set; }
 
-        public static DataPenjualanDetail CreateDataPenjualanDetail(Guid? dataPenjualanId, Guid? stokUnitId, decimal? offTheRoad, decimal? bBN, decimal? hargaOTR, decimal? uangMuka, decimal? diskonKredit, decimal? diskonTunai, decimal? subsidi, decimal? promosi, decimal? komisi, decimal? joinPromo1, decimal? joinPromo2, decimal? sPF, decimal? sellOut, decimal? dendaWilayah)//, string checkDp, string checkLapBulanan, DateTime? tanggalCheckLapBulanan, string userCheckLapBulanan)
+        public static DataPenjualanDetail CreateDataPenjualanDetail(Guid? dataPenjualanId, Guid? stokUnitId, decimal? offTheRoad, decimal? bBN, decimal? hargaOTR, decimal? uangMuka, decimal? diskonKredit, decimal? diskonTunai, decimal? subsidi, decimal? promosi, decimal? komisi, decimal? joinPromo1, decimal? joinPromo2, decimal? sPF, decimal? sellOut, decimal? dendaWilayah, Guid userNameId, string userName)//, string checkDp, string checkLapBulanan, DateTime? tanggalCheckLapBulanan, string userCheckLapBulanan)
         {
-            return new DataPenjualanDetail(dataPenjualanId,stokUnitId,offTheRoad,bBN,hargaOTR,uangMuka,diskonKredit,diskonTunai,subsidi,promosi,komisi,joinPromo1,joinPromo2,sPF,sellOut,dendaWilayah);
+            return new DataPenjualanDetail(dataPenjualanId,stokUnitId,offTheRoad,bBN,hargaOTR,uangMuka,diskonKredit,diskonTunai,subsidi,promosi,komisi,joinPromo1,joinPromo2,sPF,sellOut,dendaWilayah,userNameId,userName);
         }
 
-        private DataPenjualanDetail(Guid? dataPenjualanId, Guid? stokUnitId, decimal? offTheRoad, decimal? bBN, decimal? hargaOTR, decimal? uangMuka, decimal? diskonKredit, decimal? diskonTunai, decimal? subsidi, decimal? promosi, decimal? komisi, decimal? joinPromo1, decimal? joinPromo2, decimal? sPF, decimal? sellOut, decimal? dendaWilayah)//, string checkDp, string checkLapBulanan, DateTime? tanggalCheckLapBulanan, string userCheckLapBulanan)
+        private DataPenjualanDetail(Guid? dataPenjualanId, Guid? stokUnitId, decimal? offTheRoad, decimal? bBN, decimal? hargaOTR, decimal? uangMuka, decimal? diskonKredit, decimal? diskonTunai, decimal? subsidi, decimal? promosi, decimal? komisi, decimal? joinPromo1, decimal? joinPromo2, decimal? sPF, decimal? sellOut, decimal? dendaWilayah, Guid userNameId , string userName )//, string checkDp, string checkLapBulanan, DateTime? tanggalCheckLapBulanan, string userCheckLapBulanan)
         {
             DataPenjualanDetailId = Guid.NewGuid();
             DataPenjualanId = dataPenjualanId;
@@ -55,10 +57,12 @@ namespace SumberMas2015.SalesMarketing.Domain
             SPF = sPF;
             SellOut = sellOut;
             DendaWilayah = dendaWilayah;
-          //  CheckDp = checkDp;
-           // CheckLapBulanan = checkLapBulanan;
-         //   TanggalCheckLapBulanan = tanggalCheckLapBulanan;
-          //  UserCheckLapBulanan = userCheckLapBulanan;
+            UserNameId=userNameId;
+            UserName=userName;
+            //  CheckDp = checkDp;
+            // CheckLapBulanan = checkLapBulanan;
+            //   TanggalCheckLapBulanan = tanggalCheckLapBulanan;
+            //  UserCheckLapBulanan = userCheckLapBulanan;
         }
 
 

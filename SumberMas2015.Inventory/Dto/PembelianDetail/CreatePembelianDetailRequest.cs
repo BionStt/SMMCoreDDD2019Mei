@@ -21,5 +21,7 @@ namespace SumberMas2015.Inventory.Dto.PembelianDetail
         public int Qty { get;  set; }
         public decimal? SellIn { get;  set; }
         public decimal? Sellin2 { get;  set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
     }
 }

@@ -12,17 +12,19 @@ namespace SumberMas2015.SalesMarketing.Domain
         {
 
         }
-        public static PermohonanBPKB CreatePermohonanBPKB(Guid permohonanFakturId, string nomorBpkb, DateTime tanggalTerimaBPKB)
+        public static PermohonanBPKB CreatePermohonanBPKB(Guid permohonanFakturId, string nomorBpkb, DateTime tanggalTerimaBPKB, string userName, Guid userNameId)
         {
-            return new PermohonanBPKB(permohonanFakturId, nomorBpkb, tanggalTerimaBPKB);
+            return new PermohonanBPKB(permohonanFakturId, nomorBpkb, tanggalTerimaBPKB,userName,userNameId);
 
         }
-        private PermohonanBPKB( Guid permohonanFakturId, string nomorBpkb, DateTime tanggalTerimaBPKB)
+        private PermohonanBPKB(Guid permohonanFakturId, string nomorBpkb, DateTime tanggalTerimaBPKB, string userName, Guid userNameId)
         {
             PermohonanBPKBId = Guid.NewGuid();
             PermohonanFakturId = permohonanFakturId;
             NomorBpkb = nomorBpkb;
             TanggalTerimaBPKB = tanggalTerimaBPKB;
+            UserName=userName;
+            UserNameId=userNameId;
         }
 
         public Guid PermohonanBPKBId { get; set; }
@@ -31,5 +33,8 @@ namespace SumberMas2015.SalesMarketing.Domain
         public Guid PermohonanFakturId { get; set; }
         public string NomorBpkb { get; set; }
         public DateTime TanggalTerimaBPKB { get; set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
+
     }
 }

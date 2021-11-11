@@ -18,5 +18,8 @@ namespace SumberMas2015.Inventory.ServiceApplication.MasterBarang.Commands.Creat
         public decimal BBn { get; set; }
         public string TahunPerakitan { get; set; }
         public string TypeKendaraan { get; set; }
+        public string UserName { get; set; }
+        public Guid USerNameId { get; set; }
+
     }
 }

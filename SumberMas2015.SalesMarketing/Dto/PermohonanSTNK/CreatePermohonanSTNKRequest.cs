@@ -32,5 +32,6 @@ namespace SumberMas2015.SalesMarketing.Dto.PermohonanSTNK
 
         public int ProgresifKe { get; set; }
         public string UserInputName { get; set; }
+        public Guid UserNameId { get; set; }
     }
 }

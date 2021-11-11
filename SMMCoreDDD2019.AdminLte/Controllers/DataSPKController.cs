@@ -63,6 +63,7 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             //dicek lagi
             ViewData["DataSPK1"] = new SelectList(NamaL, "NoUrutSPKBaru1", "NamaPemesan");
             ViewData["NamaBarang"] = new SelectList(NamaBarang, "NoUrutKendaraan", "NamaBarang");
+            ViewData["UserId"] = _userId;
             return View();
         }
 
@@ -89,6 +90,7 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
           //  var NamaSalesForce1 = await _mediator.Send(new GetNamaSalesForceQuery());
             var LeasingCab = await _mediator.Send(new ListCabangLeasingQuery());
 
+            ViewData["UserId"] = _userId;
             ViewData["NamaPemesan"] = new SelectList(NamaL, "NoUrutSPKBaru1", "NamaPemesan");
             ViewData["NamaKategoryPenjualan"] = new SelectList(NamaKategoryPenjualan, "NoUrut", "NamaKategoryPenjualan");
             ViewData["NamaKategoryBayaran"] = new SelectList(NamaKategoryBayaran, "NoUrut", "NamaKategoryBayaran");
@@ -119,6 +121,8 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             var NamaBarang = await _mediator.Send(new GetNamaBarangQuery());
             ViewData["NamaPemesan"] = new SelectList(NamaL, "NoUrutSPKBaru1", "NamaPemesan");
             ViewData["NamaBarang"] = new SelectList(NamaBarang, "NoUrutKendaraan", "NamaBarang");
+            ViewData["UserId"] = _userId;
+
             return View();
         }
 

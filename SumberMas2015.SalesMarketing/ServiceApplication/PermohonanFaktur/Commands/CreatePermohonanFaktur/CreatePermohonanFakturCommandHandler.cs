@@ -38,7 +38,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.PermohonanFaktur.Comma
 
             var dtPermohonanFaktur = Domain.PermohonanFaktur.CreatePermohonanFaktur(GenerateNomorPermohonanFaktur(request.TanggalInput,xy), request.TanggalInput, penjualanDetailId.DataPenjualanDetailId, request.TanggalLahir,request.NomorKTP,request.NamaFaktur,
                 Domain.ValueObjects.Alamat.CreateAlamat(request.Alamat, request.Kelurahan, request.Kecamatan, request.Kota, request.Propinsi
-                , request.KodePos, request.Telepon, request.NomorFaks,request.HandphoneF));
+                , request.KodePos, request.Telepon, request.NomorFaks,request.HandphoneF),request.UserNameId,request.UserName);
 
             await _context.PermohonanFaktur.AddAsync(dtPermohonanFaktur);
             await _context.SaveChangesAsync();

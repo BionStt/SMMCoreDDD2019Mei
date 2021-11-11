@@ -21,15 +21,18 @@ namespace SumberMas2015.SalesMarketing.Domain
         public decimal? Promosi { get; private set; }
         public decimal? UangTandaJadiTunai { get; private set; }
         public decimal? UangTandaJadiKredit { get; private set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
+
         public int NoUrutId { get; set; }
         //relationship
         public Guid DataSPKId { get; private set; }
 
-        public static DataSPKKredit CreateDataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit, Guid dataSPKId)
+        public static DataSPKKredit CreateDataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit, Guid dataSPKId, string userName, Guid userNameId)
         {
-            return new DataSPKKredit(biayaAdministrasiKredit,biayaAdministrasiTunai,bBN,dendaWilayah,diskonDP,diskonTunai,dPPriceList,komisi,offTheRoad,promosi,uangTandaJadiTunai,uangTandaJadiKredit,dataSPKId);
+            return new DataSPKKredit(biayaAdministrasiKredit,biayaAdministrasiTunai,bBN,dendaWilayah,diskonDP,diskonTunai,dPPriceList,komisi,offTheRoad,promosi,uangTandaJadiTunai,uangTandaJadiKredit,dataSPKId,userName,userNameId);
         }
-        private DataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit, Guid dataSPKId)
+        private DataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit, Guid dataSPKId, string userName, Guid userNameId)
         {
             DataSPKKreditId = Guid.NewGuid();
             BiayaAdministrasiKredit = biayaAdministrasiKredit;
@@ -45,6 +48,8 @@ namespace SumberMas2015.SalesMarketing.Domain
             UangTandaJadiTunai = uangTandaJadiTunai;
             UangTandaJadiKredit = uangTandaJadiKredit;
             DataSPKId = dataSPKId;
+            UserName=userName;
+            UserNameId=userNameId;
         }
         public void EditDataSPKKredit(decimal? biayaAdministrasiKredit, decimal? biayaAdministrasiTunai, decimal? bBN, decimal? dendaWilayah, decimal? diskonDP, decimal? diskonTunai, decimal? dPPriceList, decimal? komisi, decimal? offTheRoad, decimal? promosi, decimal? uangTandaJadiTunai, decimal? uangTandaJadiKredit)
         {

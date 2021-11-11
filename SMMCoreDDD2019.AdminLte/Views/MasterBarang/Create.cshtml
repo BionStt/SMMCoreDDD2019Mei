@@ -19,7 +19,8 @@
                                 <label asp-for="Merek" class="control-label"></label>
 
                                 <input asp-for="Merek" class="form-control" />
-                                <input asp-for="UserNameInput" value="@Context.User.Identity.Name" class="form-control" />
+                             
+                               
                                 <span asp-validation-for="Merek" class="text-danger"></span>
 
 
@@ -133,7 +134,10 @@
                                 <label class="control-label">HARGA ON THE ROAD</label>
 
                                 <input readonly id="HrgOtr" class="form-control" />
-
+                                
+                                <input type="hidden" asp-for="UserNameId" value="@ViewBag.UserId"/>
+                                  <input type="hidden" asp-for="UserNameInput" value="@Context.User.Identity.Name"/>
+                                <input />
 
                             </div>
                         </div>

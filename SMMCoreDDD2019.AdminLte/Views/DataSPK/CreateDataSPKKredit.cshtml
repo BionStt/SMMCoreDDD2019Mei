@@ -180,6 +180,8 @@
                                 <input value="0" id="Komisi1" asp-for="Komisi" class="form-control" />
                                 <span asp-validation-for="Komisi" class="text-danger"></span>
 
+                                <input type="hidden" asp-for="UserName" value="@Context.User.Identity.Name" />
+                                  <input type="hidden" asp-for="UserNameId" value="@ViewBag.UserId" />
 
                             </div>
                         </div>

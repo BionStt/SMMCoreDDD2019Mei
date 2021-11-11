@@ -25,5 +25,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataPenjualan.Commands
         public decimal sPF { get; set; }
         public decimal sellOut { get; set; }
         public  decimal dendaWilayah { get; set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
     }
 }

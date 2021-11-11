@@ -22,6 +22,9 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.Creat
         public decimal UangTandaJadiTunai{ get; set; }
         public decimal UangTandaJadiKredit { get; set; }
         public int DataSPKId { get; set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
+
 
     }
 }

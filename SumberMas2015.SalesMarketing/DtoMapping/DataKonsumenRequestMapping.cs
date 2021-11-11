@@ -6,13 +6,13 @@ using SumberMas2015.SalesMarketing.Dto.PermohonanBPKB;
 using SumberMas2015.SalesMarketing.Dto.PermohonanFaktur;
 using SumberMas2015.SalesMarketing.Dto.PermohonanSTNK;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataKonsumen.Commands.CreateDataKonsumen;
+using SumberMas2015.SalesMarketing.ServiceApplication.DataPenjualan.Commands.CreateDataPenjualan;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataPenjualan.Commands.CreateDataPenjualanDetail;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.CreateDataSPKKendaraan;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.CreateDataSPKKredit;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.CreateDataSPKLeasing;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.CreateDataSPKSurvei;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterBarang.Commands.CreateMasterBarang;
-using SumberMas2015.SalesMarketing.ServiceApplication.Penjualan.Commands.CreatePenjualan;
 using SumberMas2015.SalesMarketing.ServiceApplication.PermohonanBPKB.Commands.CreatePermohonanBPKB;
 using SumberMas2015.SalesMarketing.ServiceApplication.PermohonanFaktur.Commands.CreatePermohonanFaktur;
 using SumberMas2015.SalesMarketing.ServiceApplication.PermohonanSTNK.Commands.CreatePermohonanSTNK;
@@ -49,7 +49,9 @@ namespace SumberMas2015.SalesMarketing.DtoMapping
             NoUrutFaktur = model.NoUrutFaktur,
             PajakStnk = model.PajakStnk,
             Perwil = model.Perwil,
-            TanggalBayarSTNK = model.TanggalBayarSTNK
+            TanggalBayarSTNK = model.TanggalBayarSTNK,
+            UserName = model.UserInputName,
+            UserNameId = model.UserNameId
 
             
             };
@@ -72,7 +74,9 @@ namespace SumberMas2015.SalesMarketing.DtoMapping
                sPF = model.SPF,
                 stokUnitId = model.NoUrutSO,
                 subsidi = model.Subsidi,
-                uangMuka = model.uangMuka
+                uangMuka = model.uangMuka,
+                UserName = model.UserName,
+                UserNameId = model.UserNameId
 
 
 
@@ -80,17 +84,19 @@ namespace SumberMas2015.SalesMarketing.DtoMapping
 
             };
         }
-        public static CreatePenjualanCommand ToCommand(this CreatePenjualanRequest model)
+        public static CreateDataPenjualanCommand ToCommand(this CreatePenjualanRequest model)
         {
-            return new CreatePenjualanCommand {
-                DataSPKId = model.DataSPKId,
-                DataKonsumenId = model.DataKonsumenId,
-                MasterLeasingCabang = model.MasterLeasingCabang,
-                NoBuku = model.NoBuku,
-                MasterKategoriPenjualan = model.MasterKategoriPenjualan,
-                Keterangan = model.Keterangan,
-                UserNameInput =model.UserNameInput,
-                Mediator = model.Mediator
+            return new CreateDataPenjualanCommand
+            {
+                dataSPKId = model.DataSPKId,
+                dataKonsumenId = model.DataKonsumenId,
+                masterLeasingCabangId = model.MasterLeasingCabang,
+                noBuku = model.NoBuku,
+                masterKategoriPenjualanId = model.MasterKategoriPenjualan,
+                keterangan = model.Keterangan,
+                UserName =model.UserName,
+                UserNameId = model.UserNameId,
+                mediator = model.Mediator
 
             };
 
@@ -117,7 +123,10 @@ namespace SumberMas2015.SalesMarketing.DtoMapping
             NamaSTNK = model.NamaSTNK,
             NoKTPSTNK = model.NoKTPSTNK,
             TahunPerakitan = model.TahunPerakitan,
-            Warna = model.Warna
+            Warna = model.Warna,
+            UserName = model.UserName,
+            UserNameId = model.UserNameId,
+            DataSPKId = model.DataSPKId
 
 
             };
@@ -130,7 +139,10 @@ namespace SumberMas2015.SalesMarketing.DtoMapping
                 NamaSales = model.NamaSalesId,
                 NamaCMO = model.NamaCMO,
                 Tenor = model.Tenor,
-                TanggalSurvei = model.TanggalSurvei
+                TanggalSurvei = model.TanggalSurvei,
+                DataSPKId = model.DataSPKId,
+                UserName = model.UserName,
+                UserNameId = model.UserNameId
 
 
             };
@@ -151,7 +163,9 @@ namespace SumberMas2015.SalesMarketing.DtoMapping
                 Promosi = model.Promosi,
                 UangTandaJadiTunai = model.UangTandaJadiTunai,
                UangTandaJadiKredit=model.UangTandaJadiKredit,
-               DataSPKId = model.DataSPKId
+               DataSPKId = model.DataSPKId,
+               UserName =model.UserName,
+               UserNameId = model.UserNameId
 
             };
         }
@@ -166,7 +180,9 @@ namespace SumberMas2015.SalesMarketing.DtoMapping
                 DataNPWPPemesan = Domain.ValueObjects.DataNPWP.Create(model.NomorNPWP,model.NamaNPWP,Domain.ValueObjects.Alamat.CreateAlamat(model.JalanNPWP,model.KelurahanNPWP,model.KecamatanNPWP,
                 model.KotaNPWP,model.PropinsiNPWP,model.KodePosNPWP,model.NomorTeleponNPWP,model.NomorFaksNPWP,model.NomorHandphoneNPWP)),
                 DataSPKId = model.DataSPKId,
-                LokasiSPK = model.LokasiSPK
+                LokasiSPK = model.LokasiSPK,
+                UserName = model.UserInputName,
+                userNameId = model.UserInputId
 
             };
         }
@@ -189,8 +205,8 @@ namespace SumberMas2015.SalesMarketing.DtoMapping
                 KodeBidangUsaha = model.KodeBidangUsaha,
                 NamaBidangUsaha = model.NamaBidangUsaha,
                 Email = model.Email,
-                UserIDPeg = model.UserIDPeg,
-                UserInput = model.UserInput
+                UserName = model.UserName,
+                UserNameId = model.UserNameId
 
 
 
@@ -213,7 +229,9 @@ namespace SumberMas2015.SalesMarketing.DtoMapping
             Propinsi = model.Propinsi,
             TanggalInput = model.TanggalInput,
             TanggalLahir = model.TanggalLahir,
-            Telepon = model.Telepon
+            Telepon = model.Telepon,
+            UserName=model.UserNameInput,
+            UserNameId = model.UserNameId
             
             };
         }

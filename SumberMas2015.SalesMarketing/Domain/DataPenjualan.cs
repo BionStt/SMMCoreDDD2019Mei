@@ -21,7 +21,8 @@ namespace SumberMas2015.SalesMarketing.Domain
         public Guid MasterKategoriPenjualanId { get; private set; }
         public string Mediator { get; private set; }
         //   public int? KdMarco { get; set; }
-      //  public Guid UserInputId { get; private set; }
+        //  public Guid UserInputId { get; private set; }
+        public Guid UserNameId { get; set; }
         public string UserNameInput { get; private set; }
         public DateTime TanggalPenjualan { get; private set; }
         public int NoUrutId { get; set; }
@@ -29,27 +30,28 @@ namespace SumberMas2015.SalesMarketing.Domain
         {
 
         }
-        private DataPenjualan(Guid dataSPKId, Guid dataKonsumenId, Guid masterLeasingCabangId, string noBuku, Guid salesUserId, string keterangan,  Guid masterKategoriPenjualanId, string mediator, string userNameInput)
+        private DataPenjualan(Guid dataSPKId, Guid dataKonsumenId, Guid masterLeasingCabangId, string noBuku, Guid salesUserId, string keterangan, Guid masterKategoriPenjualanId, string mediator, string userNameInput, Guid userNameId)
         {
             DataPenjualanId = Guid.NewGuid();
 
-        NoRegistrasiPenjualan = KodeRegistrasiPenjualan(DateTime.Now);
+            NoRegistrasiPenjualan = KodeRegistrasiPenjualan(DateTime.Now);
             DataSPKId = dataSPKId;
             DataKonsumenId = dataKonsumenId;
             MasterLeasingCabangId = masterLeasingCabangId;
             NoBuku = noBuku;
             SalesUserId = salesUserId;
             Keterangan = keterangan;
-         //   Batal = batal;
+            //   Batal = batal;
             MasterKategoriPenjualanId = masterKategoriPenjualanId;
             Mediator = mediator;
-           // UserInputId = userInputId;
+            // UserInputId = userInputId;
             UserNameInput = userNameInput;
-           // TanggalPenjualan = tanggalPenjualan;
+            UserNameId=userNameId;
+            // TanggalPenjualan = tanggalPenjualan;
         }
-        public static DataPenjualan CreateDataPenjualan(Guid dataSPKId, Guid dataKonsumenId, Guid masterLeasingCabangId, string noBuku, Guid salesUserId, string keterangan, Guid masterKategoriPenjualanId, string mediator, string userNameInput)
+        public static DataPenjualan CreateDataPenjualan(Guid dataSPKId, Guid dataKonsumenId, Guid masterLeasingCabangId, string noBuku, Guid salesUserId, string keterangan, Guid masterKategoriPenjualanId, string mediator, string userNameInput, Guid userNameId)
         {
-            return new DataPenjualan(dataSPKId,dataKonsumenId,masterLeasingCabangId,noBuku,salesUserId,keterangan,masterKategoriPenjualanId,mediator,userNameInput);
+            return new DataPenjualan(dataSPKId,dataKonsumenId,masterLeasingCabangId,noBuku,salesUserId,keterangan,masterKategoriPenjualanId,mediator,userNameInput,userNameId);
         }
 
         private string KodeRegistrasiPenjualan(DateTime Tanggal)
@@ -68,9 +70,9 @@ namespace SumberMas2015.SalesMarketing.Domain
         private readonly List<DataPenjualanDetail> _dataPenjualanDetails = new List<DataPenjualanDetail>();
         public IReadOnlyCollection<DataPenjualanDetail> DataPenjualanDetails => _dataPenjualanDetails.AsReadOnly();
 
-        public DataPenjualanDetail AddDataPenjualanDetail(Guid? dataPenjualanId, Guid? stokUnitId, decimal? offTheRoad, decimal? bBN, decimal? hargaOTR, decimal? uangMuka, decimal? diskonKredit, decimal? diskonTunai, decimal? subsidi, decimal? promosi, decimal? komisi, decimal? joinPromo1, decimal? joinPromo2, decimal? sPF, decimal? sellOut, decimal? dendaWilayah)
+        public DataPenjualanDetail AddDataPenjualanDetail(Guid? dataPenjualanId, Guid? stokUnitId, decimal? offTheRoad, decimal? bBN, decimal? hargaOTR, decimal? uangMuka, decimal? diskonKredit, decimal? diskonTunai, decimal? subsidi, decimal? promosi, decimal? komisi, decimal? joinPromo1, decimal? joinPromo2, decimal? sPF, decimal? sellOut, decimal? dendaWilayah,string userName,Guid userNameId)
         {
-            var dtPenjualanDetail = DataPenjualanDetail.CreateDataPenjualanDetail(dataPenjualanId,stokUnitId,offTheRoad,bBN,hargaOTR,uangMuka,diskonKredit,diskonTunai,subsidi,promosi,komisi,joinPromo1,joinPromo2,sPF,sellOut,dendaWilayah);
+            var dtPenjualanDetail = DataPenjualanDetail.CreateDataPenjualanDetail(dataPenjualanId,stokUnitId,offTheRoad,bBN,hargaOTR,uangMuka,diskonKredit,diskonTunai,subsidi,promosi,komisi,joinPromo1,joinPromo2,sPF,sellOut,dendaWilayah,userNameId,userName);
                 _dataPenjualanDetails.Add(dtPenjualanDetail);
                 return dtPenjualanDetail;
         }

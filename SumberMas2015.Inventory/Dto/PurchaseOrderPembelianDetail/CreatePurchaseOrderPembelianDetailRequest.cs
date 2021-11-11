@@ -16,5 +16,7 @@ namespace SumberMas2015.Inventory.Dto.PurchaseOrderPembelianDetail
         public decimal? OffTHeRoad { get;  set; }
         public int? Qty { get;  set; }
         public string Warna { get;  set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
     }
 }

@@ -14,5 +14,6 @@ namespace SumberMas2015.Inventory.Dto.Pembelian
         public int PurchaseOrderId { get;  set; }
         public string Tenor { get;  set; }
         public string UserNameInput { get;  set; }
+        public Guid UserNameId { get; set; }
     }
 }

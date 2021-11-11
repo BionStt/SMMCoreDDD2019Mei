@@ -33,5 +33,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.PermohonanSTNK.Command
         public decimal? BbnPabrik { get; set; }
      
         public int ProgresifKe { get; set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
     }
 }

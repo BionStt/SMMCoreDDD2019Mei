@@ -22,7 +22,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.PermohonanBPKB.Command
         public async Task<Guid> Handle(CreatePermohonanBPKBCommand request, CancellationToken cancellationToken)
         {
             var permohonanFakturId = await _context.PermohonanFaktur.Where(x => x.NoUrutId == request.NoUrutFaktur).Select(x=>x.PermohonanFakturId).SingleOrDefaultAsync();
-            var dtPermohonanBPKB = Domain.PermohonanBPKB.CreatePermohonanBPKB(permohonanFakturId, request.NoBpkb, request.TanggalTerimaBPKB);
+            var dtPermohonanBPKB = Domain.PermohonanBPKB.CreatePermohonanBPKB(permohonanFakturId, request.NoBpkb, request.TanggalTerimaBPKB,request.UserName,request.UserNameId);
 
             await _context.PermohonanBPKB.AddAsync(dtPermohonanBPKB);
             await _context.SaveChangesAsync();

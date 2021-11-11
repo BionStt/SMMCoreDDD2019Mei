@@ -30,13 +30,15 @@ namespace SumberMas2015.SalesMarketing.Domain
         public Guid JenisKelaminId { get; private set; }
         public Guid AgamaId { get; private set; }
         public string Terinput { get; set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
 
         protected DataKonsumen()
         {
 
         }
 
-        private DataKonsumen(string noKTP, DateTime tanggalLahir, Guid jenisKelaminId, Name nama, Name namaBPKB, Alamat alamatTinggal, Alamat alamatKirim, Guid agamaId, string email, int kodeBidangPekerjaan, string namaBidangPekerjaan, int kodeBidangUsaha, string namaBidangUsaha)//, DateTime createdAt)
+        private DataKonsumen(string noKTP, DateTime tanggalLahir, Guid jenisKelaminId, Name nama, Name namaBPKB, Alamat alamatTinggal, Alamat alamatKirim, Guid agamaId, string email, int kodeBidangPekerjaan, string namaBidangPekerjaan, int kodeBidangUsaha, string namaBidangUsaha, string userName, Guid userNameId)//, DateTime createdAt)
         {
             DataKonsumenId = Guid.NewGuid();
             CreatedAt = DateTime.Now.Date;
@@ -53,12 +55,14 @@ namespace SumberMas2015.SalesMarketing.Domain
             NamaBidangPekerjaan = namaBidangPekerjaan;
             KodeBidangUsaha = kodeBidangUsaha;
             NamaBidangUsaha = namaBidangUsaha;
+            UserName=userName;
+            UserNameId=userNameId;
             // CreatedAt = createdAt;
         }
 
-        public static DataKonsumen Create(string nomorKTP, DateTime tanggalLahir, Guid jenisKelamin, Name nama, Name namaBpkb, Alamat alamatTinggal, Alamat alamatKirim, Guid agama, string email, int kodeBidangPekerjaan, string namaBidangPekerjaan, int kodeBidangUsaha, string namaBidangUsaha)
+        public static DataKonsumen Create(string nomorKTP, DateTime tanggalLahir, Guid jenisKelamin, Name nama, Name namaBpkb, Alamat alamatTinggal, Alamat alamatKirim, Guid agama, string email, int kodeBidangPekerjaan, string namaBidangPekerjaan, int kodeBidangUsaha, string namaBidangUsaha, string userName, Guid userNameId)
         {
-            return new DataKonsumen(nomorKTP, tanggalLahir, jenisKelamin, nama, namaBpkb, alamatTinggal, alamatKirim,agama,email,kodeBidangPekerjaan,namaBidangPekerjaan,kodeBidangUsaha,namaBidangUsaha);
+            return new DataKonsumen(nomorKTP, tanggalLahir, jenisKelamin, nama, namaBpkb, alamatTinggal, alamatKirim,agama,email,kodeBidangPekerjaan,namaBidangPekerjaan,kodeBidangUsaha,namaBidangUsaha,userName,userNameId);
         }
 
 

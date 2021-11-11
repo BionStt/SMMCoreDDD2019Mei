@@ -25,5 +25,7 @@ namespace SumberMas2015.SalesMarketing.Dto.Penjualan
         public decimal JoinPromo2 { get;  set; }
         public decimal OffTheRoad { get;  set; }
         public decimal Komisi { get;  set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
     }
 }

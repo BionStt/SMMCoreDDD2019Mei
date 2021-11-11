@@ -21,5 +21,9 @@ namespace SumberMas2015.SalesMarketing.Dto.DataSPK
         public decimal UangTandaJadiKredit { get;  set; }
         public decimal OffTheRoad { get;  set; }
         public int DataSPKId { get;  set; }
+
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
+
     }
 }

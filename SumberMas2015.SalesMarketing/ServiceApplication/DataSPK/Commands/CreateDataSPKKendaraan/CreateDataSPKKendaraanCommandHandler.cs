@@ -26,7 +26,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.Creat
             var mstBarang = await _mediator.Send(new MasterBarangByIdQuery { MasterBarangId = request.MasterBarangId});
             var dtSPKId = await _context.DataSPK.Where(x => x.NoUrutId == request.DataSPKId).Select(x=>x.DataSPKId).SingleOrDefaultAsync();
 
-            var dtSpkKendaraan = Domain.DataSPKKendaraan.CreateDataSPKKendaraan(request.TahunPerakitan,request.Warna,request.NamaSTNK,request.NoKTPSTNK, mstBarang.MasterBarangIdGuid, dtSPKId);
+            var dtSpkKendaraan = Domain.DataSPKKendaraan.CreateDataSPKKendaraan(request.TahunPerakitan,request.Warna,request.NamaSTNK,request.NoKTPSTNK, mstBarang.MasterBarangIdGuid, dtSPKId,request.UserName,request.UserNameId);
 
             await _context.DataSPKKendaraan.AddAsync(dtSpkKendaraan);
             await _context.SaveChangesAsync();

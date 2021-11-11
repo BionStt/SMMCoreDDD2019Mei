@@ -13,6 +13,9 @@ namespace SumberMas2015.SalesMarketing.Dto.DataSPK
         public string NamaSTNK { get;  set; }
         public string NoKTPSTNK { get;  set; }
         public string TahunPerakitan { get;  set; }
-        public string Warna { get;  set; }
+        public string Warna { get; set; }
+
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
     }
 }

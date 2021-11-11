@@ -124,9 +124,10 @@
                                 <div>
 
 
-                                    <label asp-for="UserNameInput" class="control-label"></label>
-                                    <input asp-for="UserNameInput" value="@Context.User.Identity.Name" class="form-control" />
-                                    <span asp-validation-for="UserNameInput" class="text-danger"></span>
+                                    <label asp-for="UserName" class="control-label"></label>
+                                    <input asp-for="UserNameId" value="@ViewBag.UserId" class="form-control" />
+                                      <input asp-for="UserName" value="@Context.User.Identity.Name" class="form-control" />
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
 
 
 

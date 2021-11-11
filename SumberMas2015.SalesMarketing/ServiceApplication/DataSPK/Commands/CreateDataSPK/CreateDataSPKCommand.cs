@@ -12,7 +12,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.Creat
         public string NamaLokasi { get; set; }
         public DateTime? TanggalInput { get; set; }
         public string UserName { get; set; }
-        public string UserInput{ get; set; }
+        public Guid UserNameId{ get; set; }
 
     }
 }

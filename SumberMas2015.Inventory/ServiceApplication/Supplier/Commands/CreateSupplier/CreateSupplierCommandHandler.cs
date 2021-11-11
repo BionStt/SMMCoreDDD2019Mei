@@ -20,7 +20,7 @@ namespace SumberMas2015.Inventory.ServiceApplication.Supplier.Commands.CreateSup
 
         public async Task<Guid> Handle(CreateSupplierCommand request, CancellationToken cancellationToken)
         {
-            var dtSupplier = Domain.Supplier.CreateSupplier(request.AlamatSupplier, request.NamaSupplier,request.Email);
+            var dtSupplier = Domain.Supplier.CreateSupplier(request.AlamatSupplier, request.NamaSupplier,request.Email,request.UserNameId);
 
             await _context.Supplier.AddAsync(dtSupplier);
             await _context.SaveChangesAsync();

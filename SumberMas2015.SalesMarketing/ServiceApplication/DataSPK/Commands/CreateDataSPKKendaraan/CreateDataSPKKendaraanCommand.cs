@@ -15,5 +15,9 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.Creat
         public string NamaSTNK { get; set; }
         public int MasterBarangId { get; set; }
         public string NoKTPSTNK { get; set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
+     
+
     }
 }

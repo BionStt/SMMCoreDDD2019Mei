@@ -76,8 +76,9 @@ namespace SumberMas2015.SalesMarketing.Dto.DataKonsumen
         public string NamaBidangUsaha { get; set; }
         [Display(Name = "Email",Prompt ="Contoh : sumbermas@gmail.com")]
         public string Email { get; set; }
-        public string UserIDPeg { get; set; }
+      //  public string UserIDPeg { get; set; }
 
-        public string UserInput { get; set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
     }
 }

@@ -35,5 +35,8 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.PermohonanFaktur.Comma
         public string NomorFaks { get; set; }
 
         public string HandphoneF { get; set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
+
     }
 }

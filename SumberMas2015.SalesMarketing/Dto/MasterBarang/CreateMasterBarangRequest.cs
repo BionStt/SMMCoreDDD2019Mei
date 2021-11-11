@@ -18,5 +18,6 @@ namespace SumberMas2015.SalesMarketing.Dto.MasterBarang
         public string TahunPerakitan { get;  set; }
         public string TypeKendaraan { get;  set; }
         public string UserNameInput { get; set; }
+        public Guid UserNameId { get; set; }
     }
 }

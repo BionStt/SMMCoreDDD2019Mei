@@ -232,10 +232,10 @@
 
                             </td>
                             <td>
-                                <Input asp-for="UserInput" value="@ViewBag.UserName" class="form-control">
-                                @*<Input asp-for="UserInput" value="@Context.User.Identity.Name" class="form-control">*@
-                                <span asp-validation-for="UserInput" class="text-danger"></span>
-
+                                <Input type="hidden" asp-for="UserInputId" value="@ViewBag.UserId" class="form-control">
+                               <input type="hidden" asp-for="UserInputName" value="@Context.User.Identity.Name"/>
+                                    @*<Input asp-for="UserInput" value="@Context.User.Identity.Name" class="form-control">*@
+                             
                             </td>
                         </tr>
                     </table>

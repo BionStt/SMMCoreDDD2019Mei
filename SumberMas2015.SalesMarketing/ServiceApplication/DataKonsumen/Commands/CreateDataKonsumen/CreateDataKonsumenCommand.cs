@@ -28,8 +28,8 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataKonsumen.Commands.
         public string NamaBidangUsaha { get; set; }
 
         public string Email { get; set; }
-        public string UserIDPeg { get; set; }
+        public string UserName { get; set; }
 
-        public string UserInput { get; set; }
+        public Guid UserNameId{ get; set; }
     }
 }

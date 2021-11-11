@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SumberMas2015.Inventory.ServiceApplication.StokUnit.Queries.GetDataSO;
@@ -10,6 +11,7 @@ using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Queries.GetNamaSPK
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterKategoriPenjualan.Queries.ListKategoriPenjualan;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterLeasing.Queries.ListCabangLeasing;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace SMMCoreDDD2019.AdminLte.Controllers
@@ -17,10 +19,15 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
     public class PenjualanController : Controller
     {
         private IMediator _mediator;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly string _userId;
 
-        public PenjualanController(IMediator mediator)
+        public PenjualanController(IMediator mediator, IHttpContextAccessor httpContextAccessor = null)
         {
             _mediator = mediator;
+            _httpContextAccessor=httpContextAccessor;
+            _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
         }
 
         [HttpGet]
@@ -32,6 +39,7 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             var KodeCustomer = await _mediator.Send(new GetCustomerDataPenjualanQuery());
             var DataSPK = await _mediator.Send(new GetNamaSPKPenjualanQuery());
 
+            ViewData["UserId"] = _userId;
             ViewData["DataKonsumen"] = new SelectList(KodeCustomer, "NoCustomer", "NamaKonsumen");
            // ViewData["NamaSalesForce"] = new SelectList(NamaSalesForce1.DataPegawaiDtPribadiDs, "IDPegawai", "NamaDepan");
             ViewData["NamaLeasingCabang"] = new SelectList(LeasingCab, "NoUrutLeasingCabang", "NamaCab");
@@ -61,6 +69,8 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         {
             var KodeBarang = await _mediator.Send(new GetDataSOQuery());
             ViewData["NoSoBarang"] = new SelectList(KodeBarang, "NoUrutSO", "NamaBarang");
+
+            ViewData["UserId"] = _userId;
 
             var NamaPemesan = await _mediator.Send(new GetCustomerDataPenjualanQuery());
             ViewData["NamaPemesan1"] = new SelectList(NamaPemesan, "NoCustomer", "NamaKonsumen");

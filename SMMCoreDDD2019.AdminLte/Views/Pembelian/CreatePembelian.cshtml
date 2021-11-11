@@ -81,10 +81,10 @@
 
 
 
-                                    <label asp-for="UserNameInput" class="control-label"></label>
+                                  
 
-                                    <input asp-for="UserNameInput" class="form-control" />
-                                    <span asp-validation-for="UserNameInput" class="text-danger"></span>
+                                    <input type="hidden" asp-for="UserNameInput" value="@ViewBag.UserName" class="form-control" />
+                                    <input type="hidden" asp-for="UserNameId" value="@ViewBag.UserId"/>
                                 </div>
 
 

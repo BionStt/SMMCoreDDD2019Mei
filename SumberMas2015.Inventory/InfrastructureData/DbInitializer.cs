@@ -31,7 +31,7 @@ namespace SumberMas2015.Inventory.InfrastructureData
             }
             var masterBarang = new[]
             {
-                Domain.MasterBarang.Create("BEAT STREET CBS ACC","MH1","","HONDA","110",decimal.Parse("13781000"),decimal.Parse("2875000"),"2019","D1I2N2A2A/T"),
+                Domain.MasterBarang.Create("BEAT STREET CBS ACC","MH1","","HONDA","110",decimal.Parse("13781000"),decimal.Parse("2875000"),"2019","D1I2N2A2A/T",string.Empty,Guid.Empty),
 
             };
             context.MasterBarang.AddRange(masterBarang);
@@ -48,7 +48,7 @@ namespace SumberMas2015.Inventory.InfrastructureData
             var mstSupplier = new[]
             {
                  Domain.Supplier.CreateSupplier(Domain.ValueObjects.Alamat.CreateAlamat("JL TELUK GONG RAYA NO,187","PEJAGALAN","PENJARINGAN","JAKARTA UTARA","DKI JAKARTA","14450","0216697631","0216697631","08111806368"),
-                 "PT SUMATERA MOTOR","sumatera@gmail.com"),
+                 "PT SUMATERA MOTOR","sumatera@gmail.com",Guid.Empty),
 
             };
                 context.Supplier.AddRange(mstSupplier);

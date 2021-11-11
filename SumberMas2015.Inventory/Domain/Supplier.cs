@@ -15,22 +15,23 @@ namespace SumberMas2015.Inventory.Domain
         public Alamat AlamatSupplier { get; set; }
         public string NamaSupplier { get; private set; }
         public string Email { get; private set; }
-
+        public Guid UserNameId{ get; set; }
         protected Supplier()
         {
 
         }
 
-        private Supplier(Alamat alamatSupplier, string namaSupplier, string email)
+        private Supplier(Alamat alamatSupplier, string namaSupplier, string email, Guid userNameId)
         {
             SupplierId = Guid.NewGuid();
             AlamatSupplier = alamatSupplier;
             NamaSupplier = namaSupplier;
             Email = email;
+            UserNameId=userNameId;
         }
-        public static Supplier CreateSupplier(Alamat alamatSupplier, string namaSupplier, string email)
+        public static Supplier CreateSupplier(Alamat alamatSupplier, string namaSupplier, string email, Guid userNameId)
         {
-            return new Supplier(alamatSupplier, namaSupplier, email);
+            return new Supplier(alamatSupplier, namaSupplier, email, userNameId);
         }
     }
 }

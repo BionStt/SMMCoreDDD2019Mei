@@ -21,7 +21,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.PermohonanSTNK.Command
         public async Task<Guid> Handle(CreatePermohonanSTNKCommand request, CancellationToken cancellationToken)
         {
             var dtPermohonanSTNK = Domain.PermohonanSTNK.CreatePermohonanSTNK(request.TanggalBayarSTNK, request.NoUrutFaktur, request.NoStnk, request.PajakStnk,
-                request.Birojasa, request.BiayaTambahan, request.FormA, request.NomorPlat, request.Perwil, request.PajakProgresif, request.BbnPabrik, request.ProgresifKe);
+                request.Birojasa, request.BiayaTambahan, request.FormA, request.NomorPlat, request.Perwil, request.PajakProgresif, request.BbnPabrik, request.ProgresifKe,request.UserName,request.UserNameId);
 
 
             await _context.PermohonanSTNK.AddAsync(dtPermohonanSTNK);

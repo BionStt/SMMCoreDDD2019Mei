@@ -11,7 +11,8 @@ namespace SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Comm
     {
         public int MasterSupplierId { get; set; }
         public string Keterangan { get; set; }
-        public string UserInput { get; set; }
+        public string UserName{ get; set; }
+        public Guid UserNameId { get; set; }
 
         public string PoASTRA { get; set; }
 

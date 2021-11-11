@@ -104,7 +104,8 @@
                                 <input id="SellIn1" asp-for="SellIn" class="form-control" />
                                 <span asp-validation-for="SellIn" class="text-danger"></span>
 
-
+                                <input type="hidden" asp-for="UserName" value="@ViewBag.UserName"/>
+                                  <input type="hidden" asp-for="UserNameId" value="@ViewBag.UserId"/>
                             </div>
                         </div>
                     </div>

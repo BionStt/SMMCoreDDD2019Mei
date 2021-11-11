@@ -13,5 +13,6 @@ namespace SumberMas2015.Inventory.ServiceApplication.Supplier.Commands.CreateSup
         public string NamaSupplier { get; set; }
         public string Email { get; set; }
         public Alamat AlamatSupplier { get; set; }
+        public Guid UserNameId { get; set; }
     }
 }

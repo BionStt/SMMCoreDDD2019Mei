@@ -17,6 +17,8 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.Creat
         public string PekerjaanPemesan { get; set; }
         public int DataSPKId { get; set; }
         public string LokasiSPK { get; set; }
+        public string UserName { get; set; }
+        public Guid userNameId{ get; set; }
 
 
 

@@ -15,7 +15,8 @@ namespace SumberMas2015.SalesMarketing.Dto.Penjualan
         public string Keterangan { get;  set; }
         public int NamaSales { get; set; }
         public int MasterKategoriPenjualan { get;  set; }
-        public string UserNameInput { get;  set; }
+        public Guid UserNameId { get;  set; }
+        public string UserName { get; set; }
         public string Mediator { get;  set; }
         public DateTime TanggalPenjualan { get; set; }
 

@@ -15,6 +15,9 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.PermohonanBPKB.Command
         public string NoBpkb { get; set; }
       
         public DateTime TanggalTerimaBPKB { get; set; }
+        public string UserName { get; set; }
+        public Guid UserNameId { get; set; }
+
 
     }
 }
