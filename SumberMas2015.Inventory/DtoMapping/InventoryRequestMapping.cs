@@ -54,7 +54,8 @@ namespace SumberMas2015.Inventory.DtoMapping
                Sellin = model.Sellin,
             SellIn2= model.SellIn2,
                 SellInPPN = model.SellInPPN,
-                Warna = model.Warna
+                Warna = model.Warna,
+                NamaSupplier = model.NamaSupplier
 
 
 

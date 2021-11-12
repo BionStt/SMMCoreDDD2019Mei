@@ -16,12 +16,10 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataPenjualan.Queries.
     public class GetDataPenjualanBulananBySalesQueryHandler : IRequestHandler<GetDataPenjualanBulananBySalesQuery, IReadOnlyCollection<GetDataPenjualanBulananBySalesResponse>>
     {
         private readonly SalesMarketingContext _context;
-        private readonly InventoryContext _inventoryContext;
 
-        public GetDataPenjualanBulananBySalesQueryHandler(SalesMarketingContext context, InventoryContext inventoryContext)
+        public GetDataPenjualanBulananBySalesQueryHandler(SalesMarketingContext context)
         {
             _context=context;
-            _inventoryContext=inventoryContext;
         }
 
         public async  Task<IReadOnlyCollection<GetDataPenjualanBulananBySalesResponse>> Handle(GetDataPenjualanBulananBySalesQuery request, CancellationToken cancellationToken)
@@ -30,11 +28,11 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataPenjualan.Queries.
                             join b in _context.MasterKategoriPenjualan on a.MasterKategoriPenjualanId equals b.MasterKategoriPenjualanId
                             join c in _context.DataKonsumen on a.DataKonsumenId equals c.DataKonsumenId
                             join d in _context.DataPenjualanDetail on a.DataPenjualanId equals d.DataPenjualanId
-                            join e in _inventoryContext.StokUnit on d.StokUnitId equals e.StokUnitId
-                            join f in _inventoryContext.PembelianDetail on e.PembelianDetailId equals f.PembelianDetailId
-                            join g in _inventoryContext.Pembelian on f.PembelianId equals g.PembelianId
-                            join h in _inventoryContext.Supplier on g.SupplierId equals h.SupplierId
-                            join i in _inventoryContext.MasterBarang on e.MasterBarangId equals i.MasterBarangId
+                            join e in _context.StokUnit on d.StokUnitId equals e.StokUnitId
+                          //  join f in _inventoryContext.PembelianDetail on e.PembelianDetailId equals f.PembelianDetailId
+                            //join g in _inventoryContext.Pembelian on f.PembelianId equals g.PembelianId
+                         //   join h in _inventoryContext.Supplier on g.SupplierId equals h.SupplierId
+                            join i in _context.MasterBarang on e.MasterBarangId equals i.MasterBarangId
                             join j in _context.MasterLeasingCabang on a.MasterLeasingCabangId equals j.MasterLeasingCabangId
                             join k in _context.MasterLeasing on j.MasterLeasingId equals k.MasterLeasingId
                             join l in _context.DataSalesMarketing on a.SalesUserId equals l.DataSalesMarketingId
@@ -61,7 +59,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataPenjualan.Queries.
                                 NamaLeasing = k.NamaLeasing,
                                 CabangLeasing = j.NamaCabang,
                                 NamaSales = l.NamaSales,
-                                Supplier = h.NamaSupplier,
+                                Supplier = e.NamaSupplier,
 
                                 KategoryPenjualan = b.NamaKategoryPenjualan,
                                 NoRangka = e.NomorRangka,

@@ -15,12 +15,10 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.PermohonanSTNK.Queries
     public class GetNamaFakturBPKBQueryHandler : IRequestHandler<GetNamaFakturBPKBQuery, IReadOnlyCollection<GetNamaFakturBPKBResponse>>
     {
         private readonly SalesMarketingContext _context;
-        private readonly InventoryContext _inventoryContext;
 
-        public GetNamaFakturBPKBQueryHandler(SalesMarketingContext context, InventoryContext inventoryContext)
+        public GetNamaFakturBPKBQueryHandler(SalesMarketingContext context)
         {
-            _context = context;
-            _inventoryContext = inventoryContext;
+            _context=context;
         }
 
         public async Task<IReadOnlyCollection<GetNamaFakturBPKBResponse>> Handle(GetNamaFakturBPKBQuery request, CancellationToken cancellationToken)
@@ -29,8 +27,8 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.PermohonanSTNK.Queries
                               join b in _context.DataPenjualanDetail on a.PenjualanDetailId equals b.DataPenjualanDetailId
                               join c in _context.DataPenjualan on b.DataPenjualanId equals c.DataPenjualanId
                               join d in _context.DataKonsumen on c.DataKonsumenId equals d.DataKonsumenId
-                              join e in _inventoryContext.StokUnit on b.StokUnitId equals e.StokUnitId
-                              join f in _inventoryContext.MasterBarang on e.MasterBarangId equals f.MasterBarangId
+                              join e in _context.StokUnit on b.StokUnitId equals e.StokUnitId
+                              join f in _context.MasterBarang on e.MasterBarangId equals f.MasterBarangId
                               where _context.PermohonanBPKB.All(x => x.NoUrutId != a.NoUrutId)
                               select new GetNamaFakturBPKBResponse 
                               { NoUrutFaktur1 = a.NoUrutId, NamaFaktur = string.Format("{0} - {1} - {2}", e.NomorMesin, a.NamaFaktur, f.NamaBarang) }

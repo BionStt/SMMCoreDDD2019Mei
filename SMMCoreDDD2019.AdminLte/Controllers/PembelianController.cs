@@ -179,6 +179,7 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             ViewData["Diskon1"] = (double)abc1.Diskon1;
             ViewData["SellIn1"] = (double)abc1.SellIn1;
             ViewData["NamaBrg1"] = abc1.NamaBarang1;
+            ViewData["NamaSupplier"] = abc1.NamaSupplier;//jamgan lupa di view
 
             ViewData["UserName"] = _userName;
             ViewData["UserId"] = _userId;

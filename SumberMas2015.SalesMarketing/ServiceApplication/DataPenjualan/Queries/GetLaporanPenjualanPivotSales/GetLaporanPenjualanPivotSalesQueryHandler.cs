@@ -15,19 +15,17 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataPenjualan.Queries.
     public class GetLaporanPenjualanPivotSalesQueryHandler : IRequestHandler<GetLaporanPenjualanPivotSalesQuery, IReadOnlyCollection<GetLaporanPenjualanPivotSalesResponse>>
     {
         private readonly SalesMarketingContext _context;
-        private readonly InventoryContext _inventoryContext;
 
-        public GetLaporanPenjualanPivotSalesQueryHandler(SalesMarketingContext context, InventoryContext inventoryContext)
+        public GetLaporanPenjualanPivotSalesQueryHandler(SalesMarketingContext context)
         {
             _context=context;
-            _inventoryContext=inventoryContext;
         }
 
         public async Task<IReadOnlyCollection<GetLaporanPenjualanPivotSalesResponse>> Handle(GetLaporanPenjualanPivotSalesQuery request, CancellationToken cancellationToken)
         {
             var bb = await (from a in _context.DataPenjualanDetail
-                            join b in _inventoryContext.StokUnit on a.StokUnitId equals b.StokUnitId
-                            join c in _inventoryContext.MasterBarang on b.MasterBarangId equals c.MasterBarangId
+                            join b in _context.StokUnit on a.StokUnitId equals b.StokUnitId
+                            join c in _context.MasterBarang on b.MasterBarangId equals c.MasterBarangId
                             join d in _context.DataPenjualan on a.DataPenjualanId equals d.DataPenjualanId
                             join e in _context.MasterLeasingCabang on d.MasterLeasingCabangId equals e.MasterLeasingCabangId
                             join f in _context.MasterLeasing on e.MasterLeasingId equals f.MasterLeasingId

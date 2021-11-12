@@ -25,6 +25,7 @@ namespace SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Queries.Get
             var returnQuery = await (from a in _context.PembelianDetail
                                      join b in _context.MasterBarang on a.MasterBarangDBId equals b.MasterBarangId
                                      join c in _context.Pembelian on a.PembelianId equals c.PembelianId
+                                     join d in _context.Supplier on c.SupplierId equals d.SupplierId
                                      where a.NoUrutId == int.Parse(request.Id)
                                      select new GetKodeBeliDetailResponse {
                                          NoKodeBeli1 = c.NoUrutId,
@@ -33,6 +34,7 @@ namespace SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Queries.Get
                                          HargaOff = b.HargaOff,
                                          Diskon1 = a.Diskon,
                                          SellIn1 = a.SellIn,
+                                         NamaSupplier = d.NamaSupplier,
                                          NamaBarang1 = String.Format("{0} - {1} - {2}",b.TypeKendaraan,b.NamaBarang,b.Merek)
 
                                      }

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using SumberMas2015.Inventory.InfrastructureData.Context;
 using System;
 using System.Collections.Generic;
@@ -21,8 +22,9 @@ namespace SumberMas2015.Inventory.ServiceApplication.Pembelian.Commands.CreatePe
         public async Task<Guid> Handle(CreatePembelianCommand request, CancellationToken cancellationToken)
         {
             //masih perlu diperbaiki
-            var dtSupplier = Guid.NewGuid();
-            var POId = Guid.NewGuid();
+            var dtSupplier = await _context.Supplier.Where(x => x.NoUrutId==request.DataSupplierId).Select(x=>x.SupplierId).SingleOrDefaultAsync();
+            var POId = await _context.PurchaseOrderPembelian.Where(x => x.NoUrutId==request.PurchaseOrderId).Select(x => x.PurchaseOrderPembelianId).SingleOrDefaultAsync();
+
             var dtPembelian = Domain.Pembelian.CreatePembelian(dtSupplier, request.JenisTransaksiPembelian,request.Tenor, request.Keterangan, request.UserNameInput, POId) ;
 
             await _context.Pembelian.AddAsync(dtPembelian);

@@ -52,6 +52,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Context
         public DbSet<PermohonanFaktur> PermohonanFaktur { get; set; }
         public DbSet<PermohonanBPKB> PermohonanBPKB { get; set; }
 
+        public DbSet<StokUnit> StokUnit { get; set; }
 
 
 

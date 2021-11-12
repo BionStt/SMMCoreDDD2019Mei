@@ -23,5 +23,6 @@ namespace SumberMas2015.Inventory.Dto.StokUnit
         public decimal? SellIn2 { get;  set; }
         public decimal? SellInPPN { get;  set; }
         public string Warna { get;  set; }
+        public string NamaSupplier { get;  set; }
     }
 }

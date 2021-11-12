@@ -16,6 +16,7 @@ namespace SumberMas2015.Inventory.Dto.PembelianDetail
 
         public decimal? Diskon1 { get; set; }
         public decimal? SellIn1 { get; set; }
+        public string NamaSupplier { get; set; }
 
     }
 }

@@ -24,6 +24,7 @@
     <Folder Include="ServiceApplication\PermohonanBPKB\Queries\" />
     <Folder Include="ServiceApplication\PermohonanFaktur\Queries\" />
     <Folder Include="ServiceApplication\SalesMarketing\Commands\" />
+    <Folder Include="ServiceApplication\StokUnit\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
