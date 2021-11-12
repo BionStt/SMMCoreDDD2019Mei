@@ -26,7 +26,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataKonsumen.Queries.G
                                      where a.Terinput==null
                                      select new GetCustomerDataPenjualanResponse {
                                          NoCustomer = a.NoUrutId,
-                                         NamaKonsumen =   string.Format("{0} - {1} - {2}", a.Nama, a.NamaBPKB, a.AlamatTinggal.NoHandphone)
+                                         NamaKonsumen =   string.Format("{0} - {1} - {2}", a.Nama.NamaDepan, a.NamaBPKB.NamaDepan, a.AlamatTinggal.NoHandphone)
                                      }
                                      ).AsNoTracking().ToListAsync();
 

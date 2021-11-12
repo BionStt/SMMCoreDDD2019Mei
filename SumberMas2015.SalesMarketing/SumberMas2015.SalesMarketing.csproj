@@ -23,6 +23,7 @@
     <Folder Include="Domain\Events\" />
     <Folder Include="ServiceApplication\PermohonanBPKB\Queries\" />
     <Folder Include="ServiceApplication\PermohonanFaktur\Queries\" />
+    <Folder Include="ServiceApplication\SalesMarketing\Commands\" />
   </ItemGroup>
 
   <ItemGroup>

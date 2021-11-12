@@ -8,6 +8,46 @@ namespace SmmCoreDDD2019.Common.Pages
 {
     public static class MainMenu
     {
+        public static class LaporanSalesHarian
+        {
+            public const string PageName = "Laporan Penjualan Sales Harian";
+            public const string RoleName = "Laporan Penjualan Sales Harian";
+            public const string Path = "/LaporanPivot/LaporanSalesHarian";
+            public const string ControllerName = "LaporanPivot";
+            public const string ActionName = "LaporanSalesHarian";
+        }
+        public static class LaporanSalesForceBulanan
+        {
+            public const string PageName = "Laporan Penjualan Sales Force Bulanan";
+            public const string RoleName = "Laporan Penjualan Sales Force Bulanan";
+            public const string Path = "/LaporanPivot/LaporanSalesForceBulanan";
+            public const string ControllerName = "LaporanPivot";
+            public const string ActionName = "LaporanSalesForceBulanan";
+        }
+        public static class LaporanPenjualanPivotSales
+        {
+            public const string PageName = "Laporan Penjualan Pivot Sales";
+            public const string RoleName = "Laporan Penjualan Pivot Sales";
+            public const string Path = "/LaporanPivot/LaporanPenjualanPivotSales";
+            public const string ControllerName = "LaporanPivot";
+            public const string ActionName = "LaporanPenjualanPivotSales";
+        }
+        public static class LaporanPenjualanPivotCabangLeasing
+        {
+            public const string PageName = "Laporan Penjualan Pivot Cabang Leasing";
+            public const string RoleName = "Laporan Penjualan Pivot Cabang Leasing";
+            public const string Path = "/LaporanPivot/LaporanPenjualanPivotCabangLeasing";
+            public const string ControllerName = "LaporanPivot";
+            public const string ActionName = "LaporanPenjualanPivotCabangLeasing";
+        }
+        public static class LaporanPenjualanPivot
+        {
+            public const string PageName = "Laporan Penjualan Pivot";
+            public const string RoleName = "Laporan Penjualan Pivot";
+            public const string Path = "/LaporanPivot/LaporanPenjualanPivot";
+            public const string ControllerName = "LaporanPivot";
+            public const string ActionName = "LaporanPenjualanPivot";
+        }
         public static class CreateDataKonsumen
         {
             public const string PageName = "Create Data Konsumen";

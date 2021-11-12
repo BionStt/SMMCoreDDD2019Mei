@@ -8,7 +8,8 @@ namespace SumberMas2015.SalesMarketing.Dto.MasterBidangPekerjaanDBs
 {
     public class MasterBidangPekerjaanDBsByIdResponse
     {
-        public int NoUrutId { get; internal set; }
-        public string MasterBidangPekerjaan { get; internal set; }
+        public int NoUrutId { get;  set; }
+        public string MasterBidangPekerjaan { get;  set; }
+        public Guid MasterBidangPekerjaanId { get; set; }
     }
 }

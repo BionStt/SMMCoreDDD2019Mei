@@ -25,7 +25,8 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangUsahaDBs.Q
             var returnQuery = await _context.MasterBidangUsahaDB.Where(x => x.NoUrutId == request.NoUrutId).Select(x => new MasterBidangUsahaDBsByIdResponse
             {
                 NoUrutId = x.NoUrutId,
-                MasterBidangUsaha = x.NamaMasterBidangUsaha
+                MasterBidangUsaha = x.NamaMasterBidangUsaha,
+                MasterBidangUsahaId = x.MasterBidangUsahaGuid
 
             }).SingleOrDefaultAsync();
             return returnQuery;

@@ -10,6 +10,7 @@ using SumberMas2015.SalesMarketing.ServiceApplication.DataKonsumen.Queries.GetCu
 using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Queries.GetNamaSPKPenjualan;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterKategoriPenjualan.Queries.ListKategoriPenjualan;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterLeasing.Queries.ListCabangLeasing;
+using SumberMas2015.SalesMarketing.ServiceApplication.SalesMarketing.Queries.GetNamaSalesForce;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -34,14 +35,14 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         public async Task<IActionResult> CreatePenjualan()
         {
             var NamaKategoryPenjualan = await _mediator.Send(new ListKategoriPenjualanQuery());
-           // var NamaSalesForce1 = await _mediator.Send(new GetNamaSalesForceQuery());
+            var NamaSalesForce1 = await _mediator.Send(new GetNamaSalesForceQuery());
             var LeasingCab = await _mediator.Send(new ListCabangLeasingQuery());
             var KodeCustomer = await _mediator.Send(new GetCustomerDataPenjualanQuery());
             var DataSPK = await _mediator.Send(new GetNamaSPKPenjualanQuery());
 
             ViewData["UserId"] = _userId;
             ViewData["DataKonsumen"] = new SelectList(KodeCustomer, "NoCustomer", "NamaKonsumen");
-           // ViewData["NamaSalesForce"] = new SelectList(NamaSalesForce1.DataPegawaiDtPribadiDs, "IDPegawai", "NamaDepan");
+            ViewData["NamaSalesForce"] = new SelectList(NamaSalesForce1, "NoUrutId", "NamasalesForce");
             ViewData["NamaLeasingCabang"] = new SelectList(LeasingCab, "NoUrutLeasingCabang", "NamaCab");
             ViewData["NamaKategoryPenjualan"] = new SelectList(NamaKategoryPenjualan, "NoUrutId", "KategoriPenjualan");
             ViewData["DataSPK1"] = new SelectList(DataSPK, "NoUrutSPKBaru1", "NamaPemesan");

@@ -10,5 +10,6 @@ namespace SumberMas2015.SalesMarketing.Dto.MasterBidangUsahaDBs
     {
         public int NoUrutId { get;  set; }
         public string MasterBidangUsaha { get;  set; }
+        public Guid MasterBidangUsahaId { get; set; }
     }
 }

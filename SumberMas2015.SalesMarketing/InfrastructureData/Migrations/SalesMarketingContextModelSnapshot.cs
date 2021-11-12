@@ -40,11 +40,11 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                     b.Property<Guid>("JenisKelaminId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("KodeBidangPekerjaan")
-                        .HasColumnType("int");
+                    b.Property<Guid>("KodeBidangPekerjaan")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("KodeBidangUsaha")
-                        .HasColumnType("int");
+                    b.Property<Guid>("KodeBidangUsaha")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("NamaBidangPekerjaan")
                         .HasColumnType("nvarchar(max)");
@@ -65,6 +65,12 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
 
                     b.Property<string>("Terinput")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserNameId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("DataKonsumenId");
 
@@ -127,6 +133,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("(getdate())");
+
+                    b.Property<Guid>("UserNameId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UserNameInput")
                         .HasMaxLength(20)
@@ -224,6 +233,12 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("UserCheckLapBulanan");
 
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserNameId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("DataPenjualanId");
 
                     b.HasIndex("DataPenjualanId1");
@@ -265,6 +280,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                     b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("UserNameId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("UserNameInput")
                         .HasColumnType("nvarchar(max)");
 
@@ -303,6 +321,12 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         .HasMaxLength(5)
                         .IsUnicode(false)
                         .HasColumnType("varchar(5)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserNameId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Warna")
                         .HasMaxLength(25)
@@ -363,6 +387,12 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
 
                     b.Property<decimal?>("UangTandaJadiTunai")
                         .HasColumnType("money");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserNameId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("DataSPKKreditId");
 
@@ -762,6 +792,12 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                     b.Property<DateTime>("TanggalTerimaBPKB")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserNameId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("PermohonanBPKBId");
 
                     b.ToTable("PermohonanBPKB");
@@ -795,6 +831,12 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
 
                     b.Property<DateTime?>("TanggalMohonFaktur")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserNameId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("PermohonanFakturId");
 
@@ -847,6 +889,12 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
 
                     b.Property<DateTime?>("TanggalBayarSTNK")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserNameId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("PermohonanSTNKId");
 

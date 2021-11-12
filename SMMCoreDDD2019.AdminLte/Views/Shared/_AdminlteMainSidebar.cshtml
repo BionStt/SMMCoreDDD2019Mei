@@ -100,8 +100,33 @@
                     <i class="fa fa-gear"></i> <span>@MainMenu.CreatePenjualan.PageName</span>
                 </a>
             </li>
-            <li class="header">PURCHASE</li>
-
+            <li class="header">Laporan </li>
+            <li class="@Html.IsSelected(controller: MainMenu.LaporanPenjualanPivot.ControllerName)">
+                <a href="@MainMenu.LaporanPenjualanPivot.Path">
+                    <i class="fa fa-gear"></i> <span>@MainMenu.LaporanPenjualanPivot.PageName</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: MainMenu.LaporanPenjualanPivotCabangLeasing.ControllerName)">
+                <a href="@MainMenu.LaporanPenjualanPivotCabangLeasing.Path">
+                    <i class="fa fa-gear"></i> <span>@MainMenu.LaporanPenjualanPivotCabangLeasing.PageName</span>
+                </a>
+            </li>
+             <li class="@Html.IsSelected(controller: MainMenu.LaporanPenjualanPivotSales.ControllerName)">
+                <a href="@MainMenu.LaporanPenjualanPivotSales.Path">
+                    <i class="fa fa-gear"></i> <span>@MainMenu.LaporanPenjualanPivotSales.PageName</span>
+                </a>
+            </li>
+               <li class="@Html.IsSelected(controller: MainMenu.LaporanSalesForceBulanan.ControllerName)">
+                <a href="@MainMenu.LaporanSalesForceBulanan.Path">
+                    <i class="fa fa-gear"></i> <span>@MainMenu.LaporanSalesForceBulanan.PageName</span>
+                </a>
+            </li>
+              </li>
+               <li class="@Html.IsSelected(controller: MainMenu.LaporanSalesHarian.ControllerName)">
+                <a href="@MainMenu.LaporanSalesHarian.Path">
+                    <i class="fa fa-gear"></i> <span>@MainMenu.LaporanSalesHarian.PageName</span>
+                </a>
+            </li>
             @*<li class="@Html.IsSelected(controller: MainMenu.VendorType.ControllerName)">
             <a href="@MainMenu.VendorType.Path">
                 <i class="fa fa-gear"></i> <span>@MainMenu.VendorType.PageName</span>

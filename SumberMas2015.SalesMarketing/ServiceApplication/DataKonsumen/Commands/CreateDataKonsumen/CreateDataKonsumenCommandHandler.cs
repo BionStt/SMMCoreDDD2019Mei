@@ -38,7 +38,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataKonsumen.Commands.
                 request.Alamat.KodePos, request.Alamat.NoTelepon, request.Alamat.NoFax, request.Alamat.NoHandphone),
                 Domain.ValueObjects.Alamat.CreateAlamat(request.AlamatKirim.Jalan, request.AlamatKirim.Kelurahan, request.AlamatKirim.Kecamatan, request.AlamatKirim.Kota,
                 request.AlamatKirim.Propinsi, request.AlamatKirim.KodePos, request.AlamatKirim.NoTelepon, request.AlamatKirim.NoFax, request.AlamatKirim.NoHandphone),
-                Agama.AgamaListByIdResponseId,request.Email,request.KodeBidangPekerjaan,request.NamaBidangPekerjaan, request.KodeBidangUsaha, request.NamaBidangUsaha,request.UserName,request.UserNameId);
+                Agama.AgamaListByIdResponseId,request.Email, mstBidangPekerjaan.MasterBidangPekerjaanId, request.NamaBidangPekerjaan, mstBidangUsaha.MasterBidangUsahaId, request.NamaBidangUsaha,request.UserName,request.UserNameId);
 
             if(dtKonsumen != null)
             {
