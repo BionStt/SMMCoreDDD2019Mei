@@ -20,6 +20,7 @@ namespace SumberMas2015.HumanCapital.Domain
         public string Jabatan { get; private set; }
         public string JenisKegiatan { get; private set; }
         public DateTime TanggalInput { get; private set; }
+        public int NoUrutId { get; set; }
 
     }
 }

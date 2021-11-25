@@ -14,7 +14,7 @@ namespace SumberMas2015.HumanCapital.Domain.EnumInEntity
         }
         private JenisKelamin(string jenisKelaminKeterangan)
         {
-            Id = Guid.NewGuid();
+            JenisKelaminId = Guid.NewGuid();
             JenisKelaminKeterangan = jenisKelaminKeterangan;
         }
         public static JenisKelamin AddJenisKelamin(string jenisKelaminKeterangan)
@@ -22,7 +22,7 @@ namespace SumberMas2015.HumanCapital.Domain.EnumInEntity
             return new JenisKelamin(jenisKelaminKeterangan);
         }
         public String JenisKelaminKeterangan { get; set; }
-        public Guid Id { get; set; }
+        public Guid JenisKelaminId { get; set; }
         public int NoUrutId { get; set; }
 
 

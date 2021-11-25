@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SumberMas2015.Organization.Domain;
+using SumberMas2015.Organization.Domain.EnumInEntity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,11 +24,24 @@ namespace SumberMas2015.Organization.InfrastructureData.Context
             //  builder.ApplyConfiguration(new DataKonsumenConfiguration());
             builder.ApplyConfigurationsFromAssembly(typeof(OrganizationContext).Assembly);//test pakai ini
         }
-
+        public DbSet<JenisKompetensi> JenisKompetensi{ get; set; }
+        public DbSet<TrainingCourses> TrainingCourses { get; set; }
         public DbSet<DataPerusahaan> DataPerusahaan { get; set; }
         public DbSet<DataPerusahaanCabang> DataPerusahaanCabang { get; set; }
 
+        public DbSet<DataKamusKompetensi> DataKamusKompetensi { get; set; }
 
+        public DbSet<DataKamusKompetensiIndikatorPerilaku> DataKamusKompetensiIndikatorPerilaku { get; set; }
+        public DbSet<DataKamusKompetensiLeveling> DataKamusKompetensiLeveling { get; set; }
+        public DbSet<DataPerusahaanJobDescription> DataPerusahaanJobDescription { get; set; }
+        public DbSet<DataPerusahaanJobSpecification> DataPerusahaanJobSpecification { get; set; }
+        public DbSet<DataPerusahaanMisi> DataPerusahaanMisi { get; set; }
+        public DbSet<DataPerusahaanVisi> DataPerusahaanVisi { get; set; }
+        public DbSet<DataPerusahaanOrganisasiChart> DataPerusahaanOrganisasiChart { get; set; }
+        public DbSet<DataPerusahaanProsesBisnis> DataPerusahaanProsesBisnis { get; set; }
+        public DbSet<DataPerusahaanSalaryStructure> DataPerusahaanSalaryStructure { get; set; }
+        public DbSet<DataPerusahaanValue> DataPerusahaanValue { get; set; }
+    
 
 
 

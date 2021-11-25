@@ -12,5 +12,7 @@ namespace SumberMas2015.HumanCapital.Domain
         public DateTime TanggalMengikutiTraining { get; private set; }
         public string NamaTraining { get; private set; }
         public string VendorTraining { get; private set; }
+
+        public int NoUrutId { get; set; }
     }
 }

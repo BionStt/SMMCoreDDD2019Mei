@@ -27,5 +27,8 @@ namespace SumberMas2015.HumanCapital.Domain
 
         public string Keterangan { get; private set; }
 
+        public int NoUrutId { get; set; }
+
+
     }
 }

@@ -14,7 +14,7 @@ namespace SumberMas2015.Organization.InfrastructureData.Configuration
         public void Configure(EntityTypeBuilder<DataPerusahaan> builder)
         {
             builder.ToTable("DataPerusahaan");
-            builder.HasKey(e => e.NoUrutId);
+            builder.HasKey(e => e.DataPerusahaanId);
             builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
 
             builder.OwnsOne(o=>o.AlamatPerusahaan,a=> {

@@ -15,5 +15,12 @@ namespace SumberMas2015.HumanCapital.Domain.EnumInEntity
         public DateTime JamMulai { get; set; }
         public DateTime JamBerakhir { get; set; }
         public int NoUrutId { get; set; }
+
+          //'Absen Pagi',
+          //  'Absen Istrahat',
+          //  'Absen Siang',
+          //  'Absen Pulang'
+
+
     }
 }

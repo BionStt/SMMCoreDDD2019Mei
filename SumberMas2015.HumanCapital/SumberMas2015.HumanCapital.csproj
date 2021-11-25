@@ -8,7 +8,8 @@
     <Folder Include="Dto\" />
     <Folder Include="DtoMapping\" />
     <Folder Include="InfrastructureData\Migrations\" />
-    <Folder Include="ServiceApplication\" />
+    <Folder Include="ServiceApplication\Interfaces\" />
+    <Folder Include="ServiceApplication\Implementations\" />
   </ItemGroup>
 
   <ItemGroup>

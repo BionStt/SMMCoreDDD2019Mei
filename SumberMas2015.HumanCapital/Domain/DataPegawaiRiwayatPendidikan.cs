@@ -17,5 +17,9 @@ namespace SumberMas2015.HumanCapital.Domain
         public string Jurusan { get; private set; }
         public string TahunLulus { get; private set; }
         public string Keterangan { get; private set; }
+        public int NoUrutId { get; set; }
+
+
+
     }
 }

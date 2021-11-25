@@ -7,9 +7,6 @@
   <ItemGroup>
     <Folder Include="InfrastructureData\Migrations\" />
     <Folder Include="ServiceApplication\DataPerusahaanCabang\Queries\" />
-    <Folder Include="ServiceApplication\DataPerusahaanVMV\Commands\CreateVisiPerusahaan\" />
-    <Folder Include="ServiceApplication\DataPerusahaanVMV\Commands\CreateMisiPerusahaan\" />
-    <Folder Include="ServiceApplication\DataPerusahaanVMV\Commands\CreateValuePerusahaan\" />
     <Folder Include="ServiceApplication\DataPerusahaanVMV\Queries\" />
   </ItemGroup>
 

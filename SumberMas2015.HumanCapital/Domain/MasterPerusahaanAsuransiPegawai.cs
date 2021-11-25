@@ -11,7 +11,7 @@ namespace SumberMas2015.HumanCapital.Domain
         public Guid MasterPerusahaanAsuransiPegawaiId { get; set; }
         public string NamaPerusahaanAsuransi { get; set; }
 
-
+        public int  NoUrutId { get; set; }
 
     }
 }

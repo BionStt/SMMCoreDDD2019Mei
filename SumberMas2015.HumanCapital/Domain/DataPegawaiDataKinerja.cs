@@ -10,5 +10,8 @@ namespace SumberMas2015.HumanCapital.Domain
     {
         public Guid DataPegawaiDataKinerjaId { get; set; }
         public Guid DataPegawaiId { get; set; }
+
+        public int NoUrutId { get; set; }
+
     }
 }

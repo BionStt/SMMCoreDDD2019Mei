@@ -12,6 +12,7 @@ namespace SumberMas2015.HumanCapital.Domain
         public Guid DataPegawaiId { get; private set; }
 
         public DateTime TanggalInputFoto { get; private set; }
+        public int NoUrutId { get; set; }
 
 
     }
