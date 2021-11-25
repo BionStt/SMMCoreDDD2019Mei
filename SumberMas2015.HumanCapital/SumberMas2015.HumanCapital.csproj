@@ -8,6 +8,7 @@
     <Folder Include="Dto\" />
     <Folder Include="DtoMapping\" />
     <Folder Include="InfrastructureData\Migrations\" />
+    <Folder Include="InfrastructureData\Dapper\" />
     <Folder Include="ServiceApplication\Interfaces\" />
     <Folder Include="ServiceApplication\Implementations\" />
   </ItemGroup>

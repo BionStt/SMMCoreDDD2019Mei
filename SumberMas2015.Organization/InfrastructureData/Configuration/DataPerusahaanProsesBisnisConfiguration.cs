@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 
 namespace SumberMas2015.Organization.InfrastructureData.Configuration
 {
-    public class DataKamusKompetensiLevelingConfiguration : IEntityTypeConfiguration<DataKamusKompetensiLeveling>
+    public class DataPerusahaanProsesBisnisConfiguration : IEntityTypeConfiguration<DataPerusahaanProsesBisnis>
     {
-        public void Configure(EntityTypeBuilder<DataKamusKompetensiLeveling> builder)
+        public void Configure(EntityTypeBuilder<DataPerusahaanProsesBisnis> builder)
         {
-            builder.ToTable("DataKamusKompetensiLeveling");
-            builder.HasKey(x => x.DataKamusKompetensiLevelingId);
+            builder.ToTable("DataPerusahaanProsesBisnis");
+            builder.HasKey(x => x.DataProsesBisnisId);
             builder.Property(x => x.NoUrutId).ValueGeneratedOnAdd();
-
 
 
         }
