@@ -10,7 +10,7 @@ namespace SumberMas2015.HumanCapital.Domain
     {
         public Guid DataPegawaiSalaryStructureId { get; set; }
 
-        asd
+        
 
 
     }

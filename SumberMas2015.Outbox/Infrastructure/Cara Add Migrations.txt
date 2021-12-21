@@ -1,0 +1,7 @@
+﻿
+EntityFrameworkCore\Add-Migration InitialCreate -Context OutboxDbContext -OutputDir Infrastructure\Migrations
+EntityFrameworkCore\UPDATE-DATABASE -CONTEXT OutboxDbContext
+
+
+
+EntityFrameworkCore\Add-Migration InitialCreate1 -Context OutboxDbContext -OutputDir Infrastructure\Migrations
