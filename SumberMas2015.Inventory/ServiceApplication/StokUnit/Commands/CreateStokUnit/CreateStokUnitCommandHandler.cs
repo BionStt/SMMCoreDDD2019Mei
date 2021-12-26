@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using SumberMas2015.IntegrationEvent;
+using SumberMas2015.Inventory.EventBus;
 using SumberMas2015.Inventory.InfrastructureData.Context;
 using System;
 using System.Collections.Generic;
@@ -13,12 +15,13 @@ namespace SumberMas2015.Inventory.ServiceApplication.StokUnit.Commands.CreateSto
     public class CreateStokUnitCommandHandler : IRequestHandler<CreateStokUnitCommand, Guid>
     {
         private readonly InventoryContext _context;
-        private readonly IMediator _mediator;
+       // private readonly IMediator _mediator;
+        private readonly IInventoryEventBus _eventBus;
 
-        public CreateStokUnitCommandHandler(InventoryContext context, IMediator mediator)
+        public CreateStokUnitCommandHandler(InventoryContext context, IInventoryEventBus eventBus)
         {
             _context = context;
-            _mediator=mediator;
+            _eventBus=eventBus;
         }
 
         public async Task<Guid> Handle(CreateStokUnitCommand request, CancellationToken cancellationToken)
@@ -31,15 +34,24 @@ namespace SumberMas2015.Inventory.ServiceApplication.StokUnit.Commands.CreateSto
                 request.Warna, request.Harga, request.Diskon, request.Sellin, request.Harga1, request.Diskon2, request.SellIn2, request.HargaPPN, request.DiskonPPN, request.SellInPPN);
 
             await _context.StokUnit.AddAsync(dtStokUnit);
+
+            await _eventBus.Publish(new StokUnitAddedIntegrationEvent(
+                dtStokUnit.StokUnitId,
+                masterBarangId,
+                request.NomorRangka,
+                request.NomorMesin,
+                request.NamaSupplier
+                ));
+
             await _context.SaveChangesAsync();
 
-            await _mediator.Publish(new CreateStokUnitCreated { 
-            MasterBarangId = masterBarangId,
-            NamaSupplier = request.NamaSupplier,
-            NomorMesin  = request.NomorMesin,
-            NomorRangka = request.NomorRangka,
-            StokUnitId = dtStokUnit.StokUnitId
-            } );
+            //await _mediator.Publish(new CreateStokUnitCreated { 
+            //MasterBarangId = masterBarangId,
+            //NamaSupplier = request.NamaSupplier,
+            //NomorMesin  = request.NomorMesin,
+            //NomorRangka = request.NomorRangka,
+            //StokUnitId = dtStokUnit.StokUnitId
+            //} );
             return dtStokUnit.StokUnitId;
         }
     }
