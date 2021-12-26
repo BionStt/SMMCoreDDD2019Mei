@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using SumberMas2015.IntegrationEvent;
 using SumberMas2015.Inventory.InfrastructureData.Context;
+using SumberMas2015.SalesMarketing.EventBus;
 using SumberMas2015.SalesMarketing.InfrastructureData.Context;
 using System;
 using System.Collections.Generic;
@@ -14,17 +16,20 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataPenjualan.Commands
     public class CreateDataPenjualanDetailCommandHandler : IRequestHandler<CreateDataPenjualanDetailCommand, Guid>
     {
         private readonly SalesMarketingContext _context;
-        private readonly InventoryContext _Inventorycontext;
-        public CreateDataPenjualanDetailCommandHandler(SalesMarketingContext context, InventoryContext inventorycontext )
+        //  private readonly InventoryContext _Inventorycontext;
+        private readonly ISalesMarketingEventBus _eventBus;
+
+        public CreateDataPenjualanDetailCommandHandler(SalesMarketingContext context )
         {
             _context = context;
-            _Inventorycontext=inventorycontext;
+  
         }
 
         public async Task<Guid> Handle(CreateDataPenjualanDetailCommand request, CancellationToken cancellationToken)
         {
             var dtPenjualanId = await _context.DataPenjualan.Where(x=>x.NoUrutId== request.dataPenjualanId).Select(x=>x.DataPenjualanId).SingleOrDefaultAsync();
-            var StokUnitId = await _Inventorycontext.StokUnit.Where(x => x.NoUrutId == request.stokUnitId).Select(x => x.StokUnitId).SingleOrDefaultAsync();
+           
+            var StokUnitId = await _context.StokUnit.Where(x => x.NoUrutId == request.stokUnitId).Select(x => x.StokUnitId).SingleOrDefaultAsync();
 
 
             var dtDataPenjualanDetail = Domain.DataPenjualanDetail.CreateDataPenjualanDetail(dtPenjualanId, StokUnitId, request.offTheRoad, request.bBN, request.hargaOTR, request.uangMuka,
@@ -33,6 +38,9 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataPenjualan.Commands
 
 
             await _context.DataPenjualanDetail.AddAsync(dtDataPenjualanDetail);
+
+            _eventBus.Publish(new StokUnitSoldIntegrationEvent() );
+
             await _context.SaveChangesAsync();
 
             return dtDataPenjualanDetail.DataPenjualanDetailId;

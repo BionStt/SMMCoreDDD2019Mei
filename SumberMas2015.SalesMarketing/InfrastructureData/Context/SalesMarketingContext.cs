@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SumberMas2015.DDD.OutBox.Domain;
 using SumberMas2015.SalesMarketing.Domain;
 using SumberMas2015.SalesMarketing.Domain.EnumInEntity;
 using System;
@@ -25,6 +26,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Context
             //  builder.ApplyConfiguration(new DataKonsumenConfiguration());
             builder.ApplyConfigurationsFromAssembly(typeof(SalesMarketingContext).Assembly);//test pakai ini
         }
+        public DbSet<OutBoxMessage> OutBoxMessages { get; set; }
         public DbSet<JenisKelamin> JenisKelamin { get; set; }
         public DbSet<Agama> Agama { get; set; }
         public DbSet<DataSPK> DataSPK { get; set; }

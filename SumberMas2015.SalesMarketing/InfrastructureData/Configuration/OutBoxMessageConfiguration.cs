@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SumberMas2015.Inventory.InfrastructureData.Configuration
+namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
 {
     public class OutBoxMessageConfiguration : IEntityTypeConfiguration<OutBoxMessage>
     {
