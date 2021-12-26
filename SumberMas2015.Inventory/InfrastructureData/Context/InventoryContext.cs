@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SumberMas2015.DDD.OutBox.Domain;
 using SumberMas2015.Inventory.Domain;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace SumberMas2015.Inventory.InfrastructureData.Context
             builder.ApplyConfigurationsFromAssembly(typeof(InventoryContext).Assembly);//test pakai ini
         }
         public DbSet<Pembelian> Pembelian { get; set; }
-
+        public DbSet<OutBoxMessage> OutBoxMessages { get; set; }
         public DbSet<PembelianDetail> PembelianDetail { get; set; }
         public DbSet<PurchaseOrderPembelian> PurchaseOrderPembelian { get; set; }
         public DbSet<PurchaseOrderPembelianDetail> PurchaseOrderPembelianDetail { get; set; }

@@ -1,7 +1,10 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using SumberMas2015.Inventory.EventBus;
 using SumberMas2015.Inventory.InfrastructureData.Context;
+using SumberMas2015.Inventory.InfrastructureData.EventBus;
+using SumberMas2015.Inventory.InfrastructureData.WorkerProcess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +23,11 @@ namespace SumberMas2015.Inventory
               options.UseSqlServer(connectionString));
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
+
+            services.AddScoped<IInventoryEventBus, InventoryEventBus>();
+
+            services.AddHostedService<InventoryOutBoxWorker>();
+
             return services;
         }
     }

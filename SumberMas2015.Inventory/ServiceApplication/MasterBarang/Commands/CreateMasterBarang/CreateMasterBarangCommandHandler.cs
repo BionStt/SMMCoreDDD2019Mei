@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using SumberMas2015.IntegrationEvent;
+using SumberMas2015.Inventory.EventBus;
 using SumberMas2015.Inventory.InfrastructureData.Context;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,7 @@ namespace SumberMas2015.Inventory.ServiceApplication.MasterBarang.Commands.Creat
 {
     public class CreateMasterBarangCommandHandler : IRequestHandler<CreateMasterBarangCommand, Guid>
     {
+        private readonly IInventoryEventBus _eventBus;
         private readonly InventoryContext _context;
         private readonly IMediator _mediator;
         public CreateMasterBarangCommandHandler(InventoryContext context, IMediator mediator)
@@ -26,19 +29,31 @@ namespace SumberMas2015.Inventory.ServiceApplication.MasterBarang.Commands.Creat
 
             await _context.MasterBarang.AddAsync(mstBarang);
 
+            await _eventBus.Publish(new MasterBarangAddedIntegrationEvent(
+                request.NamaBarang,
+                request.NomorRangka,
+                request.NomorMesin,
+                request.Merek,
+                request.KapasitasMesin,
+                request.HargaOff,
+                request.BBn,
+                request.TahunPerakitan,
+                request.TypeKendaraan
+                ));
+
             await _context.SaveChangesAsync();
 
-            await _mediator.Publish(new CreateMasterBarangCreated {
-                  BBN = request.BBn,
-                  HargaOffTheRoad = request.HargaOff,
-                KapasitasMesin = request.KapasitasMesin,
-                Merek = request.Merek,
-                NamaBarang = request.NamaBarang,
-                NomorMesin = request.NomorMesin,
-                NomorRangka = request.NomorRangka,
-                TahunPerakitan = request.TahunPerakitan,
-                TypeKendaraan = request.TypeKendaraan
-            }, cancellationToken);
+            //await _mediator.Publish(new CreateMasterBarangCreated {
+            //      BBN = request.BBn,
+            //      HargaOffTheRoad = request.HargaOff,
+            //    KapasitasMesin = request.KapasitasMesin,
+            //    Merek = request.Merek,
+            //    NamaBarang = request.NamaBarang,
+            //    NomorMesin = request.NomorMesin,
+            //    NomorRangka = request.NomorRangka,
+            //    TahunPerakitan = request.TahunPerakitan,
+            //    TypeKendaraan = request.TypeKendaraan
+            //}, cancellationToken);
 
             return mstBarang.MasterBarangId;
         }

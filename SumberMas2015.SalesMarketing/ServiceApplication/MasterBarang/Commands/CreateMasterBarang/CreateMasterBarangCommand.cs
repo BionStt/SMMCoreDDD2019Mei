@@ -14,8 +14,8 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.MasterBarang.Commands.
         public string NomorMesin { get; set; }
         public string Merek { get; set; }
         public string KapasitasMesin { get; set; }
-        public decimal HargaOff { get; set; }
-        public decimal BBn { get; set; }
+        public decimal? HargaOff { get; set; }
+        public decimal? BBn { get; set; }
         public string TahunPerakitan { get; set; }
         public string TypeKendaraan { get; set; }
 

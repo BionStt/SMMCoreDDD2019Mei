@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SumberMas2015.Inventory\SumberMas2015.Inventory.csproj" />
+    <ProjectReference Include="..\SumberMas2015.IntegrationEvent\SumberMas2015.IntegrationEvent.csproj" />
   </ItemGroup>
 
 </Project>
