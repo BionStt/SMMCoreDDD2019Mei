@@ -49,6 +49,7 @@ namespace SumberMas2015.Inventory.Domain
         public string NomorMesin { get; private set; }
         public string Warna { get; private set; }
         public string Jual { get; private set; }
+        public DateTime TanggalTerjual { get; set; }
         public string Kembali { get; private set; }
         public string Faktur { get; private set; }
         public decimal? Harga { get; private set; }
@@ -62,5 +63,13 @@ namespace SumberMas2015.Inventory.Domain
         public decimal? SellInPPN { get; private set; }
 
         public DateTime TanggalInput { get; private set; }
+
+        public void SetTerjual()
+        {
+            Jual = "1";
+            TanggalTerjual = DateTime.Now;
+        }
+
+
     }
 }

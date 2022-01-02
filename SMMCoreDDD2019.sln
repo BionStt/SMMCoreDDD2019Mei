@@ -73,7 +73,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SumberMas2015.DDD", "Sumber
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SumberMas2015.IntegrationEvent", "SumberMas2015.IntegrationEvent", "{BD6F0CEF-AEC6-49E5-8796-3ABCAE9F0D58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumberMas2015.IntegrationEvent", "SumberMas2015.IntegrationEvent\SumberMas2015.IntegrationEvent.csproj", "{711330D9-E10D-4BFC-9869-F4A8EA94AD8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SumberMas2015.IntegrationEvent", "SumberMas2015.IntegrationEvent\SumberMas2015.IntegrationEvent.csproj", "{711330D9-E10D-4BFC-9869-F4A8EA94AD8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

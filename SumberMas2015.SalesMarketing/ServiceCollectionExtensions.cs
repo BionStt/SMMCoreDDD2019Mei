@@ -8,6 +8,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SumberMas2015.SalesMarketing.InfrastructureData.Context;
+using SumberMas2015.SalesMarketing.WorkerProcess;
 
 namespace SumberMas2015.SalesMarketing
 {
@@ -20,6 +21,10 @@ namespace SumberMas2015.SalesMarketing
               options.UseSqlServer(connectionString));
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
+
+            services.AddHostedService<SalesMarketingInternalCommandsWorker>();
+
+
             return services;
         }
     }

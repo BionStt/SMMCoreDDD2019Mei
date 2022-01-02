@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using SumberMas2015.Inventory.InfrastructureData.Context;
 using SumberMas2015.SalesMarketing.Dto.Penjualan;
 using SumberMas2015.SalesMarketing.InfrastructureData.Context;
 using System;

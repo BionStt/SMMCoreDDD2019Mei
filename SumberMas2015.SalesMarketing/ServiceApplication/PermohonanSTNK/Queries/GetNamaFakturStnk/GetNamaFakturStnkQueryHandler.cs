@@ -6,7 +6,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using SumberMas2015.Inventory.InfrastructureData.Context;
 using SumberMas2015.SalesMarketing.Dto.PermohonanSTNK;
 using SumberMas2015.SalesMarketing.InfrastructureData.Context;
 

@@ -27,6 +27,7 @@ namespace SumberMas2015.Inventory
             services.AddScoped<IInventoryEventBus, InventoryEventBus>();
 
             services.AddHostedService<InventoryOutBoxWorker>();
+            services.AddHostedService<InventoryInternalCommandsWorker>();
 
             return services;
         }

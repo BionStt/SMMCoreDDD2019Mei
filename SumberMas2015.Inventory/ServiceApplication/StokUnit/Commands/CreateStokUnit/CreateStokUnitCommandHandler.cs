@@ -43,7 +43,7 @@ namespace SumberMas2015.Inventory.ServiceApplication.StokUnit.Commands.CreateSto
                 request.NamaSupplier
                 ));
 
-            await _context.SaveChangesAsync();
+          //  await _context.SaveChangesAsync();
 
             //await _mediator.Publish(new CreateStokUnitCreated { 
             //MasterBarangId = masterBarangId,

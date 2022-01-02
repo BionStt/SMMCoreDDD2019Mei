@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SumberMas2015.SalesMarketing.ServiceApplication.MasterBarang.Commands.CreateMasterBarang
 {
-    public class CreateMasterBarangCommand:IRequest<Guid>
+    public class CreateMasterBarangCommand:IRequest
     {
         public string NamaBarang { get; set; }
         public string NomorRangka { get; set; }

@@ -10,6 +10,11 @@ namespace SumberMas2015.IntegrationEvent
 {
     public class StokUnitSoldIntegrationEvent : INotification, IIntegrationEvent
     {
+        public StokUnitSoldIntegrationEvent(Guid stokUnitId)
+        {
+            StokUnitId=stokUnitId;
+        }
+
         public Guid StokUnitId { get; set; }
     }
 }

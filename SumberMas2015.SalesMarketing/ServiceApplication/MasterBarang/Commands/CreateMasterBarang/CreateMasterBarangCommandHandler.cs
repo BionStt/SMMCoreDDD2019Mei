@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SumberMas2015.SalesMarketing.ServiceApplication.MasterBarang.Commands.CreateMasterBarang
 {
-    public class CreateMasterBarangCommandHandler : IRequestHandler<CreateMasterBarangCommand, Guid>
+    public class CreateMasterBarangCommandHandler : IRequestHandler<CreateMasterBarangCommand>
     {
         private readonly SalesMarketingContext _context;
 
@@ -18,15 +18,17 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.MasterBarang.Commands.
             _context = context;
         }
 
-        public async Task<Guid> Handle(CreateMasterBarangCommand request, CancellationToken cancellationToken)
+    
+        public async Task<Unit> Handle(CreateMasterBarangCommand request, CancellationToken cancellationToken)
         {
-            var mstBarang = Domain.MasterBarang.Create(request.NamaBarang,request.NomorRangka, request.NomorMesin, request.Merek
+            var mstBarang = Domain.MasterBarang.Create(request.NamaBarang, request.NomorRangka, request.NomorMesin, request.Merek
                 , request.KapasitasMesin, request.HargaOff, request.BBn, request.TahunPerakitan, request.TypeKendaraan);
 
             await _context.MasterBarang.AddAsync(mstBarang);
             await _context.SaveChangesAsync();
 
-            return mstBarang.MasterBarangId;
+             return Unit.Value;
+
         }
     }
 }

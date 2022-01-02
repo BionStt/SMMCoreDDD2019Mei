@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SumberMas2015.IntegrationEvent;
-using SumberMas2015.Inventory.InfrastructureData.Context;
 using SumberMas2015.SalesMarketing.EventBus;
 using SumberMas2015.SalesMarketing.InfrastructureData.Context;
 using System;
@@ -39,9 +38,9 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataPenjualan.Commands
 
             await _context.DataPenjualanDetail.AddAsync(dtDataPenjualanDetail);
 
-            _eventBus.Publish(new StokUnitSoldIntegrationEvent() );
+            _eventBus.Publish(new StokUnitSoldIntegrationEvent(StokUnitId) );
 
-            await _context.SaveChangesAsync();
+          //  await _context.SaveChangesAsync();
 
             return dtDataPenjualanDetail.DataPenjualanDetailId;
         }

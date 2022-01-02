@@ -8,7 +8,7 @@ using MediatR;
 using SumberMas2015.SalesMarketing.Dto.PermohonanSTNK;
 using SumberMas2015.SalesMarketing.InfrastructureData.Context;
 using Microsoft.EntityFrameworkCore;
-using SumberMas2015.Inventory.InfrastructureData.Context;
+
 
 namespace SumberMas2015.SalesMarketing.ServiceApplication.PermohonanSTNK.Queries.GetNamaFakturBPKB
 {

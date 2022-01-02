@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using SumberMas2015.IntegrationEvent;
+using SumberMas2015.SalesMarketing.ServiceApplication.Configuration.InternalCommands;
 using SumberMas2015.SalesMarketing.ServiceApplication.StokUnit.Commands.FromInventory;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,12 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.IntegrationHandler
 {
     public class StokUnitAddedIntegrationEventHandler : INotificationHandler<StokUnitAddedIntegrationEvent>
     {
-        private readonly IMediator _mediator;
+       // private readonly IMediator _mediator;
+        private readonly ICommandsScheduler _commandsScheduler;
 
-        public StokUnitAddedIntegrationEventHandler(IMediator mediator)
+        public StokUnitAddedIntegrationEventHandler(ICommandsScheduler commandsScheduler)
         {
-            _mediator=mediator;
+            _commandsScheduler=commandsScheduler;
         }
 
         public async Task Handle(StokUnitAddedIntegrationEvent notification, CancellationToken cancellationToken)
@@ -25,10 +27,11 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.IntegrationHandler
             DtStokUnit.StokUnitId = notification.StokUnitId;
             DtStokUnit.NomorMesin = notification.NomorMesin;
             DtStokUnit.NomorRangka = notification.NomorRangka;
-            DtStokUnit.MasterBarangId = notification.MasterBarangId; 
+            DtStokUnit.MasterBarangId = notification.MasterBarangId;
             DtStokUnit.NamaSupplier =   notification.NamaSupplier;
 
-            await _mediator.Send(DtStokUnit);
+            await _commandsScheduler.EnqueueAsync(DtStokUnit);
+            //  await _mediator.Send(DtStokUnit);
 
 
         }
