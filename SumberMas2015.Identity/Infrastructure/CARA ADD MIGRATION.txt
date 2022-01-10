@@ -1,0 +1,7 @@
+﻿
+EntityFrameworkCore\Add-Migration InitialCreate -Context AppIdentityDbContext -OutputDir InfrastructureData\Migrations
+EntityFrameworkCore\UPDATE-DATABASE -CONTEXT AppIdentityDbContext
+
+
+
+EntityFrameworkCore\Add-Migration InitialCreate1 -Context AppIdentityDbContext -OutputDir InfrastructureData\Migrations

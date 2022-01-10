@@ -28,7 +28,7 @@ namespace SmmCoreDDD2019.Common.Services
             int smtpPort,
             bool smtpSSL);
 
-        Task<string> UploadFile(List<IFormFile> files, IHostingEnvironment env);
+        Task<string> UploadFile(List<IFormFile> files, IWebHostEnvironment env);
 
         Task UpdateRoles(ApplicationUser appUser, ApplicationUser currentUserLogin);
 

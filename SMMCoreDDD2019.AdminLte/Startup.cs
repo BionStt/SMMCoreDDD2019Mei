@@ -7,8 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
-using SmmCoreDDD2019.Common;
-using SmmCoreDDD2019.Persistence;
+
+using SumberMas2015.Identity;
 using SumberMas2015.Inventory;
 using SumberMas2015.SalesMarketing;
 using System;
@@ -31,8 +31,8 @@ namespace SMMCoreDDD2019.AdminLte
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCommon(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"), Configuration);
             //services.AddPersistence(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"));
+            services.AddIdentity(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"), Configuration);
 
             services.AddInventory(Configuration.GetConnectionString("InventoryConnection"));
 

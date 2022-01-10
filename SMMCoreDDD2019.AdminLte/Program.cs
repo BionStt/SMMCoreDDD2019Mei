@@ -6,16 +6,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using SmmCoreDDD2019.Application.Interfaces;
-using SmmCoreDDD2019.Common.Identity;
-using SmmCoreDDD2019.Common.Services;
-using SmmCoreDDD2019.Persistence;
+
 using SumberMas2015.SalesMarketing.InfrastructureData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SumberMas2015.SalesMarketing.InfrastructureData.Context;
+using SumberMas2015.Identity.Infrastructure.Context;
+using SumberMas2015.Identity.Domain;
+using SumberMas2015.Identity.ServiceApplication.Contracts;
 
 namespace SMMCoreDDD2019.AdminLte
 {
@@ -32,14 +32,14 @@ namespace SMMCoreDDD2019.AdminLte
                 try
                 {
                    // var context = scope.ServiceProvider.GetService<ISMMCoreDDD2019DbContext>();
-                   // var contextIdentity = services.GetRequiredService<AppIdentityDbContext>();
+                    var contextIdentity = services.GetRequiredService<AppIdentityDbContext>();
                    //// contextIdentity.Database.Migrate();
 
-                   // var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                    //// var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                   //var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
+                   var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
 
-                   // var functional = services.GetRequiredService<IFunctional>();
+                    var functional = services.GetRequiredService<IFunctional>();
 
                    //  var concreteContext = (SMMCoreDDD2019DbContext)context;
                    // // concreteContext.Database.Migrate();
@@ -48,8 +48,8 @@ namespace SMMCoreDDD2019.AdminLte
                    //// SMMCoreDDD2019Initializer.Initialize(concreteContext);
                    // AppIdentityDbInitializar.Initialize(contextIdentity, functional).Wait();
 
-                   // var SalesMarketingContext = services.GetRequiredService<SalesMarketingContext>();
-                   // DbInitializer.Initialize(SalesMarketingContext).Wait();
+                    var SalesMarketingContext = services.GetRequiredService<SalesMarketingContext>();
+                    DbInitializer.Initialize(SalesMarketingContext).Wait();
 
                 }
                 catch (Exception ex)
