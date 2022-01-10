@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SmmCoreDDD2019.Common.Identity;
-using SmmCoreDDD2019.Common.Identity.Models.AccountViewModels;
 using SMMCoreDDD2019.AdminLte.Extension;
+using SumberMas2015.Identity.Domain;
+using SumberMas2015.Identity.ServiceApplication.ViewModel;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -50,6 +50,10 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationUser signedUser = await _userManager.FindByEmailAsync(model.Email);
+                if(signedUser == null)
+                {
+                    throw new ArgumentNullException("User is null");
+                }
                 if (signedUser.IsEnabled == true)
                 {
                         // This doesn't count login failures towards account lockout

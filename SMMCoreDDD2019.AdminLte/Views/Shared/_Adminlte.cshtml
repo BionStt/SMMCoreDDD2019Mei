@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
-@inject SignInManager< SmmCoreDDD2019.Common.Identity.ApplicationUser> SignInManager
-@inject UserManager< SmmCoreDDD2019.Common.Identity.ApplicationUser> UserManager
-@inject  SmmCoreDDD2019.Common.Identity.AppIdentityDbContext Context
+@inject SignInManager<SumberMas2015.Identity.Domain.ApplicationUser> SignInManager
+@inject UserManager< SumberMas2015.Identity.Domain.ApplicationUser> UserManager
+@inject  SumberMas2015.Identity.Infrastructure.Context.AppIdentityDbContext Context
 @{
 
-    SmmCoreDDD2019.Common.Identity.ApplicationUser appUser = await UserManager.GetUserAsync(User);
+    SumberMas2015.Identity.Domain.ApplicationUser appUser = await UserManager.GetUserAsync(User);
 
 }
 <html>

@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SmmCoreDDD2019.Common.Identity;
-using SmmCoreDDD2019.Common.Pages;
+
+
+using SumberMas2015.Identity.Domain;
+using SumberMas2015.Identity.Pages;
 using System.Threading.Tasks;
 
 namespace SMMCoreDDD2019.AdminLte.Controllers

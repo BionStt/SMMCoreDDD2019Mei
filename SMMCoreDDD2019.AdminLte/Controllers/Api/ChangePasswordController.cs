@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SmmCoreDDD2019.Common.Identity;
-using SmmCoreDDD2019.Common.Identity.Models.ManageViewModels;
-using SmmCoreDDD2019.Common.SyncfusionViewModels;
+using SumberMas2015.Identity.Domain;
+using SumberMas2015.Identity.Infrastructure.Context;
+using SumberMas2015.Identity.ServiceApplication.ViewModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,9 +39,9 @@ namespace SMMCoreDDD2019.AdminLte.Controllers.Api
 
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> Update([FromBody] CrudViewModel<ChangePasswordViewModel> payload)
+        public async Task<IActionResult> Update([FromBody] ChangePasswordViewModel changePasswordViewModel)
         {
-            ChangePasswordViewModel changePasswordViewModel = payload.value;
+         //   ChangePasswordViewModel changePasswordViewModel = payload.value;
             var user = _context.Users.SingleOrDefault(x => x.Id.Equals(changePasswordViewModel.Id));
 
             if (user != null &&

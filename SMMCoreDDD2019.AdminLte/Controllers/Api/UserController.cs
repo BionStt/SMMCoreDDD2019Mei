@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SmmCoreDDD2019.Common.Identity;
 using SmmCoreDDD2019.Common.SyncfusionViewModels;
+using SumberMas2015.Identity.Domain;
+using SumberMas2015.Identity.Infrastructure.Context;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

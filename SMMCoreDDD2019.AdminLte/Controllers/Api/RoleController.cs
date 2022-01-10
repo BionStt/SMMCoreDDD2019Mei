@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SmmCoreDDD2019.Common.Identity;
-using SmmCoreDDD2019.Common.Identity.Models.AccountViewModels;
-using SmmCoreDDD2019.Common.Services;
-using SmmCoreDDD2019.Common.SyncfusionViewModels;
+
+using SumberMas2015.Identity.Domain;
+using SumberMas2015.Identity.Infrastructure.Context;
+using SumberMas2015.Identity.ServiceApplication.Contracts;
+using SumberMas2015.Identity.ServiceApplication.ViewModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -62,25 +63,25 @@ namespace SMMCoreDDD2019.AdminLte.Controllers.Api
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> UpdateUserRole([FromBody] CrudViewModel<UserRoleViewModel> payload)
+        public async Task<IActionResult> UpdateUserRole([FromBody] UserRoleViewModel userRoleViewModel)
         {
-            UserRoleViewModel userRole = payload.value;
-            if (userRole != null)
+           // UserRoleViewModel userRole = payload.value;
+            if (userRoleViewModel != null)
             {
-                var user = await _userManager.FindByIdAsync(userRole.ApplicationUserId);
+                var user = await _userManager.FindByIdAsync(userRoleViewModel.ApplicationUserId);
                 if (user != null)
                 {
-                    if (userRole.IsHaveAccess)
+                    if (userRoleViewModel.IsHaveAccess)
                     {
-                        await _userManager.AddToRoleAsync(user, userRole.RoleName);
+                        await _userManager.AddToRoleAsync(user, userRoleViewModel.RoleName);
                     }
                     else
                     {
-                        await _userManager.RemoveFromRoleAsync(user, userRole.RoleName);
+                        await _userManager.RemoveFromRoleAsync(user, userRoleViewModel.RoleName);
                     }
                 }
             }
-            return Ok(userRole);
+            return Ok(userRoleViewModel);
         }
 
 

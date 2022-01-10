@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Infrastructure\Configuration\" />
     <Folder Include="NewFolder\" />
-    <Folder Include="ServiceApplication\ViewModel\" />
   </ItemGroup>
 
   <ItemGroup>

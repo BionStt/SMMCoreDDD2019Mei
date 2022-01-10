@@ -1,8 +1,8 @@
-﻿@model SmmCoreDDD2019.Common.Identity.ApplicationUser
-@inject SmmCoreDDD2019.Common.Identity.AppIdentityDbContext Context
+﻿@model SumberMas2015.Identity.Domain.ApplicationUser
+@inject SumberMas2015.Identity.Infrastructure.Context.AppIdentityDbContext Context
 
 @{
-    SmmCoreDDD2019.Common.Identity.UserProfile profile = Context.UserProfile.SingleOrDefault(x => x.ApplicationUserId.Equals(Model.Id));
+    SumberMas2015.Identity.Domain.UserProfile profile = Context.UserProfile.SingleOrDefault(x => x.ApplicationUserId.Equals(Model.Id));
 }
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->

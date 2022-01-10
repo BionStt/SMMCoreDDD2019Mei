@@ -17,10 +17,10 @@ namespace SumberMas2015.Identity.Domain
         public string Name { get; set; }
         public bool IsEnabled { get; set; }
         public DateTime LastLoginDate { get; set; }
-        public string LocalIPAddress { get; set; }
-        public string LocalPort { get; set; }
-        public string RemoteIPAddress { get; set; }
-        public string RemotePort { get; set; }
+        public string LocalIPAddress { get; set; } = string.Empty;
+        public string LocalPort { get; set; } = String.Empty;
+        public string RemoteIPAddress { get; set; } = String.Empty;
+        public string RemotePort { get; set; } = String.Empty;
 
         //   public string profilePictureUrl { get; set; } = "/images/empty_profile.png";
         public string profilePictureUrl { get; set; } = "/upload/blank-person.png";

@@ -44,8 +44,8 @@ namespace SMMCoreDDD2019.AdminLte
          //  services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddHttpContextAccessor();
             
-            var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
-            services.AddMediatR(Assembly1a);
+            //var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
+            //services.AddMediatR(Assembly1a);
 
             services.AddControllersWithViews().AddNewtonsoftJson(x =>
             {

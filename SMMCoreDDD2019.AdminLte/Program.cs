@@ -16,6 +16,7 @@ using SumberMas2015.SalesMarketing.InfrastructureData.Context;
 using SumberMas2015.Identity.Infrastructure.Context;
 using SumberMas2015.Identity.Domain;
 using SumberMas2015.Identity.ServiceApplication.Contracts;
+using SumberMas2015.Identity.Infrastructure;
 
 namespace SMMCoreDDD2019.AdminLte
 {
@@ -32,7 +33,7 @@ namespace SMMCoreDDD2019.AdminLte
                 try
                 {
                    // var context = scope.ServiceProvider.GetService<ISMMCoreDDD2019DbContext>();
-                    var contextIdentity = services.GetRequiredService<AppIdentityDbContext>();
+                  
                    //// contextIdentity.Database.Migrate();
 
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
@@ -47,6 +48,10 @@ namespace SMMCoreDDD2019.AdminLte
                    // //  context.Database.Migrate(); //lama loading
                    //// SMMCoreDDD2019Initializer.Initialize(concreteContext);
                    // AppIdentityDbInitializar.Initialize(contextIdentity, functional).Wait();
+
+                  
+                    var contextIdentity = services.GetRequiredService<AppIdentityDbContext>();
+                    AppIdentityDbInitializer.Initialize(contextIdentity, functional).Wait();
 
                     var SalesMarketingContext = services.GetRequiredService<SalesMarketingContext>();
                     DbInitializer.Initialize(SalesMarketingContext).Wait();
