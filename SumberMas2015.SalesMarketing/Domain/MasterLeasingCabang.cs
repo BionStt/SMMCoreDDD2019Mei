@@ -1,6 +1,7 @@
 ﻿using SumberMas2015.SalesMarketing.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace SumberMas2015.SalesMarketing.Domain
         public string EmailCabang { get; private set; }
         public int Status { get; private set; }
         public int NoUrutId { get; private set; }
+        [Required]
         public Alamat AlamatCabangLeasing { get; private set; }
 
         public Guid MasterLeasingId { get; private set; }

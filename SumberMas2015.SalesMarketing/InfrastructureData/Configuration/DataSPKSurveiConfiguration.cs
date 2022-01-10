@@ -24,7 +24,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
                 a.WithOwner();
                 a.Property(a => a.NamaDepan).HasMaxLength(40);
                 a.Property(a => a.NamaBelakang).HasMaxLength(40);
-            });
+            }).Navigation(x=>x.NamaPemesan).IsRequired();
 
             builder.OwnsOne(o => o.AlamatPemesan, a => {
                 a.WithOwner();
@@ -37,7 +37,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
                 a.Property(a => a.NoTelepon).HasMaxLength(20);
                 a.Property(a => a.NoFax).HasMaxLength(20);
                 a.Property(a => a.NoHandphone).HasMaxLength(20);
-            });
+            }).Navigation(a=>a.AlamatPemesan).IsRequired();
 
             builder.OwnsOne(o => o.DataNPWPPemesan, a => {
                 a.WithOwner();
@@ -55,7 +55,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
                     a.Property(a => a.NoFax).HasMaxLength(20);
                     a.Property(a => a.NoHandphone).HasMaxLength(20);
 
-                });
+                }).Navigation(a=>a.AlamatNPWP).IsRequired();
             });
             builder.Property(e => e.PekerjaanPemesan).HasMaxLength(50).IsUnicode(false);
 

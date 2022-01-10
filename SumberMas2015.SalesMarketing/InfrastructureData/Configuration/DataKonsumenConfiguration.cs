@@ -53,8 +53,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
                 a.Property(a => a.NoTelepon).HasMaxLength(20);
                 a.Property(a => a.NoFax).HasMaxLength(20);
                 a.Property(a => a.NoHandphone).HasMaxLength(20);
+                
 
-            });
+            }).Navigation(o=>o.AlamatTinggal).IsRequired();
 
             builder.OwnsOne(o => o.AlamatKirim, a => {
                 a.WithOwner();
@@ -67,7 +68,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
                 a.Property(a => a.NoTelepon).HasMaxLength(20);
                 a.Property(a => a.NoFax).HasMaxLength(20);
                 a.Property(a => a.NoHandphone).HasMaxLength(20);
-            });
+            }).Navigation(o => o.AlamatKirim).IsRequired();
 
             builder.Property(e => e.Email).HasMaxLength(40);
             builder.Property(e => e.CreatedAt).HasDefaultValueSql("GetDate()");// if not using sql please check again

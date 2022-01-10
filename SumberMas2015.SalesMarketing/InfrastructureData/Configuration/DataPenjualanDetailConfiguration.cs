@@ -18,7 +18,7 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Configuration
             builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
            // builder.Property(e => e.Id).ForSqlServerUseSequenceHiLo("PenjualanDetail_hilo").IsRequired();
 
-            builder.HasKey(e => e.DataPenjualanId);
+            builder.HasKey(e => e.DataPenjualanDetailId);
 
             builder.Property(e => e.StokUnitId);
 

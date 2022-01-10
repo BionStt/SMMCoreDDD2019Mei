@@ -7,19 +7,72 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SumberMas2015.Inventory.InfrastructureData.Context;
 
+#nullable disable
+
 namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 {
     [DbContext(typeof(InventoryContext))]
-    [Migration("20211106110107_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220109230316_InitialCreate1")]
+    partial class InitialCreate1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.11")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "6.0.1")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, (int)1L, 1);
+
+            modelBuilder.Entity("SumberMas2015.DDD.InternalCommand.Domain.InternalCommand", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("ExecutedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("SavedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("InternalCommands", (string)null);
+                });
+
+            modelBuilder.Entity("SumberMas2015.DDD.OutBox.Domain.OutBoxMessage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("ExecutedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("SavedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OutBoxMessages", (string)null);
+                });
 
             modelBuilder.Entity("SumberMas2015.Inventory.Domain.MasterBarang", b =>
                 {
@@ -53,8 +106,9 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 
                     b.Property<int>("NoUrutId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NoUrutId"), (int)1L, 1);
 
                     b.Property<string>("NomorMesin")
                         .HasMaxLength(50)
@@ -76,9 +130,15 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)");
 
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserNameId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("MasterBarangId");
 
-                    b.ToTable("MasterBarang");
+                    b.ToTable("MasterBarang", (string)null);
                 });
 
             modelBuilder.Entity("SumberMas2015.Inventory.Domain.Pembelian", b =>
@@ -98,8 +158,9 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 
                     b.Property<int>("NoUrutId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NoUrutId"), (int)1L, 1);
 
                     b.Property<Guid>("PurchaseOrderPembelianId")
                         .HasColumnType("uniqueidentifier");
@@ -120,7 +181,7 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 
                     b.HasKey("PembelianId");
 
-                    b.ToTable("Pembelian");
+                    b.ToTable("Pembelian", (string)null);
                 });
 
             modelBuilder.Entity("SumberMas2015.Inventory.Domain.PembelianDetail", b =>
@@ -155,8 +216,9 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 
                     b.Property<int>("NoUrutId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NoUrutId"), (int)1L, 1);
 
                     b.Property<Guid>("PembelianId")
                         .HasColumnType("uniqueidentifier");
@@ -175,7 +237,7 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 
                     b.HasKey("PembelianDetailId");
 
-                    b.ToTable("PembelianDetail");
+                    b.ToTable("PembelianDetail", (string)null);
                 });
 
             modelBuilder.Entity("SumberMas2015.Inventory.Domain.PurchaseOrderPembelian", b =>
@@ -195,8 +257,9 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 
                     b.Property<int>("NoUrutId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NoUrutId"), (int)1L, 1);
 
                     b.Property<string>("PoAstra")
                         .HasColumnType("nvarchar(max)");
@@ -207,12 +270,15 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                     b.Property<string>("Terinput")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserInput")
+                    b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserNameId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("PurchaseOrderPembelianId");
 
-                    b.ToTable("PurchaseOrderPembelian");
+                    b.ToTable("PurchaseOrderPembelian", (string)null);
                 });
 
             modelBuilder.Entity("SumberMas2015.Inventory.Domain.PurchaseOrderPembelianDetail", b =>
@@ -235,8 +301,9 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 
                     b.Property<int>("NoUrutId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NoUrutId"), (int)1L, 1);
 
                     b.Property<decimal?>("OffTheRoad")
                         .HasColumnType("money");
@@ -249,7 +316,7 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 
                     b.HasKey("PurchaseOrderPembelianDetailId");
 
-                    b.ToTable("PurchaseOrderPembelianDetail");
+                    b.ToTable("PurchaseOrderPembelianDetail", (string)null);
                 });
 
             modelBuilder.Entity("SumberMas2015.Inventory.Domain.StokUnit", b =>
@@ -290,8 +357,9 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 
                     b.Property<int>("NoUrutId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NoUrutId"), (int)1L, 1);
 
                     b.Property<string>("NomorMesin")
                         .HasColumnType("nvarchar(max)");
@@ -314,12 +382,15 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                     b.Property<DateTime>("TanggalInput")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("TanggalTerjual")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Warna")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("StokUnitId");
 
-                    b.ToTable("StokUnit");
+                    b.ToTable("StokUnit", (string)null);
                 });
 
             modelBuilder.Entity("SumberMas2015.Inventory.Domain.Supplier", b =>
@@ -336,12 +407,16 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 
                     b.Property<int>("NoUrutId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NoUrutId"), (int)1L, 1);
+
+                    b.Property<Guid>("UserNameId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("SupplierId");
 
-                    b.ToTable("Supplier");
+                    b.ToTable("Supplier", (string)null);
                 });
 
             modelBuilder.Entity("SumberMas2015.Inventory.Domain.Supplier", b =>
@@ -396,7 +471,8 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                                 .HasForeignKey("SupplierId");
                         });
 
-                    b.Navigation("AlamatSupplier");
+                    b.Navigation("AlamatSupplier")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -23,6 +23,7 @@ namespace SumberMas2015.SalesMarketing
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddHostedService<SalesMarketingInternalCommandsWorker>();
+            services.AddHostedService<SalesMarketingOutBoxWorker>();
 
 
             return services;

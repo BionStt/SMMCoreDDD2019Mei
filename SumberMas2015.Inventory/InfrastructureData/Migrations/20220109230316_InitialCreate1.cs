@@ -1,12 +1,29 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace SumberMas2015.Inventory.InfrastructureData.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialCreate1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "InternalCommands",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SavedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExecutedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InternalCommands", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "MasterBarang",
                 columns: table => new
@@ -23,11 +40,28 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                     TypeKendaraan = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
                     MasterBarangStatus = table.Column<int>(type: "int", nullable: false),
                     NoUrutId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserNameId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MasterBarang", x => x.MasterBarangId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OutBoxMessages",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SavedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExecutedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OutBoxMessages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -87,7 +121,8 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                     NoRegistrasiPoPMB = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Keterangan = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Terinput = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserInput = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserNameId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PoAstra = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NoUrutId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1")
@@ -130,6 +165,7 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                     NomorMesin = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Warna = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Jual = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TanggalTerjual = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Kembali = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Faktur = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Harga = table.Column<decimal>(type: "money", nullable: true),
@@ -165,7 +201,8 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                     AlamatSupplier_NoFax = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     AlamatSupplier_NoHandphone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     NamaSupplier = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserNameId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -176,7 +213,13 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "InternalCommands");
+
+            migrationBuilder.DropTable(
                 name: "MasterBarang");
+
+            migrationBuilder.DropTable(
+                name: "OutBoxMessages");
 
             migrationBuilder.DropTable(
                 name: "Pembelian");

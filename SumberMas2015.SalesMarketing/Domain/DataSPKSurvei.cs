@@ -1,6 +1,7 @@
 ﻿using SumberMas2015.SalesMarketing.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace SumberMas2015.SalesMarketing.Domain
         public string NoKTPPemesan { get; private set; }
         public Name NamaPemesan { get; private set; }
         public Alamat AlamatPemesan { get; private set; }
+        [Required]
         public DataNPWP DataNPWPPemesan { get; private set; }
         public string PekerjaanPemesan { get; private set; }
         public int NoUrutId { get; set; }

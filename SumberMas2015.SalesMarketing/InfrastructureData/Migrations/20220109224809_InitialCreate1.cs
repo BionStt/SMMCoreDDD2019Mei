@@ -1,9 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialCreate1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -123,6 +125,21 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DataSPKKendaraan", x => x.DataSPKKendaraanId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "InternalCommands",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SavedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExecutedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InternalCommands", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -249,6 +266,21 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "OutBoxMessages",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SavedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExecutedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OutBoxMessages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Penjualan",
                 columns: table => new
                 {
@@ -347,6 +379,24 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PermohonanSTNK", x => x.PermohonanSTNKId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "StokUnit",
+                columns: table => new
+                {
+                    StokUnitId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NoUrutId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MasterBarangId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NomorRangka = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NomorMesin = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NamaSupplier = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TanggalInput = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StokUnit", x => x.StokUnitId);
                 });
 
             migrationBuilder.CreateTable(
@@ -463,8 +513,8 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                 name: "PenjualanDetail",
                 columns: table => new
                 {
-                    DataPenjualanId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DataPenjualanDetailId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DataPenjualanId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     StokUnitId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     OffTheRoad = table.Column<decimal>(type: "money", nullable: true),
                     BBN = table.Column<decimal>(type: "money", nullable: true),
@@ -487,18 +537,16 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                     NoUrutId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserNameId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DataPenjualanId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PenjualanDetail", x => x.DataPenjualanId);
+                    table.PrimaryKey("PK_PenjualanDetail", x => x.DataPenjualanDetailId);
                     table.ForeignKey(
-                        name: "FK_PenjualanDetail_Penjualan_DataPenjualanId1",
-                        column: x => x.DataPenjualanId1,
+                        name: "FK_PenjualanDetail_Penjualan_DataPenjualanId",
+                        column: x => x.DataPenjualanId,
                         principalTable: "Penjualan",
-                        principalColumn: "DataPenjualanId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "DataPenjualanId");
                 });
 
             migrationBuilder.CreateTable(
@@ -532,20 +580,17 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         name: "FK_DataSPKLeasing_MasterKategoriBayaran_MasterKategoriBayaranId",
                         column: x => x.MasterKategoriBayaranId,
                         principalTable: "MasterKategoriBayaran",
-                        principalColumn: "MasterKategoriBayaranId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "MasterKategoriBayaranId");
                     table.ForeignKey(
                         name: "FK_DataSPKLeasing_MasterKategoriPenjualan_MasterKategoriPenjualanId",
                         column: x => x.MasterKategoriPenjualanId,
                         principalTable: "MasterKategoriPenjualan",
-                        principalColumn: "MasterKategoriPenjualanId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "MasterKategoriPenjualanId");
                     table.ForeignKey(
                         name: "FK_DataSPKLeasing_MasterLeasingCabang_MasterLeasingCabangId",
                         column: x => x.MasterLeasingCabangId,
                         principalTable: "MasterLeasingCabang",
-                        principalColumn: "MasterLeasingCabangId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "MasterLeasingCabangId");
                 });
 
             migrationBuilder.CreateIndex(
@@ -584,9 +629,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                 column: "MasterLeasingId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PenjualanDetail_DataPenjualanId1",
+                name: "IX_PenjualanDetail_DataPenjualanId",
                 table: "PenjualanDetail",
-                column: "DataPenjualanId1");
+                column: "DataPenjualanId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -613,6 +658,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                 name: "DataSPKSurvei");
 
             migrationBuilder.DropTable(
+                name: "InternalCommands");
+
+            migrationBuilder.DropTable(
                 name: "JenisKelamin");
 
             migrationBuilder.DropTable(
@@ -628,6 +676,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                 name: "MasterKategoriCaraPembayaran");
 
             migrationBuilder.DropTable(
+                name: "OutBoxMessages");
+
+            migrationBuilder.DropTable(
                 name: "PenjualanDetail");
 
             migrationBuilder.DropTable(
@@ -638,6 +689,9 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
 
             migrationBuilder.DropTable(
                 name: "PermohonanSTNK");
+
+            migrationBuilder.DropTable(
+                name: "StokUnit");
 
             migrationBuilder.DropTable(
                 name: "MasterKategoriBayaran");

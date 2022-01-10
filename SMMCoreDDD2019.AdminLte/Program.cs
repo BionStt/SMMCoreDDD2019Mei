@@ -31,25 +31,25 @@ namespace SMMCoreDDD2019.AdminLte
 
                 try
                 {
-                    var context = scope.ServiceProvider.GetService<ISMMCoreDDD2019DbContext>();
-                    var contextIdentity = services.GetRequiredService<AppIdentityDbContext>();
-                   // contextIdentity.Database.Migrate();
+                   // var context = scope.ServiceProvider.GetService<ISMMCoreDDD2019DbContext>();
+                   // var contextIdentity = services.GetRequiredService<AppIdentityDbContext>();
+                   //// contextIdentity.Database.Migrate();
 
-                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-                   // var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                   var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
+                   // var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                   //// var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                   //var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
 
-                    var functional = services.GetRequiredService<IFunctional>();
+                   // var functional = services.GetRequiredService<IFunctional>();
 
-                     var concreteContext = (SMMCoreDDD2019DbContext)context;
-                    // concreteContext.Database.Migrate();
+                   //  var concreteContext = (SMMCoreDDD2019DbContext)context;
+                   // // concreteContext.Database.Migrate();
 
-                    //  context.Database.Migrate(); //lama loading
-                   // SMMCoreDDD2019Initializer.Initialize(concreteContext);
-                    AppIdentityDbInitializar.Initialize(contextIdentity, functional).Wait();
+                   // //  context.Database.Migrate(); //lama loading
+                   //// SMMCoreDDD2019Initializer.Initialize(concreteContext);
+                   // AppIdentityDbInitializar.Initialize(contextIdentity, functional).Wait();
 
-                    var SalesMarketingContext = services.GetRequiredService<SalesMarketingContext>();
-                    DbInitializer.Initialize(SalesMarketingContext).Wait();
+                   // var SalesMarketingContext = services.GetRequiredService<SalesMarketingContext>();
+                   // DbInitializer.Initialize(SalesMarketingContext).Wait();
 
                 }
                 catch (Exception ex)
