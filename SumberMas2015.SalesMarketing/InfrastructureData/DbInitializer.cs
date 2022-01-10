@@ -32,8 +32,12 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData
             await SeedMasterKategoriBayaran(context);
             await SeedMasterKategoriCaraPembayaran(context);
             await SeedMasterKategoriPenjualan(context);
+           // await SeedMasterLeasing(context);
         }
-
+        //private async Task SeedMasterLeasing(SalesMarketingContext context)
+        //{
+        //    if(context.MasterLeasing)
+        //}
         private async Task SeedMasterKategoriPenjualan(SalesMarketingContext context)
         {
             if (context.MasterKategoriPenjualan.Any())

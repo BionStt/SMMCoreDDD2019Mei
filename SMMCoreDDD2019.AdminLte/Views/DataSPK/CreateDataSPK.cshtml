@@ -1,12 +1,12 @@
 ﻿
 @model SumberMas2015.SalesMarketing.Dto.DataSPK.CreateDataSPKSurveiRequest
-{
+
 @{
     //  ViewData["Title"] = "CreateDataSPK";
    // Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
 }
 
-<hr />
+
 <div class="content-wrapper">
     <section class="content">
         <div class="row">
@@ -14,12 +14,7 @@
                 <form asp-action="CreateDataSPK">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <table>
-                        @*<tr>
-                            <td><label>Data SPK ID</label></td>
-                            <td>
-                                <input>
-                            </td>
-                        </tr>*@
+                        
                         <tr>
                             <td>
                                 <label asp-for="LokasiSPK" class="control-label">Lokasi SPK</label>
@@ -28,15 +23,16 @@
                                 <input asp-for="LokasiSPK" class="form-control" />
                                 <span asp-validation-for="LokasiSPK" class="text-danger"></span>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label asp-for="NomorKTPPemesan" class="control-label">Nomor KTP Pemesan</label>
+                             <td>
+                                <label asp-for="NomorKTPPemesan" style="" class="control-label">Nomor KTP Pemesan</label>
                             </td>
                             <td>
                                 <input id="NoKtp1" asp-for="NomorKTPPemesan" class="form-control" />
                                 <span asp-validation-for="NomorKTPPemesan" class="text-danger"></span>
                             </td>
+                        </tr>
+                        <tr>
+                           
                         </tr>
 
                         <tr>

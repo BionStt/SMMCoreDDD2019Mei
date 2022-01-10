@@ -1,6 +1,7 @@
 ﻿using SumberMas2015.SalesMarketing.Dto.DataKonsumen;
 using SumberMas2015.SalesMarketing.Dto.DataSPK;
 using SumberMas2015.SalesMarketing.Dto.MasterBarang;
+using SumberMas2015.SalesMarketing.Dto.MasterLeasing;
 using SumberMas2015.SalesMarketing.Dto.Penjualan;
 using SumberMas2015.SalesMarketing.Dto.PermohonanBPKB;
 using SumberMas2015.SalesMarketing.Dto.PermohonanFaktur;
@@ -13,6 +14,7 @@ using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.CreateDat
 using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.CreateDataSPKLeasing;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Commands.CreateDataSPKSurvei;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterBarang.Commands.CreateMasterBarang;
+using SumberMas2015.SalesMarketing.ServiceApplication.MasterLeasing.Commands.CreateMasterLeasing;
 using SumberMas2015.SalesMarketing.ServiceApplication.PermohonanBPKB.Commands.CreatePermohonanBPKB;
 using SumberMas2015.SalesMarketing.ServiceApplication.PermohonanFaktur.Commands.CreatePermohonanFaktur;
 using SumberMas2015.SalesMarketing.ServiceApplication.PermohonanSTNK.Commands.CreatePermohonanSTNK;
@@ -22,10 +24,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using SumberMas2015.SalesMarketing.ServiceApplication.MasterLeasing.Commands.CreateMasterLeasingCabang;
+using SumberMas2015.SalesMarketing.Domain.ValueObjects;
+
 namespace SumberMas2015.SalesMarketing.DtoMapping
 {
     public static class DataKonsumenRequestMapping
     {
+        public static CreateMasterLeasingCabangCommand ToCommand(this CreateMasterLeasingCabangRequest model)
+        {
+            var AlamatLeasingCabang = Alamat.CreateAlamat(model.Jalan,model.Kelurahan,
+                model.Kecamatan,model.Kota,model.Propinsi,model.KodePos,model.NoTelepon,model.NoFax,model.NoHandphone);
+            
+            return new CreateMasterLeasingCabangCommand { 
+            EmailCabang =model.EmailCabangLeasing,
+            MasterLeasingId = model.MasterLeasingId,
+            NamaCabangLeasing = model.NamaCabangLeasing,
+                AlamatLeasingCabang = AlamatLeasingCabang
+
+            };
+        }
+        public static CreateMasterLeasingCommand ToCommand(this CreateMasterLeasingRequest model)
+        {
+            return new CreateMasterLeasingCommand { 
+            NamaLeasing = model.NamaLeasing
+            };
+        }
         public static CreatePermohonanBPKBCommand ToCommand(this CreatePermohonanBPKBRequest model)
         {
             return new CreatePermohonanBPKBCommand {

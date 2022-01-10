@@ -29,8 +29,8 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         {
             _mediator = mediator;
             _httpContextAccessor = httpContextAccessor;
-            _userName = httpContextAccessor.HttpContext.User.Identity.Name;
-            _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            _userName = httpContextAccessor.HttpContext.User.Identity.Name;//dapatnya nama
+            _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value; //dapatnya guid
 
         }
         public IActionResult CreateDataSPK()
@@ -92,8 +92,8 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
 
             ViewData["UserId"] = _userId;
             ViewData["NamaPemesan"] = new SelectList(NamaL, "NoUrutSPKBaru1", "NamaPemesan");
-            ViewData["NamaKategoryPenjualan"] = new SelectList(NamaKategoryPenjualan, "NoUrut", "NamaKategoryPenjualan");
-            ViewData["NamaKategoryBayaran"] = new SelectList(NamaKategoryBayaran, "NoUrut", "NamaKategoryBayaran");
+            ViewData["NamaKategoryPenjualan"] = new SelectList(NamaKategoryPenjualan, "NoUrutId", "KategoriPenjualan");
+            ViewData["NamaKategoryBayaran"] = new SelectList(NamaKategoryBayaran, "NoUrutId", "KategoriBayaran");
           //  ViewData["NamaSalesForce"] = new SelectList(NamaSalesForce1, "IDPegawai", "NamaDepan");
             ViewData["NamaLeasingCabang"] = new SelectList(LeasingCab, "NoUrutLeasingCabang", "NamaCab");
 
