@@ -52,7 +52,7 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> jualan(CreatePenjualanRequest CreatePenjualanCommand1)
+        public async Task<IActionResult> CreatePenjualan(CreatePenjualanRequest CreatePenjualanCommand1)
         {
             if (ModelState.IsValid)
             {
