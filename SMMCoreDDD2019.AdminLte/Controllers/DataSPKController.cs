@@ -11,6 +11,7 @@ using SumberMas2015.SalesMarketing.ServiceApplication.MasterBarang.Queries.GetNa
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterKategoriBayaran.Queries.ListKategoriBayaran;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterKategoriPenjualan.Queries.ListKategoriPenjualan;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterLeasing.Queries.ListCabangLeasing;
+using SumberMas2015.SalesMarketing.ServiceApplication.SalesMarketing.Queries.GetNamaSalesForce;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -87,14 +88,14 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             var NamaL = await _mediator.Send(new GetNamaSPKQuery());
             var NamaKategoryPenjualan = await _mediator.Send(new ListKategoriPenjualanQuery());
             var NamaKategoryBayaran = await _mediator.Send(new ListKategoriBayaranQuery());
-          //  var NamaSalesForce1 = await _mediator.Send(new GetNamaSalesForceQuery());
+           var NamaSalesForce1 = await _mediator.Send(new GetNamaSalesForceQuery());
             var LeasingCab = await _mediator.Send(new ListCabangLeasingQuery());
 
             ViewData["UserId"] = _userId;
             ViewData["NamaPemesan"] = new SelectList(NamaL, "NoUrutSPKBaru1", "NamaPemesan");
             ViewData["NamaKategoryPenjualan"] = new SelectList(NamaKategoryPenjualan, "NoUrutId", "KategoriPenjualan");
             ViewData["NamaKategoryBayaran"] = new SelectList(NamaKategoryBayaran, "NoUrutId", "KategoriBayaran");
-          //  ViewData["NamaSalesForce"] = new SelectList(NamaSalesForce1, "IDPegawai", "NamaDepan");
+            ViewData["NamaSalesForce"] = new SelectList(NamaSalesForce1, "NoUrutId", "NamasalesForce");
             ViewData["NamaLeasingCabang"] = new SelectList(LeasingCab, "NoUrutLeasingCabang", "NamaCab");
 
             return View();

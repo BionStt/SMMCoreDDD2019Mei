@@ -1,9 +1,11 @@
 ﻿using SumberMas2015.Inventory.Dto;
+using SumberMas2015.Inventory.Dto.MasterBarang;
 using SumberMas2015.Inventory.Dto.Pembelian;
 using SumberMas2015.Inventory.Dto.PembelianDetail;
 using SumberMas2015.Inventory.Dto.PurchaseOrderPembelian;
 using SumberMas2015.Inventory.Dto.PurchaseOrderPembelianDetail;
 using SumberMas2015.Inventory.Dto.StokUnit;
+using SumberMas2015.Inventory.ServiceApplication.MasterBarang.Commands.CreateMasterBarang;
 using SumberMas2015.Inventory.ServiceApplication.Pembelian.Commands.CreatePembelian;
 using SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Commands.CreatePembelianDetail;
 using SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Commands.CreatePurchaseOrderPembelian;
@@ -113,7 +115,23 @@ namespace SumberMas2015.Inventory.DtoMapping
             };
         }
 
-
+        public static CreateMasterBarangCommand ToCommand(this CreateMasterBarangRequest model)
+        {
+            return new CreateMasterBarangCommand { 
+            BBn = model.BBn,
+            HargaOff = model.HargaOff,
+            KapasitasMesin = model.KapasitasMesin,
+            Merek = model.Merek,
+            NamaBarang = model.NamaBarang,
+            NomorMesin = model.NomorMesin,
+            NomorRangka = model.NomorRangka,
+            TahunPerakitan = model.TahunPerakitan,
+            TypeKendaraan = model.TypeKendaraan,
+            UserName= model.UserName,
+            USerNameId = Guid.Parse(model.UserId)//eror gak nih
+            
+            };
+        }
 
 
 

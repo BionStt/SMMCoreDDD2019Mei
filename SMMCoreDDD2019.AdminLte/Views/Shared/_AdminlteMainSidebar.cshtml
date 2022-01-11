@@ -94,6 +94,25 @@
                     <i class="fa fa-gear"></i> <span>@MainMenu.CreatePembelian.PageName</span>
                 </a>
             </li>
+             <li class="header">Master Leasing</li>
+               <li class="@Html.IsSelected(controller: MainMenu.CreateMasterLeasing.ControllerName)">
+                <a href="@MainMenu.CreateMasterLeasing.Path">
+                    <i class="fa fa-gear"></i> <span>@MainMenu.CreateMasterLeasing.PageName</span>
+                </a>
+            </li>
+              <li class="@Html.IsSelected(controller: MainMenu.CreateMasterLeasingCabang.ControllerName)">
+                <a href="@MainMenu.CreateMasterLeasingCabang.Path">
+                    <i class="fa fa-gear"></i> <span>@MainMenu.CreateMasterLeasingCabang.PageName</span>
+                </a>
+            </li>
+
+               <li class="header">Master Sales Marketing</li>
+                  <li class="@Html.IsSelected(controller: MainMenu.AddSalesMarketing.ControllerName)">
+                <a href="@MainMenu.AddSalesMarketing.Path">
+                    <i class="fa fa-gear"></i> <span>@MainMenu.AddSalesMarketing.PageName</span>
+                </a>
+            </li>
+
             <li class="header">Penjualan</li>
             <li class="@Html.IsSelected(controller: MainMenu.CreatePenjualan.ControllerName)">
                 <a href="@MainMenu.CreatePenjualan.Path">

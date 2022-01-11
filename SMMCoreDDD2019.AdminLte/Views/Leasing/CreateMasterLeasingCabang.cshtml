@@ -1,1 +1,94 @@
-﻿
+﻿@model SumberMas2015.SalesMarketing.Dto.MasterLeasing.CreateMasterLeasingCabangRequest
+@{
+      ViewData["Title"] = "Create Master Leasing Cabang";
+ //   Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+
+             <form asp-action="CreateMasterLeasingCabang">
+                 <div>
+                     <div style="vertical-align:middle">
+                      
+                         <label  >Nama Leasing</label>
+                          <select  asp-items="@ViewBag.Leasing" asp-for="MasterLeasingId" style="width:50%" class="form-control"></select>
+                              
+                     </div>
+                   
+                     <div style="vertical-align:middle">
+                         <label style="width:20%" asp-for="NamaCabangLeasing">Nama Cabang Leasing</label>
+                         <input  style="width:20%" type="text" style="" asp-for="NamaCabangLeasing"/>
+                        </div>
+                         
+                        <div style="vertical-align:middle">
+                             <label style="width:20%" >Email Cabang Leasing</label>
+                        <input style="width:20%" asp-for="EmailCabangLeasing" type="text" value="" />
+                        </div>
+                        
+                        <div style="vertical-align:middle"><div>
+                                 <label style="width:20%">Jalan</label>
+                        <input style="width:20%" type="text" asp-for="Jalan" value="" />
+                         </div>
+                           
+                         <div style="vertical-align:middle"><div>
+                                   <label style="width:20%">Kelurahan</label>
+                        <input style="width:20%" type="text" asp-for="Kelurahan" value="" />
+                         </div>
+                           
+                         <div style="vertical-align:middle"><div>
+                                   <label style="width:20%">Kecamatan</label>
+                        <input style="width:20%" type="text" asp-for="Kecamatan" value="" />
+                    
+                         </div>
+                            
+                         <div style="vertical-align:middle"><div>
+                                         <label style="width:20%">Kota</label>
+                        <input style="width:20%" type="text" asp-for="Kota" value="" />
+                         </div>
+                             
+                         <div style="vertical-align:middle"><div>
+                                      <label style="width:20%">Propinsi </label>
+                        <input style="width:20%" type="text" asp-for="Propinsi" value="" />
+                         </div>
+                           
+                         <div style="vertical-align:middle"><div>
+
+                        <label  style="width:20%">Kode Pos</label>
+                        <input style="width:20%" type="text" asp-for="KodePos" value="" />
+                         </div>
+                        
+                         <div style="vertical-align:middle">
+                                    
+                        <label style="width:20%">Nomor Telepon</label>
+                        <input style="width:20%" type="text" asp-for="NoTelepon" value="" />
+                         </div>
+                           <div style="vertical-align:middle">
+                                 <label style="width:20%">Nomor Faks</label>
+                        <input style="width:20%" type="text" asp-for="NoFax" value="" />
+
+                         </div>
+                           <div style="vertical-align:middle">
+                                  <label style="width:20%">Nomor Handphone</label>
+                        <input style="width:20%" type="text" asp-for="NoHandphone" value="" />
+                         </div>
+
+                    
+                    
+                 </div>
+                 <div>
+                    <label class="control-label"></label>
+                     <button type="submit">Save</button>
+                 </div>
+           
+             </form>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

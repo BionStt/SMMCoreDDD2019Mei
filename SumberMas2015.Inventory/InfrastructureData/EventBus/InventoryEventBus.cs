@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SumberMas2015.Inventory.InfrastructureData.EventBus
@@ -21,12 +22,17 @@ namespace SumberMas2015.Inventory.InfrastructureData.EventBus
 
         public async  Task Publish(IIntegrationEvent @event)
         {
-            throw new NotImplementedException();
+            await PersistIntegrationEvent(@event);
         }
 
         public async Task PublishMany(IEnumerable<IIntegrationEvent> events)
         {
-            throw new NotImplementedException();
+            foreach (var @event in @events)
+            {
+                await PersistIntegrationEvent(@event);
+            }
+
+            await _dbContext.SaveChangesAsync(CancellationToken.None);
         }
         private async Task PersistIntegrationEvent(IIntegrationEvent @event)
         {

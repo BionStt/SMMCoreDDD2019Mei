@@ -2,7 +2,18 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row" style="text-align:center">
+            <p>Selamat Datang ,@Context.User.Identity.Name</p><br />
+          
+            <p>Tanggal : @String.Format("{0:dddd, MMMM d, yyyy}", DateTime.Now.Date)</p>
+         
+        </div>
+    </section>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

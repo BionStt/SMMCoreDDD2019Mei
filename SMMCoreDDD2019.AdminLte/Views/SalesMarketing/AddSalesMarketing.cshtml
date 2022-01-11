@@ -1,32 +1,33 @@
-﻿@model SumberMas2015.SalesMarketing.Dto.MasterLeasing.CreateMasterLeasingRequest
+﻿@model SumberMas2015.SalesMarketing.Dto.SalesMarketing.SalesMarketingRequest
 @{
-      ViewData["Title"] = "Create Master Leasing";
+      ViewData["Title"] = "Add Sales Marketing";
  //   Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
 }
-
 
 <div class="content-wrapper">
     <section class="content">
         <div class="row">
-
-             <form asp-action="CreateMasterLeasing">
+            <form asp-action="AddSalesMarketing">
                  <div>
                      <div>
-                         <label asp-for="NamaLeasing">Nama Leasing</label>
-                         <input type="text" style="" asp-for="NamaLeasing"/>
+                         <label asp-for="NamaSales">Nama Sales Force</label>
+                         <input type="text" style="" asp-for="NamaSales"/>
                      </div>
                  </div>
                  <div>
                     <label class="control-label"></label>
                      <button type="submit">Save</button>
                  </div>
-           
-             </form>
+            </form>
         </div>
     </section>
 </div>
 
+
+
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
 

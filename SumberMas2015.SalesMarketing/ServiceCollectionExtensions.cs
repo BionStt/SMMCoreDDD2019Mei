@@ -8,6 +8,8 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SumberMas2015.SalesMarketing.InfrastructureData.Context;
+using SumberMas2015.SalesMarketing.InfrastructureData.Processing.InternalCommands;
+using SumberMas2015.SalesMarketing.ServiceApplication.Configuration.InternalCommands;
 using SumberMas2015.SalesMarketing.WorkerProcess;
 
 namespace SumberMas2015.SalesMarketing
@@ -21,6 +23,7 @@ namespace SumberMas2015.SalesMarketing
               options.UseSqlServer(connectionString));
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddTransient<ICommandsScheduler, CommandsScheduler>();
 
             services.AddHostedService<SalesMarketingInternalCommandsWorker>();
             services.AddHostedService<SalesMarketingOutBoxWorker>();

@@ -105,6 +105,30 @@ namespace SumberMas2015.Identity.Pages
             public const string ControllerName = "Pembelian";
             public const string ActionName = "CreatePembelianPO";
         }
+        public static class CreateMasterLeasing
+        {
+            public const string PageName = "Create Master Leasing";
+            public const string RoleName = "Create Master Leasing";
+            public const string Path = "/Leasing/CreateMasterLeasing";
+            public const string ControllerName = "Leasing";
+            public const string ActionName = "CreateMasterLeasing";
+        }
+        public static class AddSalesMarketing
+        {
+            public const string PageName = "Add Sales Marketing";
+            public const string RoleName = "Add Sales Marketing";
+            public const string Path = "/SalesMarketing/AddSalesMarketing";
+            public const string ControllerName = "SalesMarketing";
+            public const string ActionName = "AddSalesMarketing";
+        }
+        public static class CreateMasterLeasingCabang
+        {
+            public const string PageName = "Create Master Leasing Cabang";
+            public const string RoleName = "Create Master Leasing Cabang";
+            public const string Path = "/Leasing/CreateMasterLeasingCabang";
+            public const string ControllerName = "Leasing";
+            public const string ActionName = "CreateMasterLeasingCabang";
+        }
         public static class CreatePenjualan
         {
             public const string PageName = "Create Data Penjualan";

@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 
 using SumberMas2015.Identity;
+using SumberMas2015.IntegrationEvent;
 using SumberMas2015.Inventory;
 using SumberMas2015.SalesMarketing;
 using System;
@@ -33,7 +34,7 @@ namespace SMMCoreDDD2019.AdminLte
         {
             //services.AddPersistence(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"));
             services.AddIdentity(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"), Configuration);
-
+            services.AddIntegrationEventModule();
             services.AddInventory(Configuration.GetConnectionString("InventoryConnection"));
 
 
@@ -86,7 +87,8 @@ namespace SMMCoreDDD2019.AdminLte
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=UserRole}/{action=UserProfile}/{id?}");
+                   // template: "{controller=UserRole}/{action=UserProfile}/{id?}");
+                    template: "{controller=Home}/{action=Index}");
             });
 
             //app.UseEndpoints(endpoints =>

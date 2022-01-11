@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SumberMas2015.SalesMarketing.Dto.MasterLeasing
 {
-    public class CreateMasterLeasingRequest
+    public class ListLeasingResponse
     {
-        
+        public int NoUrutId { get; set; }
+        public Guid LeasingId { get; set; }
         public string NamaLeasing { get; set; }
     }
 }

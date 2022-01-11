@@ -1,8 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SumberMas2015.SalesMarketing.Dto.MasterLeasing;
 using SumberMas2015.SalesMarketing.DtoMapping;
+using SumberMas2015.SalesMarketing.ServiceApplication.MasterLeasing.Queries.ListLeasing;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -39,17 +41,28 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
                 var xx = createMasterLeasingRequest.ToCommand();
                 await _mediator.Send(xx);
 
-                return RedirectToAction(nameof(LeasingController.CreateMasterLeasing), "MasterLeasing"); //kmn gitu
+                //  return RedirectToAction(nameof(LeasingController.CreateMasterLeasing), "MasterLeasing"); //kmn gitu
+                //   return View("CreateMasterLeasing");
+                //   return RedirectToPage("CreateMasterLeasing");
+                // return View("~/Views/Leasing/CreateMasterLeasing.cshtml");
+
+                // return RedirectToActionPermanent("Index", "Home");
+                return RedirectToActionPermanent("CreateMasterLeasingCabang", "Leasing");
             }
 
-                return View(createMasterLeasingRequest);
+                return View("CreateMasterLeasing");
         }
-        public IActionResult CreateMasterLeasingCabang()
+        public async Task<IActionResult> CreateMasterLeasingCabang()
         {
-            ViewData["UserName"] = _userName;
-            ViewData["UserId"] = _userId;
+
+            var Leasing = await _mediator.Send(new ListLeasingQuery());
+            ViewData["Leasing"] = new SelectList(Leasing, "NoUrutId", "NamaLeasing");
+
+            //ViewData["UserName"] = _userName;
+            //ViewData["UserId"] = _userId;
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateMasterLeasingCabang(CreateMasterLeasingCabangRequest createMasterLeasingCabangRequest)
@@ -59,7 +72,7 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
                 var xx = createMasterLeasingCabangRequest.ToCommand();
                 await _mediator.Send(xx);
 
-                return RedirectToAction(nameof(LeasingController.CreateMasterLeasingCabang), "MasterLeasingCabang"); //kmn gitu
+                return RedirectToAction(nameof(LeasingController.CreateMasterLeasingCabang), "Leasing"); //kmn gitu
             }
 
             return View(createMasterLeasingCabangRequest);

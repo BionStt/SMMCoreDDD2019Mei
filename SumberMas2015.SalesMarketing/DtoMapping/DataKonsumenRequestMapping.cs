@@ -26,11 +26,20 @@ using System.Threading.Tasks;
 
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterLeasing.Commands.CreateMasterLeasingCabang;
 using SumberMas2015.SalesMarketing.Domain.ValueObjects;
+using SumberMas2015.SalesMarketing.Dto.SalesMarketing;
+using SumberMas2015.SalesMarketing.ServiceApplication.SalesMarketing.Commands.CreateNamaSales;
 
 namespace SumberMas2015.SalesMarketing.DtoMapping
 {
     public static class DataKonsumenRequestMapping
     {
+        public static CreateNamaSalesCommand ToCommand(this SalesMarketingRequest model)
+        {
+            return new CreateNamaSalesCommand { 
+            DataSalesMarketingId = model.SalesMarketingId,
+            NamaSales = model.NamaSales
+            };
+        }
         public static CreateMasterLeasingCabangCommand ToCommand(this CreateMasterLeasingCabangRequest model)
         {
             var AlamatLeasingCabang = Alamat.CreateAlamat(model.Jalan,model.Kelurahan,

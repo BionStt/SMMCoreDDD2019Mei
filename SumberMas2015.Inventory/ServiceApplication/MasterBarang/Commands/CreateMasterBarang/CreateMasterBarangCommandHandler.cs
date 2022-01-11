@@ -16,10 +16,11 @@ namespace SumberMas2015.Inventory.ServiceApplication.MasterBarang.Commands.Creat
         private readonly IInventoryEventBus _eventBus;
         private readonly InventoryContext _context;
         private readonly IMediator _mediator;
-        public CreateMasterBarangCommandHandler(InventoryContext context, IMediator mediator)
+        public CreateMasterBarangCommandHandler(InventoryContext context, IMediator mediator, IInventoryEventBus eventBus)
         {
             _context = context;
             _mediator=mediator;
+            _eventBus=eventBus;
         }
 
         public async Task<Guid> Handle(CreateMasterBarangCommand request, CancellationToken cancellationToken)

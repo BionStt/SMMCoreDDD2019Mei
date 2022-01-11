@@ -27,9 +27,10 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Queries.GetNam
                                      join c in _context.DataSPKKendaraan on a.DataSPKId equals c.DataSPKId
                                      join d in _context.MasterBarang on c.MasterBarangId equals d.MasterBarangId
                                      join e in _context.DataSPKKredit on a.DataSPKId equals e.DataSPKId
+                                    // where a.StatusSPK == null
                                      select new GetNamaSPKPenjualanResponse {
                                          NoUrutSPKBaru1= a.NoUrutId,
-                                         NamaPemesan = string.Format("{0} - {1} - {2} - {3:c}", b.NamaPemesan, b.AlamatPemesan.NoHandphone, d.NamaBarang, e.DPPriceList)
+                                         NamaPemesan = string.Format("{0} - {1} - {2} - {3:c0}", b.NamaPemesan.NamaDepan, b.AlamatPemesan.NoHandphone, d.NamaBarang, e.DPPriceList)
                                      }
 
 

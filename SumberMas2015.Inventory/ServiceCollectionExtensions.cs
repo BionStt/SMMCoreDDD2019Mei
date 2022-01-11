@@ -4,7 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using SumberMas2015.Inventory.EventBus;
 using SumberMas2015.Inventory.InfrastructureData.Context;
 using SumberMas2015.Inventory.InfrastructureData.EventBus;
+using SumberMas2015.Inventory.InfrastructureData.Processing.InternalCommands;
 using SumberMas2015.Inventory.InfrastructureData.WorkerProcess;
+using SumberMas2015.Inventory.ServiceApplication.Configuration.InternalCommands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +27,7 @@ namespace SumberMas2015.Inventory
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddScoped<IInventoryEventBus, InventoryEventBus>();
-
+            services.AddTransient<ICommandsScheduler, CommandScheduler>();
             services.AddHostedService<InventoryOutBoxWorker>();
             services.AddHostedService<InventoryInternalCommandsWorker>();
 
