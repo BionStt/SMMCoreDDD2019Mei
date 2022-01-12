@@ -17,6 +17,7 @@ using SumberMas2015.Identity.Infrastructure.Context;
 using SumberMas2015.Identity.Domain;
 using SumberMas2015.Identity.ServiceApplication.Contracts;
 using SumberMas2015.Identity.Infrastructure;
+using SumberMas2015.Inventory.InfrastructureData.Context;
 
 namespace SMMCoreDDD2019.AdminLte
 {
@@ -32,29 +33,23 @@ namespace SMMCoreDDD2019.AdminLte
 
                 try
                 {
-                   // var context = scope.ServiceProvider.GetService<ISMMCoreDDD2019DbContext>();
-                  
-                   //// contextIdentity.Database.Migrate();
-
+                
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                    //// var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                    var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
+                var functional = services.GetRequiredService<IFunctional>();
 
-                    var functional = services.GetRequiredService<IFunctional>();
-
-                   //  var concreteContext = (SMMCoreDDD2019DbContext)context;
-                   // // concreteContext.Database.Migrate();
-
-                   // //  context.Database.Migrate(); //lama loading
-                   //// SMMCoreDDD2019Initializer.Initialize(concreteContext);
-                   // AppIdentityDbInitializar.Initialize(contextIdentity, functional).Wait();
-
-                  
                     var contextIdentity = services.GetRequiredService<AppIdentityDbContext>();
+                   // contextIdentity.Database.MigrateAsync().Wait(); //too long.. lama boss 
                     AppIdentityDbInitializer.Initialize(contextIdentity, functional).Wait();
 
                     var SalesMarketingContext = services.GetRequiredService<SalesMarketingContext>();
+                    //SalesMarketingContext.Database.MigrateAsync().Wait();
                     DbInitializer.Initialize(SalesMarketingContext).Wait();
+
+                    var InventoryContextx = services.GetRequiredService<InventoryContext>();
+                  //  InventoryContextx.Database.MigrateAsync().Wait();
+                    SumberMas2015.Inventory.InfrastructureData.DbInitializer.Initialize(InventoryContextx).Wait();
 
                 }
                 catch (Exception ex)

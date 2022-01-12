@@ -37,16 +37,12 @@ namespace SMMCoreDDD2019.AdminLte
             services.AddIntegrationEventModule();
             services.AddInventory(Configuration.GetConnectionString("InventoryConnection"));
 
-
             services.AddSalesMarketing(Configuration.GetConnectionString("SalesMarketingConnection"));
-            //  services.AddMediatR(Assembly.GetExecutingAssembly());
-            // services.AddMediatR(typeof(Startup));
-
+          
          //  services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddHttpContextAccessor();
             
-            //var Assembly1a = AppDomain.CurrentDomain.Load("SmmCoreDDD2019.Application");
-            //services.AddMediatR(Assembly1a);
+         
 
             services.AddControllersWithViews().AddNewtonsoftJson(x =>
             {
@@ -55,8 +51,6 @@ namespace SMMCoreDDD2019.AdminLte
             });
 
             services.AddControllersWithViews(options => options.EnableEndpointRouting = false);
-
-         
 
         }
 
