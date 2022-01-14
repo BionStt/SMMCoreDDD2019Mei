@@ -18,5 +18,6 @@ namespace SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelianDetai
         public string UserName { get; set; }
         public Guid UserNameId { get; set; }
         public int MasterBarangId { get; set; }
+        public int NoUrutPOPembelian { get; set; }
     }
 }

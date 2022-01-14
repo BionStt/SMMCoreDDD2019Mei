@@ -23,7 +23,7 @@ namespace SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Comm
         {
             var mstSupplierId = await _context.Supplier.Where(x => x.NoUrutId == request.MasterSupplierId).Select(x => x.SupplierId).SingleOrDefaultAsync();
 
-            var dtPoPmb = Domain.PurchaseOrderPembelian.CreatePurchaseOrderPembelian(mstSupplierId, request.Keterangan, request.UserName,request.UserNameId,request.PoASTRA);
+            var dtPoPmb = Domain.PurchaseOrderPembelian.CreatePurchaseOrderPembelian(mstSupplierId, request.Keterangan, request.UserName,request.UserNameId,request.PoASTRA, request.TanggalInputPoPembelian);
 
             await _context.PurchaseOrderPembelian.AddAsync(dtPoPmb);
             await _context.SaveChangesAsync();

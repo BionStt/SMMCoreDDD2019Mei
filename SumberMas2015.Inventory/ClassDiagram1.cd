@@ -1,0 +1,725 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SumberMas2015.Inventory.Domain.ValueObjects.Alamat" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAFAAgAAAAACAAAoAAAIAAgAAQAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Domain\ValueObjects\Alamat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Domain.MasterBarang" Collapsed="true">
+    <Position X="2.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAIAAJQQAEAAAAQAIAECAAQAAAgBBABQ=</HashCode>
+      <FileName>Domain\MasterBarang.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Domain.Pembelian" Collapsed="true">
+    <Position X="12.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAQAAAAIAAAEAAAAgAAEAAEAABAgAABAAgAAA=</HashCode>
+      <FileName>Domain\Pembelian.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Domain.PembelianDetail" Collapsed="true">
+    <Position X="16.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAIAAAQIAAAAAAAIgAgAIAgAQAgAAAAKIAQAA=</HashCode>
+      <FileName>Domain\PembelianDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Domain.PurchaseOrderPembelian" Collapsed="true">
+    <Position X="2.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAJAAAAAQgIAAAAAAEggAAAAAEAAAAwAEAAAAAAA=</HashCode>
+      <FileName>Domain\PurchaseOrderPembelian.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Domain.PurchaseOrderPembelianDetail" Collapsed="true">
+    <Position X="5.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAABAAAAAAAIAAAAQAAAABgAAAEAAAggAAACAAIAA=</HashCode>
+      <FileName>Domain\PurchaseOrderPembelianDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Domain.StokUnit" Collapsed="true">
+    <Position X="11" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAABAAAIEAAIMAAAAAAAIkQAAIAgASAgAAAAIARIAA=</HashCode>
+      <FileName>Domain\StokUnit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Domain.Supplier" Collapsed="true">
+    <Position X="2.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAACAAAIAAAAAAEAQAAAAAAAAAAAIAAAAgAAA=</HashCode>
+      <FileName>Domain\Supplier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.MasterBarang.CreateMasterBarangRequest" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAJQAAAAgAAQAAAACAAQAAAAAAQBQ=</HashCode>
+      <FileName>Dto\MasterBarang\CreateMasterBarangRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.MasterBarang.GetNamaBarangQrByNoUrutResponse" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Dto\MasterBarang\GetNamaBarangQrByNoUrutResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.MasterBarang.GetNamaBarangResponse" Collapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Dto\MasterBarang\GetNamaBarangResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.MasterBarang.MasterBarangByIdResponse" Collapsed="true">
+    <Position X="7.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAABAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dto\MasterBarang\MasterBarangByIdResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.Pembelian.CreatePembelianRequest" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAARAAAAAAAAAAAEAAAAAAAECABAAAAAAAAAAA=</HashCode>
+      <FileName>Dto\Pembelian\CreatePembelianRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.Pembelian.GetListPembelianResponse" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Dto\Pembelian\GetListPembelianResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.PembelianDetail.CreatePembelianDetailRequest" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAIAAAAQAAAAAAAEIgAgAIAgAAAgQAAAIABQAA=</HashCode>
+      <FileName>Dto\PembelianDetail\CreatePembelianDetailRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.PembelianDetail.GetKodeBeliDetailResponse" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAEAIAAAIAAAAAAAQgAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dto\PembelianDetail\GetKodeBeliDetailResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.PembelianDetail.GetKodeBeliResponse" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Dto\PembelianDetail\GetKodeBeliResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.PembelianDetail.GetListPembelianDetailResponse" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAABAoAAAIAAAAAQAAAAAAAAAgAAAAIAAAAA=</HashCode>
+      <FileName>Dto\PembelianDetail\GetListPembelianDetailResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.PurchaseOrderPembelian.CreatePurchaseOrderPembelianRequest" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAQAAIAAAAQA=</HashCode>
+      <FileName>Dto\PurchaseOrderPembelian\CreatePurchaseOrderPembelianRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.PurchaseOrderPembelian.GetDataPOPembelianResponse" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Dto\PurchaseOrderPembelian\GetDataPOPembelianResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.PurchaseOrderPembelian.GetNamaPOResponse" Collapsed="true">
+    <Position X="14.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Dto\PurchaseOrderPembelian\GetNamaPOResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.PurchaseOrderPembelianDetail.CreatePurchaseOrderPembelianDetailRequest" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEgAAgAAAEAAAkQAgAAAAYAA=</HashCode>
+      <FileName>Dto\PurchaseOrderPembelianDetail\CreatePurchaseOrderPembelianDetailRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.StokUnit.CreateStokUnitRequest" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAABAAAIAAAAQAAAAAAAogAAAIAgACAgAAAAABAIAA=</HashCode>
+      <FileName>Dto\StokUnit\CreateStokUnitRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.StokUnit.GetDataSOByIDResponse" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Dto\StokUnit\GetDataSOByIDResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.StokUnit.GetListStokUnitByNoKodeBeliResponse" Collapsed="true">
+    <Position X="16.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAIAAAAAAAAEAAAABAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Dto\StokUnit\GetListStokUnitByNoKodeBeliResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.CreateSupplierRequest" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAEAAwCAQAAAAAAMAAAYAAAAAQAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Dto\Supplier\CreateSupplierRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.GetDataSOResponse" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dto\GetDataSOResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.Dto.Supplier.GetNamaSupplierResponse" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Dto\Supplier\GetNamaSupplierResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.DtoMapping.InventoryRequestMapping" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DtoMapping\InventoryRequestMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.Configuration.InternalCommandConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InfrastructureData\Configuration\InternalCommandConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.Configuration.MasterBarangConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InfrastructureData\Configuration\MasterBarangConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.Configuration.OutBoxMessageConfiguration" BaseTypeListCollapsed="true">
+    <Position X="11" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InfrastructureData\Configuration\OutBoxMessageConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.Configuration.PembelianConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InfrastructureData\Configuration\PembelianConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.Configuration.PembelianDetailConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InfrastructureData\Configuration\PembelianDetailConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.Configuration.PurchaseOrderPembelianConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InfrastructureData\Configuration\PurchaseOrderPembelianConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.Configuration.PurchaseOrderPembelianDetailConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InfrastructureData\Configuration\PurchaseOrderPembelianDetailConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.Configuration.StokUnitConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InfrastructureData\Configuration\StokUnitConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.Configuration.SupplierConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InfrastructureData\Configuration\SupplierConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.Context.InventoryContext" Collapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAgAIAQAAgAAAAAEAAAAAAACBAAIAAAAAg=</HashCode>
+      <FileName>InfrastructureData\Context\InventoryContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.EventBus.InventoryEventBus" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQABAAAAAAAAAAAAAEAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>InfrastructureData\EventBus\InventoryEventBus.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.Migrations.InitialCreate1" Collapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>InfrastructureData\Migrations\20220109230316_InitialCreate1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.Migrations.InitialCreate3" Collapsed="true">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>InfrastructureData\Migrations\20220113132120_InitialCreate3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.Migrations.InventoryContextModelSnapshot" Collapsed="true">
+    <Position X="11" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>InfrastructureData\Migrations\InventoryContextModelSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.Processing.InternalCommands.CommandScheduler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAEAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>InfrastructureData\Processing\InternalCommands\CommandScheduler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.WorkerProcess.InventoryInternalCommandsWorker" Collapsed="true">
+    <Position X="14.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAIAAAAAAAAAAAAAABAEA=</HashCode>
+      <FileName>InfrastructureData\WorkerProcess\InventoryInternalCommandsWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.WorkerProcess.InventoryOutBoxWorker" Collapsed="true">
+    <Position X="16.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAIAAAAAAAAAAAAAABAEA=</HashCode>
+      <FileName>InfrastructureData\WorkerProcess\InventoryOutBoxWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.InfrastructureData.DbInitializer" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAQAIAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>InfrastructureData\DbInitializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.IntegrationHandler.StokUnitSoldIntegrationEventHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAABA=</HashCode>
+      <FileName>ServiceApplication\IntegrationHandler\StokUnitSoldIntegrationEventHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.MasterBarang.Commands.CreateMasterBarang.CreateMasterBarangCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABBAAAAAAAAAAJQAAAAAAAQAAAACAAQAAAAAAQBQ=</HashCode>
+      <FileName>ServiceApplication\MasterBarang\Commands\CreateMasterBarang\CreateMasterBarangCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.MasterBarang.Commands.CreateMasterBarang.CreateMasterBarangCommandHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAEAAAAAA=</HashCode>
+      <FileName>ServiceApplication\MasterBarang\Commands\CreateMasterBarang\CreateMasterBarangCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.MasterBarang.Commands.CreateMasterBarang.CreateMasterBarangCreated" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAQAAABQAAAAAAAQAAAACAAAAAAAAAQBQ=</HashCode>
+      <FileName>ServiceApplication\MasterBarang\Commands\CreateMasterBarang\CreateMasterBarangCreated.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.MasterBarang.Queries.GetNamaBarang.GetNamaBarangQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\MasterBarang\Queries\GetNamaBarang\GetNamaBarangQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.MasterBarang.Queries.GetNamaBarang.GetNamaBarangQueryHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\MasterBarang\Queries\GetNamaBarang\GetNamaBarangQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.MasterBarang.Queries.GetNamaBarangQrByNoUrut.GetNamaBarangQrByNoUrutQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\MasterBarang\Queries\GetNamaBarangQrByNoUrut\GetNamaBarangQrByNoUrutQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.MasterBarang.Queries.GetNamaBarangQrByNoUrut.GetNamaBarangQrByNoUrutQueryHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\MasterBarang\Queries\GetNamaBarangQrByNoUrut\GetNamaBarangQrByNoUrutQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.MasterBarang.Queries.MasterBarangById.MasterBarangByIdQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>ServiceApplication\MasterBarang\Queries\MasterBarangById\MasterBarangByIdQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.MasterBarang.Queries.MasterBarangById.MasterBarangByIdQueryHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\MasterBarang\Queries\MasterBarangById\MasterBarangByIdQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.Pembelian.Commands.CreatePembelian.CreatePembelianCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAARAAAAAAAAAAAEAAAAAAAECABAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\Pembelian\Commands\CreatePembelian\CreatePembelianCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.Pembelian.Commands.CreatePembelian.CreatePembelianCommandHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\Pembelian\Commands\CreatePembelian\CreatePembelianCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.Pembelian.Queries.GetListPembelian.GetListPembelianQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\Pembelian\Queries\GetListPembelian\GetListPembelianQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.Pembelian.Queries.GetListPembelian.GetListPembelianQueryHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\Pembelian\Queries\GetListPembelian\GetListPembelianQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Commands.CreatePembelianDetail.CreatePembelianDetailCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAIAAAAQAAAAAAAAIgAgAIAgAAAgAAAAIABQAA=</HashCode>
+      <FileName>ServiceApplication\PembelianDetail\Commands\CreatePembelianDetail\CreatePembelianDetailCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Commands.CreatePembelianDetail.CreatePembelianDetailCommandHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\PembelianDetail\Commands\CreatePembelianDetail\CreatePembelianDetailCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Queries.GetKodeBeli.GetKodeBeliQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\PembelianDetail\Queries\GetKodeBeli\GetKodeBeliQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Queries.GetKodeBeli.GetKodeBeliQueryHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\PembelianDetail\Queries\GetKodeBeli\GetKodeBeliQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Queries.GetKodeBeliDetail.GetKodeBeliDetailQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\PembelianDetail\Queries\GetKodeBeliDetail\GetKodeBeliDetailQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Queries.GetKodeBeliDetail.GetKodeBeliDetailQueryHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\PembelianDetail\Queries\GetKodeBeliDetail\GetKodeBeliDetailQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Queries.GetListPembelianDetail.GetListPembelianDetailQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\PembelianDetail\Queries\GetListPembelianDetail\GetListPembelianDetailQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Queries.GetListPembelianDetail.GetListPembelianDetailQueryHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\PembelianDetail\Queries\GetListPembelianDetail\GetListPembelianDetailQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Commands.CreatePurchaseOrderPembelian.CreatePurchaseOrderPembelianCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAEAAAAEAAAAQAAIAAAAQA=</HashCode>
+      <FileName>ServiceApplication\PurchaseOrderPembelian\Commands\CreatePurchaseOrderPembelian\CreatePurchaseOrderPembelianCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Commands.CreatePurchaseOrderPembelian.CreatePurchaseOrderPembelianCommandHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\PurchaseOrderPembelian\Commands\CreatePurchaseOrderPembelian\CreatePurchaseOrderPembelianCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Queries.GetDataPOPembelian.GetDataPOPembelianQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\PurchaseOrderPembelian\Queries\GetDataPOPembelian\GetDataPOPembelianQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Queries.GetDataPOPembelian.GetDataPOPembelianQueryHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\PurchaseOrderPembelian\Queries\GetDataPOPembelian\GetDataPOPembelianQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Queries.GetNamaPO.GetNamaPOQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\PurchaseOrderPembelian\Queries\GetNamaPO\GetNamaPOQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Queries.GetNamaPO.GetNamaPOQueryHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\PurchaseOrderPembelian\Queries\GetNamaPO\GetNamaPOQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelianDetail.Commands.CreatePurchaseOrderPembelianDetail.CreatePurchaseOrderPembelianDetailCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAgAAAEAAgkQAAAAABYAA=</HashCode>
+      <FileName>ServiceApplication\PurchaseOrderPembelianDetail\Commands\CreatePurchaseOrderPembelianDetail\CreatePurchaseOrderPembelianDetailCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelianDetail.Commands.CreatePurchaseOrderPembelianDetail.CreatePurchaseOrderPembelianDetailCommandHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\PurchaseOrderPembelianDetail\Commands\CreatePurchaseOrderPembelianDetail\CreatePurchaseOrderPembelianDetailCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.StokUnit.Commands.CreateStokUnit.CreateStokUnitCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAABAAAIAAAAQAAAAAAAogAAAIAgACAgAAAAABAIAA=</HashCode>
+      <FileName>ServiceApplication\StokUnit\Commands\CreateStokUnit\CreateStokUnitCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.StokUnit.Commands.CreateStokUnit.CreateStokUnitCommandHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAEAAAAAA=</HashCode>
+      <FileName>ServiceApplication\StokUnit\Commands\CreateStokUnit\CreateStokUnitCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.StokUnit.Commands.CreateStokUnit.CreateStokUnitCreated" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAABAAAAAAAAAAAAAAAAAEAAAAAAACAAAAAAAABAAA=</HashCode>
+      <FileName>ServiceApplication\StokUnit\Commands\CreateStokUnit\CreateStokUnitCreated.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.StokUnit.Commands.StokUnitSold.StokUnitSoldCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\StokUnit\Commands\StokUnitSold\StokUnitSoldCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.StokUnit.Commands.StokUnitSold.StokUnitSoldCommandHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\StokUnit\Commands\StokUnitSold\StokUnitSoldCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.StokUnit.Queries.GetDataSO.GetDataSOQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\StokUnit\Queries\GetDataSO\GetDataSOQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.StokUnit.Queries.GetDataSO.GetDataSOQueryHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\StokUnit\Queries\GetDataSO\GetDataSOQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.StokUnit.Queries.GetDataSOByID.GetDataSOByIDQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\StokUnit\Queries\GetDataSOByID\GetDataSOByIDQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.StokUnit.Queries.GetDataSOByID.GetDataSOByIDQueryHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\StokUnit\Queries\GetDataSOByID\GetDataSOByIDQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.StokUnit.Queries.GetListStokUnitByNoKodeBeli.GetListStokUnitByNoKodeBeliQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\StokUnit\Queries\GetListStokUnitByNoKodeBeli\GetListStokUnitByNoKodeBeliQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.StokUnit.Queries.GetListStokUnitByNoKodeBeli.GetListStokUnitByNoKodeBeliQueryHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\StokUnit\Queries\GetListStokUnitByNoKodeBeli\GetListStokUnitByNoKodeBeliQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.Supplier.Commands.CreateSupplier.CreateSupplierCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAACAAAAAAAAAAEAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\Supplier\Commands\CreateSupplier\CreateSupplierCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.Supplier.Commands.CreateSupplier.CreateSupplierCommandHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\Supplier\Commands\CreateSupplier\CreateSupplierCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.Supplier.Queries.GetNamaSupplier.GetNamaSupplierQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\Supplier\Queries\GetNamaSupplier\GetNamaSupplierQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceApplication.Supplier.Queries.GetNamaSupplier.GetNamaSupplierQueryHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\Supplier\Queries\GetNamaSupplier\GetNamaSupplierQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SumberMas2015.Inventory.ServiceCollectionExtensions" Collapsed="true">
+    <Position X="9.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceCollectionExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="SumberMas2015.Inventory.EventBus.IInventoryEventBus" Collapsed="true">
+    <Position X="2.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EventBus\IInventoryEventBus.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SumberMas2015.Inventory.ServiceApplication.Configuration.InternalCommands.ICommandsScheduler" Collapsed="true">
+    <Position X="0.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>ServiceApplication\Configuration\InternalCommands\ICommandsScheduler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

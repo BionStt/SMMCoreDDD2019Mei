@@ -10,9 +10,9 @@ namespace SumberMas2015.Inventory.Domain
     {
         protected PurchaseOrderPembelianDetail()
         {
-
+            
         }
-        private PurchaseOrderPembelianDetail(Guid masterBarangDBId, decimal? offTheRoad, decimal? bbn, decimal? diskon, string warna, int? qty, string keterangan)
+        private PurchaseOrderPembelianDetail(Guid masterBarangDBId, decimal? offTheRoad, decimal? bbn, decimal? diskon, string warna, int? qty, string keterangan, Guid purchaseOrderPembelianId)
         {
             PurchaseOrderPembelianDetailId = Guid.NewGuid();
             MasterBarangDBId = masterBarangDBId;
@@ -22,12 +22,13 @@ namespace SumberMas2015.Inventory.Domain
             Warna = warna;
             Qty = qty;
             Keterangan = keterangan;
+            PurchaseOrderPembelianId=purchaseOrderPembelianId;
         }
-        public static PurchaseOrderPembelianDetail CreatePurchaseOrderPembelianDetail(Guid masterBarangDBId, decimal? offTheRoad, decimal? bbn, decimal? diskon, string warna, int? qty, string keterangan)
+        public static PurchaseOrderPembelianDetail CreatePurchaseOrderPembelianDetail(Guid masterBarangDBId, decimal? offTheRoad, decimal? bbn, decimal? diskon, string warna, int? qty, string keterangan, Guid purchaseOrderPembelianId)
         {
-            return new PurchaseOrderPembelianDetail(masterBarangDBId, offTheRoad, bbn, diskon, warna, qty, keterangan);
+            return new PurchaseOrderPembelianDetail(masterBarangDBId, offTheRoad, bbn, diskon, warna, qty, keterangan, purchaseOrderPembelianId);
         }
-
+        public Guid PurchaseOrderPembelianId { get; set; }
         public Guid PurchaseOrderPembelianDetailId { get; private set; }
 
         public Guid MasterBarangDBId { get; private set; }

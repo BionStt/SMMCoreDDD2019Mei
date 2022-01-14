@@ -8,6 +8,7 @@ namespace SumberMas2015.Inventory.Dto.PurchaseOrderPembelian
 {
     public class CreatePurchaseOrderPembelianRequest
     {
+        public DateTime TanggalInputPOPembelian { get; set; }
         public string Keterangan { get;  set; }
         public int MasterSupplierId { get;  set; }
         public string PoASTRA { get;  set; }

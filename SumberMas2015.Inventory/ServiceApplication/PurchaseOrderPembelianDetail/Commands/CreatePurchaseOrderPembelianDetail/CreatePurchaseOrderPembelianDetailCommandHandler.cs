@@ -24,11 +24,18 @@ namespace SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelianDetai
         public async Task<Guid> Handle(CreatePurchaseOrderPembelianDetailCommand request, CancellationToken cancellationToken)
         {
             var mstBarang = await _context.MasterBarang.Where(x => x.NoUrutId==request.MasterBarangId).Select(x => x.MasterBarangId).SingleOrDefaultAsync();
+         
+            var poPmb = await _context.PurchaseOrderPembelian.Where(x => x.NoUrutId == request.NoUrutPOPembelian).SingleOrDefaultAsync();
 
             var dtPoPmbDetail = Domain.PurchaseOrderPembelianDetail.CreatePurchaseOrderPembelianDetail(mstBarang, request.OffTHeRoad,
-                request.BBN, request.Diskon, request.Warna, request.Qty, request.Keterangan);
+                request.BBN, request.Diskon, request.Warna, request.Qty, request.Keterangan, poPmb.PurchaseOrderPembelianId);
 
             await _context.PurchaseOrderPembelianDetail.AddAsync(dtPoPmbDetail);
+
+            //poPmb.Terinput="1";
+
+            //_context.Entry(poPmb).State = EntityState.Modified;
+
             await _context.SaveChangesAsync();
 
             return dtPoPmbDetail.PurchaseOrderPembelianDetailId;

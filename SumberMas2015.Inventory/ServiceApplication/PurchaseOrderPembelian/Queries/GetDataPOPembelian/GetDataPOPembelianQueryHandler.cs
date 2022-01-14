@@ -22,11 +22,11 @@ namespace SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Quer
 
         public async Task<IReadOnlyCollection<GetDataPOPembelianResponse>> Handle(GetDataPOPembelianQuery request, CancellationToken cancellationToken)
         {
-            var returnQuery = await _context.PurchaseOrderPembelian.Select(x=> new GetDataPOPembelianResponse {
+            var returnQuery = await _context.PurchaseOrderPembelian.Where(x=>x.Terinput == "0").Select(x=> new GetDataPOPembelianResponse {
                 NoUrutPoPembelian = x.NoUrutId,
                 NamaPOPembelian = x.NoRegistrasiPoPMB + " - " + x.Keterangan
 
-            }).OrderByDescending(x=>x.NoUrutPoPembelian).AsNoTracking().ToListAsync();
+            }).OrderByDescending(x=>x.NoUrutPoPembelian).AsNoTracking().Take(10).ToListAsync();
 
 
 

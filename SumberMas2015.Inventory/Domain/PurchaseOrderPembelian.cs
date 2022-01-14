@@ -14,7 +14,7 @@ namespace SumberMas2015.Inventory.Domain
         public Guid MasterSupplierDBId { get; set; }
         public string NoRegistrasiPoPMB { get; set; }
         public string Keterangan { get; set; }
-        public string Terinput { get; set; }
+        public string Terinput { get; set; } = "0";
         // public int? UserId { get; set; }
         public string UserName { get; set; }
         public Guid UserNameId { get; set; }
@@ -25,21 +25,25 @@ namespace SumberMas2015.Inventory.Domain
 
         }
 
-        private PurchaseOrderPembelian(Guid masterSupplierDBId, string keterangan, string poAstra, string userName, Guid userNameId)
+        private PurchaseOrderPembelian(Guid masterSupplierDBId, string keterangan, string poAstra, string userName, Guid userNameId, DateTime tanggalPurchaseOrder)
         {
             PurchaseOrderPembelianId = Guid.NewGuid();
             MasterSupplierDBId = masterSupplierDBId;
             // NoRegistrasiPoPMB = noRegistrasiPoPMB; // mau dibuatin fungsi tersendir
             Keterangan = keterangan;
             // Terinput = terinput;
-           
-            PoAstra = poAstra;
+          PoAstra = poAstra;
             UserName=userName;
             UserNameId=userNameId;
+            TanggalPurchaseOrder=tanggalPurchaseOrder;
         }
-        public static PurchaseOrderPembelian CreatePurchaseOrderPembelian(Guid masterSupplierDBId, string keterangan, string userName, Guid userNameId, string poAstra)
+        public static PurchaseOrderPembelian CreatePurchaseOrderPembelian(Guid masterSupplierDBId, string keterangan, string userName, Guid userNameId, string poAstra, DateTime tanggalPurchaseOrder)
         {
-            return new PurchaseOrderPembelian(masterSupplierDBId, keterangan, poAstra, userName,userNameId);
+            return new PurchaseOrderPembelian(masterSupplierDBId, keterangan, poAstra, userName,userNameId,tanggalPurchaseOrder);
+        }
+        public void SetTerinput()
+        {
+            Terinput = "1";
         }
     }
 }

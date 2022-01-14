@@ -25,7 +25,7 @@ namespace SumberMas2015.Inventory.ServiceApplication.MasterBarang.Queries.GetNam
             var returnQuery = await _context.MasterBarang.Select(x => new GetNamaBarangResponse
             {
                 NoUrutKendaraan = x.NoUrutId,
-                NamaBarang = x.NamaBarang
+                NamaBarang = String.Format("{0} - {1} - {2}",x.NamaBarang,x.TypeKendaraan,x.Merek)
 
             }).AsNoTracking().ToListAsync();
 

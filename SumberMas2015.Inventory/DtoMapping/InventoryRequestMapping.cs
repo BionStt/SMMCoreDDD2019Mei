@@ -74,8 +74,10 @@ namespace SumberMas2015.Inventory.DtoMapping
             Qty  = model.Qty,
             Warna = model.Warna,
             UserName   = model.UserName,
-            UserNameId = model.UserNameId
-
+            UserNameId = model.UserNameId,
+            MasterBarangId = model.NoUrutMasterBarang,
+            NoUrutPOPembelian = model.NoUrutPurchaseOrderID
+            
 
 
             };

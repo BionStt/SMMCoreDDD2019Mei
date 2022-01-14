@@ -16,6 +16,7 @@ namespace SumberMas2015.Inventory.InfrastructureData.Configuration
             builder.ToTable("PurchaseOrderPembelian");
             builder.Property(e => e.NoUrutId).ValueGeneratedOnAdd();
             builder.HasKey(e => e.PurchaseOrderPembelianId);
+            
 
         }
     }

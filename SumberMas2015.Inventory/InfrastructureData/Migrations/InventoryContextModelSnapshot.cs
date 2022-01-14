@@ -306,6 +306,9 @@ namespace SumberMas2015.Inventory.InfrastructureData.Migrations
                     b.Property<decimal?>("OffTheRoad")
                         .HasColumnType("money");
 
+                    b.Property<Guid>("PurchaseOrderPembelianId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int?>("Qty")
                         .HasColumnType("int");
 

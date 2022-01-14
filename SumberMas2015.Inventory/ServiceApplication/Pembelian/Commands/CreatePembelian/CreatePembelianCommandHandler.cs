@@ -23,11 +23,16 @@ namespace SumberMas2015.Inventory.ServiceApplication.Pembelian.Commands.CreatePe
         {
             //masih perlu diperbaiki
             var dtSupplier = await _context.Supplier.Where(x => x.NoUrutId==request.DataSupplierId).Select(x=>x.SupplierId).SingleOrDefaultAsync();
-            var POId = await _context.PurchaseOrderPembelian.Where(x => x.NoUrutId==request.PurchaseOrderId).Select(x => x.PurchaseOrderPembelianId).SingleOrDefaultAsync();
 
-            var dtPembelian = Domain.Pembelian.CreatePembelian(dtSupplier, request.JenisTransaksiPembelian,request.Tenor, request.Keterangan, request.UserNameInput, POId) ;
+            var POId = await _context.PurchaseOrderPembelian.Where(x => x.NoUrutId==request.PurchaseOrderId).SingleOrDefaultAsync();
+
+            var dtPembelian = Domain.Pembelian.CreatePembelian(dtSupplier, request.JenisTransaksiPembelian,request.Tenor, request.Keterangan, request.UserNameInput, POId.PurchaseOrderPembelianId) ;
 
             await _context.Pembelian.AddAsync(dtPembelian);
+            POId.SetTerinput();
+                      
+            _context.Entry(POId).Property(x => x.Terinput).IsModified=true;
+          
             await _context.SaveChangesAsync();
 
             return dtPembelian.PembelianId;
