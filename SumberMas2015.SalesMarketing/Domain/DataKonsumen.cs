@@ -59,12 +59,48 @@ namespace SumberMas2015.SalesMarketing.Domain
             UserNameId=userNameId;
             // CreatedAt = createdAt;
         }
-
+        public void SetBidangPekerjaan(Guid kodeBidangPekerjaan,string namaBidangPekerjaan)
+        {
+            KodeBidangPekerjaan=kodeBidangPekerjaan;
+            NamaBidangPekerjaan=namaBidangPekerjaan;
+        }
+        public void SetBidangUsaha(Guid kodeBidangUsaha, string namaBidangUsaha)
+        {
+            KodeBidangUsaha =kodeBidangUsaha;
+            NamaBidangUsaha = namaBidangUsaha;
+        }
+        public void SetUserNameId(string userName, Guid userNameId)
+        {
+            userName = userName;
+            UserNameId = userNameId;
+        }
         public static DataKonsumen Create(string nomorKTP, DateTime tanggalLahir, Guid jenisKelamin, Name nama, Name namaBpkb, Alamat alamatTinggal, Alamat alamatKirim, Guid agama, string email, Guid kodeBidangPekerjaan, string namaBidangPekerjaan, Guid kodeBidangUsaha, string namaBidangUsaha, string userName, Guid userNameId)
         {
             return new DataKonsumen(nomorKTP, tanggalLahir, jenisKelamin, nama, namaBpkb, alamatTinggal, alamatKirim,agama,email,kodeBidangPekerjaan,namaBidangPekerjaan,kodeBidangUsaha,namaBidangUsaha,userName,userNameId);
         }
+        public void SetEmail(string email)
+        {
+            Email = email;
+        }
+        public void SetNama(string namaDepan,string namaBelakang,string namaDepanBPKB, string namaBelakangBPKB)
+        {
 
+            Nama = Domain.ValueObjects.Name.CreateName(namaDepan, namaBelakang);
+            NamaBPKB = Domain.ValueObjects.Name.CreateName(namaDepanBPKB, namaBelakangBPKB);
 
+        }
+        public void SetTanggalLahirJenisKelamin(DateTime tanggalLahir,Guid jenisKelamin)
+        {
+            TanggalLahir = tanggalLahir;
+            JenisKelaminId = JenisKelaminId;
+        }
+        public void SetAlamatKirim(string jalan,string kelurahan,string kecamatan,string kota,string propinsi,string kodepos,string notelepon,string nofax,string nohandphone)
+        {
+            AlamatKirim = Domain.ValueObjects.Alamat.CreateAlamat(jalan,kelurahan,kecamatan,kota,propinsi,kodepos,notelepon,nofax,nohandphone);
+        }
+        public void SetAlamatTinggal(string jalan, string kelurahan, string kecamatan, string kota, string propinsi, string kodepos, string notelepon, string nofax, string nohandphone)
+        {
+            AlamatTinggal = Domain.ValueObjects.Alamat.CreateAlamat(jalan, kelurahan, kecamatan, kota, propinsi, kodepos, notelepon, nofax, nohandphone);
+        }
     }
 }

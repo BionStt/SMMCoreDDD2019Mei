@@ -1,6 +1,6 @@
 ﻿@using SMMCoreDDD2019.AdminLte.Views.Manage
 
-@inject SignInManager<SmmCoreDDD2019.Common.Identity.ApplicationUser> SignInManager
+@inject SignInManager<SumberMas2015.Identity.Domain.ApplicationUser> SignInManager
 
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();

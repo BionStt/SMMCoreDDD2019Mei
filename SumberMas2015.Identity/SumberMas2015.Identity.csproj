@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Infrastructure\Configuration\" />
-    <Folder Include="NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>

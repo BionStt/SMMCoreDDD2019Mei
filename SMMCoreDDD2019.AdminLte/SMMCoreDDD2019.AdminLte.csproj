@@ -21,9 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SmmCoreDDD2019.Common\SmmCoreDDD2019.Common.csproj" />
-    <ProjectReference Include="..\SmmCoreDDD2019.Infrastructure\SmmCoreDDD2019.Infrastructure.csproj" />
-    <ProjectReference Include="..\SmmCoreDDD2019.Persistence\SmmCoreDDD2019.Persistence.csproj" />
+
     <ProjectReference Include="..\SumberMas2015.Identity\SumberMas2015.Identity.csproj" />
     <ProjectReference Include="..\SumberMas2015.Inventory\SumberMas2015.Inventory.csproj" />
     <ProjectReference Include="..\SumberMas2015.Organization\SumberMas2015.Organization.csproj" />

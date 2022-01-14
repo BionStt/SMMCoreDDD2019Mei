@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SmmCoreDDD2019.Common.SyncfusionViewModels;
 using SumberMas2015.Identity.Domain;
 using SumberMas2015.Identity.Infrastructure.Context;
 using System.Collections.Generic;
@@ -50,9 +49,9 @@ namespace SMMCoreDDD2019.AdminLte.Controllers.Api
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> Insert([FromBody] CrudViewModel<UserProfile> payload)
+        public async Task<IActionResult> Insert([FromBody] UserProfile register)
         {
-            UserProfile register = payload.value;
+            //UserProfile register = payload.value;
             if (register.Password.Equals(register.ConfirmPassword))
             {
                 ApplicationUser user = new ApplicationUser() { Email = register.Email, UserName = register.Email, EmailConfirmed = true };
@@ -71,18 +70,21 @@ namespace SMMCoreDDD2019.AdminLte.Controllers.Api
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> Update([FromBody] CrudViewModel<UserProfile> payload)
+        public async Task<IActionResult> Update([FromBody] UserProfile profile)
         {
-            UserProfile profile = payload.value;
+           // UserProfile profile = payload.value;
             _context.UserProfile.Update(profile);
+           
+            //_context.Entry(profile).Property(x => x.ProfilePicture).IsModified=true;
+          
             await _context.SaveChangesAsync();
             return Ok(profile);
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> ChangePassword([FromBody] CrudViewModel<UserProfile> payload)
+        public async Task<IActionResult> ChangePassword([FromBody] UserProfile profile)
         {
-            UserProfile profile = payload.value;
+           // UserProfile profile = payload.value;
             if (profile.Password.Equals(profile.ConfirmPassword))
             {
                 var user = await _userManager.FindByIdAsync(profile.ApplicationUserId);
@@ -93,16 +95,16 @@ namespace SMMCoreDDD2019.AdminLte.Controllers.Api
         }
 
         [HttpPost("[action]")]
-        public IActionResult ChangeRole([FromBody] CrudViewModel<UserProfile> payload)
+        public IActionResult ChangeRole([FromBody] UserProfile profile)
         {
-            UserProfile profile = payload.value;
+          //  UserProfile profile = payload.value;
             return Ok(profile);
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> Remove([FromBody] CrudViewModel<UserProfile> payload)
+        public async Task<IActionResult> Remove([FromBody] UserProfile payload)
         {
-            var userProfile = _context.UserProfile.SingleOrDefault(x => x.UserProfileId.Equals((int)payload.key));
+            var userProfile = _context.UserProfile.SingleOrDefault(x => x.UserProfileId.Equals((int)payload.UserProfileId));
             if (userProfile != null)
             {
                 var user = _context.Users.Where(x => x.Id.Equals(userProfile.ApplicationUserId)).FirstOrDefault();

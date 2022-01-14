@@ -2,13 +2,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SmmCoreDDD2019.Application.CustomerDBs.Commands.CreateCustomerDB;
-using SmmCoreDDD2019.Application.CustomerDBs.Commands.UpdateCustomerDB;
-using SmmCoreDDD2019.Application.CustomerDBs.Queries.GetCustomerByID;
 using SumberMas2015.SalesMarketing.Dto.DataKonsumen;
 using SumberMas2015.SalesMarketing.DtoMapping;
 using SumberMas2015.SalesMarketing.ServiceApplication.Agama.Queries.AgamaList;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataKonsumen.Commands.CreateDataKonsumen;
+using SumberMas2015.SalesMarketing.ServiceApplication.DataKonsumen.Commands.UpdateDataKonsumen;
+using SumberMas2015.SalesMarketing.ServiceApplication.DataKonsumen.Queries.GetCustomerByID;
 using SumberMas2015.SalesMarketing.ServiceApplication.JenisKelamin.ListJenisKelamin;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangPekerjaanDBs.Queries;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangUsahaDBs.Queries;
@@ -93,7 +92,7 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditCustomer(int id, UpdateCustomerCommand CustomerDB)
+        public async Task<IActionResult> EditCustomer(int id, UpdateDataKonsumenCommand CustomerDB)
         {
             if (id != CustomerDB.CustomerID)
             {
