@@ -88,6 +88,14 @@ namespace SumberMas2015.Identity.Pages
             public const string ControllerName = "Supplier";
             public const string ActionName = "Create";
         }
+          public static class CreateStokUnit
+        {
+            public const string PageName = "Create Data Stok Unit";
+            public const string RoleName = "Create Data Stok Unit";
+            public const string Path = "/Pembelian/GetListPembelianDetail1A";
+            public const string ControllerName = "Pembelian";
+            public const string ActionName = "GetListPembelianDetail1A";
+        }
         public static class CreatePembelian
         {
             public const string PageName = "Create Data Pembelian";

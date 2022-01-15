@@ -18,7 +18,7 @@ namespace SumberMas2015.Identity
 {
     public static class ServiceCollectionExtension
     {
-        public static IServiceCollection AddIdentity(this IServiceCollection services, string connectionString, IConfiguration configuration)
+        public static IServiceCollection AddIdentityServiceCollections(this IServiceCollection services, string connectionString, IConfiguration configuration)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();

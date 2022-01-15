@@ -1,6 +1,6 @@
 ﻿@model SumberMas2015.SalesMarketing.Dto.DataKonsumen.CreateDataKonsumenRequest
 @{
-      ViewData["Title"] = "Create";
+      ViewData["Title"] = "Create Data Konsumen";
  //   Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
 }
 
@@ -109,26 +109,26 @@
                         </tr>
                         <tr>
                             <td> <label asp-for="KodePos" class="control-label">Kode Pos</label></td>
-                            <td> <input asp-for="KodePos" class="form-control" />
+                            <td> <input id="KodePos1" asp-for="KodePos" class="form-control" />
                                 <span asp-validation-for="KodePos" class="text-danger"></span>
                               </td>
                         </tr>
                         <tr>
                             <td> <label asp-for="NomorTelepon" class="control-label">Nomor Telepon</label></td>
-                            <td> <input asp-for="NomorTelepon" class="form-control" />
+                            <td> <input id="Telp1" asp-for="NomorTelepon" class="form-control" />
                                 <span asp-validation-for="NomorTelepon" class="text-danger"></span>
                        </td>
                         </tr>
                         <tr>
 
                             <td>    <label asp-for="NomorFaks" class="control-label">Nomor Faks</label></td>
-                            <td> <input asp-for="NomorFaks" class="form-control" />
+                            <td> <input id="Faks1" asp-for="NomorFaks" class="form-control" />
                                 <span asp-validation-for="NomorFaks" class="text-danger"></span>
                              </td>
                         </tr>
                         <tr>
                             <td> <label asp-for="NomorHandphone" class="control-label">Nomor Handphone</label></td>
-                            <td> <input asp-for="NomorHandphone" class="form-control" />
+                            <td> <input id="Handphone1" asp-for="NomorHandphone" class="form-control" />
                                 <span asp-validation-for="NomorHandphone" class="text-danger"></span>
                              </td>
                         </tr>
@@ -281,11 +281,11 @@
 
                         <tr>
                             <td>
-
+                                  <input type="submit" value="Create" class="btn btn-primary" />
                             </td>
                
-                                <input type="submit" value="Create" class="btn btn-primary" />
-                            </td>
+                              
+                           
 
                         </tr>
 
@@ -295,10 +295,9 @@
     </section>
 </div>
 
-
-
-<script>
-    $('#datepicker1').datepicker({
+@section Scripts{
+    <script type="text/javascript">
+         $('#datepicker1').datepicker({
         changeMonth: true,
         changeYear: true,
       //  appendText: "(Tanggal-Bulan-Tahun)",
@@ -608,10 +607,8 @@
         return false;
     });
 
-</script>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    </script>
 }
+
 
 

@@ -33,7 +33,7 @@ namespace SMMCoreDDD2019.AdminLte
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddPersistence(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"));
-            services.AddIdentity(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"), Configuration);
+            services.AddIdentityServiceCollections(Configuration.GetConnectionString("SmmCoreDDD2019IdentityConnection"), Configuration);
             services.AddIntegrationEventModule();
             services.AddInventory(Configuration.GetConnectionString("InventoryConnection"));
 

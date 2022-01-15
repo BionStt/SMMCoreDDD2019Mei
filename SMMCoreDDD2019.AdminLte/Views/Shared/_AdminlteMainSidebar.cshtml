@@ -94,6 +94,11 @@
                     <i class="fa fa-gear"></i> <span>@MainMenu.CreatePembelian.PageName</span>
                 </a>
             </li>
+              <li class="@Html.IsSelected(controller: MainMenu.CreateStokUnit.ControllerName)">
+                <a href="@MainMenu.CreateStokUnit.Path">
+                    <i class="fa fa-gear"></i> <span>@MainMenu.CreateStokUnit.PageName</span>
+                </a>
+            </li>
              <li class="header">Master Leasing</li>
                <li class="@Html.IsSelected(controller: MainMenu.CreateMasterLeasing.ControllerName)">
                 <a href="@MainMenu.CreateMasterLeasing.Path">

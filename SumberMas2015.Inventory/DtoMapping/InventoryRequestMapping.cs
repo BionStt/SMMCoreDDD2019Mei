@@ -22,6 +22,7 @@ namespace SumberMas2015.Inventory.DtoMapping
 {
     public static class InventoryRequestMapping
     {
+     
         public static CreatePembelianDetailCommand ToCommand(this CreatePembelianDetailRequest model)
         {
             return new CreatePembelianDetailCommand {
@@ -89,8 +90,9 @@ namespace SumberMas2015.Inventory.DtoMapping
             MasterSupplierId = model.MasterSupplierId,
             PoASTRA  = model.PoASTRA,
             UserName= model.UserName,
-            UserNameId = model.UserNameId
-
+            UserNameId = model.UserNameId,
+            TanggalInputPoPembelian  = model.TanggalInputPOPembelian
+           
             };
         }
         public static CreatePembelianCommand ToCommand(this CreatePembelianRequest model )
