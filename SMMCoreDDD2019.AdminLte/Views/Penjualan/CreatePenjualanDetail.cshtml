@@ -1,7 +1,7 @@
 ﻿@model SumberMas2015.SalesMarketing.Dto.Penjualan.CreateDataPenjualanDetailRequest
 
 @{
-    ViewData["Title"] = "PenjualanDetail";
+    ViewData["Title"] = "Penjualan Detail";
     //  Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
 }
 
@@ -12,7 +12,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <form asp-action="PenjualanDetail">
+                <form asp-action="CreatePenjualanDetail">
 
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
@@ -43,7 +43,7 @@
                             <div class="form-group">
                                 <label asp-for="HargaOffTheRoad" class="control-label"></label>
 
-                                <input id="OffTheRoad1a" asp-for="HargaOffTheRoad" class="form-control" />
+                                <input value="@ViewBag.HargaOffTheRoad" id="OffTheRoad1a"  asp-for="HargaOffTheRoad" class="form-control" />
                                 <span asp-validation-for="HargaOffTheRoad" class="text-danger"></span>
 
 
@@ -54,7 +54,7 @@
                             <div class="form-group">
                                 <label asp-for="BBN" class="control-label"></label>
 
-                                <input id="BBN1" asp-for="BBN" class="form-control" />
+                                <input value="@ViewBag.BBN" id="BBN1" asp-for="BBN" class="form-control" />
                                 <span asp-validation-for="BBN" class="text-danger"></span>
 
 
@@ -66,12 +66,9 @@
                             <div class="form-group">
                                 <label asp-for="HargaOTR" class="control-label"></label>
 
-                                <input id="OTR1" readonly class="form-control" />
-                                <input hidden id="OTR2" readonly asp-for="HargaOTR" class="form-control" />
+                                <input id="OTR1" value="@ViewBag.OTRR" readonly class="form-control" />
+                                <input type="hidden" value="@string.Format("{0:0}", ViewBag.OTRR)"  id="OTR2"  asp-for="HargaOTR" class="form-control" />
                                 <span asp-validation-for="HargaOTR" class="text-danger"></span>
-
-
-
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -227,7 +224,8 @@
     </section>
 </div>
 
-<script>
+@section Scripts{
+    <script type="text/javascript">
     $(document).ready(function () {
         $("#StokUnit1").change(function ()
                    {
@@ -259,8 +257,8 @@
                                            urlSegment3.change();
 
                                            var urlSegment4 = $('#OTR2');
-                                          // urlSegment4.val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(otrr));
-                                           urlSegment4.change();
+                                             urlSegment4.val(otrr);
+                                            urlSegment4.change();
                                        }
 
 
@@ -282,6 +280,9 @@
                                                alert('Data Kosong');
                                           }
                               });
+
+                     });
+                            
 
             $("#DPPricelist1").change(function () {
                 var um = $("#DPPricelist1").val();
@@ -305,8 +306,12 @@
                 var Off = $("#OffTheRoad1a").val();
                 var BBN1 = $("#BBN1").val();
                 var OTr1= $('#OTR1');
-                OTr1.val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format((Off + BBN1)));
+                OTr1.val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format((Off - (-BBN1))));
                 OTr1.change();
+
+                var OTr2= $('#OTR2');
+                OTr2.val(Off - (-BBN1));
+                OTr2.change();
 
 
             });
@@ -314,23 +319,19 @@
                 var Off = $("#OffTheRoad1a").val();
                 var BBN1 = $("#BBN1").val();
                 var OTr1 = $('#OTR1');
-                OTr1.val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format((Off + BBN1)));
+                OTr1.val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format((Off - (-BBN1))));
                 OTr1.change();
 
+                var OTr2= $('#OTR2');
+                  OTr2.val(Off - (-BBN1));
+                OTr2.change();
 
             });
 
-
-
-
-
-                   });
-
-
-
-
+                   
 
     });
 
 
 </script>
+}

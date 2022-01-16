@@ -97,13 +97,14 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData
 
         private async Task SeedMasterBarang(SalesMarketingContext context)
         {
+            Guid xx = Guid.Parse("66de7778-5095-4248-ae1e-5793a5f91805");
             if (context.MasterBarang.Any())
             {
                 return;
             }
             var masterBarang = new[]
             {
-                Domain.MasterBarang.Create("BEAT STREET CBS ACC","MH1","","HONDA","110",decimal.Parse("13781000"),decimal.Parse("2875000"),"2019","D1I2N2A2A/T"),
+                Domain.MasterBarang.Create("BEAT STREET CBS ACC","MH1","","HONDA","110",decimal.Parse("13781000"),decimal.Parse("2875000"),"2019","D1I2N2A2A/T",xx),
 
             };
             context.MasterBarang.AddRange(masterBarang);

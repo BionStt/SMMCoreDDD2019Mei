@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SumberMas2015.SalesMarketing.InfrastructureData.Context;
 
@@ -11,9 +12,10 @@ using SumberMas2015.SalesMarketing.InfrastructureData.Context;
 namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
 {
     [DbContext(typeof(SalesMarketingContext))]
-    partial class SalesMarketingContextModelSnapshot : ModelSnapshot
+    [Migration("20220116075622_InitialCreate2")]
+    partial class InitialCreate2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1004,9 +1006,6 @@ namespace SumberMas2015.SalesMarketing.InfrastructureData.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Terjual")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Warna")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("StokUnitId");

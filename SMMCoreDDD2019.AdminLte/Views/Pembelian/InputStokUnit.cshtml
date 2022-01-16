@@ -7,8 +7,11 @@
 
 
 <hr />
-
-<div class="row ">
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="row ">
     <div class="col-md-12">
         <form asp-action="InputStokUnit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -29,7 +32,15 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>  <label class="control-label"></label>Nama Barang</td>
+                    <td>
+                        <label>Nama Supplier</label>
+                    </td>
+                    <td>
+                        <input readonly asp-for="NamaSupplier" value="@ViewBag.NamaSupplier" class="form-control"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>  <label class="control-label">Nama Barang</label></td>
                     <td width="75%">
                         <input readonly value="@ViewBag.NamaBrg1" class="form-control" />
 
@@ -38,21 +49,24 @@
                 <tr>
                     <td>  <label asp-for="Harga" class="control-label"></label></td>
                     <td>
-                        <input readonly value="@ViewBag.Harga1" asp-for="Harga" class="form-control" />
+                        <input readonly value="@string.Format("{0:c}", ViewBag.Harga1)" class="form-control" />
+                        <input type="hidden" value="@ViewBag.Harga1" asp-for="Harga" class="form-control" />
                         <span asp-validation-for="Harga" class="text-danger"></span>
                     </td>
                 </tr>
                 <tr>
                     <td>  <label asp-for="Diskon" class="control-label"></label></td>
                     <td>
-                        <input readonly value="@ViewBag.Diskon1" asp-for="Diskon" class="form-control" />
+                        <input type="hidden"  value="@ViewBag.Diskon1" asp-for="Diskon" class="form-control" />
+                               <input readonly value="@string.Format("{0:c}", ViewBag.Diskon1)" class="form-control" />
                         <span asp-validation-for="Diskon" class="text-danger"></span>
                     </td>
                 </tr>
                 <tr>
                     <td>  <label asp-for="Sellin" class="control-label"></label></td>
                     <td>
-                        <input readonly value="@ViewBag.SellIn1" asp-for="Sellin" class="form-control" />
+                        <input type="hidden" value="@ViewBag.SellIn1" asp-for="Sellin" class="form-control" />
+                              <input readonly value="@string.Format("{0:c}", ViewBag.SellIn1)" class="form-control" />
                         <span asp-validation-for="Sellin" class="text-danger"></span>
                     </td>
                 </tr>
@@ -128,5 +142,10 @@
     </table>
 
 </div>
-<script></script>
 
+
+
+            </div>
+        </div>
+    </section>
+</div>

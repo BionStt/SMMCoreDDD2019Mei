@@ -9,6 +9,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.MasterBarang.Commands.
 {
     public class CreateMasterBarangCommand:IRequest
     {
+        public Guid MasterBarangId { get; set; }
         public string NamaBarang { get; set; }
         public string NomorRangka { get; set; }
         public string NomorMesin { get; set; }

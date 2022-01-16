@@ -4,4 +4,4 @@ EntityFrameworkCore\UPDATE-DATABASE -CONTEXT SalesMarketingContext
 
 
 
-EntityFrameworkCore\Add-Migration InitialCreate1 -Context SalesMarketingContext -OutputDir InfrastructureData\Migrations
+EntityFrameworkCore\Add-Migration InitialCreate2 -Context SalesMarketingContext -OutputDir InfrastructureData\Migrations

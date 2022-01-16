@@ -27,17 +27,15 @@ namespace SumberMas2015.SalesMarketing.Domain
         {
             return new DataSPK(lokasiSpk,  userNameInput, userNameId);
         }
-        private void Ditolak()
+        public void AccDanTerjual()
+        {
+            StatusSPK = 3;
+        }
+        public void Ditolak()
         {
             Tolak = "1";
         }
-        public enum StatusInputSPK
-        {
-            Disurvei = 0,
-            DiAcc = 1,
-            Ditolaks = 2
-        }
-
+   
 
         private string KodeRegistrasi(DateTime Tanggal)
         {

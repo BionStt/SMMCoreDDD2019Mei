@@ -34,8 +34,8 @@ namespace SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Queries.Get
                                          HargaOTr = String.Format("{0:c}",c.HargaOff+c.Bbn),
                                          Diskon = String.Format("{0:c}",b.Diskon),
                                          SellIn = String.Format("{0:c}", b.SellIn),
-                                         Qty1 = b.Qty
-                                          //   Count1 = _context.StokUnit.Count(x => x.PembelianDetailId == b.Id)
+                                         Qty1 = b.Qty,
+                                          Count1 = _context.StokUnit.Count(x => x.PembelianDetailId == b.PembelianDetailId).ToString()
 
 
                                      }).AsNoTracking().ToListAsync();

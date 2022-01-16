@@ -8,7 +8,7 @@ namespace SumberMas2015.SalesMarketing.Domain
 {
     public class StokUnit
     {
-        private StokUnit(Guid stokUnitId, Guid masterBarangId, string nomorRangka, string nomorMesin, string namaSupplier)
+        private StokUnit(Guid stokUnitId, Guid masterBarangId, string nomorRangka, string nomorMesin, string namaSupplier, string warna)
         {
             StokUnitId=stokUnitId;
 
@@ -17,10 +17,11 @@ namespace SumberMas2015.SalesMarketing.Domain
             NomorMesin=nomorMesin;
             NamaSupplier=namaSupplier;
             TanggalInput=DateTime.Now;
+            Warna=warna;
         }
-        public static StokUnit CreateStokUnit(Guid stokUnitId,  Guid masterBarangId, string nomorRangka, string nomorMesin, string namaSupplier)
+        public static StokUnit CreateStokUnit(Guid stokUnitId,  Guid masterBarangId, string nomorRangka, string nomorMesin, string namaSupplier, string warna)
         {
-            return new StokUnit(stokUnitId,masterBarangId,nomorRangka,nomorMesin,namaSupplier);
+            return new StokUnit(stokUnitId,masterBarangId,nomorRangka,nomorMesin,namaSupplier,warna);
         }
         protected StokUnit()
         {
@@ -31,7 +32,16 @@ namespace SumberMas2015.SalesMarketing.Domain
         public Guid MasterBarangId { get; private set; }
         public string NomorRangka { get; private set; }
         public string NomorMesin { get; private set; }
+        public string Warna { get;private set; }
         public string NamaSupplier { get; private set; }
         public DateTime TanggalInput { get; private set; }
+        public DateTime TanggalTerjual{ get; set; }
+        public string Terjual { get; set; } = "0";
+        public void SetTerjual()
+        {
+            Terjual = "1";
+            TanggalTerjual = DateTime.Now.Date;
+        }
+
     }
 }

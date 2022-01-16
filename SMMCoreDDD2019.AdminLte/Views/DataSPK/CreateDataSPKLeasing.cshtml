@@ -19,7 +19,7 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label asp-for="TanggalSurvei" class="control-label">Tanggal Survei</label>
-                                <input id="datepicker1" asp-for="TanggalSurvei" class="form-control" />
+                                <input id="datepicker1" type="datetime" asp-for="TanggalSurvei" class="form-control" />
                                 <span asp-validation-for="TanggalSurvei" class="text-danger"></span>
 
 
@@ -125,8 +125,8 @@
 
                                 <select asp-for="NamaSalesId" class="form-control" asp-items="ViewBag.NamaSalesForce"></select>
                                 <span asp-validation-for="NamaSalesId" class="text-danger"></span>
-                                <input  asp-for="UserName" value="@Context.User.Identity.Name"/>
-                                 <input  asp-for="UserNameId" value="@ViewBag.UserId"/>
+                                <input type="hidden" asp-for="UserName" value="@Context.User.Identity.Name"/>
+                                 <input type="hidden"  asp-for="UserNameId" value="@ViewBag.UserId"/>
                             </div>
                         </div>
                     </div>
@@ -158,8 +158,8 @@
     </section>
 </div>
 
-
-<script>
+@section Scripts{
+    <script>
     $('#datepicker1').datepicker({
         changeMonth: true,
         changeYear: true,
@@ -270,3 +270,4 @@
     });
 
 </script>
+}

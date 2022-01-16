@@ -27,42 +27,26 @@ namespace SumberMas2015.Inventory.DtoMapping
         {
             return new CreatePembelianDetailCommand {
             BBN = model.BBN,
-            Diskon = model.Diskon,
-            Diskon2 = model.Diskon2,
-            DiskonPPN = model.DiskonPPN,
-            Harga1 = model.Harga1,
-            HargaOffTheRoad = model.HargaOffTheRoad,
-            HargaPPN = model.HargaPPN,
+            Diskon = model.Diskon,          
+            HargaOffTheRoad = model.HargaOffTheRoad,          
             Qty = model.Qty,
-            SellIn = model.SellIn,
-            Sellin2 = model.Sellin2,
-            SellInPPN=model.SellInPPN
-
-
+            SellIn = model.SellIn,         
+            PembelianId = model.PembelianId,
+            MasterBarangId  = model.MasterBarangId
             };
         }
         public static CreateStokUnitCommand ToCommand(this CreateStokUnitRequest model)
         {
             return new CreateStokUnitCommand {
-            Diskon = model.Diskon,
-            Diskon2 = model.Diskon2,
-            DiskonPPN = model.DiskonPPN,
-            Harga = model.Harga,
-            Harga1 = model.Harga1,
-            HargaPPN = model.HargaPPN,
+            Diskon = model.Diskon,         
+            Harga = model.Harga,       
             masterBarangId = model.masterBarangId,
             NomorMesin = model.NomorMesin,
             NomorRangka = model.NomorRangka,
                pembelianDetailId = model.pembelianDetailId,
-               Sellin = model.Sellin,
-            SellIn2= model.SellIn2,
-                SellInPPN = model.SellInPPN,
+               Sellin = model.Sellin,         
                 Warna = model.Warna,
                 NamaSupplier = model.NamaSupplier
-
-
-
-
             };
         }
         public static CreatePurchaseOrderPembelianDetailCommand ToCommand(this CreatePurchaseOrderPembelianDetailRequest model)

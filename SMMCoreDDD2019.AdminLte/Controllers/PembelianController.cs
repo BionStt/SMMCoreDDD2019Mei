@@ -147,6 +147,8 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             ViewData["Diskon1"] = (double)abc1.Diskon1;
             ViewData["SellIn1"] = (double)abc1.SellIn1;
             ViewData["NamaBrg1"] = abc1.NamaBarang1;
+            ViewData["NamaSupplier"] = abc1.NamaSupplier;//jamgan lupa di view
+
 
             ViewData["UserName"] = _userName;
             ViewData["UserId"] = _userId;
@@ -163,8 +165,9 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
                 var xx = StokUnitViewModel.ToCommand();
 
                 await _mediator.Send(xx);
-                //  return RedirectToAction(nameof(PembelianController.GetListPembelianDetail), "Pembelian");
-                //return RedirectToAction(nameof(PembelianController.GetListPembelianDetail2), "Pembelian",new { DataPmb1 = KodeBeli1 } );
+
+                return RedirectToAction(nameof(PembelianController.InputStokUnit), "Pembelian", new { KodeBeliDetail = KodeBeli1 }  ); //dicheck apakah berfungsi
+      
             }
             var StokUnitDetail = await _mediator.Send(new GetListStokUnitByNoKodeBeliQuery { Id = StokUnitViewModel.pembelianDetailId.ToString() });
 
@@ -179,7 +182,7 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             ViewData["Diskon1"] = (double)abc1.Diskon1;
             ViewData["SellIn1"] = (double)abc1.SellIn1;
             ViewData["NamaBrg1"] = abc1.NamaBarang1;
-            ViewData["NamaSupplier"] = abc1.NamaSupplier;//jamgan lupa di view
+            ViewData["NamaSupplier"] = abc1.NamaSupplier;
 
             ViewData["UserName"] = _userName;
             ViewData["UserId"] = _userId;

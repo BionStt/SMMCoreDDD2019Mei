@@ -30,9 +30,9 @@ namespace SumberMas2015.Inventory.Domain
         {
 
         }
-        private MasterBarang(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOff, decimal? bbn, string tahunPerakitan, string typeKendaraan, string userName, Guid userNameId)
+        private MasterBarang(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOff, decimal? bbn, string tahunPerakitan, string typeKendaraan, string userName, Guid userNameId, Guid masterBarangId)
         {
-            MasterBarangId = Guid.NewGuid();
+
             NamaBarang = namaBarang;
             NomorRangka = nomorRangka;
             NomorMesin = nomorMesin;
@@ -45,10 +45,11 @@ namespace SumberMas2015.Inventory.Domain
             MasterBarangStatus = 0;
             UserName=userName;
             UserNameId=userNameId;
+            MasterBarangId=masterBarangId;
         }
-        public static MasterBarang Create(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOff, decimal? bbn, string tahunPerakitan, string typeKendaraan, string userName, Guid userNameId)
+        public static MasterBarang Create(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOff, decimal? bbn, string tahunPerakitan, string typeKendaraan, string userName, Guid userNameId,Guid masterBarangId)
         {
-            return new MasterBarang(namaBarang, nomorRangka, nomorMesin, merek, kapasitasMesin, hargaOff, bbn, tahunPerakitan, typeKendaraan,userName,userNameId);
+            return new MasterBarang(namaBarang, nomorRangka, nomorMesin, merek, kapasitasMesin, hargaOff, bbn, tahunPerakitan, typeKendaraan,userName,userNameId, masterBarangId);
         }
         public void EditMasterBarang(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOff, decimal? bbn, string tahunPerakitan, string typeKendaraan)
         {

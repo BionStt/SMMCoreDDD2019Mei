@@ -59,6 +59,10 @@ namespace SumberMas2015.SalesMarketing.Domain
             UserNameId=userNameId;
             // CreatedAt = createdAt;
         }
+        public void SetTerinputPenjualan()
+        {
+            Terinput="1";
+        }
         public void SetBidangPekerjaan(Guid kodeBidangPekerjaan,string namaBidangPekerjaan)
         {
             KodeBidangPekerjaan=kodeBidangPekerjaan;

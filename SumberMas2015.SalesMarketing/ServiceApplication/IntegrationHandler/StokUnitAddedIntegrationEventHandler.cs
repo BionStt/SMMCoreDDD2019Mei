@@ -27,6 +27,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.IntegrationHandler
             DtStokUnit.StokUnitId = notification.StokUnitId;
             DtStokUnit.NomorMesin = notification.NomorMesin;
             DtStokUnit.NomorRangka = notification.NomorRangka;
+            DtStokUnit.Warna = notification.Warna;
             DtStokUnit.MasterBarangId = notification.MasterBarangId;
             DtStokUnit.NamaSupplier =   notification.NamaSupplier;
 

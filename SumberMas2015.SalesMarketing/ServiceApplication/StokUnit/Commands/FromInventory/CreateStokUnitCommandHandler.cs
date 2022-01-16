@@ -20,7 +20,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.StokUnit.Commands.From
 
         public async Task<Unit> Handle(CreateStokUnitCommand request, CancellationToken cancellationToken)
         {
-            var DtStokUnit = Domain.StokUnit.CreateStokUnit(request.StokUnitId, request.MasterBarangId, request.NomorRangka, request.NomorMesin, request.NamaSupplier);
+            var DtStokUnit = Domain.StokUnit.CreateStokUnit(request.StokUnitId, request.MasterBarangId, request.NomorRangka, request.NomorMesin, request.NamaSupplier,request.Warna);
 
             await _dbContext.StokUnit.AddAsync(DtStokUnit);
             await _dbContext.SaveChangesAsync();

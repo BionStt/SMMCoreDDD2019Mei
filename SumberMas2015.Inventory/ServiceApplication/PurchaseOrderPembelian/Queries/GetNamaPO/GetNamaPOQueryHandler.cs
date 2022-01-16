@@ -24,10 +24,10 @@ namespace SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Quer
         {
             var returnQuery= await (from a in _context.PurchaseOrderPembelian
                                     join b in _context.Supplier on a.MasterSupplierDBId equals b.SupplierId
-                                    where a.Terinput ==null
+                                    where a.Terinput =="0"
                                     select new GetNamaPOResponse {
                                     NoUrutPoPembelian = a.NoUrutId,
-                                    NamaPOPembelian = String.Format("{0}  - {1:d} - {2}", a.NoUrutId,a.TanggalPurchaseOrder,b.NamaSupplier)
+                                    NamaPOPembelian = String.Format("{0} - {1:d} - {2}", a.NoUrutId,a.TanggalPurchaseOrder,b.NamaSupplier)
                                     }
 
                 ).OrderByDescending(x => x.NoUrutPoPembelian).AsNoTracking().ToListAsync();

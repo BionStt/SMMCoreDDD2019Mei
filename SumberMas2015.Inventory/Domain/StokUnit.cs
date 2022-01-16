@@ -12,7 +12,7 @@ namespace SumberMas2015.Inventory.Domain
         {
 
         }
-        private StokUnit(Guid pembelianDetailId, Guid masterBarangId, string nomorRangka, string nomorMesin, string warna, decimal? harga, decimal? diskon, decimal? sellIn, decimal? harga1, decimal? diskon2, decimal? sellIn2, decimal? hargaPPN, decimal? diskonPPN, decimal? sellInPPN)
+        private StokUnit(Guid pembelianDetailId, Guid masterBarangId, string nomorRangka, string nomorMesin, string warna, decimal? harga, decimal? diskon, decimal? sellIn)
         {
             StokUnitId = Guid.NewGuid();
             PembelianDetailId = pembelianDetailId;
@@ -26,19 +26,19 @@ namespace SumberMas2015.Inventory.Domain
             Harga = harga;
             Diskon = diskon;
             SellIn = sellIn;
-            Harga1 = harga1;
-            Diskon2 = diskon2;
-            SellIn2 = sellIn2;
-            HargaPPN = hargaPPN;
-            DiskonPPN = diskonPPN;
-            SellInPPN = sellInPPN;
+            Harga1 = harga-(harga*10/100);
+            Diskon2 = diskon-(diskon*10/100);
+            SellIn2 = sellIn-(sellIn*10/100);
+            HargaPPN = harga*10/100;
+            DiskonPPN = diskon*10/100;
+            SellInPPN = sellIn*10/100;
         }
 
 
 
-        public static StokUnit CreateStokUnit(Guid pembelianDetailId, Guid masterBarangId, string nomorRangka, string nomorMesin, string warna, decimal? harga, decimal? diskon, decimal? sellIn, decimal? harga1, decimal? diskon2, decimal? sellIn2, decimal? hargaPPN, decimal? diskonPPN, decimal? sellInPPN)
+        public static StokUnit CreateStokUnit(Guid pembelianDetailId, Guid masterBarangId, string nomorRangka, string nomorMesin, string warna, decimal? harga, decimal? diskon, decimal? sellIn)
         {
-            return new StokUnit(pembelianDetailId, masterBarangId, nomorRangka, nomorMesin, warna, harga, diskon, sellIn, harga1, diskon2, sellIn2, hargaPPN, diskonPPN, sellInPPN);
+            return new StokUnit(pembelianDetailId, masterBarangId, nomorRangka, nomorMesin, warna, harga, diskon, sellIn);
         }
 
         public Guid StokUnitId { get; private set; }
@@ -64,6 +64,14 @@ namespace SumberMas2015.Inventory.Domain
 
         public DateTime TanggalInput { get; private set; }
 
+        public void setNoRangka(string nomorRangka)
+        {
+            NomorRangka = nomorRangka;
+        }
+        public void setNoMesin(string noMesin)
+        {
+            NomorMesin = noMesin;
+        }
         public void SetTerjual()
         {
             Jual = "1";

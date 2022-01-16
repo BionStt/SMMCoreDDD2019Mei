@@ -25,8 +25,9 @@ namespace SumberMas2015.Inventory.ServiceApplication.MasterBarang.Commands.Creat
 
         public async Task<Guid> Handle(CreateMasterBarangCommand request, CancellationToken cancellationToken)
         {
+            var masterBarangId= Guid.NewGuid();
             var mstBarang = Domain.MasterBarang.Create(request.NamaBarang, request.NomorRangka, request.NomorMesin, request.Merek
-                , request.KapasitasMesin, request.HargaOff, request.BBn, request.TahunPerakitan, request.TypeKendaraan,request.UserName,request.USerNameId);
+                , request.KapasitasMesin, request.HargaOff, request.BBn, request.TahunPerakitan, request.TypeKendaraan,request.UserName,request.USerNameId, masterBarangId);
 
             await _context.MasterBarang.AddAsync(mstBarang);
 
@@ -39,7 +40,8 @@ namespace SumberMas2015.Inventory.ServiceApplication.MasterBarang.Commands.Creat
                 request.HargaOff,
                 request.BBn,
                 request.TahunPerakitan,
-                request.TypeKendaraan
+                request.TypeKendaraan,
+                masterBarangId
                 ));
 
             await _context.SaveChangesAsync();

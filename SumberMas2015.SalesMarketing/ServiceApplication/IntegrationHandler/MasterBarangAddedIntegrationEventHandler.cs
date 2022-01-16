@@ -33,7 +33,8 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.IntegrationHandler
                 NomorMesin=notification.NomorMesin,
                 NomorRangka=notification.NomorRangka,
                 TahunPerakitan=notification.TahunPerakitan,
-                TypeKendaraan=notification.TypeKendaraan
+                TypeKendaraan=notification.TypeKendaraan,
+                MasterBarangId = notification.MasterBarangId
 
             });
 

@@ -13,6 +13,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.StokUnit.Commands.From
         public Guid MasterBarangId { get; set; }
         public string NomorRangka { get; set; }
         public string NomorMesin { get; set; }
+        public string Warna { get; set; }
         public string NamaSupplier { get; set; }
     }
 }

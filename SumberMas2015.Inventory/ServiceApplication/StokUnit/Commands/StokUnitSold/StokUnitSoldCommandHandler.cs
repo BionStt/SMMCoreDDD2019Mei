@@ -21,13 +21,14 @@ namespace SumberMas2015.Inventory.ServiceApplication.StokUnit.Commands.StokUnitS
 
         public async Task<Unit> Handle(StokUnitSoldCommand request, CancellationToken cancellationToken)
         {
-            var stokUnit = _dbContext.StokUnit.Where(x => x.StokUnitId == request.StokUnitId).SingleOrDefaultAsync().Result;
+            var stokUnit = await _dbContext.StokUnit.Where(x => x.StokUnitId == request.StokUnitId).SingleOrDefaultAsync();
             // var stokUnit = _dbContext.StokUnit.SingleOrDefaultAsync(x=>x.StokUnitId == request.StokUnitId);
             // var stokUnit = _dbContext.StokUnit.Where(x => x.StokUnitId == request.StokUnitId).ToListAsync();
             //   var aa = stokUnit.Result;
             stokUnit.SetTerjual();
-
-          //  await _dbContext.Update(stokUnit);
+            _dbContext.Entry(stokUnit).Property(x => x.Jual).IsModified=true;
+            _dbContext.Entry(stokUnit).Property(x => x.TanggalTerjual).IsModified=true;
+            //  await _dbContext.Update(stokUnit);
 
             await _dbContext.SaveChangesAsync();
 

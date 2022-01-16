@@ -22,7 +22,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.MasterBarang.Commands.
         public async Task<Unit> Handle(CreateMasterBarangCommand request, CancellationToken cancellationToken)
         {
             var mstBarang = Domain.MasterBarang.Create(request.NamaBarang, request.NomorRangka, request.NomorMesin, request.Merek
-                , request.KapasitasMesin, request.HargaOff, request.BBn, request.TahunPerakitan, request.TypeKendaraan);
+                , request.KapasitasMesin, request.HargaOff, request.BBn, request.TahunPerakitan, request.TypeKendaraan, request.MasterBarangId);
 
             await _context.MasterBarang.AddAsync(mstBarang);
             await _context.SaveChangesAsync();

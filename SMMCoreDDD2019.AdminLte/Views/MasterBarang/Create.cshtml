@@ -1,7 +1,7 @@
 ﻿@model  SumberMas2015.SalesMarketing.Dto.MasterBarang.CreateMasterBarangRequest
 
 @{
-    //  ViewData["Title"] = "Create";
+      ViewData["Title"] = "Create Master Barang";
    // Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
 
 }
@@ -17,14 +17,8 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label asp-for="Merek" class="control-label"></label>
-
                                 <input asp-for="Merek" class="form-control" />
-                             
-                               
                                 <span asp-validation-for="Merek" class="text-danger"></span>
-
-
-
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -44,8 +38,6 @@
 
                                 <input asp-for="NamaBarang" class="form-control" />
                                 <span asp-validation-for="NamaBarang" class="text-danger"></span>
-
-
 
                             </div>
                         </div>
@@ -137,7 +129,7 @@
                                 
                                 <input type="hidden" asp-for="UserNameId" value="@ViewBag.UserId"/>
                                   <input type="hidden" asp-for="UserNameInput" value="@Context.User.Identity.Name"/>
-                                <input />
+                               
 
                             </div>
                         </div>
@@ -168,9 +160,8 @@
     </section>
 </div>
 
-
-
-<script>
+@section Scripts{
+<script type="text/javascript">
 
     $("#OffTr").change(function () {
         var off = $("#OffTr").val();
@@ -339,7 +330,10 @@
         return false;
     });
 </script>
+ 
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+

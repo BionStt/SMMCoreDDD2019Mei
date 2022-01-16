@@ -28,10 +28,10 @@ namespace SumberMas2015.Inventory.ServiceApplication.StokUnit.Commands.CreateSto
         {
             var pembelianDetailId = await _context.PembelianDetail.Where(x => x.NoUrutId==request.pembelianDetailId).Select(x => x.PembelianDetailId).SingleOrDefaultAsync();
             var masterBarangId = await _context.MasterBarang.Where(x => x.NoUrutId==request.masterBarangId).Select(x => x.MasterBarangId).SingleOrDefaultAsync();
-
+     
 
             var dtStokUnit = Domain.StokUnit.CreateStokUnit(pembelianDetailId, masterBarangId, request.NomorRangka, request.NomorMesin,
-                request.Warna, request.Harga, request.Diskon, request.Sellin, request.Harga1, request.Diskon2, request.SellIn2, request.HargaPPN, request.DiskonPPN, request.SellInPPN);
+                request.Warna, request.Harga, request.Diskon, request.Sellin);
 
             await _context.StokUnit.AddAsync(dtStokUnit);
 
@@ -40,7 +40,8 @@ namespace SumberMas2015.Inventory.ServiceApplication.StokUnit.Commands.CreateSto
                 masterBarangId,
                 request.NomorRangka,
                 request.NomorMesin,
-                request.NamaSupplier
+                request.NamaSupplier,
+                request.Warna
                 ));
 
           //  await _context.SaveChangesAsync();

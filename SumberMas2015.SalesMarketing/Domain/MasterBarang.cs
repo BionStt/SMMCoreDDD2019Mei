@@ -28,9 +28,9 @@ namespace SumberMas2015.SalesMarketing.Domain
         {
 
         }
-        private MasterBarang(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOff, decimal? bbn, string tahunPerakitan, string typeKendaraan)
+        private MasterBarang(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOff, decimal? bbn, string tahunPerakitan, string typeKendaraan, Guid masterBarangId)
         {
-            MasterBarangId = Guid.NewGuid();
+
             NamaBarang = namaBarang;
             NomorRangka = nomorRangka;
             NomorMesin = nomorMesin;
@@ -41,10 +41,11 @@ namespace SumberMas2015.SalesMarketing.Domain
             TahunPerakitan = tahunPerakitan;
             TypeKendaraan = typeKendaraan;
             MasterBarangStatus = 0;
+            MasterBarangId=masterBarangId;
         }
-        public static MasterBarang Create(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOff, decimal? bbn, string tahunPerakitan, string typeKendaraan)
+        public static MasterBarang Create(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOff, decimal? bbn, string tahunPerakitan, string typeKendaraan,Guid masterBarangId)
         {
-            return new MasterBarang(namaBarang, nomorRangka, nomorMesin, merek, kapasitasMesin, hargaOff, bbn, tahunPerakitan, typeKendaraan);
+            return new MasterBarang(namaBarang, nomorRangka, nomorMesin, merek, kapasitasMesin, hargaOff, bbn, tahunPerakitan, typeKendaraan, masterBarangId);
         }
         public void EditMasterBarang(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOff, decimal? bbn, string tahunPerakitan, string typeKendaraan)
         {

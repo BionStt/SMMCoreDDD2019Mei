@@ -27,7 +27,7 @@
                                     <label  asp-for="TangggalLahir" class="control-label ">Tanggal Lahir </label>
                                     </td>
                                   <td>
-                                    <input type="datetime-local" asp-for="TangggalLahir" class="form-control" id="datepicker1" />
+                                    <input  type="datetime" asp-for="TangggalLahir" class="form-control" id="datepicker1" />
                                     <span asp-validation-for="TangggalLahir" class="text-danger"></span>
                                   </td>
                           </tr>
@@ -36,7 +36,7 @@
                                 <label asp-for="NomorKtp" class="control-label">Nomor KTP</label>
                              </td>
                             <td>
-                                <input type="number" style="width: 95%;" id="NoKtp1" asp-for="NomorKtp" class="form-control" />
+                                <input  style="width: 95%;" id="NoKtp1" asp-for="NomorKtp" class="form-control" />
                                 <span asp-validation-for="NomorKtp" class="text-danger"></span>
                             </td>
                         </tr>
@@ -193,27 +193,28 @@
                         </tr>
                         <tr>
                             <td> <label asp-for="KodePosKirim" class="control-label">Kode Pos</label></td>
-                            <td> <input asp-for="KodePosKirim" class="form-control" />
+                            <td> <input id="KodePosKirim1" asp-for="KodePosKirim" class="form-control" />
                                 <span asp-validation-for="KodePosKirim" class="text-danger"></span>
                               </td>
                         </tr>
                         <tr>
                             <td> <label asp-for="NomorTeleponKirim" class="control-label">Nomor Telepon</label></td>
-                            <td> <input asp-for="NomorTeleponKirim" class="form-control" />
+                            <td> <input id="NomorTeleponKirim1" asp-for="NomorTeleponKirim" class="form-control" />
                                 <span asp-validation-for="NomorTeleponKirim" class="text-danger"></span>
                        </td>
                         </tr>
                         <tr>
 
                             <td>    <label asp-for="NomorFaksKirim" class="control-label">Nomor Faks</label></td>
-                            <td> <input asp-for="NomorFaksKirim" class="form-control" />
+                            <td> <input id="NomorFaksKirim1" asp-for="NomorFaksKirim" class="form-control" />
+                        
                                 <span asp-validation-for="NomorFaksKirim" class="text-danger"></span>
                              </td>
                         </tr>
                         <tr>
                             <td> <label asp-for="NomorHandphoneKirim" class="control-label">Nomor Handphone</label></td>
-                            <td> <input asp-for="NomorHandphoneKirim" class="form-control" />
-                                <span asp-validation-for="NomorHandphoneKirim" class="text-danger"></span>
+                            <td> <input asp-for="NomorHandphoneKirim" id="NomorHandphoneKirim1" class="form-control" />
+                                   <span asp-validation-for="NomorHandphoneKirim" class="text-danger"></span>
                              </td>
                         </tr>
 
@@ -246,17 +247,11 @@
                             <td> <input asp-for="NamaBidangUsaha" class="form-control" />
                                 <span asp-validation-for="NamaBidangUsaha" class="text-danger"></span>
                                 </td>
-                        </tr>
-                    <tr style="hidden">
-                        <th></th>
-                        <td>     <label asp-for="UserNameId" class="control-label">User Id Pegawai</label>
-                        </td>
-                        <td>
-                            <input asp-for="UserNameId" value="@ViewBag.UserId" class="form-control" />
-                              <input asp-for="UserName" value="@Context.User.Identity.Name" class="form-control" />
+                                 <input type="hidden" asp-for="UserNameId" value="@ViewBag.UserId" class="form-control" />
+                              <input type="hidden"  asp-for="UserName" value="@Context.User.Identity.Name" class="form-control" />
                        
-                        </td>
-                    </tr>
+                        </tr>
+                  
                         @*  <tr >
                             <td>     <label asp-for="UserIDPeg" class="control-label">User Id Pegawai</label>
                             </td>
@@ -280,6 +275,8 @@
                         </tr>*@
 
                         <tr>
+                            <td></td>
+                            <td></td>
                             <td>
                                   <input type="submit" value="Create" class="btn btn-primary" />
                             </td>
@@ -300,12 +297,212 @@
          $('#datepicker1').datepicker({
         changeMonth: true,
         changeYear: true,
-      //  appendText: "(Tanggal-Bulan-Tahun)",
+        appendText: "(Tanggal-Bulan-Tahun)",
         dateFormat: "dd-mm-yy",
         yearRange: "c-100:c+10"
 
     });
+           
+            $('#NomorHandphoneKirim1').keypress(function (e) {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
 
+        return false;
+    });
+    $('#NomorHandphoneKirim1').keydown(function (e) {
+        // return /[0-9]/.test(String.fromCharCode(e.which));
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+        return false;
+    });
+       $('#NomorFaksKirim1').keypress(function (e) {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+
+        return false;
+    });
+    $('#NomorFaksKirim1').keydown(function (e) {
+        // return /[0-9]/.test(String.fromCharCode(e.which));
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+        return false;
+    });
+     $('#NomorTeleponKirim1').keypress(function (e) {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+
+        return false;
+    });
+    $('#NomorTeleponKirim1').keydown(function (e) {
+        // return /[0-9]/.test(String.fromCharCode(e.which));
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+        return false;
+    });
+     $('#KodePosKirim1').keypress(function (e) {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+
+        return false;
+    });
+    $('#KodePosKirim1').keydown(function (e) {
+        // return /[0-9]/.test(String.fromCharCode(e.which));
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
+        return false;
+    });
     $('#Handphone1').keypress(function (e) {
         var key = e.which || e.keyCode;
         if (!e.shiftKey && !e.altKey && !e.ctrlKey &&

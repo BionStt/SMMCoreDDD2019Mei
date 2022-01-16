@@ -10,7 +10,7 @@ namespace SumberMas2015.IntegrationEvent
 {
     public class MasterBarangAddedIntegrationEvent : INotification, IIntegrationEvent
     {
-        public MasterBarangAddedIntegrationEvent(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOffTheRoad, decimal? bBN, string tahunPerakitan, string typeKendaraan)
+        public MasterBarangAddedIntegrationEvent(string namaBarang, string nomorRangka, string nomorMesin, string merek, string kapasitasMesin, decimal? hargaOffTheRoad, decimal? bBN, string tahunPerakitan, string typeKendaraan, Guid masterBarangId)
         {
             NamaBarang=namaBarang;
             NomorRangka=nomorRangka;
@@ -21,8 +21,9 @@ namespace SumberMas2015.IntegrationEvent
             BBN=bBN;
             TahunPerakitan=tahunPerakitan;
             TypeKendaraan=typeKendaraan;
+            MasterBarangId=masterBarangId;
         }
-
+        public Guid MasterBarangId { get; set; }
         public string NamaBarang { get; set; }
         public string NomorRangka { get; set; }
         public string NomorMesin { get; set; }

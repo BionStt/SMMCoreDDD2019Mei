@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using SumberMas2015.SalesMarketing.EventBus;
 using SumberMas2015.SalesMarketing.InfrastructureData.Context;
+using SumberMas2015.SalesMarketing.InfrastructureData.EventBus;
 using SumberMas2015.SalesMarketing.InfrastructureData.Processing.InternalCommands;
 using SumberMas2015.SalesMarketing.ServiceApplication.Configuration.InternalCommands;
 using SumberMas2015.SalesMarketing.WorkerProcess;
@@ -24,6 +26,8 @@ namespace SumberMas2015.SalesMarketing
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddTransient<ICommandsScheduler, CommandsScheduler>();
+
+            services.AddScoped<ISalesMarketingEventBus, SalesMarketingEventBus>();
 
             services.AddHostedService<SalesMarketingInternalCommandsWorker>();
             services.AddHostedService<SalesMarketingOutBoxWorker>();

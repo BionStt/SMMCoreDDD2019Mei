@@ -17,12 +17,7 @@ namespace SumberMas2015.Inventory.ServiceApplication.StokUnit.Commands.CreateSto
         public decimal? Harga { get;  set; }
         public decimal? Diskon { get;  set; }
         public decimal? Sellin { get;  set; }
-        public decimal? Harga1 { get;  set; }
-        public decimal? Diskon2 { get;  set; }
-        public decimal? SellIn2 { get;  set; }
-        public decimal? HargaPPN { get;  set; }
-        public decimal? DiskonPPN { get;  set; }
-        public decimal? SellInPPN { get;  set; }
+     
         public string NamaSupplier { get; set; }
     }
 }

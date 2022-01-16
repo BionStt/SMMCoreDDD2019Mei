@@ -101,7 +101,7 @@ namespace SumberMas2015.SalesMarketing.DtoMapping
             joinPromo1 = model.JoinPromo1,
             joinPromo2 = model.JoinPromo2,
             komisi = model.Komisi,
-               offTheRoad = model.OffTheRoad,
+               offTheRoad = model.HargaOffTheRoad,
                promosi = model.promosi,
                sellOut = model.SellOut,
                sPF = model.SPF,
@@ -109,7 +109,8 @@ namespace SumberMas2015.SalesMarketing.DtoMapping
                 subsidi = model.Subsidi,
                 uangMuka = model.uangMuka,
                 UserName = model.UserName,
-                UserNameId = model.UserNameId
+                UserNameId = model.UserNameId,
+                
 
 
 

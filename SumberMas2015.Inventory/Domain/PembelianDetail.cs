@@ -28,7 +28,7 @@ namespace SumberMas2015.Inventory.Domain
 
         }
 
-        private PembelianDetail(Guid masterBarangDBId, decimal? hargaOffTheRoad, decimal? bBN, int qty, decimal? diskon, decimal? sellIn, decimal? harga1, decimal? diskon2, decimal? sellIn2, decimal? hargaPPN, decimal? diskonPPN, decimal? sellInPPN, Guid pembelianId)
+        private PembelianDetail(Guid masterBarangDBId, decimal? hargaOffTheRoad, decimal? bBN, int qty, decimal? diskon, decimal? sellIn, Guid pembelianId)
         {
             PembelianDetailId = Guid.NewGuid();
             MasterBarangDBId = masterBarangDBId;
@@ -37,18 +37,18 @@ namespace SumberMas2015.Inventory.Domain
             Qty = qty;
             Diskon = diskon;
             SellIn = sellIn;
-            Harga1 = harga1;
-            Diskon2 = diskon2;
-            SellIn2 = sellIn2;
-            HargaPPN = hargaPPN;
-            DiskonPPN = diskonPPN;
-            SellInPPN = sellInPPN;
+            Harga1 = hargaOffTheRoad -(hargaOffTheRoad * 10/100) ;
+            Diskon2 = diskon-(diskon *10/100);
+            SellIn2 = sellIn-(sellIn*10/100);
+            HargaPPN = hargaOffTheRoad * 10/100;
+            DiskonPPN = diskon *10/100;
+            SellInPPN = sellIn*10/100;
             PembelianId = pembelianId;
         }
 
-        public static PembelianDetail CreatePembelianDetail(Guid masterBarangDBId, decimal? hargaOffTheRoad, decimal? bBN, int qty, decimal? diskon, decimal? sellIn, decimal? harga1, decimal? diskon2, decimal? sellIn2, decimal? hargaPPN, decimal? diskonPPN, decimal? sellInPPN, Guid pembelianId)
+        public static PembelianDetail CreatePembelianDetail(Guid masterBarangDBId, decimal? hargaOffTheRoad, decimal? bBN, int qty, decimal? diskon, decimal? sellIn, Guid pembelianId)
         {
-            return new PembelianDetail(masterBarangDBId, hargaOffTheRoad, bBN, qty, diskon, sellIn, harga1, diskon2, sellIn2, hargaPPN, diskonPPN, sellInPPN, pembelianId);
+            return new PembelianDetail(masterBarangDBId, hargaOffTheRoad, bBN, qty, diskon, sellIn, pembelianId);
         }
     }
 }

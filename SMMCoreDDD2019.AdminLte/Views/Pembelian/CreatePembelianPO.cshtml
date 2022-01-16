@@ -20,7 +20,7 @@
                         <div class="col-md-10">
                             <div class="form-group">
                                   <label class="control-label">Tanggal PO Pembelian</label>
-                                <input title="Silahkan pilih tanggal (Bulan-Tanggal-Tahun)" id="datepicker1" type="datetime-local" asp-for="TanggalInputPOPembelian" value=""  />
+                                <input title="Silahkan pilih tanggal (Bulan-Tanggal-Tahun)" id="datepicker1" type="datetime" asp-for="TanggalInputPOPembelian" value=""  />
                                 <span asp-validation-for="MasterSupplierId" class="text-danger"></span>
 
                             </div>
@@ -83,8 +83,8 @@
     </section>
 </div>
 
-  <script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script>
+@section Scripts{
+    <script>
     $('#datepicker1').datepicker({
         changeMonth: true,
         changeYear: true,
@@ -93,32 +93,36 @@
         yearRange: "c-100:c+10"
 
     });
-    $('#datepicker1').keypress(function (e) {
-    var key = e.which || e.keyCode;
-    if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
-        // numbers
-        key >= 48 && key <= 57 ||
-        // Numeric keypad
-        //  key >= 96 && key <= 105 ||
-        // Backspace and Tab and Enter
-        key == 8 || key == 9 || key == 13 ||
-        // Home and End
-        key == 35 || key == 36 ||
-        // left and right arrows
-        key == 37 || //key == 39 ||
-        // . and ,
-        key == 190 || key == 188 ||
-        // ATAS and BAWAH
-        key == 24 || key == 25 ||
-        // KANAN and KIRI
-        key == 26 || key == 27 ||
-        // Del and Ins
-        key == 46 || key == 45)
-        return true;
+     $('#datepicker1').keypress(function (e) 
+     {
+        var key = e.which || e.keyCode;
+        if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // . and ,
+            key == 190 || key == 188 ||
+            // ATAS and BAWAH
+            key == 24 || key == 25 ||
+            // KANAN and KIRI
+            key == 26 || key == 27 ||
+            // Del and Ins
+            key == 46 || key == 45)
+            return true;
 
-    return false;
-});
+        return false;
+    });
+
 </script>
 
 
+
+}
 

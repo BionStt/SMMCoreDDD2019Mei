@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SumberMas2015.Inventory.ServiceApplication.StokUnit.Queries.GetDataSO;
-using SumberMas2015.Inventory.ServiceApplication.StokUnit.Queries.GetDataSOByID;
 using SumberMas2015.SalesMarketing.Dto.Penjualan;
 using SumberMas2015.SalesMarketing.DtoMapping;
 using SumberMas2015.SalesMarketing.ServiceApplication.DataKonsumen.Queries.GetCustomerDataPenjualan;
@@ -11,6 +9,8 @@ using SumberMas2015.SalesMarketing.ServiceApplication.DataSPK.Queries.GetNamaSPK
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterKategoriPenjualan.Queries.ListKategoriPenjualan;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterLeasing.Queries.ListCabangLeasing;
 using SumberMas2015.SalesMarketing.ServiceApplication.SalesMarketing.Queries.GetNamaSalesForce;
+using SumberMas2015.SalesMarketing.ServiceApplication.StokUnit.Queries.GetDataSO;
+using SumberMas2015.SalesMarketing.ServiceApplication.StokUnit.Queries.GetDataSOByID;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -22,12 +22,14 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         private IMediator _mediator;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly string _userId;
-
+        private readonly string _userName;
         public PenjualanController(IMediator mediator, IHttpContextAccessor httpContextAccessor = null)
         {
             _mediator = mediator;
             _httpContextAccessor=httpContextAccessor;
             _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+          
+              _userName = httpContextAccessor.HttpContext.User.Identity.Name;//username
 
         }
 
@@ -69,6 +71,20 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
         public async Task<IActionResult> CreatePenjualanDetail()
         {
             var KodeBarang = await _mediator.Send(new GetDataSOQuery());
+            var xx1 = string.Empty;
+
+            if (KodeBarang.Count==1)
+            {
+                foreach (var xx in KodeBarang)
+                {
+                    xx1 = xx.NoUrutSO.ToString();
+                }
+
+                var xx2 = await _mediator.Send(new GetDataSOByIDQuery { Id =xx1 });
+                ViewBag.HargaOffTheRoad = string.Format("{0:0}", xx2.HargaOff);
+                ViewBag.BBN = string.Format("{0:0}", xx2.BBN);
+                ViewBag.OTRR =string.Format("{0:0}", xx2.HargaOff+xx2.BBN);
+            }
             ViewData["NoSoBarang"] = new SelectList(KodeBarang, "NoUrutSO", "NamaBarang");
 
             ViewData["UserId"] = _userId;
@@ -88,6 +104,8 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             if (ModelState.IsValid)
             {
                 var xx = CreatePejualanDetailCommand1.ToCommand();
+                xx.UserName = _userName;
+                xx.UserNameId =Guid.Parse(_userId);
 
                 await _mediator.Send(xx);
                 return RedirectToAction(nameof(HomeController.Index), "Home");

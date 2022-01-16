@@ -25,8 +25,7 @@ namespace SumberMas2015.Inventory.ServiceApplication.PembelianDetail.Commands.Cr
             var PembelianId = await _context.Pembelian.Where(x => x.NoUrutId==request.PembelianId).Select(x => x.PembelianId).SingleOrDefaultAsync();
 
             var dtPembelianDetail = Domain.PembelianDetail.CreatePembelianDetail(mstBarangId,request.HargaOffTheRoad,request.BBN,
-                request.Qty,request.Diskon,request.SellIn,request.Harga1,request.Diskon2,request.Sellin2,
-                request.HargaPPN,request.DiskonPPN,request.SellInPPN, PembelianId);
+                request.Qty,request.Diskon,request.SellIn, PembelianId);
 
             await _context.PembelianDetail.AddAsync(dtPembelianDetail);
             await _context.SaveChangesAsync(cancellationToken);

@@ -1,7 +1,7 @@
 ﻿@model SumberMas2015.Inventory.Dto.PurchaseOrderPembelianDetail.CreatePurchaseOrderPembelianDetailRequest
 
 @{
-    // ViewData["Title"] = "CreatePembelianPODetail";
+     ViewData["Title"] = "Create Pembelian PO Detail";
   //  Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
 }
 
@@ -134,10 +134,9 @@
             </section>
         </div>
 
-
-
-<script>
-    $(document).ready(function () {
+@section Scripts{
+    <script type="text/javascript">
+         $(document).ready(function () {
         $("#OffTheRoad1a").change(function () {
             var off = $("#OffTheRoad1a").val();
             var Bbn = $("#BBN1").val();
@@ -155,32 +154,32 @@
          $("#NamaBarang1").change(function ()
                    {
                           $.ajax({
-                                 type: 'GET',
-                                  url: '@Url.Action("GetHargaKendaraan")',
-                                   datatype: JSON,
-                              data: { 'NoUrutTypeBrg': $("#NamaBarang1").val() },
-                                   success: function (data)
-                                   {
-                                       var aa = jQuery.parseJSON(data);
-                                       var hrg = aa.HargaOff;
-                                       var bbn1 = aa.BBN1;
-                                       var otrr = hrg + bbn1;
-                                      // var NoRangka= aa.Noka;
-                                       //  var NoMesin = aa.Nosin;
-                                       if (aa != null)
-                                       {
-                                           var urlSegment = $('#OffTheRoad1a');
-                                           urlSegment.val(hrg);
-                                           urlSegment.change();
+                                      type: 'GET',
+                                      url: '@Url.Action("GetHargaKendaraan")',
+                                      datatype: JSON,
+                                        data: { 'NoUrutTypeBrg': $("#NamaBarang1").val() },
+                                        success: function (data)
+                                         {
+                                               var aa = jQuery.parseJSON(data);
+                                               var hrg = aa.HargaOff;
+                                               var bbn1 = aa.BBN1;
+                                               var otrr = hrg + bbn1;
+                                              // var NoRangka= aa.Noka;
+                                               //  var NoMesin = aa.Nosin;
+                                               if (aa != null)
+                                               {
+                                                   var urlSegment = $('#OffTheRoad1a');
+                                                   urlSegment.val(hrg);
+                                                   urlSegment.change();
 
-                                           var urlSegment2 = $('#BBN1');
-                                           urlSegment2.val(bbn1);
-                                           urlSegment2.change();
+                                                   var urlSegment2 = $('#BBN1');
+                                                   urlSegment2.val(bbn1);
+                                                   urlSegment2.change();
 
-                                           var urlSegment3 = $('#HargaOTR1');
-                                           urlSegment3.val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(otrr));
-                                           urlSegment3.change();
-                                       }
+                                                   var urlSegment3 = $('#HargaOTR1');
+                                                   urlSegment3.val(Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(otrr));
+                                                   urlSegment3.change();
+                                               }
 
 
                                        //var urlSegment3 = $('#Noka1');
@@ -359,5 +358,7 @@
 
     });
 
+    </script>
 
-</script>
+}
+

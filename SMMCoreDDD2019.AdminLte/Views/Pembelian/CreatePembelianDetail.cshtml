@@ -1,7 +1,7 @@
-﻿                                           @model  SumberMas2015.Inventory.Dto.PembelianDetail.CreatePembelianDetailRequest
+﻿  @model  SumberMas2015.Inventory.Dto.PembelianDetail.CreatePembelianDetailRequest
 
 @{
-    // ViewData["Title"] = "CreatePembelianDetail";
+    ViewData["Title"] = "Create Pembelian Detail";
    // Layout = "~/Views/Shared/_AdminlteCreate.cshtml";
 }
 
@@ -133,9 +133,8 @@
 </div>
 
 
-
-
-<script>
+@section Scripts{
+    <script>
     $(document).ready(function () {
 
          $("#OffTheRoad1a").change(function () {
@@ -329,3 +328,5 @@
     });
 
 </script>
+}
+
