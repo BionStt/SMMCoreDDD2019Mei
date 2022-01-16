@@ -1,0 +1,3 @@
+﻿  EntityFrameworkCore\Add-Migration test1 -Context AuditContext -OutputDir Data/Migrations
+
+ EntityFrameworkCore\UPDATE-DATABASE -CONTEXT AuditContext
