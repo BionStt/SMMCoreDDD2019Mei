@@ -1,9 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SumberMas2015.BlazorIdentity\SumberMas2015.BlazorIdentity.csproj" />
+    <ProjectReference Include="..\..\SumberMas2015.Inventory\SumberMas2015.Inventory.csproj" />
     <ProjectReference Include="..\..\SumberMas2015.SalesMarketing\SumberMas2015.SalesMarketing.csproj" />
     <ProjectReference Include="..\Client\SumberMas2015.Blazor.Client.csproj" />
     <ProjectReference Include="..\Shared\SumberMas2015.Blazor.Shared.csproj" />

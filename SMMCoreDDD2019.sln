@@ -51,23 +51,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FlutterFrontEnd", "FlutterF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{F3CD03CB-3F71-4625-9BFF-6FB7531BB47F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumberMas2015.Blazor.Server", "SumberMas2015.Blazor\Server\SumberMas2015.Blazor.Server.csproj", "{88ACA8A2-4CB6-486C-8534-5E909DFF803D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SumberMas2015.Blazor.Server", "SumberMas2015.Blazor\Server\SumberMas2015.Blazor.Server.csproj", "{88ACA8A2-4CB6-486C-8534-5E909DFF803D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumberMas2015.Blazor.Client", "SumberMas2015.Blazor\Client\SumberMas2015.Blazor.Client.csproj", "{57008FCA-32F4-476E-A385-2F106FD280D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SumberMas2015.Blazor.Client", "SumberMas2015.Blazor\Client\SumberMas2015.Blazor.Client.csproj", "{57008FCA-32F4-476E-A385-2F106FD280D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumberMas2015.Blazor.Shared", "SumberMas2015.Blazor\Shared\SumberMas2015.Blazor.Shared.csproj", "{92A3B16E-3766-460A-BDD8-92E330D897FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SumberMas2015.Blazor.Shared", "SumberMas2015.Blazor\Shared\SumberMas2015.Blazor.Shared.csproj", "{92A3B16E-3766-460A-BDD8-92E330D897FB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SumberMas2015.Notification", "SumberMas2015.Notification", "{7272D28C-AD69-4560-AFBB-AC3F3895791B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumberMas2015.Notification", "SumberMas2015.Notification\SumberMas2015.Notification.csproj", "{02ED1B9F-4F76-4D42-A618-61E22BCA8C7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SumberMas2015.Notification", "SumberMas2015.Notification\SumberMas2015.Notification.csproj", "{02ED1B9F-4F76-4D42-A618-61E22BCA8C7D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SumberMas2015.Caching", "SumberMas2015.Caching", "{2FFBB3B3-891D-4616-B728-73EF03496FA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumberMas2015.Caching", "SumberMas2015.Caching\SumberMas2015.Caching.csproj", "{88C00980-3515-4989-97C3-2241905E8B59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SumberMas2015.Caching", "SumberMas2015.Caching\SumberMas2015.Caching.csproj", "{88C00980-3515-4989-97C3-2241905E8B59}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SumberMas2015.Audit", "SumberMas2015.Audit", "{43BE67E2-C7D0-4CD1-9837-ED3CC3E883DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumberMas2015.Audit", "SumberMas2015.Audit\SumberMas2015.Audit.csproj", "{11F4FF91-4B07-4035-B17B-3520D49BCFE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SumberMas2015.Audit", "SumberMas2015.Audit\SumberMas2015.Audit.csproj", "{11F4FF91-4B07-4035-B17B-3520D49BCFE3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SumberMas2015.BlazorIdentity", "SumberMas2015.BlazorIdentity", "{4DC45391-81E5-4D6B-8096-122DC2F532B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumberMas2015.BlazorIdentity", "SumberMas2015.BlazorIdentity\SumberMas2015.BlazorIdentity.csproj", "{F139E9B6-2EF6-4CED-9EED-60B6245C3CA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +139,10 @@ Global
 		{11F4FF91-4B07-4035-B17B-3520D49BCFE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11F4FF91-4B07-4035-B17B-3520D49BCFE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11F4FF91-4B07-4035-B17B-3520D49BCFE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F139E9B6-2EF6-4CED-9EED-60B6245C3CA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F139E9B6-2EF6-4CED-9EED-60B6245C3CA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F139E9B6-2EF6-4CED-9EED-60B6245C3CA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F139E9B6-2EF6-4CED-9EED-60B6245C3CA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -170,6 +178,8 @@ Global
 		{88C00980-3515-4989-97C3-2241905E8B59} = {2FFBB3B3-891D-4616-B728-73EF03496FA0}
 		{43BE67E2-C7D0-4CD1-9837-ED3CC3E883DB} = {551C84BD-CA68-4F72-83CB-FFDCBB22C3F5}
 		{11F4FF91-4B07-4035-B17B-3520D49BCFE3} = {43BE67E2-C7D0-4CD1-9837-ED3CC3E883DB}
+		{4DC45391-81E5-4D6B-8096-122DC2F532B0} = {551C84BD-CA68-4F72-83CB-FFDCBB22C3F5}
+		{F139E9B6-2EF6-4CED-9EED-60B6245C3CA9} = {4DC45391-81E5-4D6B-8096-122DC2F532B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C7FBAD6-AA62-41E2-BA1E-9391E74D9C94}

@@ -2,11 +2,16 @@ using Microsoft.AspNetCore.ResponseCompression;
 using SumberMas2015.SalesMarketing;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using SumberMas2015.Inventory;
+using SumberMas2015.BlazorIdentity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddSalesMarketing(builder.Configuration.GetConnectionString("DefaultConnection"));
+builder.Services.AddSalesMarketing(builder.Configuration.GetConnectionString("BlazorIdentityConnection"));
+builder.Services.AddInventory(builder.Configuration.GetConnectionString("InventoryConnection"));
+builder.Services.AddBlazorIdentity(builder.Configuration.GetConnectionString("InventoryConnection"));
+
 
 builder.Services.AddSwaggerGen(c => {
     c.SwaggerDoc("v1", new OpenApiInfo { 
@@ -59,6 +64,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();

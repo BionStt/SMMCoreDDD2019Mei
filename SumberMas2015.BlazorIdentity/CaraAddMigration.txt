@@ -1,0 +1,7 @@
+﻿
+EntityFrameworkCore\Add-Migration InitialCreate -Context BlazorIdentityContext -OutputDir InfrastructureData\Migrations
+EntityFrameworkCore\UPDATE-DATABASE -CONTEXT BlazorIdentityContext
+
+
+
+EntityFrameworkCore\Add-Migration InitialCreate2 -Context BlazorIdentityContext -OutputDir Infrastructure\Migrations

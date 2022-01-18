@@ -28,8 +28,8 @@ namespace SumberMas2015.Inventory
 
             services.AddScoped<IInventoryEventBus, InventoryEventBus>();
             services.AddTransient<ICommandsScheduler, CommandScheduler>();
-            services.AddHostedService<InventoryOutBoxWorker>();
-            services.AddHostedService<InventoryInternalCommandsWorker>();
+           // services.AddHostedService<InventoryOutBoxWorker>();
+          //  services.AddHostedService<InventoryInternalCommandsWorker>();
 
             return services;
         }

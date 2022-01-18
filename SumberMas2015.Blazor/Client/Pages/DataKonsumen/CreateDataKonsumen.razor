@@ -1,0 +1,234 @@
+﻿@page "/CreateDataKonsumen"
+@*@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]*@
+
+<h3>Create Data Konsumen</h3>
+
+@if(_jenisKelamin ==null){
+       @*<LoadingScreen />*@
+        <table>
+            <tr>
+                <td>No data was returned.</td>
+            </tr>
+        </table>
+}
+else{
+
+    
+
+    <div class="row">
+        <div class="col-md-4">
+            <EditForm Model="_item" OnValidSubmit="Create_Click">
+                <DataAnnotationsValidator/>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label class="control-label">Nomor KTP</label>
+                    <InputText placeholder="Contoh Nomor KTP : 3671060702840005" class="form-control" @bind-Value="_item.NomorKtp"></InputText>
+                   
+                    <ValidationMessage For="@(() => _item.NomorKtp)" />
+                    @*<input asp-for="NomorKTP" @bind-value="_item.NomorKTP" class="form-control" />*@
+                    @*<span asp-validation-for="NomorKTP" class="text-danger"></span>*@
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Tanggal Lahir</label>
+                    @*<input asp-for="TanggalLahir" @bind-value="_item.TanggalLahir" class="form-control" />
+                   <span asp-validation-for="TanggalLahir" class="text-danger"></span>*@
+                    <InputDate class="form-control" @bind-Value="_item.TangggalLahir"></InputDate>
+                    <ValidationMessage For="@(() => _item.TangggalLahir)" />
+                 
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Jenis Kelamin</label>
+                    @*<input asp-for="JenisKelamin" class="form-control" />*@
+                    @*<select   @bind-value="_item." asp-for="JenisKelamin"></select>*@
+                    @*<span asp-validation-for="JenisKelamin" class="text-danger"></span>*@
+
+                    <InputSelect @bind-Value="_item.JenisKelamin" class="form-control">
+                        @*<option>-- Please Select --</option>*@
+                        @foreach (var jnsKelamin in _jenisKelamin)
+                            {
+
+                            <option value="@jnsKelamin.NoUrutId">@jnsKelamin.JenisKelaminKeterangan</option>
+                            }
+
+                    </InputSelect>
+
+
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Agama</label>
+                    @*<input asp-for="Agama" class="form-control" />*@
+                    @*<select asp-items="@ViewBag.Agama" asp-for="Agama"></select>
+                        <span asp-validation-for="Agama" class="text-danger"></span>*@
+                    <InputSelect @bind-Value="_item.Agama" class="form-control">
+                        @*<option>-- Please Select --</option>*@
+                        @foreach (var agama in _agama)
+                            {
+
+                            <option value="@agama.NoUrutId">@agama.AgamaKeterangan</option>
+                            }
+
+
+                    </InputSelect>
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Nama Depan</label>
+                    @*<input asp-for="NamaDepan" class="form-control" />
+        <span asp-validation-for="NamaDepan" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.NamaDepan"></InputText>
+                    <ValidationMessage For="@(() => _item.NamaDepan)" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">NamaBelakang</label>
+                    @*<input asp-for="NamaBelakang" class="form-control" />
+                        <span asp-validation-for="NamaBelakang" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.NamaBelakang"></InputText>
+                    @*<ValidationMessage For="_item.NamaBelakang"></ValidationMessage>*@
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Nama Depan BPKB</label>
+                    @*<input asp-for="NamaDepanBPKB" class="form-control" />
+                        <span asp-validation-for="NamaDepanBPKB" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.NamaDepanBPKB"></InputText>
+                    @*<ValidationMessage For="(()=> _item.NamaDepanBPKB"></ValidationMessage>*@
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Nama Belakang BPKB</label>
+                    @*<input asp-for="NamaBelakangBPKB" class="form-control" />
+                        <span asp-validation-for="NamaBelakangBPKB" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.NamaBelakangBPKB"></InputText>
+                    @*<ValidationMessage For="(()=>_item.NamaBelakangBPKB"></ValidationMessage>*@
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Jalan Tinggal</label>
+                    @*<input asp-for="JalanTinggal" class="form-control" />
+                        <span asp-validation-for="JalanTinggal" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.Jalan"></InputText>
+                    @*<ValidationMessage For="(()=> _item.JalanTinggal"></ValidationMessage>*@
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Kelurahan Tinggal</label>
+                    @*<input asp-for="KelurahanTinggal" class="form-control" />
+                        <span asp-validation-for="KelurahanTinggal" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.Kelurahan"></InputText>
+                    @*<ValidationMessage For="(()=> _item.KelurahanTinggal"></ValidationMessage>*@
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Kecamatan Tinggal</label>
+                    @*<input asp-for="KecamatanTinggal" class="form-control" />
+                        <span asp-validation-for="KecamatanTinggal" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.Kecamatan"></InputText>
+                    @*<ValidationMessage For="(()=> _item.KecamatanTinggal"></ValidationMessage>*@
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Kota Tinggal</label>
+                    @*<input asp-for="KotaTinggal" class="form-control" />
+                        <span asp-validation-for="KotaTinggal" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.Kota"></InputText>
+                    @*<ValidationMessage For="(()=> _item.KotaTinggal"></ValidationMessage>*@
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Propinsi Tinggal</label>
+                    @*<input asp-for="PropinsiTinggal" class="form-control" />
+                        <span asp-validation-for="PropinsiTinggal" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.Propinsi"></InputText>
+                    @*<ValidationMessage For="(()=> _item.PropinsiTinggal"></ValidationMessage>*@
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Kode Pos Tinggal</label>
+                    @*<input asp-for="KodePosTinggal" class="form-control" />
+                        <span asp-validation-for="KodePosTinggal" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.KodePos"></InputText>
+                    @*<ValidationMessage For="_item.KodePosTinggal"></ValidationMessage>*@
+                </div>
+                <div class="form-group">
+                    <label class="control-label">No Telepon Tinggal</label>
+                    @*<input asp-for="NoTeleponTinggal" class="form-control" />
+                        <span asp-validation-for="NoTeleponTinggal" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.NomorTelepon"></InputText>
+                    @*<ValidationMessage For="_item.NoTeleponTinggal"></ValidationMessage>*@
+                </div>
+                <div class="form-group">
+                    <label class="control-label">No Fax Tinggal</label>
+                    @*<input asp-for="NoFaxTinggal" class="form-control" />
+                        <span asp-validation-for="NoFaxTinggal" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.NomorFaks"></InputText>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">No Handphone Tinggal</label>
+                    @*<input asp-for="NoHandphoneTinggal" class="form-control" />
+                        <span asp-validation-for="NoHandphoneTinggal" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.NomorHandphone"></InputText>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Jalan Kirim</label>
+                    @*<input asp-for="JalanKirim" class="form-control" />
+                        <span asp-validation-for="JalanKirim" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.JalanKirim"></InputText>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Kelurahan Kirim</label>
+                    @*<input asp-for="KelurahanKirim" class="form-control" />
+                        <span asp-validation-for="KelurahanKirim" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.KelurahanKirim"></InputText>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Kecamatan Kirim</label>
+                    @*<input asp-for="KecamatanKirim" class="form-control" />
+                        <span asp-validation-for="KecamatanKirim" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.KecamatanKirim"></InputText>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Kota Kirim</label>
+                    @*<input asp-for="KotaKirim" class="form-control" />
+                        <span asp-validation-for="KotaKirim" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.KotaKirim"></InputText>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Propinsi Kirim</label>
+                    @*<input asp-for="PropinsiKirim" class="form-control" />
+                        <span asp-validation-for="PropinsiKirim" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.PropinsiKirim"></InputText>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Kode Pos Kirim</label>
+                    @*<input asp-for="KodePosKirim" class="form-control" />
+                        <span asp-validation-for="KodePosKirim" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.KodePosKirim"></InputText>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">No Telepon Kirim</label>
+                    @*<input asp-for="NoTeleponKirim" class="form-control" />
+                        <span asp-validation-for="NoTeleponKirim" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.NomorTeleponKirim"></InputText>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">No Fax Kirim</label>
+                    @*<input asp-for="NoFaxKirim" class="form-control" />
+                        <span asp-validation-for="NoFaxKirim" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.NomorFaksKirim"></InputText>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">No Handphone Kirim</label>
+                    @*<input asp-for="NoHandphoneKirim" class="form-control" />
+                        <span asp-validation-for="NoHandphoneKirim" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.NomorHandphoneKirim"></InputText>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Email</label>
+                    @*<input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>*@
+                    <InputText class="form-control" @bind-Value="_item.Email"></InputText>
+                </div>
+                <div class="form-group">
+                    @*<input type="submit" value="Create" class="btn btn-primary" />*@
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+
+
+}

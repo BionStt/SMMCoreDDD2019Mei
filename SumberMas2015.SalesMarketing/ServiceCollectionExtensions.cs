@@ -31,8 +31,8 @@ namespace SumberMas2015.SalesMarketing
 
             services.AddScoped<ISalesMarketingEventBus, SalesMarketingEventBus>();
 
-            services.AddHostedService<SalesMarketingInternalCommandsWorker>();
-            services.AddHostedService<SalesMarketingOutBoxWorker>();
+         //   services.AddHostedService<SalesMarketingInternalCommandsWorker>();
+           // services.AddHostedService<SalesMarketingOutBoxWorker>();
 
 
             return services;

@@ -10,6 +10,7 @@ namespace SumberMas2015.SalesMarketing.Dto.DataKonsumen
 {
     public class CreateDataKonsumenRequest
     {
+   
         [Display(Name = "Jalan", Prompt = "Masukan nama jalan")]
         public string Jalan{ get; set; }
         [Display(Name = "Kelurahan", Prompt = "Masukan nama kelurahan")]
@@ -47,7 +48,7 @@ namespace SumberMas2015.SalesMarketing.Dto.DataKonsumen
         public string NomorFaksKirim { get; set; }
         [Display(Name = "Nomor Handphone", Prompt = "")]
         public string NomorHandphoneKirim { get; set; }
-        [Display(Name = "Nama Depan", Prompt = "MAsukan nama depan")]
+        [Display(Name = "Nama Depan", Prompt = "Masukan nama depan")]
         public string NamaDepan { get; set; }
         [Display(Name = "Nama Belakang", Prompt = "Masukan nama belakang")]
         public string NamaBelakang { get; set; }
