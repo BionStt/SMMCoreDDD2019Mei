@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.ResponseCompression;
+using SumberMas2015.SalesMarketing;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddSalesMarketing(builder.Configuration.GetConnectionString("DefaultConnection"));
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 

@@ -64,9 +64,7 @@ namespace SMMCoreDDD2019.AdminLte.Controllers
             {
                 var dtKonsumen = customerViewModel.ToCommand();
                 await _mediator.Send(dtKonsumen);
-
-
-               // await _mediator.Send(customerViewModel);
+                             
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
             return View(customerViewModel);

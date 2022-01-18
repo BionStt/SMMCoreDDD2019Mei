@@ -20,7 +20,9 @@ namespace SumberMas2015.SalesMarketing
     {
         public static IServiceCollection AddSalesMarketing(this IServiceCollection services, string connectionString)
         {
-
+            //var assembly = AppDomain.CurrentDomain.Load("Data");
+            //services.AddMediatR(assembly);
+            //  services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
             services.AddDbContext<SalesMarketingContext>(options =>
               options.UseSqlServer(connectionString));
 

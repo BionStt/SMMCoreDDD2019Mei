@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace SumberMas2015.SalesMarketing.ServiceApplication.DataKonsumen.Commands.CreateDataKonsumen
 {
-    public class CreateDataKonsumenCommandHandler : IRequestHandler<CreateDataKonsumenCommand, Guid>
+    public class CreateDataKonsumenCommandHandler : IRequestHandler<CreateDataKonsumenCommand,Guid>
     {
         private readonly SalesMarketingContext _context;
         private IMediator _mediator;
@@ -45,8 +45,8 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.DataKonsumen.Commands.
                 await _context.DataKonsumen.AddAsync(dtKonsumen);
                 await _context.SaveChangesAsync();
             }
-            return dtKonsumen.DataKonsumenId;
-
+             return dtKonsumen.DataKonsumenId;
+            //return Unit.Value;
 
         }
     }
