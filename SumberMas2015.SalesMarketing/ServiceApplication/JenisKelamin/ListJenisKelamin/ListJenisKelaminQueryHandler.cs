@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using SumberMas2015.SalesMarketing.Dto.JenisKelamin;
+using SumberMas2015.Blazor.Shared.Dto.JenisKelamin;
+//using SumberMas2015.SalesMarketing.Dto.JenisKelamin;
 using SumberMas2015.SalesMarketing.InfrastructureData.Context;
 using System;
 using System.Collections.Generic;

@@ -2,8 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using SumberMas2015.Blazor.Server.DtoMapping;
 using SumberMas2015.Blazor.Shared.Dto.DataKonsumen;
+using SumberMas2015.Blazor.Shared.Dto.JenisKelamin;
+using SumberMas2015.Blazor.Shared.Dto.MasterBidangUsaha;
 using SumberMas2015.Blazor.Shared.Dto.NamaBidangPekerjaan;
+using SumberMas2015.SalesMarketing.ServiceApplication.JenisKelamin.ListJenisKelamin;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangPekerjaanDBs.Queries;
+using SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangUsahaDBs.Queries;
 using System.Security.Claims;
 
 namespace SumberMas2015.Blazor.Server.Controllers
@@ -35,7 +39,17 @@ namespace SumberMas2015.Blazor.Server.Controllers
             var listNamaBidangPekerjaan = await _mediator.Send(new GetNamaBidangPekerjaanQuery() );
             return listNamaBidangPekerjaan;
         }
-
+        [HttpGet("GetNamaBidangUsahaAsync")]
+        public async Task<IReadOnlyCollection<GetNamaBidangUsahaResponse>> GetNamaBidangUsahaAsync()
+        {
+            var listNamaBidangUsaha = await _mediator.Send(new GetNamaBidangUsahaQuery());
+            return listNamaBidangUsaha;
+        }
+        public async Task<IReadOnlyCollection<ListJenisKelaminResponse>> GetJenisKelaminAsync()
+        {
+            var listJenisKelamin = await _mediator.Send(new ListJenisKelaminQuery());
+            return listJenisKelamin;
+        }
         //public async Task<IActionResult> Create()
         //{
         //    var NamaBidangPekerjaan1 = await _mediator.Send(new GetNamaBidangPekerjaanQuery());
@@ -55,7 +69,7 @@ namespace SumberMas2015.Blazor.Server.Controllers
 
         //    return View();
         //}
-    
+
         /// <summary>
         /// CreateDataKonsumen action adalah untuk menginput data konsumen baru
         /// </summary>

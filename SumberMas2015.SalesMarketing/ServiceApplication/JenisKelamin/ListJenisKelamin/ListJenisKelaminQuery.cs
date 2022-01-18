@@ -1,5 +1,6 @@
 ﻿using MediatR;
-using SumberMas2015.SalesMarketing.Dto.JenisKelamin;
+using SumberMas2015.Blazor.Shared.Dto.JenisKelamin;
+//using SumberMas2015.SalesMarketing.Dto.JenisKelamin;
 using System;
 using System.Collections.Generic;
 using System.Linq;

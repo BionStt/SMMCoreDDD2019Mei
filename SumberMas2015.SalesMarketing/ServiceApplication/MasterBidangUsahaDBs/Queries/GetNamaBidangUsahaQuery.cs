@@ -1,5 +1,6 @@
 ﻿using MediatR;
-using SumberMas2015.SalesMarketing.Dto.MasterBidangUsahaDBs;
+using SumberMas2015.Blazor.Shared.Dto.MasterBidangUsaha;
+//using SumberMas2015.SalesMarketing.Dto.MasterBidangUsahaDBs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
