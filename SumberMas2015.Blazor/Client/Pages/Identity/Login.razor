@@ -14,7 +14,7 @@
     <h4 class="font-weight-normal text-center">Login</h4>
 
     <label for="inputUsername" class="sr-only">User Name</label>
-    <InputText id="inputUsername" class="form-control" @bind-Value="loginParameters.UserName" autofocus placeholder="Username" />
+    <InputText  id="inputUsername" class="form-control" @bind-Value="loginParameters.UserName" autofocus placeholder="Username" />
     <ValidationMessage For="@(() => loginParameters.UserName)" />
 
     <label for="inputPassword" class="sr-only">Password</label>
@@ -35,21 +35,3 @@
     </NavLink>
 </EditForm>
 
-@code{
-    LoginParameters loginParameters { get; set; } = new LoginParameters();
-    string error { get; set; }
-
-    async Task OnSubmit()
-    {
-        error = null;
-        try
-        {
-            await authStateProvider.Login(loginParameters);
-            navigationManager.NavigateTo("");
-        }
-        catch (Exception ex)
-        {
-            error = ex.Message;
-        }
-    }
-}

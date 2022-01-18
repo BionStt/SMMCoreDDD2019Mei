@@ -33,20 +33,5 @@
 
 @functions{
 
-    RegisterParameters registerParameters { get; set; } = new RegisterParameters();
-    string error { get; set; }
-
-    async Task OnSubmit()
-    {
-        error = null;
-        try
-        {
-            await authStateProvider.Register(registerParameters);
-            navigationManager.NavigateTo("");
-        }
-        catch (Exception ex)
-        {
-            error = ex.Message;
-        }
-    }
+   
 }
