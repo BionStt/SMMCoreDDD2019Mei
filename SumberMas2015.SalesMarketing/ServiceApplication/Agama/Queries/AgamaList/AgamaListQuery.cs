@@ -1,5 +1,6 @@
 ﻿using MediatR;
-using SumberMas2015.SalesMarketing.Dto.Agama;
+using SumberMas2015.Blazor.Shared.Dto.Agama;
+//using SumberMas2015.SalesMarketing.Dto.Agama;
 using System;
 using System.Collections.Generic;
 using System.Linq;

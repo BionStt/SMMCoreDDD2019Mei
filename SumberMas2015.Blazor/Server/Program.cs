@@ -1,10 +1,40 @@
 using Microsoft.AspNetCore.ResponseCompression;
 using SumberMas2015.SalesMarketing;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddSalesMarketing(builder.Configuration.GetConnectionString("DefaultConnection"));
+
+builder.Services.AddSwaggerGen(c => {
+    c.SwaggerDoc("v1", new OpenApiInfo { 
+        Title = "Sumber Mas Blazor API",
+        Version = "v1",
+        Description = "An API To perform Sumber Mas Blazor Operations",
+        TermsOfService = new Uri("https://example.con/terms"),
+        Contact = new OpenApiContact
+        {
+            Name = "Sutanto Gasali",
+            Email = "sutanto.gasali@gmail.com",
+            Url = new Uri("https://sutantogasali.com"),
+        },
+        License = new OpenApiLicense
+        {
+
+            Name = "Employee API xxx",
+            Url = new Uri("https://example.com/license"),        
+        }
+     });
+
+    // set the comments path for the swagger JSON and UI
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    c.IncludeXmlComments(xmlPath);
+
+});
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
@@ -33,5 +63,16 @@ app.UseRouting();
 app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
+
+// Enable middleware to serve generated Swagger as a JSON endpoint.
+app.UseSwagger();
+
+// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+// specifying the Swagger JSON endpoint.
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+});
+
 
 app.Run();

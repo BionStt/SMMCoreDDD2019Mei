@@ -1,10 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SumberMas2015.Blazor.Server.DtoMapping;
+using SumberMas2015.Blazor.Shared.Dto.Agama;
 using SumberMas2015.Blazor.Shared.Dto.DataKonsumen;
 using SumberMas2015.Blazor.Shared.Dto.JenisKelamin;
 using SumberMas2015.Blazor.Shared.Dto.MasterBidangUsaha;
 using SumberMas2015.Blazor.Shared.Dto.NamaBidangPekerjaan;
+using SumberMas2015.SalesMarketing.ServiceApplication.Agama.Queries.AgamaList;
 using SumberMas2015.SalesMarketing.ServiceApplication.JenisKelamin.ListJenisKelamin;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangPekerjaanDBs.Queries;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangUsahaDBs.Queries;
@@ -33,42 +35,50 @@ namespace SumberMas2015.Blazor.Server.Controllers
             // _userId2 =  httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;//UserNAme
 
         }
+
+        /// <summary>
+        /// menampilkan list data bidang pekerjaan
+        /// </summary>
+        /// <returns>GetNamaBidangPekerjaanResponse</returns>
         [HttpGet("GetNamaBidangPekerjaanAsync")]
         public async Task<IReadOnlyCollection<GetNamaBidangPekerjaanResponse>> GetNamaBidangPekerjaanAsync()
         {
             var listNamaBidangPekerjaan = await _mediator.Send(new GetNamaBidangPekerjaanQuery() );
             return listNamaBidangPekerjaan;
         }
+
+        /// <summary>
+        /// menampilkan list data Bidang usaha
+        /// </summary>
+        /// <returns>GetNamaBidangUsahaResponse</returns>
         [HttpGet("GetNamaBidangUsahaAsync")]
         public async Task<IReadOnlyCollection<GetNamaBidangUsahaResponse>> GetNamaBidangUsahaAsync()
         {
             var listNamaBidangUsaha = await _mediator.Send(new GetNamaBidangUsahaQuery());
             return listNamaBidangUsaha;
         }
+
+        /// <summary>
+        /// menampilkan list data jenis kelamin
+        /// </summary>
+        /// <returns>ListJenisKelaminResponse</returns>
+        [HttpGet("GetJenisKelaminAsync")]
         public async Task<IReadOnlyCollection<ListJenisKelaminResponse>> GetJenisKelaminAsync()
         {
             var listJenisKelamin = await _mediator.Send(new ListJenisKelaminQuery());
             return listJenisKelamin;
         }
-        //public async Task<IActionResult> Create()
-        //{
-        //    var NamaBidangPekerjaan1 = await _mediator.Send(new GetNamaBidangPekerjaanQuery());
-        //    var NamaBidangUsaha1 = await _mediator.Send(new GetNamaBidangUsahaQuery());
-        //    ViewData["NamaBidangPekerjaan1"] = new SelectList(NamaBidangPekerjaan1, "NoUrutBidangPekerjaan", "NamaMasterBidangPekerjaan");
-        //    ViewData["NamaBidangUsaha1"] = new SelectList(NamaBidangUsaha1, "NoKodeMasterBidangUsaha", "NamaMasterBidangUsaha");
 
-        //    var Agama = await _mediator.Send(new AgamaListQuery());
-        //    var JnsKelamin = await _mediator.Send(new ListJenisKelaminQuery());
-        //    ViewData["Agama1"] = new SelectList(Agama, "NoUrutId", "AgamaKeterangan");
-        //    ViewData["JnsKelamin1"] = new SelectList(JnsKelamin, "NoUrutId", "JenisKelaminKeterangan");
+        /// <summary>
+        /// menampilkan list data jenis kelamin
+        /// </summary>
+        /// <returns>ListJenisKelaminResponse</returns>
+        public async Task<IReadOnlyCollection<AgamaListResponse>> GetAgamaListAsync()
+        {
+            var listAgama = await _mediator.Send(new AgamaListQuery());
+            return listAgama;
+        }
 
-        //    ViewData["UserId"] = _userId;
-
-        //    //  ViewData["UserId2"] = _userId2;
-        //    //  ViewData["UserName"] = _userName;
-
-        //    return View();
-        //}
 
         /// <summary>
         /// CreateDataKonsumen action adalah untuk menginput data konsumen baru
@@ -79,7 +89,7 @@ namespace SumberMas2015.Blazor.Server.Controllers
         /// <response code="400">if the model is null</response>
         /// <remarks>
         /// sample request:
-        ///      Post api/CreateDataKonsumen
+        ///      Post api/CreateDataKonsumenAsync
         ///      {
         ///         "NamaDepan":" bion",
         /// 
