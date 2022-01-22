@@ -34,6 +34,7 @@ namespace SumberMas2015.SalesMarketing.ServiceApplication.StokUnit.Queries.GetDa
                                      }
                                      ).AsNoTracking().ToListAsync();
 
+            
             return returnQuery;
         }
     }

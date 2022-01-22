@@ -26,6 +26,7 @@ namespace SumberMas2015.Inventory.ServiceApplication.PurchaseOrderPembelian.Comm
             var dtPoPmb = Domain.PurchaseOrderPembelian.CreatePurchaseOrderPembelian(mstSupplierId, request.Keterangan, request.UserName,request.UserNameId,request.PoASTRA, request.TanggalInputPoPembelian);
 
             await _context.PurchaseOrderPembelian.AddAsync(dtPoPmb);
+
             await _context.SaveChangesAsync();
 
             return dtPoPmb.PurchaseOrderPembelianId;
