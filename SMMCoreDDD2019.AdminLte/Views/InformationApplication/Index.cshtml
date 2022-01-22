@@ -1,0 +1,102 @@
+﻿@using Microsoft.AspNetCore.Hosting
+@using SumberMas2015.Utility
+@using System.Diagnostics
+@inject IWebHostEnvironment _webHostEnvironment
+
+@{
+    ViewData["Title"] = "Home Page";
+       var process = Process.GetCurrentProcess();
+
+}
+
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <div class="ps-4 pe-4">
+                <div class="col-md-10">
+    <div class="row">
+
+                <table class="table table-borderless">
+                    <thead class="table-light">
+                        <tr>
+                            <th colspan="2">
+                                <i class="bi-moon-stars"></i>
+                               Configuration
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="w-25">Version</td>
+                            <td>@Helper.AppVersion</td>
+                        </tr>
+                        <tr>
+                            <td>Environment</td>
+                            <td>@_webHostEnvironment.EnvironmentName</td>
+                        </tr>
+              
+                    </tbody>
+                </table>
+    </div>
+
+    <div class="row">
+        <table class="table table-borderless">
+            <thead class="table-light">
+                <tr>
+                    <th colspan="2">
+                        <i class="bi-tools"></i>
+                        Server Information
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="w-25">System</td>
+                    <td>@Helper.TryGetFullOSVersion() @(Environment.Is64BitOperatingSystem ? "(64-bit)": "(32-bit)")</td>
+                </tr>
+                <tr>
+                    <td>Directory</td>
+                    <td>@Environment.CurrentDirectory</td>
+                </tr>
+                <tr>
+                    <td>Machine Name</td>
+                    <td>@Environment.MachineName</td>
+                </tr>
+                <tr>
+                    <td>User Name</td>
+                    <td>@Environment.UserDomainName\@Environment.UserName</td>
+                </tr>
+                <tr>
+                    <td>.NET Version</td>
+                    <td>@Environment.Version</td>
+                </tr>
+                <tr>
+                    <td>Worker Process</td>
+                    <td>[@process.Id] @process.ProcessName @(Environment.Is64BitProcess ? "(64-bit)" : "(32-bit)")</td>
+                </tr>
+                <tr>
+                    <td>Start Time</td>
+                    <td>@process.StartTime.ToUniversalTime() (UTC)</td>
+                </tr>
+                <tr>
+                    <td>Memory</td>
+                    <td>@(process.WorkingSet64 / 1024 / 1024) MB</td>
+                </tr>
+                <tr>
+                    <td>Docker Container</td>
+                    <td>@(Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER") == "true")</td>
+                </tr>
+            </tbody>
+        </table>
+
+      
+    </div>
+
+</div>
+
+        </div>
+        </div>
+    </section>
+</div>
+
+

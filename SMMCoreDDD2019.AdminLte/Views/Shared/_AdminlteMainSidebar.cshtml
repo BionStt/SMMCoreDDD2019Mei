@@ -206,7 +206,11 @@
         </li>*@
 
             <li class="header">CONFIG</li>
-
+              <li class="@Html.IsSelected(controller: MainMenu.InformationApplications.ControllerName)">
+                <a href="@MainMenu.InformationApplications.Path">
+                    <i class="fa fa-gear"></i> <span>@MainMenu.InformationApplications.PageName</span>
+                </a>
+            </li>
             @*<li class="@Html.IsSelected(controller: MainMenu.Currency.ControllerName)">
             <a href="@MainMenu.Currency.Path">
                 <i class="fa fa-dollar"></i> <span>@MainMenu.Currency.PageName</span>

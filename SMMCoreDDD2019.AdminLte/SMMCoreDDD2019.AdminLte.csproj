@@ -26,6 +26,7 @@
     <ProjectReference Include="..\SumberMas2015.Inventory\SumberMas2015.Inventory.csproj" />
     <ProjectReference Include="..\SumberMas2015.Organization\SumberMas2015.Organization.csproj" />
     <ProjectReference Include="..\SumberMas2015.SalesMarketing\SumberMas2015.SalesMarketing.csproj" />
+    <ProjectReference Include="..\SumberMas2015.Utility\SumberMas2015.Utility.csproj" />
   </ItemGroup>
 
   <ItemGroup>

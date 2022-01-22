@@ -623,6 +623,13 @@ namespace SumberMas2015.Identity.Pages
             public const string ControllerName = "Dashboard";
             public const string ActionName = "Index";
         }
-
+        public static class InformationApplications
+        {
+            public const string PageName = "Information Applications";
+            public const string RoleName = "Information Applications";
+            public const string Path = "/InformationApplication/Index";
+            public const string ControllerName = "InformationApplication";
+            public const string ActionName = "Index";
+        }
     }
 }
