@@ -22,7 +22,7 @@ namespace SumberMas2015.Blazor.Server.Controllers
         private IMediator _mediator;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly string _userId;
-
+       
         public DataKonsumenController(ILogger<DataKonsumenController> logger, IMediator mediator, IHttpContextAccessor httpContextAccessor)
         {
             _logger=logger;
@@ -91,7 +91,19 @@ namespace SumberMas2015.Blazor.Server.Controllers
         /// sample request:
         ///      Post api/CreateDataKonsumenAsync
         ///      {
-        ///         "NamaDepan":" bion",
+        ///           //Contoh pengisian parameter
+        /// "sortColumn": "",
+        ///"sortColumnDir": "",
+        ///"pageNumber": 1,
+        ///"pageSize": 10,
+        ///"searchParam": "",
+       ///"groupId": "",
+        ///"groupIdName": "",
+        ///"parentId": "",
+        ///"parentIdName": "",
+        ///"clientId": 0,
+        ///"leadsId": 0,
+        ///"memoId": ""
         /// 
         ///      }
         /// </remarks>
@@ -102,8 +114,9 @@ namespace SumberMas2015.Blazor.Server.Controllers
         // [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateDataKonsumenAsync(CreateDataKonsumenRequest customerViewModel)
         {
+           
             var dtKonsumen = customerViewModel.ToCommand();
-            var aa = await _mediator.Send(dtKonsumen);
+            var aa = await _mediator.Send(dtKonsumen);//mediator pattern 
             
             return Created(nameof(this.CreateDataKonsumenAsync), aa);
         }

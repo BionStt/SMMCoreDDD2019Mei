@@ -1,0 +1,236 @@
+I'll analyze the project structure to identify the business processes in this SMMCoreDDD2019Mei project. Let me examine the different modules and their components.
+
+Read file: README.md
+Ran tool
+Ran tool
+Ran tool
+Ran tool
+Ran tool
+Ran tool
+Ran tool
+Read file: SumberMas2015.Organization/Domain/DataPerusahaanProsesBisnis.cs
+Ran tool
+Ran tool
+Berdasarkan analisis struktur proyek SMMCoreDDD2019Mei, berikut adalah **proses bisnis** yang teridentifikasi dalam sistem ini:
+
+## **PROSES BISNIS SMMCoreDDD2019Mei**
+
+### **1. MANAJEMEN IDENTITAS & KEAMANAN**
+- **User Management**: Registrasi, login, manajemen profil pengguna
+- **Role Management**: Penetapan dan pengelolaan peran pengguna
+- **Authentication & Authorization**: Sistem keamanan dan otorisasi
+
+### **2. MANAJEMEN ORGANISASI**
+- **Struktur Organisasi**: Chart organisasi, job description, job specification
+- **Kompetensi**: Kamus kompetensi, leveling kompetensi, indikator perilaku
+- **Visi & Misi**: Pengelolaan visi dan misi perusahaan
+- **Cabang**: Manajemen cabang perusahaan
+- **Struktur Gaji**: Pengaturan struktur gaji organisasi
+
+### **3. MANAJEMEN SUMBER DAYA MANUSIA (HR)**
+- **Data Pegawai**: Informasi karyawan
+- **Absensi**: Pencatatan kehadiran dan absensi
+- **Hari Libur**: Pengaturan hari libur nasional dan perusahaan
+- **Value Objects**: Pengelolaan nilai-nilai organisasi
+
+### **4. MANAJEMEN INVENTORY & PEMBELIAN**
+- **Master Barang**: Katalog produk/inventory
+- **Supplier Management**: Pengelolaan vendor dan pemasok
+- **Pembelian**: Proses pembelian barang
+- **Purchase Order**: Surat pesanan pembelian
+- **Stok Unit**: Manajemen stok dan unit
+
+### **5. SALES & MARKETING**
+- **Data Konsumen**: Database pelanggan
+- **Penjualan**: Proses penjualan produk
+- **SPK (Surat Pesanan Kendaraan)**: 
+  - SPK Kendaraan
+  - SPK Kredit
+  - SPK Leasing
+  - SPK Survei
+- **Sales Marketing**: Aktivitas marketing dan penjualan
+- **Stok Unit**: Manajemen stok untuk penjualan
+
+### **6. LEASING & FINANSIAL**
+- **Leasing Management**: Pengelolaan leasing
+- **Cabang Leasing**: Manajemen cabang leasing
+- **Kategori Pembayaran**: Jenis-jenis metode pembayaran
+- **Kategori Penjualan**: Klasifikasi jenis penjualan
+
+### **7. AKUNTANSI & KEUANGAN**
+- **Chart of Accounts**: Daftar akun
+- **Journal Header & Details**: Jurnal akuntansi
+- **Bukti Transaksi**: Dokumen pendukung transaksi
+- **Saldo Harian**: Pencatatan saldo harian
+- **Saldo Awal**: Saldo awal periode
+- **Periode Akuntansi**: Pengaturan periode
+
+### **8. DOKUMENTASI & ADMINISTRASI**
+- **Faktur**: Pembuatan dan pengelolaan faktur
+- **Permohonan BPKB**: Pengurusan dokumen BPKB
+- **Permohonan STNK**: Pengurusan dokumen STNK
+- **Permohonan Faktur**: Proses pengajuan faktur
+
+### **9. LAPORAN & ANALITIK**
+- **Laporan Pivot**: Laporan analitik dengan pivot table
+- **Data SPK**: Laporan surat pesanan kendaraan
+
+### **10. SISTEM PENDUKUNG**
+- **Audit**: Pencatatan audit trail
+- **Caching**: Sistem cache untuk performa
+- **Notification**: Sistem notifikasi
+- **Event Bus**: Integrasi antar modul
+- **Outbox**: Pengelolaan pesan keluar
+- **Utility**: Fungsi-fungsi pembantu
+
+### **11. BLAZOR WEB APPLICATION**
+- **Web Interface**: Antarmuka web modern
+- **API Controllers**: Endpoint untuk integrasi
+- **Shared Components**: Komponen yang dapat digunakan bersama
+
+Sistem ini mengimplementasikan **Domain-Driven Design (DDD)** dengan arsitektur modular yang memisahkan setiap domain bisnis menjadi modul terpisah, memungkinkan skalabilitas dan maintainability yang baik.
+
+
+I'll analyze this .NET solution and create a comprehensive architecture diagram. Let me start by exploring the project structure and understanding the domain-driven design architecture.
+Search files...
+Ran tool
+Ran tool
+Ran tool
+Let me continue exploring the project structure to understand the architecture better:
+Ran tool
+Ran tool
+Ran tool
+Ran tool
+Let me explore more of the bounded contexts and infrastructure patterns:
+Ran tool
+Ran tool
+Ran tool
+Ran tool
+Ran tool
+Ran tool
+Let me explore the infrastructure patterns and main application entry points:
+Ran tool
+Ran tool
+Ran tool
+Ran tool
+Now let me explore the integration events and outbox pattern to understand the event-driven architecture:
+Ran tool
+Ran tool
+Ran tool
+Ran tool
+Ran tool
+Ran tool
+Now let me explore the notification, caching, and audit modules to complete my understanding:
+Ran tool
+Ran tool
+Ran tool
+Ran tool
+Ran tool
+Now I have a comprehensive understanding of the solution architecture. Let me create a comprehensive architecture diagram using Mermaid:
+Ran tool
+Ran tool
+Ran tool
+## Analisis Arsitektur Solution .NET SumberMas
+
+Berdasarkan analisis mendalam terhadap kode, saya telah membuat diagram arsitektur komprehensif yang menunjukkan struktur **Domain-Driven Design (DDD)** yang diimplementasikan dalam solution ini.
+
+### **Ringkasan Arsitektur:**
+
+#### **1. Pola Arsitektur Utama:**
+- **Domain-Driven Design (DDD)** dengan Bounded Context
+- **CQRS (Command Query Responsibility Segregation)**
+- **Event-Driven Architecture** dengan Integration Events
+- **Outbox Pattern** untuk reliable messaging
+- **Clean Architecture** dengan separation of concerns
+
+#### **2. Bounded Contexts (Domain Terpisah):**
+
+**🏢 SalesMarketing Context:**
+- Mengelola data konsumen, penjualan, SPK (Surat Pesanan Kendaraan)
+- Domain entities: DataKonsumen, DataPenjualan, DataSPK, MasterLeasing
+- Value Objects: Alamat, DataNPWP, Name
+
+**📦 Inventory Context:**
+- Mengelola master barang, stok, pembelian, supplier
+- Domain entities: MasterBarang, StokUnit, Pembelian, PurchaseOrder
+- Rich domain model dengan business methods
+
+**🏛️ Organization Context:**
+- Mengelola data perusahaan, cabang, struktur organisasi
+- Domain entities: DataPerusahaan, OrganisasiChart, ProsesBisnis
+- Vision, Mission, Values (VMV) management
+
+**👥 HumanCapital Context:**
+- Mengelola data pegawai, absensi, hari libur
+- Domain entities: DataPegawai, DataAbsensi, DataHariLibur
+- Enum untuk berbagai kategori HR
+
+**💰 Accounting Context:**
+- Mengelola akuntansi, chart of accounts, jurnal
+- Domain entities: DataAccount, DataJournals, DataBuktiTransaksi
+- Menggunakan Dapper untuk performance
+
+#### **3. Cross-Cutting Concerns:**
+
+**🔐 Identity & Security:**
+- ASP.NET Core Identity dengan custom ApplicationUser
+- Role-based authorization
+- Separate Blazor Identity untuk Blazor apps
+
+**📧 Notification System:**
+- Email dan SMS sender
+- Configurable email settings
+
+**🗄️ Caching:**
+- Memory caching dengan cache divisions
+- Interface-based untuk testability
+
+**📋 Audit:**
+- Comprehensive audit logging
+- Event tracking dengan timestamps
+
+#### **4. Infrastructure Patterns:**
+
+**📨 Event-Driven Architecture:**
+- Integration Events untuk komunikasi antar bounded context
+- InMemory Event Bus
+- Outbox Pattern untuk reliable delivery
+
+**⚙️ Worker Processes:**
+- Background services untuk processing outbox messages
+- Internal command processing
+- Async message handling
+
+**🛢️ Data Access:**
+- Entity Framework Core per bounded context
+- Separate database contexts
+- Code-first migrations
+
+#### **5. Presentation Layer:**
+
+**🌐 Multiple UI Options:**
+- **AdminLTE MVC**: Traditional web app (.NET Core 2.2)
+- **Blazor Server**: Real-time web app (.NET 6.0)
+- **Blazor WebAssembly**: Client-side SPA
+- **API Endpoints**: RESTful services dengan Swagger
+- **Flutter** (planned): Mobile/desktop support
+
+#### **6. Key Architectural Benefits:**
+
+✅ **Maintainability**: Bounded contexts memisahkan domain logic
+✅ **Scalability**: Event-driven architecture memungkinkan scaling horizontal
+✅ **Testability**: Clean architecture dengan dependency injection
+✅ **Reliability**: Outbox pattern memastikan eventual consistency
+✅ **Flexibility**: Multiple presentation options
+✅ **Extensibility**: Plugin-based cross-cutting concerns
+
+#### **7. Technology Stack:**
+- **.NET Core 2.2** dan **.NET 6.0**
+- **Entity Framework Core** untuk ORM
+- **MediatR** untuk CQRS implementation
+- **ASP.NET Core Identity** untuk authentication
+- **Blazor** untuk modern web UI
+- **SQL Server** sebagai database
+- **Swagger** untuk API documentation
+
+Arsitektur ini menunjukkan implementasi yang mature dari DDD principles dengan pemisahan yang jelas antara business logic, infrastructure, dan presentation concerns. Event-driven architecture memungkinkan loose coupling antar bounded contexts sambil menjaga data consistency melalui outbox pattern.

@@ -49,6 +49,9 @@ namespace SumberMas2015.SalesMarketing.Domain
             UserNameId=userNameId;
             // TanggalPenjualan = tanggalPenjualan;
         }
+
+      
+
         public static DataPenjualan CreateDataPenjualan(Guid dataSPKId, Guid dataKonsumenId, Guid masterLeasingCabangId, string noBuku, Guid salesUserId, string keterangan, Guid masterKategoriPenjualanId, string mediator, string userNameInput, Guid userNameId)
         {
             return new DataPenjualan(dataSPKId,dataKonsumenId,masterLeasingCabangId,noBuku,salesUserId,keterangan,masterKategoriPenjualanId,mediator,userNameInput,userNameId);
