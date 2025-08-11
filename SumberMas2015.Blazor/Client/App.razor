@@ -1,28 +1,41 @@
-﻿<Router AppAssembly="@typeof(App).Assembly" PreferExactMatches="@true">
-    <Found Context="routeData">
-       @* <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        <FocusOnNavigate RouteData="@routeData" Selector="h1" />*@
-
+﻿<ErrorBoundary @ref="errorBoundary" ShowDetails="true" OnError="OnError">
+    <Router AppAssembly="@typeof(App).Assembly" PreferExactMatches="@true">
+        <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
-                    <Authorizing>
-                        Authorizing...
-                    </Authorizing>
-                    <NotAuthorized>
-                        <RedirectToLogin />
-                    </NotAuthorized>
-                </AuthorizeRouteView>
-    </Found>
-    <NotFound>
-        <PageTitle>Not found</PageTitle>
-     @*   <LayoutView Layout="@typeof(MainLayout)">
-            <p role="alert">Sorry, there's nothing at this address.</p>
-        </LayoutView>*@
+                <Authorizing>
+                    <div class="text-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Authorizing...</span>
+                        </div>
+                        <p class="mt-2">Authorizing...</p>
+                    </div>
+                </Authorizing>
+                <NotAuthorized>
+                    <RedirectToLogin />
+                </NotAuthorized>
+            </AuthorizeRouteView>
+        </Found>
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <CascadingAuthenticationState>
+                <LayoutView Layout="@typeof(MainLayout)">
+                    <div class="text-center">
+                        <h1 class="display-1">404</h1>
+                        <p class="lead">Sorry, there's nothing at this address.</p>
+                        <a href="/" class="btn btn-primary">Go Home</a>
+                    </div>
+                </LayoutView>
+            </CascadingAuthenticationState>
+        </NotFound>
+    </Router>
+</ErrorBoundary>
 
-          <CascadingAuthenticationState>
-            <LayoutView Layout="@typeof(MainLayout)">
-                <p>Sorry, there's nothing at this address.</p>
-            </LayoutView>
-        </CascadingAuthenticationState>
+@code {
+    private ErrorBoundary? errorBoundary;
 
-    </NotFound>
-</Router>
+    private void OnError(Exception exception)
+    {
+        // Log the error
+        Console.WriteLine($"Error caught by ErrorBoundary: {exception.Message}");
+    }
+}

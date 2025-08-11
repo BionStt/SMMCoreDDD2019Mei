@@ -10,115 +10,159 @@ using SumberMas2015.SalesMarketing.ServiceApplication.Agama.Queries.AgamaList;
 using SumberMas2015.SalesMarketing.ServiceApplication.JenisKelamin.ListJenisKelamin;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangPekerjaanDBs.Queries;
 using SumberMas2015.SalesMarketing.ServiceApplication.MasterBidangUsahaDBs.Queries;
-using System.Security.Claims;
+using SumberMas2015.Blazor.Server.Models;
 
 namespace SumberMas2015.Blazor.Server.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class DataKonsumenController : ControllerBase
+    public class DataKonsumenController : BaseApiController
     {
-        private readonly ILogger<DataKonsumenController> _logger;
-        private IMediator _mediator;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly string _userId;
+        private readonly IMediator _mediator;
        
         public DataKonsumenController(ILogger<DataKonsumenController> logger, IMediator mediator, IHttpContextAccessor httpContextAccessor)
+            : base(logger, httpContextAccessor)
         {
-            _logger=logger;
-
-            _httpContextAccessor=httpContextAccessor;
-            _mediator=mediator;
-            _userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;//userID Guid
-
-            //  _userName = httpContextAccessor.HttpContext.User.Identity.Name;//username
-            // _userId2 =  httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;//UserNAme
-
+            _mediator = mediator;
         }
 
         /// <summary>
-        /// menampilkan list data bidang pekerjaan
+        /// Get list of job fields
         /// </summary>
-        /// <returns>GetNamaBidangPekerjaanResponse</returns>
+        /// <returns>List of job fields</returns>
+        /// <response code="200">Returns the list of job fields</response>
+        /// <response code="500">If there was an internal server error</response>
         [HttpGet("GetNamaBidangPekerjaanAsync")]
-        public async Task<IReadOnlyCollection<GetNamaBidangPekerjaanResponse>> GetNamaBidangPekerjaanAsync()
+        [ProducesResponseType(typeof(ApiResponse<IReadOnlyCollection<GetNamaBidangPekerjaanResponse>>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<object>), 500)]
+        public async Task<ActionResult<ApiResponse<IReadOnlyCollection<GetNamaBidangPekerjaanResponse>>>> GetNamaBidangPekerjaanAsync()
         {
-            var listNamaBidangPekerjaan = await _mediator.Send(new GetNamaBidangPekerjaanQuery() );
-            return listNamaBidangPekerjaan;
+            try
+            {
+                var listNamaBidangPekerjaan = await _mediator.Send(new GetNamaBidangPekerjaanQuery());
+                return SuccessResponse(listNamaBidangPekerjaan, "Job fields retrieved successfully");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving job fields");
+                return InternalServerErrorResponse<IReadOnlyCollection<GetNamaBidangPekerjaanResponse>>("Failed to retrieve job fields");
+            }
         }
 
         /// <summary>
-        /// menampilkan list data Bidang usaha
+        /// Get list of business fields
         /// </summary>
-        /// <returns>GetNamaBidangUsahaResponse</returns>
+        /// <returns>List of business fields</returns>
+        /// <response code="200">Returns the list of business fields</response>
+        /// <response code="500">If there was an internal server error</response>
         [HttpGet("GetNamaBidangUsahaAsync")]
-        public async Task<IReadOnlyCollection<GetNamaBidangUsahaResponse>> GetNamaBidangUsahaAsync()
+        [ProducesResponseType(typeof(ApiResponse<IReadOnlyCollection<GetNamaBidangUsahaResponse>>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<object>), 500)]
+        public async Task<ActionResult<ApiResponse<IReadOnlyCollection<GetNamaBidangUsahaResponse>>>> GetNamaBidangUsahaAsync()
         {
-            var listNamaBidangUsaha = await _mediator.Send(new GetNamaBidangUsahaQuery());
-            return listNamaBidangUsaha;
+            try
+            {
+                var listNamaBidangUsaha = await _mediator.Send(new GetNamaBidangUsahaQuery());
+                return SuccessResponse(listNamaBidangUsaha, "Business fields retrieved successfully");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving business fields");
+                return InternalServerErrorResponse<IReadOnlyCollection<GetNamaBidangUsahaResponse>>("Failed to retrieve business fields");
+            }
         }
 
         /// <summary>
-        /// menampilkan list data jenis kelamin
+        /// Get list of gender types
         /// </summary>
-        /// <returns>ListJenisKelaminResponse</returns>
+        /// <returns>List of gender types</returns>
+        /// <response code="200">Returns the list of gender types</response>
+        /// <response code="500">If there was an internal server error</response>
         [HttpGet("GetJenisKelaminAsync")]
-        public async Task<IReadOnlyCollection<ListJenisKelaminResponse>> GetJenisKelaminAsync()
+        [ProducesResponseType(typeof(ApiResponse<IReadOnlyCollection<ListJenisKelaminResponse>>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<object>), 500)]
+        public async Task<ActionResult<ApiResponse<IReadOnlyCollection<ListJenisKelaminResponse>>>> GetJenisKelaminAsync()
         {
-            var listJenisKelamin = await _mediator.Send(new ListJenisKelaminQuery());
-            return listJenisKelamin;
+            try
+            {
+                var listJenisKelamin = await _mediator.Send(new ListJenisKelaminQuery());
+                return SuccessResponse(listJenisKelamin, "Gender types retrieved successfully");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving gender types");
+                return InternalServerErrorResponse<IReadOnlyCollection<ListJenisKelaminResponse>>("Failed to retrieve gender types");
+            }
         }
 
         /// <summary>
-        /// menampilkan list data jenis kelamin
+        /// Get list of religions
         /// </summary>
-        /// <returns>ListJenisKelaminResponse</returns>
-        public async Task<IReadOnlyCollection<AgamaListResponse>> GetAgamaListAsync()
+        /// <returns>List of religions</returns>
+        /// <response code="200">Returns the list of religions</response>
+        /// <response code="500">If there was an internal server error</response>
+        [HttpGet("GetAgamaListAsync")]
+        [ProducesResponseType(typeof(ApiResponse<IReadOnlyCollection<AgamaListResponse>>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<object>), 500)]
+        public async Task<ActionResult<ApiResponse<IReadOnlyCollection<AgamaListResponse>>>> GetAgamaListAsync()
         {
-            var listAgama = await _mediator.Send(new AgamaListQuery());
-            return listAgama;
+            try
+            {
+                var listAgama = await _mediator.Send(new AgamaListQuery());
+                return SuccessResponse(listAgama, "Religions retrieved successfully");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving religions");
+                return InternalServerErrorResponse<IReadOnlyCollection<AgamaListResponse>>("Failed to retrieve religions");
+            }
         }
 
 
         /// <summary>
-        /// CreateDataKonsumen action adalah untuk menginput data konsumen baru
+        /// Creates a new customer data
         /// </summary>
-        /// <param name="model">parameter inputan yang diperlukan</param>
-        /// <returns>mengembalikan id dari hasil inputan</returns>
-        /// <response code="201">return the newly created item</response>
-        /// <response code="400">if the model is null</response>
+        /// <param name="request">The customer creation request</param>
+        /// <returns>Created customer with ID</returns>
+        /// <response code="201">Returns the newly created customer</response>
+        /// <response code="400">If the request is invalid</response>
+        /// <response code="401">If the user is not authenticated</response>
+        /// <response code="500">If there was an internal server error</response>
         /// <remarks>
-        /// sample request:
-        ///      Post api/CreateDataKonsumenAsync
-        ///      {
-        ///           //Contoh pengisian parameter
-        /// "sortColumn": "",
-        ///"sortColumnDir": "",
-        ///"pageNumber": 1,
-        ///"pageSize": 10,
-        ///"searchParam": "",
-       ///"groupId": "",
-        ///"groupIdName": "",
-        ///"parentId": "",
-        ///"parentIdName": "",
-        ///"clientId": 0,
-        ///"leadsId": 0,
-        ///"memoId": ""
-        /// 
-        ///      }
+        /// Sample request:
+        ///     POST api/v1/DataKonsumen/CreateDataKonsumenAsync
+        ///     {
+        ///         "sortColumn": "",
+        ///         "sortColumnDir": "",
+        ///         "pageNumber": 1,
+        ///         "pageSize": 10,
+        ///         "searchParam": "",
+        ///         "groupId": "",
+        ///         "groupIdName": "",
+        ///         "parentId": "",
+        ///         "parentIdName": "",
+        ///         "clientId": 0,
+        ///         "leadsId": 0,
+        ///         "memoId": ""
+        ///     }
         /// </remarks>
-        [HttpPost]
-        [ProducesResponseType(201)]
-        [ProducesResponseType(400)]
-        [Produces("application/json")]
-        // [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateDataKonsumenAsync(CreateDataKonsumenRequest customerViewModel)
+        [HttpPost("CreateDataKonsumenAsync")]
+        [ProducesResponseType(typeof(ApiResponse<object>), 201)]
+        [ProducesResponseType(typeof(ApiResponse<object>), 400)]
+        [ProducesResponseType(typeof(ApiResponse<object>), 401)]
+        [ProducesResponseType(typeof(ApiResponse<object>), 500)]
+        public async Task<ActionResult<ApiResponse<object>>> CreateDataKonsumenAsync(CreateDataKonsumenRequest request)
         {
-           
-            var dtKonsumen = customerViewModel.ToCommand();
-            var aa = await _mediator.Send(dtKonsumen);//mediator pattern 
-            
-            return Created(nameof(this.CreateDataKonsumenAsync), aa);
+            try
+            {
+                var command = request.ToCommand();
+                var result = await _mediator.Send(command);
+                
+                return CreatedResponse(result, "Customer created successfully");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error creating customer for user {UserId}", _userId);
+                return InternalServerErrorResponse<object>("Failed to create customer");
+            }
         }
 
     }

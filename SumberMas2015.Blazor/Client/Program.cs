@@ -8,6 +8,7 @@ using SumberMas2015.Blazor.Client.ServiceApplication.Identity.Contracts;
 using SumberMas2015.Blazor.Client.ServiceApplication.Identity.Implementations;
 using SumberMas2015.Blazor.Client.ServiceApplication.MasterBarang.Contracts;
 using SumberMas2015.Blazor.Client.ServiceApplication.MasterBarang.Implementation;
+using SumberMas2015.Blazor.Client.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -21,6 +22,9 @@ builder.Services.AddScoped<IAuthorizeApi, AuthorizeApi>();
 
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+// Add API Service
+builder.Services.AddScoped<IApiService, ApiService>();
 
 builder.Services.AddTransient<IDataKonsumenService, DataKonsumenService>();
 builder.Services.AddTransient<IMasterBarangService, MasterBarangService>();

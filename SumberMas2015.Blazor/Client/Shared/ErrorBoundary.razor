@@ -1,0 +1,61 @@
+@using System.Diagnostics
+
+<CascadingValue Value="this">
+    @ChildContent
+</CascadingValue>
+
+@if (CurrentException is not null)
+{
+    <div class="error-boundary">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Something went wrong!</h4>
+            <p>An error occurred while processing your request.</p>
+            @if (CurrentException is not null)
+            {
+                <hr>
+                <p class="mb-0">
+                    <strong>Error:</strong> @CurrentException.Message
+                </p>
+                @if (ShowDetails)
+                {
+                    <details>
+                        <summary>Technical Details</summary>
+                        <pre>@CurrentException.StackTrace</pre>
+                    </details>
+                }
+            }
+            <button class="btn btn-primary" @onclick="ResetError">Try Again</button>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = default!;
+
+    [Parameter]
+    public bool ShowDetails { get; set; } = false;
+
+    [Parameter]
+    public EventCallback<Exception> OnError { get; set; }
+
+    public Exception? CurrentException { get; private set; }
+
+    protected override void OnInitialized()
+    {
+        CurrentException = null;
+    }
+
+    public void ProcessError(Exception exception)
+    {
+        CurrentException = exception;
+        OnError.InvokeAsync(exception);
+        StateHasChanged();
+    }
+
+    public void ResetError()
+    {
+        CurrentException = null;
+        StateHasChanged();
+    }
+}

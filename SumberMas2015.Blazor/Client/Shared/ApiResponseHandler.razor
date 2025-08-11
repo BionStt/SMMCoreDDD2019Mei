@@ -1,0 +1,67 @@
+@using SumberMas2015.Blazor.Shared.Dto
+
+@if (Response != null)
+{
+    @if (Response.Success)
+    {
+        @if (ShowSuccessMessage && !string.IsNullOrEmpty(Response.Message))
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="fas fa-check-circle"></i>
+                @Response.Message
+                <button type="button" class="btn-close" @onclick="() => OnDismiss?.InvokeAsync()"></button>
+            </div>
+        }
+        @if (Response.Data != null)
+        {
+            @ChildContent(Response.Data)
+        }
+    }
+    else
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>Error:</strong> @Response.Message
+            @if (Response.Errors?.Any() == true)
+            {
+                <ul class="mb-0 mt-2">
+                    @foreach (var error in Response.Errors)
+                    {
+                        <li>@error</li>
+                    }
+                </ul>
+            }
+            <button type="button" class="btn-close" @onclick="() => OnDismiss?.InvokeAsync()"></button>
+        </div>
+    }
+}
+
+@if (IsLoading)
+{
+    <div class="text-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-2">@LoadingMessage</p>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public ApiResponse<T>? Response { get; set; }
+
+    [Parameter]
+    public bool IsLoading { get; set; }
+
+    [Parameter]
+    public string LoadingMessage { get; set; } = "Loading...";
+
+    [Parameter]
+    public bool ShowSuccessMessage { get; set; } = true;
+
+    [Parameter]
+    public RenderFragment<T> ChildContent { get; set; } = default!;
+
+    [Parameter]
+    public EventCallback OnDismiss { get; set; }
+}
